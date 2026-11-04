@@ -1,0 +1,330 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#conteudo-principal"
+  - banner:
+    - button "Voltar para o início": 12 axes
+    - navigation "Navegação principal":
+      - link "Como funciona":
+        - /url: "#como-funciona"
+      - link "12 Eixos":
+        - /url: "#guia-eixos"
+      - link "Livros":
+        - /url: /books
+      - link "Ideologias":
+        - /url: /ideologies
+      - link "Personalidades":
+        - /url: /personalities
+      - link "Países":
+        - /url: /countries
+      - link "Partidos":
+        - /url: /parties
+      - button "Switch to English"
+    - button "Começar"
+  - paragraph: — Descoberta política
+  - heading "Você sabe mesmo qual é a sua ideologia política?" [level=1]
+  - paragraph: Talvez você esteja se classificando errado. Em poucos minutos, descubra sua ideologia real, o país que mais pensa como você e o líder político mais parecido com suas ideias.
+  - button "Descobrir meu perfil"
+  - link "Ver os 12 eixos":
+    - /url: "#guia-eixos"
+  - list:
+    - listitem: Gratuito
+    - listitem: Anônimo
+    - listitem: Rápido
+    - listitem: Resultado imediato
+  - paragraph: Exemplo de resultado
+  - group "Exemplo de resultado":
+    - 'img "Exemplo do cartão de resultado compartilhável: Anarquismo Kropotkiniano"'
+    - button "Ver exemplo 1 de 3"
+    - button "Ver exemplo 2 de 3"
+    - button "Ver exemplo 3 de 3"
+  - paragraph: — O que você vai descobrir
+  - heading "Um retrato completo das suas convicções políticas" [level=2]
+  - paragraph: "Mais do que esquerda ou direita: seu resultado mostra com quem, onde e com que intensidade suas ideias realmente combinam."
+  - list:
+    - listitem:
+      - heading "Sua ideologia" [level=3]
+      - paragraph: Qual corrente política combina com você
+    - listitem:
+      - heading "Seu país" [level=3]
+      - paragraph: Que nação pensa parecido com você
+    - listitem:
+      - heading "Seu líder político" [level=3]
+      - paragraph: Qual figura histórica é seu par ideológico
+    - listitem:
+      - heading "Livros recomendados" [level=3]
+      - paragraph: Uma obra de cada personalidade compatível com você
+    - listitem:
+      - heading "Seu perfil" [level=3]
+      - paragraph: Um retrato completo das suas convicções
+    - listitem:
+      - heading "Compatibilidade" [level=3]
+      - paragraph: O quanto você realmente concorda com sua própria ideologia
+  - paragraph: — Exemplo real
+  - heading "É assim que fica o seu resultado" [level=2]
+  - article:
+    - text: Centro
+    - heading "Terceira Via" [level=3]
+    - 'img "Compatibilidade: 94 por cento"':
+      - img
+      - strong: 94%
+      - text: match
+    - paragraph: Renovação da centro-esquerda nos anos 1990, com Blair, Clinton e Giddens, que aceita o mercado globalizado e a disciplina fiscal, troca assistência por ativação para o trabalho, é dura com o crime e apoia intervenções liberais.
+    - heading "Representação" [level=4]
+    - text: Forte · Democracia Democracia 74% 26% Autocracia
+    - heading "Economia" [level=4]
+    - text: Equilibrado · Privado Público 44% 56% Privado
+    - heading "Moral" [level=4]
+    - text: Inclinado · Progressista Progressista 68% 32% Tradicionalista
+  - article:
+    - img "Bandeira de Inglaterra (Reino Unido)"
+    - text: País mais compatível 93% match
+    - heading "Inglaterra (Reino Unido)" [level=3]
+    - paragraph: Nação constituinte liberal-conservadora
+    - paragraph: Maior país constituinte do Reino Unido, a Inglaterra é governada diretamente por Westminster, sem parlamento próprio, com Igreja Anglicana oficial, serviço de saúde público (NHS), centro financeiro em Londres e maioria pelo Brexit e crescente voto populista.
+  - article:
+    - img "Retrato de Emmanuel Macron"
+    - text: Personalidade mais compatível 98% match
+    - heading "Emmanuel Macron" [level=3]
+    - paragraph: Estadista · 1977–
+    - paragraph: Estadista francês, Macron chegou à presidência da França como reformador centrista e liberal, defendendo o mercado, a integração europeia e reformas econômicas, buscando superar a divisão tradicional entre esquerda e direita.
+  - paragraph: Exemplo ilustrativo com dados reais do catálogo do 12 Axes.
+  - button "Quero ver o meu resultado"
+  - paragraph: — Como funciona
+  - heading "Como funciona o quiz político 12 Axes" [level=2]
+  - paragraph: "Um teste de ideologia política simples e visual: você responde a afirmações, o 12 Axes calcula seus percentuais e mostra onde você está no espectro político em cada dimensão."
+  - list:
+    - listitem:
+      - text: "01"
+      - heading "Responda às perguntas" [level=3]
+      - paragraph: Concorde ou discorde de afirmações sobre economia, Estado, liberdades civis, valores, religião, política externa e tecnologia.
+    - listitem:
+      - text: "02"
+      - heading "Análise em 12 eixos" [level=3]
+      - paragraph: Cada resposta posiciona você em 12 eixos ideológicos independentes - do livre mercado ao planejamento, do nacionalismo ao globalismo.
+    - listitem:
+      - text: "03"
+      - heading "Descubra seu perfil" [level=3]
+      - paragraph: Receba seu perfil ideológico, ideologias mais compatíveis, país mais próximo, personalidade relacionada e resultado por eixo.
+  - paragraph: — 12 eixos
+  - heading "O que significa cada eixo?" [level=2]
+  - paragraph: O teste ideológico 12 Axes analisa federalismo, representação política, democracia, eleições, imigração, comércio internacional, religião na política, política econômica, moral e tecnologia em dimensões separadas.
+  - list:
+    - listitem:
+      - text: "01"
+      - heading "Estrutura" [level=3]
+      - paragraph:
+        - text: Federal
+        - emphasis: ↔
+        - text: Unitário
+      - paragraph: Mede se você prefere poder distribuído entre estados, municípios e comunidades locais ou um Estado nacional unitário com leis e comando mais uniformes.
+    - listitem:
+      - text: "02"
+      - heading "Representação" [level=3]
+      - paragraph:
+        - text: Democracia
+        - emphasis: ↔
+        - text: Autocracia
+      - paragraph: Compara confiança em eleições, oposição e instituições democráticas com preferência por liderança forte, tecnocracia, monarquia ou regimes autoritários.
+    - listitem:
+      - text: "03"
+      - heading "Poder" [level=3]
+      - paragraph:
+        - text: Segurança
+        - emphasis: ↔
+        - text: Liberdade
+      - paragraph: Avalia o equilíbrio entre ordem, vigilância, punição e controle estatal versus privacidade, liberdade individual e autonomia civil.
+    - listitem:
+      - text: "04"
+      - heading "Imigração" [level=3]
+      - paragraph:
+        - text: Assimilação
+        - emphasis: ↔
+        - text: Multicultura
+      - paragraph: Observa se você valoriza assimilação cultural, idioma e identidade nacional ou multiculturalismo, abertura migratória e pluralidade de costumes.
+    - listitem:
+      - text: "05"
+      - heading "Diplomacia" [level=3]
+      - paragraph:
+        - text: Militarista
+        - emphasis: ↔
+        - text: Pacifista
+      - paragraph: Analisa sua posição sobre Forças Armadas, armamento, dissuasão e intervenção militar em contraste com negociação, pacifismo e organismos internacionais.
+    - listitem:
+      - text: "06"
+      - heading "Intervenção" [level=3]
+      - paragraph:
+        - text: Não intervencionista
+        - emphasis: ↔
+        - text: Nacionalista
+      - paragraph: Mede a inclinação entre não intervencionismo externo e soberania nacional mais assertiva, nacionalismo geopolítico e defesa ativa de interesses nacionais.
+    - listitem:
+      - text: "07"
+      - heading "Economia" [level=3]
+      - paragraph:
+        - text: Público
+        - emphasis: ↔
+        - text: Privado
+      - paragraph: Compara preferência por propriedade pública, estatais e serviços coletivos com propriedade privada, privatização e protagonismo empresarial.
+    - listitem:
+      - text: "08"
+      - heading "Controle" [level=3]
+      - paragraph:
+        - text: Planejamento
+        - emphasis: ↔
+        - text: Livre mercado
+      - paragraph: Avalia planejamento estatal, regulação e política econômica ativa contra livre mercado, baixa interferência, autonomia monetária e competição.
+    - listitem:
+      - text: "09"
+      - heading "Comércio" [level=3]
+      - paragraph:
+        - text: Protecionismo
+        - emphasis: ↔
+        - text: Globalismo
+      - paragraph: Mede protecionismo, soberania produtiva e defesa da indústria nacional contra globalismo, livre comércio e integração econômica internacional.
+    - listitem:
+      - text: "10"
+      - heading "Religião" [level=3]
+      - paragraph:
+        - text: Irreligioso
+        - emphasis: ↔
+        - text: Religioso
+      - paragraph: Compara laicidade, separação entre religião e Estado e crítica a privilégios religiosos com influência pública da fé e valores religiosos.
+    - listitem:
+      - text: "11"
+      - heading "Moral" [level=3]
+      - paragraph:
+        - text: Progressista
+        - emphasis: ↔
+        - text: Tradicionalista
+      - paragraph: Avalia progressismo cultural, direitos civis e mudanças sociais em contraste com tradição, família, costumes e conservadorismo moral.
+    - listitem:
+      - text: "12"
+      - heading "Tecnologia" [level=3]
+      - paragraph:
+        - text: Tecnologia
+        - emphasis: ↔
+        - text: Biologia
+      - paragraph: Mede entusiasmo por tecnologia, IA, engenharia genética e desenvolvimento técnico contra cautela biológica, ambiental e preservacionista.
+  - paragraph: — Espectro político
+  - heading "Descubra seu espectro político" [level=2]
+  - paragraph: O resultado ajuda a visualizar seu posicionamento político entre esquerda, direita e centro, além de identificar formas mais radicais, autoritárias ou libertárias que não cabem nesse eixo, como extrema direita, esquerda radical, terceira posição, libertarianismo e anarquismo.
+  - img "Barra do espectro político com as oito categorias"
+  - list:
+    - listitem:
+      - heading "Esquerda radical" [level=3]
+      - paragraph: Comunismo revolucionário ou totalitário de partido único, com economia planificada, forte centralização e concentração do poder do Estado.
+    - listitem:
+      - heading "Esquerda" [level=3]
+      - paragraph: Defende social-democracia, progressismo e maior intervenção do Estado na economia dentro da democracia liberal.
+    - listitem:
+      - heading "Centro" [level=3]
+      - paragraph: Busca equilíbrio entre esquerda e direita, mercado e Estado, reformas e estabilidade, com posicionamento político moderado ou pragmático.
+    - listitem:
+      - heading "Direita" [level=3]
+      - paragraph: Defende conservadorismo, liberalismo econômico e nacionalismo moderado dentro da democracia liberal.
+    - listitem:
+      - heading "Extrema direita" [level=3]
+      - paragraph: Fascismo, nacionalismo racial e teocracias opressivas, com rejeição explícita da democracia e concentração autoritária do poder.
+    - listitem:
+      - heading "Terceira posição" [level=3]
+      - paragraph: Síntese nacionalista e corporativista que rejeita tanto o capitalismo liberal quanto o marxismo, fora do eixo tradicional esquerda-direita.
+    - listitem:
+      - heading "Libertário" [level=3]
+      - paragraph: Defende Estado mínimo, livre mercado, propriedade privada e liberdades individuais, sem propor a abolição total do Estado.
+    - listitem:
+      - heading "Anarquista" [level=3]
+      - paragraph: Rejeita o Estado e toda autoridade coercitiva, defendendo organização social livre, voluntária e autogerida, de esquerda ou de direita.
+  - paragraph: — FAQ
+  - heading "Perguntas frequentes" [level=2]
+  - paragraph: Tudo o que as pessoas costumam perguntar antes de fazer o teste.
+  - group: O teste é confiável?
+  - group: Quanto tempo demora?
+  - group: Posso refazer?
+  - group: Existe resposta certa?
+  - group: Como o algoritmo calcula?
+  - group: O resultado muda?
+  - group: O teste é científico?
+  - group: Posso compartilhar?
+  - group: O teste coleta dados?
+  - group: Posso responder pelo celular?
+  - group: O que é o 12 Axes?
+  - group: O 12 Axes tem bússola política (political compass)?
+  - group: Como descobrir minha ideologia política compatível?
+  - group: Posso descobrir qual país ou personalidade combina comigo?
+  - group: Quantas perguntas tem o quiz de política?
+  - paragraph: — Versões
+  - heading "Escolha a profundidade" [level=2]
+  - paragraph: Comece pelo quiz rápido ou aprofunde sua análise para um retrato mais preciso do seu perfil ideológico. Todas as versões usam os mesmos 12 eixos e retornam o resultado imediatamente.
+  - list:
+    - listitem:
+      - text: Curta
+      - paragraph:
+        - strong: "36"
+        - text: perguntas
+      - paragraph: Resultado rápido, ideal para uma primeira leitura do seu perfil
+      - paragraph: Aprox. 5 min
+      - button "Começar versão curta"
+    - listitem:
+      - text: Completa Recomendada
+      - paragraph:
+        - strong: "60"
+        - text: perguntas
+      - paragraph: Mais precisão para aproximar seu resultado dos perfis ideológicos.
+      - paragraph: Aprox. 9 min
+      - button "Começar versão completa"
+    - listitem:
+      - text: Extrema
+      - paragraph:
+        - strong: "240"
+        - text: perguntas
+      - paragraph: Saiba exatamente a síntese do seu pensamento com 100% de precisão.
+      - paragraph: Aprox. 30 min
+      - button "Começar versão extrema"
+  - contentinfo:
+    - text: 12 axes
+    - paragraph: © 2026. Todos os direitos reservados
+    - navigation "Projeto":
+      - heading "Projeto" [level=3]
+      - list:
+        - listitem:
+          - link "Sobre":
+            - /url: https://github.com/RomanCypherpunk/12axes#readme
+        - listitem:
+          - link "Contribuições":
+            - /url: https://github.com/RomanCypherpunk/12axes#contributing-ov-file
+        - listitem:
+          - link "Licença":
+            - /url: https://github.com/RomanCypherpunk/12axes/blob/main/LICENSE
+        - listitem:
+          - link "Reportar":
+            - /url: https://github.com/RomanCypherpunk/12axes/issues/new
+        - listitem:
+          - link "Relatório Completo":
+            - /url: /report
+        - listitem:
+          - link "Termos de uso":
+            - /url: /terms
+        - listitem:
+          - link "Privacidade":
+            - /url: /privacy
+        - listitem:
+          - link "Reembolso":
+            - /url: /refund
+    - navigation "Explorar":
+      - heading "Explorar" [level=3]
+      - list:
+        - listitem:
+          - link "Personalidades":
+            - /url: /personalities
+        - listitem:
+          - link "Ideologias":
+            - /url: /ideologies
+        - listitem:
+          - link "Livros":
+            - /url: /books
+        - listitem:
+          - link "Partidos":
+            - /url: /parties
+        - listitem:
+          - link "Países":
+            - /url: /countries

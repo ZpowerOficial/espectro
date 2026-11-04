@@ -1,0 +1,116 @@
+- document:
+  - banner:
+    - link "12 axes":
+      - /url: /
+    - navigation "Teia":
+      - link "Livros":
+        - /url: /books
+      - link "Ideologias":
+        - /url: /tree/ideologies
+      - link "Personalidades":
+        - /url: /tree/personalities
+      - link "Países":
+        - /url: /tree/countries
+      - link "Partidos":
+        - /url: /tree/parties
+      - link "Switch to English":
+        - /url: /en/tree/personalities
+    - searchbox "Buscar personalidade…"
+    - link "Ver em lista":
+      - /url: /personalities
+    - link "Começar":
+      - /url: /
+  - main:
+    - text: Autoritarismo Anarquismo Esquerda Direita
+    - list:
+      - listitem: Esquerda Radical
+      - listitem: Esquerda
+      - listitem: Centro
+      - listitem: Direita
+      - listitem: Extrema Direita
+      - listitem: Terceira Posição
+      - listitem: Libertário
+      - listitem: Anarquismo
+    - complementary "Ludwig von Mises":
+      - button "Fechar": ×
+      - text: Libertário
+      - heading "Ludwig von Mises" [level=2]
+      - paragraph: Expoente da Escola Austríaca
+      - paragraph: Economista austríaco, Mises foi grande defensor do livre mercado e mostrou a impossibilidade do cálculo econômico racional no socialismo, tornando-se pilar da Escola Austríaca e inspiração do libertarianismo moderno.
+      - link "Ver perfil completo":
+        - /url: /personalities/mises
+      - list:
+        - listitem:
+          - heading "Estrutura" [level=3]
+          - text: 81% Federal
+          - 'img "Estrutura: Federal 81%, Unitário 19%"'
+          - text: Federal Unitário
+        - listitem:
+          - heading "Representação" [level=3]
+          - text: 74% Democracia
+          - 'img "Representação: Democracia 74%, Autocracia 26%"'
+          - text: Democracia Autocracia
+        - listitem:
+          - heading "Poder" [level=3]
+          - text: 76% Liberdade
+          - 'img "Poder: Segurança 24%, Liberdade 76%"'
+          - text: Segurança Liberdade
+        - listitem:
+          - heading "Imigração" [level=3]
+          - text: 71% Multicultura
+          - 'img "Imigração: Assimilação 29%, Multicultura 71%"'
+          - text: Assimilação Multicultura
+        - listitem:
+          - heading "Diplomacia" [level=3]
+          - text: 78% Pacifista
+          - 'img "Diplomacia: Militarista 23%, Pacifista 78%"'
+          - text: Militarista Pacifista
+        - listitem:
+          - heading "Intervenção" [level=3]
+          - text: 75% Não intervencionista
+          - 'img "Intervenção: Não intervencionista 75%, Nacionalista 25%"'
+          - text: Não intervencionista Nacionalista
+        - listitem:
+          - heading "Economia" [level=3]
+          - text: 90% Privado
+          - 'img "Economia: Público 10%, Privado 90%"'
+          - text: Público Privado
+        - listitem:
+          - heading "Controle" [level=3]
+          - text: 93% Livre mercado
+          - 'img "Controle: Planejamento 8%, Livre mercado 93%"'
+          - text: Planejamento Livre mercado
+        - listitem:
+          - heading "Comércio" [level=3]
+          - text: 90% Globalismo
+          - 'img "Comércio: Protecionismo 10%, Globalismo 90%"'
+          - text: Protecionismo Globalismo
+        - listitem:
+          - heading "Religião" [level=3]
+          - text: 66% Irreligioso
+          - 'img "Religião: Irreligioso 66%, Religioso 34%"'
+          - text: Irreligioso Religioso
+        - listitem:
+          - heading "Moral" [level=3]
+          - text: Equilibrado
+          - 'img "Moral: Progressista 53%, Tradicionalista 48%"'
+          - text: Progressista Tradicionalista
+        - listitem:
+          - heading "Tecnologia" [level=3]
+          - text: 71% Tecnologia
+          - 'img "Tecnologia: Tecnologia 71%, Biologia 29%"'
+          - text: Tecnologia Biologia
+      - paragraph: — Mais próximas
+      - list:
+        - listitem:
+          - button "Raphaël Lima 98%"
+        - listitem:
+          - button "Gary Johnson 97.9%"
+        - listitem:
+          - button "Frédéric Bastiat 97.6%"
+        - listitem:
+          - button "Gustave de Molinari 97.5%"
+        - listitem:
+          - button "Henry Hazlitt 97.4%"
+        - listitem:
+          - button "Milton Friedman 97.2%"

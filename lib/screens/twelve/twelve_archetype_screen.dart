@@ -21,7 +21,8 @@ class _TwelveArchetypeScreenState extends State<TwelveArchetypeScreen> {
     ...widget.session.archetypeChoices,
   };
 
-  List<ArchetypeQuestion> get _questions => widget.session.data.archetypeQuestions;
+  List<ArchetypeQuestion> get _questions =>
+      widget.session.data.archetypeQuestions;
 
   int get _remaining => _questions.length - _choices.length;
 
@@ -42,23 +43,26 @@ class _TwelveArchetypeScreenState extends State<TwelveArchetypeScreen> {
     final TwelveAxesResult? result = widget.session.result();
     if (result == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Ainda faltam respostas no questionário.')),
+        const SnackBar(
+          content: Text('Ainda faltam respostas no questionário.'),
+        ),
       );
       return;
     }
 
     final List<({String label, String answer})> archetype =
         <({String label, String answer})>[
-      for (final ArchetypeQuestion question in _questions)
-        (
-          label: question.label,
-          answer: (_choices[question.id] != null &&
-                  _choices[question.id]! >= 0 &&
-                  _choices[question.id]! < question.options.length)
-              ? question.options[_choices[question.id]!].text
-              : '',
-        ),
-    ];
+          for (final ArchetypeQuestion question in _questions)
+            (
+              label: question.label,
+              answer:
+                  (_choices[question.id] != null &&
+                      _choices[question.id]! >= 0 &&
+                      _choices[question.id]! < question.options.length)
+                  ? question.options[_choices[question.id]!].text
+                  : '',
+            ),
+        ];
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute<void>(
@@ -94,7 +98,10 @@ class _TwelveArchetypeScreenState extends State<TwelveArchetypeScreen> {
                 children: <Widget>[
                   const Eyebrow('Etapa final'),
                   const SizedBox(height: 12),
-                  Text('Cinco escolhas\npara fechar o retrato.', style: text.displayMedium),
+                  Text(
+                    'Cinco escolhas\npara fechar o retrato.',
+                    style: text.displayMedium,
+                  ),
                   const SizedBox(height: 12),
                   Text(
                     'Estas perguntas não somam eixos: elas descrevem o seu ponto de '
@@ -107,7 +114,8 @@ class _TwelveArchetypeScreenState extends State<TwelveArchetypeScreen> {
                       index: i,
                       question: _questions[i],
                       selected: _choices[_questions[i].id],
-                      onSelect: (int optionIndex) => _choose(_questions[i].id, optionIndex),
+                      onSelect: (int optionIndex) =>
+                          _choose(_questions[i].id, optionIndex),
                     ),
                     if (i != _questions.length - 1) const SizedBox(height: 14),
                   ],

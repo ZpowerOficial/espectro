@@ -1,0 +1,345 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#conteudo-principal"
+  - banner:
+    - link "Voltar para o início":
+      - /url: /
+      - text: 12 axes
+    - button "Abrir menu"
+  - main:
+    - paragraph: — Comparar perfis
+    - heading "Lado a lado, nos 12 eixos" [level=1]
+    - heading "Perfis" [level=2]
+    - list:
+      - listitem:
+        - button "Remover Murray Rothbard da comparação"
+        - img "Retrato de Murray Rothbard"
+        - text: Personalidade
+        - strong: Murray Rothbard
+      - listitem:
+        - button "Remover Ludwig von Mises da comparação"
+        - img "Retrato de Ludwig von Mises"
+        - text: Personalidade
+        - strong: Ludwig von Mises
+      - listitem:
+        - button "Remover Hans-Hermann Hoppe da comparação"
+        - img "Retrato de Hans-Hermann Hoppe"
+        - text: Personalidade
+        - strong: Hans-Hermann Hoppe
+    - paragraph: Até 3 perfis. Remova um para escolher outro.
+    - heading "Ideologia mais próxima" [level=2]
+    - article:
+      - text: Em comum
+      - heading "Populismo Libertário" [level=3]
+      - paragraph: Libertário
+      - group: + Saber mais sobre Populismo Libertário
+      - 'img "Compatibilidade: 97 por cento"':
+        - img
+        - strong: 97%
+        - text: match
+    - list:
+      - listitem:
+        - paragraph:
+          - img "Retrato de Murray Rothbard"
+          - text: Mais perto de Murray Rothbard
+        - article:
+          - text: Libertário
+          - heading "Anarcocapitalismo" [level=3]
+          - paragraph: Corrente que propõe abolir o Estado e organizar toda a sociedade por contratos e mercados livres, com segurança, justiça e serviços fornecidos por empresas privadas em concorrência, sob propriedade absoluta. A compatibilidade indica proximidade entre suas respostas e esse perfil.
+          - button "+ Saber mais sobre Anarcocapitalismo"
+      - listitem:
+        - paragraph:
+          - img "Retrato de Ludwig von Mises"
+          - text: Mais perto de Ludwig von Mises
+        - article:
+          - text: Libertário
+          - heading "Liberalismo Clássico" [level=3]
+          - paragraph: Vertente original do liberalismo que defende direitos naturais, propriedade, livre mercado e Estado mínimo, vendo a liberdade individual e a limitação rígida do poder como fundamentos da sociedade justa. A compatibilidade indica proximidade entre suas respostas e esse perfil.
+          - button "+ Saber mais sobre Liberalismo Clássico"
+      - listitem:
+        - paragraph:
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Mais perto de Hans-Hermann Hoppe
+        - article:
+          - text: Libertário
+          - heading "Libertarianismo Hoppeano" [level=3]
+          - paragraph: Corrente ligada a Hans-Hermann Hoppe que une anarcocapitalismo, propriedade privada absoluta e crítica à democracia, defendendo ordens sociais baseadas em contrato, associação voluntária e autoridade privada. A compatibilidade indica proximidade entre suas respostas e esse perfil.
+          - button "+ Saber mais sobre Libertarianismo Hoppeano"
+    - heading "Os 12 eixos" [level=2]
+    - list:
+      - listitem:
+        - heading "Estrutura" [level=3]
+        - 'img "Estrutura: Murray Rothbard 96% Federal, Ludwig von Mises 81% Federal, Hans-Hermann Hoppe 93% Federal"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 96%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 81%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 93%
+        - text: Federal Unitário
+      - listitem:
+        - heading "Representação" [level=3]
+        - 'img "Representação: Murray Rothbard 78% Democracia, Ludwig von Mises 74% Democracia, Hans-Hermann Hoppe 58% Autocracia"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 78%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 74%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 58%
+        - text: Democracia Autocracia
+      - listitem:
+        - heading "Poder" [level=3]
+        - 'img "Poder: Murray Rothbard 99% Liberdade, Ludwig von Mises 76% Liberdade, Hans-Hermann Hoppe 94% Liberdade"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 99%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 76%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 94%
+        - text: Segurança Liberdade
+      - listitem:
+        - heading "Imigração" [level=3]
+        - 'img "Imigração: Murray Rothbard 61% Multicultura, Ludwig von Mises 71% Multicultura, Hans-Hermann Hoppe 80% Assimilação"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 61%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 71%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 80%
+        - text: Assimilação Multicultura
+      - listitem:
+        - heading "Diplomacia" [level=3]
+        - 'img "Diplomacia: Murray Rothbard 85% Pacifista, Ludwig von Mises 78% Pacifista, Hans-Hermann Hoppe 80% Pacifista"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 85%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 78%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 80%
+        - text: Militarista Pacifista
+      - listitem:
+        - heading "Intervenção" [level=3]
+        - 'img "Intervenção: Murray Rothbard 84% Não intervencionista, Ludwig von Mises 75% Não intervencionista, Hans-Hermann Hoppe 73% Não intervencionista"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 84%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 75%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 73%
+        - text: Não intervencionista Nacionalista
+      - listitem:
+        - heading "Economia" [level=3]
+        - 'img "Economia: Murray Rothbard 94% Privado, Ludwig von Mises 90% Privado, Hans-Hermann Hoppe 98% Privado"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 94%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 90%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 98%
+        - text: Público Privado
+      - listitem:
+        - heading "Controle" [level=3]
+        - 'img "Controle: Murray Rothbard 95% Livre mercado, Ludwig von Mises 93% Livre mercado, Hans-Hermann Hoppe 96% Livre mercado"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 95%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 93%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 96%
+        - text: Planejamento Livre mercado
+      - listitem:
+        - heading "Comércio" [level=3]
+        - 'img "Comércio: Murray Rothbard 93% Globalismo, Ludwig von Mises 90% Globalismo, Hans-Hermann Hoppe 84% Globalismo"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 93%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 90%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 84%
+        - text: Protecionismo Globalismo
+      - listitem:
+        - heading "Religião" [level=3]
+        - 'img "Religião: Murray Rothbard 73% Irreligioso, Ludwig von Mises 66% Irreligioso, Hans-Hermann Hoppe Equilibrado (55% Irreligioso)"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 73%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 66%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 55%
+        - text: Irreligioso Religioso
+      - listitem:
+        - heading "Moral" [level=3]
+        - 'img "Moral: Murray Rothbard Equilibrado (54% Progressista), Ludwig von Mises Equilibrado (53% Progressista), Hans-Hermann Hoppe 73% Tradicionalista"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 54%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 53%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 73%
+        - text: Progressista Tradicionalista
+      - listitem:
+        - heading "Tecnologia" [level=3]
+        - 'img "Tecnologia: Murray Rothbard 80% Tecnologia, Ludwig von Mises 71% Tecnologia, Hans-Hermann Hoppe 63% Tecnologia"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 80%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 71%
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Hans-Hermann Hoppe · 63%
+        - text: Tecnologia Biologia
+    - heading "O que os distingue" [level=2]
+    - article:
+      - text: Onde mais divergem
+      - heading "Imigração" [level=3]
+      - paragraph: 51pts
+      - paragraph: Hans-Hermann Hoppe e Ludwig von Mises ficam a 51 pontos um do outro nesse eixo.
+      - text: Assimilação Multicultura
+    - article:
+      - text: Onde mais concordam
+      - heading "Controle" [level=3]
+      - paragraph: 4pts
+      - paragraph: "Aqui eles se encontram: só 4 pontos de diferença."
+      - text: Planejamento Livre mercado
+    - article:
+      - text: Lados opostos
+      - paragraph: Em 3 dos 12 eixos eles ficam em lados opostos.
+      - list:
+        - listitem: Representação
+        - listitem: Imigração
+        - listitem: Moral
+    - heading "Países mais próximos" [level=2]
+    - list:
+      - listitem:
+        - paragraph:
+          - img "Retrato de Murray Rothbard"
+          - text: Mais perto de Murray Rothbard
+        - article:
+          - img "Bandeira de New Hampshire (Estados Unidos)"
+          - heading "New Hampshire (Estados Unidos)" [level=3]
+          - text: 92% match
+      - listitem:
+        - paragraph:
+          - img "Retrato de Ludwig von Mises"
+          - text: Mais perto de Ludwig von Mises
+        - article:
+          - img "Bandeira de New Hampshire (Estados Unidos)"
+          - heading "New Hampshire (Estados Unidos)" [level=3]
+          - text: 94% match
+      - listitem:
+        - paragraph:
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Mais perto de Hans-Hermann Hoppe
+        - article:
+          - img "Bandeira de Liechtenstein"
+          - heading "Liechtenstein" [level=3]
+          - text: 90% match
+    - heading "Partidos mais próximos" [level=2]
+    - list:
+      - listitem:
+        - paragraph:
+          - img "Retrato de Murray Rothbard"
+          - text: Mais perto de Murray Rothbard
+        - article:
+          - img "Símbolo de Partido Libertário"
+          - img "Bandeira de Estados Unidos"
+          - heading "Partido Libertário" [level=3]
+          - text: 96% match
+      - listitem:
+        - paragraph:
+          - img "Retrato de Ludwig von Mises"
+          - text: Mais perto de Ludwig von Mises
+        - article:
+          - img "Símbolo de Partido Novo (NOVO)"
+          - img "Bandeira de Brasil"
+          - heading "Partido Novo (NOVO)" [level=3]
+          - text: 95% match
+      - listitem:
+        - paragraph:
+          - img "Retrato de Hans-Hermann Hoppe"
+          - text: Mais perto de Hans-Hermann Hoppe
+        - article:
+          - img "Símbolo de Casa de Liechtenstein"
+          - img "Bandeira de Liechtenstein"
+          - heading "Casa de Liechtenstein" [level=3]
+          - text: 87% match
+    - heading "Bússola política" [level=2]
+    - 'img "Bússola política: Murray Rothbard, 94% à direita, 9% autoritário, 46% tradicionalista; Ludwig von Mises, 91% à direita, 23% autoritário, 48% tradicionalista; Hans-Hermann Hoppe, 97% à direita, 24% autoritário, 73% tradicionalista"': Autoritarismo Esquerda Direita Anarquismo
+    - list "Legenda da bússola":
+      - listitem:
+        - img "Retrato de Murray Rothbard"
+        - text: Murray Rothbard
+      - listitem:
+        - img "Retrato de Ludwig von Mises"
+        - text: Ludwig von Mises
+      - listitem:
+        - img "Retrato de Hans-Hermann Hoppe"
+        - text: Hans-Hermann Hoppe
+    - heading "Compatibilidade entre eles" [level=2]
+    - list:
+      - listitem:
+        - img "Retrato de Murray Rothbard"
+        - img "Retrato de Ludwig von Mises"
+        - strong: Murray Rothbard Ludwig von Mises
+        - 'img "Compatibilidade: 96 por cento"'
+        - paragraph: 96%
+      - listitem:
+        - img "Retrato de Murray Rothbard"
+        - img "Retrato de Hans-Hermann Hoppe"
+        - strong: Murray Rothbard Hans-Hermann Hoppe
+        - 'img "Compatibilidade: 89 por cento"'
+        - paragraph: 89%
+      - listitem:
+        - img "Retrato de Ludwig von Mises"
+        - img "Retrato de Hans-Hermann Hoppe"
+        - strong: Ludwig von Mises Hans-Hermann Hoppe
+        - 'img "Compatibilidade: 87 por cento"'
+        - paragraph: 87%
+    - complementary "Nesta página"
+  - contentinfo:
+    - text: 12 axes
+    - paragraph: © 2026. Todos os direitos reservados
+    - navigation "Projeto":
+      - heading "Projeto" [level=3]
+      - list:
+        - listitem:
+          - link "Sobre":
+            - /url: https://github.com/RomanCypherpunk/12axes#readme
+        - listitem:
+          - link "Contribuições":
+            - /url: https://github.com/RomanCypherpunk/12axes#contributing-ov-file
+        - listitem:
+          - link "Licença":
+            - /url: https://github.com/RomanCypherpunk/12axes/blob/main/LICENSE
+        - listitem:
+          - link "Reportar":
+            - /url: https://github.com/RomanCypherpunk/12axes/issues/new
+        - listitem:
+          - link "Relatório Completo":
+            - /url: /report
+        - listitem:
+          - link "Termos de uso":
+            - /url: /terms
+        - listitem:
+          - link "Privacidade":
+            - /url: /privacy
+        - listitem:
+          - link "Reembolso":
+            - /url: /refund
+    - navigation "Explorar":
+      - heading "Explorar" [level=3]
+      - list:
+        - listitem:
+          - link "Personalidades":
+            - /url: /personalities
+        - listitem:
+          - link "Ideologias":
+            - /url: /ideologies
+        - listitem:
+          - link "Livros":
+            - /url: /books
+        - listitem:
+          - link "Partidos":
+            - /url: /parties
+        - listitem:
+          - link "Países":
+            - /url: /countries

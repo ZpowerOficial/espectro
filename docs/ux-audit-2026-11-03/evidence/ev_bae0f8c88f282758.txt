@@ -1,0 +1,87 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#conteudo-principal"
+  - banner:
+    - button "Voltar para o início": 12 axes
+    - button "Voltar ao início"
+  - region "Você quer velocidade ou precisão?":
+    - paragraph: — Escolha o formato
+    - heading "Você quer velocidade ou precisão?" [level=1]
+    - paragraph: A versão curta revela o resultado de forma rápida. A completa aumenta a precisão para aproximar melhor seu resultado dos perfis ideológicos.
+    - list:
+      - listitem:
+        - text: Curta
+        - paragraph:
+          - strong: "36"
+          - text: perguntas
+        - paragraph: Resultado rápido, ideal para uma primeira leitura do seu perfil
+        - paragraph: Aprox. 5 min Profundidade
+        - button "Começar versão curta"
+      - listitem:
+        - text: Completa Recomendada
+        - paragraph:
+          - strong: "60"
+          - text: perguntas
+        - paragraph: Mais precisão para aproximar seu resultado dos perfis ideológicos.
+        - paragraph: Aprox. 9 min Profundidade
+        - button "Começar versão completa"
+      - listitem:
+        - text: Extrema
+        - paragraph:
+          - strong: "240"
+          - text: perguntas
+        - paragraph: Saiba exatamente a síntese do seu pensamento com 100% de precisão.
+        - paragraph: Aprox. 30 min Profundidade
+        - button "Começar versão extrema"
+    - list:
+      - listitem: Todas as versões usam os mesmos 12 eixos
+      - listitem: Anônimo, sem cadastro
+      - listitem: Resultado imediato
+  - contentinfo:
+    - text: 12 axes
+    - paragraph: © 2026. Todos os direitos reservados
+    - navigation "Projeto":
+      - heading "Projeto" [level=3]
+      - list:
+        - listitem:
+          - link "Sobre":
+            - /url: https://github.com/RomanCypherpunk/12axes#readme
+        - listitem:
+          - link "Contribuições":
+            - /url: https://github.com/RomanCypherpunk/12axes#contributing-ov-file
+        - listitem:
+          - link "Licença":
+            - /url: https://github.com/RomanCypherpunk/12axes/blob/main/LICENSE
+        - listitem:
+          - link "Reportar":
+            - /url: https://github.com/RomanCypherpunk/12axes/issues/new
+        - listitem:
+          - link "Relatório Completo":
+            - /url: /report
+        - listitem:
+          - link "Termos de uso":
+            - /url: /terms
+        - listitem:
+          - link "Privacidade":
+            - /url: /privacy
+        - listitem:
+          - link "Reembolso":
+            - /url: /refund
+    - navigation "Explorar":
+      - heading "Explorar" [level=3]
+      - list:
+        - listitem:
+          - link "Personalidades":
+            - /url: /personalities
+        - listitem:
+          - link "Ideologias":
+            - /url: /ideologies
+        - listitem:
+          - link "Livros":
+            - /url: /books
+        - listitem:
+          - link "Partidos":
+            - /url: /parties
+        - listitem:
+          - link "Países":
+            - /url: /countries

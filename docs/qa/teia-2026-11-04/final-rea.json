@@ -1,0 +1,1422 @@
+{
+  "evidence_id": "ev_62e1e7a1fad05c90e468f4947bf89b1ceb4553709955784bcef3ada78878a8c6",
+  "subject": null,
+  "provider": {
+    "id": "rea-playwright-browser-scenario",
+    "name": "REA Playwright browser scenario capture provider",
+    "version": "1"
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.browser-scenario-capture",
+  "operation": "capture_browser_scenario",
+  "parameters": {
+    "browser": {
+      "mode": "launch",
+      "executable_path": "/home/zpower/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome",
+      "headless": true
+    },
+    "start_url": {
+      "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+      "query": []
+    },
+    "environment": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "device_scale_factor": 1
+      },
+      "locale": "pt-BR",
+      "timezone": "UTC",
+      "color_scheme": "light",
+      "reduced_motion": "reduce",
+      "service_workers": "block"
+    },
+    "actions": [
+      {
+        "step_id": "settle",
+        "action": "wait_for_timeout",
+        "duration_ms": 5000
+      },
+      {
+        "step_id": "enable-semantics",
+        "timeout_ms": 5000,
+        "action": "press",
+        "locator": {
+          "kind": "css",
+          "selector": "flt-semantics-placeholder"
+        },
+        "key": "Enter"
+      },
+      {
+        "step_id": "scroll-map",
+        "timeout_ms": 5000,
+        "action": "press",
+        "locator": {
+          "kind": "role",
+          "role": "button",
+          "name": "Teia"
+        },
+        "key": "PageDown"
+      },
+      {
+        "step_id": "choose-point",
+        "timeout_ms": 5000,
+        "action": "click",
+        "locator": {
+          "kind": "role",
+          "role": "button",
+          "name": "Escolher ponto"
+        },
+        "button": "left",
+        "click_count": 1
+      },
+      {
+        "step_id": "select-plato",
+        "timeout_ms": 5000,
+        "action": "click",
+        "locator": {
+          "kind": "role",
+          "role": "button",
+          "name": "Platão Personalidade · Filósofos e Teóricos"
+        },
+        "button": "left",
+        "click_count": 1
+      },
+      {
+        "step_id": "selection-ready",
+        "action": "wait_for_timeout",
+        "duration_ms": 500
+      },
+      {
+        "step_id": "open-plato",
+        "timeout_ms": 5000,
+        "action": "click",
+        "locator": {
+          "kind": "role",
+          "role": "button",
+          "name": "Abrir perfil"
+        },
+        "button": "left",
+        "click_count": 1
+      },
+      {
+        "step_id": "profile-ready",
+        "action": "wait_for_timeout",
+        "duration_ms": 500
+      },
+      {
+        "step_id": "return-map",
+        "timeout_ms": 5000,
+        "action": "click",
+        "locator": {
+          "kind": "role",
+          "role": "button",
+          "name": "Atlas"
+        },
+        "button": "left",
+        "click_count": 1
+      },
+      {
+        "step_id": "choose-coincident",
+        "timeout_ms": 5000,
+        "action": "click",
+        "locator": {
+          "kind": "role",
+          "role": "button",
+          "name": "Escolher ponto"
+        },
+        "button": "left",
+        "click_count": 1
+      },
+      {
+        "step_id": "select-republic",
+        "timeout_ms": 5000,
+        "action": "click",
+        "locator": {
+          "kind": "role",
+          "role": "button",
+          "name": "A República Livro · Clássicos da Filosofia Política"
+        },
+        "button": "left",
+        "click_count": 1
+      },
+      {
+        "step_id": "open-republic",
+        "timeout_ms": 5000,
+        "action": "click",
+        "locator": {
+          "kind": "role",
+          "role": "button",
+          "name": "Abrir perfil"
+        },
+        "button": "left",
+        "click_count": 1
+      },
+      {
+        "step_id": "republic-ready",
+        "action": "wait_for_timeout",
+        "duration_ms": 500
+      },
+      {
+        "step_id": "return-republic-map",
+        "timeout_ms": 5000,
+        "action": "click",
+        "locator": {
+          "kind": "role",
+          "role": "button",
+          "name": "Atlas"
+        },
+        "button": "left",
+        "click_count": 1
+      },
+      {
+        "step_id": "zoom-in",
+        "timeout_ms": 5000,
+        "action": "click",
+        "locator": {
+          "kind": "role",
+          "role": "button",
+          "name": "Aumentar zoom"
+        },
+        "button": "left",
+        "click_count": 1
+      },
+      {
+        "step_id": "final-map",
+        "action": "wait_for_timeout",
+        "duration_ms": 500
+      },
+      {
+        "step_id": "show-final-map",
+        "timeout_ms": 5000,
+        "action": "press",
+        "locator": {
+          "kind": "role",
+          "role": "button",
+          "name": "Teia"
+        },
+        "key": "PageDown"
+      },
+      {
+        "step_id": "map-screenshot",
+        "action": "wait_for_timeout",
+        "duration_ms": 500
+      }
+    ],
+    "storage": {
+      "cookies": [],
+      "local_storage": [],
+      "session_storage": []
+    },
+    "secrets": [],
+    "capture": {
+      "after_each_step": [
+        "accessibility",
+        "url"
+      ],
+      "at_end": [
+        "accessibility",
+        "screenshot",
+        "url"
+      ],
+      "events": [
+        "page-errors"
+      ],
+      "network": {
+        "request_body": false,
+        "response_body": false,
+        "header_values": false
+      }
+    },
+    "scenario_sha256": "672c5a33e66876f92409f2c8372875ad88586a71eb55faa8a684813eb3b373ed"
+  },
+  "raw_result": null,
+  "normalized_result": {
+    "browser": {
+      "mode": "launch",
+      "process_ownership": "provider-owned",
+      "cleanup": "terminated-owned-process",
+      "product": "Chromium",
+      "version": "153.0.8010.12"
+    },
+    "scenario": {
+      "start_origin": "http://127.0.0.1:4173",
+      "action_count": 18,
+      "secret_references": [],
+      "network_content": {
+        "request_body": false,
+        "response_body": false,
+        "header_values": false
+      }
+    },
+    "duration_ms": 14115,
+    "steps": [
+      {
+        "step_index": 0,
+        "step_id": "scenario_start",
+        "action": "goto_start",
+        "elapsed_ms": 925,
+        "before_url": {
+          "url": "about:blank",
+          "origin": null,
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "56866acd9b713f351889ef2731ef171bade4c16f48aa1cda8687f17a1a21be2a",
+              "bytes": 10,
+              "text": "- document"
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 1,
+        "step_id": "settle",
+        "action": "wait_for_timeout",
+        "elapsed_ms": 5010,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "1b035b3656b8a3ed09e2ead963b9c03bf58001bca9e586c431f5196e45736ab2",
+              "bytes": 45,
+              "text": "- document:\n  - button \"Enable accessibility\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 2,
+        "step_id": "enable-semantics",
+        "action": "press",
+        "elapsed_ms": 117,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "73722cd3bfd426f8ccb529ce0d7c10d5ec424831b931590c3b53051fe0c5fe7c",
+              "bytes": 1218,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Atlas político\" [level=2]\n  - button \"Comparação livre\"\n  - button \"Copiar link desta exploração\"\n  - group:\n    - text: UM CATÁLOGO PARA INVESTIGAR Siga uma ideia. Descubra as conexões. 124 correntes · 124 personalidades · 80 obras. Explore sem precisar fazer um teste.\n    - textbox \"Buscar em todo o Atlas\"\n    - button \"Limpar busca\"\n    - checkbox \"Tudo\" [checked]\n    - checkbox \"Corrente (124)\"\n    - checkbox \"Personalidade (124)\"\n    - checkbox \"Partido / Movimento (56)\"\n    - checkbox \"Era / Regime Histórico (48)\"\n    - checkbox \"Livro (80)\"\n    - checkbox \"País / Modelo (80)\"\n    - checkbox \"Salvos\"\n    - text: 3 verbetes\n    - button \"Lista\"\n    - button \"Teia\"\n    - button \"Limpar filtros\"\n    - text: TEIA DE IDEIAS\n    - button \"Diminuir zoom\"\n    - button \"Aumentar zoom\"\n    - button \"Reenquadrar teia\"\n    - button \"Pausar movimento\"\n    - text: Selecione um ponto para explorar\n    - button \"Escolher ponto\"\n    - button \"Abrir perfil\" [disabled]\n    - img \"Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 3,
+        "step_id": "scroll-map",
+        "action": "press",
+        "elapsed_ms": 378,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "666f086f85fd6d045c1526362baf6e9cd11a539db03640614849cfb1f012b989",
+              "bytes": 1541,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Atlas político\" [level=2]\n  - button \"Comparação livre\"\n  - button \"Copiar link desta exploração\"\n  - group:\n    - checkbox \"Tudo\" [checked]\n    - checkbox \"Corrente (124)\"\n    - checkbox \"Personalidade (124)\"\n    - checkbox \"Partido / Movimento (56)\"\n    - checkbox \"Era / Regime Histórico (48)\"\n    - checkbox \"Livro (80)\"\n    - checkbox \"País / Modelo (80)\"\n    - checkbox \"Salvos\"\n    - text: 3 verbetes\n    - button \"Lista\"\n    - button \"Teia\"\n    - button \"Limpar filtros\"\n    - text: TEIA DE IDEIAS\n    - button \"Diminuir zoom\"\n    - button \"Aumentar zoom\"\n    - button \"Reenquadrar teia\"\n    - button \"Pausar movimento\"\n    - text: Selecione um ponto para explorar\n    - button \"Escolher ponto\"\n    - button \"Abrir perfil\" [disabled]\n    - img \"Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.\"\n    - text: \"Arraste para explorar · amplie para separar os pontos · toque para conectar ideias Centro e reformismo Outros verbetes Projeção de Nolan: liberdade econômica e liberdade civil. Duas coordenadas não resumem os 12 eixos. As linhas mostram vizinhança nesta projeção, não influência histórica. A lista abaixo é a alternativa acessível da mesma seleção. As conexões indicam proximidade calculada, não influência histórica.\"\n    - img \"PERSONALIDADE Retrato de Platão Platão Filósofo clássico e teórico da República ideal\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 4,
+        "step_id": "choose-point",
+        "action": "click",
+        "elapsed_ms": 433,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "09a2159e07ff03b6ad3bd17ca23de7948efeafa33f817eca280393f05ed4cf3c",
+              "bytes": 310,
+              "text": "- document:\n  - text: Escolher um ponto\n  - textbox \"Buscar um perfil na teia\"\n  - group:\n    - button \"Platão Personalidade · Filósofos e Teóricos\"\n    - button \"A República Livro · Clássicos da Filosofia Política\"\n    - button \"A Sociedade Aberta e Seus Inimigos Livro · Liberdade, Direito e Estado\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 5,
+        "step_id": "select-plato",
+        "action": "click",
+        "elapsed_ms": 353,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "64e2e8af4476d6e5bece382e7c6c8f9e8ea854579fd5d8038e12d38fd5d67ba2",
+              "bytes": 1182,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Atlas político\" [level=2]\n  - button \"Comparação livre\"\n  - button \"Copiar link desta exploração\"\n  - group:\n    - text: UM CATÁLOGO PARA INVESTIGAR Siga uma ideia. Descubra as conexões. 124 correntes · 124 personalidades · 80 obras. Explore sem precisar fazer um teste.\n    - textbox \"Buscar em todo o Atlas\"\n    - button \"Limpar busca\"\n    - checkbox \"Tudo\" [checked]\n    - checkbox \"Corrente (124)\"\n    - checkbox \"Personalidade (124)\"\n    - checkbox \"Partido / Movimento (56)\"\n    - checkbox \"Era / Regime Histórico (48)\"\n    - checkbox \"Livro (80)\"\n    - checkbox \"País / Modelo (80)\"\n    - checkbox \"Salvos\"\n    - text: 3 verbetes\n    - button \"Lista\"\n    - button \"Teia\"\n    - button \"Limpar filtros\"\n    - text: TEIA DE IDEIAS\n    - button \"Diminuir zoom\"\n    - button \"Aumentar zoom\"\n    - button \"Reenquadrar teia\"\n    - button \"Pausar movimento\"\n    - text: Platão\n    - button \"Escolher ponto\"\n    - button \"Abrir perfil\"\n    - img \"Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 6,
+        "step_id": "selection-ready",
+        "action": "wait_for_timeout",
+        "elapsed_ms": 512,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "64e2e8af4476d6e5bece382e7c6c8f9e8ea854579fd5d8038e12d38fd5d67ba2",
+              "bytes": 1182,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Atlas político\" [level=2]\n  - button \"Comparação livre\"\n  - button \"Copiar link desta exploração\"\n  - group:\n    - text: UM CATÁLOGO PARA INVESTIGAR Siga uma ideia. Descubra as conexões. 124 correntes · 124 personalidades · 80 obras. Explore sem precisar fazer um teste.\n    - textbox \"Buscar em todo o Atlas\"\n    - button \"Limpar busca\"\n    - checkbox \"Tudo\" [checked]\n    - checkbox \"Corrente (124)\"\n    - checkbox \"Personalidade (124)\"\n    - checkbox \"Partido / Movimento (56)\"\n    - checkbox \"Era / Regime Histórico (48)\"\n    - checkbox \"Livro (80)\"\n    - checkbox \"País / Modelo (80)\"\n    - checkbox \"Salvos\"\n    - text: 3 verbetes\n    - button \"Lista\"\n    - button \"Teia\"\n    - button \"Limpar filtros\"\n    - text: TEIA DE IDEIAS\n    - button \"Diminuir zoom\"\n    - button \"Aumentar zoom\"\n    - button \"Reenquadrar teia\"\n    - button \"Pausar movimento\"\n    - text: Platão\n    - button \"Escolher ponto\"\n    - button \"Abrir perfil\"\n    - img \"Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 7,
+        "step_id": "open-plato",
+        "action": "click",
+        "elapsed_ms": 1063,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=personality:platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "463d163a7de1c1162e67a018621fb96b4011eb5ae5797a850663c0b7705412c5",
+              "bytes": 1376,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Personalidade\" [level=2]\n  - button \"Salvar verbete\"\n  - button \"Copiar link do verbete\"\n  - group:\n    - tablist:\n      - tab \"Visão geral\" [selected]\n      - tab \"Dimensões\"\n      - tab \"Conexões\"\n      - tab \"Fontes e limites\"\n  - tabpanel:\n    - group:\n      - img \"Retrato de Platão CENTRO E REFORMISMO Personalidade Platão Filósofo clássico e teórico da República ideal\"\n      - text: \"Retrato: Marie-Lan Nguyen · CC BY 2.5\"\n      - checkbox \"c. 428–348 a.C.\"\n      - checkbox \"Atenas (Grécia)\"\n      - text: Fundador da Academia ateniense, projetou na 'República' uma cidade justa governada por filósofos-reis desprovidos de bens privados, estruturada em castas funcionais e voltada para a contemplação do Bem inteligível.\n      - button \"Comparar perfil\"\n      - button \"Centro e reformismo\"\n      - text: \"Pontos para investigar Governo da sabedoria contra a demagogia sofística Comunhão de bens e guarda comum dos magistrados Educação dialética rigorosa para os governantes SÍNTESE DO CATÁLOGO Ideia central: A cidade justa deve ser governada por quem contempla a verdade, não por quem disputa honras. Texto editorial sem referência de página. Não deve ser reproduzido como citação literal da personalidade.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=personality:platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 8,
+        "step_id": "profile-ready",
+        "action": "wait_for_timeout",
+        "elapsed_ms": 519,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=personality:platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=personality:platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "463d163a7de1c1162e67a018621fb96b4011eb5ae5797a850663c0b7705412c5",
+              "bytes": 1376,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Personalidade\" [level=2]\n  - button \"Salvar verbete\"\n  - button \"Copiar link do verbete\"\n  - group:\n    - tablist:\n      - tab \"Visão geral\" [selected]\n      - tab \"Dimensões\"\n      - tab \"Conexões\"\n      - tab \"Fontes e limites\"\n  - tabpanel:\n    - group:\n      - img \"Retrato de Platão CENTRO E REFORMISMO Personalidade Platão Filósofo clássico e teórico da República ideal\"\n      - text: \"Retrato: Marie-Lan Nguyen · CC BY 2.5\"\n      - checkbox \"c. 428–348 a.C.\"\n      - checkbox \"Atenas (Grécia)\"\n      - text: Fundador da Academia ateniense, projetou na 'República' uma cidade justa governada por filósofos-reis desprovidos de bens privados, estruturada em castas funcionais e voltada para a contemplação do Bem inteligível.\n      - button \"Comparar perfil\"\n      - button \"Centro e reformismo\"\n      - text: \"Pontos para investigar Governo da sabedoria contra a demagogia sofística Comunhão de bens e guarda comum dos magistrados Educação dialética rigorosa para os governantes SÍNTESE DO CATÁLOGO Ideia central: A cidade justa deve ser governada por quem contempla a verdade, não por quem disputa honras. Texto editorial sem referência de página. Não deve ser reproduzido como citação literal da personalidade.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=personality:platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 9,
+        "step_id": "return-map",
+        "action": "click",
+        "elapsed_ms": 225,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=personality:platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "7a7b76641c85e8c56b733c708bef2fe663011d51f2c9a10a1565cbed6b2fe3a6",
+              "bytes": 1479,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Atlas político\" [level=2]\n  - button \"Comparação livre\"\n  - button \"Copiar link desta exploração\"\n  - group:\n    - text: 3 verbetes\n    - button \"Lista\"\n    - button \"Teia\"\n    - button \"Limpar filtros\"\n    - text: TEIA DE IDEIAS\n    - button \"Diminuir zoom\"\n    - button \"Aumentar zoom\"\n    - button \"Reenquadrar teia\"\n    - button \"Pausar movimento\"\n    - text: Platão\n    - button \"Escolher ponto\"\n    - button \"Abrir perfil\"\n    - img \"Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.\"\n    - text: Nesta vizinhança 2D Selecione uma conexão para continuar explorando.\n    - checkbox \"Selecionar A República na teia A República\"\n    - checkbox \"Selecionar A Sociedade Aberta e Seus Inimigos na teia A Sociedade Aberta e Seus Inimigos\"\n    - text: \"Arraste para explorar · amplie para separar os pontos · toque para conectar ideias Centro e reformismo Outros verbetes Projeção de Nolan: liberdade econômica e liberdade civil. Duas coordenadas não resumem os 12 eixos. As linhas mostram vizinhança nesta projeção, não influência histórica.\"\n    - button \"Retrato de Platão Platão Filósofo clássico e teórico da República ideal\"\n    - text: A lista abaixo é a alternativa acessível da mesma seleção. As conexões indicam proximidade calculada, não influência histórica.\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 10,
+        "step_id": "choose-coincident",
+        "action": "click",
+        "elapsed_ms": 1377,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "64e2e8af4476d6e5bece382e7c6c8f9e8ea854579fd5d8038e12d38fd5d67ba2",
+              "bytes": 1182,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Atlas político\" [level=2]\n  - button \"Comparação livre\"\n  - button \"Copiar link desta exploração\"\n  - group:\n    - text: UM CATÁLOGO PARA INVESTIGAR Siga uma ideia. Descubra as conexões. 124 correntes · 124 personalidades · 80 obras. Explore sem precisar fazer um teste.\n    - textbox \"Buscar em todo o Atlas\"\n    - button \"Limpar busca\"\n    - checkbox \"Tudo\" [checked]\n    - checkbox \"Corrente (124)\"\n    - checkbox \"Personalidade (124)\"\n    - checkbox \"Partido / Movimento (56)\"\n    - checkbox \"Era / Regime Histórico (48)\"\n    - checkbox \"Livro (80)\"\n    - checkbox \"País / Modelo (80)\"\n    - checkbox \"Salvos\"\n    - text: 3 verbetes\n    - button \"Lista\"\n    - button \"Teia\"\n    - button \"Limpar filtros\"\n    - text: TEIA DE IDEIAS\n    - button \"Diminuir zoom\"\n    - button \"Aumentar zoom\"\n    - button \"Reenquadrar teia\"\n    - button \"Pausar movimento\"\n    - text: Platão\n    - button \"Escolher ponto\"\n    - button \"Abrir perfil\"\n    - img \"Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 11,
+        "step_id": "select-republic",
+        "action": "click",
+        "elapsed_ms": 148,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "09a2159e07ff03b6ad3bd17ca23de7948efeafa33f817eca280393f05ed4cf3c",
+              "bytes": 310,
+              "text": "- document:\n  - text: Escolher um ponto\n  - textbox \"Buscar um perfil na teia\"\n  - group:\n    - button \"Platão Personalidade · Filósofos e Teóricos\"\n    - button \"A República Livro · Clássicos da Filosofia Política\"\n    - button \"A Sociedade Aberta e Seus Inimigos Livro · Liberdade, Direito e Estado\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 12,
+        "step_id": "open-republic",
+        "action": "click",
+        "elapsed_ms": 511,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=book:a_republica_platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "1cec1a4756d9703ebbc9cff38d79daf3567d5cdd9edb013aed2a20c27045d3c7",
+              "bytes": 1202,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Livro\" [level=2]\n  - button \"Salvar verbete\"\n  - button \"Copiar link do verbete\"\n  - group:\n    - tablist:\n      - tab \"Visão geral\" [selected]\n      - tab \"Dimensões\"\n      - tab \"Conexões\"\n      - tab \"Fontes e limites\"\n  - tabpanel:\n    - group:\n      - text: CENTRO E REFORMISMO Livro A República Platão\n      - checkbox \"c. 375 a.C.\"\n      - checkbox \"Grécia Antiga\"\n      - text: Investiga a natureza da justiça na alma e na cidade ideal (Kallipolis), propondo uma república governada por filósofos-reis e estruturada em classes funcionais rígidas.\n      - button \"Comparar perfil\"\n      - button \"Centro e reformismo\"\n      - text: \"Pontos para investigar Governo dos filósofos guiados pelo conhecimento do Bem Comunhão de bens e guarda comum entre os magistrados Alegoria da Caverna e crítica aos desvios da democracia direta SÍNTESE DO CATÁLOGO Por que ler: Obra fundadora da filosofia política ocidental sobre justiça e ordem na pólis. Texto editorial sem referência de página. Não deve ser reproduzido como citação literal da personalidade.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=book:a_republica_platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 13,
+        "step_id": "republic-ready",
+        "action": "wait_for_timeout",
+        "elapsed_ms": 508,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=book:a_republica_platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=book:a_republica_platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "1cec1a4756d9703ebbc9cff38d79daf3567d5cdd9edb013aed2a20c27045d3c7",
+              "bytes": 1202,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Livro\" [level=2]\n  - button \"Salvar verbete\"\n  - button \"Copiar link do verbete\"\n  - group:\n    - tablist:\n      - tab \"Visão geral\" [selected]\n      - tab \"Dimensões\"\n      - tab \"Conexões\"\n      - tab \"Fontes e limites\"\n  - tabpanel:\n    - group:\n      - text: CENTRO E REFORMISMO Livro A República Platão\n      - checkbox \"c. 375 a.C.\"\n      - checkbox \"Grécia Antiga\"\n      - text: Investiga a natureza da justiça na alma e na cidade ideal (Kallipolis), propondo uma república governada por filósofos-reis e estruturada em classes funcionais rígidas.\n      - button \"Comparar perfil\"\n      - button \"Centro e reformismo\"\n      - text: \"Pontos para investigar Governo dos filósofos guiados pelo conhecimento do Bem Comunhão de bens e guarda comum entre os magistrados Alegoria da Caverna e crítica aos desvios da democracia direta SÍNTESE DO CATÁLOGO Por que ler: Obra fundadora da filosofia política ocidental sobre justiça e ordem na pólis. Texto editorial sem referência de página. Não deve ser reproduzido como citação literal da personalidade.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=book:a_republica_platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 14,
+        "step_id": "return-republic-map",
+        "action": "click",
+        "elapsed_ms": 153,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=book:a_republica_platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "375ceab27df8b88f2bfc99698307f005d78e8baa9c4948fb453e676203aca9c3",
+              "bytes": 1187,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Atlas político\" [level=2]\n  - button \"Comparação livre\"\n  - button \"Copiar link desta exploração\"\n  - group:\n    - text: UM CATÁLOGO PARA INVESTIGAR Siga uma ideia. Descubra as conexões. 124 correntes · 124 personalidades · 80 obras. Explore sem precisar fazer um teste.\n    - textbox \"Buscar em todo o Atlas\"\n    - button \"Limpar busca\"\n    - checkbox \"Tudo\" [checked]\n    - checkbox \"Corrente (124)\"\n    - checkbox \"Personalidade (124)\"\n    - checkbox \"Partido / Movimento (56)\"\n    - checkbox \"Era / Regime Histórico (48)\"\n    - checkbox \"Livro (80)\"\n    - checkbox \"País / Modelo (80)\"\n    - checkbox \"Salvos\"\n    - text: 3 verbetes\n    - button \"Lista\"\n    - button \"Teia\"\n    - button \"Limpar filtros\"\n    - text: TEIA DE IDEIAS\n    - button \"Diminuir zoom\"\n    - button \"Aumentar zoom\"\n    - button \"Reenquadrar teia\"\n    - button \"Pausar movimento\"\n    - text: A República\n    - button \"Escolher ponto\"\n    - button \"Abrir perfil\"\n    - img \"Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 15,
+        "step_id": "zoom-in",
+        "action": "click",
+        "elapsed_ms": 205,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "6d3f3cf06affe449629e36a850917f0d160285999a7faaf980b63a00f7b7f21d",
+              "bytes": 1225,
+              "text": "- document:\n  - text: Aumentar zoom\n  - button \"Back\"\n  - heading \"Atlas político\" [level=2]\n  - button \"Comparação livre\"\n  - button \"Copiar link desta exploração\"\n  - group:\n    - text: UM CATÁLOGO PARA INVESTIGAR Siga uma ideia. Descubra as conexões. 124 correntes · 124 personalidades · 80 obras. Explore sem precisar fazer um teste.\n    - textbox \"Buscar em todo o Atlas\"\n    - button \"Limpar busca\"\n    - checkbox \"Tudo\" [checked]\n    - checkbox \"Corrente (124)\"\n    - checkbox \"Personalidade (124)\"\n    - checkbox \"Partido / Movimento (56)\"\n    - checkbox \"Era / Regime Histórico (48)\"\n    - checkbox \"Livro (80)\"\n    - checkbox \"País / Modelo (80)\"\n    - checkbox \"Salvos\"\n    - text: 3 verbetes\n    - button \"Lista\"\n    - button \"Teia\"\n    - button \"Limpar filtros\"\n    - text: TEIA DE IDEIAS\n    - button \"Diminuir zoom\"\n    - button \"Aumentar zoom Aumentar zoom\"\n    - button \"Reenquadrar teia\"\n    - button \"Pausar movimento\"\n    - text: A República\n    - button \"Escolher ponto\"\n    - button \"Abrir perfil\"\n    - img \"Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 16,
+        "step_id": "final-map",
+        "action": "wait_for_timeout",
+        "elapsed_ms": 509,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "4a01fd30ba68b045dc4495efb09c92b2555e9bbabcdce19c0dcaf8c07870c712",
+              "bytes": 1201,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Atlas político\" [level=2]\n  - button \"Comparação livre\"\n  - button \"Copiar link desta exploração\"\n  - group:\n    - text: UM CATÁLOGO PARA INVESTIGAR Siga uma ideia. Descubra as conexões. 124 correntes · 124 personalidades · 80 obras. Explore sem precisar fazer um teste.\n    - textbox \"Buscar em todo o Atlas\"\n    - button \"Limpar busca\"\n    - checkbox \"Tudo\" [checked]\n    - checkbox \"Corrente (124)\"\n    - checkbox \"Personalidade (124)\"\n    - checkbox \"Partido / Movimento (56)\"\n    - checkbox \"Era / Regime Histórico (48)\"\n    - checkbox \"Livro (80)\"\n    - checkbox \"País / Modelo (80)\"\n    - checkbox \"Salvos\"\n    - text: 3 verbetes\n    - button \"Lista\"\n    - button \"Teia\"\n    - button \"Limpar filtros\"\n    - text: TEIA DE IDEIAS\n    - button \"Diminuir zoom\"\n    - button \"Aumentar zoom Aumentar zoom\"\n    - button \"Reenquadrar teia\"\n    - button \"Pausar movimento\"\n    - text: A República\n    - button \"Escolher ponto\"\n    - button \"Abrir perfil\"\n    - img \"Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 17,
+        "step_id": "show-final-map",
+        "action": "press",
+        "elapsed_ms": 255,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "c3aa18bae0d4aa2df9e8637df712b66e10f1da4237baaf7d563158293587560e",
+              "bytes": 1511,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Atlas político\" [level=2]\n  - button \"Comparação livre\"\n  - button \"Copiar link desta exploração\"\n  - group:\n    - checkbox \"Tudo\" [checked]\n    - checkbox \"Corrente (124)\"\n    - checkbox \"Personalidade (124)\"\n    - checkbox \"Partido / Movimento (56)\"\n    - checkbox \"Era / Regime Histórico (48)\"\n    - checkbox \"Livro (80)\"\n    - checkbox \"País / Modelo (80)\"\n    - checkbox \"Salvos\"\n    - text: 3 verbetes\n    - button \"Lista\"\n    - button \"Teia\"\n    - button \"Limpar filtros\"\n    - text: TEIA DE IDEIAS\n    - button \"Diminuir zoom\"\n    - button \"Aumentar zoom\"\n    - button \"Reenquadrar teia\"\n    - button \"Pausar movimento\"\n    - text: A República\n    - button \"Escolher ponto\"\n    - button \"Abrir perfil\"\n    - img \"Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.\"\n    - text: Nesta vizinhança 2D Selecione uma conexão para continuar explorando.\n    - checkbox \"Selecionar Platão na teia Platão\"\n    - checkbox \"Selecionar A Sociedade Aberta e Seus Inimigos na teia A Sociedade Aberta e Seus Inimigos\"\n    - text: \"Arraste para explorar · amplie para separar os pontos · toque para conectar ideias Centro e reformismo Outros verbetes Projeção de Nolan: liberdade econômica e liberdade civil. Duas coordenadas não resumem os 12 eixos. As linhas mostram vizinhança nesta projeção, não influência histórica.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 18,
+        "step_id": "map-screenshot",
+        "action": "wait_for_timeout",
+        "elapsed_ms": 559,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "captured",
+            "value": {
+              "sha256": "9559275d7bef83dda9e65f49e62164c9d4c12198efcf1c40d6b7fca0df5c94f5",
+              "bytes": 34698,
+              "media_type": "image/png",
+              "data_base64": "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"
+            }
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "c3aa18bae0d4aa2df9e8637df712b66e10f1da4237baaf7d563158293587560e",
+              "bytes": 1511,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Atlas político\" [level=2]\n  - button \"Comparação livre\"\n  - button \"Copiar link desta exploração\"\n  - group:\n    - checkbox \"Tudo\" [checked]\n    - checkbox \"Corrente (124)\"\n    - checkbox \"Personalidade (124)\"\n    - checkbox \"Partido / Movimento (56)\"\n    - checkbox \"Era / Regime Histórico (48)\"\n    - checkbox \"Livro (80)\"\n    - checkbox \"País / Modelo (80)\"\n    - checkbox \"Salvos\"\n    - text: 3 verbetes\n    - button \"Lista\"\n    - button \"Teia\"\n    - button \"Limpar filtros\"\n    - text: TEIA DE IDEIAS\n    - button \"Diminuir zoom\"\n    - button \"Aumentar zoom\"\n    - button \"Reenquadrar teia\"\n    - button \"Pausar movimento\"\n    - text: A República\n    - button \"Escolher ponto\"\n    - button \"Abrir perfil\"\n    - img \"Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.\"\n    - text: Nesta vizinhança 2D Selecione uma conexão para continuar explorando.\n    - checkbox \"Selecionar Platão na teia Platão\"\n    - checkbox \"Selecionar A Sociedade Aberta e Seus Inimigos na teia A Sociedade Aberta e Seus Inimigos\"\n    - text: \"Arraste para explorar · amplie para separar os pontos · toque para conectar ideias Centro e reformismo Outros verbetes Projeção de Nolan: liberdade econômica e liberdade civil. Duas coordenadas não resumem os 12 eixos. As linhas mostram vizinhança nesta projeção, não influência histórica.\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "captured",
+            "value": {
+              "url": "http://127.0.0.1:4173/#/atlas?v=1&view=map&q=platao",
+              "origin": "http://127.0.0.1:4173",
+              "query_parameter_names": [],
+              "redacted": false
+            }
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      }
+    ],
+    "events": {
+      "retained": 0,
+      "dropped": 0,
+      "items": []
+    },
+    "completeness": {
+      "status": "complete",
+      "equality_eligible": true,
+      "missing_sections": [],
+      "truncated_sections": []
+    },
+    "limitations": [
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction."
+    ]
+  },
+  "confidence": "observed",
+  "authority": "controlled-replay",
+  "environment": {
+    "id": "Chromium@153.0.8010.12",
+    "platform": "unknown",
+    "architecture": "unknown",
+    "isolation": "process"
+  },
+  "limitations": [
+    "Artifact identity is unavailable for this observation.",
+    "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+    "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+    "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+    "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+    "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+    "Storage values are hashed only after declared-secret redaction.",
+    "Browser host platform and architecture were not observed."
+  ],
+  "locations": [],
+  "evidence_links": []
+}

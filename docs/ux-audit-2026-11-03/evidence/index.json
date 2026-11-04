@@ -1,0 +1,327 @@
+[
+  {
+    "evidence_id": "ev_01cf2d2f88a6cda3fdd6dc9b507a28a9f7a433d1eca2c5cafa55b45d0ec2ea45",
+    "name": "12axes-mobile-scroll",
+    "url": "https://12axes.vercel.app/compare?items=personality:rothbard,personality:mises,personality:hoppe",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_052b2fafbcc44e978ec21357aab271a564486bea4e6c8c686d4f2c30cd8134fc",
+    "name": "12axes-compare-axes",
+    "url": "https://12axes.vercel.app/compare?items=personality:rothbard,personality:mises,personality:hoppe#cmp-eixos",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_08978288d3b9b455cba78d8a0ead2aada23d1e09ec147afdafd8cd79b06e97f6",
+    "name": "12axes-atlas-map",
+    "url": "https://12axes.vercel.app/tree/personalities?id=mises",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_16326e698f5644faee8253089b3f43ee49a62f0e472acbe511b704b03d9ff891",
+    "name": "ev_16326e698f5644fa",
+    "url": "https://12axes.vercel.app/",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_38c21adc881b735190a93032c08ca9a53846f2f45bab7ad141cdc75f3b33be70",
+    "name": "ev_38c21adc881b7351",
+    "url": "https://12axes.vercel.app/",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_48b813e46243fb5f476f12999fc2170661b1d7166232a83c56393ddb10377940",
+    "name": "12axes-compare-mobile",
+    "url": "https://12axes.vercel.app/compare?items=personality:rothbard,personality:mises,personality:hoppe",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_578232e300978894e3be6a886947916e33ab3689bfc6f3ee7f3574e88b9f4cbf",
+    "name": "12axes-synthetic-result",
+    "url": "https://12axes.vercel.app/results?est=50&rep=50&pod=50&imi=50&dip=50&int=50&eco=50&con=50&com=50&rel=50&mor=50&tec=50",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_588fb6e9806688d50162d068fd890fbe3650f63c1520c19fa7fb46aede1d5a90",
+    "name": "12axes-compare-desktop",
+    "url": "https://12axes.vercel.app/compare?items=personality:rothbard,personality:mises,personality:hoppe",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_74fb42bf8026147fb18521eeeae404834bb800dac77013bca0f81de9a066d638",
+    "name": "12axes-home-desktop",
+    "url": "https://12axes.vercel.app/",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_76f022c42678cd255a7089f219da5d760ff16e3589239372900350a647b01f2d",
+    "name": "12axes-picker-search",
+    "url": "https://12axes.vercel.app/compare?items=personality:rothbard,personality:mises",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_782aeea3507368abadfc9d669c194341d773305fd04fbcf43765ee836ea8058d",
+    "name": "ev_782aeea3507368ab",
+    "url": "https://12axes.vercel.app/compare?items=personality:rothbard,personality:mises,personality:karl-marx",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_8d22722951acbfeb7777ad4899734eaae475e3af068f57bbdd49d115e4cf4c77",
+    "name": "ev_8d22722951acbfeb",
+    "url": "https://12axes.vercel.app/personalities",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_8fc51a919610c1877289ef232f6628e11c15ca0def844b19b81a49f3b4864c91",
+    "name": "12axes-map-neighbor",
+    "url": "https://12axes.vercel.app/tree/personalities?id=mises",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_922f817cf72229f9cb2beffabfe011ec92fc6d3bf91745f146628367b3f96e3b",
+    "name": "ev_922f817cf72229f9",
+    "url": "https://12axes.vercel.app/compare?items=personality:rothbard,personality:mises",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_9de534468a207c8b01fb35397a4a49fc4ad370a4d80b5635a78f2f1926e2944f",
+    "name": "ev_9de534468a207c8b",
+    "url": "https://12axes.vercel.app/",
+    "status": "incomplete",
+    "failed_steps": [
+      "next_0"
+    ],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_a2b1aeb4d62f9f613c8fe93a0d4f7841a6e3b3592e0f9ccbd89ddbd708f462e1",
+    "name": "12axes-mises-profile",
+    "url": "https://12axes.vercel.app/personalities/mises",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_b962274a0288468aa9ad91c1247757eb0f71a1137da2b81d5273d5370d8fa3ab",
+    "name": "ev_b962274a0288468a",
+    "url": "https://12axes.vercel.app/",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_bae0f8c88f2827587b25da1b2b1adf0ef9d6128f4b57de0a4444730164a9dfb0",
+    "name": "ev_bae0f8c88f282758",
+    "url": "https://12axes.vercel.app/",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  },
+  {
+    "evidence_id": "ev_d8b94e5f4618f22a8ecd4ec30a06fb6e3f92fe8eea829e2ab6b8387902f3075c",
+    "name": "12axes-related-profiles",
+    "url": "https://12axes.vercel.app/personalities/mises#personalidades",
+    "status": "complete",
+    "failed_steps": [],
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ]
+  }
+]

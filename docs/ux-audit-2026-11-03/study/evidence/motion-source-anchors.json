@@ -1,0 +1,38 @@
+{
+  "source": "https://12axes-6b7.pages.dev/assets/TreePage-92319e9199.js",
+  "sha256": "ee37e621f8cc32070b286eb1c59d590c849551f9640a61825959df77ce0d4717",
+  "inspection_evidence": "ev_9c3411893e30007b6dabcd0fa9f19cdf359bd6f9530a0d8d525ae036c65e6080",
+  "export_evidence": "ev_8acd23d3bd761f88524f33dba9b1227d66cb00add4175763a67ac92a70301a81",
+  "type": "static-analysis-of-captured-source",
+  "anchors": [
+    {
+      "selector": "layout:{x:Float64Array.from(w.x)",
+      "generated_utf8_character_offset": 894
+    },
+    {
+      "selector": "Math.sin(e/1900",
+      "generated_utf8_character_offset": 11087
+    },
+    {
+      "selector": "A[t]=a.x[t]*j+K+c",
+      "generated_utf8_character_offset": 12059
+    },
+    {
+      "selector": "prefers-reduced-motion: reduce",
+      "generated_utf8_character_offset": 16683
+    },
+    {
+      "selector": "j=800,R=",
+      "generated_utf8_character_offset": 16258
+    },
+    {
+      "selector": "document.hidden&&(Z.current",
+      "generated_utf8_character_offset": 15649
+    }
+  ],
+  "limitations": [
+    "Sources were captured from one selected browser page; static code does not prove every branch executed.",
+    "No motion frame-rate or battery benchmark was performed.",
+    "The layout generator and historical validity of the projections were not audited."
+  ]
+}

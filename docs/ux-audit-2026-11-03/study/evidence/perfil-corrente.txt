@@ -1,0 +1,219 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#main"
+  - banner:
+    - link "12 axes":
+      - /url: /
+    - navigation "Catálogo":
+      - link "Livros":
+        - /url: /books
+      - link "Ideologias":
+        - /url: /ideologies
+      - link "Personalidades":
+        - /url: /personalities
+      - link "Países":
+        - /url: /countries
+      - link "Partidos":
+        - /url: /parties
+      - link "Comparar":
+        - /url: /compare
+      - link "Switch to English":
+        - /url: /en/ideologies/liberalismo-classico
+    - link "Visualização em teia":
+      - /url: /tree/ideologies?id=liberalismo-classico
+    - link "Começar":
+      - /url: /
+  - main:
+    - paragraph:
+      - link "Início":
+        - /url: /
+      - text: /
+      - link "Ideologias":
+        - /url: /ideologies
+      - text: / Liberalismo Clássico
+    - article:
+      - text: Libertário Ideologia
+      - heading "Liberalismo Clássico" [level=1]
+      - paragraph: Vertente original do liberalismo que defende direitos naturais, propriedade, livre mercado e Estado mínimo, vendo a liberdade individual e a limitação rígida do poder como fundamentos da sociedade justa.
+      - link "Comparar com…":
+        - /url: /compare?items=ideology:liberalismo-classico
+      - link "Retrato de John Locke Personalidade de referência John Locke Pai do liberalismo clássico · 1632–1704":
+        - /url: /personalities/john-locke
+        - img "Retrato de John Locke"
+        - text: Personalidade de referência John Locke
+        - emphasis: Pai do liberalismo clássico · 1632–1704
+      - 'link "Bandeira: Reino Unido País de referência Reino Unido Monarquia liberal-financeira"':
+        - /url: /countries/reino-unido
+        - 'img "Bandeira: Reino Unido"'
+        - text: País de referência Reino Unido
+        - emphasis: Monarquia liberal-financeira
+    - figure:
+      - paragraph: — Em uma frase
+      - blockquote: Quero uma sociedade de direitos naturais e propriedade sagrada, com Estado mínimo e mercado livre como base da vida justa.
+      - text: É assim que alguém do Liberalismo Clássico resumiria a sociedade que quer.
+    - tablist "Seções da ideologia":
+      - tab "Eixos" [selected]
+      - tab "Personalidades"
+      - tab "Países"
+      - tab "Ideologias"
+    - tabpanel "Eixos":
+      - paragraph: — Eixos políticos
+      - heading "Perfil nos 12 eixos" [level=2]
+      - list:
+        - listitem:
+          - heading "Estrutura" [level=3]
+          - button "O que significa o eixo Estrutura?"
+          - text: Forte · Federal
+          - img
+          - text: Federal
+          - emphasis: 83%
+          - 'img "Estrutura: Federal 83%, Unitário 18%"'
+          - text: Unitário
+          - emphasis: 18%
+          - img
+        - listitem:
+          - heading "Representação" [level=3]
+          - button "O que significa o eixo Representação?"
+          - text: Forte · Democracia
+          - img
+          - text: Democracia
+          - emphasis: 84%
+          - 'img "Representação: Democracia 84%, Autocracia 16%"'
+          - text: Autocracia
+          - emphasis: 16%
+          - img
+        - listitem:
+          - heading "Poder" [level=3]
+          - button "O que significa o eixo Poder?"
+          - text: Muito forte · Liberdade
+          - img
+          - text: Segurança
+          - emphasis: 6%
+          - 'img "Poder: Segurança 6%, Liberdade 94%"'
+          - text: Liberdade
+          - emphasis: 94%
+          - img
+        - listitem:
+          - heading "Imigração" [level=3]
+          - button "O que significa o eixo Imigração?"
+          - text: Forte · Multicultura
+          - img
+          - text: Assimilação
+          - emphasis: 28%
+          - 'img "Imigração: Assimilação 28%, Multicultura 73%"'
+          - text: Multicultura
+          - emphasis: 73%
+          - img
+        - listitem:
+          - heading "Diplomacia" [level=3]
+          - button "O que significa o eixo Diplomacia?"
+          - text: Forte · Pacifista
+          - img
+          - text: Militarista
+          - emphasis: 23%
+          - 'img "Diplomacia: Militarista 23%, Pacifista 78%"'
+          - text: Pacifista
+          - emphasis: 78%
+          - img
+        - listitem:
+          - heading "Intervenção" [level=3]
+          - button "O que significa o eixo Intervenção?"
+          - text: Inclinado · Não intervencionista
+          - img
+          - text: Não intervencionista
+          - emphasis: 65%
+          - 'img "Intervenção: Não intervencionista 65%, Nacionalista 35%"'
+          - text: Nacionalista
+          - emphasis: 35%
+          - img
+        - listitem:
+          - heading "Economia" [level=3]
+          - button "O que significa o eixo Economia?"
+          - text: Forte · Privado
+          - img
+          - text: Público
+          - emphasis: 18%
+          - 'img "Economia: Público 18%, Privado 83%"'
+          - text: Privado
+          - emphasis: 83%
+          - img
+        - listitem:
+          - heading "Controle" [level=3]
+          - button "O que significa o eixo Controle?"
+          - text: Muito forte · Livre mercado
+          - img
+          - text: Planejamento
+          - emphasis: 13%
+          - 'img "Controle: Planejamento 13%, Livre mercado 88%"'
+          - text: Livre mercado
+          - emphasis: 88%
+          - img
+        - listitem:
+          - heading "Comércio" [level=3]
+          - button "O que significa o eixo Comércio?"
+          - text: Forte · Globalismo
+          - img
+          - text: Protecionismo
+          - emphasis: 14%
+          - 'img "Comércio: Protecionismo 14%, Globalismo 86%"'
+          - text: Globalismo
+          - emphasis: 86%
+          - img
+        - listitem:
+          - heading "Religião" [level=3]
+          - button "O que significa o eixo Religião?"
+          - text: Forte · Irreligioso
+          - img
+          - text: Irreligioso
+          - emphasis: 73%
+          - 'img "Religião: Irreligioso 73%, Religioso 28%"'
+          - text: Religioso
+          - emphasis: 28%
+          - img
+        - listitem:
+          - heading "Moral" [level=3]
+          - button "O que significa o eixo Moral?"
+          - text: Inclinado · Progressista
+          - img
+          - text: Progressista
+          - emphasis: 70%
+          - 'img "Moral: Progressista 70%, Tradicionalista 30%"'
+          - text: Tradicionalista
+          - emphasis: 30%
+          - img
+        - listitem:
+          - heading "Tecnologia" [level=3]
+          - button "O que significa o eixo Tecnologia?"
+          - text: Forte · Tecnologia
+          - img
+          - text: Tecnologia
+          - emphasis: 74%
+          - 'img "Tecnologia: Tecnologia 74%, Biologia 26%"'
+          - text: Biologia
+          - emphasis: 26%
+          - img
+      - heading "O que distingue esta ideologia" [level=2]
+      - article:
+        - text: Posição mais incomum
+        - heading "Controle" [level=3]
+        - paragraph: Puxa mais para livre mercado que 92% das 275 ideologias do catálogo.
+        - text: Mediana das ideologias 63 Esta ideologia 13
+        - paragraph: De todos os eixos, Controle é onde mais se afasta do conjunto.
+      - article:
+        - text: Posição mais comum
+        - heading "Intervenção" [level=3]
+        - paragraph: Em Intervenção, fica perto da mediana do catálogo.
+        - text: Mediana das ideologias 53 Esta ideologia 65
+        - paragraph: Aqui está em terreno comum com a maioria das ideologias.
+    - complementary:
+      - heading "E você, onde está no espectro?" [level=2]
+      - paragraph: Responda ao quiz e veja sua compatibilidade com o Liberalismo Clássico e outras 274 ideologias nos 12 eixos.
+      - link "Fazer o teste":
+        - /url: /
+  - contentinfo:
+    - link "12 axes":
+      - /url: /
+    - paragraph:
+      - text: Quiz político independente · 12axes.vercel.app · © 2026. Todos os direitos reservados ·
+      - link "English":
+        - /url: /en/ideologies/liberalismo-classico

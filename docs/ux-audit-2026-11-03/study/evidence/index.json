@@ -1,0 +1,38 @@
+[
+  {
+    "name": "explicacao-eixo",
+    "evidence_id": "ev_1184309acda732c4b62562a6a36c44665d9777be2ea4cf6544256b5adab7d914",
+    "url": "https://12axes.vercel.app/ideologies/liberalismo-classico",
+    "status": "completed"
+  },
+  {
+    "name": "biblioteca",
+    "evidence_id": "ev_738ef005d85ddc7ac0db355fb8017c2da4b69e148bd4a1be013ccb3fa3864ce7",
+    "url": "https://12axes.vercel.app/books",
+    "status": "completed"
+  },
+  {
+    "name": "navegacao-espectro",
+    "evidence_id": "ev_a4afb89eaadd6f959ce5a4b8b77a652dc450676b90fd4f9c401d0e5133d4454d",
+    "url": "https://12axes.vercel.app/ideologies#esq-radical",
+    "status": "completed"
+  },
+  {
+    "name": "perfil-corrente",
+    "evidence_id": "ev_de6dc0440b3f8ecabd74a07f234945af2eebd19b94e961b36c91d4ae6e149300",
+    "url": "https://12axes.vercel.app/ideologies/liberalismo-classico",
+    "status": "completed"
+  },
+  {
+    "name": "catalogo-correntes",
+    "evidence_id": "ev_df900927d82c8b17c34914e56866bae70cd6cc10af891cbca15f3f8d52e220a3",
+    "url": "https://12axes.vercel.app/ideologies",
+    "status": "completed"
+  },
+  {
+    "name": "correntes-relacionadas",
+    "evidence_id": "ev_e02b595f3a93112ef1529ef93a05713c65921e96c840e75e3e153e904d422b7e",
+    "url": "https://12axes.vercel.app/ideologies/liberalismo-classico#ideologias",
+    "status": "completed"
+  }
+]

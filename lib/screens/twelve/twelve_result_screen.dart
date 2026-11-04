@@ -32,7 +32,9 @@ class TwelveResultScreen extends StatelessWidget {
     await Clipboard.setData(ClipboardData(text: buffer.toString().trimRight()));
     if (!context.mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Resumo copiado para a área de transferência.')),
+      const SnackBar(
+        content: Text('Resumo copiado para a área de transferência.'),
+      ),
     );
   }
 
@@ -59,7 +61,9 @@ class TwelveResultScreen extends StatelessWidget {
     final Color strongestColor = strongest.leansLeft
         ? strongest.axis.leftColor
         : strongest.axis.rightColor;
-    final int balancedCount = result.scores.where((score) => score.isBalanced).length;
+    final int balancedCount = result.scores
+        .where((score) => score.isBalanced)
+        .length;
 
     return Scaffold(
       body: SafeArea(
@@ -70,7 +74,8 @@ class TwelveResultScreen extends StatelessWidget {
               children: <Widget>[
                 CircleIconButton(
                   icon: Icons.close_rounded,
-                  onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                  onPressed: () =>
+                      Navigator.of(context).popUntil((route) => route.isFirst),
                   tooltip: 'Voltar ao início',
                 ),
                 const Spacer(),
@@ -89,12 +94,16 @@ class TwelveResultScreen extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text(
                     'Seu eixo mais forte',
-                    style: text.bodySmall?.copyWith(color: const Color(0xFF9AA69E)),
+                    style: text.bodySmall?.copyWith(
+                      color: const Color(0xFF9AA69E),
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     strongest.axis.label,
-                    style: text.displayMedium?.copyWith(color: AppColors.surface),
+                    style: text.displayMedium?.copyWith(
+                      color: AppColors.surface,
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Row(
@@ -102,7 +111,10 @@ class TwelveResultScreen extends StatelessWidget {
                       Container(
                         width: 10,
                         height: 10,
-                        decoration: BoxDecoration(color: strongestColor, shape: BoxShape.circle),
+                        decoration: BoxDecoration(
+                          color: strongestColor,
+                          shape: BoxShape.circle,
+                        ),
                       ),
                       const SizedBox(width: 8),
                       Flexible(
@@ -121,9 +133,15 @@ class TwelveResultScreen extends StatelessWidget {
                   const SizedBox(height: 16),
                   Row(
                     children: <Widget>[
-                      _HeroStat(value: '${result.leaningLeftCount}/12', label: 'à esquerda'),
+                      _HeroStat(
+                        value: '${result.leaningLeftCount}/12',
+                        label: 'à esquerda',
+                      ),
                       _HeroStat(value: '$balancedCount', label: 'equilibrados'),
-                      _HeroStat(value: '${result.answeredCount}', label: 'respostas'),
+                      _HeroStat(
+                        value: '${result.answeredCount}',
+                        label: 'respostas',
+                      ),
                     ],
                   ),
                 ],
@@ -193,12 +211,18 @@ class TwelveResultScreen extends StatelessWidget {
                             width: 96,
                             child: Text(
                               archetype[i].label.toUpperCase(),
-                              style: text.labelSmall?.copyWith(fontSize: 9, color: AppColors.muted),
+                              style: text.labelSmall?.copyWith(
+                                fontSize: 9,
+                                color: AppColors.muted,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 10),
                           Expanded(
-                            child: Text(archetype[i].answer, style: text.bodyMedium),
+                            child: Text(
+                              archetype[i].answer,
+                              style: text.bodyMedium,
+                            ),
                           ),
                         ],
                       ),
@@ -222,7 +246,8 @@ class TwelveResultScreen extends StatelessWidget {
             AppButton(
               label: 'Voltar ao início',
               kind: AppButtonKind.outline,
-              onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+              onPressed: () =>
+                  Navigator.of(context).popUntil((route) => route.isFirst),
             ),
             const SizedBox(height: 14),
             Text(
@@ -252,12 +277,18 @@ class _HeroStat extends StatelessWidget {
         children: <Widget>[
           Text(
             value,
-            style: text.headlineSmall?.copyWith(color: AppColors.surface, fontSize: 22),
+            style: text.headlineSmall?.copyWith(
+              color: AppColors.surface,
+              fontSize: 22,
+            ),
           ),
           const SizedBox(height: 2),
           Text(
             label,
-            style: text.bodySmall?.copyWith(color: const Color(0xFF9AA69E), fontSize: 11.5),
+            style: text.bodySmall?.copyWith(
+              color: const Color(0xFF9AA69E),
+              fontSize: 11.5,
+            ),
           ),
         ],
       ),
@@ -291,7 +322,10 @@ class _AxisRow extends StatelessWidget {
             const SizedBox(width: 8),
             Text(
               score.summary,
-              style: text.labelLarge?.copyWith(fontSize: 12.5, color: AppColors.inkSoft),
+              style: text.labelLarge?.copyWith(
+                fontSize: 12.5,
+                color: AppColors.inkSoft,
+              ),
             ),
           ],
         ),
@@ -302,8 +336,14 @@ class _AxisRow extends StatelessWidget {
             height: 9,
             child: Row(
               children: <Widget>[
-                Expanded(flex: left, child: Container(color: score.axis.leftColor)),
-                Expanded(flex: right, child: Container(color: score.axis.rightColor)),
+                Expanded(
+                  flex: left,
+                  child: Container(color: score.axis.leftColor),
+                ),
+                Expanded(
+                  flex: right,
+                  child: Container(color: score.axis.rightColor),
+                ),
               ],
             ),
           ),

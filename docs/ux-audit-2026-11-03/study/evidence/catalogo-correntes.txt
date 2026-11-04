@@ -1,0 +1,1849 @@
+- document:
+  - link "Pular para a lista":
+    - /url: "#lista"
+  - banner:
+    - link "12 axes":
+      - /url: /
+    - navigation "Catálogo":
+      - link "Livros":
+        - /url: /books
+      - link "Ideologias":
+        - /url: /ideologies
+      - link "Personalidades":
+        - /url: /personalities
+      - link "Países":
+        - /url: /countries
+      - link "Partidos":
+        - /url: /parties
+      - link "Comparar":
+        - /url: /compare
+      - link "Switch to English":
+        - /url: /en/ideologies
+    - link "Visualização em teia":
+      - /url: /tree/ideologies
+    - link "Começar":
+      - /url: /
+  - paragraph:
+    - link "Início":
+      - /url: /
+    - text: / Ideologias
+  - paragraph: — Catálogo
+  - heading "Ideologias políticas" [level=1]
+  - paragraph: As 275 correntes políticas mapeadas pelo 12 Axes, organizadas por espectro. Cada uma tem descrição e perfil completo nos 12 eixos.
+  - text: 275 correntes 8 espectros 12 eixos por perfil
+  - paragraph: Distribuição no espectro
+  - 'link "Esquerda Radical: 25 ideologias"':
+    - /url: "#esq-radical"
+    - text: Esquerda Radical
+    - emphasis: "25"
+  - 'link "Esquerda: 48 ideologias"':
+    - /url: "#esquerda"
+    - text: Esquerda
+    - emphasis: "48"
+  - 'link "Centro: 40 ideologias"':
+    - /url: "#centro"
+    - text: Centro
+    - emphasis: "40"
+  - 'link "Direita: 61 ideologias"':
+    - /url: "#direita"
+    - text: Direita
+    - emphasis: "61"
+  - 'link "Extrema Direita: 28 ideologias"':
+    - /url: "#ext-direita"
+    - text: Extrema Direita
+    - emphasis: "28"
+  - 'link "Terceira Posição: 27 ideologias"':
+    - /url: "#terceira"
+    - text: Terceira Posição
+    - emphasis: "27"
+  - 'link "Libertário: 23 ideologias"':
+    - /url: "#libertario"
+    - text: Libertário
+    - emphasis: "23"
+  - 'link "Anarquismo: 23 ideologias"':
+    - /url: "#anarquismo"
+    - text: Anarquismo
+    - emphasis: "23"
+  - search:
+    - text: Buscar ideologia
+    - searchbox "Buscar ideologia"
+    - button "Filtros 0"
+    - group "Filtrar por espectro":
+      - button "Esquerda Radical 25":
+        - text: Esquerda Radical
+        - emphasis: "25"
+      - button "Esquerda 48":
+        - text: Esquerda
+        - emphasis: "48"
+      - button "Centro 40":
+        - text: Centro
+        - emphasis: "40"
+      - button "Direita 61":
+        - text: Direita
+        - emphasis: "61"
+      - button "Extrema Direita 28":
+        - text: Extrema Direita
+        - emphasis: "28"
+      - button "Terceira Posição 27":
+        - text: Terceira Posição
+        - emphasis: "27"
+      - button "Libertário 23":
+        - text: Libertário
+        - emphasis: "23"
+      - button "Anarquismo 23":
+        - text: Anarquismo
+        - emphasis: "23"
+  - main:
+    - paragraph
+    - paragraph: "Como ler a faixa de 12 ícones: cada ícone é um eixo e mostra o polo para onde a ideologia pende. Quanto mais forte o ícone, mais intensa a posição. Passe o mouse para ver os valores."
+    - list "Polos de cada eixo, na ordem da faixa":
+      - listitem:
+        - img
+        - img
+        - text: Estrutura
+      - listitem:
+        - img
+        - img
+        - text: Representação
+      - listitem:
+        - img
+        - img
+        - text: Poder
+      - listitem:
+        - img
+        - img
+        - text: Imigração
+      - listitem:
+        - img
+        - img
+        - text: Diplomacia
+      - listitem:
+        - img
+        - img
+        - text: Intervenção
+      - listitem:
+        - img
+        - img
+        - text: Economia
+      - listitem:
+        - img
+        - img
+        - text: Controle
+      - listitem:
+        - img
+        - img
+        - text: Comércio
+      - listitem:
+        - img
+        - img
+        - text: Religião
+      - listitem:
+        - img
+        - img
+        - text: Moral
+      - listitem:
+        - img
+        - img
+        - text: Tecnologia
+    - region "Esquerda Radical":
+      - heading "Esquerda Radical" [level=2]
+      - paragraph: Comunismo revolucionário ou de partido único, com economia planificada e forte concentração do poder do Estado.
+      - text: 25 correntes
+      - list:
+        - listitem:
+          - 'link "Comunismo Estágio final teorizado por Marx e Engels: sociedade sem classes, sem Estado e sem propriedade privada dos meios de produção, com produção coletiva e distribuição segundo a necessidade de cada um, superando o capitalismo e a fase transitória socialista. Ver perfil"':
+            - /url: /ideologies/comunismo
+            - heading "Comunismo" [level=3]
+            - paragraph: "Estágio final teorizado por Marx e Engels: sociedade sem classes, sem Estado e sem propriedade privada dos meios de produção, com produção coletiva e distribuição segundo a necessidade de cada um, superando o capitalismo e a fase transitória socialista."
+            - text: Ver perfil
+        - listitem:
+          - link "Comunismo Agrário Modelo revolucionário que idealiza a vida camponesa e a produção rural coletiva, rejeitando cidades, mercados e propriedade privada em favor de uma igualdade imposta por mobilização estatal e disciplina comunitária. Ver perfil":
+            - /url: /ideologies/comunismo-agrario
+            - heading "Comunismo Agrário" [level=3]
+            - paragraph: Modelo revolucionário que idealiza a vida camponesa e a produção rural coletiva, rejeitando cidades, mercados e propriedade privada em favor de uma igualdade imposta por mobilização estatal e disciplina comunitária.
+            - text: Ver perfil
+        - listitem:
+          - link "Comunismo Maoísta Adaptação chinesa do marxismo feita por Mao, centrada no campesinato como força revolucionária, na guerra popular prolongada, na mobilização permanente das massas e na revolução cultural contra a burocracia do partido. Ver perfil":
+            - /url: /ideologies/comunismo-maoista
+            - heading "Comunismo Maoísta" [level=3]
+            - paragraph: Adaptação chinesa do marxismo feita por Mao, centrada no campesinato como força revolucionária, na guerra popular prolongada, na mobilização permanente das massas e na revolução cultural contra a burocracia do partido.
+            - text: Ver perfil
+        - listitem:
+          - link "Comunismo Nacional Vertente que combina economia socialista planificada com forte identidade nacional, priorizando a soberania e os interesses do próprio país em vez do internacionalismo, muitas vezes sob liderança personalista e centralizada. Ver perfil":
+            - /url: /ideologies/comunismo-nacional
+            - heading "Comunismo Nacional" [level=3]
+            - paragraph: Vertente que combina economia socialista planificada com forte identidade nacional, priorizando a soberania e os interesses do próprio país em vez do internacionalismo, muitas vezes sob liderança personalista e centralizada.
+            - text: Ver perfil
+        - listitem:
+          - link "Comunismo Trotskista Corrente de Trótski, cofundador do Estado soviético e do Exército Vermelho, que defende revolução permanente, partido de vanguarda e ditadura do proletariado, criticando a burocracia stalinista sem renunciar ao partido único. Ver perfil":
+            - /url: /ideologies/comunismo-trotskista
+            - heading "Comunismo Trotskista" [level=3]
+            - paragraph: Corrente de Trótski, cofundador do Estado soviético e do Exército Vermelho, que defende revolução permanente, partido de vanguarda e ditadura do proletariado, criticando a burocracia stalinista sem renunciar ao partido único.
+            - text: Ver perfil
+        - listitem:
+          - link "Ecoautoritarismo Corrente que defende um Estado forte e intervencionista para enfrentar a crise ambiental, subordinando liberdades econômicas e políticas à urgência ecológica e ao controle rígido do consumo e da produção. Ver perfil":
+            - /url: /ideologies/ecoautoritarismo
+            - heading "Ecoautoritarismo" [level=3]
+            - paragraph: Corrente que defende um Estado forte e intervencionista para enfrentar a crise ambiental, subordinando liberdades econômicas e políticas à urgência ecológica e ao controle rígido do consumo e da produção.
+            - text: Ver perfil
+        - listitem:
+          - link "Marxismo-Leninismo Vertente revolucionária do marxismo que defende a tomada do poder por um partido de vanguarda e a ditadura do proletariado, com economia planificada e coletivização, servindo de base aos regimes comunistas do século XX. Ver perfil":
+            - /url: /ideologies/marxismo-leninismo
+            - heading "Marxismo-Leninismo" [level=3]
+            - paragraph: Vertente revolucionária do marxismo que defende a tomada do poder por um partido de vanguarda e a ditadura do proletariado, com economia planificada e coletivização, servindo de base aos regimes comunistas do século XX.
+            - text: Ver perfil
+        - listitem:
+          - link "Progressismo Autoritário Projeto que impõe de cima transformações sociais progressistas, usando o poder do Estado para acelerar mudanças de costumes e igualdade, mesmo à custa de liberdades individuais e da oposição política organizada. Ver perfil":
+            - /url: /ideologies/progressismo-autoritario
+            - heading "Progressismo Autoritário" [level=3]
+            - paragraph: Projeto que impõe de cima transformações sociais progressistas, usando o poder do Estado para acelerar mudanças de costumes e igualdade, mesmo à custa de liberdades individuais e da oposição política organizada.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Sindicalismo Revolucionário Corrente que rejeita a via parlamentar e reformista, apostando na greve geral e no mito mobilizador: a ação direta dos sindicatos e a violência proletária devem destruir o Estado e a burguesia decadente. Ver perfil"':
+            - /url: /ideologies/sindicalismo-revolucionario
+            - heading "Sindicalismo Revolucionário" [level=3]
+            - paragraph: "Corrente que rejeita a via parlamentar e reformista, apostando na greve geral e no mito mobilizador: a ação direta dos sindicatos e a violência proletária devem destruir o Estado e a burguesia decadente."
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Agrário Corrente que organiza o socialismo a partir do campo, com partido único, coletivização em aldeias e cooperativas, autossuficiência alimentar e proteção da terra e das florestas, como a Ujamaa de Nyerere. Ver perfil":
+            - /url: /ideologies/socialismo-agrario
+            - heading "Socialismo Agrário" [level=3]
+            - paragraph: Corrente que organiza o socialismo a partir do campo, com partido único, coletivização em aldeias e cooperativas, autossuficiência alimentar e proteção da terra e das florestas, como a Ujamaa de Nyerere.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Blanquista Doutrina de Auguste Blanqui que defende a tomada do poder por uma minoria revolucionária conspirativa, com ditadura provisória que expropria a burguesia, ateísmo militante e desconfiança da via eleitoral e da espontaneidade das massas. Ver perfil":
+            - /url: /ideologies/socialismo-blanquista
+            - heading "Socialismo Blanquista" [level=3]
+            - paragraph: Doutrina de Auguste Blanqui que defende a tomada do poder por uma minoria revolucionária conspirativa, com ditadura provisória que expropria a burguesia, ateísmo militante e desconfiança da via eleitoral e da espontaneidade das massas.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Chinês Doutrina do PCC no século XXI, associada a Xi Jinping. Combina liderança centralizada do Partido e modernização socialista, defendendo rejuvenescimento nacional, propriedade pública predominante e mercado socialista com empresas privadas e inovação tecnológica. Ver perfil":
+            - /url: /ideologies/socialismo-chines
+            - heading "Socialismo Chinês" [level=3]
+            - paragraph: Doutrina do PCC no século XXI, associada a Xi Jinping. Combina liderança centralizada do Partido e modernização socialista, defendendo rejuvenescimento nacional, propriedade pública predominante e mercado socialista com empresas privadas e inovação tecnológica.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Cristão Corrente de Thomas Müntzer, dos camponeses de 1525 e de padres como Camilo Torres, que busca o Reino de Deus na Terra por meio da revolução, com propriedade comum e o poder nas mãos dos pobres. Ver perfil":
+            - /url: /ideologies/socialismo-cristao
+            - heading "Socialismo Cristão" [level=3]
+            - paragraph: Corrente de Thomas Müntzer, dos camponeses de 1525 e de padres como Camilo Torres, que busca o Reino de Deus na Terra por meio da revolução, com propriedade comum e o poder nas mãos dos pobres.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Cubano Regime revolucionário de Fidel Castro e Che Guevara, com partido único, economia estatizada, saúde e educação universais, exportação da revolução armada e o ideal do homem novo contra o imperialismo. Ver perfil":
+            - /url: /ideologies/socialismo-cubano
+            - heading "Socialismo Cubano" [level=3]
+            - paragraph: Regime revolucionário de Fidel Castro e Che Guevara, com partido único, economia estatizada, saúde e educação universais, exportação da revolução armada e o ideal do homem novo contra o imperialismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo de Estado Sistema em que o Estado controla os meios de produção e dirige a economia por planejamento central, promovendo industrialização e bem-estar sob autoridade política forte e limitada participação democrática popular. Ver perfil":
+            - /url: /ideologies/socialismo-de-estado
+            - heading "Socialismo de Estado" [level=3]
+            - paragraph: Sistema em que o Estado controla os meios de produção e dirige a economia por planejamento central, promovendo industrialização e bem-estar sob autoridade política forte e limitada participação democrática popular.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Denguista Reforma pragmática iniciada por Deng Xiaoping que introduziu mercado, propriedade privada e abertura econômica sob controle absoluto do Partido Comunista, formando o modelo de socialismo com características chinesas. Ver perfil":
+            - /url: /ideologies/socialismo-denguista
+            - heading "Socialismo Denguista" [level=3]
+            - paragraph: Reforma pragmática iniciada por Deng Xiaoping que introduziu mercado, propriedade privada e abertura econômica sob controle absoluto do Partido Comunista, formando o modelo de socialismo com características chinesas.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Federalista Modelo de federação de repúblicas socialistas sob partido de vanguarda, como na URSS de Lênin, que combina economia planificada e poder único com autonomia nacional, línguas e culturas locais e repúblicas federadas com direito formal de secessão. Ver perfil":
+            - /url: /ideologies/socialismo-federalista
+            - heading "Socialismo Federalista" [level=3]
+            - paragraph: Modelo de federação de repúblicas socialistas sob partido de vanguarda, como na URSS de Lênin, que combina economia planificada e poder único com autonomia nacional, línguas e culturas locais e repúblicas federadas com direito formal de secessão.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Juche Doutrina norte-coreana formulada por Kim Il-sung que combina socialismo de Estado, autossuficiência nacional, partido único, liderança suprema, militarização e rejeição da dependência externa, subordinando economia e sociedade à soberania do regime. Ver perfil":
+            - /url: /ideologies/socialismo-juche
+            - heading "Socialismo Juche" [level=3]
+            - paragraph: Doutrina norte-coreana formulada por Kim Il-sung que combina socialismo de Estado, autossuficiência nacional, partido único, liderança suprema, militarização e rejeição da dependência externa, subordinando economia e sociedade à soberania do regime.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Marxista Doutrina original de Marx, que analisa a história como luta de classes e prevê a superação do capitalismo pela revolução do proletariado, com abolição da propriedade privada dos meios de produção e forte crítica à religião. Ver perfil":
+            - /url: /ideologies/socialismo-marxista
+            - heading "Socialismo Marxista" [level=3]
+            - paragraph: Doutrina original de Marx, que analisa a história como luta de classes e prevê a superação do capitalismo pela revolução do proletariado, com abolição da propriedade privada dos meios de produção e forte crítica à religião.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Pol-Potista Comunismo agrário radical do Khmer Vermelho que esvaziou cidades, aboliu dinheiro e mercado e buscou uma sociedade camponesa igualitária pela força, provocando um dos maiores genocídios do século XX no Camboja. Ver perfil":
+            - /url: /ideologies/socialismo-pol-potista
+            - heading "Socialismo Pol-Potista" [level=3]
+            - paragraph: Comunismo agrário radical do Khmer Vermelho que esvaziou cidades, aboliu dinheiro e mercado e buscou uma sociedade camponesa igualitária pela força, provocando um dos maiores genocídios do século XX no Camboja.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Stalinista Modelo soviético consolidado por Stálin, marcado por industrialização acelerada, coletivização agrária, planejamento central rígido, liderança personalizada e repressão política em massa. Ver perfil":
+            - /url: /ideologies/socialismo-stalinista
+            - heading "Socialismo Stalinista" [level=3]
+            - paragraph: Modelo soviético consolidado por Stálin, marcado por industrialização acelerada, coletivização agrária, planejamento central rígido, liderança personalizada e repressão política em massa.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Titoísta Variante do socialismo desenvolvida na Iugoslávia de Tito, combinando partido único e culto ao líder com autogestão operária das empresas, descentralização federal, abertura ao mercado e não alinhamento entre os blocos da Guerra Fria. Ver perfil":
+            - /url: /ideologies/socialismo-titoista
+            - heading "Socialismo Titoísta" [level=3]
+            - paragraph: Variante do socialismo desenvolvida na Iugoslávia de Tito, combinando partido único e culto ao líder com autogestão operária das empresas, descentralização federal, abertura ao mercado e não alinhamento entre os blocos da Guerra Fria.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Socialismo Vietnamita Modelo do Partido Comunista do Vietnã que une o pensamento de Ho Chi Minh, a libertação nacional anticolonial e o Đổi Mới de 1986: partido único, economia de mercado de orientação socialista, setor estatal dominante e abertura ao comércio global. Ver perfil"':
+            - /url: /ideologies/socialismo-vietnamita
+            - heading "Socialismo Vietnamita" [level=3]
+            - paragraph: "Modelo do Partido Comunista do Vietnã que une o pensamento de Ho Chi Minh, a libertação nacional anticolonial e o Đổi Mới de 1986: partido único, economia de mercado de orientação socialista, setor estatal dominante e abertura ao comércio global."
+            - text: Ver perfil
+        - listitem:
+          - link "Tecno-Socialismo Vertente que une ditadura do proletariado ao aceleracionismo tecnológico, defendendo partido revolucionário, planejamento por dados, automação e propriedade coletiva para conduzir a transição ao comunismo. Ver perfil":
+            - /url: /ideologies/tecno-socialismo
+            - heading "Tecno-Socialismo" [level=3]
+            - paragraph: Vertente que une ditadura do proletariado ao aceleracionismo tecnológico, defendendo partido revolucionário, planejamento por dados, automação e propriedade coletiva para conduzir a transição ao comunismo.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Teocracia Progressista Teocracia dirigida por autoridade clerical sem soberania popular, que consagra de cima uma moral progressista como mandamento divino: igualdade de gênero, libertação sexual, ecologia sagrada e ruptura com o costume herdado, visto como superstição a ser reformada. Ver perfil"':
+            - /url: /ideologies/teocracia-progressista
+            - heading "Teocracia Progressista" [level=3]
+            - paragraph: "Teocracia dirigida por autoridade clerical sem soberania popular, que consagra de cima uma moral progressista como mandamento divino: igualdade de gênero, libertação sexual, ecologia sagrada e ruptura com o costume herdado, visto como superstição a ser reformada."
+            - text: Ver perfil
+    - region "Esquerda":
+      - heading "Esquerda" [level=2]
+      - paragraph: Social-democracia, progressismo e maior intervenção do Estado na economia dentro da democracia liberal.
+      - text: 48 correntes
+      - list:
+        - listitem:
+          - link "Aceleracionismo de Esquerda Síntese tecnossocialista pós-capitalista que acelera IA, automação e cibernética para reduzir o trabalho obrigatório, socializar abundância e planejar uma economia além do capital; combina universalismo e desmercantilização com transformação social radicalmente progressista. Ver perfil":
+            - /url: /ideologies/aceleracionismo-de-esquerda
+            - heading "Aceleracionismo de Esquerda" [level=3]
+            - paragraph: Síntese tecnossocialista pós-capitalista que acelera IA, automação e cibernética para reduzir o trabalho obrigatório, socializar abundância e planejar uma economia além do capital; combina universalismo e desmercantilização com transformação social radicalmente progressista.
+            - text: Ver perfil
+        - listitem:
+          - link "Ambientalismo Movimento voltado à proteção do meio ambiente e ao uso sustentável dos recursos, defendendo políticas contra a poluição e a mudança climática e a harmonia entre desenvolvimento humano e equilíbrio ecológico. Ver perfil":
+            - /url: /ideologies/ambientalismo
+            - heading "Ambientalismo" [level=3]
+            - paragraph: Movimento voltado à proteção do meio ambiente e ao uso sustentável dos recursos, defendendo políticas contra a poluição e a mudança climática e a harmonia entre desenvolvimento humano e equilíbrio ecológico.
+            - text: Ver perfil
+        - listitem:
+          - link "Confederalismo Democrático Modelo de autogoverno de baixo para cima de Abdullah Öcalan, com assembleias locais federadas em confederação, ecologia, igualdade de gênero e economia cooperativa, sem Estado-nação, posto em prática em Rojava. Ver perfil":
+            - /url: /ideologies/confederalismo-democratico
+            - heading "Confederalismo Democrático" [level=3]
+            - paragraph: Modelo de autogoverno de baixo para cima de Abdullah Öcalan, com assembleias locais federadas em confederação, ecologia, igualdade de gênero e economia cooperativa, sem Estado-nação, posto em prática em Rojava.
+            - text: Ver perfil
+        - listitem:
+          - link "Democracia Internacionalista Doutrina que propõe uma ordem política global democrática e federada, onde cidadãos e nações deliberam conjuntamente por meio de instituições representativas multilaterais e cooperação jurídica. Ver perfil":
+            - /url: /ideologies/democracia-internacionalista
+            - heading "Democracia Internacionalista" [level=3]
+            - paragraph: Doutrina que propõe uma ordem política global democrática e federada, onde cidadãos e nações deliberam conjuntamente por meio de instituições representativas multilaterais e cooperação jurídica.
+            - text: Ver perfil
+        - listitem:
+          - link "Desenvolvimentismo de Estado Modelo em que o Estado dirige a industrialização e o crescimento econômico por meio de planejamento, investimento público e proteção da indústria, buscando superar o atraso e a dependência externa da nação. Ver perfil":
+            - /url: /ideologies/desenvolvimentismo-de-estado
+            - heading "Desenvolvimentismo de Estado" [level=3]
+            - paragraph: Modelo em que o Estado dirige a industrialização e o crescimento econômico por meio de planejamento, investimento público e proteção da indústria, buscando superar o atraso e a dependência externa da nação.
+            - text: Ver perfil
+        - listitem:
+          - link "Ecologia Profunda Corrente que atribui valor intrínseco a toda vida e não apenas ao ser humano, defendendo uma profunda mudança de valores, a redução do impacto humano e o respeito ao equilíbrio dos ecossistemas do planeta. Ver perfil":
+            - /url: /ideologies/ecologia-profunda
+            - heading "Ecologia Profunda" [level=3]
+            - paragraph: Corrente que atribui valor intrínseco a toda vida e não apenas ao ser humano, defendendo uma profunda mudança de valores, a redução do impacto humano e o respeito ao equilíbrio dos ecossistemas do planeta.
+            - text: Ver perfil
+        - listitem:
+          - link "Ecossocialismo Corrente que funde socialismo e ecologia, atribuindo a crise ambiental ao capitalismo e defendendo produção coletiva, sustentável e democrática que respeite os limites da natureza e as necessidades sociais. Ver perfil":
+            - /url: /ideologies/ecossocialismo
+            - heading "Ecossocialismo" [level=3]
+            - paragraph: Corrente que funde socialismo e ecologia, atribuindo a crise ambiental ao capitalismo e defendendo produção coletiva, sustentável e democrática que respeite os limites da natureza e as necessidades sociais.
+            - text: Ver perfil
+        - listitem:
+          - link "Eurocomunismo Corrente comunista da Europa Ocidental dos anos 1970 que buscou uma via nacional ao socialismo por eleições, pluralismo partidário e liberdades civis, com autonomia frente a Moscou e economia mista sob planejamento democrático. Ver perfil":
+            - /url: /ideologies/eurocomunismo
+            - heading "Eurocomunismo" [level=3]
+            - paragraph: Corrente comunista da Europa Ocidental dos anos 1970 que buscou uma via nacional ao socialismo por eleições, pluralismo partidário e liberdades civis, com autonomia frente a Moscou e economia mista sob planejamento democrático.
+            - text: Ver perfil
+        - listitem:
+          - link "Federalismo Rioplatense Tradição federalista do Rio da Prata fundada por José Gervasio Artigas na Liga dos Povos Livres (1813–1820). Defende confederalismo republicano de províncias soberanas contra o centralismo portenho, liberdade civil e religiosa, proteção manufatureira e reforma agrária popular. Ver perfil":
+            - /url: /ideologies/federalismo-rioplatense
+            - heading "Federalismo Rioplatense" [level=3]
+            - paragraph: Tradição federalista do Rio da Prata fundada por José Gervasio Artigas na Liga dos Povos Livres (1813–1820). Defende confederalismo republicano de províncias soberanas contra o centralismo portenho, liberdade civil e religiosa, proteção manufatureira e reforma agrária popular.
+            - text: Ver perfil
+        - listitem:
+          - link "Geossocialismo Síntese entre georgismo e socialismo que propõe socializar a renda fundiária e os monopólios naturais por meio do imposto sobre o valor da terra e da regulação pública, financiando serviços coletivos universais e um dividendo cidadão. Ver perfil":
+            - /url: /ideologies/geossocialismo
+            - heading "Geossocialismo" [level=3]
+            - paragraph: Síntese entre georgismo e socialismo que propõe socializar a renda fundiária e os monopólios naturais por meio do imposto sobre o valor da terra e da regulação pública, financiando serviços coletivos universais e um dividendo cidadão.
+            - text: Ver perfil
+        - listitem:
+          - link "Indigenismo Corrente que valoriza os povos originários e seus direitos, defendendo autonomia, território, cultura e participação política, além de modelos de desenvolvimento e Estado plurinacional que respeitem suas tradições. Ver perfil":
+            - /url: /ideologies/indigenismo
+            - heading "Indigenismo" [level=3]
+            - paragraph: Corrente que valoriza os povos originários e seus direitos, defendendo autonomia, território, cultura e participação política, além de modelos de desenvolvimento e Estado plurinacional que respeitem suas tradições.
+            - text: Ver perfil
+        - listitem:
+          - link "Internacionalismo Doutrina política que defende a cooperação solidária entre os povos, a superação do nacionalismo e o fortalecimento de instituições globais para a paz e o desenvolvimento comum. Ver perfil":
+            - /url: /ideologies/internacionalismo
+            - heading "Internacionalismo" [level=3]
+            - paragraph: Doutrina política que defende a cooperação solidária entre os povos, a superação do nacionalismo e o fortalecimento de instituições globais para a paz e o desenvolvimento comum.
+            - text: Ver perfil
+        - listitem:
+          - link "Liberalismo de Estado Corrente liberal que aceita um papel ativo do Estado na economia e na garantia de direitos, combinando liberdades individuais e mercado com regulação e políticas públicas voltadas ao bem coletivo e à igualdade. Ver perfil":
+            - /url: /ideologies/liberalismo-de-estado
+            - heading "Liberalismo de Estado" [level=3]
+            - paragraph: Corrente liberal que aceita um papel ativo do Estado na economia e na garantia de direitos, combinando liberdades individuais e mercado com regulação e políticas públicas voltadas ao bem coletivo e à igualdade.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Liberalismo Jacobino Corrente que vê o Estado unitário e centralizado como garantidor da liberdade individual: leis uniformes, laicidade e cidadania única desmontam privilégios locais, clericais e corporativos que oprimiriam o indivíduo na ausência de um poder nacional forte. Ver perfil"':
+            - /url: /ideologies/liberalismo-jacobino
+            - heading "Liberalismo Jacobino" [level=3]
+            - paragraph: "Corrente que vê o Estado unitário e centralizado como garantidor da liberdade individual: leis uniformes, laicidade e cidadania única desmontam privilégios locais, clericais e corporativos que oprimiriam o indivíduo na ausência de um poder nacional forte."
+            - text: Ver perfil
+        - listitem:
+          - link "Liberalismo Keynesiano Corrente inspirada em John Maynard Keynes que aceita mercado e democracia liberal, mas atribui ao Estado a gestão da demanda, com gasto público contracíclico, pleno emprego como meta e economia mista. Ver perfil":
+            - /url: /ideologies/liberalismo-keynesiano
+            - heading "Liberalismo Keynesiano" [level=3]
+            - paragraph: Corrente inspirada em John Maynard Keynes que aceita mercado e democracia liberal, mas atribui ao Estado a gestão da demanda, com gasto público contracíclico, pleno emprego como meta e economia mista.
+            - text: Ver perfil
+        - listitem:
+          - link "Liberalismo Progressista Corrente que une capitalismo de mercado e comércio globalizado a um robusto Estado de bem-estar, defendendo moral progressista, secularismo e instituições democráticas, no modelo social nórdico. Ver perfil":
+            - /url: /ideologies/liberalismo-progressista
+            - heading "Liberalismo Progressista" [level=3]
+            - paragraph: Corrente que une capitalismo de mercado e comércio globalizado a um robusto Estado de bem-estar, defendendo moral progressista, secularismo e instituições democráticas, no modelo social nórdico.
+            - text: Ver perfil
+        - listitem:
+          - link "Liberalismo Social Vertente que combina liberdades individuais com forte ação do Estado para garantir bem-estar, educação e saúde, defendendo igualdade de oportunidades e seguridade social dentro da economia de mercado. Ver perfil":
+            - /url: /ideologies/liberalismo-social
+            - heading "Liberalismo Social" [level=3]
+            - paragraph: Vertente que combina liberdades individuais com forte ação do Estado para garantir bem-estar, educação e saúde, defendendo igualdade de oportunidades e seguridade social dentro da economia de mercado.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacional-Desenvolvimentismo Corrente que defende industrialização, soberania nacional e planejamento estratégico do Estado, buscando modernizar a economia por investimento público, proteção produtiva e coordenação entre governo, ciência e empresas nacionais. Ver perfil":
+            - /url: /ideologies/nacional-desenvolvimentismo
+            - heading "Nacional-Desenvolvimentismo" [level=3]
+            - paragraph: Corrente que defende industrialização, soberania nacional e planejamento estratégico do Estado, buscando modernizar a economia por investimento público, proteção produtiva e coordenação entre governo, ciência e empresas nacionais.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacionalismo de Esquerda Combina autodeterminação nacional e soberania popular com igualdade social e políticas econômicas de esquerda. Suas expressões históricas variam entre movimentos anticoloniais, socialistas e desenvolvimentistas, sem constituir um programa econômico ou institucional único. Ver perfil":
+            - /url: /ideologies/nacionalismo-de-esquerda
+            - heading "Nacionalismo de Esquerda" [level=3]
+            - paragraph: Combina autodeterminação nacional e soberania popular com igualdade social e políticas econômicas de esquerda. Suas expressões históricas variam entre movimentos anticoloniais, socialistas e desenvolvimentistas, sem constituir um programa econômico ou institucional único.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacionalismo Progressista Corrente que une soberania nacional, proteção econômica e integração popular a reformas sociais progressistas, buscando um Estado capaz de defender a nação enquanto amplia direitos, igualdade e inclusão. Ver perfil":
+            - /url: /ideologies/nacionalismo-progressista
+            - heading "Nacionalismo Progressista" [level=3]
+            - paragraph: Corrente que une soberania nacional, proteção econômica e integração popular a reformas sociais progressistas, buscando um Estado capaz de defender a nação enquanto amplia direitos, igualdade e inclusão.
+            - text: Ver perfil
+        - listitem:
+          - link "Populismo de Esquerda Corrente que mobiliza o povo contra elites econômicas, defendendo redistribuição, controle público, soberania nacional, democracia plebiscitária e políticas sociais amplas em linguagem antiestablishment e popular. Ver perfil":
+            - /url: /ideologies/populismo-de-esquerda
+            - heading "Populismo de Esquerda" [level=3]
+            - paragraph: Corrente que mobiliza o povo contra elites econômicas, defendendo redistribuição, controle público, soberania nacional, democracia plebiscitária e políticas sociais amplas em linguagem antiestablishment e popular.
+            - text: Ver perfil
+        - listitem:
+          - link "Pós-modernismo Vertente plural de crítica ao universalismo, ao progresso linear e às grandes narrativas. Na leitura foucaultiana, genealogia e análise de poder e saber mostram como instituições, normas e discursos produzem sujeitos e abrem possibilidades de resistência local. Ver perfil":
+            - /url: /ideologies/posmodernismo
+            - heading "Pós-modernismo" [level=3]
+            - paragraph: Vertente plural de crítica ao universalismo, ao progresso linear e às grandes narrativas. Na leitura foucaultiana, genealogia e análise de poder e saber mostram como instituições, normas e discursos produzem sujeitos e abrem possibilidades de resistência local.
+            - text: Ver perfil
+        - listitem:
+          - link "Pragmatismo de Esquerda Vertente que busca resultados sociais concretos negociando com o mercado e as instituições existentes, priorizando austeridade fiscal responsável, políticas sociais focadas e governabilidade acima da pureza ideológica revolucionária. Ver perfil":
+            - /url: /ideologies/pragmatismo-de-esquerda
+            - heading "Pragmatismo de Esquerda" [level=3]
+            - paragraph: Vertente que busca resultados sociais concretos negociando com o mercado e as instituições existentes, priorizando austeridade fiscal responsável, políticas sociais focadas e governabilidade acima da pureza ideológica revolucionária.
+            - text: Ver perfil
+        - listitem:
+          - link "Progressismo Corrente que defende reformas sociais e ampliação de direitos para promover igualdade e justiça, confiando no progresso, na ciência e na ação coletiva para transformar instituições e superar desigualdades. Ver perfil":
+            - /url: /ideologies/progressismo
+            - heading "Progressismo" [level=3]
+            - paragraph: Corrente que defende reformas sociais e ampliação de direitos para promover igualdade e justiça, confiando no progresso, na ciência e na ação coletiva para transformar instituições e superar desigualdades.
+            - text: Ver perfil
+        - listitem:
+          - link "Progressismo Cristão Corrente que une a fé cristã à defesa de justiça social, direitos e reformas, vendo no Evangelho um chamado à solidariedade, à igualdade e ao cuidado com os pobres e marginalizados da sociedade e do mundo. Ver perfil":
+            - /url: /ideologies/progressismo-cristao
+            - heading "Progressismo Cristão" [level=3]
+            - paragraph: Corrente que une a fé cristã à defesa de justiça social, direitos e reformas, vendo no Evangelho um chamado à solidariedade, à igualdade e ao cuidado com os pobres e marginalizados da sociedade e do mundo.
+            - text: Ver perfil
+        - listitem:
+          - link "Quilombismo Projeto político formulado por Abdias Nascimento a partir da experiência dos quilombos. Defende igualdade racial, autodeterminação afro-brasileira, democracia participativa e economia comunitária e cooperativa, com terra de uso coletivo. Ver perfil":
+            - /url: /ideologies/quilombismo
+            - heading "Quilombismo" [level=3]
+            - paragraph: Projeto político formulado por Abdias Nascimento a partir da experiência dos quilombos. Defende igualdade racial, autodeterminação afro-brasileira, democracia participativa e economia comunitária e cooperativa, com terra de uso coletivo.
+            - text: Ver perfil
+        - listitem:
+          - link "Sindicalismo Movimento que coloca sindicatos e organização dos trabalhadores no centro da política, defendendo negociação coletiva, ação direta e controle laboral sobre a produção como via de emancipação da classe operária. Ver perfil":
+            - /url: /ideologies/sindicalismo
+            - heading "Sindicalismo" [level=3]
+            - paragraph: Movimento que coloca sindicatos e organização dos trabalhadores no centro da política, defendendo negociação coletiva, ação direta e controle laboral sobre a produção como via de emancipação da classe operária.
+            - text: Ver perfil
+        - listitem:
+          - link "Sionismo Trabalhista Vertente socialista do sionismo que construiu o Estado de Israel por meio dos kibutzim, da central sindical Histadrut e do partido Mapai de Ben-Gurion, unindo nacionalismo judaico, trabalho coletivo na terra e Estado de bem-estar laico. Ver perfil":
+            - /url: /ideologies/sionismo-trabalhista
+            - heading "Sionismo Trabalhista" [level=3]
+            - paragraph: Vertente socialista do sionismo que construiu o Estado de Israel por meio dos kibutzim, da central sindical Histadrut e do partido Mapai de Ben-Gurion, unindo nacionalismo judaico, trabalho coletivo na terra e Estado de bem-estar laico.
+            - text: Ver perfil
+        - listitem:
+          - link "Social-Democracia Corrente que busca conciliar capitalismo e justiça social pela democracia, defendendo mercado regulado, forte Estado de bem-estar, direitos trabalhistas e redistribuição para reduzir desigualdades sociais. Ver perfil":
+            - /url: /ideologies/social-democracia
+            - heading "Social-Democracia" [level=3]
+            - paragraph: Corrente que busca conciliar capitalismo e justiça social pela democracia, defendendo mercado regulado, forte Estado de bem-estar, direitos trabalhistas e redistribuição para reduzir desigualdades sociais.
+            - text: Ver perfil
+        - listitem:
+          - link "Social-Democracia Cristã Corrente que traduz o Evangelho em reformas dentro da democracia, defendendo Estado de bem-estar, direitos trabalhistas, sindicatos e redistribuição, sem romper com o mercado nem com as instituições liberais. Ver perfil":
+            - /url: /ideologies/social-democracia-crista
+            - heading "Social-Democracia Cristã" [level=3]
+            - paragraph: Corrente que traduz o Evangelho em reformas dentro da democracia, defendendo Estado de bem-estar, direitos trabalhistas, sindicatos e redistribuição, sem romper com o mercado nem com as instituições liberais.
+            - text: Ver perfil
+        - listitem:
+          - link "Social-Democracia Nórdica Modelo escandinavo que combina negociação coletiva tripartite entre sindicatos, patronal e Estado, Estado de bem-estar universalista financiado por impostos altos e economia de mercado aberta e exportadora, com forte consenso social e baixa desigualdade. Ver perfil":
+            - /url: /ideologies/social-democracia-nordica
+            - heading "Social-Democracia Nórdica" [level=3]
+            - paragraph: Modelo escandinavo que combina negociação coletiva tripartite entre sindicatos, patronal e Estado, Estado de bem-estar universalista financiado por impostos altos e economia de mercado aberta e exportadora, com forte consenso social e baixa desigualdade.
+            - text: Ver perfil
+        - listitem:
+          - link "Social-Desenvolvimentismo Modelo associado aos governos Lula e Dilma que busca crescimento com inclusão social, combinando salário mínimo valorizado, crédito popular, transferência de renda e bancos públicos, sem romper com o mercado. Ver perfil":
+            - /url: /ideologies/social-desenvolvimentismo
+            - heading "Social-Desenvolvimentismo" [level=3]
+            - paragraph: Modelo associado aos governos Lula e Dilma que busca crescimento com inclusão social, combinando salário mínimo valorizado, crédito popular, transferência de renda e bancos públicos, sem romper com o mercado.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Doutrina ampla que defende a propriedade social ou coletiva dos meios de produção e o planejamento econômico para superar a exploração capitalista, admitindo tanto a via revolucionária quanto a reformista para chegar lá. Ver perfil":
+            - /url: /ideologies/socialismo
+            - heading "Socialismo" [level=3]
+            - paragraph: Doutrina ampla que defende a propriedade social ou coletiva dos meios de produção e o planejamento econômico para superar a exploração capitalista, admitindo tanto a via revolucionária quanto a reformista para chegar lá.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Africano Corrente de Sankara, Samora Machel, Nkrumah e Nyerere que une pan-africanismo, consciência negra, luta anticolonial, coletivização agrária e autossuficiência contra o neocolonialismo e o racismo. Ver perfil":
+            - /url: /ideologies/socialismo-africano
+            - heading "Socialismo Africano" [level=3]
+            - paragraph: Corrente de Sankara, Samora Machel, Nkrumah e Nyerere que une pan-africanismo, consciência negra, luta anticolonial, coletivização agrária e autossuficiência contra o neocolonialismo e o racismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Anticolonial Corrente socialista nascida das lutas de libertação nacional na África, Ásia e América Latina, defende soberania econômica, nacionalização dos recursos, não alinhamento entre as potências e solidariedade dos povos do Sul global contra o imperialismo. Ver perfil":
+            - /url: /ideologies/socialismo-anticolonial
+            - heading "Socialismo Anticolonial" [level=3]
+            - paragraph: Corrente socialista nascida das lutas de libertação nacional na África, Ásia e América Latina, defende soberania econômica, nacionalização dos recursos, não alinhamento entre as potências e solidariedade dos povos do Sul global contra o imperialismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Bolivariano Projeto latino-americano que combina nacionalismo popular, anti-imperialismo, redistribuição social e forte liderança presidencial, usando o Estado e recursos estratégicos para promover soberania e inclusão popular. Ver perfil":
+            - /url: /ideologies/socialismo-bolivariano
+            - heading "Socialismo Bolivariano" [level=3]
+            - paragraph: Projeto latino-americano que combina nacionalismo popular, anti-imperialismo, redistribuição social e forte liderança presidencial, usando o Estado e recursos estratégicos para promover soberania e inclusão popular.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Budista Corrente que funda o socialismo na ética budista, vendo na compaixão e no fim do apego a base da igualdade, da propriedade comum e do rechaço às castas, de Ambedkar e do Dalai Lama ao socialismo birmanês de Ne Win. Ver perfil":
+            - /url: /ideologies/socialismo-budista
+            - heading "Socialismo Budista" [level=3]
+            - paragraph: Corrente que funda o socialismo na ética budista, vendo na compaixão e no fim do apego a base da igualdade, da propriedade comum e do rechaço às castas, de Ambedkar e do Dalai Lama ao socialismo birmanês de Ne Win.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo de Mercado Sistema em que empresas de propriedade coletiva ou pública competem em mercados, unindo eficiência da concorrência e distribuição socialista dos lucros sem o planejamento central rígido das economias estatais. Ver perfil":
+            - /url: /ideologies/socialismo-de-mercado
+            - heading "Socialismo de Mercado" [level=3]
+            - paragraph: Sistema em que empresas de propriedade coletiva ou pública competem em mercados, unindo eficiência da concorrência e distribuição socialista dos lucros sem o planejamento central rígido das economias estatais.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Democrático Corrente que busca superar o capitalismo pela via eleitoral, com propriedade social das grandes empresas, cooperativas e democracia no local de trabalho, rejeitando tanto o partido de vanguarda quanto a mera gestão social-democrata do mercado. Ver perfil":
+            - /url: /ideologies/socialismo-democratico
+            - heading "Socialismo Democrático" [level=3]
+            - paragraph: Corrente que busca superar o capitalismo pela via eleitoral, com propriedade social das grandes empresas, cooperativas e democracia no local de trabalho, rejeitando tanto o partido de vanguarda quanto a mera gestão social-democrata do mercado.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Internacionalista Vertente do socialismo que prega a união global dos trabalhadores contra o capitalismo, rejeitando o nacionalismo burguês e defendendo a solidariedade internacional proletária. Ver perfil":
+            - /url: /ideologies/socialismo-internacionalista
+            - heading "Socialismo Internacionalista" [level=3]
+            - paragraph: Vertente do socialismo que prega a união global dos trabalhadores contra o capitalismo, rejeitando o nacionalismo burguês e defendendo a solidariedade internacional proletária.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Lassalliano Corrente socialista que busca emancipar os trabalhadores por meio do próprio Estado nacional, com sufrágio universal, cooperativas de produção financiadas por fundos públicos e recusa explícita da via revolucionária. Ver perfil":
+            - /url: /ideologies/socialismo-lassalliano
+            - heading "Socialismo Lassalliano" [level=3]
+            - paragraph: Corrente socialista que busca emancipar os trabalhadores por meio do próprio Estado nacional, com sufrágio universal, cooperativas de produção financiadas por fundos públicos e recusa explícita da via revolucionária.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Liberal Corrente que une objetivos socialistas de igualdade e justiça social à defesa das liberdades individuais e da democracia, combinando forte proteção social com pluralismo, direitos civis e economia mista. Ver perfil":
+            - /url: /ideologies/socialismo-liberal
+            - heading "Socialismo Liberal" [level=3]
+            - paragraph: Corrente que une objetivos socialistas de igualdade e justiça social à defesa das liberdades individuais e da democracia, combinando forte proteção social com pluralismo, direitos civis e economia mista.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Luxemburguista Marxismo democrático inspirado em Rosa Luxemburgo, que une revolução e liberdade, valoriza a espontaneidade das massas e a greve geral e critica tanto o reformismo quanto o centralismo autoritário dos partidos de vanguarda. Ver perfil":
+            - /url: /ideologies/socialismo-luxemburguista
+            - heading "Socialismo Luxemburguista" [level=3]
+            - paragraph: Marxismo democrático inspirado em Rosa Luxemburgo, que une revolução e liberdade, valoriza a espontaneidade das massas e a greve geral e critica tanto o reformismo quanto o centralismo autoritário dos partidos de vanguarda.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Utópico Corrente do início do século XIX que imaginava uma sociedade industrial reorganizada por planejamento racional, sob direção de cientistas, engenheiros e produtores, substituindo políticos e aristocratas sem apelar à luta de classes ou à revolução. Ver perfil":
+            - /url: /ideologies/socialismo-utopico
+            - heading "Socialismo Utópico" [level=3]
+            - paragraph: Corrente do início do século XIX que imaginava uma sociedade industrial reorganizada por planejamento racional, sob direção de cientistas, engenheiros e produtores, substituindo políticos e aristocratas sem apelar à luta de classes ou à revolução.
+            - text: Ver perfil
+        - listitem:
+          - link "Tecnocracia de Esquerda Modelo que combina planejamento socialista com gestão científica da economia, confiando a comissões de especialistas, e não a eleições ou disputa partidária, a organização racional da produção e a distribuição igualitária dos recursos da sociedade. Ver perfil":
+            - /url: /ideologies/tecnocracia-de-esquerda
+            - heading "Tecnocracia de Esquerda" [level=3]
+            - paragraph: Modelo que combina planejamento socialista com gestão científica da economia, confiando a comissões de especialistas, e não a eleições ou disputa partidária, a organização racional da produção e a distribuição igualitária dos recursos da sociedade.
+            - text: Ver perfil
+        - listitem:
+          - link "Tecnoprogressismo Transumanismo democrático que une controle público da tecnologia e justiça social, defendendo melhoramento humano, extensão radical da vida, liberdade morfológica e repartição universal dos ganhos da automação. Ver perfil":
+            - /url: /ideologies/tecnoprogressismo
+            - heading "Tecnoprogressismo" [level=3]
+            - paragraph: Transumanismo democrático que une controle público da tecnologia e justiça social, defendendo melhoramento humano, extensão radical da vida, liberdade morfológica e repartição universal dos ganhos da automação.
+            - text: Ver perfil
+        - listitem:
+          - link "Trabalhismo Corrente que defende os interesses dos trabalhadores dentro da democracia, promovendo direitos laborais, seguridade social, sindicatos fortes e distribuição de renda por meio de reformas e do Estado de bem-estar. Ver perfil":
+            - /url: /ideologies/trabalhismo
+            - heading "Trabalhismo" [level=3]
+            - paragraph: Corrente que defende os interesses dos trabalhadores dentro da democracia, promovendo direitos laborais, seguridade social, sindicatos fortes e distribuição de renda por meio de reformas e do Estado de bem-estar.
+            - text: Ver perfil
+        - listitem:
+          - link "Trabalhismo Cristão Vertente que combina defesa dos trabalhadores e justiça social com valores cristãos, promovendo direitos laborais, solidariedade e proteção social dentro da democracia, inspirada na doutrina social da Igreja. Ver perfil":
+            - /url: /ideologies/trabalhismo-cristao
+            - heading "Trabalhismo Cristão" [level=3]
+            - paragraph: Vertente que combina defesa dos trabalhadores e justiça social com valores cristãos, promovendo direitos laborais, solidariedade e proteção social dentro da democracia, inspirada na doutrina social da Igreja.
+            - text: Ver perfil
+    - region "Centro":
+      - heading "Centro" [level=2]
+      - paragraph: Equilíbrio entre mercado e Estado, reformas e estabilidade, com posicionamento moderado ou pragmático.
+      - text: 40 correntes
+      - list:
+        - listitem:
+          - link "Ambientalismo Malthusiano Vertente ambiental inspirada em Garrett Hardin que relaciona pressão populacional e esgotamento dos recursos comuns. Defende limites coletivamente impostos ao uso desses recursos e políticas restritivas de crescimento demográfico. Ver perfil":
+            - /url: /ideologies/ambientalismo-malthusiano
+            - heading "Ambientalismo Malthusiano" [level=3]
+            - paragraph: Vertente ambiental inspirada em Garrett Hardin que relaciona pressão populacional e esgotamento dos recursos comuns. Defende limites coletivamente impostos ao uso desses recursos e políticas restritivas de crescimento demográfico.
+            - text: Ver perfil
+        - listitem:
+          - link "Bioconservadorismo Posição que se opõe à manipulação genética e ao aprimoramento tecnológico do corpo humano, defendendo limites éticos à ciência em nome da dignidade, da natureza humana e da prudência diante do futuro. Ver perfil":
+            - /url: /ideologies/bioconservadorismo
+            - heading "Bioconservadorismo" [level=3]
+            - paragraph: Posição que se opõe à manipulação genética e ao aprimoramento tecnológico do corpo humano, defendendo limites éticos à ciência em nome da dignidade, da natureza humana e da prudência diante do futuro.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Budismo Político Aplica o Dharma à política: o rei justo de Asoka, a economia budista de Schumacher, o socialismo dhármico de Buddhadasa e a Felicidade Interna Bruta do Butão. Prioriza não violência, consumo moderado, comunidade e harmonia com a natureza. Ver perfil"':
+            - /url: /ideologies/budismo-politico
+            - heading "Budismo Político" [level=3]
+            - paragraph: "Aplica o Dharma à política: o rei justo de Asoka, a economia budista de Schumacher, o socialismo dhármico de Buddhadasa e a Felicidade Interna Bruta do Butão. Prioriza não violência, consumo moderado, comunidade e harmonia com a natureza."
+            - text: Ver perfil
+        - listitem:
+          - link "Catolicismo Universalista Visão cristã que coloca a Igreja universal acima de nações, raças e fronteiras, na linha de Paulo de Tarso e Agostinho, unindo fé intensa, moral tradicional e autoridade espiritual à fraternidade entre todos os povos. Ver perfil":
+            - /url: /ideologies/catolicismo-universalista
+            - heading "Catolicismo Universalista" [level=3]
+            - paragraph: Visão cristã que coloca a Igreja universal acima de nações, raças e fronteiras, na linha de Paulo de Tarso e Agostinho, unindo fé intensa, moral tradicional e autoridade espiritual à fraternidade entre todos os povos.
+            - text: Ver perfil
+        - listitem:
+          - link "Centrismo Posição política que busca o equilíbrio entre esquerda e direita, valorizando moderação, pragmatismo e consenso, e combinando elementos de diferentes correntes para evitar extremos e favorecer reformas graduais. Ver perfil":
+            - /url: /ideologies/centrismo
+            - heading "Centrismo" [level=3]
+            - paragraph: Posição política que busca o equilíbrio entre esquerda e direita, valorizando moderação, pragmatismo e consenso, e combinando elementos de diferentes correntes para evitar extremos e favorecer reformas graduais.
+            - text: Ver perfil
+        - listitem:
+          - link "Centrismo Ambientalista Vertente centrista que prioriza sustentabilidade, transição energética gradual, regulação ambiental e prudência tecnológica, buscando conciliar proteção climática, mercado e instituições democráticas sem ruptura anticapitalista. Ver perfil":
+            - /url: /ideologies/centrismo-ambientalista
+            - heading "Centrismo Ambientalista" [level=3]
+            - paragraph: Vertente centrista que prioriza sustentabilidade, transição energética gradual, regulação ambiental e prudência tecnológica, buscando conciliar proteção climática, mercado e instituições democráticas sem ruptura anticapitalista.
+            - text: Ver perfil
+        - listitem:
+          - link "Centrismo Conservador Vertente centrista que combina moderação econômica e respeito institucional com conservadorismo social, valorizando família, religião, ordem e mudança gradual sem aderir à direita autoritária ou ao radicalismo populista. Ver perfil":
+            - /url: /ideologies/centrismo-conservador
+            - heading "Centrismo Conservador" [level=3]
+            - paragraph: Vertente centrista que combina moderação econômica e respeito institucional com conservadorismo social, valorizando família, religião, ordem e mudança gradual sem aderir à direita autoritária ou ao radicalismo populista.
+            - text: Ver perfil
+        - listitem:
+          - link "Centrismo Liberal Vertente centrista pró-mercado que combina responsabilidade fiscal, democracia liberal, abertura internacional moderada e reformas institucionais, rejeitando tanto estatismo amplo quanto radicalismo libertário como programa político. Ver perfil":
+            - /url: /ideologies/centrismo-liberal
+            - heading "Centrismo Liberal" [level=3]
+            - paragraph: Vertente centrista pró-mercado que combina responsabilidade fiscal, democracia liberal, abertura internacional moderada e reformas institucionais, rejeitando tanto estatismo amplo quanto radicalismo libertário como programa político.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Centrismo Radical Centrismo levado ao limite: recusa por princípio qualquer inclinação e busca equidistância exata entre todos os polos, da economia à moral, tratando cada eixo político como um ponto de equilíbrio a ser preservado. Ver perfil"':
+            - /url: /ideologies/centrismo-radical
+            - heading "Centrismo Radical" [level=3]
+            - paragraph: "Centrismo levado ao limite: recusa por princípio qualquer inclinação e busca equidistância exata entre todos os polos, da economia à moral, tratando cada eixo político como um ponto de equilíbrio a ser preservado."
+            - text: Ver perfil
+        - listitem:
+          - link "Centrismo Social Vertente centrista que aceita a economia de mercado, mas prioriza proteção social, serviços públicos, reformas graduais e consenso institucional para reduzir desigualdades sem ruptura política ou polarização permanente. Ver perfil":
+            - /url: /ideologies/centrismo-social
+            - heading "Centrismo Social" [level=3]
+            - paragraph: Vertente centrista que aceita a economia de mercado, mas prioriza proteção social, serviços públicos, reformas graduais e consenso institucional para reduzir desigualdades sem ruptura política ou polarização permanente.
+            - text: Ver perfil
+        - listitem:
+          - link "Comunitarismo Corrente que valoriza laços comunitários, tradições e o bem comum acima do individualismo, sustentando que justiça e identidade nascem da vida em comunidade e das responsabilidades compartilhadas entre as pessoas. Ver perfil":
+            - /url: /ideologies/comunitarismo
+            - heading "Comunitarismo" [level=3]
+            - paragraph: Corrente que valoriza laços comunitários, tradições e o bem comum acima do individualismo, sustentando que justiça e identidade nascem da vida em comunidade e das responsabilidades compartilhadas entre as pessoas.
+            - text: Ver perfil
+        - listitem:
+          - link "Democracia Cristã Corrente de centro que aplica valores cristãos à política democrática, defendendo a economia social de mercado, a família, a solidariedade e o bem comum como base de instituições livres e pluralistas. Ver perfil":
+            - /url: /ideologies/democracia-crista
+            - heading "Democracia Cristã" [level=3]
+            - paragraph: Corrente de centro que aplica valores cristãos à política democrática, defendendo a economia social de mercado, a família, a solidariedade e o bem comum como base de instituições livres e pluralistas.
+            - text: Ver perfil
+        - listitem:
+          - link "Democracia Direta Sistema em que os cidadãos decidem diretamente as leis por referendos, iniciativas populares, assembleias e revogação de mandatos, em vez de delegar a representantes, como nos cantões suíços e na Atenas clássica. Ver perfil":
+            - /url: /ideologies/democracia-direta
+            - heading "Democracia Direta" [level=3]
+            - paragraph: Sistema em que os cidadãos decidem diretamente as leis por referendos, iniciativas populares, assembleias e revogação de mandatos, em vez de delegar a representantes, como nos cantões suíços e na Atenas clássica.
+            - text: Ver perfil
+        - listitem:
+          - link "Democracia Securitária Doutrina da democracia militante, que autoriza o Estado democrático a restringir os inimigos da própria democracia, banindo partidos antissistema, vigiando extremistas e mantendo serviço militar e segurança reforçada para defender a ordem constitucional. Ver perfil":
+            - /url: /ideologies/democracia-securitaria
+            - heading "Democracia Securitária" [level=3]
+            - paragraph: Doutrina da democracia militante, que autoriza o Estado democrático a restringir os inimigos da própria democracia, banindo partidos antissistema, vigiando extremistas e mantendo serviço militar e segurança reforçada para defender a ordem constitucional.
+            - text: Ver perfil
+        - listitem:
+          - link "Desenvolvimentismo Corrente que busca superar o subdesenvolvimento pela industrialização acelerada, com planejamento estatal, infraestrutura pública, proteção à indústria nascente e associação entre Estado, capital nacional e capital estrangeiro, como no Plano de Metas de Kubitschek. Ver perfil":
+            - /url: /ideologies/desenvolvimentismo
+            - heading "Desenvolvimentismo" [level=3]
+            - paragraph: Corrente que busca superar o subdesenvolvimento pela industrialização acelerada, com planejamento estatal, infraestrutura pública, proteção à indústria nascente e associação entre Estado, capital nacional e capital estrangeiro, como no Plano de Metas de Kubitschek.
+            - text: Ver perfil
+        - listitem:
+          - link "Distributismo Doutrina de inspiração cristã que defende a ampla distribuição da propriedade e da pequena produção, opondo-se tanto ao capitalismo monopolista quanto ao socialismo estatal em favor de comunidades autônomas. Ver perfil":
+            - /url: /ideologies/distributismo
+            - heading "Distributismo" [level=3]
+            - paragraph: Doutrina de inspiração cristã que defende a ampla distribuição da propriedade e da pequena produção, opondo-se tanto ao capitalismo monopolista quanto ao socialismo estatal em favor de comunidades autônomas.
+            - text: Ver perfil
+        - listitem:
+          - link "Distributismo Georgista Fusão do distributismo com o georgismo que defende a ampla difusão da propriedade familiar produtiva aliada à captura da renda da terra via imposto fundiário, impedindo tanto o monopólio latifundiário quanto a hipertrofia coletivista do Estado. Ver perfil":
+            - /url: /ideologies/distributismo-georgista
+            - heading "Distributismo Georgista" [level=3]
+            - paragraph: Fusão do distributismo com o georgismo que defende a ampla difusão da propriedade familiar produtiva aliada à captura da renda da terra via imposto fundiário, impedindo tanto o monopólio latifundiário quanto a hipertrofia coletivista do Estado.
+            - text: Ver perfil
+        - listitem:
+          - link "Ecoconservadorismo Vertente que une conservadorismo e proteção ambiental, defendendo a preservação da natureza como parte da tradição e do patrimônio a ser transmitido às gerações futuras, com prudência diante de mudanças. Ver perfil":
+            - /url: /ideologies/ecoconservadorismo
+            - heading "Ecoconservadorismo" [level=3]
+            - paragraph: Vertente que une conservadorismo e proteção ambiental, defendendo a preservação da natureza como parte da tradição e do patrimônio a ser transmitido às gerações futuras, com prudência diante de mudanças.
+            - text: Ver perfil
+        - listitem:
+          - link "Econacionalismo Corrente que liga defesa do meio ambiente à soberania nacional, priorizando a proteção dos recursos naturais e da terra do próprio país e o desenvolvimento sustentável dentro das fronteiras nacionais. Ver perfil":
+            - /url: /ideologies/econacionalismo
+            - heading "Econacionalismo" [level=3]
+            - paragraph: Corrente que liga defesa do meio ambiente à soberania nacional, priorizando a proteção dos recursos naturais e da terra do próprio país e o desenvolvimento sustentável dentro das fronteiras nacionais.
+            - text: Ver perfil
+        - listitem:
+          - link "Federalismo Doutrina que organiza o Estado pela divisão constitucional de poder entre um governo central e unidades regionais autônomas, como cantões ou estados, com competências próprias, cortes independentes e freios mútuos contra a concentração excessiva de poder. Ver perfil":
+            - /url: /ideologies/federalismo
+            - heading "Federalismo" [level=3]
+            - paragraph: Doutrina que organiza o Estado pela divisão constitucional de poder entre um governo central e unidades regionais autônomas, como cantões ou estados, com competências próprias, cortes independentes e freios mútuos contra a concentração excessiva de poder.
+            - text: Ver perfil
+        - listitem:
+          - link "Iluminismo Movimento intelectual europeu do século XVIII que defende a razão, a ciência e a tolerância contra a superstição e o absolutismo, com direitos naturais, separação de poderes, educação e progresso como base da sociedade. Ver perfil":
+            - /url: /ideologies/iluminismo
+            - heading "Iluminismo" [level=3]
+            - paragraph: Movimento intelectual europeu do século XVIII que defende a razão, a ciência e a tolerância contra a superstição e o absolutismo, com direitos naturais, separação de poderes, educação e progresso como base da sociedade.
+            - text: Ver perfil
+        - listitem:
+          - link "Liberalismo Islâmico Corrente reformista que reinterpreta o islã à luz da razão, dos direitos humanos e do pluralismo, defendendo democracia, igualdade de gênero, Estado não confessional e liberdade de consciência, na linha modernista de Muhammad Abduh. Ver perfil":
+            - /url: /ideologies/liberalismo-islamico
+            - heading "Liberalismo Islâmico" [level=3]
+            - paragraph: Corrente reformista que reinterpreta o islã à luz da razão, dos direitos humanos e do pluralismo, defendendo democracia, igualdade de gênero, Estado não confessional e liberdade de consciência, na linha modernista de Muhammad Abduh.
+            - text: Ver perfil
+        - listitem:
+          - link "Liberalismo New Deal Corrente do Partido Democrata nascida com Franklin Roosevelt que une regulação financeira, seguridade social, obras públicas e sindicatos fortes a patriotismo cívico, capitalismo preservado e liderança internacional. Ver perfil":
+            - /url: /ideologies/liberalismo-new-deal
+            - heading "Liberalismo New Deal" [level=3]
+            - paragraph: Corrente do Partido Democrata nascida com Franklin Roosevelt que une regulação financeira, seguridade social, obras públicas e sindicatos fortes a patriotismo cívico, capitalismo preservado e liderança internacional.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Liberalismo Pragmático Liberalismo que defende democracia, direitos individuais e economia de mercado, mas testa cada política pela evidência: aceita regulação, rede de proteção e intervenção pontual quando corrigem falhas de mercado, como na Terceira Via de Clinton. Ver perfil"':
+            - /url: /ideologies/liberalismo-pragmatico
+            - heading "Liberalismo Pragmático" [level=3]
+            - paragraph: "Liberalismo que defende democracia, direitos individuais e economia de mercado, mas testa cada política pela evidência: aceita regulação, rede de proteção e intervenção pontual quando corrigem falhas de mercado, como na Terceira Via de Clinton."
+            - text: Ver perfil
+        - listitem:
+          - link "Liberalismo Verde Corrente que une liberdade individual, mercado e democracia à agenda ecológica, defendendo sustentabilidade, direitos e inovação para conciliar a prosperidade econômica com a proteção efetiva do meio ambiente. Ver perfil":
+            - /url: /ideologies/liberalismo-verde
+            - heading "Liberalismo Verde" [level=3]
+            - paragraph: Corrente que une liberdade individual, mercado e democracia à agenda ecológica, defendendo sustentabilidade, direitos e inovação para conciliar a prosperidade econômica com a proteção efetiva do meio ambiente.
+            - text: Ver perfil
+        - listitem:
+          - link "Monarquismo Constitucional Defesa da monarquia como símbolo de unidade e continuidade, com o rei submetido à constituição e ao parlamento, unindo tradição e estabilidade institucional à democracia representativa e ao Estado de direito. Ver perfil":
+            - /url: /ideologies/monarquismo-constitucional
+            - heading "Monarquismo Constitucional" [level=3]
+            - paragraph: Defesa da monarquia como símbolo de unidade e continuidade, com o rei submetido à constituição e ao parlamento, unindo tradição e estabilidade institucional à democracia representativa e ao Estado de direito.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacionalismo Cívico Nacionalismo baseado na cidadania e em valores compartilhados, e não na etnia, que define a nação pela adesão às leis e instituições comuns, aberto a todos que aceitem seus princípios democráticos e cívicos. Ver perfil":
+            - /url: /ideologies/nacionalismo-civico
+            - heading "Nacionalismo Cívico" [level=3]
+            - paragraph: Nacionalismo baseado na cidadania e em valores compartilhados, e não na etnia, que define a nação pela adesão às leis e instituições comuns, aberto a todos que aceitem seus princípios democráticos e cívicos.
+            - text: Ver perfil
+        - listitem:
+          - link "Neomalthusianismo Corrente que propõe enfrentar a pressão populacional sobre os recursos com contracepção, planejamento familiar voluntário, educação sexual e autonomia reprodutiva das mulheres, aliados a saúde pública e desenvolvimento. Ver perfil":
+            - /url: /ideologies/neomalthusianismo
+            - heading "Neomalthusianismo" [level=3]
+            - paragraph: Corrente que propõe enfrentar a pressão populacional sobre os recursos com contracepção, planejamento familiar voluntário, educação sexual e autonomia reprodutiva das mulheres, aliados a saúde pública e desenvolvimento.
+            - text: Ver perfil
+        - listitem:
+          - link "Ordoliberalismo Vertente liberal alemã da Escola de Friburgo (Eucken, Rüstow, Müller-Armack) que defende o livre mercado dentro de regras firmes garantidas pelo Estado, contra monopólios e planejamento central, com base ética cristã e política social, origem da economia social de mercado. Ver perfil":
+            - /url: /ideologies/ordoliberalismo
+            - heading "Ordoliberalismo" [level=3]
+            - paragraph: Vertente liberal alemã da Escola de Friburgo (Eucken, Rüstow, Müller-Armack) que defende o livre mercado dentro de regras firmes garantidas pelo Estado, contra monopólios e planejamento central, com base ética cristã e política social, origem da economia social de mercado.
+            - text: Ver perfil
+        - listitem:
+          - link "Pacifismo Militar Neutralidade armada que recusa alianças, intervenções e projeção externa, mas sustenta forças armadas robustas, serviço obrigatório e defesa territorial preparada, tratando o poderio militar como garantia de não ser arrastado a guerras alheias. Ver perfil":
+            - /url: /ideologies/pacifismo-militar
+            - heading "Pacifismo Militar" [level=3]
+            - paragraph: Neutralidade armada que recusa alianças, intervenções e projeção externa, mas sustenta forças armadas robustas, serviço obrigatório e defesa territorial preparada, tratando o poderio militar como garantia de não ser arrastado a guerras alheias.
+            - text: Ver perfil
+        - listitem:
+          - link "Pragmatismo Postura política que avalia propostas pelos resultados práticos que produzem, e não pela fidelidade a um dogma ideológico, combinando medidas de mercado, regulação e políticas sociais conforme a evidência e o contexto de cada problema. Ver perfil":
+            - /url: /ideologies/pragmatismo
+            - heading "Pragmatismo" [level=3]
+            - paragraph: Postura política que avalia propostas pelos resultados práticos que produzem, e não pela fidelidade a um dogma ideológico, combinando medidas de mercado, regulação e políticas sociais conforme a evidência e o contexto de cada problema.
+            - text: Ver perfil
+        - listitem:
+          - link "Republicanismo Tradição política que valoriza a soberania popular, a virtude cívica e o império da lei, defendendo o autogoverno dos cidadãos, a separação de poderes e a proteção contra a tirania e a corrupção do poder. Ver perfil":
+            - /url: /ideologies/republicanismo
+            - heading "Republicanismo" [level=3]
+            - paragraph: Tradição política que valoriza a soberania popular, a virtude cívica e o império da lei, defendendo o autogoverno dos cidadãos, a separação de poderes e a proteção contra a tirania e a corrupção do poder.
+            - text: Ver perfil
+        - listitem:
+          - link "Republicanismo Kantiano Filosofia política de Kant, que funda a legitimidade do Estado na autonomia da razão e no império da lei, defendendo um republicanismo representativo moderado e uma federação de Estados livres como caminho para a paz perpétua. Ver perfil":
+            - /url: /ideologies/republicanismo-kantiano
+            - heading "Republicanismo Kantiano" [level=3]
+            - paragraph: Filosofia política de Kant, que funda a legitimidade do Estado na autonomia da razão e no império da lei, defendendo um republicanismo representativo moderado e uma federação de Estados livres como caminho para a paz perpétua.
+            - text: Ver perfil
+        - listitem:
+          - link "Republicanismo Maquiavélico Corrente republicana inspirada nos Discursos sobre a Primeira Década de Tito Lívio, de Maquiavel. Defende a liberdade cívica por meio de leis, participação popular e conflito regulado entre grupos, aceitando medidas excepcionais para preservar a república. Ver perfil":
+            - /url: /ideologies/republicanismo-maquiavelico
+            - heading "Republicanismo Maquiavélico" [level=3]
+            - paragraph: Corrente republicana inspirada nos Discursos sobre a Primeira Década de Tito Lívio, de Maquiavel. Defende a liberdade cívica por meio de leis, participação popular e conflito regulado entre grupos, aceitando medidas excepcionais para preservar a república.
+            - text: Ver perfil
+        - listitem:
+          - link "Social-Democracia Brasileira Corrente do PSDB fundado em 1988 por Covas, Montoro e FHC, que une economia de mercado, Estado social, reforma do Estado e responsabilidade fiscal a parlamentarismo e moderação nos costumes. Ver perfil":
+            - /url: /ideologies/social-democracia-brasileira
+            - heading "Social-Democracia Brasileira" [level=3]
+            - paragraph: Corrente do PSDB fundado em 1988 por Covas, Montoro e FHC, que une economia de mercado, Estado social, reforma do Estado e responsabilidade fiscal a parlamentarismo e moderação nos costumes.
+            - text: Ver perfil
+        - listitem:
+          - link "Social-Democracia Conservadora Corrente que mantém o Estado de bem-estar, os sindicatos e a economia mista, mas defende família, nação, ordem pública e restrição à imigração, como na social-democracia dinamarquesa de Mette Frederiksen. Ver perfil":
+            - /url: /ideologies/social-democracia-conservadora
+            - heading "Social-Democracia Conservadora" [level=3]
+            - paragraph: Corrente que mantém o Estado de bem-estar, os sindicatos e a economia mista, mas defende família, nação, ordem pública e restrição à imigração, como na social-democracia dinamarquesa de Mette Frederiksen.
+            - text: Ver perfil
+        - listitem:
+          - link "Socratismo Método dialético de Sócrates, que examina crenças pelo questionamento racional e busca da virtude, desconfia da política de massas e da retórica dos demagogos, mas mantém respeito ao império da lei da cidade. Ver perfil":
+            - /url: /ideologies/socratismo
+            - heading "Socratismo" [level=3]
+            - paragraph: Método dialético de Sócrates, que examina crenças pelo questionamento racional e busca da virtude, desconfia da política de massas e da retórica dos demagogos, mas mantém respeito ao império da lei da cidade.
+            - text: Ver perfil
+        - listitem:
+          - link "Tecnocracia Modelo de governo em que decisões são tomadas por especialistas e critérios técnicos e científicos, confiando a engenheiros, economistas e cientistas a gestão racional e eficiente do Estado e da economia. Ver perfil":
+            - /url: /ideologies/tecnocracia
+            - heading "Tecnocracia" [level=3]
+            - paragraph: Modelo de governo em que decisões são tomadas por especialistas e critérios técnicos e científicos, confiando a engenheiros, economistas e cientistas a gestão racional e eficiente do Estado e da economia.
+            - text: Ver perfil
+        - listitem:
+          - link "Terceira Via Renovação da centro-esquerda nos anos 1990, com Blair, Clinton e Giddens, que aceita o mercado globalizado e a disciplina fiscal, troca assistência por ativação para o trabalho, é dura com o crime e apoia intervenções liberais. Ver perfil":
+            - /url: /ideologies/terceira-via
+            - heading "Terceira Via" [level=3]
+            - paragraph: Renovação da centro-esquerda nos anos 1990, com Blair, Clinton e Giddens, que aceita o mercado globalizado e a disciplina fiscal, troca assistência por ativação para o trabalho, é dura com o crime e apoia intervenções liberais.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Tridemismo Doutrina republicana de Sun Yat-sen, articulada nos Três Princípios do Povo: nacionalismo, democracia e bem-estar do povo. Seu programa previa tutela política transitória, soberania popular e reformas sociais e econômicas. Ver perfil"':
+            - /url: /ideologies/tridemismo
+            - heading "Tridemismo" [level=3]
+            - paragraph: "Doutrina republicana de Sun Yat-sen, articulada nos Três Princípios do Povo: nacionalismo, democracia e bem-estar do povo. Seu programa previa tutela política transitória, soberania popular e reformas sociais e econômicas."
+            - text: Ver perfil
+    - region "Direita":
+      - heading "Direita" [level=2]
+      - paragraph: Conservadorismo, liberalismo econômico e nacionalismo moderado dentro da democracia liberal.
+      - text: 61 correntes
+      - list:
+        - listitem:
+          - link "Aceleracionismo Cristão Corrente que funde cristianismo tradicional e aceleração tecnológica, defendendo que inteligência artificial, indústria e poder nacional sejam impulsionados sem freios como missão civilizatória contra a decadência secular. Ver perfil":
+            - /url: /ideologies/aceleracionismo-cristao
+            - heading "Aceleracionismo Cristão" [level=3]
+            - paragraph: Corrente que funde cristianismo tradicional e aceleração tecnológica, defendendo que inteligência artificial, indústria e poder nacional sejam impulsionados sem freios como missão civilizatória contra a decadência secular.
+            - text: Ver perfil
+        - listitem:
+          - link "Agrarianismo Tradição republicana que idealiza o pequeno agricultor proprietário como base da virtude cívica e da liberdade, defendendo ampla distribuição de terras, governo limitado e descentralizado, e desconfiança de bancos, dívida pública, indústria e grandes cidades. Ver perfil":
+            - /url: /ideologies/agrarianismo
+            - heading "Agrarianismo" [level=3]
+            - paragraph: Tradição republicana que idealiza o pequeno agricultor proprietário como base da virtude cívica e da liberdade, defendendo ampla distribuição de terras, governo limitado e descentralizado, e desconfiança de bancos, dívida pública, indústria e grandes cidades.
+            - text: Ver perfil
+        - listitem:
+          - link "Aristocratismo Doutrina do governo dos melhores, que confia o poder a uma minoria qualificada por virtude, educação ou nascimento, rejeitando a igualdade política e o governo da maioria, que vê como risco para a competência. Ver perfil":
+            - /url: /ideologies/aristocratismo
+            - heading "Aristocratismo" [level=3]
+            - paragraph: Doutrina do governo dos melhores, que confia o poder a uma minoria qualificada por virtude, educação ou nascimento, rejeitando a igualdade política e o governo da maioria, que vê como risco para a competência.
+            - text: Ver perfil
+        - listitem:
+          - link "Aristocratismo Nietzschiano Corrente de matriz nietzschiana que rejeita a moral igualitária como ressentimento de rebanho, defendendo hierarquia de valores, criação aristócrata de sentido e afirmação trágica da vida após a morte de Deus. Ver perfil":
+            - /url: /ideologies/aristocratismo-nietzschiano
+            - heading "Aristocratismo Nietzschiano" [level=3]
+            - paragraph: Corrente de matriz nietzschiana que rejeita a moral igualitária como ressentimento de rebanho, defendendo hierarquia de valores, criação aristócrata de sentido e afirmação trágica da vida após a morte de Deus.
+            - text: Ver perfil
+        - listitem:
+          - link "Aristotelismo Filosofia política de Aristóteles, que defende uma constituição mista de elementos monárquicos, aristocráticos e populares para evitar tanto a tirania quanto a democracia radical, reservando a cidadania plena a quem tem virtude, propriedade e formação para deliberar. Ver perfil":
+            - /url: /ideologies/aristotelismo
+            - heading "Aristotelismo" [level=3]
+            - paragraph: Filosofia política de Aristóteles, que defende uma constituição mista de elementos monárquicos, aristocráticos e populares para evitar tanto a tirania quanto a democracia radical, reservando a cidadania plena a quem tem virtude, propriedade e formação para deliberar.
+            - text: Ver perfil
+        - listitem:
+          - link "Ateísmo Tradicionalista Conservadorismo integralmente secular que rejeita fé e clero, mas defende hierarquia, família, autoridade, nação e costumes herdados como bens civilizatórios, tratando a moral tradicional como necessidade social e não como mandamento divino. Ver perfil":
+            - /url: /ideologies/ateismo-tradicionalista
+            - heading "Ateísmo Tradicionalista" [level=3]
+            - paragraph: Conservadorismo integralmente secular que rejeita fé e clero, mas defende hierarquia, família, autoridade, nação e costumes herdados como bens civilizatórios, tratando a moral tradicional como necessidade social e não como mandamento divino.
+            - text: Ver perfil
+        - listitem:
+          - link "Atlantismo Doutrina geopolítica da aliança entre EUA, Canadá e Europa em torno da OTAN e da UE, que defende a expansão da aliança para o leste e o uso do poder militar ocidental para difundir a democracia liberal e o livre mercado contra Rússia e China. Ver perfil":
+            - /url: /ideologies/atlantismo
+            - heading "Atlantismo" [level=3]
+            - paragraph: Doutrina geopolítica da aliança entre EUA, Canadá e Europa em torno da OTAN e da UE, que defende a expansão da aliança para o leste e o uso do poder militar ocidental para difundir a democracia liberal e o livre mercado contra Rússia e China.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Autoritarismo Libertário Doutrina que separa autoridade política de controle social: defende poder executivo concentrado e não eleito, insulado do voto popular, que em troca garante liberdade civil, privacidade e mínima interferência do Estado nos costumes e na vida privada do indivíduo. Ver perfil"':
+            - /url: /ideologies/autoritarismo-libertario
+            - heading "Autoritarismo Libertário" [level=3]
+            - paragraph: "Doutrina que separa autoridade política de controle social: defende poder executivo concentrado e não eleito, insulado do voto popular, que em troca garante liberdade civil, privacidade e mínima interferência do Estado nos costumes e na vida privada do indivíduo."
+            - text: Ver perfil
+        - listitem:
+          - link "Autoritarismo Modernizador Modelo inspirado no regime de Park Chung-hee, que combina industrialização dirigida pelo Estado, crédito a empresas privadas e planejamento com repressão política anticomunista. Ver perfil":
+            - /url: /ideologies/autoritarismo-modernizador
+            - heading "Autoritarismo Modernizador" [level=3]
+            - paragraph: Modelo inspirado no regime de Park Chung-hee, que combina industrialização dirigida pelo Estado, crédito a empresas privadas e planejamento com repressão política anticomunista.
+            - text: Ver perfil
+        - listitem:
+          - link "Capitalismo Sistema econômico baseado na propriedade privada, no livre mercado e na busca do lucro, em que a produção e os preços são regulados pela concorrência e pela oferta e demanda, com iniciativa individual como motor. Ver perfil":
+            - /url: /ideologies/capitalismo
+            - heading "Capitalismo" [level=3]
+            - paragraph: Sistema econômico baseado na propriedade privada, no livre mercado e na busca do lucro, em que a produção e os preços são regulados pela concorrência e pela oferta e demanda, com iniciativa individual como motor.
+            - text: Ver perfil
+        - listitem:
+          - link "Capitalismo Industrial Capitalismo dos grandes industriais como Henry Ford, Rockefeller e Thomas Edison, que exalta a fábrica, a produção em massa, a invenção e o empreendedor, com moral do trabalho, família tradicional e mínima interferência do Estado. Ver perfil":
+            - /url: /ideologies/capitalismo-industrial
+            - heading "Capitalismo Industrial" [level=3]
+            - paragraph: Capitalismo dos grandes industriais como Henry Ford, Rockefeller e Thomas Edison, que exalta a fábrica, a produção em massa, a invenção e o empreendedor, com moral do trabalho, família tradicional e mínima interferência do Estado.
+            - text: Ver perfil
+        - listitem:
+          - link "Catolicismo Doutrina social da Igreja Católica, que combina moral tradicionalista e defesa da vida com preocupação pela justiça social, subsidiariedade e dignidade do trabalhador, sob a autoridade hierárquica do papado e do direito canônico. Ver perfil":
+            - /url: /ideologies/catolicismo
+            - heading "Catolicismo" [level=3]
+            - paragraph: Doutrina social da Igreja Católica, que combina moral tradicionalista e defesa da vida com preocupação pela justiça social, subsidiariedade e dignidade do trabalhador, sob a autoridade hierárquica do papado e do direito canônico.
+            - text: Ver perfil
+        - listitem:
+          - link "Cesarismo Tradição de poder imperial romano que, de Júlio César a Augusto, Nero, Marco Aurélio e Justiniano, concentra exército, lei e administração no governante, preservando instituições, abastecimento popular e soberania sobre império diverso. Ver perfil":
+            - /url: /ideologies/cesarismo
+            - heading "Cesarismo" [level=3]
+            - paragraph: Tradição de poder imperial romano que, de Júlio César a Augusto, Nero, Marco Aurélio e Justiniano, concentra exército, lei e administração no governante, preservando instituições, abastecimento popular e soberania sobre império diverso.
+            - text: Ver perfil
+        - listitem:
+          - link "Confucionismo Doutrina que funda a ordem política na virtude do governante, na hierarquia ritual e na piedade filial, defendendo mérito burocrático e educação moral em vez de leis coercitivas ou participação popular. Ver perfil":
+            - /url: /ideologies/confucionismo
+            - heading "Confucionismo" [level=3]
+            - paragraph: Doutrina que funda a ordem política na virtude do governante, na hierarquia ritual e na piedade filial, defendendo mérito burocrático e educação moral em vez de leis coercitivas ou participação popular.
+            - text: Ver perfil
+        - listitem:
+          - link "Conservadorismo Tradição política que valoriza a ordem, os costumes, a família e as instituições consolidadas, preferindo a mudança gradual e prudente à ruptura, com base na experiência histórica e no ceticismo diante de utopias. Ver perfil":
+            - /url: /ideologies/conservadorismo
+            - heading "Conservadorismo" [level=3]
+            - paragraph: Tradição política que valoriza a ordem, os costumes, a família e as instituições consolidadas, preferindo a mudança gradual e prudente à ruptura, com base na experiência histórica e no ceticismo diante de utopias.
+            - text: Ver perfil
+        - listitem:
+          - link "Conservadorismo Americano Plataforma do Partido Republicano, que combina segurança de fronteira e deportações, tarifas e protecionismo industrial, corte de impostos e desregulação, defesa do porte de armas, valores cristãos e devolução do aborto aos estados. Ver perfil":
+            - /url: /ideologies/conservadorismo-americano
+            - heading "Conservadorismo Americano" [level=3]
+            - paragraph: Plataforma do Partido Republicano, que combina segurança de fronteira e deportações, tarifas e protecionismo industrial, corte de impostos e desregulação, defesa do porte de armas, valores cristãos e devolução do aborto aos estados.
+            - text: Ver perfil
+        - listitem:
+          - link "Conservadorismo Cristão Vertente que fundamenta a política na moral e na tradição cristãs, defendendo família, vida e valores religiosos dentro da democracia, com ênfase na preservação dos costumes e da herança cultural do povo. Ver perfil":
+            - /url: /ideologies/conservadorismo-cristao
+            - heading "Conservadorismo Cristão" [level=3]
+            - paragraph: Vertente que fundamenta a política na moral e na tradição cristãs, defendendo família, vida e valores religiosos dentro da democracia, com ênfase na preservação dos costumes e da herança cultural do povo.
+            - text: Ver perfil
+        - listitem:
+          - link "Conservadorismo Nacional Corrente que une valores tradicionais, família e religião a um nacionalismo cultural forte, defendendo soberania, fronteiras e identidade do povo dentro da democracia, com clara desconfiança do globalismo. Ver perfil":
+            - /url: /ideologies/conservadorismo-nacional
+            - heading "Conservadorismo Nacional" [level=3]
+            - paragraph: Corrente que une valores tradicionais, família e religião a um nacionalismo cultural forte, defendendo soberania, fronteiras e identidade do povo dentro da democracia, com clara desconfiança do globalismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Conservadorismo Paternalista Tradição conservadora que aceita reformas sociais e proteção aos mais pobres para preservar a coesão nacional, vendo as elites como responsáveis pelo bem-estar do povo e pela harmonia entre as classes. Ver perfil":
+            - /url: /ideologies/conservadorismo-paternalista
+            - heading "Conservadorismo Paternalista" [level=3]
+            - paragraph: Tradição conservadora que aceita reformas sociais e proteção aos mais pobres para preservar a coesão nacional, vendo as elites como responsáveis pelo bem-estar do povo e pela harmonia entre as classes.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Conservadorismo Pragmático Conservadorismo que protege instituições, família e ordem sem rigidez doutrinária: admite reformas graduais e concessões para conservar o essencial, na linha de Burke e Disraeli, em vez de restaurar um passado ideal. Ver perfil"':
+            - /url: /ideologies/conservadorismo-pragmatico
+            - heading "Conservadorismo Pragmático" [level=3]
+            - paragraph: "Conservadorismo que protege instituições, família e ordem sem rigidez doutrinária: admite reformas graduais e concessões para conservar o essencial, na linha de Burke e Disraeli, em vez de restaurar um passado ideal."
+            - text: Ver perfil
+        - listitem:
+          - link "Conservadorismo Reaganista Corrente conservadora americana ligada a Ronald Reagan. Combina redução de impostos e do poder econômico federal, defesa da livre iniciativa e dos valores religiosos tradicionais com anticomunismo e fortalecimento militar. Ver perfil":
+            - /url: /ideologies/conservadorismo-reaganista
+            - heading "Conservadorismo Reaganista" [level=3]
+            - paragraph: Corrente conservadora americana ligada a Ronald Reagan. Combina redução de impostos e do poder econômico federal, defesa da livre iniciativa e dos valores religiosos tradicionais com anticomunismo e fortalecimento militar.
+            - text: Ver perfil
+        - listitem:
+          - link "Conservadorismo Secular Vertente conservadora que defende ordem, tradição e instituições sem fundamentá-las na religião, apoiando valores culturais e estabilidade social a partir de argumentos laicos, históricos e pragmáticos. Ver perfil":
+            - /url: /ideologies/conservadorismo-secular
+            - heading "Conservadorismo Secular" [level=3]
+            - paragraph: Vertente conservadora que defende ordem, tradição e instituições sem fundamentá-las na religião, apoiando valores culturais e estabilidade social a partir de argumentos laicos, históricos e pragmáticos.
+            - text: Ver perfil
+        - listitem:
+          - link "Democracia Ateniense Ideologia da pólis clássica, que defende soberania popular direta por assembleia e sorteio de cargos entre cidadãos iguais, mas reserva a cidadania a uma minoria de sangue, excluindo mulheres, estrangeiros e escravos. Ver perfil":
+            - /url: /ideologies/democracia-ateniense
+            - heading "Democracia Ateniense" [level=3]
+            - paragraph: Ideologia da pólis clássica, que defende soberania popular direta por assembleia e sorteio de cargos entre cidadãos iguais, mas reserva a cidadania a uma minoria de sangue, excluindo mulheres, estrangeiros e escravos.
+            - text: Ver perfil
+        - listitem:
+          - link "Democracia Intervencionista Doutrina de política externa associada à estratégia dos EUA de 2002. Defende força militar e ação preventiva contra ameaças, além da promoção internacional da democracia, de mercados abertos e de alianças lideradas por Washington. Ver perfil":
+            - /url: /ideologies/democracia-intervencionista
+            - heading "Democracia Intervencionista" [level=3]
+            - paragraph: Doutrina de política externa associada à estratégia dos EUA de 2002. Defende força militar e ação preventiva contra ameaças, além da promoção internacional da democracia, de mercados abertos e de alianças lideradas por Washington.
+            - text: Ver perfil
+        - listitem:
+          - link "Democracia Islâmica Corrente que concilia islã e democracia eleitoral, com partidos religiosos conservadores que disputam eleições, defendem economia de mercado e valores muçulmanos na vida pública, como o AKP turco em seus primeiros anos e o Ennahda tunisiano. Ver perfil":
+            - /url: /ideologies/democracia-islamica
+            - heading "Democracia Islâmica" [level=3]
+            - paragraph: Corrente que concilia islã e democracia eleitoral, com partidos religiosos conservadores que disputam eleições, defendem economia de mercado e valores muçulmanos na vida pública, como o AKP turco em seus primeiros anos e o Ennahda tunisiano.
+            - text: Ver perfil
+        - listitem:
+          - link "Democracia Nacional Corrente que combina soberania popular e instituições democráticas com nacionalismo cultural forte, priorizando os interesses e a identidade da nação sobre compromissos supranacionais e o multiculturalismo. Ver perfil":
+            - /url: /ideologies/democracia-nacional
+            - heading "Democracia Nacional" [level=3]
+            - paragraph: Corrente que combina soberania popular e instituições democráticas com nacionalismo cultural forte, priorizando os interesses e a identidade da nação sobre compromissos supranacionais e o multiculturalismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Direita alternativa Vertente da direita radical, nacionalista e antiglobalista, que enfatiza a identidade cultural, a crítica à imigração e o combate ao politicamente correto, sem adotar posições de base racial. Ver perfil":
+            - /url: /ideologies/alt-lite
+            - heading "Direita alternativa" [level=3]
+            - paragraph: Vertente da direita radical, nacionalista e antiglobalista, que enfatiza a identidade cultural, a crítica à imigração e o combate ao politicamente correto, sem adotar posições de base racial.
+            - text: Ver perfil
+        - listitem:
+          - link "Ecocapitalismo Corrente que busca resolver a crise ambiental pelo mercado, usando precificação, tecnologia verde e incentivos para tornar a proteção da natureza lucrativa e compatível com o crescimento e a livre iniciativa. Ver perfil":
+            - /url: /ideologies/ecocapitalismo
+            - heading "Ecocapitalismo" [level=3]
+            - paragraph: Corrente que busca resolver a crise ambiental pelo mercado, usando precificação, tecnologia verde e incentivos para tornar a proteção da natureza lucrativa e compatível com o crescimento e a livre iniciativa.
+            - text: Ver perfil
+        - listitem:
+          - link "Estoicismo Filosofia greco-romana que ensina viver conforme a razão e a natureza, aceitando com serenidade o que não se controla, cultivando dever, autodomínio e virtude acima do prazer, e reconhecendo uma lei natural comum a toda a humanidade racional. Ver perfil":
+            - /url: /ideologies/estoicismo
+            - heading "Estoicismo" [level=3]
+            - paragraph: Filosofia greco-romana que ensina viver conforme a razão e a natureza, aceitando com serenidade o que não se controla, cultivando dever, autodomínio e virtude acima do prazer, e reconhecendo uma lei natural comum a toda a humanidade racional.
+            - text: Ver perfil
+        - listitem:
+          - link "Imperialismo Federalista Projeto de império dinástico organizado como federação de nacionalidades, com autonomia regional, parlamentos locais e línguas reconhecidas, mantendo coroa hereditária, exército unificado e afirmação militar da grandeza imperial. Ver perfil":
+            - /url: /ideologies/imperialismo-federalista
+            - heading "Imperialismo Federalista" [level=3]
+            - paragraph: Projeto de império dinástico organizado como federação de nacionalidades, com autonomia regional, parlamentos locais e línguas reconhecidas, mantendo coroa hereditária, exército unificado e afirmação militar da grandeza imperial.
+            - text: Ver perfil
+        - listitem:
+          - link "Imperialismo Pluralista Ordem imperial autocrática e militarizada que expande território por conquista, mas governa os povos conquistados por autonomia comunitária, tolerância religiosa administrada e tributo, sem exigir assimilação cultural dos súditos. Ver perfil":
+            - /url: /ideologies/imperialismo-pluralista
+            - heading "Imperialismo Pluralista" [level=3]
+            - paragraph: Ordem imperial autocrática e militarizada que expande território por conquista, mas governa os povos conquistados por autonomia comunitária, tolerância religiosa administrada e tributo, sem exigir assimilação cultural dos súditos.
+            - text: Ver perfil
+        - listitem:
+          - link "Islamismo Movimento político que defende um Estado regido pela sharia e pela identidade islâmica, nascido com a Irmandade Muçulmana de Hassan al-Banna e Sayyid Qutb, unindo ativismo de massas, assistência social religiosa e rejeição do secularismo ocidental. Ver perfil":
+            - /url: /ideologies/islamismo
+            - heading "Islamismo" [level=3]
+            - paragraph: Movimento político que defende um Estado regido pela sharia e pela identidade islâmica, nascido com a Irmandade Muçulmana de Hassan al-Banna e Sayyid Qutb, unindo ativismo de massas, assistência social religiosa e rejeição do secularismo ocidental.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Liberal-Desenvolvimentismo Modelo dos Tigres Asiáticos (Singapura, Coreia do Sul, Taiwan, Hong Kong): defende livre mercado, comércio exterior e iniciativa privada como motores do crescimento, combinados a um Estado tecnocrático ativo que planeja infraestrutura, educação e industrialização estratégica, sem chegar ao protecionismo fechado nem ao controle autoritário duro. Ver perfil"':
+            - /url: /ideologies/liberal-desenvolvimentismo
+            - heading "Liberal-Desenvolvimentismo" [level=3]
+            - paragraph: "Modelo dos Tigres Asiáticos (Singapura, Coreia do Sul, Taiwan, Hong Kong): defende livre mercado, comércio exterior e iniciativa privada como motores do crescimento, combinados a um Estado tecnocrático ativo que planeja infraestrutura, educação e industrialização estratégica, sem chegar ao protecionismo fechado nem ao controle autoritário duro."
+            - text: Ver perfil
+        - listitem:
+          - link "Liberalismo Tradição política que coloca a liberdade individual no centro, defendendo direitos, tolerância, Estado de direito, economia de mercado e limites ao poder, com o governo submetido ao consentimento dos cidadãos. Ver perfil":
+            - /url: /ideologies/liberalismo
+            - heading "Liberalismo" [level=3]
+            - paragraph: Tradição política que coloca a liberdade individual no centro, defendendo direitos, tolerância, Estado de direito, economia de mercado e limites ao poder, com o governo submetido ao consentimento dos cidadãos.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Liberalismo Aristocrático Liberalismo anterior à democracia de massas: garante liberdade civil, propriedade, imprensa livre e Estado enxuto, mas restringe o voto a proprietários instruídos, temendo que a soberania popular ilimitada destrua as próprias liberdades que protege. Ver perfil"':
+            - /url: /ideologies/liberalismo-aristocratico
+            - heading "Liberalismo Aristocrático" [level=3]
+            - paragraph: "Liberalismo anterior à democracia de massas: garante liberdade civil, propriedade, imprensa livre e Estado enxuto, mas restringe o voto a proprietários instruídos, temendo que a soberania popular ilimitada destrua as próprias liberdades que protege."
+            - text: Ver perfil
+        - listitem:
+          - link "Liberalismo Conservador Síntese que une o livre mercado e as liberdades econômicas à valorização da tradição, da ordem e das instituições, defendendo a mudança prudente e a estabilidade social dentro da moldura da democracia liberal. Ver perfil":
+            - /url: /ideologies/liberalismo-conservador
+            - heading "Liberalismo Conservador" [level=3]
+            - paragraph: Síntese que une o livre mercado e as liberdades econômicas à valorização da tradição, da ordem e das instituições, defendendo a mudança prudente e a estabilidade social dentro da moldura da democracia liberal.
+            - text: Ver perfil
+        - listitem:
+          - link "Malthusianismo Doutrina inspirada em Malthus que propõe conter o crescimento populacional por casamento tardio, educação e responsabilidade familiar, trocar a assistência aos pobres por incentivo ao trabalho e proteger a propriedade e a agricultura nacional. Ver perfil":
+            - /url: /ideologies/malthusianismo
+            - heading "Malthusianismo" [level=3]
+            - paragraph: Doutrina inspirada em Malthus que propõe conter o crescimento populacional por casamento tardio, educação e responsabilidade familiar, trocar a assistência aos pobres por incentivo ao trabalho e proteger a propriedade e a agricultura nacional.
+            - text: Ver perfil
+        - listitem:
+          - link "Mercantilismo Doutrina que combina livre iniciativa e concorrência no mercado interno com muralha tarifária externa, subsídio à indústria nascente, banco nacional, infraestrutura pública e superávit comercial como fonte de poder nacional. Ver perfil":
+            - /url: /ideologies/mercantilismo
+            - heading "Mercantilismo" [level=3]
+            - paragraph: Doutrina que combina livre iniciativa e concorrência no mercado interno com muralha tarifária externa, subsídio à indústria nascente, banco nacional, infraestrutura pública e superávit comercial como fonte de poder nacional.
+            - text: Ver perfil
+        - listitem:
+          - link "Monarquismo Federalista Corrente que defende um monarca que governa de fato, como chefe do Executivo constitucional ou soberano absoluto, sobre uma federação de Estados ou regiões com amplo autogoverno, como o Império Alemão de 1871, os Emirados Árabes Unidos e a Malásia. Ver perfil":
+            - /url: /ideologies/monarquismo-federalista
+            - heading "Monarquismo Federalista" [level=3]
+            - paragraph: Corrente que defende um monarca que governa de fato, como chefe do Executivo constitucional ou soberano absoluto, sobre uma federação de Estados ou regiões com amplo autogoverno, como o Império Alemão de 1871, os Emirados Árabes Unidos e a Malásia.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Monarquismo Financeiro Modelo de microestado dinástico que troca soberania política por prosperidade: príncipe hereditário com poder real, tributação mínima, sigilo e serviços financeiros como base da renda, abertura a capital e residentes estrangeiros, sem exército próprio. Ver perfil"':
+            - /url: /ideologies/monarquismo-financeiro
+            - heading "Monarquismo Financeiro" [level=3]
+            - paragraph: "Modelo de microestado dinástico que troca soberania política por prosperidade: príncipe hereditário com poder real, tributação mínima, sigilo e serviços financeiros como base da renda, abertura a capital e residentes estrangeiros, sem exército próprio."
+            - text: Ver perfil
+        - listitem:
+          - 'link "Monarquismo Iluminista Absolutismo esclarecido: monarca soberano que governa pela razão, \"tudo para o povo, nada pelo povo\", com burocracia de especialistas, educação e reformas contra a Igreja e a nobreza, de Frederico II a José II. Ver perfil"':
+            - /url: /ideologies/monarquismo-iluminista
+            - heading "Monarquismo Iluminista" [level=3]
+            - paragraph: "Absolutismo esclarecido: monarca soberano que governa pela razão, \"tudo para o povo, nada pelo povo\", com burocracia de especialistas, educação e reformas contra a Igreja e a nobreza, de Frederico II a José II."
+            - text: Ver perfil
+        - listitem:
+          - link "Monarquismo Moderador Modelo monárquico constitucional brasileiro do século XIX, em que o imperador exerce um quarto Poder Moderador acima dos poderes Executivo, Legislativo e Judiciário, arbitrando conflitos e garantindo estabilidade sobre uma economia agrária. Ver perfil":
+            - /url: /ideologies/monarquismo-moderador
+            - heading "Monarquismo Moderador" [level=3]
+            - paragraph: Modelo monárquico constitucional brasileiro do século XIX, em que o imperador exerce um quarto Poder Moderador acima dos poderes Executivo, Legislativo e Judiciário, arbitrando conflitos e garantindo estabilidade sobre uma economia agrária.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacional-Liberalismo Corrente de direita que combina livre mercado, livre comércio e Estado limitado com forte identidade nacional, assimilação cultural, valores tradicionais e religiosos e defesa militar robusta. Ver perfil":
+            - /url: /ideologies/nacional-liberalismo
+            - heading "Nacional-Liberalismo" [level=3]
+            - paragraph: Corrente de direita que combina livre mercado, livre comércio e Estado limitado com forte identidade nacional, assimilação cultural, valores tradicionais e religiosos e defesa militar robusta.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacionalismo Ideologia que coloca a nação como valor central, defendendo sua soberania, unidade e identidade, e priorizando os interesses do povo e do Estado nacional diante de influências externas e do globalismo. Ver perfil":
+            - /url: /ideologies/nacionalismo
+            - heading "Nacionalismo" [level=3]
+            - paragraph: Ideologia que coloca a nação como valor central, defendendo sua soberania, unidade e identidade, e priorizando os interesses do povo e do Estado nacional diante de influências externas e do globalismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacionalismo Budista Corrente que une identidade étnica e fé budista theravada e vê a nação como guardiã do Dharma, atenta à influência de outras comunidades, como no nacionalismo cingalês do Sri Lanka e em movimentos de monges como o Ma Ba Tha e o 969, em Mianmar. Ver perfil":
+            - /url: /ideologies/nacionalismo-budista
+            - heading "Nacionalismo Budista" [level=3]
+            - paragraph: Corrente que une identidade étnica e fé budista theravada e vê a nação como guardiã do Dharma, atenta à influência de outras comunidades, como no nacionalismo cingalês do Sri Lanka e em movimentos de monges como o Ma Ba Tha e o 969, em Mianmar.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacionalismo Cultural Nacionalismo baseado na língua, nas tradições e na herança compartilhadas, e não na raça, que valoriza a identidade cultural do povo e a integração de quem adota esses valores, defendendo a coesão da nação. Ver perfil":
+            - /url: /ideologies/nacionalismo-cultural
+            - heading "Nacionalismo Cultural" [level=3]
+            - paragraph: Nacionalismo baseado na língua, nas tradições e na herança compartilhadas, e não na raça, que valoriza a identidade cultural do povo e a integração de quem adota esses valores, defendendo a coesão da nação.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacionalismo de Direita Prioriza soberania, identidade e coesão nacionais, associando-as a posições de direita como hierarquia social, conservadorismo cultural ou restrição da imigração. As correntes variam no papel do Estado e da economia, do livre mercado ao protecionismo nacional. Ver perfil":
+            - /url: /ideologies/nacionalismo-de-direita
+            - heading "Nacionalismo de Direita" [level=3]
+            - paragraph: Prioriza soberania, identidade e coesão nacionais, associando-as a posições de direita como hierarquia social, conservadorismo cultural ou restrição da imigração. As correntes variam no papel do Estado e da economia, do livre mercado ao protecionismo nacional.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Neocameralismo Doutrina de Curtis Yarvin que propõe governar o Estado como uma sociedade anônima: acionistas, um CEO soberano, cidadãos como clientes que podem sair, propriedade privada garantida e a política substituída por gestão. Ver perfil"':
+            - /url: /ideologies/neocameralismo
+            - heading "Neocameralismo" [level=3]
+            - paragraph: "Doutrina de Curtis Yarvin que propõe governar o Estado como uma sociedade anônima: acionistas, um CEO soberano, cidadãos como clientes que podem sair, propriedade privada garantida e a política substituída por gestão."
+            - text: Ver perfil
+        - listitem:
+          - link "Neoconservadorismo Corrente da direita que une livre mercado, valores tradicionais e política externa intervencionista, defendendo a promoção da democracia e dos interesses nacionais pela força militar e liderança global. Ver perfil":
+            - /url: /ideologies/neoconservadorismo
+            - heading "Neoconservadorismo" [level=3]
+            - paragraph: Corrente da direita que une livre mercado, valores tradicionais e política externa intervencionista, defendendo a promoção da democracia e dos interesses nacionais pela força militar e liderança global.
+            - text: Ver perfil
+        - listitem:
+          - link "Neoliberalismo Corrente que defende livre mercado, desregulamentação, privatizações e disciplina fiscal, reduzindo o papel econômico do Estado e confiando na concorrência e na estabilidade monetária como motores da prosperidade. Ver perfil":
+            - /url: /ideologies/neoliberalismo
+            - heading "Neoliberalismo" [level=3]
+            - paragraph: Corrente que defende livre mercado, desregulamentação, privatizações e disciplina fiscal, reduzindo o papel econômico do Estado e confiando na concorrência e na estabilidade monetária como motores da prosperidade.
+            - text: Ver perfil
+        - listitem:
+          - link "Neotomismo Revitalização do pensamento de Tomás de Aquino a partir de 1879 (Leão XIII), com Maritain e Gilson. Funda a política na lei natural, no bem comum e na subsidiariedade, defende governo misto, propriedade com função social e guerra justa, sob a fé católica. Ver perfil":
+            - /url: /ideologies/neotomismo
+            - heading "Neotomismo" [level=3]
+            - paragraph: Revitalização do pensamento de Tomás de Aquino a partir de 1879 (Leão XIII), com Maritain e Gilson. Funda a política na lei natural, no bem comum e na subsidiariedade, defende governo misto, propriedade com função social e guerra justa, sob a fé católica.
+            - text: Ver perfil
+        - listitem:
+          - link "Paleoconservadorismo Direita tradicionalista americana, de Buchanan e Kirk, que defende herança cristã, localismo e direitos dos estados, restrição imigratória, protecionismo e não intervencionismo, contra neoconservadores e o Estado gerencial. Ver perfil":
+            - /url: /ideologies/paleoconservadorismo
+            - heading "Paleoconservadorismo" [level=3]
+            - paragraph: Direita tradicionalista americana, de Buchanan e Kirk, que defende herança cristã, localismo e direitos dos estados, restrição imigratória, protecionismo e não intervencionismo, contra neoconservadores e o Estado gerencial.
+            - text: Ver perfil
+        - listitem:
+          - link "Platonismo Filosofia política de Platão, que confia o governo da cidade a uma elite filosófica formada pela virtude e pelo conhecimento, com forte controle sobre educação, propriedade e costumes em nome da justiça e da harmonia social. Ver perfil":
+            - /url: /ideologies/platonismo
+            - heading "Platonismo" [level=3]
+            - paragraph: Filosofia política de Platão, que confia o governo da cidade a uma elite filosófica formada pela virtude e pelo conhecimento, com forte controle sobre educação, propriedade e costumes em nome da justiça e da harmonia social.
+            - text: Ver perfil
+        - listitem:
+          - link "Populismo de Direita Corrente que mobiliza o povo contra elites políticas e culturais, combinando nacionalismo, restrição migratória, valores tradicionais, religião pública, segurança forte e pragmatismo econômico antiestablishment em torno de líderes personalistas. Ver perfil":
+            - /url: /ideologies/populismo-de-direita
+            - heading "Populismo de Direita" [level=3]
+            - paragraph: Corrente que mobiliza o povo contra elites políticas e culturais, combinando nacionalismo, restrição migratória, valores tradicionais, religião pública, segurança forte e pragmatismo econômico antiestablishment em torno de líderes personalistas.
+            - text: Ver perfil
+        - listitem:
+          - link "Pragmatismo de Direita Vertente pragmática que prioriza ajuste fiscal, estabilidade econômica e governabilidade por meio de amplas coalizões, aceitando reformas de mercado e concessões políticas em nome de resultados de curto e médio prazo. Ver perfil":
+            - /url: /ideologies/pragmatismo-de-direita
+            - heading "Pragmatismo de Direita" [level=3]
+            - paragraph: Vertente pragmática que prioriza ajuste fiscal, estabilidade econômica e governabilidade por meio de amplas coalizões, aceitando reformas de mercado e concessões políticas em nome de resultados de curto e médio prazo.
+            - text: Ver perfil
+        - listitem:
+          - link "Progressismo de Direita Vertente progressista de direita que une capitalismo e culto ao progresso tecnológico a uma cultura socialmente progressista, pragmática e secular, confiando o rumo da sociedade a uma elite técnica em vez da democracia de massas. Ver perfil":
+            - /url: /ideologies/progressismo-de-direita
+            - heading "Progressismo de Direita" [level=3]
+            - paragraph: Vertente progressista de direita que une capitalismo e culto ao progresso tecnológico a uma cultura socialmente progressista, pragmática e secular, confiando o rumo da sociedade a uma elite técnica em vez da democracia de massas.
+            - text: Ver perfil
+        - listitem:
+          - link "Republicanismo Confederal Tradição de repúblicas formadas por províncias ou cantões soberanos, como a República Holandesa e a antiga Confederação Suíça, com autogoverno local, comércio aberto, neutralidade armada e fé protestante enraizada. Ver perfil":
+            - /url: /ideologies/republicanismo-confederal
+            - heading "Republicanismo Confederal" [level=3]
+            - paragraph: Tradição de repúblicas formadas por províncias ou cantões soberanos, como a República Holandesa e a antiga Confederação Suíça, com autogoverno local, comércio aberto, neutralidade armada e fé protestante enraizada.
+            - text: Ver perfil
+        - listitem:
+          - link "Sionismo Movimento nacional judaico criado por Herzl em 1897 que levou ao Estado de Israel em 1948. Abrange correntes trabalhista, revisionista e religiosa e hoje se expressa numa democracia parlamentar de forte defesa militar e Lei do Retorno. Ver perfil":
+            - /url: /ideologies/sionismo
+            - heading "Sionismo" [level=3]
+            - paragraph: Movimento nacional judaico criado por Herzl em 1897 que levou ao Estado de Israel em 1948. Abrange correntes trabalhista, revisionista e religiosa e hoje se expressa numa democracia parlamentar de forte defesa militar e Lei do Retorno.
+            - text: Ver perfil
+        - listitem:
+          - link "Tecnocracia de Direita Modelo que confia a gestão do Estado e da economia a especialistas e à eficiência tecnológica, combinando mercado, inovação e decisões técnicas em vez da deliberação política e da disputa partidária tradicional. Ver perfil":
+            - /url: /ideologies/tecnocracia-de-direita
+            - heading "Tecnocracia de Direita" [level=3]
+            - paragraph: Modelo que confia a gestão do Estado e da economia a especialistas e à eficiência tecnológica, combinando mercado, inovação e decisões técnicas em vez da deliberação política e da disputa partidária tradicional.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Tecnocracia Liberal Síntese dos Tigres Asiáticos: confia o governo a uma elite técnica recrutada por mérito e insulada do voto, guiada por resultado em vez de doutrina, combinando livre comércio, mercado aberto, baixa tributação, ordem pública rígida e planejamento estatal. Ver perfil"':
+            - /url: /ideologies/tecnocracia-liberal
+            - heading "Tecnocracia Liberal" [level=3]
+            - paragraph: "Síntese dos Tigres Asiáticos: confia o governo a uma elite técnica recrutada por mérito e insulada do voto, guiada por resultado em vez de doutrina, combinando livre comércio, mercado aberto, baixa tributação, ordem pública rígida e planejamento estatal."
+            - text: Ver perfil
+        - listitem:
+          - link "Vitalismo Corrente que toma a vida, o élan vital de Bergson e a vontade de potência de Nietzsche como valor supremo, exaltando instinto, vigor físico, criação e heroísmo contra a decadência, a doença e o igualitarismo. Ver perfil":
+            - /url: /ideologies/vitalismo
+            - heading "Vitalismo" [level=3]
+            - paragraph: Corrente que toma a vida, o élan vital de Bergson e a vontade de potência de Nietzsche como valor supremo, exaltando instinto, vigor físico, criação e heroísmo contra a decadência, a doença e o igualitarismo.
+            - text: Ver perfil
+    - region "Extrema Direita":
+      - heading "Extrema Direita" [level=2]
+      - paragraph: Rejeição explícita da democracia liberal, nacionalismo radical e concentração autoritária do poder.
+      - text: 28 correntes
+      - list:
+        - listitem:
+          - link "Aceleracionismo de Direita Corrente que defende acelerar as contradições do sistema por meio da tecnologia e do enfraquecimento das instituições liberais, apostando na ruptura da ordem vigente para dar origem a uma nova ordem social e política hierárquica. Ver perfil":
+            - /url: /ideologies/aceleracionismo-de-direita
+            - heading "Aceleracionismo de Direita" [level=3]
+            - paragraph: Corrente que defende acelerar as contradições do sistema por meio da tecnologia e do enfraquecimento das instituições liberais, apostando na ruptura da ordem vigente para dar origem a uma nova ordem social e política hierárquica.
+            - text: Ver perfil
+        - listitem:
+          - link "Arqueofuturismo Doutrina cunhada por Guillaume Faye que funde valores arcaicos, hierárquicos e tradicionalistas, com a adoção irrestrita de tecnologia avançada, defendendo que um colapso civilizacional iminente forçará a humanidade a combinar ordem social tribal com ciência hipermoderna. Ver perfil":
+            - /url: /ideologies/arqueofuturismo
+            - heading "Arqueofuturismo" [level=3]
+            - paragraph: Doutrina cunhada por Guillaume Faye que funde valores arcaicos, hierárquicos e tradicionalistas, com a adoção irrestrita de tecnologia avançada, defendendo que um colapso civilizacional iminente forçará a humanidade a combinar ordem social tribal com ciência hipermoderna.
+            - text: Ver perfil
+        - listitem:
+          - link "Bonapartismo Corrente cesarista que legitima por plebiscito um líder carismático acima dos partidos, combinando autoridade pessoal, centralização burocrática, mobilização militar e reformas modernizadoras conduzidas de cima para baixo. Ver perfil":
+            - /url: /ideologies/bonapartismo
+            - heading "Bonapartismo" [level=3]
+            - paragraph: Corrente cesarista que legitima por plebiscito um líder carismático acima dos partidos, combinando autoridade pessoal, centralização burocrática, mobilização militar e reformas modernizadoras conduzidas de cima para baixo.
+            - text: Ver perfil
+        - listitem:
+          - link "Capitalismo Autoritário Modelo que combina economia de mercado e propriedade privada com regime político fechado, no qual o Estado garante ordem, crescimento e estabilidade enquanto restringe liberdades civis e a competição política. Ver perfil":
+            - /url: /ideologies/capitalismo-autoritario
+            - heading "Capitalismo Autoritário" [level=3]
+            - paragraph: Modelo que combina economia de mercado e propriedade privada com regime político fechado, no qual o Estado garante ordem, crescimento e estabilidade enquanto restringe liberdades civis e a competição política.
+            - text: Ver perfil
+        - listitem:
+          - link "Capitalismo Nacional Sistema que une livre iniciativa a forte protecionismo e direcionamento estatal, priorizando indústria, empregos e soberania nacional sobre o livre comércio global e o capital estrangeiro sem controle. Ver perfil":
+            - /url: /ideologies/capitalismo-nacional
+            - heading "Capitalismo Nacional" [level=3]
+            - paragraph: Sistema que une livre iniciativa a forte protecionismo e direcionamento estatal, priorizando indústria, empregos e soberania nacional sobre o livre comércio global e o capital estrangeiro sem controle.
+            - text: Ver perfil
+        - listitem:
+          - link "Colonialismo Sistema em que uma metrópole domina territórios e povos distantes para povoá-los e extrair riquezas, impondo pacto comercial exclusivo, trabalho compulsório e hierarquia sob o pretexto de missão civilizadora ou religiosa. Ver perfil":
+            - /url: /ideologies/colonialismo
+            - heading "Colonialismo" [level=3]
+            - paragraph: Sistema em que uma metrópole domina territórios e povos distantes para povoá-los e extrair riquezas, impondo pacto comercial exclusivo, trabalho compulsório e hierarquia sob o pretexto de missão civilizadora ou religiosa.
+            - text: Ver perfil
+        - listitem:
+          - link "Conservadorismo Autoritário Vertente que preserva ordem, tradição e hierarquia por meio de um Estado forte, restringindo liberdades e participação política em nome da estabilidade social, da moral, da religião e da autoridade estabelecida. Ver perfil":
+            - /url: /ideologies/conservadorismo-autoritario
+            - heading "Conservadorismo Autoritário" [level=3]
+            - paragraph: Vertente que preserva ordem, tradição e hierarquia por meio de um Estado forte, restringindo liberdades e participação política em nome da estabilidade social, da moral, da religião e da autoridade estabelecida.
+            - text: Ver perfil
+        - listitem:
+          - link "Conservadorismo Confederado Tradição política do Sul dos Estados Unidos no século XIX, ligada à Confederação, que defendia os direitos dos estados e a secessão, uma sociedade agrária, patriarcal e cristã, o livre comércio e a tradição militar. Historicamente, essa tradição defendeu também a escravidão e a hierarquia racial. Ver perfil":
+            - /url: /ideologies/conservadorismo-confederado
+            - heading "Conservadorismo Confederado" [level=3]
+            - paragraph: Tradição política do Sul dos Estados Unidos no século XIX, ligada à Confederação, que defendia os direitos dos estados e a secessão, uma sociedade agrária, patriarcal e cristã, o livre comércio e a tradição militar. Historicamente, essa tradição defendeu também a escravidão e a hierarquia racial.
+            - text: Ver perfil
+        - listitem:
+          - link "Direita radical Movimento de direita radical surgido na internet, que combina nacionalismo identitário, oposição à imigração e ao multiculturalismo, crítica ao globalismo e retórica provocadora. Parte de seus expoentes defende um nacionalismo de base racial. Ver perfil":
+            - /url: /ideologies/alt-right
+            - heading "Direita radical" [level=3]
+            - paragraph: Movimento de direita radical surgido na internet, que combina nacionalismo identitário, oposição à imigração e ao multiculturalismo, crítica ao globalismo e retórica provocadora. Parte de seus expoentes defende um nacionalismo de base racial.
+            - text: Ver perfil
+        - listitem:
+          - link "Feudalismo Ordem medieval baseada em laços pessoais de vassalagem entre suserano e vassalos, com terra concedida em feudo, nobreza guerreira hereditária, camponeses servos presos à terra, Igreja como autoridade moral e poder fragmentado entre senhores locais. Ver perfil":
+            - /url: /ideologies/feudalismo
+            - heading "Feudalismo" [level=3]
+            - paragraph: Ordem medieval baseada em laços pessoais de vassalagem entre suserano e vassalos, com terra concedida em feudo, nobreza guerreira hereditária, camponeses servos presos à terra, Igreja como autoridade moral e poder fragmentado entre senhores locais.
+            - text: Ver perfil
+        - listitem:
+          - link "Fundamentalismo Religioso Projeto que busca organizar o Estado e a sociedade segundo a interpretação estrita de uma doutrina religiosa, subordinando leis, costumes e política aos preceitos sagrados e rejeitando o secularismo moderno. Ver perfil":
+            - /url: /ideologies/fundamentalismo-religioso
+            - heading "Fundamentalismo Religioso" [level=3]
+            - paragraph: Projeto que busca organizar o Estado e a sociedade segundo a interpretação estrita de uma doutrina religiosa, subordinando leis, costumes e política aos preceitos sagrados e rejeitando o secularismo moderno.
+            - text: Ver perfil
+        - listitem:
+          - link "Iluminismo Sombrio Corrente intelectual de Nick Land e Curtis Yarvin, que critica a democracia, o igualitarismo e a \"Catedral\" acadêmico-midiática, defende governos autocráticos e o direito de saída (exit) e inclui vertentes aceleracionistas. Críticos a associam também ao chamado realismo racial. Ver perfil":
+            - /url: /ideologies/iluminismo-sombrio
+            - heading "Iluminismo Sombrio" [level=3]
+            - paragraph: Corrente intelectual de Nick Land e Curtis Yarvin, que critica a democracia, o igualitarismo e a "Catedral" acadêmico-midiática, defende governos autocráticos e o direito de saída (exit) e inclui vertentes aceleracionistas. Críticos a associam também ao chamado realismo racial.
+            - text: Ver perfil
+        - listitem:
+          - link "Imperialismo Doutrina que defende a expansão territorial, militar e econômica de uma nação sobre outros povos e territórios, mantendo colônias e áreas de influência ligadas aos interesses da metrópole por meio do poder militar e político. Ver perfil":
+            - /url: /ideologies/imperialismo
+            - heading "Imperialismo" [level=3]
+            - paragraph: Doutrina que defende a expansão territorial, militar e econômica de uma nação sobre outros povos e territórios, mantendo colônias e áreas de influência ligadas aos interesses da metrópole por meio do poder militar e político.
+            - text: Ver perfil
+        - listitem:
+          - link "Liberalismo Autoritário Corrente que combina economia de mercado, propriedade privada, abertura comercial e tecnocracia com baixa participação democrática, defendendo que um Estado forte e eficiente preserve ordem, estabilidade e crescimento. Ver perfil":
+            - /url: /ideologies/liberalismo-autoritario
+            - heading "Liberalismo Autoritário" [level=3]
+            - paragraph: Corrente que combina economia de mercado, propriedade privada, abertura comercial e tecnocracia com baixa participação democrática, defendendo que um Estado forte e eficiente preserve ordem, estabilidade e crescimento.
+            - text: Ver perfil
+        - listitem:
+          - link "Militarismo Regime centrado nas Forças Armadas como núcleo do poder político, governando por junta ou hierarquia militar, com centralização, disciplina, valorização da ordem e expansionismo, e a política civil subordinada ao comando militar. Ver perfil":
+            - /url: /ideologies/militarismo
+            - heading "Militarismo" [level=3]
+            - paragraph: Regime centrado nas Forças Armadas como núcleo do poder político, governando por junta ou hierarquia militar, com centralização, disciplina, valorização da ordem e expansionismo, e a política civil subordinada ao comando militar.
+            - text: Ver perfil
+        - listitem:
+          - link "Monarquismo Absoluto Defesa da monarquia com poder ilimitado concentrado no soberano, legitimado pela tradição ou pelo direito divino, sem constituição ou parlamento que restrinjam a autoridade do rei sobre o Estado e a sociedade. Ver perfil":
+            - /url: /ideologies/monarquismo-absoluto
+            - heading "Monarquismo Absoluto" [level=3]
+            - paragraph: Defesa da monarquia com poder ilimitado concentrado no soberano, legitimado pela tradição ou pelo direito divino, sem constituição ou parlamento que restrinjam a autoridade do rei sobre o Estado e a sociedade.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacionalismo Étnico Concepção que define a nação por origem, língua e ascendência comuns, defendendo um Estado da etnia majoritária e a preservação de sua identidade, o que costuma implicar critérios de pertencimento ligados à ascendência. Ver perfil":
+            - /url: /ideologies/nacionalismo-etnico
+            - heading "Nacionalismo Étnico" [level=3]
+            - paragraph: Concepção que define a nação por origem, língua e ascendência comuns, defendendo um Estado da etnia majoritária e a preservação de sua identidade, o que costuma implicar critérios de pertencimento ligados à ascendência.
+            - text: Ver perfil
+        - listitem:
+          - link "Neoliberalismo Autoritário Regime que implanta o livre mercado radical sob uma ditadura militar, com privatizações, abertura comercial e economistas da Escola de Chicago, restringindo sindicatos, partidos e opositores em nome da ordem e do anticomunismo. Ver perfil":
+            - /url: /ideologies/neoliberalismo-autoritario
+            - heading "Neoliberalismo Autoritário" [level=3]
+            - paragraph: Regime que implanta o livre mercado radical sob uma ditadura militar, com privatizações, abertura comercial e economistas da Escola de Chicago, restringindo sindicatos, partidos e opositores em nome da ordem e do anticomunismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Neorreacionarismo Corrente que rejeita a democracia e o igualitarismo modernos e propõe substituí-los por governos hierárquicos e eficientes, geridos como empresas por um soberano, combinando tradicionalismo e tecnologia. Ver perfil":
+            - /url: /ideologies/neorreacionarismo
+            - heading "Neorreacionarismo" [level=3]
+            - paragraph: Corrente que rejeita a democracia e o igualitarismo modernos e propõe substituí-los por governos hierárquicos e eficientes, geridos como empresas por um soberano, combinando tradicionalismo e tecnologia.
+            - text: Ver perfil
+        - listitem:
+          - link "Reacionarismo Postura que rejeita a modernidade e busca restaurar a ordem anterior às revoluções, defendendo monarquia, religião, tradição e hierarquia contra o racionalismo iluminista, o liberalismo e a democracia. Ver perfil":
+            - /url: /ideologies/reacionarismo
+            - heading "Reacionarismo" [level=3]
+            - paragraph: Postura que rejeita a modernidade e busca restaurar a ordem anterior às revoluções, defendendo monarquia, religião, tradição e hierarquia contra o racionalismo iluminista, o liberalismo e a democracia.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Tecno-Feudalismo Corrente que vê no poder das plataformas e das grandes empresas de tecnologia uma nova ordem feudal e a defende: um mosaico de feudos corporativos soberanos, onde o dono da nuvem governa vassalos e usuários e vive de renda, não de concorrência. Ver perfil"':
+            - /url: /ideologies/tecno-feudalismo
+            - heading "Tecno-Feudalismo" [level=3]
+            - paragraph: "Corrente que vê no poder das plataformas e das grandes empresas de tecnologia uma nova ordem feudal e a defende: um mosaico de feudos corporativos soberanos, onde o dono da nuvem governa vassalos e usuários e vive de renda, não de concorrência."
+            - text: Ver perfil
+        - listitem:
+          - 'link "Tecno-Monarquismo Variante unitária do neorreacionarismo: um CEO-monarca absoluto governa um Estado centralizado com dados e tecnologia securitária (vigilância, IA), sob capitalismo de mercado, propriedade privada e livre empresa, em nome da estabilidade e da eficiência. Ver perfil"':
+            - /url: /ideologies/tecno-monarquismo
+            - heading "Tecno-Monarquismo" [level=3]
+            - paragraph: "Variante unitária do neorreacionarismo: um CEO-monarca absoluto governa um Estado centralizado com dados e tecnologia securitária (vigilância, IA), sob capitalismo de mercado, propriedade privada e livre empresa, em nome da estabilidade e da eficiência."
+            - text: Ver perfil
+        - listitem:
+          - link "Teocracia Budista Governo exercido por uma hierarquia monástica budista, com líderes reencarnados e mosteiros dominando política e terra, ordem tradicional e preceitos morais como lei, como no Tibete do Dalai Lama antes de 1950. Ver perfil":
+            - /url: /ideologies/teocracia-budista
+            - heading "Teocracia Budista" [level=3]
+            - paragraph: Governo exercido por uma hierarquia monástica budista, com líderes reencarnados e mosteiros dominando política e terra, ordem tradicional e preceitos morais como lei, como no Tibete do Dalai Lama antes de 1950.
+            - text: Ver perfil
+        - listitem:
+          - link "Teocracia Judaica Governo regido pela Torá e pela halachá, com tribunais rabínicos, juízes ou reis sob autoridade religiosa, judaísmo como religião de Estado e rejeição da assimilação, inspirado nos reinos bíblicos de Israel e Judá. Ver perfil":
+            - /url: /ideologies/teocracia-judaica
+            - heading "Teocracia Judaica" [level=3]
+            - paragraph: Governo regido pela Torá e pela halachá, com tribunais rabínicos, juízes ou reis sob autoridade religiosa, judaísmo como religião de Estado e rejeição da assimilação, inspirado nos reinos bíblicos de Israel e Judá.
+            - text: Ver perfil
+        - listitem:
+          - link "Teocratismo Cristão Doutrina teocratista cristã que subordina o poder político à autoridade religiosa, defendendo que a lei divina e a Igreja devem reger o Estado e os costumes, do ultramontanismo medieval e papal aos projetos reconstrucionistas modernos. Ver perfil":
+            - /url: /ideologies/teocratismo-cristao
+            - heading "Teocratismo Cristão" [level=3]
+            - paragraph: Doutrina teocratista cristã que subordina o poder político à autoridade religiosa, defendendo que a lei divina e a Igreja devem reger o Estado e os costumes, do ultramontanismo medieval e papal aos projetos reconstrucionistas modernos.
+            - text: Ver perfil
+        - listitem:
+          - link "Teocratismo Islâmico Doutrina que entrega o Estado ao clero islâmico e faz da sharia a lei suprema, acima da soberania popular, como no governo do jurista (velayat-e faqih) de Khomeini no Irã e no emirado talibã do Afeganistão. Ver perfil":
+            - /url: /ideologies/teocratismo-islamico
+            - heading "Teocratismo Islâmico" [level=3]
+            - paragraph: Doutrina que entrega o Estado ao clero islâmico e faz da sharia a lei suprema, acima da soberania popular, como no governo do jurista (velayat-e faqih) de Khomeini no Irã e no emirado talibã do Afeganistão.
+            - text: Ver perfil
+        - listitem:
+          - link "Tradicionalismo Corrente de René Guénon e Julius Evola que vê a modernidade como decadência de uma tradição espiritual universal, defendendo hierarquia sagrada, castas, ordem iniciática e o primado do espírito sobre a economia e a política de massas. Ver perfil":
+            - /url: /ideologies/tradicionalismo
+            - heading "Tradicionalismo" [level=3]
+            - paragraph: Corrente de René Guénon e Julius Evola que vê a modernidade como decadência de uma tradição espiritual universal, defendendo hierarquia sagrada, castas, ordem iniciática e o primado do espírito sobre a economia e a política de massas.
+            - text: Ver perfil
+        - listitem:
+          - link "Tradicionalismo Carlista Vertente espanhola do tradicionalismo contrarrevolucionário, nascida nas Guerras Carlistas do século XIX sob o lema Deus, Pátria, Foros e Rei, que defende monarquia católica legitimista, unidade religiosa, foros regionais e sociedade orgânica contra o liberalismo. Ver perfil":
+            - /url: /ideologies/tradicionalismo-carlista
+            - heading "Tradicionalismo Carlista" [level=3]
+            - paragraph: Vertente espanhola do tradicionalismo contrarrevolucionário, nascida nas Guerras Carlistas do século XIX sob o lema Deus, Pátria, Foros e Rei, que defende monarquia católica legitimista, unidade religiosa, foros regionais e sociedade orgânica contra o liberalismo.
+            - text: Ver perfil
+    - region "Terceira Posição":
+      - heading "Terceira Posição" [level=2]
+      - paragraph: Síntese nacionalista e corporativista que rejeita tanto o capitalismo liberal quanto o marxismo.
+      - text: 27 correntes
+      - list:
+        - listitem:
+          - 'link "Austrofascismo Regime autoritário, corporativo e católico de Dollfuss e Schuschnigg (1934–1938): partido único (Frente Patriótica), Estado estamental inspirado na Quadragesimo Anno, repressão a socialistas e nazistas e defesa de uma Áustria alemã, cristã e independente. Ver perfil"':
+            - /url: /ideologies/austrofascismo
+            - heading "Austrofascismo" [level=3]
+            - paragraph: "Regime autoritário, corporativo e católico de Dollfuss e Schuschnigg (1934–1938): partido único (Frente Patriótica), Estado estamental inspirado na Quadragesimo Anno, repressão a socialistas e nazistas e defesa de uma Áustria alemã, cristã e independente."
+            - text: Ver perfil
+        - listitem:
+          - link "Cameralismo Doutrina administrativa do absolutismo esclarecido que organizava o Estado por uma burocracia disciplinada e finanças centralizadas, promovendo indústria, população e receita como fontes do poder do monarca. Ver perfil":
+            - /url: /ideologies/cameralismo
+            - heading "Cameralismo" [level=3]
+            - paragraph: Doutrina administrativa do absolutismo esclarecido que organizava o Estado por uma burocracia disciplinada e finanças centralizadas, promovendo indústria, população e receita como fontes do poder do monarca.
+            - text: Ver perfil
+        - listitem:
+          - link "Conservadorismo Socialista Vertente que une economia socialista e valores tradicionais, defendendo proteção social e forte papel do Estado ao lado de família, ordem e costumes, distante do progressismo cultural das esquerdas liberais. Ver perfil":
+            - /url: /ideologies/conservadorismo-socialista
+            - heading "Conservadorismo Socialista" [level=3]
+            - paragraph: Vertente que une economia socialista e valores tradicionais, defendendo proteção social e forte papel do Estado ao lado de família, ordem e costumes, distante do progressismo cultural das esquerdas liberais.
+            - text: Ver perfil
+        - listitem:
+          - link "Corporativismo Modelo que organiza a sociedade em corporações de trabalhadores e empregadores integradas ao Estado, buscando harmonia entre classes e cooperação econômica dirigida em vez de conflito ou livre concorrência. Ver perfil":
+            - /url: /ideologies/corporativismo
+            - heading "Corporativismo" [level=3]
+            - paragraph: Modelo que organiza a sociedade em corporações de trabalhadores e empregadores integradas ao Estado, buscando harmonia entre classes e cooperação econômica dirigida em vez de conflito ou livre concorrência.
+            - text: Ver perfil
+        - listitem:
+          - link "Ecofascismo Corrente que une ecologia radical, autoritarismo e nacionalismo orgânico, defendendo controle populacional, preservação ambiental imposta pelo Estado e subordinação das liberdades individuais à sobrevivência da comunidade nacional. Ver perfil":
+            - /url: /ideologies/ecofascismo
+            - heading "Ecofascismo" [level=3]
+            - paragraph: Corrente que une ecologia radical, autoritarismo e nacionalismo orgânico, defendendo controle populacional, preservação ambiental imposta pelo Estado e subordinação das liberdades individuais à sobrevivência da comunidade nacional.
+            - text: Ver perfil
+        - listitem:
+          - link "Eurasianismo Corrente geopolítica russa que vê a Eurásia como civilização própria e propõe um bloco continental liderado por Moscou, com autonomias regionais e comando estratégico comum, contra o atlantismo e a hegemonia dos EUA. Ver perfil":
+            - /url: /ideologies/eurasianismo
+            - heading "Eurasianismo" [level=3]
+            - paragraph: Corrente geopolítica russa que vê a Eurásia como civilização própria e propõe um bloco continental liderado por Moscou, com autonomias regionais e comando estratégico comum, contra o atlantismo e a hegemonia dos EUA.
+            - text: Ver perfil
+        - listitem:
+          - link "Falangismo Nacionalismo autoritário espanhol de inspiração católica e sindicalista, criado por José Antonio Primo de Rivera sobre o corporativismo da ditadura de seu pai Miguel; defende Estado corporativo, unidade nacional e hierarquia social, e foi pilar do franquismo. Ver perfil":
+            - /url: /ideologies/falangismo
+            - heading "Falangismo" [level=3]
+            - paragraph: Nacionalismo autoritário espanhol de inspiração católica e sindicalista, criado por José Antonio Primo de Rivera sobre o corporativismo da ditadura de seu pai Miguel; defende Estado corporativo, unidade nacional e hierarquia social, e foi pilar do franquismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Fascismo Doutrina ultranacionalista de renascimento nacional que rejeita liberalismo e marxismo, exalta o Estado totalitário e a liderança de um chefe único, vê na ação e na violência um meio de regeneração e trata a nação como religião secular, com variantes além do regime italiano que lhe deu nome. Ver perfil":
+            - /url: /ideologies/fascismo
+            - heading "Fascismo" [level=3]
+            - paragraph: Doutrina ultranacionalista de renascimento nacional que rejeita liberalismo e marxismo, exalta o Estado totalitário e a liderança de um chefe único, vê na ação e na violência um meio de regeneração e trata a nação como religião secular, com variantes além do regime italiano que lhe deu nome.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Fascismo Britânico Fascismo de Oswald Mosley e da União Britânica de Fascistas: líder único, camisas-negras e Estado corporativo, com império autárquico, nacionalismo britânico, antissemitismo e oposição ao liberalismo e ao comunismo. Ver perfil"':
+            - /url: /ideologies/fascismo-britanico
+            - heading "Fascismo Britânico" [level=3]
+            - paragraph: "Fascismo de Oswald Mosley e da União Britânica de Fascistas: líder único, camisas-negras e Estado corporativo, com império autárquico, nacionalismo britânico, antissemitismo e oposição ao liberalismo e ao comunismo."
+            - text: Ver perfil
+        - listitem:
+          - link "Fascismo Clerical Variante do fascismo que funde ultranacionalismo, partido de massas e milícias à autoridade de uma Igreja nacional, com clérigos no poder, como o austrofascismo de Dollfuss, a Eslováquia do padre Tiso, a Ustaše croata e a Guarda de Ferro romena. Ver perfil":
+            - /url: /ideologies/fascismo-clerical
+            - heading "Fascismo Clerical" [level=3]
+            - paragraph: Variante do fascismo que funde ultranacionalismo, partido de massas e milícias à autoridade de uma Igreja nacional, com clérigos no poder, como o austrofascismo de Dollfuss, a Eslováquia do padre Tiso, a Ustaše croata e a Guarda de Ferro romena.
+            - text: Ver perfil
+        - listitem:
+          - link "Fascismo Vermelho Regime que funde a estética e a hierarquia autoritária do fascismo, com líder forte, ordem e disciplina nacional, à economia socialista de coletivização, estatização de empresas e planejamento central dos meios de produção. Ver perfil":
+            - /url: /ideologies/fascismo-vermelho
+            - heading "Fascismo Vermelho" [level=3]
+            - paragraph: Regime que funde a estética e a hierarquia autoritária do fascismo, com líder forte, ordem e disciplina nacional, à economia socialista de coletivização, estatização de empresas e planejamento central dos meios de produção.
+            - text: Ver perfil
+        - listitem:
+          - link "Futurismo Movimento de Filippo Marinetti que exaltava velocidade, máquina, indústria e guerra como higiene do mundo, pregando nacionalismo, anticlericalismo e ruptura com o passado, e que ajudou a fundar o fascismo italiano. Ver perfil":
+            - /url: /ideologies/futurismo
+            - heading "Futurismo" [level=3]
+            - paragraph: Movimento de Filippo Marinetti que exaltava velocidade, máquina, indústria e guerra como higiene do mundo, pregando nacionalismo, anticlericalismo e ruptura com o passado, e que ajudou a fundar o fascismo italiano.
+            - text: Ver perfil
+        - listitem:
+          - link "Integralismo Brasileiro Movimento nacionalista autoritário surgido no Brasil dos anos 1930, de base cristã e corporativista, com o lema Deus, Pátria e Família, estética de massas e oposição ao liberalismo e ao comunismo. Ver perfil":
+            - /url: /ideologies/integralismo-brasileiro
+            - heading "Integralismo Brasileiro" [level=3]
+            - paragraph: Movimento nacionalista autoritário surgido no Brasil dos anos 1930, de base cristã e corporativista, com o lema Deus, Pátria e Família, estética de massas e oposição ao liberalismo e ao comunismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacional-Bolchevismo (NazBol) Ideologia sincrética, também chamada NazBol, que funde socialismo revolucionário e nacionalismo radical, combinando economia coletivista, autoritarismo estatal e rejeição ao liberalismo, ao Ocidente e ao individualismo burguês. Ver perfil":
+            - /url: /ideologies/nacional-bolchevismo
+            - heading "Nacional-Bolchevismo (NazBol)" [level=3]
+            - paragraph: Ideologia sincrética, também chamada NazBol, que funde socialismo revolucionário e nacionalismo radical, combinando economia coletivista, autoritarismo estatal e rejeição ao liberalismo, ao Ocidente e ao individualismo burguês.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacional-Sindicalismo Corrente nacionalista e sindicalista que rejeita liberalismo e marxismo, defendendo unidade nacional, organização corporativa do trabalho, justiça social autoritária e mobilização popular em torno do Estado. Ver perfil":
+            - /url: /ideologies/nacional-sindicalismo
+            - heading "Nacional-Sindicalismo" [level=3]
+            - paragraph: Corrente nacionalista e sindicalista que rejeita liberalismo e marxismo, defendendo unidade nacional, organização corporativa do trabalho, justiça social autoritária e mobilização popular em torno do Estado.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacional-Socialismo Variante alemã do fascismo baseada no racismo, no antissemitismo e no expansionismo, que uniu totalitarismo, culto a Hitler e a ideia de raça superior, culminando na Segunda Guerra Mundial e no Holocausto. Ver perfil":
+            - /url: /ideologies/nacional-socialismo
+            - heading "Nacional-Socialismo" [level=3]
+            - paragraph: Variante alemã do fascismo baseada no racismo, no antissemitismo e no expansionismo, que uniu totalitarismo, culto a Hitler e a ideia de raça superior, culminando na Segunda Guerra Mundial e no Holocausto.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Nacionalismo Kemalista Doutrina de Mustafa Kemal Atatürk que fundou a Turquia moderna sobre seis flechas: republicanismo, nacionalismo, populismo, estatismo, laicismo e reformismo, impondo de cima a ocidentalização e o controle estatal da religião. Ver perfil"':
+            - /url: /ideologies/nacionalismo-kemalista
+            - heading "Nacionalismo Kemalista" [level=3]
+            - paragraph: "Doutrina de Mustafa Kemal Atatürk que fundou a Turquia moderna sobre seis flechas: republicanismo, nacionalismo, populismo, estatismo, laicismo e reformismo, impondo de cima a ocidentalização e o controle estatal da religião."
+            - text: Ver perfil
+        - listitem:
+          - link "Nacionalismo Peronista Doutrina justicialista de Juan e Eva Perón que une soberania política, independência econômica e justiça social, com sindicatos da CGT, estatizações, industrialização protegida, catolicismo social e líder carismático acima dos partidos. Ver perfil":
+            - /url: /ideologies/trabalhismo-de-direita
+            - heading "Nacionalismo Peronista" [level=3]
+            - paragraph: Doutrina justicialista de Juan e Eva Perón que une soberania política, independência econômica e justiça social, com sindicatos da CGT, estatizações, industrialização protegida, catolicismo social e líder carismático acima dos partidos.
+            - text: Ver perfil
+        - listitem:
+          - link "Nacionalismo Varguista Doutrina de Getúlio Vargas no Estado Novo que une nacionalismo econômico, Estado centralizado, sindicatos atrelados ao governo, CLT e estatais como Petrobras e CSN, contra as oligarquias e o liberalismo. Ver perfil":
+            - /url: /ideologies/nacionalismo-varguista
+            - heading "Nacionalismo Varguista" [level=3]
+            - paragraph: Doutrina de Getúlio Vargas no Estado Novo que une nacionalismo econômico, Estado centralizado, sindicatos atrelados ao governo, CLT e estatais como Petrobras e CSN, contra as oligarquias e o liberalismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Pan-Islamismo Ideologia que defende a unidade política dos muçulmanos acima das fronteiras nacionais, em torno da ummah e do ideal de califado, formulada por Jamal al-Din al-Afghani e adotada pelo sultão otomano Abdul Hamid II contra o colonialismo europeu. Ver perfil":
+            - /url: /ideologies/pan-islamismo
+            - heading "Pan-Islamismo" [level=3]
+            - paragraph: Ideologia que defende a unidade política dos muçulmanos acima das fronteiras nacionais, em torno da ummah e do ideal de califado, formulada por Jamal al-Din al-Afghani e adotada pelo sultão otomano Abdul Hamid II contra o colonialismo europeu.
+            - text: Ver perfil
+        - listitem:
+          - link "Positivismo Corrente inspirada em Auguste Comte que confia na ciência e na razão para organizar a sociedade, defendendo ordem, progresso e administração técnica guiada pelo conhecimento em lugar da metafísica e da tradição. Ver perfil":
+            - /url: /ideologies/positivismo
+            - heading "Positivismo" [level=3]
+            - paragraph: Corrente inspirada em Auguste Comte que confia na ciência e na razão para organizar a sociedade, defendendo ordem, progresso e administração técnica guiada pelo conhecimento em lugar da metafísica e da tradição.
+            - text: Ver perfil
+        - listitem:
+          - link "Quarta Teoria Política Teoria de Aleksandr Dugin que rejeita liberalismo, comunismo e fascismo e propõe um mundo multipolar fundado em civilizações, tradição e identidade coletiva, opondo-se ao globalismo e à hegemonia ocidental. Ver perfil":
+            - /url: /ideologies/quarta-teoria-politica
+            - heading "Quarta Teoria Política" [level=3]
+            - paragraph: Teoria de Aleksandr Dugin que rejeita liberalismo, comunismo e fascismo e propõe um mundo multipolar fundado em civilizações, tradição e identidade coletiva, opondo-se ao globalismo e à hegemonia ocidental.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Baathista Vertente árabe do socialismo estatal que une nacionalismo pan-árabe, partido de vanguarda, planejamento, reforma agrária e controle de setores estratégicos, defendendo unidade árabe, secularismo e independência frente ao imperialismo. Ver perfil":
+            - /url: /ideologies/socialismo-baathista
+            - heading "Socialismo Baathista" [level=3]
+            - paragraph: Vertente árabe do socialismo estatal que une nacionalismo pan-árabe, partido de vanguarda, planejamento, reforma agrária e controle de setores estratégicos, defendendo unidade árabe, secularismo e independência frente ao imperialismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Islâmico Corrente que funda o socialismo nos princípios do islã, como a zakat, a proibição da usura e a justiça social corânica, unindo anti-imperialismo e economia estatal, da Terceira Teoria Universal de Gaddafi ao pensamento de Ali Shariati. Ver perfil":
+            - /url: /ideologies/socialismo-islamico
+            - heading "Socialismo Islâmico" [level=3]
+            - paragraph: Corrente que funda o socialismo nos princípios do islã, como a zakat, a proibição da usura e a justiça social corânica, unindo anti-imperialismo e economia estatal, da Terceira Teoria Universal de Gaddafi ao pensamento de Ali Shariati.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Patriótico Corrente que une economia socialista estatizada e partido forte a patriotismo, família tradicional, religião como herança nacional e rejeição do progressismo cultural, vendo a pauta identitária como distração liberal diante da luta de classes. Ver perfil":
+            - /url: /ideologies/socialismo-patriotico
+            - heading "Socialismo Patriótico" [level=3]
+            - paragraph: Corrente que une economia socialista estatizada e partido forte a patriotismo, família tradicional, religião como herança nacional e rejeição do progressismo cultural, vendo a pauta identitária como distração liberal diante da luta de classes.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Strasserista Ala anticapitalista do nacional-socialismo, ligada a Gregor Strasser, que enfatizava um socialismo nacionalista de massas, nacionalização e revolução social dentro do movimento, sendo depois esmagada por Hitler. Ver perfil":
+            - /url: /ideologies/socialismo-strasserista
+            - heading "Socialismo Strasserista" [level=3]
+            - paragraph: Ala anticapitalista do nacional-socialismo, ligada a Gregor Strasser, que enfatizava um socialismo nacionalista de massas, nacionalização e revolução social dentro do movimento, sendo depois esmagada por Hitler.
+            - text: Ver perfil
+        - listitem:
+          - link "Tecno-Fascismo Corrente que une o autoritarismo totalitário do fascismo à vigilância digital, à inteligência artificial e ao controle tecnológico da população, usando a técnica para garantir ordem e unidade nacional. Ver perfil":
+            - /url: /ideologies/tecno-fascismo
+            - heading "Tecno-Fascismo" [level=3]
+            - paragraph: Corrente que une o autoritarismo totalitário do fascismo à vigilância digital, à inteligência artificial e ao controle tecnológico da população, usando a técnica para garantir ordem e unidade nacional.
+            - text: Ver perfil
+    - region "Libertário":
+      - heading "Libertário" [level=2]
+      - paragraph: Estado mínimo, livre mercado, propriedade privada e liberdades individuais, sem abolir o Estado.
+      - text: 23 correntes
+      - list:
+        - listitem:
+          - link "Aceleracionismo Efetivo Movimento nascido nas redes em 2022 que defende acelerar IA, energia e inovação por meio do mercado e sem regulação, tratando o avanço tecnológico como imperativo moral e rejeitando os defensores da desaceleração. Ver perfil":
+            - /url: /ideologies/aceleracionismo-efetivo
+            - heading "Aceleracionismo Efetivo" [level=3]
+            - paragraph: Movimento nascido nas redes em 2022 que defende acelerar IA, energia e inovação por meio do mercado e sem regulação, tratando o avanço tecnológico como imperativo moral e rejeitando os defensores da desaceleração.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarco-Monarquismo Doutrina sincrética que propõe a abolição do Estado mantendo um monarca tradicional sem poder coercitivo, atuando como símbolo de unidade, árbitro voluntário e guardião da ordem contra a tirania. Ver perfil":
+            - /url: /ideologies/anarco-monarquismo
+            - heading "Anarco-Monarquismo" [level=3]
+            - paragraph: Doutrina sincrética que propõe a abolição do Estado mantendo um monarca tradicional sem poder coercitivo, atuando como símbolo de unidade, árbitro voluntário e guardião da ordem contra a tirania.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarcocapitalismo Corrente que propõe abolir o Estado e organizar toda a sociedade por contratos e mercados livres, com segurança, justiça e serviços fornecidos por empresas privadas em concorrência, sob propriedade absoluta. Ver perfil":
+            - /url: /ideologies/anarcocapitalismo
+            - heading "Anarcocapitalismo" [level=3]
+            - paragraph: Corrente que propõe abolir o Estado e organizar toda a sociedade por contratos e mercados livres, com segurança, justiça e serviços fornecidos por empresas privadas em concorrência, sob propriedade absoluta.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarcoconservadorismo Corrente que rejeita o Estado mas preserva tradição, religião e valores comunitários, defendendo uma ordem social espontânea baseada em costumes, família e autoridade natural em vez do poder político central. Ver perfil":
+            - /url: /ideologies/anarcoconservadorismo
+            - heading "Anarcoconservadorismo" [level=3]
+            - paragraph: Corrente que rejeita o Estado mas preserva tradição, religião e valores comunitários, defendendo uma ordem social espontânea baseada em costumes, família e autoridade natural em vez do poder político central.
+            - text: Ver perfil
+        - listitem:
+          - link "Conservadorismo Libertário Síntese que une livre mercado e Estado mínimo à defesa de tradição, família e ordem, valorizando liberdade individual e responsabilidade pessoal ao lado da preservação dos costumes e das instituições. Ver perfil":
+            - /url: /ideologies/conservadorismo-libertario
+            - heading "Conservadorismo Libertário" [level=3]
+            - paragraph: Síntese que une livre mercado e Estado mínimo à defesa de tradição, família e ordem, valorizando liberdade individual e responsabilidade pessoal ao lado da preservação dos costumes e das instituições.
+            - text: Ver perfil
+        - listitem:
+          - link "Criptoanarquismo Corrente que usa criptografia e tecnologias digitais para garantir privacidade, liberdade e transações fora do controle do Estado, buscando enfraquecer a vigilância e a autoridade por meios tecnológicos. Ver perfil":
+            - /url: /ideologies/criptoanarquismo
+            - heading "Criptoanarquismo" [level=3]
+            - paragraph: Corrente que usa criptografia e tecnologias digitais para garantir privacidade, liberdade e transações fora do controle do Estado, buscando enfraquecer a vigilância e a autoridade por meios tecnológicos.
+            - text: Ver perfil
+        - listitem:
+          - link "Geolibertarianismo Síntese entre libertarianismo e georgismo que combina livre mercado e liberdades individuais com a taxação do valor da terra, vista como recurso comum, para financiar o Estado mínimo sem punir o trabalho. Ver perfil":
+            - /url: /ideologies/geolibertarianismo
+            - heading "Geolibertarianismo" [level=3]
+            - paragraph: Síntese entre libertarianismo e georgismo que combina livre mercado e liberdades individuais com a taxação do valor da terra, vista como recurso comum, para financiar o Estado mínimo sem punir o trabalho.
+            - text: Ver perfil
+        - listitem:
+          - link "Georgismo Filosofia econômica formulada por Henry George que defende que a posse dos recursos naturais e da terra pertence a toda a comunidade, propondo um imposto único sobre o valor da terra (LVT) e a abolição de tributos sobre o trabalho e a produção. Ver perfil":
+            - /url: /ideologies/georgismo
+            - heading "Georgismo" [level=3]
+            - paragraph: Filosofia econômica formulada por Henry George que defende que a posse dos recursos naturais e da terra pertence a toda a comunidade, propondo um imposto único sobre o valor da terra (LVT) e a abolição de tributos sobre o trabalho e a produção.
+            - text: Ver perfil
+        - listitem:
+          - link "Liberalismo Clássico Vertente original do liberalismo que defende direitos naturais, propriedade, livre mercado e Estado mínimo, vendo a liberdade individual e a limitação rígida do poder como fundamentos da sociedade justa. Ver perfil":
+            - /url: /ideologies/liberalismo-classico
+            - heading "Liberalismo Clássico" [level=3]
+            - paragraph: Vertente original do liberalismo que defende direitos naturais, propriedade, livre mercado e Estado mínimo, vendo a liberdade individual e a limitação rígida do poder como fundamentos da sociedade justa.
+            - text: Ver perfil
+        - listitem:
+          - link "Libertarianismo Filosofia que defende a máxima liberdade individual e um Estado reduzido às funções essenciais, valorizando propriedade privada, livre mercado e autonomia pessoal e rejeitando a coerção estatal sobre a vida. Ver perfil":
+            - /url: /ideologies/libertarianismo
+            - heading "Libertarianismo" [level=3]
+            - paragraph: Filosofia que defende a máxima liberdade individual e um Estado reduzido às funções essenciais, valorizando propriedade privada, livre mercado e autonomia pessoal e rejeitando a coerção estatal sobre a vida.
+            - text: Ver perfil
+        - listitem:
+          - link "Libertarianismo Bleeding-Heart Corrente que une livre mercado e liberdades individuais à preocupação com a justiça social, defendendo que a liberdade econômica também deve melhorar concretamente a vida dos mais pobres e vulneráveis. Ver perfil":
+            - /url: /ideologies/libertarianismo-bleeding-heart
+            - heading "Libertarianismo Bleeding-Heart" [level=3]
+            - paragraph: Corrente que une livre mercado e liberdades individuais à preocupação com a justiça social, defendendo que a liberdade econômica também deve melhorar concretamente a vida dos mais pobres e vulneráveis.
+            - text: Ver perfil
+        - listitem:
+          - link "Libertarianismo Hoppeano Corrente ligada a Hans-Hermann Hoppe que une anarcocapitalismo, propriedade privada absoluta e crítica à democracia, defendendo ordens sociais baseadas em contrato, associação voluntária e autoridade privada. Ver perfil":
+            - /url: /ideologies/libertarianismo-hoppeano
+            - heading "Libertarianismo Hoppeano" [level=3]
+            - paragraph: Corrente ligada a Hans-Hermann Hoppe que une anarcocapitalismo, propriedade privada absoluta e crítica à democracia, defendendo ordens sociais baseadas em contrato, associação voluntária e autoridade privada.
+            - text: Ver perfil
+        - listitem:
+          - link "Libertarianismo Nacional Vertente que combina defesa das liberdades individuais e do livre mercado com valorização da soberania e da identidade nacional, defendendo governo limitado ao lado do controle de fronteiras e da nação. Ver perfil":
+            - /url: /ideologies/libertarianismo-nacional
+            - heading "Libertarianismo Nacional" [level=3]
+            - paragraph: Vertente que combina defesa das liberdades individuais e do livre mercado com valorização da soberania e da identidade nacional, defendendo governo limitado ao lado do controle de fronteiras e da nação.
+            - text: Ver perfil
+        - listitem:
+          - link "Libertarianismo Progressista Vertente que busca a igualdade de gênero por meio da liberdade individual e do mercado, e não do Estado, defendendo autonomia, direitos iguais e o fim de restrições legais sobre as escolhas das mulheres. Ver perfil":
+            - /url: /ideologies/feminismo-libertario
+            - heading "Libertarianismo Progressista" [level=3]
+            - paragraph: Vertente que busca a igualdade de gênero por meio da liberdade individual e do mercado, e não do Estado, defendendo autonomia, direitos iguais e o fim de restrições legais sobre as escolhas das mulheres.
+            - text: Ver perfil
+        - listitem:
+          - 'link "Militarismo Libertário Doutrina que combina Estado mínimo em impostos, regulação e costumes com forças armadas fortes e cidadão armado: a defesa nacional é a única função estatal ampliada, tratada como condição da liberdade civil e não como sua exceção. Ver perfil"':
+            - /url: /ideologies/militarismo-libertario
+            - heading "Militarismo Libertário" [level=3]
+            - paragraph: "Doutrina que combina Estado mínimo em impostos, regulação e costumes com forças armadas fortes e cidadão armado: a defesa nacional é a única função estatal ampliada, tratada como condição da liberdade civil e não como sua exceção."
+            - text: Ver perfil
+        - listitem:
+          - link "Minarco-Mutualismo Síntese que une o mutualismo a um Estado mínimo, combinando trocas justas, cooperativas e crédito livre com uma estrutura pública reduzida às funções essenciais de proteção de direitos, contratos e liberdades. Ver perfil":
+            - /url: /ideologies/minarco-mutualismo
+            - heading "Minarco-Mutualismo" [level=3]
+            - paragraph: Síntese que une o mutualismo a um Estado mínimo, combinando trocas justas, cooperativas e crédito livre com uma estrutura pública reduzida às funções essenciais de proteção de direitos, contratos e liberdades.
+            - text: Ver perfil
+        - listitem:
+          - link "Minarquismo Vertente libertária que defende um Estado mínimo, limitado a polícia, justiça e defesa, deixando tudo o mais ao mercado e à iniciativa privada, para proteger direitos individuais sem oprimir a liberdade. Ver perfil":
+            - /url: /ideologies/minarquismo
+            - heading "Minarquismo" [level=3]
+            - paragraph: Vertente libertária que defende um Estado mínimo, limitado a polícia, justiça e defesa, deixando tudo o mais ao mercado e à iniciativa privada, para proteger direitos individuais sem oprimir a liberdade.
+            - text: Ver perfil
+        - listitem:
+          - link "Monarquismo Libertário Corrente que vê a monarquia como garantia de liberdade e estabilidade, defendendo um rei com poder limitado que protege propriedade e direitos individuais e mantém um Estado enxuto e pouco intervencionista. Ver perfil":
+            - /url: /ideologies/monarquismo-libertario
+            - heading "Monarquismo Libertário" [level=3]
+            - paragraph: Corrente que vê a monarquia como garantia de liberdade e estabilidade, defendendo um rei com poder limitado que protege propriedade e direitos individuais e mantém um Estado enxuto e pouco intervencionista.
+            - text: Ver perfil
+        - listitem:
+          - link "Municipalismo Mundo dividido em cidades-estado e microestados independentes que competem como num mercado, com secessão livre, direito de saída e experimentação política, das cidades livres medievais ao \"patchwork\" de Yarvin e ao seasteading. Ver perfil":
+            - /url: /ideologies/municipalismo
+            - heading "Municipalismo" [level=3]
+            - paragraph: Mundo dividido em cidades-estado e microestados independentes que competem como num mercado, com secessão livre, direito de saída e experimentação política, das cidades livres medievais ao "patchwork" de Yarvin e ao seasteading.
+            - text: Ver perfil
+        - listitem:
+          - link "Objetivismo Filosofia criada por Ayn Rand que exalta a razão, o individualismo e o egoísmo racional, defendendo o capitalismo laissez-faire e a busca da própria felicidade como o fim moral supremo da vida de cada pessoa. Ver perfil":
+            - /url: /ideologies/objetivismo
+            - heading "Objetivismo" [level=3]
+            - paragraph: Filosofia criada por Ayn Rand que exalta a razão, o individualismo e o egoísmo racional, defendendo o capitalismo laissez-faire e a busca da própria felicidade como o fim moral supremo da vida de cada pessoa.
+            - text: Ver perfil
+        - listitem:
+          - link "Paleolibertarianismo Vertente que combina livre mercado radical com valores culturais tradicionais e conservadores, defendendo liberdade econômica, propriedade e comunidades locais autônomas contra o Estado e o progressismo. Ver perfil":
+            - /url: /ideologies/paleolibertarianismo
+            - heading "Paleolibertarianismo" [level=3]
+            - paragraph: Vertente que combina livre mercado radical com valores culturais tradicionais e conservadores, defendendo liberdade econômica, propriedade e comunidades locais autônomas contra o Estado e o progressismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Populismo Libertário Vertente que une antipolítica, livre mercado radical e comunicação popular direta, atacando burocracias, impostos e elites partidárias em nome da liberdade individual, do empreendedorismo e da soberania do cidadão comum. Ver perfil":
+            - /url: /ideologies/populismo-libertario
+            - heading "Populismo Libertário" [level=3]
+            - paragraph: Vertente que une antipolítica, livre mercado radical e comunicação popular direta, atacando burocracias, impostos e elites partidárias em nome da liberdade individual, do empreendedorismo e da soberania do cidadão comum.
+            - text: Ver perfil
+        - listitem:
+          - link "Tecno-Comercialismo Vertente neorreacionária que rejeita a democracia em favor de microestados administrados como empresas. Defende competição entre jurisdições, livre mercado, direito de saída e inovação tecnológica como critérios de governo. Ver perfil":
+            - /url: /ideologies/tecno-comercialismo
+            - heading "Tecno-Comercialismo" [level=3]
+            - paragraph: Vertente neorreacionária que rejeita a democracia em favor de microestados administrados como empresas. Defende competição entre jurisdições, livre mercado, direito de saída e inovação tecnológica como critérios de governo.
+            - text: Ver perfil
+    - region "Anarquismo":
+      - heading "Anarquismo" [level=2]
+      - paragraph: Rejeição do Estado e de toda autoridade coercitiva, com organização social livre e voluntária.
+      - text: 23 correntes
+      - list:
+        - listitem:
+          - link "Anarco-Naturalismo Vertente anarquista ligada ao naturismo que defende a vida simples em contato com a natureza, sem Estado nem convenções opressoras, valorizando autonomia individual, saúde e harmonia com o mundo natural. Ver perfil":
+            - /url: /ideologies/anarco-naturalismo
+            - heading "Anarco-Naturalismo" [level=3]
+            - paragraph: Vertente anarquista ligada ao naturismo que defende a vida simples em contato com a natureza, sem Estado nem convenções opressoras, valorizando autonomia individual, saúde e harmonia com o mundo natural.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarco-Progressismo Síntese das correntes anarquistas voltadas à libertação do corpo e da identidade, unindo a crítica ao patriarcado, às normas de gênero e sexualidade e a abertura à tecnologia como ferramenta de emancipação, todas sob rejeição do Estado, do capitalismo e de toda hierarquia imposta. Ver perfil":
+            - /url: /ideologies/anarco-progressismo
+            - heading "Anarco-Progressismo" [level=3]
+            - paragraph: Síntese das correntes anarquistas voltadas à libertação do corpo e da identidade, unindo a crítica ao patriarcado, às normas de gênero e sexualidade e a abertura à tecnologia como ferramenta de emancipação, todas sob rejeição do Estado, do capitalismo e de toda hierarquia imposta.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarcocomunismo Corrente que une anarquismo e comunismo, propondo uma sociedade sem Estado nem propriedade privada, com produção coletiva e distribuição segundo a necessidade, baseada em livre associação e apoio mútuo. Ver perfil":
+            - /url: /ideologies/anarcocomunismo
+            - heading "Anarcocomunismo" [level=3]
+            - paragraph: Corrente que une anarquismo e comunismo, propondo uma sociedade sem Estado nem propriedade privada, com produção coletiva e distribuição segundo a necessidade, baseada em livre associação e apoio mútuo.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarcodistributismo Síntese entre anarquismo e distributismo que defende a ampla distribuição da propriedade e a produção em pequena escala, com comunidades e cooperativas autônomas organizadas sem Estado nem grandes monopólios. Ver perfil":
+            - /url: /ideologies/anarcodistributismo
+            - heading "Anarcodistributismo" [level=3]
+            - paragraph: Síntese entre anarquismo e distributismo que defende a ampla distribuição da propriedade e a produção em pequena escala, com comunidades e cooperativas autônomas organizadas sem Estado nem grandes monopólios.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarcopacifismo Vertente anarquista que rejeita o Estado e toda violência, defendendo a transformação social por meios não violentos, desobediência civil e cooperação voluntária como caminho para uma sociedade livre e justa. Ver perfil":
+            - /url: /ideologies/anarcopacifismo
+            - heading "Anarcopacifismo" [level=3]
+            - paragraph: Vertente anarquista que rejeita o Estado e toda violência, defendendo a transformação social por meios não violentos, desobediência civil e cooperação voluntária como caminho para uma sociedade livre e justa.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarcoprimitivismo Corrente de John Zerzan e Ted Kaczynski que vê a civilização industrial e a própria agricultura como raiz da dominação, defendendo o fim da tecnologia moderna e o retorno a comunidades pequenas de caçadores-coletores sem Estado. Ver perfil":
+            - /url: /ideologies/anarcoprimitivismo
+            - heading "Anarcoprimitivismo" [level=3]
+            - paragraph: Corrente de John Zerzan e Ted Kaczynski que vê a civilização industrial e a própria agricultura como raiz da dominação, defendendo o fim da tecnologia moderna e o retorno a comunidades pequenas de caçadores-coletores sem Estado.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarcossindicalismo Corrente que vê os sindicatos revolucionários como base para derrubar o capitalismo pela ação direta e pela greve geral, organizando a produção pelos próprios trabalhadores em uma sociedade livre e sem Estado. Ver perfil":
+            - /url: /ideologies/anarcossindicalismo
+            - heading "Anarcossindicalismo" [level=3]
+            - paragraph: Corrente que vê os sindicatos revolucionários como base para derrubar o capitalismo pela ação direta e pela greve geral, organizando a produção pelos próprios trabalhadores em uma sociedade livre e sem Estado.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarquismo Filosofia que rejeita o Estado e toda autoridade coercitiva, defendendo a organização livre da sociedade por associações voluntárias, cooperação e autogestão, com liberdade e igualdade como valores centrais. Ver perfil":
+            - /url: /ideologies/anarquismo
+            - heading "Anarquismo" [level=3]
+            - paragraph: Filosofia que rejeita o Estado e toda autoridade coercitiva, defendendo a organização livre da sociedade por associações voluntárias, cooperação e autogestão, com liberdade e igualdade como valores centrais.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarquismo Agrário Vertente anarquista centrada no campo, que defende comunidades rurais autônomas, propriedade coletiva da terra e cooperação camponesa, rejeitando o Estado e a concentração fundiária em favor da autogestão. Ver perfil":
+            - /url: /ideologies/anarquismo-agrario
+            - heading "Anarquismo Agrário" [level=3]
+            - paragraph: Vertente anarquista centrada no campo, que defende comunidades rurais autônomas, propriedade coletiva da terra e cooperação camponesa, rejeitando o Estado e a concentração fundiária em favor da autogestão.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarquismo Cristão Corrente que une a fé cristã ao anarquismo, sustentando que o Evangelho prega amor, igualdade e não violência incompatíveis com o Estado, e defendendo comunidades livres baseadas na consciência e na caridade. Ver perfil":
+            - /url: /ideologies/anarquismo-cristao
+            - heading "Anarquismo Cristão" [level=3]
+            - paragraph: Corrente que une a fé cristã ao anarquismo, sustentando que o Evangelho prega amor, igualdade e não violência incompatíveis com o Estado, e defendendo comunidades livres baseadas na consciência e na caridade.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarquismo Egoísta Corrente fundada por Max Stirner em O Único e sua Propriedade (1844), que rejeita Estado, moral, religião e direitos como fantasmas e propõe uniões voluntárias de egoístas associados só enquanto isso lhes serve. Ver perfil":
+            - /url: /ideologies/anarquismo-egoista
+            - heading "Anarquismo Egoísta" [level=3]
+            - paragraph: Corrente fundada por Max Stirner em O Único e sua Propriedade (1844), que rejeita Estado, moral, religião e direitos como fantasmas e propõe uniões voluntárias de egoístas associados só enquanto isso lhes serve.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarquismo Kropotkiniano Corrente de Piotr Kropotkin que vê na ajuda mútua uma lei da natureza e propõe comunas federadas, integração entre agricultura e indústria, ciência a serviço de todos e ética da solidariedade sem Estado. Ver perfil":
+            - /url: /ideologies/anarquismo-kropotkiniano
+            - heading "Anarquismo Kropotkiniano" [level=3]
+            - paragraph: Corrente de Piotr Kropotkin que vê na ajuda mútua uma lei da natureza e propõe comunas federadas, integração entre agricultura e indústria, ciência a serviço de todos e ética da solidariedade sem Estado.
+            - text: Ver perfil
+        - listitem:
+          - link "Anarquismo Verde Corrente que une anarquismo e ecologia radical, defendendo comunidades descentralizadas e sustentáveis, sem Estado nem exploração da natureza, em harmonia com os ciclos ecológicos e a vida não humana. Ver perfil":
+            - /url: /ideologies/anarquismo-verde
+            - heading "Anarquismo Verde" [level=3]
+            - paragraph: Corrente que une anarquismo e ecologia radical, defendendo comunidades descentralizadas e sustentáveis, sem Estado nem exploração da natureza, em harmonia com os ciclos ecológicos e a vida não humana.
+            - text: Ver perfil
+        - listitem:
+          - link "Comunalismo Modelo criado por Murray Bookchin baseado em municípios autônomos e assembleias populares federadas, com economia comunitária e democracia direta, buscando substituir o Estado por uma confederação livre. Ver perfil":
+            - /url: /ideologies/comunalismo
+            - heading "Comunalismo" [level=3]
+            - paragraph: Modelo criado por Murray Bookchin baseado em municípios autônomos e assembleias populares federadas, com economia comunitária e democracia direta, buscando substituir o Estado por uma confederação livre.
+            - text: Ver perfil
+        - listitem:
+          - link "Comunismo de Conselhos Corrente marxista antileninista de Pannekoek, Gorter e Mattick, que defende que os próprios trabalhadores organizem a produção e o poder em conselhos operários, rejeitando partido de vanguarda, Estado e parlamentarismo. Ver perfil":
+            - /url: /ideologies/comunismo-de-conselhos
+            - heading "Comunismo de Conselhos" [level=3]
+            - paragraph: Corrente marxista antileninista de Pannekoek, Gorter e Mattick, que defende que os próprios trabalhadores organizem a produção e o poder em conselhos operários, rejeitando partido de vanguarda, Estado e parlamentarismo.
+            - text: Ver perfil
+        - listitem:
+          - link "Geoanarquismo Síntese entre anarquismo e georgismo que rejeita o Estado mas trata a terra e os recursos naturais como bens comuns, defendendo que sua renda seja partilhada por toda a comunidade de forma livre e igualitária. Ver perfil":
+            - /url: /ideologies/geoanarquismo
+            - heading "Geoanarquismo" [level=3]
+            - paragraph: Síntese entre anarquismo e georgismo que rejeita o Estado mas trata a terra e os recursos naturais como bens comuns, defendendo que sua renda seja partilhada por toda a comunidade de forma livre e igualitária.
+            - text: Ver perfil
+        - listitem:
+          - link "Libertarianismo Social Vertente libertária de esquerda que une ampla liberdade individual à propriedade coletiva ou compartilhada dos recursos, defendendo autonomia, cooperação e recusa tanto do Estado autoritário quanto do capital. Ver perfil":
+            - /url: /ideologies/libertarianismo-social
+            - heading "Libertarianismo Social" [level=3]
+            - paragraph: Vertente libertária de esquerda que une ampla liberdade individual à propriedade coletiva ou compartilhada dos recursos, defendendo autonomia, cooperação e recusa tanto do Estado autoritário quanto do capital.
+            - text: Ver perfil
+        - listitem:
+          - link "Mutualismo Corrente anarquista fundada por Proudhon que defende trocas justas, crédito livre e propriedade baseada no uso, com produtores e cooperativas negociando entre si sem exploração, patrões nem Estado central. Ver perfil":
+            - /url: /ideologies/mutualismo
+            - heading "Mutualismo" [level=3]
+            - paragraph: Corrente anarquista fundada por Proudhon que defende trocas justas, crédito livre e propriedade baseada no uso, com produtores e cooperativas negociando entre si sem exploração, patrões nem Estado central.
+            - text: Ver perfil
+        - listitem:
+          - link "Mutualismo Proudhoniano Doutrina original de Proudhon, que denuncia a propriedade como roubo e defende crédito mútuo gratuito, federalismo de comunidades autônomas e posse pelo uso, com forte reserva moral diante do progresso e dos costumes. Ver perfil":
+            - /url: /ideologies/mutualismo-proudhoniano
+            - heading "Mutualismo Proudhoniano" [level=3]
+            - paragraph: Doutrina original de Proudhon, que denuncia a propriedade como roubo e defende crédito mútuo gratuito, federalismo de comunidades autônomas e posse pelo uso, com forte reserva moral diante do progresso e dos costumes.
+            - text: Ver perfil
+        - listitem:
+          - link "Socialismo Libertário Corrente que busca o socialismo sem Estado autoritário, unindo propriedade coletiva e autogestão a ampla liberdade individual, com organização de baixo para cima por comunidades e trabalhadores livres. Ver perfil":
+            - /url: /ideologies/socialismo-libertario
+            - heading "Socialismo Libertário" [level=3]
+            - paragraph: Corrente que busca o socialismo sem Estado autoritário, unindo propriedade coletiva e autogestão a ampla liberdade individual, com organização de baixo para cima por comunidades e trabalhadores livres.
+            - text: Ver perfil
+        - listitem:
+          - link "Tecno-Anarquismo Anarquismo tecnológico que propõe abolir o Estado por automação, energia abundante, redes descentralizadas e comunidades voluntárias autogeridas com ferramentas digitais e produção local livre. Ver perfil":
+            - /url: /ideologies/tecno-anarquismo
+            - heading "Tecno-Anarquismo" [level=3]
+            - paragraph: Anarquismo tecnológico que propõe abolir o Estado por automação, energia abundante, redes descentralizadas e comunidades voluntárias autogeridas com ferramentas digitais e produção local livre.
+            - text: Ver perfil
+        - listitem:
+          - link "Tecno-Comunismo Vertente que combina o estágio final do comunismo à aceleração tecnológica, usando automação e IA para superar a escassez, o trabalho necessário e a propriedade privada. Ver perfil":
+            - /url: /ideologies/tecno-comunismo
+            - heading "Tecno-Comunismo" [level=3]
+            - paragraph: Vertente que combina o estágio final do comunismo à aceleração tecnológica, usando automação e IA para superar a escassez, o trabalho necessário e a propriedade privada.
+            - text: Ver perfil
+        - listitem:
+          - link "Zapatismo Movimento neozapatista surgido em 1994 em Chiapas, que une autonomia indígena, democracia direta por assembleias e caracoles, economia cooperativista de subsistência e recusa de tomar o poder estatal, resumido no lema 'mandar obedecendo'. Ver perfil":
+            - /url: /ideologies/zapatismo
+            - heading "Zapatismo" [level=3]
+            - paragraph: Movimento neozapatista surgido em 1994 em Chiapas, que une autonomia indígena, democracia direta por assembleias e caracoles, economia cooperativista de subsistência e recusa de tomar o poder estatal, resumido no lema 'mandar obedecendo'.
+            - text: Ver perfil
+    - complementary:
+      - heading "E você, onde se encaixa?" [level=2]
+      - paragraph: Responda ao quiz e veja com quais dessas 275 ideologias você é mais compatível.
+      - link "Fazer o teste":
+        - /url: /
+  - contentinfo:
+    - link "12 axes":
+      - /url: /
+    - paragraph:
+      - text: Quiz político independente · 12axes.vercel.app · © 2026. Todos os direitos reservados ·
+      - link "English":
+        - /url: /en/ideologies

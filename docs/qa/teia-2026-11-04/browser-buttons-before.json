@@ -1,0 +1,332 @@
+[
+  {
+    "nodeId": 169,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-92",
+      "role": "button",
+      "tabindex": "0",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 1; width: 40px; height: 40px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 8, 8);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Back",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 173,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-94",
+      "role": "button",
+      "tabindex": "0",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 3; width: 40px; height: 40px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 302, 8);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Comparação livre",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 175,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-95",
+      "role": "button",
+      "tabindex": "0",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 4; width: 40px; height: 40px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 342, 8);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Copiar link desta exploração",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 193,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-61",
+      "role": "button",
+      "tabindex": "0",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; width: 40px; height: 40px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 310, 4);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Limpar busca",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 206,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-71",
+      "role": "button",
+      "tabindex": "0",
+      "aria-current": "false",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 14; width: 85.0639px; height: 32px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 199.872, 564);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Lista",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 208,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-73",
+      "role": "button",
+      "tabindex": "0",
+      "aria-current": "true",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 15; width: 85.0639px; height: 32px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 284.936, 564);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Teia",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 210,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-75",
+      "role": "button",
+      "tabindex": "0",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 16; width: 138.922px; height: 32px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 20, 596);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Limpar filtros",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 215,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-77",
+      "role": "button",
+      "tabindex": "0",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 18; width: 40px; height: 40px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 201, 653);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Diminuir zoom",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 217,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-78",
+      "role": "button",
+      "tabindex": "0",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 19; width: 40px; height: 40px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 241, 653);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Aumentar zoom",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 219,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-79",
+      "role": "button",
+      "tabindex": "0",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 20; width: 40px; height: 40px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 281, 653);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Reenquadrar teia",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 221,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-80",
+      "role": "button",
+      "tabindex": "0",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 21; width: 40px; height: 40px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 321, 653);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Pausar movimento",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 224,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-84",
+      "role": "button",
+      "aria-current": "false",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 3; width: 44px; height: 44px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 384.314, 168.668);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "A Sociedade Aberta e Seus Inimigos",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 226,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-82",
+      "role": "button",
+      "aria-current": "false",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 1; width: 44px; height: 44px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 431.609, 464.71);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Platão",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 228,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-83",
+      "role": "button",
+      "aria-current": "false",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 2; width: 44px; height: 44px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 431.609, 464.71);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "A República",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 230,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-96",
+      "role": "button",
+      "tabindex": "0",
+      "aria-current": "false",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 3; width: 97.5px; height: 45px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 785);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Início",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 232,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-97",
+      "role": "button",
+      "tabindex": "0",
+      "aria-current": "false",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 4; width: 97.5px; height: 45px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 97.5, 785);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Testes",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 234,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-98",
+      "role": "button",
+      "tabindex": "0",
+      "aria-current": "true",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 5; width: 97.5px; height: 45px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 195, 785);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Atlas",
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "nodeId": 236,
+    "nodeName": "FLT-SEMANTICS",
+    "attrs": {
+      "id": "flt-semantic-node-99",
+      "role": "button",
+      "tabindex": "0",
+      "aria-current": "false",
+      "flt-tappable": "",
+      "style": "position: absolute; overflow: visible; pointer-events: all; z-index: 6; width: 97.5px; height: 45px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 292.5, 785);"
+    },
+    "children": [
+      {
+        "name": "#text",
+        "text": "Histórico",
+        "attrs": {}
+      }
+    ]
+  }
+]

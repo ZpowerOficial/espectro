@@ -68,12 +68,18 @@ class AxisChip extends StatelessWidget {
           Container(
             width: 8,
             height: 8,
-            decoration: BoxDecoration(color: axis.leftColor, shape: BoxShape.circle),
+            decoration: BoxDecoration(
+              color: axis.leftColor,
+              shape: BoxShape.circle,
+            ),
           ),
           const SizedBox(width: 7),
           Text(
             axis.label.toUpperCase(),
-            style: text.labelSmall?.copyWith(color: AppColors.ink, letterSpacing: 1.3),
+            style: text.labelSmall?.copyWith(
+              color: AppColors.ink,
+              letterSpacing: 1.3,
+            ),
           ),
           const Spacer(),
           Text(
@@ -86,7 +92,10 @@ class AxisChip extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Text('·', style: text.bodySmall?.copyWith(color: AppColors.muted)),
+            child: Text(
+              '·',
+              style: text.bodySmall?.copyWith(color: AppColors.muted),
+            ),
           ),
           Text(
             axis.rightPole,
@@ -113,7 +122,10 @@ class CategoryChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
       decoration: BoxDecoration(
-        color: Color.alphaBlend(category.color.withValues(alpha: 0.35), AppColors.surface),
+        color: Color.alphaBlend(
+          category.color.withValues(alpha: 0.35),
+          AppColors.surface,
+        ),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Row(
@@ -129,17 +141,16 @@ class CategoryChip extends StatelessWidget {
           const SizedBox(width: 8),
           Text(
             category.label.toUpperCase(),
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: AppColors.ink,
-                  letterSpacing: 1.3,
-                ),
+            style: Theme.of(context).textTheme.labelSmall
+                ?.copyWith(color: AppColors.ink, letterSpacing: 1.3),
           ),
           const Spacer(),
           Flexible(
             child: Text(
               category.subcategories.join(' · '),
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 11.5),
+              style: Theme.of(context).textTheme.bodySmall
+                  ?.copyWith(fontSize: 11.5),
             ),
           ),
         ],

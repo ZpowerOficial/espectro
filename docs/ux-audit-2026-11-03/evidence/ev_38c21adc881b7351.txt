@@ -1,0 +1,28 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#conteudo-principal"
+  - banner:
+    - button "Voltar para o início": 12 axes
+    - button "Ativar modo escuro"
+    - button "Reiniciar quiz"
+  - text: Pergunta 1 de 36 0% concluído
+  - 'progressbar "Progresso do quiz: 0%"'
+  - article "A carne cultivada em laboratório deveria substituir parte da pecuária.":
+    - paragraph: Tecnologia
+    - button "Entender esta pergunta": Entenda
+    - heading "A carne cultivada em laboratório deveria substituir parte da pecuária." [level=2]:
+      - text: A
+      - button "carne cultivada em laboratório"
+      - text: deveria substituir parte da
+      - button "pecuária"
+      - text: .
+    - radiogroup "Opções de resposta":
+      - radio "Concordo totalmente"
+      - radio "Concordo"
+      - radio "Neutro ou Depende"
+      - radio "Discordo"
+      - radio "Discordo totalmente"
+  - navigation "Navegação do quiz":
+    - button "Voltar" [disabled]
+    - button "Trocar esta pergunta por outra do mesmo tema": Trocar
+    - button "Avançar" [disabled]

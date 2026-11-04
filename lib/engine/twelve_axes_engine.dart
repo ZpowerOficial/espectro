@@ -6,34 +6,35 @@ enum TwelveVariant { short, complete, extreme }
 
 extension TwelveVariantInfo on TwelveVariant {
   String get label => switch (this) {
-        TwelveVariant.short => 'Curta',
-        TwelveVariant.complete => 'Completa',
-        TwelveVariant.extreme => 'Extrema',
-      };
+    TwelveVariant.short => 'Curta',
+    TwelveVariant.complete => 'Completa',
+    TwelveVariant.extreme => 'Extrema',
+  };
 
   int get questionCount => switch (this) {
-        TwelveVariant.short => 36,
-        TwelveVariant.complete => 60,
-        TwelveVariant.extreme => 240,
-      };
+    TwelveVariant.short => 36,
+    TwelveVariant.complete => 60,
+    TwelveVariant.extreme => 240,
+  };
 
   int get perAxis => switch (this) {
-        TwelveVariant.short => 3,
-        TwelveVariant.complete => 5,
-        TwelveVariant.extreme => 0,
-      };
+    TwelveVariant.short => 3,
+    TwelveVariant.complete => 5,
+    TwelveVariant.extreme => 20,
+  };
 
   String get duration => switch (this) {
-        TwelveVariant.short => '± 5 min',
-        TwelveVariant.complete => '± 9 min',
-        TwelveVariant.extreme => '± 30 min',
-      };
+    TwelveVariant.short => '± 5 min',
+    TwelveVariant.complete => '± 9 min',
+    TwelveVariant.extreme => '± 30 min',
+  };
 
   String get description => switch (this) {
-        TwelveVariant.short => 'Leitura rápida do seu perfil em 12 eixos.',
-        TwelveVariant.complete => 'Mais perguntas por eixo para um retrato mais estável.',
-        TwelveVariant.extreme => 'Todas as 240 perguntas do banco original.',
-      };
+    TwelveVariant.short => 'Leitura rápida do seu perfil em 12 eixos.',
+    TwelveVariant.complete =>
+      'Mais perguntas por eixo para um retrato mais estável.',
+    TwelveVariant.extreme => 'Todas as 240 perguntas do banco original.',
+  };
 }
 
 /// Sorteia as perguntas da sessão. Reproduz o comportamento do site:
@@ -44,22 +45,22 @@ List<AxisQuestion> selectTwelveQuestions(
   TwelveVariant variant,
   Random random,
 ) {
-  if (variant == TwelveVariant.extreme) {
-    return _interleave(<AxisQuestion>[...data.questions], random);
-  }
-
   final int perAxis = variant.perAxis;
   final List<AxisQuestion> selected = <AxisQuestion>[];
   for (var axisIndex = 0; axisIndex < data.axes.length; axisIndex++) {
     final Axis axis = data.axes[axisIndex];
-    final List<AxisQuestion> left = data.questionsFor(axis.id).where((q) => q.agreeIsLeft).toList()
-      ..shuffle(random);
-    final List<AxisQuestion> right = data.questionsFor(axis.id).where((q) => !q.agreeIsLeft).toList()
-      ..shuffle(random);
+    final List<AxisQuestion> left =
+        data.questionsFor(axis.id).where((q) => q.agreeIsLeft).toList()
+          ..shuffle(random);
+    final List<AxisQuestion> right =
+        data.questionsFor(axis.id).where((q) => !q.agreeIsLeft).toList()
+          ..shuffle(random);
     final int fromLeft = axisIndex.isEven ? (perAxis / 2).ceil() : perAxis ~/ 2;
     final int fromRight = perAxis - fromLeft;
     if (left.length < fromLeft || right.length < fromRight) {
-      throw StateError('Eixo ${axis.id} sem perguntas suficientes para $perAxis itens');
+      throw StateError(
+        'Eixo ${axis.id} sem perguntas suficientes para $perAxis itens',
+      );
     }
     selected
       ..addAll(left.take(fromLeft))
@@ -69,8 +70,12 @@ List<AxisQuestion> selectTwelveQuestions(
 }
 
 List<AxisQuestion> _interleave(List<AxisQuestion> questions, Random random) {
-  final List<AxisQuestion> left = questions.where((q) => q.agreeIsLeft).toList();
-  final List<AxisQuestion> right = questions.where((q) => !q.agreeIsLeft).toList();
+  final List<AxisQuestion> left = questions
+      .where((q) => q.agreeIsLeft)
+      .toList();
+  final List<AxisQuestion> right = questions
+      .where((q) => !q.agreeIsLeft)
+      .toList();
   final List<AxisQuestion> output = <AxisQuestion>[];
   var takeLeft = random.nextBool();
   var leftIndex = 0;
@@ -123,7 +128,8 @@ class AxisScore {
   bool get isBalanced => intensity == 'Equilibrado';
 
   /// Ex.: `58% Privado`.
-  String get summary => isBalanced ? 'Equilibrado' : '$dominantPercentRounded% $dominantPole';
+  String get summary =>
+      isBalanced ? 'Equilibrado' : '$dominantPercentRounded% $dominantPole';
 }
 
 class TwelveAxesResult {
@@ -150,7 +156,9 @@ class TwelveAxesResult {
 
   AxisScore get mostBalanced {
     if (scores.isEmpty) {
-      throw StateError('Não há pontuações para calcular o eixo mais equilibrado');
+      throw StateError(
+        'Não há pontuações para calcular o eixo mais equilibrado',
+      );
     }
     var best = scores.first;
     for (final score in scores) {
@@ -173,11 +181,8 @@ class TwelveAxesResult {
 /// Sessão de respostas do 12 Eixos. Mutável de propósito: a tela usa
 /// `setState` e esta classe concentra toda a regra de pontuação.
 class TwelveAxesSession {
-  TwelveAxesSession({
-    required this.data,
-    required this.variant,
-    Random? random,
-  }) : _random = random ?? Random() {
+  TwelveAxesSession({required this.data, required this.variant, Random? random})
+    : _random = random ?? Random() {
     questions.addAll(selectTwelveQuestions(data, variant, _random));
     answers = List<int?>.filled(questions.length, null);
     _usedIds = questions.map((question) => question.id).toSet();
@@ -214,7 +219,8 @@ class TwelveAxesSession {
     return axis;
   }
 
-  double get progress => questions.isEmpty ? 0 : answeredCount / questions.length;
+  double get progress =>
+      questions.isEmpty ? 0 : answeredCount / questions.length;
 
   void select(int optionIndex) {
     if (optionIndex < 0 || optionIndex >= data.answerOptions.length) {
@@ -235,11 +241,15 @@ class TwelveAxesSession {
   /// `false` quando o banco do eixo se esgotou.
   bool swapCurrent() {
     final String axisId = current.axisId;
-    final List<AxisQuestion> candidates = data.questionsFor(axisId).where((question) {
-      return !_usedIds.contains(question.id) && !_skippedIds.contains(question.id);
+    final List<AxisQuestion> candidates = data.questionsFor(axisId).where((
+      question,
+    ) {
+      return !_usedIds.contains(question.id) &&
+          !_skippedIds.contains(question.id);
     }).toList();
     if (candidates.isEmpty) return false;
-    final AxisQuestion replacement = candidates[_random.nextInt(candidates.length)];
+    final AxisQuestion replacement =
+        candidates[_random.nextInt(candidates.length)];
     _skippedIds.add(questions[index].id);
     _usedIds.remove(questions[index].id);
     _usedIds.add(replacement.id);
@@ -253,7 +263,11 @@ class TwelveAxesSession {
         .where((q) => q.id == questionId)
         .firstOrNull;
     if (question == null) {
-      throw ArgumentError.value(questionId, 'questionId', 'Pergunta de arquétipo inexistente');
+      throw ArgumentError.value(
+        questionId,
+        'questionId',
+        'Pergunta de arquétipo inexistente',
+      );
     }
     if (optionIndex < 0 || optionIndex >= question.options.length) {
       throw RangeError.index(optionIndex, question.options, 'optionIndex');
@@ -277,11 +291,15 @@ class TwelveAxesSession {
         final int? answerIndex = answers[i];
         if (answerIndex == null) continue;
         final double agreement = data.answerOptions[answerIndex].score;
-        final double towardLeft = question.agreeIsLeft ? agreement : 1 - agreement;
+        final double towardLeft = question.agreeIsLeft
+            ? agreement
+            : 1 - agreement;
         weighted += towardLeft * question.weight;
         totalWeight += question.weight;
       }
-      final double leftPercent = totalWeight == 0 ? 50 : weighted / totalWeight * 100;
+      final double leftPercent = totalWeight == 0
+          ? 50
+          : weighted / totalWeight * 100;
       scores.add(AxisScore(axis: axis, leftPercent: leftPercent));
     }
     return TwelveAxesResult(

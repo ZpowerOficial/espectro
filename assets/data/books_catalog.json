@@ -1,0 +1,4846 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "3.0.0",
+  "entries": [
+    {
+      "id": "a_republica_platao",
+      "name": "A República",
+      "subtitle": "Platão",
+      "category": "Clássicos da Filosofia Política",
+      "era": "c. 375 a.C.",
+      "origin": "Grécia Antiga",
+      "summary": "Investiga a natureza da justiça na alma e na cidade ideal (Kallipolis), propondo uma república governada por filósofos-reis e estruturada em classes funcionais rígidas.",
+      "highlights": [
+        "Governo dos filósofos guiados pelo conhecimento do Bem",
+        "Comunhão de bens e guarda comum entre os magistrados",
+        "Alegoria da Caverna e crítica aos desvios da democracia direta"
+      ],
+      "quote": "Por que ler: Obra fundadora da filosofia política ocidental sobre justiça e ordem na pólis.",
+      "axes": {
+        "estrutura": 0.85,
+        "representacao": 0.75,
+        "poder": -0.85,
+        "imigracao": -0.55,
+        "diplomacia": -0.35,
+        "intervencao": 0.55,
+        "economia": -0.65,
+        "controle": -0.75,
+        "comercio": -0.65,
+        "religiao": 0.55,
+        "moral": 0.7,
+        "tecnologia": 0.2
+      },
+      "triangles": {
+        "0": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "1": [
+          0.1,
+          0.65,
+          0.25
+        ],
+        "2": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "3": [
+          0.2,
+          0.6,
+          0.2
+        ],
+        "4": [
+          0.1,
+          0.85,
+          0.05
+        ],
+        "5": [
+          0.35,
+          0.45,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "a_politica_aristoteles",
+      "name": "A Política",
+      "subtitle": "Aristóteles",
+      "category": "Clássicos da Filosofia Política",
+      "era": "c. 330 a.C.",
+      "origin": "Grécia Antiga",
+      "summary": "Examina a pólis como comunidade natural voltada para o bem viver (eudaimonia), defendendo o governo misto (politeia), a classe média e a propriedade privada com uso compartilhado.",
+      "highlights": [
+        "Homem como 'animal político' (zoon politikon) por natureza",
+        "Governo misto e primazia da classe média para evitar tirania e demagogia",
+        "Defesa da propriedade privada associada à generosidade cívica"
+      ],
+      "quote": "Por que ler: Base do pensamento constitucional e do republicanismo cívico clássico.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.65,
+        "poder": -0.2,
+        "imigracao": -0.4,
+        "diplomacia": 0.1,
+        "intervencao": -0.15,
+        "economia": 0.25,
+        "controle": 0.15,
+        "comercio": 0.1,
+        "religiao": 0.35,
+        "moral": 0.45,
+        "tecnologia": 0.3
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "1": [
+          0.35,
+          0.4,
+          0.25
+        ],
+        "2": [
+          0.55,
+          0.2,
+          0.25
+        ],
+        "3": [
+          0.15,
+          0.6,
+          0.25
+        ],
+        "4": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "5": [
+          0.55,
+          0.25,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "o_principe_maquiavel",
+      "name": "O Príncipe",
+      "subtitle": "Nicolau Maquiavel",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1513 / 1532",
+      "origin": "Florença (Itália)",
+      "summary": "Inaugura o realismo político moderno ao separar a moral privada da razão de Estado, ensinando ao governante como conquistar e manter o poder diante da fortuna e da virtù.",
+      "highlights": [
+        "Autonomia da esfera política frente aos preceitos morais e teológicos",
+        "A virtù como capacidade pragmática de moldar os caprichos da fortuna",
+        "Melhor ser temido do que amado, se não for possível ser ambos"
+      ],
+      "quote": "Por que ler: Texto inaugural do realismo e da ciência política empírica moderna.",
+      "axes": {
+        "estrutura": 0.7,
+        "representacao": 0.65,
+        "poder": -0.8,
+        "imigracao": -0.35,
+        "diplomacia": -0.75,
+        "intervencao": 0.65,
+        "economia": 0.15,
+        "controle": 0.1,
+        "comercio": -0.1,
+        "religiao": -0.55,
+        "moral": 0.2,
+        "tecnologia": -0.45
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.45,
+          0.3
+        ],
+        "1": [
+          0.12,
+          0.76,
+          0.12
+        ],
+        "2": [
+          0.45,
+          0.35,
+          0.2
+        ],
+        "3": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "4": [
+          0.15,
+          0.8,
+          0.05
+        ],
+        "5": [
+          0.45,
+          0.15,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "discursos_tito_livio",
+      "name": "Discursos sobre a Primeira Década de Tito Lívio",
+      "subtitle": "Nicolau Maquiavel",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1517 / 1531",
+      "origin": "Florença (Itália)",
+      "summary": "Elogia o modelo republicano romano, sustentando que o conflito institucional equilibrado entre patrícios e plebeus e a virtude cívica armada foram os segredos da liberdade duradoura.",
+      "highlights": [
+        "O conflito cívico institucionalizado como motor da liberdade republicana",
+        "Instituição dos tribunos da plebe como contrapeso popular aos nobres",
+        "Preferência pelo exército de cidadãos armados contra mercenários"
+      ],
+      "quote": "Por que ler: Obra seminal do republicanismo cívico e da liberdade como não dominação.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.8,
+        "poder": 0.2,
+        "imigracao": -0.15,
+        "diplomacia": -0.55,
+        "intervencao": 0.45,
+        "economia": -0.1,
+        "controle": -0.05,
+        "comercio": 0.15,
+        "religiao": -0.45,
+        "moral": -0.1,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.45,
+          0.3
+        ],
+        "1": [
+          0.45,
+          0.3,
+          0.25
+        ],
+        "2": [
+          0.35,
+          0.45,
+          0.2
+        ],
+        "3": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "leviata_hobbes",
+      "name": "Leviatã",
+      "subtitle": "Thomas Hobbes",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1651",
+      "origin": "Inglaterra",
+      "summary": "Argumenta que no estado de natureza a vida humana é 'solitária, pobre, sórdida, embrutecida e curta', justificando um pacto social irrevogável que institui um soberano absoluto garantidor da paz.",
+      "highlights": [
+        "O estado de natureza como guerra hipotética de todos contra todos",
+        "O contrato social que transfere direitos ao soberano em troca de segurança",
+        "O Estado como 'deus mortal' com autoridade civil e religiosa unificada"
+      ],
+      "quote": "Por que ler: Fundamento da teoria moderna da soberania e do contrato social securitário.",
+      "axes": {
+        "estrutura": 0.9,
+        "representacao": 0.85,
+        "poder": -0.92,
+        "imigracao": -0.4,
+        "diplomacia": -0.65,
+        "intervencao": 0.45,
+        "economia": 0.1,
+        "controle": -0.15,
+        "comercio": -0.1,
+        "religiao": -0.15,
+        "moral": 0.35,
+        "tecnologia": -0.4
+      },
+      "triangles": {
+        "0": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "1": [
+          0.08,
+          0.84,
+          0.08
+        ],
+        "2": [
+          0.5,
+          0.3,
+          0.2
+        ],
+        "3": [
+          0.4,
+          0.45,
+          0.15
+        ],
+        "4": [
+          0.1,
+          0.85,
+          0.05
+        ],
+        "5": [
+          0.4,
+          0.2,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "segundo_tratado_locke",
+      "name": "Segundo Tratado sobre o Governo Civil",
+      "subtitle": "John Locke",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1689",
+      "origin": "Inglaterra",
+      "summary": "Estabelece os direitos naturais inalienáveis à vida, liberdade e propriedade privada adquirida pelo trabalho, postulando que o governo existe sob consentimento e pode ser legitimamente destituído se violá-los.",
+      "highlights": [
+        "Direitos naturais universais: vida, liberdade e propriedade pré-estatais",
+        "Governo fundado no consentimento e na separação de poderes legislativo e executivo",
+        "Direito legítimo de resistência e revolução contra a tirania governamental"
+      ],
+      "quote": "Por que ler: Pedra angular do liberalismo clássico, do Estado de Direito e do constitucionalismo.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.75,
+        "poder": 0.72,
+        "imigracao": 0.15,
+        "diplomacia": 0.2,
+        "intervencao": -0.25,
+        "economia": 0.8,
+        "controle": 0.75,
+        "comercio": 0.55,
+        "religiao": 0.15,
+        "moral": 0.1,
+        "tecnologia": -0.25
+      },
+      "triangles": {
+        "0": [
+          0.08,
+          0.22,
+          0.7
+        ],
+        "1": [
+          0.68,
+          0.14,
+          0.18
+        ],
+        "2": [
+          0.3,
+          0.2,
+          0.5
+        ],
+        "3": [
+          0.22,
+          0.36,
+          0.42
+        ],
+        "4": [
+          0.46,
+          0.12,
+          0.42
+        ],
+        "5": [
+          0.58,
+          0.08,
+          0.34
+        ]
+      }
+    },
+    {
+      "id": "espirito_das_leis_montesquieu",
+      "name": "Do Espírito das Leis",
+      "subtitle": "Montesquieu",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1748",
+      "origin": "França",
+      "summary": "Desenvolve a teoria da separação tripartite dos poderes (Executivo, Legislativo e Judiciário) como mecanismo essencial para que o poder freie o poder e assegure a liberdade política dos cidadãos.",
+      "highlights": [
+        "Separação e equilíbrio harmônico entre Executivo, Legislativo e Judiciário",
+        "Leis como relações necessárias que derivam da natureza das coisas e do clima",
+        "A virtude republicana, a honra monárquica e o medo despótico como princípios de governo"
+      ],
+      "quote": "Por que ler: Matriz arquitetônica das constituições democráticas modernas em todo o mundo.",
+      "axes": {
+        "estrutura": -0.6,
+        "representacao": -0.7,
+        "poder": 0.65,
+        "imigracao": 0.2,
+        "diplomacia": 0.35,
+        "intervencao": -0.3,
+        "economia": 0.45,
+        "controle": 0.4,
+        "comercio": 0.45,
+        "religiao": -0.25,
+        "moral": 0.1,
+        "tecnologia": -0.2
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.4,
+          0.45
+        ],
+        "1": [
+          0.6,
+          0.18,
+          0.22
+        ],
+        "2": [
+          0.35,
+          0.3,
+          0.35
+        ],
+        "3": [
+          0.15,
+          0.35,
+          0.5
+        ],
+        "4": [
+          0.62,
+          0.18,
+          0.2
+        ],
+        "5": [
+          0.55,
+          0.15,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "contrato_social_rousseau",
+      "name": "Do Contrato Social",
+      "subtitle": "Jean-Jacques Rousseau",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1762",
+      "origin": "Genebra / França",
+      "summary": "Proclama que o homem nasce livre, mas por toda parte está a ferros, propondo uma ordem civil em que a soberania inalienável pertence ao povo reunido, guiado pela Vontade Geral em busca do bem comum.",
+      "highlights": [
+        "A soberania popular direta como expressão inalienável da Vontade Geral",
+        "Crítica à representação parlamentar que usurpa a soberania dos cidadãos",
+        "Pacto social que confere igualdade moral e legítima perante a lei"
+      ],
+      "quote": "Por que ler: Manifesto da democracia radical, da soberania popular e da igualdade cívica.",
+      "axes": {
+        "estrutura": 0.45,
+        "representacao": -0.92,
+        "poder": 0.15,
+        "imigracao": 0.1,
+        "diplomacia": 0.25,
+        "intervencao": 0.35,
+        "economia": -0.55,
+        "controle": -0.45,
+        "comercio": -0.35,
+        "religiao": -0.15,
+        "moral": -0.35,
+        "tecnologia": 0.6
+      },
+      "triangles": {
+        "0": [
+          0.4,
+          0.45,
+          0.15
+        ],
+        "1": [
+          0.35,
+          0.35,
+          0.3
+        ],
+        "2": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "3": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "4": [
+          0.85,
+          0.1,
+          0.05
+        ],
+        "5": [
+          0.25,
+          0.65,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "o_federalista",
+      "name": "O Federalista",
+      "subtitle": "Alexander Hamilton, James Madison e John Jay",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1787–1788",
+      "origin": "Estados Unidos",
+      "summary": "Coletânea de 85 ensaios defendendo a ratificação da Constituição dos EUA, articulando o federalismo contra o facciosismo e projetando uma república estendida com freios institucionais recíprocos.",
+      "highlights": [
+        "O perigo das facções majoritárias neutralizado pela república extensa (Federalista 10)",
+        "Ambição institucional contrabalançando a ambição dos outros ramos (Federalista 51)",
+        "O Poder Judiciário independente como árbitro da constitucionalidade (Federalista 78)"
+      ],
+      "quote": "Por que ler: Tratado definitivo sobre federalismo moderno, república constitucional e contrapesos.",
+      "axes": {
+        "estrutura": -0.85,
+        "representacao": -0.65,
+        "poder": 0.5,
+        "imigracao": 0.1,
+        "diplomacia": -0.2,
+        "intervencao": 0.1,
+        "economia": 0.65,
+        "controle": 0.55,
+        "comercio": 0.45,
+        "religiao": 0.2,
+        "moral": 0.25,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.12,
+          0.32,
+          0.56
+        ],
+        "1": [
+          0.52,
+          0.28,
+          0.2
+        ],
+        "2": [
+          0.42,
+          0.24,
+          0.34
+        ],
+        "3": [
+          0.24,
+          0.38,
+          0.38
+        ],
+        "4": [
+          0.54,
+          0.24,
+          0.22
+        ],
+        "5": [
+          0.55,
+          0.15,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "sobre_a_liberdade_mill",
+      "name": "Sobre a Liberdade",
+      "subtitle": "John Stuart Mill",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1859",
+      "origin": "Reino Unido",
+      "summary": "Formula o Princípio do Dano (Harm Principle), defendendo a mais ampla liberdade de pensamento, discussão e conduta individual, contanto que as ações não causem prejuízo concreto e involuntário a terceiros.",
+      "highlights": [
+        "O Princípio do Dano como único critério legítimo de coerção sobre o indivíduo",
+        "Defesa apaixonada da liberdade irrestrita de expressão e debate de ideias",
+        "Alerta contra a tirania da maioria e o conformismo social na opinião pública"
+      ],
+      "quote": "Por que ler: Ensaio supremo sobre liberdade de expressão, individualidade e tolerância civil.",
+      "axes": {
+        "estrutura": -0.35,
+        "representacao": -0.85,
+        "poder": 0.9,
+        "imigracao": 0.55,
+        "diplomacia": 0.45,
+        "intervencao": -0.55,
+        "economia": 0.45,
+        "controle": 0.4,
+        "comercio": 0.55,
+        "religiao": -0.65,
+        "moral": -0.7,
+        "tecnologia": -0.4
+      },
+      "triangles": {
+        "0": [
+          0.14,
+          0.38,
+          0.48
+        ],
+        "1": [
+          0.78,
+          0.08,
+          0.14
+        ],
+        "2": [
+          0.1,
+          0.45,
+          0.45
+        ],
+        "3": [
+          0.08,
+          0.28,
+          0.64
+        ],
+        "4": [
+          0.65,
+          0.08,
+          0.27
+        ],
+        "5": [
+          0.55,
+          0.25,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "democracia_na_america_tocqueville",
+      "name": "A Democracia na América",
+      "subtitle": "Alexis de Tocqueville",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1835 / 1840",
+      "origin": "França / Estados Unidos",
+      "summary": "Analisa a marcha inexorável da igualdade de condições no mundo moderno, alertando para os riscos do despotismo suave e do individualismo egoísta, mitigados nos EUA pelo associativismo livre e religião.",
+      "highlights": [
+        "A igualdade de condições como fato providencial da modernidade",
+        "O papel vital das associações civis voluntárias como escola da liberdade",
+        "O risco do 'despotismo tutelar e suave' que infantiliza os cidadãos sob o Estado"
+      ],
+      "quote": "Por que ler: Clássico absoluto da sociologia política sobre os dilemas da sociedade democrática.",
+      "axes": {
+        "estrutura": -0.75,
+        "representacao": -0.7,
+        "poder": 0.55,
+        "imigracao": 0.15,
+        "diplomacia": 0.25,
+        "intervencao": -0.35,
+        "economia": 0.5,
+        "controle": 0.45,
+        "comercio": 0.35,
+        "religiao": 0.35,
+        "moral": 0.3,
+        "tecnologia": -0.2
+      },
+      "triangles": {
+        "0": [
+          0.16,
+          0.36,
+          0.48
+        ],
+        "1": [
+          0.55,
+          0.25,
+          0.2
+        ],
+        "2": [
+          0.42,
+          0.26,
+          0.32
+        ],
+        "3": [
+          0.12,
+          0.44,
+          0.44
+        ],
+        "4": [
+          0.6,
+          0.15,
+          0.25
+        ],
+        "5": [
+          0.52,
+          0.22,
+          0.26
+        ]
+      }
+    },
+    {
+      "id": "paz_perpetua_kant",
+      "name": "À Paz Perpétua",
+      "subtitle": "Immanuel Kant",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1795",
+      "origin": "Prússia / Alemanha",
+      "summary": "Esboça um projeto filosófico de paz duradoura fundado na exigência de que todos os Estados tenham constituição republicana, associem-se numa federação de povos livres e garantam a hospitalidade universal.",
+      "highlights": [
+        "A constituição republicana dos Estados como condição essencial para a paz",
+        "A federação de Estados livres (foedus pacificum) em vez de um império mundial",
+        "O direito cosmopolita restrito às condições de hospitalidade universal"
+      ],
+      "quote": "Por que ler: Marco fundador do liberalismo internacionalista, do direito cosmopolita e da ONU.",
+      "axes": {
+        "estrutura": -0.5,
+        "representacao": -0.88,
+        "poder": 0.65,
+        "imigracao": 0.7,
+        "diplomacia": 0.9,
+        "intervencao": -0.7,
+        "economia": 0.15,
+        "controle": 0.15,
+        "comercio": 0.75,
+        "religiao": -0.4,
+        "moral": -0.5,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "1": [
+          0.62,
+          0.12,
+          0.26
+        ],
+        "2": [
+          0.16,
+          0.52,
+          0.32
+        ],
+        "3": [
+          0.03,
+          0.15,
+          0.82
+        ],
+        "4": [
+          0.7,
+          0.12,
+          0.18
+        ],
+        "5": [
+          0.52,
+          0.3,
+          0.18
+        ]
+      }
+    },
+    {
+      "id": "origens_totalitarismo_arendt",
+      "name": "Origens do Totalitarismo",
+      "subtitle": "Hannah Arendt",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1951",
+      "origin": "Alemanha / Estados Unidos",
+      "summary": "Examina a gênese do nazismo e do stalinismo a partir do antissemitismo, do imperialismo e do desmoronamento das instituições da sociedade civil, resultando no terror burocrático e no homem-massa desprovido de direitos.",
+      "highlights": [
+        "A perda da cidadania transforma seres humanos em 'supérfluos' sem direitos",
+        "A ideologia e o terror como mecanismos centrais de dominação totalitária",
+        "A defesa do 'direito a ter direitos' e do espaço público compartilhado de ação"
+      ],
+      "quote": "Por que ler: Estudo monumental e indispensável sobre as fraturas da civilização e a dignidade humana.",
+      "axes": {
+        "estrutura": -0.55,
+        "representacao": -0.9,
+        "poder": 0.75,
+        "imigracao": 0.6,
+        "diplomacia": 0.55,
+        "intervencao": -0.55,
+        "economia": -0.15,
+        "controle": -0.05,
+        "comercio": 0.45,
+        "religiao": -0.35,
+        "moral": -0.5,
+        "tecnologia": -0.15
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.48,
+          0.3
+        ],
+        "1": [
+          0.72,
+          0.1,
+          0.18
+        ],
+        "2": [
+          0.18,
+          0.52,
+          0.3
+        ],
+        "3": [
+          0.06,
+          0.24,
+          0.7
+        ],
+        "4": [
+          0.78,
+          0.1,
+          0.12
+        ],
+        "5": [
+          0.46,
+          0.42,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "politica_como_vocacao_weber",
+      "name": "A Política como Vocação",
+      "subtitle": "Max Weber",
+      "category": "Clássicos da Filosofia Política",
+      "era": "1919",
+      "origin": "Alemanha",
+      "summary": "Define o Estado como detentor do monopólio do uso legítimo da violência física e distingue com maestria a 'ética da convicção' (dever incondicional) da 'ética da responsabilidade' (cálculo das consequências concretas).",
+      "highlights": [
+        "O monopólio do uso legítimo da força física como traço definidor do Estado",
+        "A tensão insuperável entre a ética da convicção e a ética da responsabilidade",
+        "A política profissional entre os que vivem 'para' a política e os que vivem 'da' política"
+      ],
+      "quote": "Por que ler: Texto de referência para a compreensão do poder, da liderança e do realismo ético.",
+      "axes": {
+        "estrutura": 0.45,
+        "representacao": -0.55,
+        "poder": -0.35,
+        "imigracao": 0.05,
+        "diplomacia": -0.45,
+        "intervencao": 0.35,
+        "economia": 0.25,
+        "controle": 0.2,
+        "comercio": 0.15,
+        "religiao": -0.5,
+        "moral": 0.1,
+        "tecnologia": -0.5
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.46,
+          0.32
+        ],
+        "1": [
+          0.3,
+          0.5,
+          0.2
+        ],
+        "2": [
+          0.38,
+          0.38,
+          0.24
+        ],
+        "3": [
+          0.35,
+          0.35,
+          0.3
+        ],
+        "4": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "5": [
+          0.5,
+          0.2,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "riqueza_das_nacoes_smith",
+      "name": "A Riqueza das Nações",
+      "subtitle": "Adam Smith",
+      "category": "Economia e Sociedade",
+      "era": "1776",
+      "origin": "Escócia (Reino Unido)",
+      "summary": "Obra fundadora da economia política moderna, demonstra como a divisão do trabalho, a extensão dos mercados e a busca do autointeresse canalizada pela concorrência geram prosperidade coletiva involuntária.",
+      "highlights": [
+        "A divisão do trabalho e a especialização como motores do aumento da produtividade",
+        "A metáfora da mão invisível: coordenação espontânea sem planejamento central",
+        "Crítica devastadora ao mercantilismo, monopólios régios e tarifas protecionistas"
+      ],
+      "quote": "Por que ler: Livro fundador da ciência econômica moderna e da defesa do livre comércio.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.65,
+        "poder": 0.55,
+        "imigracao": 0.25,
+        "diplomacia": 0.35,
+        "intervencao": -0.45,
+        "economia": 0.85,
+        "controle": 0.75,
+        "comercio": 0.85,
+        "religiao": -0.15,
+        "moral": -0.1,
+        "tecnologia": -0.4
+      },
+      "triangles": {
+        "0": [
+          0.08,
+          0.26,
+          0.66
+        ],
+        "1": [
+          0.55,
+          0.2,
+          0.25
+        ],
+        "2": [
+          0.24,
+          0.32,
+          0.44
+        ],
+        "3": [
+          0.08,
+          0.28,
+          0.64
+        ],
+        "4": [
+          0.52,
+          0.14,
+          0.34
+        ],
+        "5": [
+          0.6,
+          0.1,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "principios_economia_ricardo",
+      "name": "Princípios de Economia Política e Tributação",
+      "subtitle": "David Ricardo",
+      "category": "Economia e Sociedade",
+      "era": "1817",
+      "origin": "Reino Unido",
+      "summary": "Formula a Teoria das Vantagens Comparativas no comércio internacional, demonstrando que todas as nações ganham ao se especializarem naquilo em que são relativamente mais produtivas, além da teoria da renda da terra.",
+      "highlights": [
+        "A Teoria das Vantagens Comparativas e os ganhos mútuos no livre comércio global",
+        "A teoria da renda diferencial da terra decorrente de fertilidades distintas",
+        "O conflito distributivo entre proprietários de terra, capitalistas e trabalhadores"
+      ],
+      "quote": "Por que ler: Pilar da economia internacional e da argumentação pelo livre comércio entre os povos.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.55,
+        "poder": 0.4,
+        "imigracao": 0.2,
+        "diplomacia": 0.4,
+        "intervencao": -0.5,
+        "economia": 0.8,
+        "controle": 0.7,
+        "comercio": 0.9,
+        "religiao": -0.3,
+        "moral": -0.15,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.28,
+          0.62
+        ],
+        "1": [
+          0.5,
+          0.25,
+          0.25
+        ],
+        "2": [
+          0.26,
+          0.3,
+          0.44
+        ],
+        "3": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "4": [
+          0.52,
+          0.16,
+          0.32
+        ],
+        "5": [
+          0.58,
+          0.1,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "sistema_nacional_list",
+      "name": "Sistema Nacional de Economia Política",
+      "subtitle": "Friedrich List",
+      "category": "Economia e Sociedade",
+      "era": "1841",
+      "origin": "Alemanha",
+      "summary": "Critica o livre-cambismo prematuro pregado pela Inglaterra, defendendo que nações em desenvolvimento devem proteger suas 'indústrias nascentes' com tarifas até alcançarem competitividade industrial.",
+      "highlights": [
+        "A teoria das 'forças produtivas' como mais importante que o valor de troca imediato",
+        "Protecionismo pedagógico temporário para blindar indústrias nacionais nascentes",
+        "A metáfora de 'chutar a escada': o livre comércio imposto aos países tardios"
+      ],
+      "quote": "Por que ler: Bíblia da política industrial, do nacional-desenvolvimentismo e da soberania produtiva.",
+      "axes": {
+        "estrutura": 0.55,
+        "representacao": -0.45,
+        "poder": -0.2,
+        "imigracao": -0.35,
+        "diplomacia": -0.25,
+        "intervencao": 0.75,
+        "economia": -0.25,
+        "controle": -0.45,
+        "comercio": -0.85,
+        "religiao": 0.2,
+        "moral": 0.3,
+        "tecnologia": -0.65
+      },
+      "triangles": {
+        "0": [
+          0.4,
+          0.44,
+          0.16
+        ],
+        "1": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "2": [
+          0.45,
+          0.3,
+          0.25
+        ],
+        "3": [
+          0.35,
+          0.45,
+          0.2
+        ],
+        "4": [
+          0.5,
+          0.38,
+          0.12
+        ],
+        "5": [
+          0.44,
+          0.28,
+          0.28
+        ]
+      }
+    },
+    {
+      "id": "progresso_e_pobreza_george",
+      "name": "Progresso e Pobreza",
+      "subtitle": "Henry George",
+      "category": "Economia e Sociedade",
+      "era": "1879",
+      "origin": "Estados Unidos",
+      "summary": "Investiga o paradoxo do aumento da miséria em meio ao salto da riqueza produtiva, propondo o Imposto Único sobre o valor da terra nua (LVT) para capturar a renda não merecida sem penalizar o trabalho e capital.",
+      "highlights": [
+        "A renda fundiária privada monopoliza o valor gerado pela comunidade inteira",
+        "O Imposto Único sobre o valor da terra (Land Value Tax) em substituição a todos os tributos",
+        "Defesa simultânea do livre mercado e da justiça distributiva radical"
+      ],
+      "quote": "Por que ler: Obra seminal que reconcilia a livre concorrência com a propriedade comum da terra.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.8,
+        "poder": 0.7,
+        "imigracao": 0.45,
+        "diplomacia": 0.55,
+        "intervencao": -0.6,
+        "economia": 0.25,
+        "controle": 0.4,
+        "comercio": 0.75,
+        "religiao": -0.2,
+        "moral": -0.4,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.16,
+          0.42,
+          0.42
+        ],
+        "1": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "2": [
+          0.18,
+          0.48,
+          0.34
+        ],
+        "3": [
+          0.06,
+          0.26,
+          0.68
+        ],
+        "4": [
+          0.68,
+          0.1,
+          0.22
+        ],
+        "5": [
+          0.68,
+          0.2,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "teoria_geral_keynes",
+      "name": "Teoria Geral do Emprego, do Juro e da Moeda",
+      "subtitle": "John Maynard Keynes",
+      "category": "Economia e Sociedade",
+      "era": "1936",
+      "origin": "Reino Unido",
+      "summary": "Revolucionou a macroeconomia ao demonstrar que o mercado pode se estabilizar em equilíbrio com desemprego em massa involuntário, recomendando gastos públicos e política fiscal anticíclica.",
+      "highlights": [
+        "O princípio da demanda efetiva e o papel dos 'espíritos animais' dos empresários",
+        "A armadilha da liquidez e a insuficiência da política monetária em recessões severas",
+        "Investimento público em infraestrutura para suprir a quebra de demanda privada"
+      ],
+      "quote": "Por que ler: Fundamento da macroeconomia contemporânea e do Estado indutor anticíclico.",
+      "axes": {
+        "estrutura": -0.2,
+        "representacao": -0.75,
+        "poder": 0.3,
+        "imigracao": 0.3,
+        "diplomacia": 0.35,
+        "intervencao": 0.1,
+        "economia": -0.5,
+        "controle": -0.45,
+        "comercio": 0.1,
+        "religiao": -0.35,
+        "moral": -0.4,
+        "tecnologia": -0.4
+      },
+      "triangles": {
+        "0": [
+          0.38,
+          0.48,
+          0.14
+        ],
+        "1": [
+          0.46,
+          0.24,
+          0.3
+        ],
+        "2": [
+          0.18,
+          0.54,
+          0.28
+        ],
+        "3": [
+          0.12,
+          0.32,
+          0.56
+        ],
+        "4": [
+          0.64,
+          0.22,
+          0.14
+        ],
+        "5": [
+          0.38,
+          0.5,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "caminho_da_servidao",
+      "name": "O Caminho da Servidão",
+      "subtitle": "Friedrich A. Hayek",
+      "category": "Economia e Sociedade",
+      "era": "1944",
+      "origin": "Áustria / Reino Unido",
+      "summary": "Alerta que o planejamento econômico central inevitavelmente conduz ao totalitarismo político, pois suprime o sistema de preços descentralizado e submete a vida individual ao arbítrio de burocratas.",
+      "highlights": [
+        "O sistema de preços como mecanismo insubstituível de comunicação de conhecimento disperso",
+        "O planejamento econômico centralizado destrói gradativamente o Estado de Direito",
+        "Admissão explícita de uma rede de segurança social mínima fora do dirigismo de preços"
+      ],
+      "quote": "Por que ler: Manifesto clássico em defesa da liberdade individual e da ordem de mercado espontânea.",
+      "axes": {
+        "estrutura": -0.6,
+        "representacao": -0.7,
+        "poder": 0.82,
+        "imigracao": 0.3,
+        "diplomacia": 0.15,
+        "intervencao": -0.3,
+        "economia": 0.7,
+        "controle": 0.8,
+        "comercio": 0.65,
+        "religiao": 0.1,
+        "moral": -0.1,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.12,
+          0.3,
+          0.58
+        ],
+        "1": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "2": [
+          0.3,
+          0.25,
+          0.45
+        ],
+        "3": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "4": [
+          0.5,
+          0.1,
+          0.4
+        ],
+        "5": [
+          0.55,
+          0.1,
+          0.35
+        ]
+      }
+    },
+    {
+      "id": "grande_transformacao_polanyi",
+      "name": "A Grande Transformação",
+      "subtitle": "Karl Polanyi",
+      "category": "Economia e Sociedade",
+      "era": "1944",
+      "origin": "Hungria / Reino Unido",
+      "summary": "Mostra que o mercado autorregulado do século XIX foi uma invenção estatal que transformou terra, trabalho e dinheiro em 'mercadorias fictícias', gerando um contramovimento espontâneo de proteção social.",
+      "highlights": [
+        "Trabalho, terra e dinheiro são 'mercadorias fictícias' cuja comercialização irrestrita destrói a sociedade",
+        "A tese do 'duplo movimento': expansão do mercado versus autoproteção coletiva",
+        "O desencaixe (disembedding) da economia frente às normas éticas e culturais da comunidade"
+      ],
+      "quote": "Por que ler: Texto de referência para a economia substantiva e a crítica ao fundamentalismo de mercado.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.8,
+        "poder": 0.4,
+        "imigracao": 0.4,
+        "diplomacia": 0.5,
+        "intervencao": -0.2,
+        "economia": -0.65,
+        "controle": -0.55,
+        "comercio": -0.3,
+        "religiao": -0.2,
+        "moral": -0.45,
+        "tecnologia": 0.2
+      },
+      "triangles": {
+        "0": [
+          0.45,
+          0.45,
+          0.1
+        ],
+        "1": [
+          0.52,
+          0.2,
+          0.28
+        ],
+        "2": [
+          0.22,
+          0.52,
+          0.26
+        ],
+        "3": [
+          0.1,
+          0.42,
+          0.48
+        ],
+        "4": [
+          0.7,
+          0.18,
+          0.12
+        ],
+        "5": [
+          0.28,
+          0.62,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "capitalismo_socialismo_schumpeter",
+      "name": "Capitalismo, Socialismo e Democracia",
+      "subtitle": "Joseph Schumpeter",
+      "category": "Economia e Sociedade",
+      "era": "1942",
+      "origin": "Áustria / Estados Unidos",
+      "summary": "Cria o conceito de 'destruição criativa' como essência do dinamismo capitalista, formulando também uma teoria realista e procedimental da democracia baseada na competição entre elites por votos.",
+      "highlights": [
+        "O processo de destruição criativa como pulso vital contínuo do capitalismo inovador",
+        "O papel revolucionário do empresário inovador que subverte equilíbrios rotineiros",
+        "A teoria procedimental da democracia como método competitivo de escolha de líderes"
+      ],
+      "quote": "Por que ler: Obra indispensável para a teoria da inovação, do empreendedorismo e da democracia elitista.",
+      "axes": {
+        "estrutura": -0.2,
+        "representacao": -0.55,
+        "poder": 0.3,
+        "imigracao": 0.1,
+        "diplomacia": 0.15,
+        "intervencao": 0.1,
+        "economia": 0.65,
+        "controle": 0.5,
+        "comercio": 0.45,
+        "religiao": -0.35,
+        "moral": 0.1,
+        "tecnologia": -0.75
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.35,
+          0.5
+        ],
+        "1": [
+          0.42,
+          0.36,
+          0.22
+        ],
+        "2": [
+          0.35,
+          0.35,
+          0.3
+        ],
+        "3": [
+          0.2,
+          0.35,
+          0.45
+        ],
+        "4": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "5": [
+          0.52,
+          0.18,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "capitalismo_e_liberdade_friedman",
+      "name": "Capitalismo e Liberdade",
+      "subtitle": "Milton Friedman",
+      "category": "Economia e Sociedade",
+      "era": "1962",
+      "origin": "Estados Unidos",
+      "summary": "Demonstra a ligação indissolúvel entre liberdade econômica e liberdades políticas, propondo ideias precursoras como vouchers escolares, imposto de renda negativo, câmbio flutuante e fim do alistamento militar.",
+      "highlights": [
+        "A liberdade de mercado como salvaguarda e dispersão do poder coercitivo estatal",
+        "Proposta inovadora de vouchers educacionais e imposto de renda negativo",
+        "Defesa intransigente do câmbio flutuante e do fim do alistamento militar compulsório"
+      ],
+      "quote": "Por que ler: Manifesto maior da Escola de Chicago e da renovação liberal na segunda metade do século XX.",
+      "axes": {
+        "estrutura": -0.6,
+        "representacao": -0.65,
+        "poder": 0.7,
+        "imigracao": 0.3,
+        "diplomacia": 0.3,
+        "intervencao": -0.6,
+        "economia": 0.9,
+        "controle": 0.85,
+        "comercio": 0.8,
+        "religiao": -0.25,
+        "moral": -0.1,
+        "tecnologia": -0.45
+      },
+      "triangles": {
+        "0": [
+          0.06,
+          0.2,
+          0.74
+        ],
+        "1": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "2": [
+          0.25,
+          0.3,
+          0.45
+        ],
+        "3": [
+          0.08,
+          0.28,
+          0.64
+        ],
+        "4": [
+          0.5,
+          0.1,
+          0.4
+        ],
+        "5": [
+          0.58,
+          0.08,
+          0.34
+        ]
+      }
+    },
+    {
+      "id": "desenvolvimento_como_liberdade_sen",
+      "name": "Desenvolvimento como Liberdade",
+      "subtitle": "Amartya Sen",
+      "category": "Economia e Sociedade",
+      "era": "1999",
+      "origin": "Índia / Reino Unido",
+      "summary": "Supera a visão estreita do desenvolvimento medido apenas pelo PIB per capita, redefinindo-o como o processo de expansão das liberdades substantivas e 'capacitações' reais das pessoas para viverem o que valorizam.",
+      "highlights": [
+        "O desenvolvimento como remoção de carências e expansão das capacitações humanas reais",
+        "A democracia e a liberdade de imprensa como vacinas eficazes contra fomes em massa",
+        "Igualdade de agência feminina como alavanca mais potente do progresso social"
+      ],
+      "quote": "Por que ler: Referência mundial que transformou a economia do desenvolvimento e a teoria do bem-estar.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.9,
+        "poder": 0.75,
+        "imigracao": 0.75,
+        "diplomacia": 0.65,
+        "intervencao": -0.45,
+        "economia": -0.25,
+        "controle": -0.15,
+        "comercio": 0.65,
+        "religiao": -0.45,
+        "moral": -0.65,
+        "tecnologia": 0.25
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.54,
+          0.24
+        ],
+        "1": [
+          0.65,
+          0.12,
+          0.23
+        ],
+        "2": [
+          0.12,
+          0.6,
+          0.28
+        ],
+        "3": [
+          0.06,
+          0.24,
+          0.7
+        ],
+        "4": [
+          0.75,
+          0.1,
+          0.15
+        ],
+        "5": [
+          0.35,
+          0.55,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "capital_seculo_xxi_piketty",
+      "name": "O Capital no Século XXI",
+      "subtitle": "Thomas Piketty",
+      "category": "Economia e Sociedade",
+      "era": "2013",
+      "origin": "França",
+      "summary": "Documenta empiricalmente com dados fiscais de séculos a tendência histórica de que a taxa de retorno do capital (r) supera a taxa de crescimento econômico (g), gerando desigualdades cumulativas que ameaçam a democracia.",
+      "highlights": [
+        "A desigualdade fundamental r > g como motor da concentração patrimonial hereditária",
+        "A reconstituição do capitalismo patrimonial reminiscente da Belle Époque",
+        "Proposta de imposto global e progressivo sobre o patrimônio líquido com transparência fiscal"
+      ],
+      "quote": "Por que ler: Trabalho monumental de história econômica e empiria fiscal sobre a desigualdade moderna.",
+      "axes": {
+        "estrutura": -0.1,
+        "representacao": -0.85,
+        "poder": 0.35,
+        "imigracao": 0.55,
+        "diplomacia": 0.45,
+        "intervencao": -0.35,
+        "economia": -0.7,
+        "controle": -0.6,
+        "comercio": 0.35,
+        "religiao": -0.6,
+        "moral": -0.65,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.44,
+          0.46,
+          0.1
+        ],
+        "1": [
+          0.5,
+          0.2,
+          0.3
+        ],
+        "2": [
+          0.14,
+          0.58,
+          0.28
+        ],
+        "3": [
+          0.08,
+          0.24,
+          0.68
+        ],
+        "4": [
+          0.72,
+          0.16,
+          0.12
+        ],
+        "5": [
+          0.22,
+          0.72,
+          0.06
+        ]
+      }
+    },
+    {
+      "id": "por_que_nacoes_fracassam",
+      "name": "Por que as Nações Fracassam",
+      "subtitle": "Daron Acemoglu e James A. Robinson",
+      "category": "Economia e Sociedade",
+      "era": "2012",
+      "origin": "Turquia / EUA / Reino Unido",
+      "summary": "Demonstra que o destino econômico dos países decorre de suas instituições políticas e econômicas: nações prosperam sob instituições 'inclusivas' (abertas e com freios) e empobrecem sob instituições 'extrativas'.",
+      "highlights": [
+        "A dicotomia entre instituições inclusivas (inovação e direitos) e extrativas (monopólios de elite)",
+        "A destruição criativa bloqueada por elites receosas de perderem poder político",
+        "Pequenas contingências históricas aliadas a conjunturas críticas definem trajetórias de longo prazo"
+      ],
+      "quote": "Por que ler: Síntese magistral da nova economia institucional sobre desenvolvimento e poder político.",
+      "axes": {
+        "estrutura": -0.5,
+        "representacao": -0.85,
+        "poder": 0.65,
+        "imigracao": 0.35,
+        "diplomacia": 0.45,
+        "intervencao": -0.45,
+        "economia": 0.45,
+        "controle": 0.45,
+        "comercio": 0.55,
+        "religiao": -0.45,
+        "moral": -0.45,
+        "tecnologia": -0.45
+      },
+      "triangles": {
+        "0": [
+          0.14,
+          0.42,
+          0.44
+        ],
+        "1": [
+          0.6,
+          0.16,
+          0.24
+        ],
+        "2": [
+          0.18,
+          0.52,
+          0.3
+        ],
+        "3": [
+          0.08,
+          0.24,
+          0.68
+        ],
+        "4": [
+          0.7,
+          0.12,
+          0.18
+        ],
+        "5": [
+          0.55,
+          0.25,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "estado_empreendedor_mazzucato",
+      "name": "O Estado Empreendedor",
+      "subtitle": "Mariana Mazzucato",
+      "category": "Economia e Sociedade",
+      "era": "2013",
+      "origin": "Itália / Reino Unido",
+      "summary": "Desmonta o mito de que o Estado é um leviatã burocrático e lento, comprovando que todas as tecnologias-chave do iPhone (internet, GPS, tela tátil, Siri) foram financiadas pelo investimento público de alto risco.",
+      "highlights": [
+        "O Estado como investidor de primeira hora e criador ativo de mercados de ponta",
+        "Socialização dos riscos de pesquisa versus privatização desproporcional dos lucros finais",
+        "A necessidade de orientar a política industrial por missões públicas estratégicas (clima, saúde)"
+      ],
+      "quote": "Por que ler: Obra indispensável sobre política industrial moderna, inovação e o papel dinâmico do Estado.",
+      "axes": {
+        "estrutura": -0.15,
+        "representacao": -0.75,
+        "poder": 0.3,
+        "imigracao": 0.35,
+        "diplomacia": 0.3,
+        "intervencao": 0.25,
+        "economia": -0.55,
+        "controle": -0.5,
+        "comercio": 0.25,
+        "religiao": -0.4,
+        "moral": -0.5,
+        "tecnologia": -0.8
+      },
+      "triangles": {
+        "0": [
+          0.42,
+          0.44,
+          0.14
+        ],
+        "1": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "2": [
+          0.16,
+          0.56,
+          0.28
+        ],
+        "3": [
+          0.1,
+          0.28,
+          0.62
+        ],
+        "4": [
+          0.65,
+          0.22,
+          0.13
+        ],
+        "5": [
+          0.35,
+          0.52,
+          0.13
+        ]
+      }
+    },
+    {
+      "id": "bem_estar_para_todos_erhard",
+      "name": "Bem-Estar para Todos",
+      "subtitle": "Ludwig Erhard",
+      "category": "Economia e Sociedade",
+      "era": "1957",
+      "origin": "Alemanha",
+      "summary": "O arquiteto do 'milagre econômico' alemão do pós-guerra expõe a filosofia da Economia Social de Mercado: livre concorrência garantida contra cartéis privados, combinada à responsabilidade social de Estado.",
+      "highlights": [
+        "O combate implacável aos cartéis e monopólios como dever de Estado da concorrência",
+        "O bem-estar erguido sobre a produtividade real do trabalho e moeda estável",
+        "Superação das ilusões inflacionárias e da assistência desestimuladora da iniciativa"
+      ],
+      "quote": "Por que ler: Texto fundacional da Economia Social de Mercado e do modelo econômico alemão.",
+      "axes": {
+        "estrutura": -0.35,
+        "representacao": -0.75,
+        "poder": 0.35,
+        "imigracao": 0.15,
+        "diplomacia": 0.35,
+        "intervencao": -0.15,
+        "economia": 0.55,
+        "controle": 0.5,
+        "comercio": 0.55,
+        "religiao": 0.25,
+        "moral": 0.15,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.14,
+          0.48,
+          0.38
+        ],
+        "1": [
+          0.45,
+          0.3,
+          0.25
+        ],
+        "2": [
+          0.4,
+          0.3,
+          0.3
+        ],
+        "3": [
+          0.1,
+          0.25,
+          0.65
+        ],
+        "4": [
+          0.6,
+          0.22,
+          0.18
+        ],
+        "5": [
+          0.54,
+          0.18,
+          0.28
+        ]
+      }
+    },
+    {
+      "id": "teoria_da_justica_rawls",
+      "name": "Uma Teoria da Justiça",
+      "subtitle": "John Rawls",
+      "category": "Liberdade, Direito e Estado",
+      "era": "1971",
+      "origin": "Estados Unidos",
+      "summary": "Formula o liberalismo igualitário através do experimento da 'posição original' sob o 'véu da ignorância', estabelecendo a prioridade das liberdades básicas iguais e o Princípio da Diferença em prol dos mais vulneráveis.",
+      "highlights": [
+        "O experimento mental do véu da ignorância para fundar princípios imparciais de justiça",
+        "A prioridade lexicográfica da liberdade básica igual para todos",
+        "O Princípio da Diferença: desigualdades só se justificam se beneficiarem os menos favorecidos"
+      ],
+      "quote": "Por que ler: Obra máxima da filosofia política do século XX e do liberalismo igualitário.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.88,
+        "poder": 0.65,
+        "imigracao": 0.55,
+        "diplomacia": 0.55,
+        "intervencao": -0.45,
+        "economia": -0.35,
+        "controle": -0.25,
+        "comercio": 0.4,
+        "religiao": -0.55,
+        "moral": -0.65,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.24,
+          0.56,
+          0.2
+        ],
+        "1": [
+          0.65,
+          0.12,
+          0.23
+        ],
+        "2": [
+          0.12,
+          0.6,
+          0.28
+        ],
+        "3": [
+          0.06,
+          0.24,
+          0.7
+        ],
+        "4": [
+          0.74,
+          0.12,
+          0.14
+        ],
+        "5": [
+          0.45,
+          0.48,
+          0.07
+        ]
+      }
+    },
+    {
+      "id": "anarquia_estado_utopia_nozick",
+      "name": "Anarquia, Estado e Utopia",
+      "subtitle": "Robert Nozick",
+      "category": "Liberdade, Direito e Estado",
+      "era": "1974",
+      "origin": "Estados Unidos",
+      "summary": "Resposta libertária a Rawls, defende o Estado Mínimo limitado às funções estritas de proteção contra a força, roubo e fraude, argumentando que a tributação redistributiva equivale a trabalho forçado.",
+      "highlights": [
+        "A defesa incondicional dos direitos de propriedade legítima fundados na apropriação e transferência",
+        "A teoria da justiça histórica de titularidade contra padrões redistributivos impostos",
+        "O Estado mínimo como única estrutura moralmente legítima e utopia realizável"
+      ],
+      "quote": "Por que ler: Principal tratado acadêmico do libertarianismo contra o intervencionismo redistributivo.",
+      "axes": {
+        "estrutura": -0.75,
+        "representacao": -0.65,
+        "poder": 0.85,
+        "imigracao": 0.35,
+        "diplomacia": 0.4,
+        "intervencao": -0.75,
+        "economia": 0.95,
+        "controle": 0.95,
+        "comercio": 0.75,
+        "religiao": -0.25,
+        "moral": 0.05,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.04,
+          0.12,
+          0.84
+        ],
+        "1": [
+          0.72,
+          0.1,
+          0.18
+        ],
+        "2": [
+          0.24,
+          0.28,
+          0.48
+        ],
+        "3": [
+          0.06,
+          0.44,
+          0.5
+        ],
+        "4": [
+          0.42,
+          0.06,
+          0.52
+        ],
+        "5": [
+          0.55,
+          0.05,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "anatomia_do_estado_rothbard",
+      "name": "A Anatomia do Estado",
+      "subtitle": "Murray N. Rothbard",
+      "category": "Liberdade, Direito e Estado",
+      "era": "1974",
+      "origin": "Estados Unidos",
+      "summary": "Define o Estado de forma crua não como a personificação do bem público, mas como uma organização criminosa coercitiva que monopoliza a violência e tributa coercitivamente os produtores legítimos de riqueza.",
+      "highlights": [
+        "O Estado como monopolista territorial da agressão e usurpação legalizada",
+        "A distinção entre o meio econômico (produção e troca voluntária) e o meio político (confisco)",
+        "A rejeição do contrato social e a denúncia da cumplicidade intelectual com o poder"
+      ],
+      "quote": "Por que ler: Leitura canônica do anarcocapitalismo e da teoria austríaca radical de Estado.",
+      "axes": {
+        "estrutura": -0.98,
+        "representacao": -0.55,
+        "poder": 0.95,
+        "imigracao": 0.75,
+        "diplomacia": 0.85,
+        "intervencao": -0.98,
+        "economia": 1.0,
+        "controle": 1.0,
+        "comercio": 0.9,
+        "religiao": -0.15,
+        "moral": -0.05,
+        "tecnologia": -0.25
+      },
+      "triangles": {
+        "0": [
+          0.02,
+          0.06,
+          0.92
+        ],
+        "1": [
+          0.82,
+          0.06,
+          0.12
+        ],
+        "2": [
+          0.22,
+          0.22,
+          0.56
+        ],
+        "3": [
+          0.01,
+          0.84,
+          0.15
+        ],
+        "4": [
+          0.25,
+          0.05,
+          0.7
+        ],
+        "5": [
+          0.48,
+          0.04,
+          0.48
+        ]
+      }
+    },
+    {
+      "id": "sociedade_aberta_popper",
+      "name": "A Sociedade Aberta e Seus Inimigos",
+      "subtitle": "Karl Popper",
+      "category": "Liberdade, Direito e Estado",
+      "era": "1945",
+      "origin": "Áustria / Reino Unido",
+      "summary": "Defende a sociedade aberta, pluralista e tolerante contra os profetas do historicismo autoritário (Platão, Hegel e Marx), preconizando o reformismo social gradual (piecemeal social engineering) guiado por crítica livre.",
+      "highlights": [
+        "O combate ao historicismo que presume leis inexoráveis da história humana",
+        "A engenharia social gradual em oposição à engenharia utópica revolucionária violenta",
+        "O Paradoxo da Tolerância: tolerância ilimitada conduz ao desaparecimento dos tolerantes"
+      ],
+      "quote": "Por que ler: Obra seminal sobre método científico, falseacionismo aplicado à política e defesa da democracia liberal.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.9,
+        "poder": 0.7,
+        "imigracao": 0.55,
+        "diplomacia": 0.55,
+        "intervencao": -0.5,
+        "economia": 0.4,
+        "controle": 0.35,
+        "comercio": 0.6,
+        "religiao": -0.7,
+        "moral": -0.75,
+        "tecnologia": -0.8
+      },
+      "triangles": {
+        "0": [
+          0.16,
+          0.46,
+          0.38
+        ],
+        "1": [
+          0.55,
+          0.15,
+          0.3
+        ],
+        "2": [
+          0.15,
+          0.52,
+          0.33
+        ],
+        "3": [
+          0.06,
+          0.24,
+          0.7
+        ],
+        "4": [
+          0.72,
+          0.12,
+          0.16
+        ],
+        "5": [
+          0.54,
+          0.24,
+          0.22
+        ]
+      }
+    },
+    {
+      "id": "fundamentos_da_liberdade_hayek",
+      "name": "Os Fundamentos da Liberdade",
+      "subtitle": "Friedrich A. Hayek",
+      "category": "Liberdade, Direito e Estado",
+      "era": "1960",
+      "origin": "Áustria / Reino Unido",
+      "summary": "Tratado abrangente sobre o Estado de Direito (Rule of Law), definido pela igualdade perante leis gerais, abstratas e prospectivas, demonstrando como a coerção governamental discricionária estrangula a criatividade social.",
+      "highlights": [
+        "O Estado de Direito como império de leis gerais conhecidas com antecedência",
+        "A liberdade como ausência de sujeição à vontade arbitrária de outrem",
+        "A evolução das tradições e normas éticas como seleção cultural espontânea de sucesso"
+      ],
+      "quote": "Por que ler: A mais sistemática e refinada formulação da teoria jurídica e política liberal do século XX.",
+      "axes": {
+        "estrutura": -0.35,
+        "representacao": -0.7,
+        "poder": 0.78,
+        "imigracao": 0.25,
+        "diplomacia": 0.3,
+        "intervencao": -0.5,
+        "economia": 0.85,
+        "controle": 0.8,
+        "comercio": 0.7,
+        "religiao": 0.35,
+        "moral": 0.38,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.08,
+          0.24,
+          0.68
+        ],
+        "1": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "2": [
+          0.48,
+          0.16,
+          0.36
+        ],
+        "3": [
+          0.1,
+          0.34,
+          0.56
+        ],
+        "4": [
+          0.52,
+          0.12,
+          0.36
+        ],
+        "5": [
+          0.55,
+          0.1,
+          0.35
+        ]
+      }
+    },
+    {
+      "id": "dois_conceitos_de_liberdade_berlin",
+      "name": "Dois Conceitos de Liberdade",
+      "subtitle": "Isaiah Berlin",
+      "category": "Liberdade, Direito e Estado",
+      "era": "1958",
+      "origin": "Reino Unido",
+      "summary": "Distingue a 'liberdade negativa' (área em que o indivíduo pode agir desimpedido de interferências) da 'liberdade positiva' (autogoverno racional, que historicamente descambou para tiranias que alegam libertar o cidadão à força).",
+      "highlights": [
+        "A liberdade negativa como escudo contra a invasão da esfera privada pelo poder",
+        "O perigo da liberdade positiva quando sequestrada por doutrinas totalitárias",
+        "O pluralismo de valores: bens supremos (como igualdade e liberdade) são inconciliáveis em plenitude"
+      ],
+      "quote": "Por que ler: Ensaio basilar da teoria política moderna sobre os sentidos e armadilhas da liberdade.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.85,
+        "poder": 0.82,
+        "imigracao": 0.5,
+        "diplomacia": 0.5,
+        "intervencao": -0.3,
+        "economia": 0.45,
+        "controle": 0.35,
+        "comercio": 0.55,
+        "religiao": -0.15,
+        "moral": -0.6,
+        "tecnologia": 0.2
+      },
+      "triangles": {
+        "0": [
+          0.16,
+          0.42,
+          0.42
+        ],
+        "1": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "2": [
+          0.15,
+          0.45,
+          0.4
+        ],
+        "3": [
+          0.08,
+          0.28,
+          0.64
+        ],
+        "4": [
+          0.68,
+          0.1,
+          0.22
+        ],
+        "5": [
+          0.55,
+          0.22,
+          0.23
+        ]
+      }
+    },
+    {
+      "id": "etica_da_liberdade_rothbard",
+      "name": "A Ética da Liberdade",
+      "subtitle": "Murray N. Rothbard",
+      "category": "Liberdade, Direito e Estado",
+      "era": "1982",
+      "origin": "Estados Unidos",
+      "summary": "Funda a teoria libertária do direito natural sobre o Princípio da Não Agressão (PNA) e a autopropriedade absoluta do corpo, deduzindo uma ordem jurídica sem Estado na qual todos os bens e serviços judiciais são privados.",
+      "highlights": [
+        "O Princípio de Não Agressão (PNA) como axioma ético universal inviolável",
+        "A autopropriedade absoluta do indivíduo sobre seu corpo e frutos de seu trabalho",
+        "A resolução de conflitos e segurança através de tribunais e seguros puramente de mercado"
+      ],
+      "quote": "Por que ler: Exposição mais rigorosa e intransigente da filosofia do anarcocapitalismo jusnaturalista.",
+      "axes": {
+        "estrutura": -0.98,
+        "representacao": -0.6,
+        "poder": 0.95,
+        "imigracao": 0.55,
+        "diplomacia": 0.65,
+        "intervencao": -0.95,
+        "economia": 1.0,
+        "controle": 1.0,
+        "comercio": 0.9,
+        "religiao": -0.1,
+        "moral": 0.0,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.02,
+          0.06,
+          0.92
+        ],
+        "1": [
+          0.84,
+          0.06,
+          0.1
+        ],
+        "2": [
+          0.2,
+          0.24,
+          0.56
+        ],
+        "3": [
+          0.04,
+          0.68,
+          0.28
+        ],
+        "4": [
+          0.25,
+          0.05,
+          0.7
+        ],
+        "5": [
+          0.5,
+          0.04,
+          0.46
+        ]
+      }
+    },
+    {
+      "id": "direito_e_democracia_habermas",
+      "name": "Direito e Democracia: Entre Facticidade e Validade",
+      "subtitle": "Jürgen Habermas",
+      "category": "Liberdade, Direito e Estado",
+      "era": "1992",
+      "origin": "Alemanha",
+      "summary": "Reconcilia o Estado de Direito e a soberania popular por meio da teoria discursiva do direito, sustentando que apenas leis produzidas em esferas públicas abertas, deliberativas e sem coação são democraticamente legítimas.",
+      "highlights": [
+        "A tensão dialética constitutiva entre facticidade legal e validade normativa discursiva",
+        "A soberania popular operando através de procedimentos deliberativos abertos",
+        "A integração social mediada pelo direito comunicativamente fundamentado"
+      ],
+      "quote": "Por que ler: Síntese máxima da teoria crítica contemporânea e da democracia deliberativa procedimental.",
+      "axes": {
+        "estrutura": 0.1,
+        "representacao": -0.95,
+        "poder": 0.65,
+        "imigracao": 0.65,
+        "diplomacia": 0.65,
+        "intervencao": -0.45,
+        "economia": -0.2,
+        "controle": -0.15,
+        "comercio": 0.55,
+        "religiao": -0.65,
+        "moral": -0.7,
+        "tecnologia": -0.65
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.52,
+          0.26
+        ],
+        "1": [
+          0.65,
+          0.12,
+          0.23
+        ],
+        "2": [
+          0.1,
+          0.62,
+          0.28
+        ],
+        "3": [
+          0.06,
+          0.22,
+          0.72
+        ],
+        "4": [
+          0.85,
+          0.05,
+          0.1
+        ],
+        "5": [
+          0.44,
+          0.44,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "direito_e_razao_ferrajoli",
+      "name": "Direito e Razão: Teoria do Garantismo Penal",
+      "subtitle": "Luigi Ferrajoli",
+      "category": "Liberdade, Direito e Estado",
+      "era": "1989",
+      "origin": "Itália",
+      "summary": "Estabelece o paradigma do Garantismo Penal como escudo do cidadão mais fraco contra o poder punitivo do Estado, subordinando o direito penal a garantias epistemológicas estritas contra o arbítrio policial e judicial.",
+      "highlights": [
+        "O princípio do 'favor rei' e a estrita separação entre julgar e acusar",
+        "Os dez axiomas do garantismo penal como barreiras absolutas contra o punitivismo",
+        "O processo penal como técnica de tutela da liberdade individual frente à autoridade"
+      ],
+      "quote": "Por que ler: Obra máxima do garantismo jurídico, dos direitos humanos no sistema de justiça e do devido processo.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.9,
+        "poder": 0.9,
+        "imigracao": 0.6,
+        "diplomacia": 0.6,
+        "intervencao": -0.55,
+        "economia": -0.15,
+        "controle": -0.1,
+        "comercio": 0.35,
+        "religiao": -0.75,
+        "moral": -0.75,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.24,
+          0.5,
+          0.26
+        ],
+        "1": [
+          0.75,
+          0.08,
+          0.17
+        ],
+        "2": [
+          0.1,
+          0.6,
+          0.3
+        ],
+        "3": [
+          0.06,
+          0.26,
+          0.68
+        ],
+        "4": [
+          0.75,
+          0.08,
+          0.17
+        ],
+        "5": [
+          0.46,
+          0.42,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "revolta_de_atlas_rand",
+      "name": "A Revolta de Atlas",
+      "subtitle": "Ayn Rand",
+      "category": "Liberdade, Direito e Estado",
+      "era": "1957",
+      "origin": "Estados Unidos",
+      "summary": "Romance filosófico que expõe o Objetivismo: a defesa do egoísmo racional, do capitalismo laissez-faire e da soberania da mente humana criadora, dramatizada na greve dos homens produtivos liderada por John Galt.",
+      "highlights": [
+        "O egoísmo racional como virtude moral suprema contra o altruísmo sacrificial",
+        "A mente criadora dos indivíduos como motor exclusivo de toda a civilização",
+        "A denúncia moral da extorsão governamental em nome do 'bem coletivo'"
+      ],
+      "quote": "Por que ler: Obra monumental de enorme impacto cultural em defesa do individualismo radical e do mercado.",
+      "axes": {
+        "estrutura": -0.85,
+        "representacao": -0.5,
+        "poder": 0.85,
+        "imigracao": 0.25,
+        "diplomacia": 0.3,
+        "intervencao": -0.8,
+        "economia": 1.0,
+        "controle": 1.0,
+        "comercio": 0.8,
+        "religiao": -0.75,
+        "moral": -0.3,
+        "tecnologia": -0.85
+      },
+      "triangles": {
+        "0": [
+          0.02,
+          0.08,
+          0.9
+        ],
+        "1": [
+          0.75,
+          0.1,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.35,
+          0.5
+        ],
+        "3": [
+          0.06,
+          0.44,
+          0.5
+        ],
+        "4": [
+          0.35,
+          0.05,
+          0.6
+        ],
+        "5": [
+          0.55,
+          0.05,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "cultura_livre_lessig",
+      "name": "Cultura Livre",
+      "subtitle": "Lawrence Lessig",
+      "category": "Liberdade, Direito e Estado",
+      "era": "2004",
+      "origin": "Estados Unidos",
+      "summary": "Alerta como a extensão abusiva de direitos autorais pelas grandes corporações de mídia no ambiente digital ameaça a liberdade de criar e inovar, defendendo licenças flexíveis como o Creative Commons.",
+      "highlights": [
+        "A criatividade humana é sempre construída sobre a cultura anterior (remix)",
+        "O endurecimento desproporcional do copyright como controle monopolista privado",
+        "A criação do Creative Commons como alternativa voluntária de compartilhamento livre"
+      ],
+      "quote": "Por que ler: Texto de referência sobre cultura digital, direitos autorais e liberdade criativa na era da internet.",
+      "axes": {
+        "estrutura": -0.5,
+        "representacao": -0.9,
+        "poder": 0.85,
+        "imigracao": 0.65,
+        "diplomacia": 0.65,
+        "intervencao": -0.65,
+        "economia": 0.05,
+        "controle": 0.2,
+        "comercio": 0.7,
+        "religiao": -0.65,
+        "moral": -0.75,
+        "tecnologia": -0.75
+      },
+      "triangles": {
+        "0": [
+          0.12,
+          0.38,
+          0.5
+        ],
+        "1": [
+          0.75,
+          0.08,
+          0.17
+        ],
+        "2": [
+          0.08,
+          0.52,
+          0.4
+        ],
+        "3": [
+          0.04,
+          0.2,
+          0.76
+        ],
+        "4": [
+          0.65,
+          0.08,
+          0.27
+        ],
+        "5": [
+          0.46,
+          0.36,
+          0.18
+        ]
+      }
+    },
+    {
+      "id": "o_capital_marx",
+      "name": "O Capital (Livro I)",
+      "subtitle": "Karl Marx",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1867",
+      "origin": "Alemanha / Reino Unido",
+      "summary": "Investigação monumental sobre a anatomia do modo de produção capitalista, desvendando o fetichismo da mercadoria, a extração de mais-valia e a acumulação originária de capital fundada na espoliação operária.",
+      "highlights": [
+        "A teoria do valor-trabalho e a extração da mais-valia absoluta e relativa",
+        "O fetichismo da mercadoria: relações entre pessoas fantasiadas como relações entre coisas",
+        "A tendência inexorável à concentração de capitais e às crises de superprodução"
+      ],
+      "quote": "Por que ler: A mais influente e profunda crítica teórica à economia política capitalista.",
+      "axes": {
+        "estrutura": 0.65,
+        "representacao": -0.45,
+        "poder": -0.15,
+        "imigracao": 0.2,
+        "diplomacia": -0.3,
+        "intervencao": 0.45,
+        "economia": -1.0,
+        "controle": -0.95,
+        "comercio": -0.55,
+        "religiao": -0.9,
+        "moral": -0.45,
+        "tecnologia": -0.4
+      },
+      "triangles": {
+        "0": [
+          0.75,
+          0.18,
+          0.07
+        ],
+        "1": [
+          0.35,
+          0.38,
+          0.27
+        ],
+        "2": [
+          0.15,
+          0.6,
+          0.25
+        ],
+        "3": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "4": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "5": [
+          0.08,
+          0.88,
+          0.04
+        ]
+      }
+    },
+    {
+      "id": "manifesto_comunista_marx_engels",
+      "name": "O Manifesto Comunista",
+      "subtitle": "Karl Marx e Friedrich Engels",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1848",
+      "origin": "Alemanha / Reino Unido",
+      "summary": "Proclama que a história de todas as sociedades até hoje tem sido a história da luta de classes, convocando o proletariado internacional a se unir e expropriar a burguesia para construir o socialismo.",
+      "highlights": [
+        "A luta de classes como motor imanente das transformações históricas",
+        "A burguesia como classe revolucionária que destrói todos os laços feudais",
+        "'Proletários de todos os países, uni-vos!': o internacionalismo da classe trabalhadora"
+      ],
+      "quote": "Por que ler: O mais lido e impactante panfleto político da história mundial contemporânea.",
+      "axes": {
+        "estrutura": 0.55,
+        "representacao": -0.5,
+        "poder": -0.1,
+        "imigracao": 0.4,
+        "diplomacia": -0.25,
+        "intervencao": 0.35,
+        "economia": -0.98,
+        "controle": -0.92,
+        "comercio": -0.4,
+        "religiao": -0.85,
+        "moral": -0.65,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.72,
+          0.2,
+          0.08
+        ],
+        "1": [
+          0.38,
+          0.35,
+          0.27
+        ],
+        "2": [
+          0.12,
+          0.65,
+          0.23
+        ],
+        "3": [
+          0.1,
+          0.45,
+          0.45
+        ],
+        "4": [
+          0.6,
+          0.3,
+          0.1
+        ],
+        "5": [
+          0.1,
+          0.85,
+          0.05
+        ]
+      }
+    },
+    {
+      "id": "o_que_e_a_propriedade_proudhon",
+      "name": "O que é a Propriedade?",
+      "subtitle": "Pierre-Joseph Proudhon",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1840",
+      "origin": "França",
+      "summary": "Formula a célebre máxima 'A propriedade é o roubo!', distinguindo a propriedade especulativa capitalista da posse individual fundada no uso direto, e reivindica pela primeira vez o rótulo de anarquista.",
+      "highlights": [
+        "A denúncia da propriedade capitalista como privilégio espoliativo (propriedade é roubo)",
+        "A defesa da posse operária e camponesa legítima baseada no uso e trabalho pessoal",
+        "A fundação do mutualismo: associações voluntárias de crédito recíproco sem Estado"
+      ],
+      "quote": "Por que ler: Texto pioneiro do pensamento anarquista e da teoria do socialismo libertário.",
+      "axes": {
+        "estrutura": -0.92,
+        "representacao": -0.85,
+        "poder": 0.85,
+        "imigracao": 0.35,
+        "diplomacia": 0.6,
+        "intervencao": -0.8,
+        "economia": -0.75,
+        "controle": -0.2,
+        "comercio": 0.25,
+        "religiao": -0.75,
+        "moral": -0.45,
+        "tecnologia": -0.1
+      },
+      "triangles": {
+        "0": [
+          0.35,
+          0.25,
+          0.4
+        ],
+        "1": [
+          0.72,
+          0.08,
+          0.2
+        ],
+        "2": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "3": [
+          0.06,
+          0.44,
+          0.5
+        ],
+        "4": [
+          0.68,
+          0.04,
+          0.28
+        ],
+        "5": [
+          0.35,
+          0.55,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "deus_e_o_estado_bakunin",
+      "name": "Deus e o Estado",
+      "subtitle": "Mikhail Bakunin",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1871 / 1882",
+      "origin": "Rússia / França",
+      "summary": "Ataque fulminante à autoridade religiosa e estatal, argumentando que a ideia de Deus serviu historicamente como instrumento de escravização das consciências e justificativa da tirania do Estado sobre os povos.",
+      "highlights": [
+        "A negação radical de Deus como premissa indispensável para a emancipação do homem",
+        "O Estado como instituição intrinsecamente opressora que não pode ser reformada",
+        "A revolução social como ato de destruição criadora das massas em revolta"
+      ],
+      "quote": "Por que ler: Manifesto clássico do anarquismo revolucionário coletivista e do ateísmo militante.",
+      "axes": {
+        "estrutura": -0.9,
+        "representacao": -0.85,
+        "poder": 0.88,
+        "imigracao": 0.45,
+        "diplomacia": 0.55,
+        "intervencao": -0.85,
+        "economia": -0.9,
+        "controle": -0.5,
+        "comercio": 0.3,
+        "religiao": -0.98,
+        "moral": -0.65,
+        "tecnologia": -0.15
+      },
+      "triangles": {
+        "0": [
+          0.55,
+          0.2,
+          0.25
+        ],
+        "1": [
+          0.75,
+          0.08,
+          0.17
+        ],
+        "2": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "3": [
+          0.08,
+          0.42,
+          0.5
+        ],
+        "4": [
+          0.65,
+          0.05,
+          0.3
+        ],
+        "5": [
+          0.2,
+          0.72,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "ajuda_mutua_kropotkin",
+      "name": "Ajuda Mútua: Um Fator de Evolução",
+      "subtitle": "Piotr Kropotkin",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1902",
+      "origin": "Rússia / Reino Unido",
+      "summary": "Contrapõe-se ao darwinismo social competitivo, demonstrando que no reino animal e nas comunidades humanas a cooperação e a solidariedade mútua foram fatores evolutivos muito mais determinantes que o conflito.",
+      "highlights": [
+        "A cooperação solidária como principal vantagem adaptativa biológica e social",
+        "Exemplos históricos de sociedades comunais, guildas medievais e aldeias autônomas",
+        "Fundamentação científica do anarcocomunismo contra a presunção hobbesiana"
+      ],
+      "quote": "Por que ler: Obra pioneira que articulou biologia evolutiva, sociologia e anarcocomunismo solidário.",
+      "axes": {
+        "estrutura": -0.88,
+        "representacao": -0.9,
+        "poder": 0.85,
+        "imigracao": 0.65,
+        "diplomacia": 0.75,
+        "intervencao": -0.8,
+        "economia": -0.85,
+        "controle": -0.45,
+        "comercio": 0.45,
+        "religiao": -0.6,
+        "moral": -0.55,
+        "tecnologia": 0.4
+      },
+      "triangles": {
+        "0": [
+          0.48,
+          0.22,
+          0.3
+        ],
+        "1": [
+          0.72,
+          0.08,
+          0.2
+        ],
+        "2": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "3": [
+          0.04,
+          0.36,
+          0.6
+        ],
+        "4": [
+          0.75,
+          0.05,
+          0.2
+        ],
+        "5": [
+          0.22,
+          0.7,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "reforma_ou_revolucao_luxemburgo",
+      "name": "Reforma ou Revolução?",
+      "subtitle": "Rosa Luxemburgo",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1900",
+      "origin": "Polônia / Alemanha",
+      "summary": "Refuta o revisionismo reformista de Eduard Bernstein, sustentando que reformas trabalhistas e cooperativas jamais eliminarão as contradições do capitalismo sem a conquista revolucionária do poder pelo proletariado.",
+      "highlights": [
+        "A crítica incisiva à ilusão de que o socialismo virá pela via puramente parlamentar",
+        "O papel essencial da greve de massas e da auto-organização espontânea da classe operária",
+        "A célebre disjuntiva histórica: 'Socialismo ou barbárie'"
+      ],
+      "quote": "Por que ler: Texto clássico do marxismo revolucionário de esquerda contra o acomodamento burocrático.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.88,
+        "poder": 0.5,
+        "imigracao": 0.45,
+        "diplomacia": 0.4,
+        "intervencao": 0.2,
+        "economia": -0.95,
+        "controle": -0.85,
+        "comercio": -0.3,
+        "religiao": -0.85,
+        "moral": -0.6,
+        "tecnologia": -0.25
+      },
+      "triangles": {
+        "0": [
+          0.68,
+          0.22,
+          0.1
+        ],
+        "1": [
+          0.46,
+          0.24,
+          0.3
+        ],
+        "2": [
+          0.12,
+          0.62,
+          0.26
+        ],
+        "3": [
+          0.08,
+          0.32,
+          0.6
+        ],
+        "4": [
+          0.82,
+          0.1,
+          0.08
+        ],
+        "5": [
+          0.15,
+          0.8,
+          0.05
+        ]
+      }
+    },
+    {
+      "id": "estado_e_revolucao_lenin",
+      "name": "O Estado e a Revolução",
+      "subtitle": "Vladimir Lênin",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1917",
+      "origin": "Rússia",
+      "summary": "Defende a necessidade de quebrar o aparelho de Estado burguês e substituí-lo pela ditadura do proletariado baseada nos conselhos (sovietes), antecipando a progressiva extinção do Estado na fase comunista superior.",
+      "highlights": [
+        "O Estado como instrumento irreconciliável de opressão de uma classe sobre outra",
+        "A Comuna de Paris como modelo de supressão da burocracia e do exército permanente",
+        "A transição pelo socialismo até o completo 'definhamento' do Estado no comunismo"
+      ],
+      "quote": "Por que ler: Obra seminal que orientou a tomada do poder bolchevique na Revolução de Outubro.",
+      "axes": {
+        "estrutura": 0.75,
+        "representacao": 0.45,
+        "poder": -0.65,
+        "imigracao": 0.2,
+        "diplomacia": -0.35,
+        "intervencao": 0.5,
+        "economia": -1.0,
+        "controle": -0.95,
+        "comercio": -0.65,
+        "religiao": -0.9,
+        "moral": -0.45,
+        "tecnologia": -0.45
+      },
+      "triangles": {
+        "0": [
+          0.75,
+          0.18,
+          0.07
+        ],
+        "1": [
+          0.18,
+          0.65,
+          0.17
+        ],
+        "2": [
+          0.15,
+          0.6,
+          0.25
+        ],
+        "3": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "4": [
+          0.35,
+          0.55,
+          0.1
+        ],
+        "5": [
+          0.08,
+          0.88,
+          0.04
+        ]
+      }
+    },
+    {
+      "id": "cadernos_do_carcere_gramsci",
+      "name": "Cadernos do Cárcere",
+      "subtitle": "Antonio Gramsci",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1929–1935 / 1948",
+      "origin": "Itália",
+      "summary": "Redefine o marxismo através dos conceitos de hegemonia cultural, intelectuais orgânicos e 'guerra de posição', explicando como as classes dominantes governam pelo consentimento fabricado na sociedade civil.",
+      "highlights": [
+        "A hegemonia cultural: o poder exercido pelo consenso e instituições da sociedade civil",
+        "A distinção estratégica entre a 'guerra de movimento' (assalto) e 'guerra de posição' (cultural)",
+        "O papel dos intelectuais orgânicos na construção do novo senso comum emancipatório"
+      ],
+      "quote": "Por que ler: Bíblia da teoria política marxista contemporânea, dos estudos culturais e da estratégia hegemônica.",
+      "axes": {
+        "estrutura": 0.45,
+        "representacao": -0.4,
+        "poder": -0.15,
+        "imigracao": 0.35,
+        "diplomacia": 0.35,
+        "intervencao": 0.3,
+        "economia": -0.85,
+        "controle": -0.8,
+        "comercio": -0.25,
+        "religiao": -0.8,
+        "moral": -0.65,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "1": [
+          0.42,
+          0.28,
+          0.3
+        ],
+        "2": [
+          0.14,
+          0.6,
+          0.26
+        ],
+        "3": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "4": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "5": [
+          0.18,
+          0.76,
+          0.06
+        ]
+      }
+    },
+    {
+      "id": "pedagogia_do_oprimido_freire",
+      "name": "Pedagogia do Oprimido",
+      "subtitle": "Paulo Freire",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1968",
+      "origin": "Brasil / Chile",
+      "summary": "Propõe a educação dialógica e libertadora contra a 'educação bancária' tradicional, ensinando os oprimidos a decodificarem criticamente sua realidade e superarem a introjeção do opressor pela práxis transformadora.",
+      "highlights": [
+        "Crítica radical à 'educação bancária' que deposita conteúdos passivos no educando",
+        "A conscientização como processo libertador indissociável de teoria e ação (práxis)",
+        "O diálogo humanista horizontal entre educador e educando"
+      ],
+      "quote": "Por que ler: Terceiro livro mais citado das ciências humanas no mundo e pilar da pedagogia crítica.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.92,
+        "poder": 0.7,
+        "imigracao": 0.6,
+        "diplomacia": 0.65,
+        "intervencao": -0.45,
+        "economia": -0.7,
+        "controle": -0.6,
+        "comercio": 0.25,
+        "religiao": -0.1,
+        "moral": -0.75,
+        "tecnologia": -0.15
+      },
+      "triangles": {
+        "0": [
+          0.45,
+          0.45,
+          0.1
+        ],
+        "1": [
+          0.65,
+          0.1,
+          0.25
+        ],
+        "2": [
+          0.08,
+          0.7,
+          0.22
+        ],
+        "3": [
+          0.06,
+          0.24,
+          0.7
+        ],
+        "4": [
+          0.78,
+          0.1,
+          0.12
+        ],
+        "5": [
+          0.24,
+          0.7,
+          0.06
+        ]
+      }
+    },
+    {
+      "id": "o_segundo_sexo_beauvoir",
+      "name": "O Segundo Sexo",
+      "subtitle": "Simone de Beauvoir",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1949",
+      "origin": "França",
+      "summary": "Tratado existencialista e feminista fundado na famosa premissa 'Não se nasce mulher: torna-se mulher', examinando como a civilização patriarcal construiu o homem como o Sujeito e a mulher como o Outro subalterno.",
+      "highlights": [
+        "A construção social, histórica e cultural do feminino ('Não se nasce mulher...')",
+        "A denúncia da mulher posicionada ontologicamente como o 'Outro' subserviente",
+        "A independência econômica e a liberdade reprodutiva como requisitos da emancipação"
+      ],
+      "quote": "Por que ler: Texto fundador do feminismo da segunda onda e da teoria contemporânea de gênero.",
+      "axes": {
+        "estrutura": -0.2,
+        "representacao": -0.9,
+        "poder": 0.75,
+        "imigracao": 0.7,
+        "diplomacia": 0.6,
+        "intervencao": -0.45,
+        "economia": -0.4,
+        "controle": -0.3,
+        "comercio": 0.45,
+        "religiao": -0.85,
+        "moral": -0.92,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "1": [
+          0.72,
+          0.08,
+          0.2
+        ],
+        "2": [
+          0.04,
+          0.76,
+          0.2
+        ],
+        "3": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "4": [
+          0.75,
+          0.1,
+          0.15
+        ],
+        "5": [
+          0.42,
+          0.5,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "realismo_capitalista_fisher",
+      "name": "Realismo Capitalista",
+      "subtitle": "Mark Fisher",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "2009",
+      "origin": "Reino Unido",
+      "summary": "Diagnostica a sensação difusa de que 'é mais fácil imaginar o fim do mundo do que o fim do capitalismo', analisando como o neoliberalismo capturou os desejos, produziu apatia e precarizou a saúde mental coletiva.",
+      "highlights": [
+        "A colonização do imaginário cultural pela crença na inexistência de alternativas",
+        "A privatização do estresse e a epidemia de sofrimento mental como sintomas sistêmicos",
+        "A burocracia kafkiana de metas e auditorias sob a retórica de eficiência de mercado"
+      ],
+      "quote": "Por que ler: Ensaio fulgurante sobre a paralisia cultural e as novas fronteiras da crítica anticapitalista.",
+      "axes": {
+        "estrutura": -0.1,
+        "representacao": -0.85,
+        "poder": 0.55,
+        "imigracao": 0.55,
+        "diplomacia": 0.5,
+        "intervencao": -0.35,
+        "economia": -0.8,
+        "controle": -0.7,
+        "comercio": 0.1,
+        "religiao": -0.75,
+        "moral": -0.7,
+        "tecnologia": 0.25
+      },
+      "triangles": {
+        "0": [
+          0.5,
+          0.4,
+          0.1
+        ],
+        "1": [
+          0.55,
+          0.15,
+          0.3
+        ],
+        "2": [
+          0.1,
+          0.65,
+          0.25
+        ],
+        "3": [
+          0.08,
+          0.32,
+          0.6
+        ],
+        "4": [
+          0.7,
+          0.15,
+          0.15
+        ],
+        "5": [
+          0.2,
+          0.74,
+          0.06
+        ]
+      }
+    },
+    {
+      "id": "reflexoes_revolucao_franca_burke",
+      "name": "Reflexões sobre a Revolução na França",
+      "subtitle": "Edmund Burke",
+      "category": "Conservadorismo, Tradição e Ordem",
+      "era": "1790",
+      "origin": "Irlanda / Reino Unido",
+      "summary": "Obra fundadora do conservadorismo moderno, alerta contra o perigo dos planos abstratos e da destruição violenta de tradições seculares, defendendo reformas graduais e respeito à sabedoria herdada dos antepassados.",
+      "highlights": [
+        "A sociedade como pacto intergeracional entre os mortos, os vivos e os que ainda vão nascer",
+        "O perigo mortal das teorias metafísicas abstratas descoladas da prudência prática",
+        "A defesa das instituições consuetudinárias como repositório de sabedoria histórica acumulada"
+      ],
+      "quote": "Por que ler: Texto basilar do conservadorismo clássico, da prudência política e do constitucionalismo costumeiro.",
+      "axes": {
+        "estrutura": 0.45,
+        "representacao": -0.55,
+        "poder": -0.25,
+        "imigracao": -0.35,
+        "diplomacia": -0.2,
+        "intervencao": 0.35,
+        "economia": 0.55,
+        "controle": 0.45,
+        "comercio": 0.2,
+        "religiao": 0.65,
+        "moral": 0.75,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.16,
+          0.44,
+          0.4
+        ],
+        "1": [
+          0.35,
+          0.45,
+          0.2
+        ],
+        "2": [
+          0.72,
+          0.12,
+          0.16
+        ],
+        "3": [
+          0.25,
+          0.45,
+          0.3
+        ],
+        "4": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "5": [
+          0.5,
+          0.15,
+          0.35
+        ]
+      }
+    },
+    {
+      "id": "o_que_ha_de_errado_chesterton",
+      "name": "O que Há de Errado com o Mundo",
+      "subtitle": "G.K. Chesterton",
+      "category": "Conservadorismo, Tradição e Ordem",
+      "era": "1910",
+      "origin": "Reino Unido",
+      "summary": "Formula a tese do Distributismo contra o capitalismo monopolista e o socialismo de Estado, sustentando que o problema do capitalismo não é haver propriedade privada demais, mas proprietários de menos.",
+      "highlights": [
+        "O ideal distributista: ampla difusão da pequena propriedade privada para as famílias",
+        "A defesa intransigente da família clássica contra a tirania do mercado e do Estado",
+        "Crítica mordaz à tecnocracia educacional e à pressa desumanizadora da modernidade"
+      ],
+      "quote": "Por que ler: Brilhante defesa da sanidade comum, da herança cristã e do humanismo descentralizado.",
+      "axes": {
+        "estrutura": -0.75,
+        "representacao": -0.65,
+        "poder": 0.35,
+        "imigracao": -0.2,
+        "diplomacia": 0.45,
+        "intervencao": -0.45,
+        "economia": -0.15,
+        "controle": -0.25,
+        "comercio": -0.5,
+        "religiao": 0.75,
+        "moral": 0.7,
+        "tecnologia": 0.78
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.55,
+          0.2
+        ],
+        "1": [
+          0.5,
+          0.25,
+          0.25
+        ],
+        "2": [
+          0.72,
+          0.1,
+          0.18
+        ],
+        "3": [
+          0.08,
+          0.54,
+          0.38
+        ],
+        "4": [
+          0.65,
+          0.1,
+          0.25
+        ],
+        "5": [
+          0.45,
+          0.4,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "o_estado_servil_belloc",
+      "name": "O Estado Servil",
+      "subtitle": "Hilaire Belloc",
+      "category": "Conservadorismo, Tradição e Ordem",
+      "era": "1912",
+      "origin": "Reino Unido",
+      "summary": "Demonstra profeticamente que a aliança entre o grande capital e a burocracia socialista resulta no 'Estado Servil', onde os cidadãos são forçados a trabalhar sob tutela legal em troca de uma falsa segurança social.",
+      "highlights": [
+        "A denúncia da convergência entre o monopólio corporativo e a burocracia estatal",
+        "A escravidão jurídica moderna gerada pelas leis de bem-estar compulsórias",
+        "A proposta distributista de reconstituição das guildas e da propriedade familiar autônoma"
+      ],
+      "quote": "Por que ler: Análise pioneira sobre como o capitalismo monopolista engendra um estatismo tutelar servil.",
+      "axes": {
+        "estrutura": -0.7,
+        "representacao": -0.6,
+        "poder": 0.4,
+        "imigracao": -0.1,
+        "diplomacia": 0.35,
+        "intervencao": -0.4,
+        "economia": -0.3,
+        "controle": -0.35,
+        "comercio": -0.55,
+        "religiao": 0.65,
+        "moral": 0.6,
+        "tecnologia": 0.3
+      },
+      "triangles": {
+        "0": [
+          0.35,
+          0.45,
+          0.2
+        ],
+        "1": [
+          0.52,
+          0.24,
+          0.24
+        ],
+        "2": [
+          0.6,
+          0.16,
+          0.24
+        ],
+        "3": [
+          0.1,
+          0.52,
+          0.38
+        ],
+        "4": [
+          0.6,
+          0.12,
+          0.28
+        ],
+        "5": [
+          0.46,
+          0.36,
+          0.18
+        ]
+      }
+    },
+    {
+      "id": "mentalidade_conservadora_kirk",
+      "name": "A Mentalidade Conservadora",
+      "subtitle": "Russell Kirk",
+      "category": "Conservadorismo, Tradição e Ordem",
+      "era": "1953",
+      "origin": "Estados Unidos",
+      "summary": "Sistematiza a linhagem do pensamento conservador anglo-americano de Burke a T.S. Eliot, identificando seis cânones essenciais, entre os quais a crença numa ordem moral duradoura e o valor da variedade social.",
+      "highlights": [
+        "Crença numa ordem moral superior e desígnio ético da existência humana",
+        "Apreço pela diversidade social e propriedade em oposição ao igualitarismo nivelador",
+        "A convicção de que inovação precipitada produz calamidades piores do que os males tolerados"
+      ],
+      "quote": "Por que ler: A bíblia renascentista do conservadorismo intelectual dos Estados Unidos no pós-guerra.",
+      "axes": {
+        "estrutura": -0.5,
+        "representacao": -0.55,
+        "poder": -0.15,
+        "imigracao": -0.3,
+        "diplomacia": -0.25,
+        "intervencao": 0.25,
+        "economia": 0.55,
+        "controle": 0.45,
+        "comercio": 0.25,
+        "religiao": 0.7,
+        "moral": 0.8,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.42,
+          0.43
+        ],
+        "1": [
+          0.32,
+          0.48,
+          0.2
+        ],
+        "2": [
+          0.74,
+          0.1,
+          0.16
+        ],
+        "3": [
+          0.22,
+          0.48,
+          0.3
+        ],
+        "4": [
+          0.52,
+          0.32,
+          0.16
+        ],
+        "5": [
+          0.48,
+          0.14,
+          0.38
+        ]
+      }
+    },
+    {
+      "id": "como_ser_um_conservador_scruton",
+      "name": "Como Ser um Conservador",
+      "subtitle": "Roger Scruton",
+      "category": "Conservadorismo, Tradição e Ordem",
+      "era": "2014",
+      "origin": "Reino Unido",
+      "summary": "Apresenta uma defesa lúcida e afável do conservadorismo moderno, mostrando como a preservação do lar (oikofilia), a beleza estética, a conservação ecológica e a lealdade comunitária dão sentido à liberdade.",
+      "highlights": [
+        "A 'oikofilia': o amor pelo lar e pela vizinhança como base do conservadorismo ambiental",
+        "A importância vital da beleza arquitetônica e artística contra o utilitarismo estéril",
+        "A preservação de associações civis autônomas e do direito costumeiro inglês"
+      ],
+      "quote": "Por que ler: A melhor introdução contemporânea a um conservadorismo civil, ecológico e estético.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.7,
+        "poder": 0.35,
+        "imigracao": -0.25,
+        "diplomacia": 0.3,
+        "intervencao": -0.25,
+        "economia": 0.5,
+        "controle": 0.4,
+        "comercio": 0.2,
+        "religiao": 0.55,
+        "moral": 0.65,
+        "tecnologia": 0.6
+      },
+      "triangles": {
+        "0": [
+          0.16,
+          0.42,
+          0.42
+        ],
+        "1": [
+          0.45,
+          0.3,
+          0.25
+        ],
+        "2": [
+          0.65,
+          0.12,
+          0.23
+        ],
+        "3": [
+          0.12,
+          0.48,
+          0.4
+        ],
+        "4": [
+          0.6,
+          0.2,
+          0.2
+        ],
+        "5": [
+          0.52,
+          0.18,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "depois_da_virtude_macintyre",
+      "name": "Depois da Virtude",
+      "subtitle": "Alasdair MacIntyre",
+      "category": "Conservadorismo, Tradição e Ordem",
+      "era": "1981",
+      "origin": "Reino Unido / Estados Unidos",
+      "summary": "Denuncia o colapso da linguagem moral moderna transformada em mero 'emotivismo' de preferências subjetivas, preconizando o resgate da tradição aristotélica e tomista das virtudes dentro de comunidades vivas.",
+      "highlights": [
+        "O diagnóstico do emotivismo: o discurso moral contemporâneo como fragmento desconexo",
+        "A superação do individualismo pela reinserção em práticas comunitárias com padrões de excelência",
+        "A narrativa da vida humana como unidade e busca teleológica do Bem"
+      ],
+      "quote": "Por que ler: Marco divisor da filosofia moral contemporânea e da renovação do comunitarismo aristotélico.",
+      "axes": {
+        "estrutura": -0.6,
+        "representacao": -0.65,
+        "poder": 0.1,
+        "imigracao": -0.15,
+        "diplomacia": 0.35,
+        "intervencao": -0.35,
+        "economia": -0.2,
+        "controle": -0.25,
+        "comercio": -0.25,
+        "religiao": 0.75,
+        "moral": 0.7,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.28,
+          0.5,
+          0.22
+        ],
+        "1": [
+          0.4,
+          0.35,
+          0.25
+        ],
+        "2": [
+          0.7,
+          0.1,
+          0.2
+        ],
+        "3": [
+          0.1,
+          0.55,
+          0.35
+        ],
+        "4": [
+          0.6,
+          0.22,
+          0.18
+        ],
+        "5": [
+          0.44,
+          0.36,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "conceito_do_politico_schmitt",
+      "name": "O Conceito do Político",
+      "subtitle": "Carl Schmitt",
+      "category": "Conservadorismo, Tradição e Ordem",
+      "era": "1932",
+      "origin": "Alemanha",
+      "summary": "Define que o critério distintivo e autônomo da esfera política é a distinção existencial entre 'amigo' e 'inimigo', criticando o liberalismo por tentar dissolver o conflito político em ética e economia de mercado.",
+      "highlights": [
+        "O critério amigo-inimigo como essência irredutível de toda política genuína",
+        "A crítica ao liberalismo que tenta substituir a decisão política pela negociação comercial",
+        "O soberano é aquele que decide sobre o estado de exceção"
+      ],
+      "quote": "Por que ler: Texto polêmico e fundamental para compreender o realismo político radical e a crítica ao liberalismo.",
+      "axes": {
+        "estrutura": 0.85,
+        "representacao": 0.8,
+        "poder": -0.85,
+        "imigracao": -0.75,
+        "diplomacia": -0.85,
+        "intervencao": 0.85,
+        "economia": 0.1,
+        "controle": -0.1,
+        "comercio": -0.4,
+        "religiao": 0.45,
+        "moral": 0.65,
+        "tecnologia": -0.4
+      },
+      "triangles": {
+        "0": [
+          0.3,
+          0.42,
+          0.28
+        ],
+        "1": [
+          0.06,
+          0.84,
+          0.1
+        ],
+        "2": [
+          0.68,
+          0.12,
+          0.2
+        ],
+        "3": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "4": [
+          0.1,
+          0.84,
+          0.06
+        ],
+        "5": [
+          0.42,
+          0.16,
+          0.42
+        ]
+      }
+    },
+    {
+      "id": "ordem_politica_sociedades_mudanca",
+      "name": "A Ordem Política nas Sociedades em Mudança",
+      "subtitle": "Samuel P. Huntington",
+      "category": "Conservadorismo, Tradição e Ordem",
+      "era": "1968",
+      "origin": "Estados Unidos",
+      "summary": "Demonstra que a modernização social e a urbanização acelerada geram instabilidade crônica se não forem acompanhadas pela institucionalização política, sustentando que a governabilidade precede a própria democracia.",
+      "highlights": [
+        "A tese central: a principal diferença entre os países é o grau de governo, não a forma",
+        "O descompasso perigoso entre a rápida mobilização social e a lenta institucionalização política",
+        "O papel crucial dos partidos organizados na prevenção do colapso e do caos revolucionário"
+      ],
+      "quote": "Por que ler: Clássico da ciência política do desenvolvimento institucional contra o idealismo ingênuo.",
+      "axes": {
+        "estrutura": 0.6,
+        "representacao": 0.35,
+        "poder": -0.65,
+        "imigracao": -0.4,
+        "diplomacia": -0.45,
+        "intervencao": 0.5,
+        "economia": 0.2,
+        "controle": 0.1,
+        "comercio": 0.1,
+        "religiao": 0.35,
+        "moral": 0.5,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.45,
+          0.3
+        ],
+        "1": [
+          0.18,
+          0.68,
+          0.14
+        ],
+        "2": [
+          0.6,
+          0.18,
+          0.22
+        ],
+        "3": [
+          0.35,
+          0.4,
+          0.25
+        ],
+        "4": [
+          0.35,
+          0.55,
+          0.1
+        ],
+        "5": [
+          0.46,
+          0.2,
+          0.34
+        ]
+      }
+    },
+    {
+      "id": "rerum_novarum_leao_xiii",
+      "name": "Rerum Novarum",
+      "subtitle": "Papa Leão XIII",
+      "category": "Conservadorismo, Tradição e Ordem",
+      "era": "1891",
+      "origin": "Vaticano (Igreja Católica)",
+      "summary": "Primeira grande encíclica da Doutrina Social da Igreja, condena tanto a exploração desumana do capitalismo desregulado quanto o socialismo materialista que nega a propriedade e a fé, defendendo o salário justo e sindicatos.",
+      "highlights": [
+        "O salário justo que permite ao trabalhador sustentar com dignidade sua família",
+        "Defesa da propriedade privada associada à hipoteca social do bem comum",
+        "Legitimidade das associações e sindicatos de trabalhadores sob inspiração cristã"
+      ],
+      "quote": "Por que ler: A carta magna da Doutrina Social da Igreja e da democracia cristã em todo o mundo.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.55,
+        "poder": 0.1,
+        "imigracao": 0.1,
+        "diplomacia": 0.4,
+        "intervencao": -0.15,
+        "economia": -0.3,
+        "controle": -0.35,
+        "comercio": -0.1,
+        "religiao": 0.95,
+        "moral": 0.65,
+        "tecnologia": 0.25
+      },
+      "triangles": {
+        "0": [
+          0.32,
+          0.5,
+          0.18
+        ],
+        "1": [
+          0.42,
+          0.34,
+          0.24
+        ],
+        "2": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "3": [
+          0.12,
+          0.42,
+          0.46
+        ],
+        "4": [
+          0.55,
+          0.25,
+          0.2
+        ],
+        "5": [
+          0.42,
+          0.46,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "o_abolicionismo_nabuco",
+      "name": "O Abolicionismo",
+      "subtitle": "Joaquim Nabuco",
+      "category": "Brasil e América Latina",
+      "era": "1883",
+      "origin": "Brasil",
+      "summary": "Manifesto magistral da campanha abolicionista brasileira, diagnostica a escravidão não apenas como um crime contra os cativos, mas como a instituição que corrompeu o solo, a moral e o desenvolvimento do país.",
+      "highlights": [
+        "A escravidão como causa de todas as mazelas políticas, morais e produtivas do Brasil",
+        "A exigência de reconstrução nacional com educação pública e reforma agrária para os libertos",
+        "O apelo à consciência cívica e aos meios pacíficos de mobilização parlamentar e civil"
+      ],
+      "quote": "Por que ler: O livro cívico mais grandioso do século XIX brasileiro e texto fundador da cidadania.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.8,
+        "poder": 0.65,
+        "imigracao": 0.55,
+        "diplomacia": 0.45,
+        "intervencao": -0.3,
+        "economia": 0.15,
+        "controle": 0.05,
+        "comercio": 0.35,
+        "religiao": -0.15,
+        "moral": -0.65,
+        "tecnologia": -0.2
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.48,
+          0.3
+        ],
+        "1": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "2": [
+          0.14,
+          0.58,
+          0.28
+        ],
+        "3": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "4": [
+          0.7,
+          0.15,
+          0.15
+        ],
+        "5": [
+          0.52,
+          0.38,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "raizes_do_brasil_holanda",
+      "name": "Raízes do Brasil",
+      "subtitle": "Sérgio Buarque de Holanda",
+      "category": "Brasil e América Latina",
+      "era": "1936",
+      "origin": "Brasil",
+      "summary": "Cria o clássico conceito do 'homem cordial' brasileiro, cuja sociabilidade fundada na emoção e na intimidade familiar dificulta a consolidação de instituições impessoais e do verdadeiro espaço cívico público.",
+      "highlights": [
+        "O conceito do 'homem cordial': a primazia da intimidade e do afeto contra o civismo formal",
+        "A transposição da herança ibérica personalista para o ambiente da colônia agrária",
+        "A revolução democrática urbana como única via para superar o patrimonialismo arcaico"
+      ],
+      "quote": "Por que ler: Obra indispensável para compreender a psicologia social e os dilemas institucionais brasileiros.",
+      "axes": {
+        "estrutura": -0.2,
+        "representacao": -0.85,
+        "poder": 0.5,
+        "imigracao": 0.4,
+        "diplomacia": 0.45,
+        "intervencao": -0.35,
+        "economia": -0.1,
+        "controle": -0.05,
+        "comercio": 0.3,
+        "religiao": -0.6,
+        "moral": -0.55,
+        "tecnologia": -0.25
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.48,
+          0.27
+        ],
+        "1": [
+          0.55,
+          0.2,
+          0.25
+        ],
+        "2": [
+          0.18,
+          0.54,
+          0.28
+        ],
+        "3": [
+          0.08,
+          0.34,
+          0.58
+        ],
+        "4": [
+          0.72,
+          0.14,
+          0.14
+        ],
+        "5": [
+          0.46,
+          0.4,
+          0.14
+        ]
+      }
+    },
+    {
+      "id": "os_donos_do_poder_faoro",
+      "name": "Os Donos do Poder",
+      "subtitle": "Raymundo Faoro",
+      "category": "Brasil e América Latina",
+      "era": "1958",
+      "origin": "Brasil",
+      "summary": "Rastreia a formação do estamento burocrático e do patrimonialismo secular no Brasil desde a Revolução de Avis em Portugal, mostrando como o Estado se sobrepõe à sociedade civil e drena a economia privada.",
+      "highlights": [
+        "O estamento burocrático patrimonialista que comanda o Estado brasileiro há séculos",
+        "A privatização ilegítima do poder público por uma casta que não se submete ao mercado nem ao povo",
+        "A crítica simultânea ao autoritarismo tecnocrático e às corporações predatórias"
+      ],
+      "quote": "Por que ler: Trabalho monumental de sociologia histórica sobre a persistência do patrimonialismo no Brasil.",
+      "axes": {
+        "estrutura": -0.65,
+        "representacao": -0.8,
+        "poder": 0.7,
+        "imigracao": 0.2,
+        "diplomacia": 0.35,
+        "intervencao": -0.5,
+        "economia": 0.4,
+        "controle": 0.3,
+        "comercio": 0.45,
+        "religiao": -0.45,
+        "moral": -0.3,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.18,
+          0.4,
+          0.42
+        ],
+        "1": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "2": [
+          0.25,
+          0.45,
+          0.3
+        ],
+        "3": [
+          0.1,
+          0.36,
+          0.54
+        ],
+        "4": [
+          0.72,
+          0.1,
+          0.18
+        ],
+        "5": [
+          0.55,
+          0.25,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "formacao_economica_furtado",
+      "name": "Formação Econômica do Brasil",
+      "subtitle": "Celso Furtado",
+      "category": "Brasil e América Latina",
+      "era": "1959",
+      "origin": "Brasil",
+      "summary": "A mais brilhante síntese estruturalista da história econômica nacional, analisando os sucessivos ciclos exportadores (açúcar, ouro, café) e defendendo a industrialização planejada para superar o subdesenvolvimento.",
+      "highlights": [
+        "A interpretação dos ciclos primário-exportadores e a fragilidade do dinamismo externo",
+        "O subdesenvolvimento como estrutura específica de heterogeneidade social e produtiva",
+        "A defesa do planejamento governamental para integrar o mercado interno e o Nordeste"
+      ],
+      "quote": "Por que ler: A certidão de nascimento da moderna inteligência econômica brasileira e cepalina.",
+      "axes": {
+        "estrutura": 0.4,
+        "representacao": -0.65,
+        "poder": 0.1,
+        "imigracao": 0.1,
+        "diplomacia": 0.25,
+        "intervencao": 0.65,
+        "economia": -0.7,
+        "controle": -0.65,
+        "comercio": -0.65,
+        "religiao": -0.25,
+        "moral": -0.35,
+        "tecnologia": -0.5
+      },
+      "triangles": {
+        "0": [
+          0.52,
+          0.38,
+          0.1
+        ],
+        "1": [
+          0.4,
+          0.3,
+          0.3
+        ],
+        "2": [
+          0.22,
+          0.52,
+          0.26
+        ],
+        "3": [
+          0.12,
+          0.48,
+          0.4
+        ],
+        "4": [
+          0.62,
+          0.26,
+          0.12
+        ],
+        "5": [
+          0.3,
+          0.6,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "o_povo_brasileiro_darcy",
+      "name": "O Povo Brasileiro",
+      "subtitle": "Darcy Ribeiro",
+      "category": "Brasil e América Latina",
+      "era": "1995",
+      "origin": "Brasil",
+      "summary": "Ensaio antropológico apaixonado sobre a gestação da identidade mestiça nacional no 'moinho de gastar gentes' colonial, celebrando o Brasil como a 'Nova Roma' tropical destinada a inventar um novo humanismo.",
+      "highlights": [
+        "A gênese mestiça do brasileiro pela transfiguração étnica de indígenas, negros e europeus",
+        "A denúncia do processo civilizatório como moedor predatório de carne humana",
+        "A celebração do Brasil como a matriz luminosa de uma civilização tropical humanista"
+      ],
+      "quote": "Por que ler: A mais bela e comovente reflexão antropológica sobre a formação da alma do Brasil.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.75,
+        "poder": 0.45,
+        "imigracao": 0.6,
+        "diplomacia": 0.45,
+        "intervencao": 0.4,
+        "economia": -0.6,
+        "controle": -0.5,
+        "comercio": -0.45,
+        "religiao": -0.2,
+        "moral": -0.65,
+        "tecnologia": 0.25
+      },
+      "triangles": {
+        "0": [
+          0.46,
+          0.4,
+          0.14
+        ],
+        "1": [
+          0.55,
+          0.2,
+          0.25
+        ],
+        "2": [
+          0.12,
+          0.62,
+          0.26
+        ],
+        "3": [
+          0.1,
+          0.46,
+          0.44
+        ],
+        "4": [
+          0.65,
+          0.22,
+          0.13
+        ],
+        "5": [
+          0.25,
+          0.65,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "lanterna_na_popa_campos",
+      "name": "A Lanterna na Popa",
+      "subtitle": "Roberto Campos",
+      "category": "Brasil e América Latina",
+      "era": "1994",
+      "origin": "Brasil",
+      "summary": "Memórias do maior frasista e polemista liberal brasileiro, que participou da criação de Bretton Woods e do BNDE, fustigando com ironia demolidora o nacionalismo retrógrado e o cartorialismo econômico.",
+      "highlights": [
+        "O combate incansável ao que chamava de 'nacional-patriotice' e 'monopólios arcaicos'",
+        "A defesa pioneira das reformas de mercado, abertura comercial e responsabilidade fiscal",
+        "A experiência de formulação do Plano de Ação Econômica do Governo (PAEG) nos anos 60"
+      ],
+      "quote": "Por que ler: Obra monumental e saborosa do liberalismo pragmático na história econômica brasileira.",
+      "axes": {
+        "estrutura": -0.35,
+        "representacao": -0.45,
+        "poder": 0.25,
+        "imigracao": 0.15,
+        "diplomacia": -0.2,
+        "intervencao": -0.45,
+        "economia": 0.85,
+        "controle": 0.75,
+        "comercio": 0.8,
+        "religiao": -0.25,
+        "moral": -0.05,
+        "tecnologia": -0.7
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.3,
+          0.6
+        ],
+        "1": [
+          0.45,
+          0.35,
+          0.2
+        ],
+        "2": [
+          0.35,
+          0.3,
+          0.35
+        ],
+        "3": [
+          0.15,
+          0.2,
+          0.65
+        ],
+        "4": [
+          0.52,
+          0.28,
+          0.2
+        ],
+        "5": [
+          0.55,
+          0.15,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "problema_nacional_alberto_torres",
+      "name": "O Problema Nacional Brasileiro",
+      "subtitle": "Alberto Torres",
+      "category": "Brasil e América Latina",
+      "era": "1914",
+      "origin": "Brasil",
+      "summary": "Crítica precursora ao liberalismo formal da República Velha, advogando um Estado forte, adaptado à geografia e à sociologia nacionais, voltado para a fixação do homem ao solo e proteção do meio ambiente.",
+      "highlights": [
+        "A denúncia da importação servil de modelos constitucionais estrangeiros inadequados ao país",
+        "A necessidade imperativa de organização nacional e planejamento estatal centralizado",
+        "Pioneirismo na defesa da conservação das florestas e da agricultura familiar contra o latifúndio"
+      ],
+      "quote": "Por que ler: Texto precursor do nacionalismo moderno e do planejamento territorial no Brasil.",
+      "axes": {
+        "estrutura": 0.7,
+        "representacao": 0.15,
+        "poder": -0.55,
+        "imigracao": -0.45,
+        "diplomacia": -0.3,
+        "intervencao": 0.8,
+        "economia": -0.35,
+        "controle": -0.55,
+        "comercio": -0.75,
+        "religiao": 0.25,
+        "moral": 0.45,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.44,
+          0.4,
+          0.16
+        ],
+        "1": [
+          0.25,
+          0.6,
+          0.15
+        ],
+        "2": [
+          0.55,
+          0.2,
+          0.25
+        ],
+        "3": [
+          0.35,
+          0.5,
+          0.15
+        ],
+        "4": [
+          0.35,
+          0.55,
+          0.1
+        ],
+        "5": [
+          0.42,
+          0.32,
+          0.26
+        ]
+      }
+    },
+    {
+      "id": "coronelismo_enxada_voto_leal",
+      "name": "Coronelismo, Enxada e Voto",
+      "subtitle": "Victor Nunes Leal",
+      "category": "Brasil e América Latina",
+      "era": "1948",
+      "origin": "Brasil",
+      "summary": "Obra clássica da ciência política que decifra o coronelismo não como mero poder pessoal, mas como um sistema de compromisso entre o poder público estadual fortalecido e o poder privado decadente dos chefes locais.",
+      "highlights": [
+        "O coronelismo como sistema estruturado de reciprocidade entre poder público e coronéis",
+        "A dependência do voto de cabresto em relação à precariedade material dos trabalhadores rurais",
+        "A necessidade de reformas de cidadania no campo para desatar os nós do atraso democrático"
+      ],
+      "quote": "Por que ler: Obra indispensável para entender as raízes do clientelismo eleitoral e da política interiorana.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.85,
+        "poder": 0.45,
+        "imigracao": 0.1,
+        "diplomacia": 0.25,
+        "intervencao": -0.35,
+        "economia": -0.15,
+        "controle": -0.1,
+        "comercio": 0.25,
+        "religiao": -0.45,
+        "moral": -0.45,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.24,
+          0.5,
+          0.26
+        ],
+        "1": [
+          0.6,
+          0.18,
+          0.22
+        ],
+        "2": [
+          0.2,
+          0.55,
+          0.25
+        ],
+        "3": [
+          0.1,
+          0.4,
+          0.5
+        ],
+        "4": [
+          0.75,
+          0.12,
+          0.13
+        ],
+        "5": [
+          0.48,
+          0.4,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "veias_abertas_america_latina",
+      "name": "As Veias Abertas da América Latina",
+      "subtitle": "Eduardo Galeano",
+      "category": "Brasil e América Latina",
+      "era": "1971",
+      "origin": "Uruguai",
+      "summary": "Narrativa pungente e lírica sobre a pilhagem sistemática das riquezas do continente (ouro de Potosí, açúcar do Nordeste, petróleo venezuelano) pela engrenagem colonial e imperialista internacional.",
+      "highlights": [
+        "A história da América Latina como crônica da expropriação contínua de seus recursos naturais",
+        "A famosa tese: a riqueza dos impérios globais como produto direto da miséria latino-americana",
+        "Homenagem à resistência heroica dos povos originários e movimentos de libertação nacional"
+      ],
+      "quote": "Por que ler: Texto mítico e apaixonado da esquerda latino-americana sobre a dependência e o colonialismo.",
+      "axes": {
+        "estrutura": -0.1,
+        "representacao": -0.65,
+        "poder": 0.25,
+        "imigracao": 0.45,
+        "diplomacia": 0.45,
+        "intervencao": 0.55,
+        "economia": -0.9,
+        "controle": -0.8,
+        "comercio": -0.55,
+        "religiao": -0.35,
+        "moral": -0.6,
+        "tecnologia": 0.15
+      },
+      "triangles": {
+        "0": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "1": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "2": [
+          0.15,
+          0.6,
+          0.25
+        ],
+        "3": [
+          0.08,
+          0.55,
+          0.37
+        ],
+        "4": [
+          0.68,
+          0.2,
+          0.12
+        ],
+        "5": [
+          0.15,
+          0.8,
+          0.05
+        ]
+      }
+    },
+    {
+      "id": "primavera_silenciosa_carson",
+      "name": "Primavera Silenciosa",
+      "subtitle": "Rachel Carson",
+      "category": "Ecologia, Tecnologia e Século XXI",
+      "era": "1962",
+      "origin": "Estados Unidos",
+      "summary": "Livro que deu origem ao moderno movimento ambientalista global ao documentar os estragos causados pelo pesticida químico DDT na cadeia alimentar, silenciando o canto dos pássaros e contaminando a vida.",
+      "highlights": [
+        "A contaminação silenciosa e cumulativa dos ecossistemas por defensivos químicos sintéticos",
+        "A arrogância da pretensão humana de 'controlar a natureza' através de venenos industriais",
+        "O nascimento da conscientização ecológica cidadã e das agências de proteção ambiental"
+      ],
+      "quote": "Por que ler: A certidão de nascimento do movimento ecológico contemporâneo e do alerta socioambiental.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.8,
+        "poder": 0.55,
+        "imigracao": 0.45,
+        "diplomacia": 0.6,
+        "intervencao": -0.4,
+        "economia": -0.35,
+        "controle": -0.3,
+        "comercio": 0.25,
+        "religiao": -0.3,
+        "moral": -0.5,
+        "tecnologia": 0.9
+      },
+      "triangles": {
+        "0": [
+          0.28,
+          0.52,
+          0.2
+        ],
+        "1": [
+          0.55,
+          0.18,
+          0.27
+        ],
+        "2": [
+          0.12,
+          0.6,
+          0.28
+        ],
+        "3": [
+          0.06,
+          0.28,
+          0.66
+        ],
+        "4": [
+          0.7,
+          0.15,
+          0.15
+        ],
+        "5": [
+          0.42,
+          0.46,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "ecologia_da_liberdade_bookchin",
+      "name": "A Ecologia da Liberdade",
+      "subtitle": "Murray Bookchin",
+      "category": "Ecologia, Tecnologia e Século XXI",
+      "era": "1982",
+      "origin": "Estados Unidos",
+      "summary": "Obra-prima da Ecologia Social, demonstra que a ideia de dominar a natureza decorre diretamente da dominação histórica do ser humano pelo ser humano, propondo o municipalismo libertário ecológico.",
+      "highlights": [
+        "A tese central: a crise ecológica é fruto da hierarquia social e da dominação humana",
+        "A proposta da Ecologia Social e do Municipalismo Libertário confederal",
+        "A tecnologia reorientada para o convívio descentralizado e desierarquizado com os biomas"
+      ],
+      "quote": "Por que ler: Trabalho pioneiro que uniu anarquismo social, dialética ecológica e descentralização radical.",
+      "axes": {
+        "estrutura": -0.95,
+        "representacao": -0.92,
+        "poder": 0.85,
+        "imigracao": 0.55,
+        "diplomacia": 0.65,
+        "intervencao": -0.85,
+        "economia": -0.75,
+        "controle": -0.3,
+        "comercio": 0.35,
+        "religiao": -0.65,
+        "moral": -0.75,
+        "tecnologia": 0.65
+      },
+      "triangles": {
+        "0": [
+          0.32,
+          0.34,
+          0.34
+        ],
+        "1": [
+          0.75,
+          0.08,
+          0.17
+        ],
+        "2": [
+          0.08,
+          0.56,
+          0.36
+        ],
+        "3": [
+          0.05,
+          0.35,
+          0.6
+        ],
+        "4": [
+          0.78,
+          0.04,
+          0.18
+        ],
+        "5": [
+          0.35,
+          0.55,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "principio_responsabilidade_jonas",
+      "name": "O Princípio Responsabilidade",
+      "subtitle": "Hans Jonas",
+      "category": "Ecologia, Tecnologia e Século XXI",
+      "era": "1979",
+      "origin": "Alemanha",
+      "summary": "Reformula a ética para a era da civilização tecnológica sob o novo imperativo: 'Aja de modo que os efeitos de sua ação sejam compatíveis com a permanência de uma vida autêntica na Terra'.",
+      "highlights": [
+        "O Princípio da Responsabilidade face à vulnerabilidade radical da biosfera ante a técnica",
+        "A 'heurística do temor': priorizar o prognóstico da catástrofe para preveni-la a tempo",
+        "O dever ético incondicional para com as futuras gerações e a sobrevivência da humanidade"
+      ],
+      "quote": "Por que ler: Obra indispensável para a bioética, o direito ambiental e a filosofia da precaução técnica.",
+      "axes": {
+        "estrutura": 0.15,
+        "representacao": -0.6,
+        "poder": 0.1,
+        "imigracao": 0.35,
+        "diplomacia": 0.55,
+        "intervencao": -0.2,
+        "economia": -0.25,
+        "controle": -0.35,
+        "comercio": 0.2,
+        "religiao": 0.4,
+        "moral": 0.45,
+        "tecnologia": 0.88
+      },
+      "triangles": {
+        "0": [
+          0.32,
+          0.5,
+          0.18
+        ],
+        "1": [
+          0.35,
+          0.4,
+          0.25
+        ],
+        "2": [
+          0.55,
+          0.2,
+          0.25
+        ],
+        "3": [
+          0.08,
+          0.28,
+          0.64
+        ],
+        "4": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "5": [
+          0.42,
+          0.44,
+          0.14
+        ]
+      }
+    },
+    {
+      "id": "o_negocio_e_ser_pequeno_schumacher",
+      "name": "O Negócio é Ser Pequeno (Small is Beautiful)",
+      "subtitle": "E.F. Schumacher",
+      "category": "Ecologia, Tecnologia e Século XXI",
+      "era": "1973",
+      "origin": "Alemanha / Reino Unido",
+      "summary": "Crítica magistral à obsessão com o gigantismo corporativo e o crescimento infinito do PIB, preconizando a 'economia budista', a tecnologia intermediária humanizada e o respeito aos ecossistemas finitos.",
+      "highlights": [
+        "A economia budista: produzir o máximo de bem-estar com o mínimo de consumo predatório",
+        "A defesa das tecnologias intermediárias adequadas à escala e criatividade dos povos",
+        "A crítica demolidora à voracidade que confunde capital natural finito com renda corrente"
+      ],
+      "quote": "Por que ler: Manifesto profético da economia ecológica, da escala humana e da simplicidade voluntária.",
+      "axes": {
+        "estrutura": -0.85,
+        "representacao": -0.75,
+        "poder": 0.6,
+        "imigracao": 0.2,
+        "diplomacia": 0.65,
+        "intervencao": -0.7,
+        "economia": -0.15,
+        "controle": 0.05,
+        "comercio": -0.4,
+        "religiao": 0.55,
+        "moral": 0.3,
+        "tecnologia": 0.8
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.48,
+          0.3
+        ],
+        "1": [
+          0.6,
+          0.18,
+          0.22
+        ],
+        "2": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "3": [
+          0.06,
+          0.64,
+          0.3
+        ],
+        "4": [
+          0.68,
+          0.1,
+          0.22
+        ],
+        "5": [
+          0.48,
+          0.38,
+          0.14
+        ]
+      }
+    },
+    {
+      "id": "capitalismo_de_vigilancia_zuboff",
+      "name": "A Era do Capitalismo de Vigilância",
+      "subtitle": "Shoshana Zuboff",
+      "category": "Ecologia, Tecnologia e Século XXI",
+      "era": "2019",
+      "origin": "Estados Unidos",
+      "summary": "Revela a nova ordem econômica das Big Techs que reivindica a experiência humana privada como matéria-prima gratuita a ser expropriada, processada em IA e vendida em mercados de comportamento futuro.",
+      "highlights": [
+        "O 'excedente comportamental' extraído sem consentimento para treinar algoritmos premonitórios",
+        "A substituição do contrato social democrático pelo poder instrumentário de engenharia comportamental",
+        "O imperativo urgente de regulação pública para reconquistar a soberania e a privacidade digital"
+      ],
+      "quote": "Por que ler: O diagnóstico definitivo sobre o novo poder das plataformas e o destino da liberdade humana.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.85,
+        "poder": 0.8,
+        "imigracao": 0.45,
+        "diplomacia": 0.45,
+        "intervencao": -0.45,
+        "economia": -0.45,
+        "controle": -0.4,
+        "comercio": 0.4,
+        "religiao": -0.4,
+        "moral": -0.65,
+        "tecnologia": -0.55
+      },
+      "triangles": {
+        "0": [
+          0.28,
+          0.54,
+          0.18
+        ],
+        "1": [
+          0.7,
+          0.1,
+          0.2
+        ],
+        "2": [
+          0.12,
+          0.58,
+          0.3
+        ],
+        "3": [
+          0.06,
+          0.24,
+          0.7
+        ],
+        "4": [
+          0.75,
+          0.12,
+          0.13
+        ],
+        "5": [
+          0.44,
+          0.44,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "superinteligencia_bostrom",
+      "name": "Superinteligência: Caminhos, Perigos e Estratégias",
+      "subtitle": "Nick Bostrom",
+      "category": "Ecologia, Tecnologia e Século XXI",
+      "era": "2014",
+      "origin": "Suécia / Reino Unido",
+      "summary": "Investigação seminal de segurança sobre o que acontecerá quando as máquinas ultrapassarem a inteligência humana em todos os campos, formulando o Problema do Alinhamento e os riscos existenciais da IA geral.",
+      "highlights": [
+        "O 'problema do alinhamento': garantir que objetivos de uma IA autônoma coincidam com os valores da humanidade",
+        "O perigo do ganho de capacidade em explosão de inteligência descontrolada",
+        "A necessidade de governança científica internacional antes do surgimento da AGI"
+      ],
+      "quote": "Por que ler: Livro fundador do campo de segurança da inteligência artificial e de riscos existenciais globais.",
+      "axes": {
+        "estrutura": 0.35,
+        "representacao": -0.6,
+        "poder": 0.2,
+        "imigracao": 0.35,
+        "diplomacia": 0.55,
+        "intervencao": -0.15,
+        "economia": -0.15,
+        "controle": -0.25,
+        "comercio": 0.65,
+        "religiao": -0.55,
+        "moral": -0.4,
+        "tecnologia": -0.92
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "1": [
+          0.45,
+          0.3,
+          0.25
+        ],
+        "2": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "3": [
+          0.05,
+          0.15,
+          0.8
+        ],
+        "4": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "5": [
+          0.5,
+          0.25,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": "prosperidade_sem_crescimento_jackson",
+      "name": "Prosperidade sem Crescimento",
+      "subtitle": "Tim Jackson",
+      "category": "Ecologia, Tecnologia e Século XXI",
+      "era": "2009 / 2017",
+      "origin": "Reino Unido",
+      "summary": "Comprova a impossibilidade física de manter o crescimento exponencial contínuo do PIB num planeta de recursos finitos, desenhando uma economia ecológica pós-crescimento voltada para florescimento comunitário e serviços.",
+      "highlights": [
+        "O mito da dissociação absoluta entre crescimento do PIB e consumo material ecológico",
+        "A transição do modelo consumista para uma economia de serviços, cuidado e reparo sustentável",
+        "Redefinição da prosperidade como capacidade de florescer em comunidade com menos pegada ecológica"
+      ],
+      "quote": "Por que ler: Obra seminal da macroeconomia ecológica, do decrescimento sustentável e da sobriedade justa.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.85,
+        "poder": 0.5,
+        "imigracao": 0.55,
+        "diplomacia": 0.65,
+        "intervencao": -0.5,
+        "economia": -0.55,
+        "controle": -0.45,
+        "comercio": 0.15,
+        "religiao": -0.3,
+        "moral": -0.6,
+        "tecnologia": 0.75
+      },
+      "triangles": {
+        "0": [
+          0.36,
+          0.5,
+          0.14
+        ],
+        "1": [
+          0.55,
+          0.18,
+          0.27
+        ],
+        "2": [
+          0.12,
+          0.62,
+          0.26
+        ],
+        "3": [
+          0.06,
+          0.3,
+          0.64
+        ],
+        "4": [
+          0.72,
+          0.14,
+          0.14
+        ],
+        "5": [
+          0.36,
+          0.52,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "novo_iluminismo_pinker",
+      "name": "O Novo Iluminismo",
+      "subtitle": "Steven Pinker",
+      "category": "Ecologia, Tecnologia e Século XXI",
+      "era": "2018",
+      "origin": "Canadá / Estados Unidos",
+      "summary": "Apresenta 75 gráficos comprovando que, graças à razão, à ciência e ao humanismo, a humanidade nunca foi tão saudável, longeva, próspera e segura, defendendo o ecomodernismo e o avanço tecnológico.",
+      "highlights": [
+        "Dados empíricos demonstrando a queda drástica da pobreza global, guerras e doenças",
+        "A defesa intransigente da ciência, da energia nuclear e do ecomodernismo contra o catastrofismo",
+        "O Iluminismo como projeto humanista de confiança no progresso racional da humanidade"
+      ],
+      "quote": "Por que ler: Defesa vigorosa da razão, da ciência, do humanismo universal e do otimismo civilizatório.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.8,
+        "poder": 0.65,
+        "imigracao": 0.65,
+        "diplomacia": 0.6,
+        "intervencao": -0.45,
+        "economia": 0.55,
+        "controle": 0.5,
+        "comercio": 0.75,
+        "religiao": -0.85,
+        "moral": -0.7,
+        "tecnologia": -0.92
+      },
+      "triangles": {
+        "0": [
+          0.12,
+          0.38,
+          0.5
+        ],
+        "1": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "2": [
+          0.1,
+          0.6,
+          0.3
+        ],
+        "3": [
+          0.05,
+          0.18,
+          0.77
+        ],
+        "4": [
+          0.68,
+          0.12,
+          0.2
+        ],
+        "5": [
+          0.55,
+          0.22,
+          0.23
+        ]
+      }
+    },
+    {
+      "id": "acao_humana_mises",
+      "name": "Ação Humana",
+      "subtitle": "Ludwig von Mises",
+      "category": "Economia e Sociedade",
+      "era": "1949",
+      "origin": "Estados Unidos",
+      "summary": "Tratado de economia de Mises que investiga ação humana, coordenação por preços e problemas do intervencionismo e do planejamento socialista. Sua argumentação econômica não determina por si só todas as preferências culturais do autor.",
+      "highlights": [
+        "Praxeologia e ação humana",
+        "Cálculo econômico e formação de preços",
+        "Mercado, intervenção e planejamento"
+      ],
+      "quote": null,
+      "axes": {
+        "economia": 0.99,
+        "controle": 0.99,
+        "comercio": 0.96
+      },
+      "triangles": {
+        "0": [
+          0.01,
+          0.08,
+          0.91
+        ]
+      },
+      "editorialBasis": {
+        "status": "editorial_provisional",
+        "reviewedAt": "2026-11-04",
+        "scope": "Argumento específico desta obra, com temas não tratados omitidos.",
+        "sourceUrls": [
+          "https://mises.org/library/book/human-action"
+        ],
+        "coordinateMethod": "Inferências editoriais ordinais, sem validação empírica ou psicométrica. Valores ausentes não são dados neutros; em correntes têm relevance=0 e em entidades são omitidos.",
+        "limitations": [
+          "Leituras contextuais não justificam precisamente cada número.",
+          "O recorte não resume toda trajetória de autor ou todas as variantes da corrente.",
+          "Relações históricas documentadas são separadas da proximidade geométrica."
+        ],
+        "empiricallyValidated": false
+      }
+    },
+    {
+      "id": "democracia_deus_falhou_hoppe",
+      "name": "Democracia: O Deus que Falhou",
+      "subtitle": "Hans-Hermann Hoppe",
+      "category": "Liberdade, Direito e Estado",
+      "era": "2001",
+      "origin": "Estados Unidos",
+      "summary": "Ensaios que comparam incentivos de monarquia e democracia e defendem uma ordem de direito privado. Inclui propostas controversas sobre comunidades de proprietários e migração; comparação favorável à monarquia não equivale ao sistema final proposto.",
+      "highlights": [
+        "Crítica dos incentivos da democracia",
+        "Comunidades contratuais",
+        "Ordem de direito privado e proteção competitiva"
+      ],
+      "quote": null,
+      "axes": {
+        "estrutura": -0.95,
+        "representacao": 0.65,
+        "poder": 0.45,
+        "imigracao": -0.98,
+        "intervencao": -0.9,
+        "economia": 1,
+        "controle": 0.99,
+        "moral": 0.95
+      },
+      "triangles": {
+        "0": [
+          0.01,
+          0.01,
+          0.98
+        ],
+        "1": [
+          0.46,
+          0.46,
+          0.08
+        ],
+        "2": [
+          0.76,
+          0.02,
+          0.22
+        ],
+        "4": [
+          0.03,
+          0.09,
+          0.88
+        ]
+      },
+      "editorialBasis": {
+        "status": "editorial_provisional",
+        "reviewedAt": "2026-11-04",
+        "scope": "Argumento específico desta obra, com temas não tratados omitidos.",
+        "sourceUrls": [
+          "https://mises.org/library/book/democracy-god-failed"
+        ],
+        "coordinateMethod": "Inferências editoriais ordinais, sem validação empírica ou psicométrica. Valores ausentes não são dados neutros; em correntes têm relevance=0 e em entidades são omitidos.",
+        "limitations": [
+          "Leituras contextuais não justificam precisamente cada número.",
+          "O recorte não resume toda trajetória de autor ou todas as variantes da corrente.",
+          "Relações históricas documentadas são separadas da proximidade geométrica."
+        ],
+        "empiricallyValidated": false
+      }
+    },
+    {
+      "id": "critica_programa_gotha_marx",
+      "name": "Crítica do Programa de Gotha",
+      "subtitle": "Karl Marx",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1875",
+      "origin": "Alemanha / Reino Unido",
+      "summary": "Crítica de Marx ao programa de unificação do movimento operário alemão. Distingue fases da sociedade comunista, debate distribuição e direitos e contesta formulações lassallianas sobre Estado, trabalho e organização política.",
+      "highlights": [
+        "Fases da sociedade comunista",
+        "Distribuição e transformação econômica",
+        "Crítica ao socialismo de auxílio estatal"
+      ],
+      "quote": null,
+      "axes": {
+        "economia": -1,
+        "controle": -0.92,
+        "intervencao": -0.8
+      },
+      "triangles": {
+        "0": [
+          0.91,
+          0.07,
+          0.02
+        ],
+        "5": [
+          0.05,
+          0.93,
+          0.02
+        ]
+      },
+      "editorialBasis": {
+        "status": "editorial_provisional",
+        "reviewedAt": "2026-11-04",
+        "scope": "Argumento específico desta obra, com temas não tratados omitidos.",
+        "sourceUrls": [
+          "https://www.marxists.org/archive/marx/works/1875/gotha/"
+        ],
+        "coordinateMethod": "Inferências editoriais ordinais, sem validação empírica ou psicométrica. Valores ausentes não são dados neutros; em correntes têm relevance=0 e em entidades são omitidos.",
+        "limitations": [
+          "Leituras contextuais não justificam precisamente cada número.",
+          "O recorte não resume toda trajetória de autor ou todas as variantes da corrente.",
+          "Relações históricas documentadas são separadas da proximidade geométrica."
+        ],
+        "empiricallyValidated": false
+      }
+    },
+    {
+      "id": "principios_comunismo_engels",
+      "name": "Princípios do Comunismo",
+      "subtitle": "Friedrich Engels",
+      "category": "Socialismo, Crítica e Emancipação",
+      "era": "1847",
+      "origin": "Alemanha",
+      "summary": "Manuscrito de Engels em perguntas e respostas sobre proletariado, propriedade e transformação comunista. Seu horizonte político-econômico precede a história das instituições comunistas do século XX.",
+      "highlights": [
+        "Proletariado e propriedade",
+        "Transformação da produção",
+        "Comunismo e ação internacional"
+      ],
+      "quote": null,
+      "axes": {
+        "economia": -1,
+        "controle": -0.94,
+        "intervencao": -0.86,
+        "tecnologia": -0.85
+      },
+      "triangles": {
+        "0": [
+          0.92,
+          0.06,
+          0.02
+        ],
+        "3": [
+          0.02,
+          0.06,
+          0.92
+        ],
+        "5": [
+          0.04,
+          0.94,
+          0.02
+        ]
+      },
+      "editorialBasis": {
+        "status": "editorial_provisional",
+        "reviewedAt": "2026-11-04",
+        "scope": "Argumento específico desta obra, com temas não tratados omitidos.",
+        "sourceUrls": [
+          "https://www.marxists.org/archive/marx/works/1847/11/prin-com.htm"
+        ],
+        "coordinateMethod": "Inferências editoriais ordinais, sem validação empírica ou psicométrica. Valores ausentes não são dados neutros; em correntes têm relevance=0 e em entidades são omitidos.",
+        "limitations": [
+          "Leituras contextuais não justificam precisamente cada número.",
+          "O recorte não resume toda trajetória de autor ou todas as variantes da corrente.",
+          "Relações históricas documentadas são separadas da proximidade geométrica."
+        ],
+        "empiricallyValidated": false
+      }
+    }
+  ]
+}

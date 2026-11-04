@@ -1,0 +1,746 @@
+{
+  "reviewedAt": "2026-11-04",
+  "reviewStatus": "editorial_provisional",
+  "newCurrentIds": [
+    "comunismo",
+    "socialismo_marxista",
+    "luxemburguismo",
+    "marxismo_ocidental",
+    "comunismo_de_esquerda",
+    "anarcocomunismo",
+    "anarquismo_egoista",
+    "anarquismo_filosofico",
+    "anarcofeminismo",
+    "anarquismo_sem_adjetivos",
+    "plataformismo",
+    "especifismo",
+    "comunalismo",
+    "economia_participativa",
+    "socialismo_de_mercado",
+    "socialismo_autogestionario",
+    "anarquismo_cristao",
+    "marxismo_humanista",
+    "autonomismo",
+    "operaismo",
+    "bolivarianismo",
+    "zapatismo",
+    "marxismo_feminista",
+    "feminismo_liberal",
+    "feminismo_radical",
+    "feminismo_interseccional",
+    "liberalismo_igualitario",
+    "libertarianismo_de_esquerda",
+    "libertarianismo_consequencialista",
+    "voluntarismo",
+    "ordem_de_direito_privado",
+    "liberalismo_constitucional",
+    "radicalismo_liberal",
+    "mercantilismo",
+    "fisiocracia",
+    "republicanismo_classico",
+    "absolutismo_monarquico",
+    "legitimismo_monarquico",
+    "socialismo_lassalliano",
+    "marxismo_analitico"
+  ],
+  "newPersonalityIds": [
+    "friedrich_engels",
+    "ludwig_von_mises",
+    "murray_rothbard",
+    "hans_hermann_hoppe",
+    "milton_friedman",
+    "thomas_paine",
+    "benjamin_constant",
+    "frederic_bastiat",
+    "herbert_spencer",
+    "emma_goldman",
+    "errico_malatesta",
+    "alexander_berkman",
+    "max_stirner",
+    "benjamin_tucker",
+    "lysander_spooner",
+    "anton_pannekoek",
+    "amadeo_bordiga",
+    "leon_trotsky",
+    "mao_zedong",
+    "che_guevara",
+    "georg_lukacs",
+    "karl_korsch",
+    "herbert_marcuse",
+    "theodor_adorno",
+    "max_horkheimer",
+    "erich_fromm",
+    "antonio_negri",
+    "robert_owen",
+    "charles_fourier",
+    "henri_saint_simon",
+    "eduard_bernstein",
+    "karl_kautsky",
+    "jean_jaures",
+    "james_connolly",
+    "james_guillaume",
+    "daniel_guerin",
+    "alexandra_kollontai",
+    "murray_bookchin",
+    "leon_tolstoi",
+    "william_godwin"
+  ],
+  "newBookIds": [
+    "acao_humana_mises",
+    "democracia_deus_falhou_hoppe",
+    "critica_programa_gotha_marx",
+    "principios_comunismo_engels"
+  ],
+  "verification": "Identidade bibliográfica e conteúdo disponível verificados por web.open ou índice de busca de fonte primária. Notas distinguem textos, índices de obras, metadados e falhas de recuperação. Nenhuma licença de mídia ou validação numérica é inferida.",
+  "sources": {
+    "marx_gotha": {
+      "title": "Karl Marx — Crítica do Programa de Gotha",
+      "url": "https://www.marxists.org/archive/marx/works/1875/gotha/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1875; texto e correspondência em torno do programa",
+      "keys": [
+        "book:critica_programa_gotha_marx",
+        "current:comunismo",
+        "current:socialismo_lassalliano",
+        "current:socialismo_marxista",
+        "personality:friedrich_engels",
+        "personality:karl_marx"
+      ]
+    },
+    "marx_commune": {
+      "title": "Karl Marx — A Guerra Civil na França",
+      "url": "https://www.marxists.org/archive/marx/works/1871/civil-war-france/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1871; análise da Comuna de Paris",
+      "keys": [
+        "current:socialismo_marxista",
+        "personality:karl_marx"
+      ]
+    },
+    "marx_trade": {
+      "title": "Karl Marx — Sobre a Questão do Livre-Comércio",
+      "url": "https://www.marxists.org/archive/marx/works/1848/free-trade/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1848; apoio ao livre-comércio num argumento revolucionário, não liberal",
+      "keys": [
+        "current:socialismo_marxista",
+        "personality:karl_marx"
+      ]
+    },
+    "engels": {
+      "title": "Friedrich Engels — Princípios do Comunismo",
+      "url": "https://www.marxists.org/archive/marx/works/1847/11/prin-com.htm",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1847; manuscrito em perguntas e respostas",
+      "keys": [
+        "book:principios_comunismo_engels",
+        "current:comunismo",
+        "current:socialismo_marxista",
+        "personality:friedrich_engels"
+      ]
+    },
+    "mises": {
+      "title": "Ludwig von Mises — Human Action",
+      "url": "https://mises.org/library/book/human-action",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1949; edição inglesa e acesso ao texto",
+      "keys": [
+        "book:acao_humana_mises",
+        "current:escola_austriaca",
+        "personality:ludwig_von_mises"
+      ]
+    },
+    "rothbard": {
+      "title": "Murray N. Rothbard — The Ethics of Liberty",
+      "url": "https://mises.org/library/book/ethics-liberty",
+      "note": "Página bibliográfica do Mises Institute; a própria página informa que não oferece PDF inglês gratuito por restrições de direitos.",
+      "period": "1982; página da edição, sem promessa de acesso integral gratuito",
+      "keys": [
+        "book:etica_da_liberdade_rothbard",
+        "current:anarcocapitalismo",
+        "personality:murray_rothbard"
+      ]
+    },
+    "hoppe": {
+      "title": "Hans-Hermann Hoppe — Democracy: The God That Failed",
+      "url": "https://mises.org/library/book/democracy-god-failed",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Livro publicado originalmente em 2001; página da edição e PDF",
+      "keys": [
+        "book:democracia_deus_falhou_hoppe",
+        "current:ordem_de_direito_privado",
+        "current:paleolibertarianismo",
+        "personality:hans_hermann_hoppe"
+      ]
+    },
+    "friedman": {
+      "title": "Milton Friedman — Capitalism and Freedom, ensaio",
+      "url": "https://miltonfriedman.hoover.org/internal/media/dispatcher/215033/full",
+      "note": "Ensaio de 1961 na coleção Hoover. Não é o texto integral do livro homônimo de 1962; direitos de reprodução não são inferidos.",
+      "period": "1961; New Individualist Review",
+      "keys": [
+        "book:capitalismo_e_liberdade_friedman",
+        "current:neoliberalismo_friedmaniano",
+        "personality:milton_friedman"
+      ]
+    },
+    "paine": {
+      "title": "Thomas Paine — The Writings of Thomas Paine",
+      "url": "https://www.gutenberg.org/ebooks/31270",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:radicalismo_liberal",
+        "personality:thomas_paine"
+      ]
+    },
+    "constant": {
+      "title": "Benjamin Constant — The Liberty of Ancients Compared with that of Moderns",
+      "url": "https://oll.libertyfund.org/titles/constant-the-liberty-of-ancients-compared-with-that-of-moderns-1819",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1819; discurso sobre formas de liberdade",
+      "keys": [
+        "current:liberalismo_constitucional",
+        "personality:benjamin_constant"
+      ]
+    },
+    "bastiat": {
+      "title": "Frédéric Bastiat — The Law",
+      "url": "https://oll.libertyfund.org/titles/the-law-revised-lf-ed",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1850; edição da Liberty Fund",
+      "keys": [
+        "personality:frederic_bastiat"
+      ]
+    },
+    "spencer": {
+      "title": "Herbert Spencer — The Man versus the State",
+      "url": "https://oll.libertyfund.org/titles/spencer-the-man-versus-the-state-1885-ed",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Ensaios de 1884; edição de 1885",
+      "keys": [
+        "personality:herbert_spencer"
+      ]
+    },
+    "goldman": {
+      "title": "Emma Goldman — Obras e ensaios",
+      "url": "https://www.marxists.org/reference/archive/goldman/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:anarcofeminismo",
+        "personality:emma_goldman"
+      ]
+    },
+    "malatesta": {
+      "title": "Errico Malatesta — Obras e ensaios",
+      "url": "https://www.marxists.org/archive/malatesta/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:anarquismo_sem_adjetivos",
+        "personality:errico_malatesta"
+      ]
+    },
+    "berkman": {
+      "title": "Alexander Berkman — What Is Communist Anarchism?",
+      "url": "https://theanarchistlibrary.org/library/alexander-berkman-what-is-communist-anarchism",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1929; também publicado como Now and After",
+      "keys": [
+        "current:anarcocomunismo",
+        "personality:alexander_berkman"
+      ]
+    },
+    "stirner": {
+      "title": "Max Stirner — The Ego and His Own",
+      "url": "https://www.gutenberg.org/ebooks/34580",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1844; tradução inglesa identificada no acervo",
+      "keys": [
+        "current:anarquismo_egoista",
+        "personality:max_stirner"
+      ]
+    },
+    "tucker": {
+      "title": "Benjamin Tucker — Instead of a Book",
+      "url": "https://theanarchistlibrary.org/library/benjamin-tucker-instead-of-a-book",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "personality:benjamin_tucker"
+      ]
+    },
+    "spooner": {
+      "title": "Lysander Spooner — No Treason, No. VI",
+      "url": "https://www.gutenberg.org/ebooks/36145",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:voluntarismo",
+        "personality:lysander_spooner"
+      ]
+    },
+    "pannekoek": {
+      "title": "Anton Pannekoek — Obras sobre conselhos operários",
+      "url": "https://www.marxists.org/archive/pannekoe/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:comunismo_de_esquerda",
+        "personality:anton_pannekoek"
+      ]
+    },
+    "bordiga": {
+      "title": "Amadeo Bordiga — Obras e teses",
+      "url": "https://www.marxists.org/archive/bordiga/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:comunismo_de_esquerda",
+        "personality:amadeo_bordiga"
+      ]
+    },
+    "trotsky": {
+      "title": "Leon Trotsky — História da Revolução Russa",
+      "url": "https://www.marxists.org/archive/trotsky/1930/hrr/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1930; interpretação da revolução pelo próprio participante",
+      "keys": [
+        "personality:leon_trotsky"
+      ]
+    },
+    "mao": {
+      "title": "Mao Zedong — Obras selecionadas",
+      "url": "https://www.marxists.org/reference/archive/mao/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "personality:mao_zedong"
+      ]
+    },
+    "guevara": {
+      "title": "Che Guevara — Socialism and Man in Cuba",
+      "url": "https://www.marxists.org/archive/guevara/1965/03/man-socialism.htm",
+      "note": "Carta de 1965; o acervo informa direitos de Ocean Press. Aqui há apenas metadados e link, sem reprodução do texto.",
+      "period": "1965",
+      "keys": [
+        "personality:che_guevara"
+      ]
+    },
+    "lukacs": {
+      "title": "Georg Lukács — Obras e ensaios",
+      "url": "https://www.marxists.org/archive/lukacs/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:marxismo_ocidental",
+        "personality:georg_lukacs"
+      ]
+    },
+    "korsch": {
+      "title": "Karl Korsch — Obras e ensaios",
+      "url": "https://www.marxists.org/archive/korsch/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:marxismo_ocidental",
+        "personality:karl_korsch"
+      ]
+    },
+    "marcuse": {
+      "title": "Herbert Marcuse — Obras e ensaios",
+      "url": "https://www.marxists.org/reference/archive/marcuse/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "personality:herbert_marcuse"
+      ]
+    },
+    "adorno": {
+      "title": "Theodor Adorno — Obras e ensaios",
+      "url": "https://www.marxists.org/reference/archive/adorno/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:marxismo_ocidental",
+        "personality:theodor_adorno"
+      ]
+    },
+    "horkheimer": {
+      "title": "Max Horkheimer — Obras e ensaios",
+      "url": "https://www.marxists.org/reference/archive/horkheimer/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "personality:max_horkheimer"
+      ]
+    },
+    "fromm": {
+      "title": "Erich Fromm — Obras e ensaios",
+      "url": "https://www.marxists.org/archive/fromm/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:marxismo_humanista",
+        "personality:erich_fromm"
+      ]
+    },
+    "negri": {
+      "title": "Antonio Negri — Capitalist Domination and Working Class Sabotage",
+      "url": "https://libcom.org/article/capitalist-domination-and-working-class-sabotage-antonio-negri",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1977; tradução de intervenção do próprio autor",
+      "keys": [
+        "current:autonomismo",
+        "personality:antonio_negri"
+      ]
+    },
+    "owen": {
+      "title": "Robert Owen — A New View of Society",
+      "url": "https://www.marxists.org/reference/subject/economics/owen/society/index.htm",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1816; ensaios do próprio autor",
+      "keys": [
+        "personality:robert_owen"
+      ]
+    },
+    "fourier": {
+      "title": "Charles Fourier — Of the Role of the Passions",
+      "url": "https://www.marxists.org/reference/archive/fourier/works/ch01.htm",
+      "note": "Seleção de escrito de Fourier em tradução identificada. Não confundir o texto do autor com comentário sobre ele.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "personality:charles_fourier"
+      ]
+    },
+    "saint_simon": {
+      "title": "Henri de Saint-Simon — Letters from an Inhabitant of Geneva",
+      "url": "https://www.marxists.org/reference/subject/philosophy/works/fr/st-simon.htm",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1803; seleção primária identificada no acervo",
+      "keys": [
+        "personality:henri_saint_simon"
+      ]
+    },
+    "bernstein": {
+      "title": "Eduard Bernstein — Evolutionary Socialism",
+      "url": "https://www.marxists.org/reference/archive/bernstein/works/1899/evsoc/index.htm",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "personality:eduard_bernstein"
+      ]
+    },
+    "kautsky": {
+      "title": "Karl Kautsky — Obras e debates",
+      "url": "https://www.marxists.org/archive/kautsky/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "personality:karl_kautsky"
+      ]
+    },
+    "jaures": {
+      "title": "Jean Jaurès — Discursos e escritos",
+      "url": "https://www.marxists.org/archive/jaures/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "personality:jean_jaures"
+      ]
+    },
+    "connolly": {
+      "title": "James Connolly — Discursos e escritos",
+      "url": "https://www.marxists.org/archive/connolly/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "personality:james_connolly"
+      ]
+    },
+    "guillaume": {
+      "title": "James Guillaume — Ideas on Social Organization",
+      "url": "https://theanarchistlibrary.org/library/james-guillaume-ideas-on-social-organization",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1874; publicação de 1876, tradução identificada",
+      "keys": [
+        "current:anarcocomunismo",
+        "personality:james_guillaume"
+      ]
+    },
+    "guerin": {
+      "title": "Daniel Guérin — Anarchism and Marxism",
+      "url": "https://theanarchistlibrary.org/library/daniel-guerin-anarchism-and-marxism",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "personality:daniel_guerin"
+      ]
+    },
+    "kollontai": {
+      "title": "Alexandra Kollontai — Obras e ensaios",
+      "url": "https://www.marxists.org/archive/kollonta/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:marxismo_feminista",
+        "personality:alexandra_kollontai"
+      ]
+    },
+    "bookchin": {
+      "title": "Murray Bookchin — The Communalist Project",
+      "url": "https://theanarchistlibrary.org/library/murray-bookchin-the-communalist-project",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "2002; proposta comunalista do próprio autor",
+      "keys": [
+        "current:comunalismo",
+        "personality:murray_bookchin"
+      ]
+    },
+    "tolstoi": {
+      "title": "Léon Tolstói — The Kingdom of God Is Within You",
+      "url": "https://www.gutenberg.org/ebooks/4602",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1894; tradução identificada no acervo",
+      "keys": [
+        "current:anarquismo_cristao",
+        "personality:leon_tolstoi"
+      ]
+    },
+    "godwin": {
+      "title": "William Godwin — Enquiry Concerning Political Justice",
+      "url": "https://theanarchistlibrary.org/library/godwin-political-justice",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1793; edição identificada no acervo",
+      "keys": [
+        "current:anarquismo_filosofico",
+        "personality:william_godwin"
+      ]
+    },
+    "luxemburg": {
+      "title": "Rosa Luxemburgo — Obras e debates",
+      "url": "https://www.marxists.org/archive/luxemburg/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:luxemburguismo",
+        "personality:rosa_luxemburgo"
+      ]
+    },
+    "gramsci": {
+      "title": "Antonio Gramsci — Obras e ensaios",
+      "url": "https://www.marxists.org/archive/gramsci/",
+      "note": "O acervo distingue textos disponíveis e traduções retiradas por direitos. O link não implica licença para reproduzir a obra.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:marxismo_ocidental",
+        "personality:antonio_gramsci"
+      ]
+    },
+    "platform": {
+      "title": "Dielo Truda — Organisational Platform of the Libertarian Communists",
+      "url": "https://theanarchistlibrary.org/library/dielo-truda-workers-cause-organisational-platform-of-the-libertarian-communists",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1926; distinguir plataforma dos prefácios posteriores",
+      "keys": [
+        "current:plataformismo"
+      ]
+    },
+    "farj": {
+      "title": "FARJ — Social Anarchism and Organisation",
+      "url": "https://theanarchistlibrary.org/library/anarchist-federation-of-rio-de-janeiro-social-anarchism-and-organisation",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "2008; documento aprovado no congresso da organização",
+      "keys": [
+        "current:especifismo"
+      ]
+    },
+    "parecon": {
+      "title": "Participatory Economy Project — The Model",
+      "url": "https://participatoryeconomy.org/the-model/",
+      "note": "Apresentação primária por instituição proponente do modelo. Não é uma avaliação empírica de sua implementação.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:economia_participativa"
+      ]
+    },
+    "lange": {
+      "title": "Oskar Lange — On the Economic Theory of Socialism, Part One",
+      "url": "https://competitionandappropriation.econ.ucla.edu/wp-content/uploads/sites/95/2018/06/LangeEcTheorySocI.pdf",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:socialismo_de_mercado"
+      ]
+    },
+    "tito": {
+      "title": "Josip Broz Tito — Workers Manage Factories in Yugoslavia",
+      "url": "https://www.marxists.org/archive/tito/1950/06/26.htm",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1950; discurso proponente da autogestão, não comprovação de sua prática",
+      "keys": [
+        "current:socialismo_autogestionario"
+      ]
+    },
+    "tronti": {
+      "title": "Mario Tronti — The Strategy of Refusal",
+      "url": "https://www.la.utexas.edu/users/hcleaver/TrontiRefusal.html",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1965; tradução de texto publicado em Operai e Capitale",
+      "keys": [
+        "current:operaismo"
+      ]
+    },
+    "ezln": {
+      "title": "EZLN — Primera Declaración de la Selva Lacandona",
+      "url": "https://enlacezapatista.ezln.org.mx/1994/01/01/primera-declaracion-de-la-selva-lacandona/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1994; a declaração não esgota a trajetória posterior do movimento",
+      "keys": [
+        "current:zapatismo"
+      ]
+    },
+    "wollstonecraft": {
+      "title": "Mary Wollstonecraft — A Vindication of the Rights of Woman",
+      "url": "https://www.gutenberg.org/ebooks/3420",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1792",
+      "keys": [
+        "current:feminismo_liberal"
+      ]
+    },
+    "millett": {
+      "title": "Kate Millett — Sexual Politics",
+      "url": "https://cup.columbia.edu/book/sexual-politics/9780231174251/",
+      "note": "Página da editora com metadados e apresentação da obra; não oferece acesso integral gratuito.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:feminismo_radical"
+      ]
+    },
+    "crenshaw": {
+      "title": "Kimberlé Crenshaw — Demarginalizing the Intersection of Race and Sex",
+      "url": "https://chicagounbound.uchicago.edu/uclf/vol1989/iss1/8/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1989; artigo original no repositório da revista",
+      "keys": [
+        "current:feminismo_interseccional"
+      ]
+    },
+    "hobbes": {
+      "title": "Thomas Hobbes — Leviathan",
+      "url": "https://www.gutenberg.org/ebooks/3207",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1651; soberania absoluta não implica que Hobbes só admita monarquia",
+      "keys": [
+        "book:leviata_hobbes",
+        "current:absolutismo_monarquico",
+        "personality:thomas_hobbes"
+      ]
+    },
+    "maistre": {
+      "title": "Joseph de Maistre — Considérations sur la France",
+      "url": "https://fr.wikisource.org/wiki/Consid%C3%A9rations_sur_la_France",
+      "note": "Edição francesa de 1821 parcialmente transcrita; o próprio acervo indica incompletude. A obra foi publicada originalmente em 1797.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:legitimismo_monarquico"
+      ]
+    },
+    "quesnay": {
+      "title": "François Quesnay — Tableau Économique",
+      "url": "https://www.marxists.org/reference/subject/economics/quesnay/1759/tableau.htm",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Data 1759 assinalada com dúvida pelo acervo; tradução identificada",
+      "keys": [
+        "current:fisiocracia"
+      ]
+    },
+    "lassalle": {
+      "title": "Ferdinand Lassalle — Obras e carta aberta",
+      "url": "https://www.marxists.org/archive/lassalle/",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "current:socialismo_lassalliano"
+      ]
+    },
+    "chavez": {
+      "title": "Constituição Bolivariana da Venezuela",
+      "url": "https://www.oas.org/dil/esp/constitucion_venezuela.pdf",
+      "note": "Fonte normativa de 1999, não comprovação de implementação nem documento que por si só defina o socialismo chavista posterior.",
+      "period": "1999; reprodução do documento constitucional pela OEA",
+      "keys": [
+        "current:bolivarianismo"
+      ]
+    },
+    "chavez_speech": {
+      "title": "Hugo Chávez — We Must Reclaim Socialism, trechos de discurso",
+      "url": "https://www.marxists.org/history/etol/newspape/socialist-voice-ca/2005/2005-02.pdf",
+      "note": "Trechos de fala de janeiro de 2005 reproduzidos em periódico, junto a comentário editorial. Distinguir a fala do dirigente da análise dos editores.",
+      "period": "2005; não reproduzido no app",
+      "keys": [
+        "current:bolivarianismo"
+      ]
+    },
+    "rawls": {
+      "title": "John Rawls — Justice as Fairness",
+      "url": "https://www.jstor.org/stable/2182612",
+      "note": "Artigo primário de 1958, identificador estável conferido; o texto não foi recuperado pelo navegador nesta revisão. Não é o livro de 1971.",
+      "period": "1958; The Philosophical Review 67(2), pp.164–194",
+      "keys": [
+        "book:teoria_da_justica_rawls",
+        "current:liberalismo_igualitario",
+        "personality:john_rawls"
+      ]
+    },
+    "otsuka": {
+      "title": "Michael Otsuka — Libertarianism without Inequality",
+      "url": "https://academic.oup.com/book/9341",
+      "note": "Página da editora com resumo do autor e metadados. O acesso aos capítulos pode exigir assinatura.",
+      "period": "2003; Oxford University Press",
+      "keys": [
+        "current:libertarianismo_de_esquerda"
+      ]
+    },
+    "david_friedman": {
+      "title": "David Friedman — The Machinery of Freedom",
+      "url": "https://www.daviddfriedman.com/Machinery%203rd%20Edn.pdf",
+      "note": "PDF no site do próprio autor, identificado no índice web. A recuperação direta apresentou timeout/502 nesta revisão; disponibilidade integral não confirmada.",
+      "period": "Terceira edição; conferir disponibilidade no site do autor",
+      "keys": [
+        "current:libertarianismo_consequencialista"
+      ]
+    },
+    "mun": {
+      "title": "Thomas Mun — Englands Treasure by Forraign Trade",
+      "url": "https://la.utexas.edu/users/hcleaver/368/368MunTreasuretableedit.pdf",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "1664; reprodução do texto primário com espaço para notas",
+      "keys": [
+        "current:mercantilismo"
+      ]
+    },
+    "machiavelli": {
+      "title": "Nicolau Maquiavel — Discourses on the First Decade of Titus Livius",
+      "url": "https://www.gutenberg.org/ebooks/10827",
+      "note": "Texto primário ou índice de obras do próprio autor; vínculo de leitura, não validação psicométrica.",
+      "period": "Obra histórica; consulte a edição indicada no acervo.",
+      "keys": [
+        "book:discursos_tito_livio",
+        "current:republicanismo_classico",
+        "personality:nicolau_maquiavel"
+      ]
+    },
+    "cohen": {
+      "title": "G. A. Cohen — Why Not Socialism?",
+      "url": "https://books.google.com/books?id=stYTxBadbccC",
+      "note": "Ficha e visualização bibliográfica de obra publicada pela Princeton University Press. Não representa leitura integral ou consenso de todo marxismo analítico.",
+      "period": "2009; metadados e trechos disponibilizados pela editora",
+      "keys": [
+        "current:marxismo_analitico"
+      ]
+    }
+  }
+}

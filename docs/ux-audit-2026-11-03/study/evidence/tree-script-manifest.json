@@ -1,0 +1,256 @@
+{
+  "capture_path": "/tmp/espectro-study-tree-inspection.json",
+  "capture_sha256": "b949a61cc401664bdac4b6af492333dbe6b5df40986c843c73cd1d732fd711f5",
+  "capture_kind": "page-inspection",
+  "source_evidence_id": "ev_9c3411893e30007b6dabcd0fa9f19cdf359bd6f9530a0d8d525ae036c65e6080",
+  "capture_completeness": {
+    "status": "policy_filtered",
+    "conditions": [
+      "attach_limited",
+      "policy_filtered"
+    ],
+    "policy_filtered_sections": [
+      "accessibility",
+      "console_text",
+      "json_body_shapes",
+      "metadata",
+      "resources",
+      "scripts",
+      "storage_keys",
+      "websocket_shapes"
+    ],
+    "attach_limited_sections": [
+      "console_events",
+      "metadata",
+      "network_requests",
+      "websocket_connections",
+      "websocket_frames"
+    ],
+    "truncated_sections": [],
+    "unavailable_sections": [],
+    "excluded": [
+      {
+        "section": "accessibility",
+        "reason": "not_approved",
+        "count": 273
+      },
+      {
+        "section": "console_text",
+        "reason": "not_approved",
+        "count": null
+      },
+      {
+        "section": "json_body_shapes",
+        "reason": "not_approved",
+        "count": null
+      },
+      {
+        "section": "metadata",
+        "reason": "disallowed_origin",
+        "count": 1
+      },
+      {
+        "section": "resources",
+        "reason": "disallowed_origin",
+        "count": 2
+      },
+      {
+        "section": "scripts",
+        "reason": "disallowed_origin",
+        "count": 1
+      },
+      {
+        "section": "storage_keys",
+        "reason": "not_approved",
+        "count": null
+      },
+      {
+        "section": "websocket_shapes",
+        "reason": "not_approved",
+        "count": null
+      }
+    ],
+    "dropped_events": {
+      "scripts": 0,
+      "network_requests": 0,
+      "console_events": 0,
+      "websocket_connections": 0,
+      "websocket_frames": 0,
+      "webmcp_tools": 0,
+      "timeline_events": 0,
+      "total": 0
+    }
+  },
+  "output_directory": "/tmp/espectro-study-tree-scripts",
+  "analysis_input": {
+    "input_path": "/tmp/espectro-study-tree-scripts/files",
+    "format": "directory"
+  },
+  "scripts": [
+    {
+      "source": {
+        "kind": "page-script",
+        "script_key": "scr_0059a03fe2be927b18f7fb04d01f65a6c92d883c147dbff0d6df5e4210ccd929",
+        "frame_id": "CA7F96537ED7CA3D6080986E9CBB54DE",
+        "is_module": true,
+        "language": "JavaScript",
+        "source_map_url": null
+      },
+      "url": "https://12axes-6b7.pages.dev/assets/AxesSection-92319e9199.js",
+      "content": {
+        "state": "exported",
+        "relative_path": "origins/7fca6c0a5683d01961da6a183a24562276ba0200fef93475ed396c39a86ea628/assets/AxesSection-92319e9199.js",
+        "layout": "url-path",
+        "layout_reason": null,
+        "sha256": "3bf997fdbdc77028ead4328d2b18c94191bed4718eef4c117ef633f158036acc",
+        "bytes": 2512,
+        "media_type": "text/javascript",
+        "redacted": null,
+        "representation": "debugger-source-utf8"
+      }
+    },
+    {
+      "source": {
+        "kind": "page-script",
+        "script_key": "scr_03f64ee73504abfed6dafcc21d359df55d141a979baeac76bed30756054ee7c1",
+        "frame_id": "CA7F96537ED7CA3D6080986E9CBB54DE",
+        "is_module": false,
+        "language": "JavaScript",
+        "source_map_url": null
+      },
+      "url": "https://12axes.vercel.app/tree/ideologies?id=liberalismo-classico",
+      "content": {
+        "state": "exported",
+        "relative_path": "isolated/source-2-90c1a2d0488459251a5501a277c77145029d99721a206e1fd6cd5bea84990483.js",
+        "layout": "isolated",
+        "layout_reason": "URL path is not an ordinary portable JavaScript module path.",
+        "sha256": "897a2c233906b6fabd1fd38c42ad6bb67bf22a14f1455310bb0c3c8a7fa2afa7",
+        "bytes": 172,
+        "media_type": "text/javascript",
+        "redacted": null,
+        "representation": "debugger-source-utf8"
+      }
+    },
+    {
+      "source": {
+        "kind": "page-script",
+        "script_key": "scr_37540be06a19c09d7d4c0d5b87cd7d85e1a0521a86f75d1534a77cffa3054007",
+        "frame_id": "CA7F96537ED7CA3D6080986E9CBB54DE",
+        "is_module": true,
+        "language": "JavaScript",
+        "source_map_url": null
+      },
+      "url": "https://12axes-6b7.pages.dev/assets/index-92319e9199.js",
+      "content": {
+        "state": "exported",
+        "relative_path": "origins/7fca6c0a5683d01961da6a183a24562276ba0200fef93475ed396c39a86ea628/assets/index-92319e9199.js",
+        "layout": "url-path",
+        "layout_reason": null,
+        "sha256": "07c2b54d12f739215afd4bf0cf296f61d5dc895fda4e22f783905028d20a6db5",
+        "bytes": 236456,
+        "media_type": "text/javascript",
+        "redacted": null,
+        "representation": "debugger-source-utf8"
+      }
+    },
+    {
+      "source": {
+        "kind": "page-script",
+        "script_key": "scr_37decf30c377e3cfa4a67b73c8a8ec8ac70020b911309a2fbf53d058dc17570e",
+        "frame_id": "CA7F96537ED7CA3D6080986E9CBB54DE",
+        "is_module": true,
+        "language": "JavaScript",
+        "source_map_url": null
+      },
+      "url": "https://12axes-6b7.pages.dev/assets/TreePage-92319e9199.js",
+      "content": {
+        "state": "exported",
+        "relative_path": "origins/7fca6c0a5683d01961da6a183a24562276ba0200fef93475ed396c39a86ea628/assets/TreePage-92319e9199.js",
+        "layout": "url-path",
+        "layout_reason": null,
+        "sha256": "ee37e621f8cc32070b286eb1c59d590c849551f9640a61825959df77ce0d4717",
+        "bytes": 22264,
+        "media_type": "text/javascript",
+        "redacted": null,
+        "representation": "debugger-source-utf8"
+      }
+    },
+    {
+      "source": {
+        "kind": "page-script",
+        "script_key": "scr_5edc6903ef8595867e4835f1de1b6f01b0d9fc40399104deec93cdcb7c5c6edf",
+        "frame_id": "CA7F96537ED7CA3D6080986E9CBB54DE",
+        "is_module": false,
+        "language": "JavaScript",
+        "source_map_url": null
+      },
+      "url": "https://12axes.vercel.app/tree/ideologies?id=liberalismo-classico",
+      "content": {
+        "state": "exported",
+        "relative_path": "isolated/source-5-8a2418b84dfb3811b9954d837e50ca6add54cec9e5684b675249ae65c17a2e0a.js",
+        "layout": "isolated",
+        "layout_reason": "URL path is not an ordinary portable JavaScript module path.",
+        "sha256": "55db332c3c40bfba3e952184f2dd5fa538da83f76055e7763da0efb923e3128e",
+        "bytes": 50,
+        "media_type": "text/javascript",
+        "redacted": null,
+        "representation": "debugger-source-utf8"
+      }
+    },
+    {
+      "source": {
+        "kind": "page-script",
+        "script_key": "scr_75db995d098e704945d6842e74598b28332de612852805e391c8ed69a2716296",
+        "frame_id": "CA7F96537ED7CA3D6080986E9CBB54DE",
+        "is_module": true,
+        "language": "JavaScript",
+        "source_map_url": null
+      },
+      "url": "https://12axes-6b7.pages.dev/assets/en-92319e9199.js",
+      "content": {
+        "state": "exported",
+        "relative_path": "origins/7fca6c0a5683d01961da6a183a24562276ba0200fef93475ed396c39a86ea628/assets/en-92319e9199.js",
+        "layout": "url-path",
+        "layout_reason": null,
+        "sha256": "fb387be775968198665cecf562fd7abead6c27e1d065e9a3bfeb86cdb5b84d8b",
+        "bytes": 37175,
+        "media_type": "text/javascript",
+        "redacted": null,
+        "representation": "debugger-source-utf8"
+      }
+    },
+    {
+      "source": {
+        "kind": "page-script",
+        "script_key": "scr_803dfade78b3a71674f11e181267670ef83b81beeef8453e36fcd1c0289f5f28",
+        "frame_id": "CA7F96537ED7CA3D6080986E9CBB54DE",
+        "is_module": false,
+        "language": "JavaScript",
+        "source_map_url": null
+      },
+      "url": "https://12axes.vercel.app/tree/ideologies?id=liberalismo-classico",
+      "content": {
+        "state": "exported",
+        "relative_path": "isolated/source-7-95f5b0b02bb9fbc27267a438be76d67aa67b6fd45805f64c2dd1ae2dccbdf536.js",
+        "layout": "isolated",
+        "layout_reason": "URL path is not an ordinary portable JavaScript module path.",
+        "sha256": "321b4f657afbf8ba49518e6ab4cbad07ea967d0b4c68f71c7deed05ed09c1187",
+        "bytes": 16,
+        "media_type": "text/javascript",
+        "redacted": null,
+        "representation": "debugger-source-utf8"
+      }
+    }
+  ],
+  "limitations": [
+    "Observation starts when REA attaches; prior network and console activity is unavailable.",
+    "Raw network headers, bodies, cookies, storage values, console objects, and WebSocket payloads are never retained; explicitly requested primitive console text is retained verbatim, while payload captures retain value-free shapes.",
+    "Source maps are reported only as declarative URLs and are not fetched.",
+    "URL-less scripts and console events without an allowed source URL are excluded because their origin cannot be proven.",
+    "Only script bytes retained in this capture are exported. Sources are not refetched or executed, and a response or Debugger source does not prove execution.",
+    "Ordinary unambiguous URL paths preserve relative module layouts by origin. Query variants, collisions, inline sources, and unrepresentable paths are isolated; their browser module relationships remain unknown.",
+    "Local JavaScript analysis does not implement browser import maps, root-relative URL resolution, remote URL loading, or browser runtime behavior. It may strip import queries and fragments; isolated variants are not canonical targets.",
+    "Source-map declarations are retained as metadata. No source maps or missing dependencies are fetched or reconstructed.",
+    "Captured response bytes are browser-decoded bytes; Debugger sources are the exposed text encoded as UTF-8. Redacted bytes are exported exactly as retained, and may no longer parse as JavaScript."
+  ]
+}

@@ -1,0 +1,4966 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "2.0.0",
+  "entries": [
+    {
+      "id": "suecia_folkhemmet",
+      "name": "Suécia (Modelo Nórdico / Folkhemmet)",
+      "subtitle": "Social-democracia, negociação coletiva tripartite e estado de bem-estar universal",
+      "category": "Europa Nórdica",
+      "era": "1932 – Presente",
+      "origin": "Suécia 🇸🇪",
+      "summary": "O modelo sueco consolidou a 'Casa do Povo' (Folkhemmet) a partir do Acordo de Saltsjöbaden (1938), combinando economia de mercado altamente competitiva e inovadora com tributação progressiva, rede de proteção social universal e forte organização sindical.",
+      "highlights": [
+        "Estado de bem-estar social financiado por impostos gerais",
+        "Modelo Rehn-Meidner com política de salários solidários",
+        "Universalismo em saúde, creches públicas e licença parental",
+        "Altos índices de transparência e liberdade de imprensa histórica (1766)"
+      ],
+      "quote": "A boa sociedade é como um bom lar: ninguém é privilegiado nem deserdado, não há filhos prediletos nem enteados.",
+      "axes": {
+        "estrutura": -0.42,
+        "representacao": -0.35,
+        "poder": -0.78,
+        "controle": -0.38,
+        "comercio": 0.55,
+        "diplomacia": -0.72,
+        "religiao": -0.85,
+        "moral": -0.75,
+        "intervencao": -0.82,
+        "economia": -0.7,
+        "imigracao": -0.45,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.1,
+          0.55,
+          0.35
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.25,
+          0.6,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "suica_cantonal",
+      "name": "Suíça (Democracia Semidireta e Federalismo Cantonal)",
+      "subtitle": "Referendos populares frequentes, subsidiariedade estrita e neutralidade armada perpétua",
+      "category": "Europa Central",
+      "era": "1848 – Presente",
+      "origin": "Suíça 🇨🇭",
+      "summary": "A Confederação Helvética baseia-se em profunda descentralização nos 26 cantões, um Conselho Federal colegiado de 7 membros com partilha de poder (Fórmula Mágica) e poder de veto popular via plebiscitos e iniciativas cidadãs.",
+      "highlights": [
+        "Mais de 50% dos referendos nacionais do planeta ocorrem na Suíça",
+        "Autonomia fiscal e legislativa cantonal radical",
+        "Neutralidade diplomática permanente e exército de milícia civil",
+        "Setor financeiro sólido, baixa dívida pública com 'freio de endividamento'"
+      ],
+      "quote": "A soberania reside no povo e nos cantões confederados.",
+      "axes": {
+        "estrutura": 0.48,
+        "representacao": -0.92,
+        "poder": -0.65,
+        "controle": 0.62,
+        "comercio": 0.58,
+        "diplomacia": 0.88,
+        "religiao": -0.15,
+        "moral": -0.1,
+        "intervencao": -0.3,
+        "economia": -0.45,
+        "imigracao": -0.95,
+        "tecnologia": 0.4
+      },
+      "triangles": {
+        "0": [
+          0.05,
+          0.3,
+          0.65
+        ],
+        "1": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "2": [
+          0.35,
+          0.25,
+          0.4
+        ],
+        "3": [
+          0.0,
+          0.8,
+          0.2
+        ],
+        "4": [
+          0.7,
+          0.1,
+          0.2
+        ],
+        "5": [
+          0.55,
+          0.15,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "singapura_lee",
+      "name": "Singapura (Dirigismo Tecnocapitalista de Lee Kuan Yew)",
+      "subtitle": "Meritocracia burocrática, soberania de fundos estatais (Temasek) e ordem cívica estrita",
+      "category": "Sudeste Asiático",
+      "era": "1965 – Presente",
+      "origin": "Singapura 🇸🇬",
+      "summary": "Transformou-se de posto colonial vulnerável em metrópole de alta renda sob liderança de Lee Kuan Yew, combinando livre mercado exterior, política habitacional estatal em massa (HDB cobre 80% da população) e estrito controle de segurança pública.",
+      "highlights": [
+        "Fundo Soberano Temasek e GIC investindo globalmente em inovação",
+        "Habitação pública compulsória pelo Central Provident Fund (CPF)",
+        "Punição severa à corrupção com remuneração de elite para ministros",
+        "Disciplina pública com leis restritivas sobre protesto e vadiagem"
+      ],
+      "quote": "Se você não conseguir manter a ordem, não conseguirá alimentar o povo nem educar as crianças.",
+      "axes": {
+        "estrutura": 0.15,
+        "representacao": 0.7,
+        "poder": 0.85,
+        "controle": 0.72,
+        "comercio": 0.9,
+        "diplomacia": 0.2,
+        "religiao": -0.3,
+        "moral": -0.15,
+        "intervencao": 0.9,
+        "economia": 0.1,
+        "imigracao": 0.85,
+        "tecnologia": 0.8
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.35,
+          0.5
+        ],
+        "1": [
+          0.15,
+          0.7,
+          0.15
+        ],
+        "2": [
+          0.45,
+          0.35,
+          0.2
+        ],
+        "3": [
+          0.1,
+          0.3,
+          0.6
+        ],
+        "4": [
+          0.2,
+          0.7,
+          0.1
+        ],
+        "5": [
+          0.65,
+          0.15,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "eua_founding",
+      "name": "Estados Unidos (República Constitucional dos Fundadores)",
+      "subtitle": "Governo limitado, separação estrita de poderes (Madison) e Bill of Rights",
+      "category": "América do Norte",
+      "era": "1787 – 1800",
+      "origin": "Estados Unidos 🇺🇸",
+      "summary": "A arquitetura constitucional de 1787 concebida por Madison, Hamilton e Jefferson fundou a primeira república constitucional moderna, projetada para evitar tanto a tirania monárquica quanto o despotismo das maiorias através de freios e contrapesos.",
+      "highlights": [
+        "Constituição escrita com supremacia judicial e direitos inalienáveis",
+        "Bicameralismo e Colégio Eleitoral para balancear estados populosos e pequenos",
+        "Primeira Emenda protegendo liberdade de expressão, imprensa e fé",
+        "Preservação do padrão-ouro e desconfiança de bancos centrais permanentes"
+      ],
+      "quote": "Um governo republicano deve ter poderes suficientes para controlar os governados e em seguida a si mesmo.",
+      "axes": {
+        "estrutura": 0.82,
+        "representacao": 0.55,
+        "poder": -0.8,
+        "controle": 0.85,
+        "comercio": 0.4,
+        "diplomacia": 0.75,
+        "religiao": 0.3,
+        "moral": 0.25,
+        "intervencao": 0.35,
+        "economia": 0.6,
+        "imigracao": -0.85,
+        "tecnologia": 0.3
+      },
+      "triangles": {
+        "0": [
+          0.05,
+          0.15,
+          0.8
+        ],
+        "1": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "2": [
+          0.4,
+          0.2,
+          0.4
+        ],
+        "3": [
+          0.1,
+          0.75,
+          0.15
+        ],
+        "4": [
+          0.35,
+          0.15,
+          0.5
+        ],
+        "5": [
+          0.75,
+          0.05,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "eua_new_deal",
+      "name": "Estados Unidos (Era New Deal & Great Society)",
+      "subtitle": "Keynesianismo de massas, Seguridade Social de Roosevelt e expansão dos direitos civis",
+      "category": "América do Norte",
+      "era": "1933 – 1968",
+      "origin": "Estados Unidos 🇺🇸",
+      "summary": "Sob Franklin D. Roosevelt e continuado por Lyndon Johnson, o Estado americano assumiu a responsabilidade pela regulação de mercados financeiros (SEC), obras públicas de infraestrutura (TVA), aposentadoria pública (Social Security) e direitos civis (1964).",
+      "highlights": [
+        "Criação da Seguridade Social e seguro-desemprego nacional",
+        "Investimentos federais massivos em barragens, rodovias interestaduais e eletrificação",
+        "Tributação marginal máxima de até 91% sobre altas rendas",
+        "Leis de Direitos Civis e Direito ao Voto desmantelando a segregação Jim Crow"
+      ],
+      "quote": "A verdadeira liberdade individual não pode existir sem segurança econômica e independência.",
+      "axes": {
+        "estrutura": -0.25,
+        "representacao": 0.2,
+        "poder": -0.55,
+        "controle": -0.45,
+        "comercio": 0.2,
+        "diplomacia": -0.5,
+        "religiao": -0.4,
+        "moral": -0.6,
+        "intervencao": -0.35,
+        "economia": -0.2,
+        "imigracao": 0.4,
+        "tecnologia": 0.65
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.5,
+          0.3
+        ],
+        "1": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "2": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "3": [
+          0.25,
+          0.15,
+          0.6
+        ],
+        "4": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "5": [
+          0.4,
+          0.45,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "chile_allende",
+      "name": "Chile de Salvador Allende (Via Chilena ao Socialismo)",
+      "subtitle": "Transição democrática institucional para o socialismo e nacionalização do cobre",
+      "category": "América Latina",
+      "era": "1970 – 1973",
+      "origin": "Chile 🇨🇱",
+      "summary": "O governo da Unidade Popular buscou construir o socialismo através da legalidade constitucional ('com sabor de empanadas e vinho tinto'), nacionalizando as minas de cobre, bancos estratégicos e acelerando a reforma agrária, antes do golpe militar de 1973.",
+      "highlights": [
+        "Estatização unânime do cobre aprovada pelo Congresso chileno",
+        "Projeto Cybersyn de gestão cibernética pioneira da economia",
+        "Distribuição de meio litro de leite diário a todas as crianças",
+        "Manutenção da liberdade partidária e da imprensa pluralista sob cerco"
+      ],
+      "quote": "A história é nossa e a fazem os povos. Muito mais cedo do que tarde se abrirão as grandes alamedas.",
+      "axes": {
+        "estrutura": -0.85,
+        "representacao": -0.6,
+        "poder": -0.45,
+        "controle": -0.85,
+        "comercio": -0.65,
+        "diplomacia": -0.4,
+        "religiao": -0.65,
+        "moral": -0.7,
+        "intervencao": -0.55,
+        "economia": -0.3,
+        "imigracao": -0.1,
+        "tecnologia": 0.45
+      },
+      "triangles": {
+        "0": [
+          0.7,
+          0.25,
+          0.05
+        ],
+        "1": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.65,
+          0.2
+        ],
+        "3": [
+          0.1,
+          0.4,
+          0.5
+        ],
+        "4": [
+          0.75,
+          0.2,
+          0.05
+        ],
+        "5": [
+          0.2,
+          0.7,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "costa_rica_paz",
+      "name": "Costa Rica (República Desmilitarizada e Ecológica)",
+      "subtitle": "Abolição constitucional do exército, cobertura florestal protegida e estabilidade civil",
+      "category": "América Latina",
+      "era": "1948 – Presente",
+      "origin": "Costa Rica 🇨🇷",
+      "summary": "Após a guerra civil de 1948, o presidente José Figueres Ferrer aboliu as forças armadas, canalizando o orçamento de defesa para saúde e educação universais. O país tornou-se pioneiro global em ecoturismo, matriz 99% renovável e pagamentos por serviços ambientais.",
+      "highlights": [
+        "Abolição constitucional do exército em 1 de dezembro de 1948",
+        "Mais de 25% do território nacional sob parques e reservas biológicas",
+        "Caixa Costarriquenha de Seguridade Social com cobertura de saúde exemplar",
+        "Sede da Corte Interamericana de Direitos Humanos e Universidade para a Paz"
+      ],
+      "quote": "Não queremos um exército de soldados, queremos um exército de educadores e cientistas.",
+      "axes": {
+        "estrutura": -0.2,
+        "representacao": -0.4,
+        "poder": -0.75,
+        "controle": -0.1,
+        "comercio": 0.4,
+        "diplomacia": -0.85,
+        "religiao": -0.3,
+        "moral": -0.65,
+        "intervencao": -0.7,
+        "economia": -0.92,
+        "imigracao": -0.3,
+        "tecnologia": 0.2
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.5,
+          0.35
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.2,
+          0.55,
+          0.25
+        ],
+        "3": [
+          0.0,
+          0.3,
+          0.7
+        ],
+        "4": [
+          0.8,
+          0.1,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.4,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "alemanha_ordolib",
+      "name": "Alemanha (Economia Social de Mercado / Soziale Marktwirtschaft)",
+      "subtitle": "Concorrência regulada, cogestão operária (Mitbestimmung) e estabilidade de preços",
+      "category": "Europa Central",
+      "era": "1949 – Presente",
+      "origin": "Alemanha 🇩🇪",
+      "summary": "Desenvolvida por Ludwig Erhard e Alfred Müller-Armack na fundação da RFA, combina a eficiência dinâmica dos mercados livres com uma rigorosa ordem antitruste estatal e cogestão trabalhista nos conselhos administrativos das indústrias.",
+      "highlights": [
+        "Mitbestimmung: assentos de trabalhadores nos conselhos de supervisão corporativos",
+        "Lei contra Restrições da Concorrência e Bundeskartellamt autônomo",
+        "Formação profissional dual de aprendizes integrando escolas e indústrias",
+        "Bundesbank e cultura de aversão profunda à inflação descontrolada"
+      ],
+      "quote": "O mercado livre não é um fim em si mesmo, mas um instrumento para garantir prosperidade para todos.",
+      "axes": {
+        "estrutura": 0.25,
+        "representacao": 0.3,
+        "poder": -0.6,
+        "controle": 0.35,
+        "comercio": 0.65,
+        "diplomacia": -0.65,
+        "religiao": -0.2,
+        "moral": -0.4,
+        "intervencao": -0.6,
+        "economia": -0.65,
+        "imigracao": -0.7,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.45,
+          0.45
+        ],
+        "1": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "2": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "franca_gaullista",
+      "name": "França Gaullista (Quinta República e Dirigisme)",
+      "subtitle": "Presidencialismo forte, planejamento indicativo do Commissariat au Plan e soberania nuclear",
+      "category": "Europa Ocidental",
+      "era": "1958 – 1969",
+      "origin": "França 🇫🇷",
+      "summary": "Charles de Gaulle refundou o Estado francês em meio à crise da Argélia, estabelecendo um Executivo com amplos poderes de arbitragem, planejamento econômico estatal ('dirigisme') para grandes projetos (TGV, nuclear, aeroespacial) e autonomia estratégica internacional.",
+      "highlights": [
+        "Constituição de 1958 com eleição presidencial direta e artigo 16 de emergência",
+        "Criação da Force de Frappe nuclear independente da OTAN",
+        "Grandes projetos de infraestrutura civil e reindustrialização tecnológica",
+        "Doutrina de grandeur e liderança na integração europeia franco-alemã"
+      ],
+      "quote": "A França não pode ser a França sem a grandeza.",
+      "axes": {
+        "estrutura": -0.35,
+        "representacao": 0.65,
+        "poder": 0.3,
+        "controle": -0.4,
+        "comercio": -0.15,
+        "diplomacia": 0.5,
+        "religiao": -0.75,
+        "moral": 0.1,
+        "intervencao": 0.25,
+        "economia": -0.1,
+        "imigracao": 0.75,
+        "tecnologia": 0.6
+      },
+      "triangles": {
+        "0": [
+          0.35,
+          0.45,
+          0.2
+        ],
+        "1": [
+          0.35,
+          0.45,
+          0.2
+        ],
+        "2": [
+          0.45,
+          0.3,
+          0.25
+        ],
+        "3": [
+          0.25,
+          0.45,
+          0.3
+        ],
+        "4": [
+          0.4,
+          0.55,
+          0.05
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "reino_unido_attlee",
+      "name": "Reino Unido (Consenso de Attlee / Beveridge)",
+      "subtitle": "Nascimento do NHS, nacionalização do carvão e ferrovias e pleno emprego",
+      "category": "Ilhas Britânicas",
+      "era": "1945 – 1979",
+      "origin": "Reino Unido 🇬🇧",
+      "summary": "A vitória trabalhista de Clement Attlee em 1945 implantou o Relatório Beveridge para combater os 'Cinco Gigantes' (Miséria, Doença, Ignorância, Sujeira e Ociosidade), criando o National Health Service (NHS) gratuito e estatizando os comandos da indústria pesada.",
+      "highlights": [
+        "Criação do National Health Service (NHS) universal em 1948 por Aneurin Bevan",
+        "Nacionalização das indústrias de carvão, eletricidade, aço e transportes",
+        "Compromisso do Tesouro com o pleno emprego macroeconômico keynesiano",
+        "Início da descolonização gradual e criação da Commonwealth moderna"
+      ],
+      "quote": "Nenhum sistema de saúde pode ser considerado aceitável se depender de caridade em vez de direito do cidadão.",
+      "axes": {
+        "estrutura": -0.65,
+        "representacao": 0.25,
+        "poder": -0.45,
+        "controle": -0.6,
+        "comercio": -0.1,
+        "diplomacia": -0.3,
+        "religiao": -0.4,
+        "moral": -0.5,
+        "intervencao": -0.5,
+        "economia": -0.15,
+        "imigracao": 0.35,
+        "tecnologia": 0.4
+      },
+      "triangles": {
+        "0": [
+          0.45,
+          0.4,
+          0.15
+        ],
+        "1": [
+          0.5,
+          0.35,
+          0.15
+        ],
+        "2": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "3": [
+          0.2,
+          0.3,
+          0.5
+        ],
+        "4": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "5": [
+          0.3,
+          0.55,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "reino_unido_thatcher",
+      "name": "Reino Unido (Revolução Thatcherista de Livre Mercado)",
+      "subtitle": "Privatizações em massa, monetarismo, enfraquecimento sindical e desregulamentação da City",
+      "category": "Ilhas Britânicas",
+      "era": "1979 – 1990",
+      "origin": "Reino Unido 🇬🇧",
+      "summary": "Margaret Thatcher desmontou o consenso social-democrata do pós-guerra através do controle monetário da inflação, privatização de gigantes estatais (British Telecom, British Gas, British Airways), desregulamentação financeira (Big Bang de 1986) e venda de moradias públicas.",
+      "highlights": [
+        "Privatização maciça de estatais e venda de 'council houses' a inquilinos",
+        "Leis de reforma sindical encerrando piquetes secundários e votação obrigatória",
+        "Desregulamentação dos mercados de capitais em Londres consolidando a City",
+        "Defesa veemente da soberania nacional britânica frente à burocracia de Bruxelas"
+      ],
+      "quote": "A economia é o método; o objetivo é transformar a alma e o caráter de uma nação.",
+      "axes": {
+        "estrutura": 0.85,
+        "representacao": 0.4,
+        "poder": 0.25,
+        "controle": 0.88,
+        "comercio": 0.7,
+        "diplomacia": 0.55,
+        "religiao": 0.2,
+        "moral": 0.4,
+        "intervencao": 0.65,
+        "economia": 0.5,
+        "imigracao": 0.5,
+        "tecnologia": 0.45
+      },
+      "triangles": {
+        "0": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "1": [
+          0.35,
+          0.5,
+          0.15
+        ],
+        "2": [
+          0.45,
+          0.2,
+          0.35
+        ],
+        "3": [
+          0.25,
+          0.4,
+          0.35
+        ],
+        "4": [
+          0.45,
+          0.4,
+          0.15
+        ],
+        "5": [
+          0.7,
+          0.05,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": "brasil_imperio",
+      "name": "Brasil (Parlamentarismo do Império / Pedro II)",
+      "subtitle": "Poder Moderador, estabilidade institucional, imprensa livre e transição abolicionista",
+      "category": "América Latina",
+      "era": "1847 – 1889",
+      "origin": "Brasil 🇧🇷",
+      "summary": "O Segundo Reinado sob Dom Pedro II garantiu a integridade territorial do Brasil e um sistema parlamentarista 'às avessas' de alternância civilizada entre Liberais e Conservadores, com liberdade de imprensa irrestrita, culminando na abolição da escravidão em 1888.",
+      "highlights": [
+        "Poder Moderador de equilíbrio constitucional e neutralidade partidária",
+        "Liberdade de imprensa irrestrita e respeito absoluto a críticas públicas ao monarca",
+        "Manutenção da unidade continental brasileira frente à fragmentação da América hispânica",
+        "Conquista da Lei Áurea (1888) e atuação de Joaquim Nabuco e André Rebouças"
+      ],
+      "quote": "Se eu não fosse imperador, desejaria ser professor. Não conheço missão maior nem mais nobre.",
+      "axes": {
+        "estrutura": 0.3,
+        "representacao": 0.6,
+        "poder": -0.35,
+        "controle": 0.25,
+        "comercio": 0.2,
+        "diplomacia": 0.3,
+        "religiao": 0.35,
+        "moral": -0.2,
+        "intervencao": 0.1,
+        "economia": -0.15,
+        "imigracao": 0.65,
+        "tecnologia": 0.1
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.45,
+          0.4
+        ],
+        "1": [
+          0.45,
+          0.35,
+          0.2
+        ],
+        "2": [
+          0.45,
+          0.3,
+          0.25
+        ],
+        "3": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "4": [
+          0.35,
+          0.55,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "brasil_vargas",
+      "name": "Brasil (Era Vargas e Trabalhismo Desenvolvimentista)",
+      "subtitle": "CLT, nacionalismo dos recursos estratégicos (CSN, Petrobras, Vale) e industrialização",
+      "category": "América Latina",
+      "era": "1930 – 1954",
+      "origin": "Brasil 🇧🇷",
+      "summary": "Getúlio Vargas modernizou as estruturas produtivas brasileiras, superando a hegemonia cafeeira com a consolidação dos direitos sindicais e trabalhistas (CLT), fundação de empresas públicas de base (CSN, Vale, Petrobras) e afirmação da soberania nacional.",
+      "highlights": [
+        "Consolidação das Leis do Trabalho (CLT de 1943) e salário mínimo nacional",
+        "Criação da Companhia Siderúrgica Nacional e monopólio estatal do petróleo (1953)",
+        "Voto secreto e sufrágio feminino conquistados no Código Eleitoral de 1932",
+        "Transição de uma economia agroexportadora arcaica para centro urbano-industrial"
+      ],
+      "quote": "Ao ódio respondo com o trabalho. À calúnia respondo com a obra realizada.",
+      "axes": {
+        "estrutura": -0.7,
+        "representacao": 0.55,
+        "poder": 0.4,
+        "controle": -0.75,
+        "comercio": -0.8,
+        "diplomacia": 0.45,
+        "religiao": 0.1,
+        "moral": -0.3,
+        "intervencao": 0.3,
+        "economia": 0.45,
+        "imigracao": 0.85,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "1": [
+          0.25,
+          0.55,
+          0.2
+        ],
+        "2": [
+          0.4,
+          0.35,
+          0.25
+        ],
+        "3": [
+          0.2,
+          0.5,
+          0.3
+        ],
+        "4": [
+          0.35,
+          0.6,
+          0.05
+        ],
+        "5": [
+          0.3,
+          0.55,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "brasil_jk",
+      "name": "Brasil (Plano de Metas de Juscelino Kubitschek)",
+      "subtitle": "50 anos em 5, construção de Brasília, rodoviarismo e atração de multinacionais automotivas",
+      "category": "América Latina",
+      "era": "1956 – 1961",
+      "origin": "Brasil 🇧🇷",
+      "summary": "O governo JK combinou entusiasmo democrático, otimismo cultural (Bossa Nova) e planejamento estatal desenvolvimentista coordenado pelo BNDE, transferindo a capital federal para o Planalto Central e interiorizando a malha rodoviária e industrial.",
+      "highlights": [
+        "Plano de Metas concentrado em Energia, Transporte, Indústrias de Base e Educação",
+        "Construção de Brasília desenhada por Lúcio Costa e Oscar Niemeyer",
+        "Instalação da indústria automobilística no ABC Paulista com capitais externos",
+        "Respeito absoluto às liberdades públicas e tolerância a manifestações de oposição"
+      ],
+      "quote": "Deste Planalto Central, desta solidão que em breve se transformará em cérebro das altas decisões nacionais, lanço os olhos sobre o amanhã do meu país.",
+      "axes": {
+        "estrutura": -0.2,
+        "representacao": 0.15,
+        "poder": -0.65,
+        "controle": -0.15,
+        "comercio": 0.3,
+        "diplomacia": -0.35,
+        "religiao": 0.05,
+        "moral": -0.55,
+        "intervencao": -0.4,
+        "economia": 0.55,
+        "imigracao": -0.4,
+        "tecnologia": 0.7
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.45,
+          0.3
+        ],
+        "1": [
+          0.55,
+          0.25,
+          0.2
+        ],
+        "2": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "3": [
+          0.15,
+          0.3,
+          0.55
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "brasil_cf88",
+      "name": "Brasil (Constituição Cidadã e Redemocratização)",
+      "subtitle": "SUS universal, Ministério Público autônomo, previdência social rural e direitos fundamentais",
+      "category": "América Latina",
+      "era": "1988 – Presente",
+      "origin": "Brasil 🇧🇷",
+      "summary": "Fruto da Assembleia Constituinte presidida por Ulysses Guimarães após 21 anos de ditadura militar, a Carta de 1988 consagrou o Estado Democrático de Direito, o Sistema Único de Saúde (SUS), o piso previdenciário e a demarcação de terras indígenas e quilombolas.",
+      "highlights": [
+        "Sistema Único de Saúde (SUS) descentralizado, universal e gratuito para 215 milhões",
+        "Garantismo processual estrito, mandado de segurança coletivo e ação civil pública",
+        "Benefício de Prestação Continuada (BPC) e vinculação de receitas para educação e saúde",
+        "Fiscalização contínua com autonomia ao Ministério Público e Tribunal de Contas da União"
+      ],
+      "quote": "Traidor da Constituição é traidor da Pátria. Temos ódio à ditadura. Ódio e nojo.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.3,
+        "poder": -0.65,
+        "controle": -0.3,
+        "comercio": -0.2,
+        "diplomacia": -0.55,
+        "religiao": -0.5,
+        "moral": -0.6,
+        "intervencao": -0.6,
+        "economia": -0.65,
+        "imigracao": -0.6,
+        "tecnologia": 0.25
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.2,
+          0.55,
+          0.25
+        ],
+        "3": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.3,
+          0.55,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "uruguai_batlle",
+      "name": "Uruguai Batllista (Primeiro Estado de Bem-Estar Americano)",
+      "subtitle": "Jornada de 8 horas, laicidade precoce, voto feminino pioneiro e monopólios públicos",
+      "category": "Cone Sul",
+      "era": "1903 – 1933",
+      "origin": "Uruguai 🇺🇾",
+      "summary": "José Batlle y Ordóñez transformou o Uruguai na 'Suíça da América Latina', separando totalmente a Igreja do Estado, estatizando a energia e telecomunicações (UTE, ANTEL), criando o seguro contra acidentes de trabalho e instituindo o colegiado executivo.",
+      "highlights": [
+        "Jornada de trabalho de 8 horas e descanso semanal garantidos em 1915",
+        "Secularização pioneira: feriados religiosos renomeados e cruzes removidas de hospitais",
+        "Divórcio por vontade exclusiva da mulher promulgado em 1913",
+        "Estatização bancária (Banco República) e frigorífica para regular preços"
+      ],
+      "quote": "Os ricos precisam do governo para garantir suas fortunas; os pobres precisam do governo para não perecer.",
+      "axes": {
+        "estrutura": -0.6,
+        "representacao": -0.65,
+        "poder": -0.75,
+        "controle": -0.55,
+        "comercio": -0.35,
+        "diplomacia": -0.65,
+        "religiao": -0.92,
+        "moral": -0.8,
+        "intervencao": -0.7,
+        "economia": -0.35,
+        "imigracao": -0.3,
+        "tecnologia": 0.3
+      },
+      "triangles": {
+        "0": [
+          0.4,
+          0.45,
+          0.15
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.1,
+          0.65,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.35,
+          0.6
+        ],
+        "4": [
+          0.8,
+          0.1,
+          0.1
+        ],
+        "5": [
+          0.25,
+          0.6,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "botsuana_seretse",
+      "name": "Botsuana Democrático (Governança e Recursos de Seretse Khama)",
+      "subtitle": "Democracia multipartidária ininterrupta, parceria diamantífera (Debswana) e reservas fiscais",
+      "category": "África Austral",
+      "era": "1966 – Presente",
+      "origin": "Botsuana 🇧🇼",
+      "summary": "Independente em 1966 como um dos países mais pobres do mundo, Botsuana evitou a 'maldição dos recursos' sob Seretse Khama através de forte respeito a instituições tradicionais (Kgotla), disciplina orçamentária rígida e investimento das receitas de diamantes em infraestrutura e educação.",
+      "highlights": [
+        "Democracia multipartidária contínua mais longeva do continente africano",
+        "Joint-venture paritária 50-50 com a De Beers para garantir receitas ao Tesouro",
+        "Conselho consultivo comunitário Kgotla para deliberação participativa ancestral",
+        "Taxas de crescimento anual superiores a 7% durante três décadas consecutivas"
+      ],
+      "quote": "Devemos ter a coragem de olhar para o futuro sem medo do nosso passado nem subserviência aos poderosos.",
+      "axes": {
+        "estrutura": 0.1,
+        "representacao": 0.15,
+        "poder": -0.5,
+        "controle": 0.35,
+        "comercio": 0.5,
+        "diplomacia": -0.3,
+        "religiao": 0.1,
+        "moral": -0.2,
+        "intervencao": -0.15,
+        "economia": -0.6,
+        "imigracao": -0.45,
+        "tecnologia": 0.25
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "1": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "2": [
+          0.4,
+          0.35,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.45,
+          0.5
+        ],
+        "4": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "iugoslavia_tito",
+      "name": "Iugoslávia Autogestionária (Socialismo dos Conselhos Operários)",
+      "subtitle": "Autogestão industrial, socialismo de mercado descentralizado e Não-Alinhamento",
+      "category": "Bálcãs",
+      "era": "1950 – 1980",
+      "origin": "Iugoslávia 🌐",
+      "summary": "Após a ruptura com Stálin em 1948, a Iugoslávia de Josip Broz Tito implementou a autogestão socialista (Radničko samoupravljanje), na qual fábricas e empresas eram geridas diretamente por conselhos de operários eleitos em um mercado de bens descentralizado.",
+      "highlights": [
+        "Conselhos de fábrica elegendo seus próprios diretores executivos e partilhando lucros",
+        "Liderança fundacional no Movimento dos Países Não-Alinhados (1961)",
+        "Passaporte iugoslavo com trânsito livre incomum entre Ocidente e bloco soviético",
+        "Federalismo multinacional buscando acomodar sérvios, croatas, bósnios e eslovenos"
+      ],
+      "quote": "As fábricas para os trabalhadores, a terra para os camponeses e o poder para o povo.",
+      "axes": {
+        "estrutura": -0.75,
+        "representacao": -0.45,
+        "poder": -0.1,
+        "controle": -0.3,
+        "comercio": 0.1,
+        "diplomacia": -0.8,
+        "religiao": -0.8,
+        "moral": -0.65,
+        "intervencao": -0.2,
+        "economia": -0.2,
+        "imigracao": -0.65,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.5,
+          0.25,
+          0.25
+        ],
+        "1": [
+          0.4,
+          0.45,
+          0.15
+        ],
+        "2": [
+          0.2,
+          0.55,
+          0.25
+        ],
+        "3": [
+          0.15,
+          0.2,
+          0.65
+        ],
+        "4": [
+          0.45,
+          0.5,
+          0.05
+        ],
+        "5": [
+          0.25,
+          0.6,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "japao_meiji",
+      "name": "Japão da Restauração Meiji (Modernização e Desenvolvimentismo)",
+      "subtitle": "Fukoku Kyōhei (Enriquecer o país, fortalecer o exército) e assimilação tecnológica",
+      "category": "Ásia Oriental",
+      "era": "1868 – 1912",
+      "origin": "Japão 🇯🇵",
+      "summary": "Frente à ameaça imperialista ocidental, a liderança Meiji desmantelou o feudalismo Tokugawa, enviou a Missão Iwakura para estudar governos ocidentais, construiu telégrafos e ferrovias estatais pioneiras e transferiu indústrias modelo para os Zaibatsu.",
+      "highlights": [
+        "Doutrina Fukoku Kyōhei combinando tradição imperial e técnica ocidental",
+        "Abolição dos privilégios hereditários dos samurais e serviço militar universal",
+        "Constituição Meiji de 1889 inspirada no modelo constitucional prussiano",
+        "Industrialização relâmpago de manufaturas têxteis, aço e estaleiros navais"
+      ],
+      "quote": "Conhecimento será buscado por todo o mundo, de modo a fortalecer as fundações do império.",
+      "axes": {
+        "estrutura": -0.15,
+        "representacao": 0.75,
+        "poder": 0.8,
+        "controle": -0.2,
+        "comercio": -0.3,
+        "diplomacia": 0.7,
+        "religiao": 0.4,
+        "moral": -0.2,
+        "intervencao": 0.65,
+        "economia": 0.7,
+        "imigracao": 0.85,
+        "tecnologia": 0.75
+      },
+      "triangles": {
+        "0": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "1": [
+          0.15,
+          0.7,
+          0.15
+        ],
+        "2": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "3": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "4": [
+          0.15,
+          0.8,
+          0.05
+        ],
+        "5": [
+          0.55,
+          0.2,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": "japao_pos_guerra",
+      "name": "Japão do Pós-Guerra (Milagre Econômico e MITI)",
+      "subtitle": "Constituição pacifista (Artigo 9º), coordenação industrial do MITI e Keiretsu",
+      "category": "Ásia Oriental",
+      "era": "1955 – 1990",
+      "origin": "Japão 🇯🇵",
+      "summary": "Com a Constituição de 1949 renunciando expressamente à guerra, o Japão ergueu a segunda maior economia do mundo através de políticas industriais orquestradas pelo Ministério do Comércio Internacional e Indústria (MITI), emprego vitalício e qualidade total.",
+      "highlights": [
+        "Artigo 9º constitucional com renúncia soberana à agressão militar armada",
+        "Política industrial do MITI canalizando crédito para eletrônicos e semicondutores",
+        "Emprego vitalício (Shushinkoyo) e sindicatos corporativos cooperativos",
+        "Inauguração do Shinkansen (trem-bala) em 1964 simbolizando o renascimento tecnológico"
+      ],
+      "quote": "A paz não é apenas a ausência de guerra; é a presença de prosperidade e justiça compartilhada.",
+      "axes": {
+        "estrutura": 0.2,
+        "representacao": 0.4,
+        "poder": -0.4,
+        "controle": 0.25,
+        "comercio": 0.6,
+        "diplomacia": -0.65,
+        "religiao": -0.1,
+        "moral": -0.25,
+        "intervencao": -0.1,
+        "economia": -0.3,
+        "imigracao": 0.45,
+        "tecnologia": 0.85
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.45,
+          0.4
+        ],
+        "1": [
+          0.45,
+          0.4,
+          0.15
+        ],
+        "2": [
+          0.45,
+          0.35,
+          0.2
+        ],
+        "3": [
+          0.05,
+          0.35,
+          0.6
+        ],
+        "4": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "coreia_park",
+      "name": "Coreia do Sul (Desenvolvimentismo e Chaebols de Park Chung-hee)",
+      "subtitle": "Planos quinquenais guiados por metas de exportação, poupança forçada e pesada indústria",
+      "category": "Ásia Oriental",
+      "era": "1961 – 1979",
+      "origin": "Coreia do Sul 🇰🇷",
+      "summary": "Após a devastação da Guerra da Coreia, o general Park Chung-hee orquestrou o 'Milagre do Rio Han', vinculando subsídios estatais ao cumprimento estrito de metas de exportação por grandes conglomerados familiares (Samsung, Hyundai, LG, POSCO).",
+      "highlights": [
+        "Conselho de Planejamento Econômico (EPB) controlando todo o crédito bancário nacional",
+        "Movimento Saemaul Undong para modernização e saneamento comunitário rural",
+        "Construção da siderúrgica POSCO e rodovia Seul-Busan em tempo recorde",
+        "Mobilização nacional patriótica associada a repressão a sindicatos e dissidentes"
+      ],
+      "quote": "Tratemos as exportações como uma questão de sobrevivência nacional.",
+      "axes": {
+        "estrutura": -0.1,
+        "representacao": 0.8,
+        "poder": 0.85,
+        "controle": 0.15,
+        "comercio": 0.5,
+        "diplomacia": 0.6,
+        "religiao": 0.15,
+        "moral": 0.2,
+        "intervencao": 0.8,
+        "economia": 0.65,
+        "imigracao": 0.8,
+        "tecnologia": 0.8
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.45,
+          0.3
+        ],
+        "1": [
+          0.15,
+          0.75,
+          0.1
+        ],
+        "2": [
+          0.5,
+          0.35,
+          0.15
+        ],
+        "3": [
+          0.25,
+          0.35,
+          0.4
+        ],
+        "4": [
+          0.15,
+          0.8,
+          0.05
+        ],
+        "5": [
+          0.55,
+          0.2,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": "taiwan_tech_democ",
+      "name": "Taiwan (Democracia Tecnológica e Estado de Semicondutores)",
+      "subtitle": "Hub global de microchips (TSMC), democracia deliberativa digital (vTaiwan) e garantismo",
+      "category": "Ásia Oriental",
+      "era": "1996 – Presente",
+      "origin": "Taiwan 🇹🇼",
+      "summary": "Após décadas de lei marcial do Kuomintang, Taiwan realizou sua primeira eleição presidencial direta em 1996 e emergiu como o coração da indústria global de semicondutores avançados, associada a inovações pioneiras de participação cívica em código aberto.",
+      "highlights": [
+        "TSMC e o 'Escudo de Silício' sustentando a cadeia global de tecnologia de ponta",
+        "Plataforma vTaiwan para consenso cidadão em legislações complexas de tecnologia",
+        "Primeira jurisdição asiática a legalizar o casamento homoafetivo (2019)",
+        "Sistema universal de saúde digitalizado com prontuário em smartcard"
+      ],
+      "quote": "A democracia não é apenas um voto a cada quatro anos, mas uma conversa contínua entre cidadãos.",
+      "axes": {
+        "estrutura": 0.3,
+        "representacao": -0.55,
+        "poder": -0.8,
+        "controle": 0.45,
+        "comercio": 0.85,
+        "diplomacia": -0.45,
+        "religiao": -0.6,
+        "moral": -0.75,
+        "intervencao": -0.65,
+        "economia": -0.4,
+        "imigracao": -0.3,
+        "tecnologia": 0.92
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.4,
+          0.5
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.6,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "dinamarca_flexicurity",
+      "name": "Dinamarca (Modelo de Flexicurity e Cooperativismo)",
+      "subtitle": "Mercado de trabalho flexível com rede generosa de requalificação e energia eólica",
+      "category": "Europa Nórdica",
+      "era": "1990 – Presente",
+      "origin": "Dinamarca 🇩🇰",
+      "summary": "O 'Triângulo de Ouro' dinamarquês combina facilidade de contratação e demissão para empresas com seguro-desemprego substancial e políticas ativas e obrigatórias de capacitação profissional financiada pelo Estado.",
+      "highlights": [
+        "Flexicurity: segurança não no posto fixo, mas na renda e empregabilidade contínua",
+        "Tradição de cooperativas agrícolas e fazendas eólicas comunitárias pioneiras",
+        "Menor índice de percepção de corrupção do mundo (Transparência Internacional)",
+        "Mobilidade urbana por bicicleta e meta de neutralidade carbônica antecipada"
+      ],
+      "quote": "A segurança do trabalhador não está em reter o passado, mas em aprender o futuro.",
+      "axes": {
+        "estrutura": -0.15,
+        "representacao": -0.4,
+        "poder": -0.85,
+        "controle": 0.35,
+        "comercio": 0.75,
+        "diplomacia": -0.75,
+        "religiao": -0.85,
+        "moral": -0.8,
+        "intervencao": -0.85,
+        "economia": -0.88,
+        "imigracao": -0.5,
+        "tecnologia": 0.45
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.4,
+          0.5
+        ],
+        "1": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "2": [
+          0.1,
+          0.6,
+          0.3
+        ],
+        "3": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.35,
+          0.5,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "noruega_petroleo",
+      "name": "Noruega (Fundo Soberano e Capitalismo Estatal Democrático)",
+      "subtitle": "Maior fundo soberano do planeta (Oljefondet), Equinor e transição elétrica total",
+      "category": "Europa Nórdica",
+      "era": "1969 – Presente",
+      "origin": "Noruega 🇳🇴",
+      "summary": "Descoberto o petróleo no Mar do Norte em 1969, os noruegueses criaram as 'Dez Ordens do Petróleo' para subordinar a extração aos interesses nacionais, transferindo todo o superávit para o Fundo Governamental de Pensões, investido em mais de 9.000 empresas globais.",
+      "highlights": [
+        "Fundo Soberano com mais de US$ 1,5 trilhão pertencente às futuras gerações",
+        "Regra fiscal (Handlingsregelen) limitando o gasto governamental dos rendimentos a 3%",
+        "Participação majoritária estatal na petrolífera Equinor e hidrelétricas Statkraft",
+        "Liderança mundial em eletrificação veicular e paridade de gênero corporativa"
+      ],
+      "quote": "Os recursos fósseis debaixo da nossa plataforma pertencem tanto aos nossos bisnetos quanto a nós.",
+      "axes": {
+        "estrutura": -0.55,
+        "representacao": -0.45,
+        "poder": -0.8,
+        "controle": -0.2,
+        "comercio": 0.5,
+        "diplomacia": -0.7,
+        "religiao": -0.75,
+        "moral": -0.7,
+        "intervencao": -0.88,
+        "economia": -0.75,
+        "imigracao": -0.55,
+        "tecnologia": 0.4
+      },
+      "triangles": {
+        "0": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.3,
+          0.55,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "holanda_polder",
+      "name": "Holanda (Modelo Pôlder de Concertação e Tolerância)",
+      "subtitle": "Concertação tripartite institucionalizada (SER), pragmatismo cívico e diques históricos",
+      "category": "Europa Ocidental",
+      "era": "1982 – Presente",
+      "origin": "Holanda 🇳🇱",
+      "summary": "Nascido da necessidade secular de cooperação comunitária para manter a terra seca abaixo do nível do mar, o modelo pôlder foi redefinido no Acordo de Wassenaar (1982), unindo sindicatos e empregadores em moderação salarial mútua.",
+      "highlights": [
+        "Conselho Econômico e Social (SER) onde acordos vinculam governo e parceiros",
+        "Pioneirismo em políticas de redução de danos e regulação secular do aborto e eutanásia",
+        "Engenharia costeira de escala mundial (Plano Delta)",
+        "Abertura comercial secular desde a Companhia das Índias Orientais (VOC)"
+      ],
+      "quote": "A água não tem partido; ou cooperamos todos no dique, ou nos afogamos juntos.",
+      "axes": {
+        "estrutura": 0.15,
+        "representacao": -0.35,
+        "poder": -0.85,
+        "controle": 0.4,
+        "comercio": 0.85,
+        "diplomacia": -0.8,
+        "religiao": -0.9,
+        "moral": -0.85,
+        "intervencao": -0.75,
+        "economia": -0.65,
+        "imigracao": -0.4,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.4,
+          0.5
+        ],
+        "1": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "2": [
+          0.1,
+          0.6,
+          0.3
+        ],
+        "3": [
+          0.05,
+          0.15,
+          0.8
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.4,
+          0.4,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "finlandia_educacao",
+      "name": "Finlândia (Educação Universal e Autonomia Pedagógica)",
+      "subtitle": "Valorização absoluta de professores com mestrado, ausência de testes padronizados e defesa",
+      "category": "Europa Nórdica",
+      "era": "1970 – Presente",
+      "origin": "Finlândia 🇫🇮",
+      "summary": "A reforma da escola básica (Peruskoulu) dos anos 1970 estabeleceu um currículo unificado e gratuito para todas as classes sociais, sem rankings públicos, confiando autonomia pedagógica profunda a professores altamente selecionados.",
+      "highlights": [
+        "Escola pública gratuita com refeições quentes, material e saúde bucal incluídos",
+        "Profissão docente disputada no mesmo nível de prestígio que medicina e direito",
+        "Doutrina Sisu de resiliência e modelo de defesa de prontidão civil total",
+        "Pioneira europeia no sufrágio parlamentar feminino irrestrito em 1906"
+      ],
+      "quote": "Educar cada criança até seu pleno potencial é o melhor investimento de segurança de uma nação.",
+      "axes": {
+        "estrutura": -0.35,
+        "representacao": -0.4,
+        "poder": -0.75,
+        "controle": -0.2,
+        "comercio": 0.55,
+        "diplomacia": -0.6,
+        "religiao": -0.7,
+        "moral": -0.7,
+        "intervencao": -0.8,
+        "economia": -0.8,
+        "imigracao": -0.45,
+        "tecnologia": 0.6
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "1": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "2": [
+          0.2,
+          0.55,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.3,
+          0.65
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.35,
+          0.5,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "nova_zelandia_roger",
+      "name": "Nova Zelândia (Reformas Rogernomics e Burocracia Aberta)",
+      "subtitle": "Fim de subsídios agrícolas, metas formais de inflação pelo banco central e transparência",
+      "category": "Oceania",
+      "era": "1984 – Presente",
+      "origin": "Nova Zelândia 🇳🇿",
+      "summary": "Sob o ministro Roger Douglas (Partido Trabalhista), a Nova Zelândia realizou uma das mais radicais liberalizações da OCDE, eliminando subsídios agrários da noite para o dia, criando o modelo mundial de meta de inflação (Reserve Bank Act de 1989) e desregulamentando a burocracia.",
+      "highlights": [
+        "Primeiro banco central do mundo a operar com meta estrita e transparente de inflação",
+        "Agricultura competitiva globalmente sem qualquer subsídio governamental direto",
+        "Tratado de Waitangi formalmente integrado nas políticas públicas de direitos Māori",
+        "Código de responsabilidade fiscal com relatórios públicos pré-eleitorais obrigatórios"
+      ],
+      "quote": "Se a economia precisa de uma operação, faça-a rápida e sem meias medidas protelatórias.",
+      "axes": {
+        "estrutura": 0.55,
+        "representacao": -0.45,
+        "poder": -0.75,
+        "controle": 0.7,
+        "comercio": 0.88,
+        "diplomacia": -0.7,
+        "religiao": -0.85,
+        "moral": -0.75,
+        "intervencao": -0.65,
+        "economia": -0.7,
+        "imigracao": -0.2,
+        "tecnologia": 0.4
+      },
+      "triangles": {
+        "0": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "1": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "2": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.55,
+          0.25,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "irlanda_celtic",
+      "name": "Irlanda (Tigre Céltico e Hub Tecnológico Europeu)",
+      "subtitle": "Imposto de renda corporativo de 12,5%, capital estrangeiro de Big Techs e modernização",
+      "category": "Ilhas Britânicas",
+      "era": "1995 – Presente",
+      "origin": "Irlanda 🇮🇪",
+      "summary": "Superando décadas de emigração em massa e pobreza relativa na Europa, a República da Irlanda atraiu as maiores multinacionais globais de tecnologia e farmacêutica (Apple, Google, Pfizer) com regime fiscal corporativo ultra-atrativo, força de trabalho qualificada e inglês fluente.",
+      "highlights": [
+        "Alíquota de 12,5% sobre lucros de corporações internacionais",
+        "Transformação de país agrário em polo exportador de software e biofármacos",
+        "Casamento homoafetivo e descriminalização do aborto aprovados por referendos populares",
+        "Retorno e atração de talentos de toda a diáspora global irlandesa"
+      ],
+      "quote": "O melhor modo de prever o futuro da nossa ilha é construí-lo abertos ao comércio do mundo.",
+      "axes": {
+        "estrutura": 0.6,
+        "representacao": 0.1,
+        "poder": -0.7,
+        "controle": 0.75,
+        "comercio": 0.9,
+        "diplomacia": -0.7,
+        "religiao": -0.6,
+        "moral": -0.7,
+        "intervencao": -0.5,
+        "economia": -0.4,
+        "imigracao": 0.2,
+        "tecnologia": 0.7
+      },
+      "triangles": {
+        "0": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.2,
+          0.55,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.15,
+          0.8
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.55,
+          0.25,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "espanha_segunda_rep",
+      "name": "Espanha Republicana (Segunda República Espanhola)",
+      "subtitle": "Constituição dos trabalhadores, laicismo estrito, estatutos de autonomia e reforma agrária",
+      "category": "Europa Mediterrânea",
+      "era": "1931 – 1936",
+      "origin": "Espanha 🇪🇸",
+      "summary": "Proclamada democraticamente em 1931, definiu a Espanha como uma 'República democrática de trabalhadores de todas as classes', promovendo educação pública laica massiva, sufrágio feminino de Clara Campoamor e autonomias regionais (Catalunha e País Basco).",
+      "highlights": [
+        "Criação de mais de 10.000 escolas públicas laicas sob o ministro Fernando de los Ríos",
+        "Sufrágio feminino universal conquistado na Carta de 1931",
+        "Estatuto de Autonomia da Catalunha restaurando a Generalitat",
+        "Lei de Reforma Agrária para assentar camponeses no latifúndio andaluz"
+      ],
+      "quote": "A Espanha deixou de ser católica; é agora uma República de cidadãos livres e soberanos.",
+      "axes": {
+        "estrutura": -0.65,
+        "representacao": -0.6,
+        "poder": -0.55,
+        "controle": -0.65,
+        "comercio": -0.25,
+        "diplomacia": -0.6,
+        "religiao": -0.92,
+        "moral": -0.85,
+        "intervencao": -0.6,
+        "economia": -0.3,
+        "imigracao": -0.8,
+        "tecnologia": 0.25
+      },
+      "triangles": {
+        "0": [
+          0.45,
+          0.4,
+          0.15
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.1,
+          0.7,
+          0.2
+        ],
+        "3": [
+          0.05,
+          0.35,
+          0.6
+        ],
+        "4": [
+          0.8,
+          0.15,
+          0.05
+        ],
+        "5": [
+          0.25,
+          0.6,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "espanha_moncloa",
+      "name": "Espanha da Transição (Pactos de Moncloa e Estado das Autonomias)",
+      "subtitle": "Concertação pós-franquista, anistia mútua, monarquia parlamentar e descentralização",
+      "category": "Europa Mediterrânea",
+      "era": "1977 – 1982",
+      "origin": "Espanha 🇪🇸",
+      "summary": "Após a morte de Franco, Adolfo Suárez, Felipe González e Santiago Carrillo pactuaram a transição pacífica para a democracia, controlando a hiperinflação nos Pactos de Moncloa e forjando a Constituição de 1978 com o 'Estado das Autonomias'.",
+      "highlights": [
+        "Pactos de Moncloa (1977) unindo todos os partidos e sindicatos na estabilização de preços",
+        "Legalização do Partido Comunista Espanhol sem retaliações armadas",
+        "Artigo 2º da Constituição de 1978 reconhecendo nacionalidades e regiões históricas",
+        "Entrada posterior na Comunidade Econômica Europeia e modernização cosmopolita"
+      ],
+      "quote": "O futuro não está escrito, porque só o povo pode escrevê-lo na liberdade e na concórdia.",
+      "axes": {
+        "estrutura": -0.15,
+        "representacao": 0.1,
+        "poder": -0.7,
+        "controle": 0.15,
+        "comercio": 0.6,
+        "diplomacia": -0.7,
+        "religiao": -0.55,
+        "moral": -0.6,
+        "intervencao": -0.55,
+        "economia": -0.4,
+        "imigracao": -0.75,
+        "tecnologia": 0.4
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.4,
+          0.4,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "portugal_cravos",
+      "name": "Portugal dos Cravos (Revolução de 25 de Abril)",
+      "subtitle": "Fim do Estado Novo, descolonização na África, reforma agrária alentejana e constituição socialista",
+      "category": "Península Ibérica",
+      "era": "1974 – 1976",
+      "origin": "Portugal 🇵🇹",
+      "summary": "O Movimento das Forças Armadas (MFA) derrubou o salazarismo sem derramamento de sangue com cravos nas armas, encerrando 13 anos de guerras coloniais, estatizando os bancos e inscrevendo no preâmbulo constitucional o 'caminho para uma sociedade socialista'.",
+      "highlights": [
+        "Fim pacífico da mais longa ditadura de direita da Europa Ocidental (48 anos)",
+        "Independência imediata de Angola, Moçambique, Guiné-Bissau, Cabo Verde e São Tomé",
+        "Nacionalização dos grupos econômicos oligárquicos (Champalimaud, CUF)",
+        "Eleição da Assembleia Constituinte de 1975 com 91% de participação popular recorde"
+      ],
+      "quote": "O povo é quem mais ordena, dentro de cada cidade, ó terra da fraternidade.",
+      "axes": {
+        "estrutura": -0.75,
+        "representacao": -0.45,
+        "poder": -0.65,
+        "controle": -0.7,
+        "comercio": -0.3,
+        "diplomacia": -0.7,
+        "religiao": -0.7,
+        "moral": -0.75,
+        "intervencao": -0.6,
+        "economia": -0.35,
+        "imigracao": -0.2,
+        "tecnologia": 0.25
+      },
+      "triangles": {
+        "0": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.65,
+          0.2
+        ],
+        "3": [
+          0.05,
+          0.3,
+          0.65
+        ],
+        "4": [
+          0.75,
+          0.2,
+          0.05
+        ],
+        "5": [
+          0.25,
+          0.6,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "italia_compromesso",
+      "name": "Itália Republicana (Constituição Antifascista e Economia Mista)",
+      "subtitle": "República fundada no trabalho (Artigo 1º), presença do IRI e concertação multipartidária",
+      "category": "Europa Mediterrânea",
+      "era": "1948 – 1992",
+      "origin": "Itália 🇮🇹",
+      "summary": "Forjada no pacto de resistência antifascista entre comunistas, socialistas e democratas-cristãos, a Primeira República italiana combinou parlamentarismo puro, empresas estatais dinâmicas reunidas no IRI (telefonia, siderurgia, Alfa Romeo) e distritos industriais familiares (Made in Italy).",
+      "highlights": [
+        "Artigo 1º: 'A Itália é uma República democrática fundada no trabalho'",
+        "Instituto para a Reconstrução Industrial (IRI) liderando investimentos de capital",
+        "Rede de distritos industriais no Centro-Norte com artesanato avançado de exportação",
+        "Tentativa de 'Compromisso Histórico' de Aldo Moro e Enrico Berlinguer"
+      ],
+      "quote": "A República remove os obstáculos de ordem econômica e social que limitam a liberdade e a igualdade dos cidadãos.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": 0.15,
+        "poder": -0.6,
+        "controle": -0.35,
+        "comercio": 0.5,
+        "diplomacia": -0.65,
+        "religiao": 0.15,
+        "moral": -0.4,
+        "intervencao": -0.45,
+        "economia": -0.35,
+        "imigracao": -0.6,
+        "tecnologia": 0.4
+      },
+      "triangles": {
+        "0": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "1": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "2": [
+          0.35,
+          0.4,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.35,
+          0.45,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "weimar_rep",
+      "name": "República de Weimar (Direitos Sociais e Constitucionalismo)",
+      "subtitle": "Primeira constituição a consagrar direitos sociais e culturais como normas fundamentais",
+      "category": "Europa Central",
+      "era": "1919 – 1933",
+      "origin": "Alemanha 🇩🇪",
+      "summary": "Redigida pelo jurista Hugo Preuss na cidade de Goethe e Schiller, a Constituição de Weimar de 1919 foi o marco pioneiro do constitucionalismo social no mundo ocidental, garantindo direitos trabalhistas, conselhos operários e proteção à família.",
+      "highlights": [
+        "Pioneirismo em constitucionalizar a função social da propriedade e direitos sindicais",
+        "Efervescência cultural sem precedentes (Bauhaus, Expressionismo, Cabaré berlinense)",
+        "Voto proporcional estrito e voto feminino concedidos logo após a queda do Kaiser",
+        "Vulnerabilidade estrutural no Artigo 48 de poderes presidenciais extraordinários"
+      ],
+      "quote": "A vida econômica deve responder aos princípios da justiça com o objetivo de assegurar a todos uma existência digna.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.5,
+        "poder": -0.7,
+        "controle": -0.4,
+        "comercio": 0.1,
+        "diplomacia": -0.55,
+        "religiao": -0.6,
+        "moral": -0.8,
+        "intervencao": -0.65,
+        "economia": -0.2,
+        "imigracao": -0.7,
+        "tecnologia": 0.55
+      },
+      "triangles": {
+        "0": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.65,
+          0.2
+        ],
+        "3": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "4": [
+          0.75,
+          0.2,
+          0.05
+        ],
+        "5": [
+          0.3,
+          0.55,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "viena_vermelha",
+      "name": "Áustria da Viena Vermelha (Rotes Wien)",
+      "subtitle": "Habitação pública municipal em massa (Karl-Marx-Hof), tributação do luxo e medicina preventiva",
+      "category": "Europa Central",
+      "era": "1919 – 1934",
+      "origin": "Áustria 🇦🇹",
+      "summary": "Sob governança do Partido Social-democrata Austríaco (SDAPÖ), a capital vienense financiou com impostos sobre vilas de luxo e automóveis a construção de 60.000 apartamentos públicos com creches, piscinas e bibliotecas gratuitas para a classe trabalhadora.",
+      "highlights": [
+        "Construção de megacomplexos residenciais operários com saneamento e áreas verdes (Karl-Marx-Hof)",
+        "Imposto Breitner sobre o consumo de luxo financiando habitação pública a juro zero",
+        "Cuidados de pré-natal e pediatria domiciliar universais reduzindo a mortalidade infantil pela metade",
+        "Modelo habitacional vigente até hoje com 60% dos vienenses vivendo em imóveis subsidiados"
+      ],
+      "quote": "Erguemos pedras e palácios para o povo operário, onde antes reinava a miséria das águas-furtadas.",
+      "axes": {
+        "estrutura": -0.8,
+        "representacao": -0.55,
+        "poder": -0.6,
+        "controle": -0.8,
+        "comercio": -0.2,
+        "diplomacia": -0.7,
+        "religiao": -0.85,
+        "moral": -0.85,
+        "intervencao": -0.7,
+        "economia": -0.5,
+        "imigracao": -0.75,
+        "tecnologia": 0.45
+      },
+      "triangles": {
+        "0": [
+          0.6,
+          0.35,
+          0.05
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.1,
+          0.7,
+          0.2
+        ],
+        "3": [
+          0.05,
+          0.3,
+          0.65
+        ],
+        "4": [
+          0.8,
+          0.15,
+          0.05
+        ],
+        "5": [
+          0.2,
+          0.7,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "polonia_solidarnosc",
+      "name": "Polônia da Solidarność e Transição Democrática",
+      "subtitle": "Mesa-Redonda de 1989, sindicato católico de massa de Lech Wałęsa e Plano Balcerowicz",
+      "category": "Europa Oriental",
+      "era": "1989 – Presente",
+      "origin": "Polônia 🇵🇱",
+      "summary": "A mobilização do sindicato independente Solidarność nos estaleiros de Gdańsk rompeu o domínio do bloco soviético através das negociações da Mesa-Redonda de 1989. O país aplicou a transição econômica de livre mercado (Plano Balcerowicz) mantendo fortes raízes católicas.",
+      "highlights": [
+        "Primeiro sindicato não comunista reconhecido no bloco oriental (10 milhões de membros)",
+        "Acordo de transição pacífica de poder com eleições semilivres em junho de 1989",
+        "Terapia de choque macroeconômica com privatização e liberalização de preços",
+        "Integração prioritária à OTAN e União Europeia como escudo soberanista"
+      ],
+      "quote": "Não há liberdade sem Solidariedade.",
+      "axes": {
+        "estrutura": 0.45,
+        "representacao": 0.2,
+        "poder": -0.4,
+        "controle": 0.65,
+        "comercio": 0.7,
+        "diplomacia": 0.4,
+        "religiao": 0.75,
+        "moral": 0.5,
+        "intervencao": 0.3,
+        "economia": 0.2,
+        "imigracao": 0.2,
+        "tecnologia": 0.4
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.3,
+          0.6
+        ],
+        "1": [
+          0.45,
+          0.35,
+          0.2
+        ],
+        "2": [
+          0.6,
+          0.2,
+          0.2
+        ],
+        "3": [
+          0.15,
+          0.4,
+          0.45
+        ],
+        "4": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "5": [
+          0.6,
+          0.2,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "republica_tcheca_havel",
+      "name": "República Tcheca (Revolução de Veludo e Vaclav Havel)",
+      "subtitle": "Dissidência pacífica da Carta 77, 'O Poder dos Sem Poder' e transição cívica",
+      "category": "Europa Central",
+      "era": "1989 – 2003",
+      "origin": "República Tcheca 🇨🇿",
+      "summary": "Liderada pelo dramaturgo e dissidente Václav Havel no Fórum Cívico, a Revolução de Veludo depôs o regime totalitário sem disparar um tiro em 1989, restabelecendo a tradição republicana secular e liberal da Checoslováquia de Masaryk.",
+      "highlights": [
+        "Conceito filosófico de 'viver na verdade' contra a mentira institucional do totalitarismo",
+        "Divórcio de Veludo pacífico e consensual entre República Tcheca e Eslováquia em 1993",
+        "Privatização por vouchers de ações corporativas distribuídas diretamente à população",
+        "Sociedade profundamente secularizada e cética de fanatismos dogmáticos"
+      ],
+      "quote": "A esperança não é a convicção de que algo vai dar certo, mas a certeza de que algo faz sentido, independentemente de como resulte.",
+      "axes": {
+        "estrutura": 0.4,
+        "representacao": -0.35,
+        "poder": -0.8,
+        "controle": 0.55,
+        "comercio": 0.7,
+        "diplomacia": -0.6,
+        "religiao": -0.92,
+        "moral": -0.55,
+        "intervencao": -0.6,
+        "economia": -0.4,
+        "imigracao": -0.35,
+        "tecnologia": 0.45
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.2,
+          0.5,
+          0.3
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.55,
+          0.25,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "china_deng",
+      "name": "China de Deng Xiaoping (Socialismo com Características Chinesas)",
+      "subtitle": "Quatro Modernizações, Zonas Econômicas Especiais (Shenzhen) e direção unipartidária",
+      "category": "Ásia Oriental",
+      "era": "1978 – Presente",
+      "origin": "China 🇨🇳",
+      "summary": "Lançada na 3ª Sessão Plenária de 1978 com o lema pragmático 'buscar a verdade a partir dos fatos', a Reforma e Abertura permitiu o empreendedorismo privado e capitais estrangeiros sob controle de estatais estratégicas e liderança do Partido Comunista Chinês.",
+      "highlights": [
+        "Tirou mais de 800 milhões de pessoas da pobreza extrema no maior salto histórico",
+        "Criação das Zonas Econômicas Especiais (SEZ) pioneiras atraindo fábricas do mundo",
+        "Controle estatal estrito da terra, energia, bancos públicos e comunicações",
+        "Manutenção inflexível do monopólio político e segurança de Estado"
+      ],
+      "quote": "Não importa se o gato é branco ou preto, desde que ele cace o rato.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": 0.9,
+        "poder": 0.92,
+        "controle": 0.1,
+        "comercio": 0.45,
+        "diplomacia": 0.4,
+        "religiao": -0.8,
+        "moral": -0.2,
+        "intervencao": 0.85,
+        "economia": 0.3,
+        "imigracao": 0.7,
+        "tecnologia": 0.9
+      },
+      "triangles": {
+        "0": [
+          0.4,
+          0.35,
+          0.25
+        ],
+        "1": [
+          0.1,
+          0.8,
+          0.1
+        ],
+        "2": [
+          0.45,
+          0.4,
+          0.15
+        ],
+        "3": [
+          0.4,
+          0.25,
+          0.35
+        ],
+        "4": [
+          0.1,
+          0.85,
+          0.05
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "vietna_doi_moi",
+      "name": "Vietnã do Đổi Mới (Economia de Mercado Orientada para o Socialismo)",
+      "subtitle": "Fim da coletivização agrária forçada, integração comercial à ASEAN e manufatura global",
+      "category": "Sudeste Asiático",
+      "era": "1986 – Presente",
+      "origin": "Vietnã 🇻🇳",
+      "summary": "Aprovadas no 6º Congresso do Partido Comunista em 1986, as reformas do Đổi Mới (Renovação) reconheceram o direito à posse agrária familiar com a Resolução 10, desmantelaram os controles de preços e transformaram o país em um dos maiores exportadores industriais globais.",
+      "highlights": [
+        "De importador de arroz para um dos líderes globais da produção e exportação de alimentos",
+        "Atração em larga escala de investimentos industriais eletrônicos e têxteis",
+        "Normalização diplomática com antigos adversários (EUA e ASEAN)",
+        "Políticas estatais de saúde pública comunitária e resposta preventiva ágil a epidemias"
+      ],
+      "quote": "Encarar a verdade de frente, avaliar os fatos com precisão e reformar com firmeza.",
+      "axes": {
+        "estrutura": -0.35,
+        "representacao": 0.85,
+        "poder": 0.75,
+        "controle": 0.05,
+        "comercio": 0.6,
+        "diplomacia": -0.2,
+        "religiao": -0.75,
+        "moral": -0.3,
+        "intervencao": 0.75,
+        "economia": 0.2,
+        "imigracao": 0.6,
+        "tecnologia": 0.6
+      },
+      "triangles": {
+        "0": [
+          0.35,
+          0.4,
+          0.25
+        ],
+        "1": [
+          0.15,
+          0.7,
+          0.15
+        ],
+        "2": [
+          0.4,
+          0.4,
+          0.2
+        ],
+        "3": [
+          0.15,
+          0.35,
+          0.5
+        ],
+        "4": [
+          0.15,
+          0.8,
+          0.05
+        ],
+        "5": [
+          0.4,
+          0.4,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "india_nehru",
+      "name": "Índia Nehruviana (Socialismo Fabiano Democrático e Não-Alinhamento)",
+      "subtitle": "Institutos de Tecnologia (IIT), planejamento quinquenal, democracia secular e federalismo linguístico",
+      "category": "Sul da Ásia",
+      "era": "1947 – 1964",
+      "origin": "Índia 🇮🇳",
+      "summary": "Primeiro-ministro da Índia independente, Jawaharlal Nehru instituiu a maior democracia eleitoral do planeta em uma sociedade imensa e diversa, baseando a economia no planejamento estatal e no investimento em ciência e tecnologia para autossuficiência soberana.",
+      "highlights": [
+        "Criação dos renomados Indian Institutes of Technology (IIT) e agência atômica nacional",
+        "Constituição laica de B. R. Ambedkar com reservas legais de vagas para castas oprimidas (Dalits)",
+        "Liderança na Conferência de Bandung (1955) formulando os princípios da coexistência pacífica",
+        "Consolidação de eleições gerais periódicas com sufrágio universal imediato em 1951"
+      ],
+      "quote": "Neste momento em que o mundo dorme, a Índia despertará para a vida e para a liberdade.",
+      "axes": {
+        "estrutura": -0.6,
+        "representacao": 0.25,
+        "poder": -0.55,
+        "controle": -0.65,
+        "comercio": -0.7,
+        "diplomacia": -0.65,
+        "religiao": -0.75,
+        "moral": -0.6,
+        "intervencao": -0.45,
+        "economia": -0.15,
+        "imigracao": -0.7,
+        "tecnologia": 0.65
+      },
+      "triangles": {
+        "0": [
+          0.5,
+          0.4,
+          0.1
+        ],
+        "1": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "2": [
+          0.3,
+          0.5,
+          0.2
+        ],
+        "3": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.35,
+          0.5,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "israel_kibutz",
+      "name": "Israel dos Kibutzim (Socialismo Trabalhista Fundacional)",
+      "subtitle": "Comunas coletivistas agrárias voluntárias, Histadrut e sionismo socialista (Mapai)",
+      "category": "Oriente Médio",
+      "era": "1948 – 1977",
+      "origin": "Israel 🇮🇱",
+      "summary": "Durante as primeiras três décadas do Estado de Israel sob David Ben-Gurion, a federação sindical Histadrut era a maior empregadora do país e operava a principal rede hospitalar (Clalit), enquanto os kibutzim produziam alimentos sob propriedade coletiva e democracia direta.",
+      "highlights": [
+        "Kibutzim: comunas rurais autogestionárias sem propriedade privada interna",
+        "Histadrut operando como sindicato, holding industrial, banco e previdência simultâneos",
+        "Reflorestamento intensivo pelo Fundo Nacional Judaico e tecnologia pioneira de irrigação por gotejamento",
+        "Exército de cidadãos (IDF) baseado em conscrição obrigatória de homens e mulheres"
+      ],
+      "quote": "Em Israel, para ser realista, é preciso acreditar em milagres e trabalhar duro por eles.",
+      "axes": {
+        "estrutura": -0.65,
+        "representacao": 0.35,
+        "poder": -0.15,
+        "controle": -0.55,
+        "comercio": -0.2,
+        "diplomacia": 0.45,
+        "religiao": 0.4,
+        "moral": -0.3,
+        "intervencao": 0.2,
+        "economia": -0.55,
+        "imigracao": 0.3,
+        "tecnologia": 0.7
+      },
+      "triangles": {
+        "0": [
+          0.45,
+          0.4,
+          0.15
+        ],
+        "1": [
+          0.4,
+          0.45,
+          0.15
+        ],
+        "2": [
+          0.45,
+          0.35,
+          0.2
+        ],
+        "3": [
+          0.35,
+          0.4,
+          0.25
+        ],
+        "4": [
+          0.6,
+          0.3,
+          0.1
+        ],
+        "5": [
+          0.3,
+          0.55,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "mexico_cardenas",
+      "name": "México Cardenista (Reforma Agrária e Soberania Energética)",
+      "subtitle": "Nacionalização do petróleo (Pemex), distribuição de terras em Ejidos e educação socialista",
+      "category": "América Latina",
+      "era": "1934 – 1940",
+      "origin": "México 🇲🇽",
+      "summary": "O general Lázaro Cárdenas cumpriu as promessas sociais da Revolução Mexicana de 1910 ao desapropriar 18 milhões de hectares para o sistema de posse comunitária camponesa (Ejido), expropriar companhias petrolíferas anglo-americanas e acolher exilados da República Espanhola.",
+      "highlights": [
+        "Decreto de expropriação petrolífera de 18 de março de 1938 criando a Pemex",
+        "Distribuição de terras aos camponeses pelo Instituto Politécnico Nacional",
+        "Acolhimento generoso a milhares de refugiados republicanos espanhóis e intelectuais",
+        "Organização das massas na Confederação de Trabalhadores do México (CTM)"
+      ],
+      "quote": "O governo revolucionário tem a obrigação moral de converter a terra em fonte de pão e de liberdade para quem a trabalha.",
+      "axes": {
+        "estrutura": -0.75,
+        "representacao": 0.5,
+        "poder": 0.1,
+        "controle": -0.75,
+        "comercio": -0.65,
+        "diplomacia": -0.4,
+        "religiao": -0.8,
+        "moral": -0.6,
+        "intervencao": -0.2,
+        "economia": -0.1,
+        "imigracao": 0.5,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.6,
+          0.3,
+          0.1
+        ],
+        "1": [
+          0.45,
+          0.4,
+          0.15
+        ],
+        "2": [
+          0.25,
+          0.55,
+          0.2
+        ],
+        "3": [
+          0.15,
+          0.45,
+          0.4
+        ],
+        "4": [
+          0.45,
+          0.5,
+          0.05
+        ],
+        "5": [
+          0.25,
+          0.65,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "argentina_peron",
+      "name": "Argentina Peronista (Justicialismo e Terceira Posição)",
+      "subtitle": "Justiça social, soberania política, independência econômica e papel de Eva Perón",
+      "category": "Cone Sul",
+      "era": "1946 – 1955",
+      "origin": "Argentina 🇦🇷",
+      "summary": "Juan Domingo Perón e Evita construíram o movimento político mais influente da história argentina moderna ao institucionalizar a Confederação Geral do Trabalho (CGT), garantir o 13º salário e férias pagas, nacionalizar as ferrovias britânicas e fundar a 'Terceira Posição' internacional.",
+      "highlights": [
+        "Constituição de 1949 consagrando os Direitos do Trabalhador e da Família",
+        "Fundação Eva Perón construindo hospitais, orfanatos e cidades infantis",
+        "Nacionalização do Banco Central argentino e quitação integral da dívida externa em 1952",
+        "Voto feminino alcançado em 1947 por liderança direta de Evita"
+      ],
+      "quote": "Para nós, não há nada mais importante que outro argentino, nem bandeira mais alta que a da Justiça Social.",
+      "axes": {
+        "estrutura": -0.6,
+        "representacao": 0.6,
+        "poder": 0.35,
+        "controle": -0.7,
+        "comercio": -0.75,
+        "diplomacia": 0.4,
+        "religiao": 0.35,
+        "moral": -0.25,
+        "intervencao": 0.2,
+        "economia": 0.25,
+        "imigracao": 0.7,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "1": [
+          0.3,
+          0.55,
+          0.15
+        ],
+        "2": [
+          0.45,
+          0.35,
+          0.2
+        ],
+        "3": [
+          0.2,
+          0.55,
+          0.25
+        ],
+        "4": [
+          0.35,
+          0.6,
+          0.05
+        ],
+        "5": [
+          0.25,
+          0.6,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "bolivia_plurinacional",
+      "name": "Bolívia Plurinacional (Vivir Bien e Descolonização)",
+      "subtitle": "Constituição de 2009, 36 nacionalidades originárias reconhecidas e nacionalização dos hidrocarbonetos",
+      "category": "América Andina",
+      "era": "2006 – 2019",
+      "origin": "Bolívia 🇧🇴",
+      "summary": "Sob a presidência de Evo Morales, a Bolívia redefiniu a República em Estado Plurinacional, garantindo assentos e jurisdição comunitária aos povos indígenas, nacionalizando o gás natural e as telecomunicações e reduzindo a pobreza extrema para menos da metade.",
+      "highlights": [
+        "Carta Magna de 2009 consagrando o princípio filosófico andino do Sumak Kawsay (Vivir Bien)",
+        "Teleférico urbano La Paz-El Alto, a maior rede de transporte por cabo do mundo",
+        "Nacionalização do gás canalizando royalties diretamente para idosos (Renta Dignidad) e crianças",
+        "Bandeira da Wiphala elevada ao estatuto de símbolo oficial do Estado"
+      ],
+      "quote": "Não queremos mais uma pátria onde os donos originários da terra sejam tratados como forasteiros.",
+      "axes": {
+        "estrutura": -0.7,
+        "representacao": -0.5,
+        "poder": -0.3,
+        "controle": -0.7,
+        "comercio": -0.6,
+        "diplomacia": -0.65,
+        "religiao": -0.3,
+        "moral": -0.6,
+        "intervencao": -0.5,
+        "economia": -0.8,
+        "imigracao": -0.75,
+        "tecnologia": 0.15
+      },
+      "triangles": {
+        "0": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "1": [
+          0.5,
+          0.35,
+          0.15
+        ],
+        "2": [
+          0.35,
+          0.45,
+          0.2
+        ],
+        "3": [
+          0.1,
+          0.3,
+          0.6
+        ],
+        "4": [
+          0.65,
+          0.3,
+          0.05
+        ],
+        "5": [
+          0.25,
+          0.65,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "africa_do_sul_mandela",
+      "name": "África do Sul Pós-Apartheid (Nação Arco-Íris)",
+      "subtitle": "Constituição progressista de 1996, Comissão da Verdade e Reconciliação e dessegregação",
+      "category": "África Austral",
+      "era": "1994 – Presente",
+      "origin": "África do Sul 🇿🇦",
+      "summary": "Após 27 anos de prisão política, Nelson Mandela liderou o Congresso Nacional Africano (CNA) na transição pacífica do regime de segregação racial do Apartheid para uma democracia não-racial, guiada pela Comissão de Verdade e Reconciliação do arcebispo Desmond Tutu.",
+      "highlights": [
+        "Constituição de 1996 entre as mais garantistas do mundo, primeira a vetar discriminação por orientação sexual",
+        "Comissão da Verdade e Reconciliação priorizando restauração e testemunho público sobre retaliação",
+        "Eleições livres de abril de 1994 com filas históricas de milhões de cidadãos negros votando pela primeira vez",
+        "Adoção de 11 idiomas oficiais e da filosofia Ubuntu ('eu sou porque nós somos')"
+      ],
+      "quote": "Ninguém nasce odiando outra pessoa pela cor de sua pele. Se podem aprender a odiar, podem ser ensinados a amar.",
+      "axes": {
+        "estrutura": -0.2,
+        "representacao": -0.3,
+        "poder": -0.85,
+        "controle": 0.1,
+        "comercio": 0.45,
+        "diplomacia": -0.75,
+        "religiao": -0.45,
+        "moral": -0.8,
+        "intervencao": -0.82,
+        "economia": -0.5,
+        "imigracao": -0.4,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "1": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "2": [
+          0.15,
+          0.6,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.4,
+          0.45,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "gana_nkrumah",
+      "name": "Gana Pan-Africanista (Kwame Nkrumah)",
+      "subtitle": "Primeira nação subsaariana independente (1957), hidrelétrica de Akosombo e unidade africana",
+      "category": "África Ocidental",
+      "era": "1957 – 1966",
+      "origin": "Gana 🇬🇭",
+      "summary": "Pioneiro da libertação colonial africana, Kwame Nkrumah liderou a independência da Costa do Ouro e promoveu a industrialização acelerada com a barragem de Akosombo, defendendo incansavelmente os Estados Unidos da África contra o neocolonialismo.",
+      "highlights": [
+        "Primeiro país da África negra a conquistar a independência formal do Império Britânico",
+        "Construção da represa de Akosombo criando o Lago Volta para alimentar a fundição de alumínio",
+        "Educação primária e secundária gratuita e universal estabelecida pelo Education Act de 1961",
+        "Fundação da Organização da Unidade Africana (OUA) em Adis Abeba (1963)"
+      ],
+      "quote": "A independência de Gana não terá sentido se não estiver ligada à libertação total de todo o continente africano.",
+      "axes": {
+        "estrutura": -0.65,
+        "representacao": 0.6,
+        "poder": 0.2,
+        "controle": -0.7,
+        "comercio": -0.5,
+        "diplomacia": -0.65,
+        "religiao": -0.5,
+        "moral": -0.55,
+        "intervencao": -0.1,
+        "economia": 0.15,
+        "imigracao": 0.6,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "1": [
+          0.35,
+          0.5,
+          0.15
+        ],
+        "2": [
+          0.3,
+          0.5,
+          0.2
+        ],
+        "3": [
+          0.15,
+          0.25,
+          0.6
+        ],
+        "4": [
+          0.35,
+          0.6,
+          0.05
+        ],
+        "5": [
+          0.3,
+          0.55,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "mauricio_multicultural",
+      "name": "Maurício (Democracia Multicultural e Sucesso Insular)",
+      "subtitle": "Transição da monocultura da cana para finanças e turismo com coesão étnica exemplar",
+      "category": "Oceano Índico",
+      "era": "1968 – Presente",
+      "origin": "Maurício 🇲🇺",
+      "summary": "Mencionada pelo Prêmio Nobel James Meade em 1961 como um caso inviável por superpopulação, a República de Maurício surpreendeu os analistas ao manter democracia parlamentar sólida, educação e saúde gratuitas e harmonização pacífica entre hindus, crioulos, muçulmanos e sino-mauricianos.",
+      "highlights": [
+        "Sistema Best Loser para garantir assentos legislativos a minorias sub-representadas",
+        "Transporte público gratuito para idosos, estudantes e pessoas com deficiência",
+        "Hub financeiro e tecnológico atraindo serviços para o continente africano",
+        "Maior índice de liberdade de imprensa e índice de democracia da África Subsaariana"
+      ],
+      "quote": "Nossa maior riqueza não são os minérios que não temos, mas a inteligência e a convivência fraterna do nosso povo.",
+      "axes": {
+        "estrutura": -0.1,
+        "representacao": -0.35,
+        "poder": -0.7,
+        "controle": 0.35,
+        "comercio": 0.8,
+        "diplomacia": -0.7,
+        "religiao": -0.3,
+        "moral": -0.5,
+        "intervencao": -0.6,
+        "economia": -0.6,
+        "imigracao": -0.2,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.4,
+          0.45
+        ],
+        "1": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "2": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.4,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "ruanda_kagame",
+      "name": "Ruanda Pós-Genocídio (Reconstrução e Tecnocracia de Kagame)",
+      "subtitle": "Proibição da identidade étnica divisiva, Kigali limpa, digitalização e autoritarismo eficiente",
+      "category": "África Oriental",
+      "era": "2000 – Presente",
+      "origin": "Ruanda 🇷🇼",
+      "summary": "Após o genocídio de 1994 que vitimou 800.000 tutsis e hutus moderados, o governo de Paul Kagame unificou o país sob identidade nacional comum, proibindo o tribalismo nas cédulas, transformando Kigali na capital mais limpa do continente com uso intensivo de drones e dados.",
+      "highlights": [
+        "Maior proporção de mulheres no Parlamento do planeta (mais de 60%)",
+        "Tribunais tradicionais Gacaca para julgamento comunitário e reconciliação",
+        "Umuganda: mutirão mensal obrigatório de trabalho comunitário e limpeza pública",
+        "Crescimento econômico robusto acompanhado de vigilância estrita sobre dissidentes"
+      ],
+      "quote": "Não podemos voltar no tempo para evitar as tragédias do passado, mas temos o dever sagrado de reconstruir cada vida.",
+      "axes": {
+        "estrutura": 0.05,
+        "representacao": 0.75,
+        "poder": 0.8,
+        "controle": 0.3,
+        "comercio": 0.65,
+        "diplomacia": -0.1,
+        "religiao": -0.35,
+        "moral": -0.4,
+        "intervencao": 0.7,
+        "economia": -0.7,
+        "imigracao": 0.8,
+        "tecnologia": 0.85
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "1": [
+          0.15,
+          0.75,
+          0.1
+        ],
+        "2": [
+          0.4,
+          0.4,
+          0.2
+        ],
+        "3": [
+          0.15,
+          0.35,
+          0.5
+        ],
+        "4": [
+          0.2,
+          0.75,
+          0.05
+        ],
+        "5": [
+          0.55,
+          0.3,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "estonia_digital",
+      "name": "Estônia Digital (e-Estonia e Administração Pública Sem Papel)",
+      "subtitle": "X-Road, identidade digital criptografada, voto pela internet e e-Residency global",
+      "category": "Países Bálticos",
+      "era": "1991 – Presente",
+      "origin": "Estônia 🇪🇪",
+      "summary": "Ao recuperar sua independência da União Soviética em 1991 sem recursos materiais, a Estônia investiu todas as suas fichas na digitalização radical (Projeto Tiger Leap), tornando 99% dos serviços governamentais disponíveis online 24 horas por dia.",
+      "highlights": [
+        "Plataforma distribuída X-Road conectando dados governamentais sem banco de dados centralizado",
+        "Declaração de imposto de renda e abertura de empresas em menos de 5 minutos pela web",
+        "Voto pela internet (i-Voting) utilizado por quase metade dos eleitores desde 2005",
+        "e-Residency pioneiro permitindo a empreendedores do mundo todo criar empresas na UE"
+      ],
+      "quote": "A burocracia em papel é uma relíquia medieval cara que atrasa a liberdade do cidadão.",
+      "axes": {
+        "estrutura": 0.55,
+        "representacao": -0.4,
+        "poder": -0.7,
+        "controle": 0.75,
+        "comercio": 0.85,
+        "diplomacia": -0.65,
+        "religiao": -0.95,
+        "moral": -0.75,
+        "intervencao": -0.55,
+        "economia": -0.6,
+        "imigracao": -0.2,
+        "tecnologia": 0.95
+      },
+      "triangles": {
+        "0": [
+          0.05,
+          0.3,
+          0.65
+        ],
+        "1": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "2": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "3": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.6,
+          0.25,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "islandia_direta",
+      "name": "Islândia (Democracia Pós-Crise e Energia Geotérmica)",
+      "subtitle": "Revolução das Panelas (2008), processo constituinte por multidões e paridade salarial auditada",
+      "category": "Europa Nórdica",
+      "era": "2008 – Presente",
+      "origin": "Islândia 🇮🇸",
+      "summary": "Após o colapso bancário catastrófico de 2008, os islandeses foram às ruas na 'Revolução dos Panelaços', recusando-se em plebiscito a resgatar dívidas de credores estrangeiros com dinheiro dos contribuintes, redigindo uma proposta constitucional colaborativa e auditando a igualdade de gênero.",
+      "highlights": [
+        "Recusa popular soberana em referendo a pagar a quebra dos bancos Icesave",
+        "Primeiro país do mundo a exigir auditoria empresarial compulsória de paridade salarial por lei",
+        "Matriz elétrica e de aquecimento 100% renovável graças à abundante energia geotérmica e hídrica",
+        "Alþingi: o parlamento contínuo mais antigo do mundo, fundado em 930"
+      ],
+      "quote": "Os bancos que erraram devem quebrar; a sociedade que trabalha deve ser protegida.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.85,
+        "poder": -0.85,
+        "controle": -0.25,
+        "comercio": 0.5,
+        "diplomacia": -0.75,
+        "religiao": -0.9,
+        "moral": -0.88,
+        "intervencao": -0.85,
+        "economia": -0.92,
+        "imigracao": -0.6,
+        "tecnologia": 0.45
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.5,
+          0.35
+        ],
+        "1": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "2": [
+          0.1,
+          0.6,
+          0.3
+        ],
+        "3": [
+          0.0,
+          0.3,
+          0.7
+        ],
+        "4": [
+          0.85,
+          0.1,
+          0.05
+        ],
+        "5": [
+          0.3,
+          0.55,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "canada_trudeau",
+      "name": "Canadá Trudeauista (Carta de Direitos e Multiculturalismo)",
+      "subtitle": "Multiculturalismo oficial pioneiro (1971), Charter of Rights de 1982 e Medicare universal",
+      "category": "América do Norte",
+      "era": "1968 – 1984",
+      "origin": "Canadá 🇨🇦",
+      "summary": "Pierre Elliott Trudeau nacionalizou a constituição canadense desligando-a formalmente do parlamento britânico, consagrou a Carta Canadense de Direitos e Liberdades (1982), instituiu a primeira política oficial de multiculturalismo do mundo e protegeu a saúde pública universal (Medicare).",
+      "highlights": [
+        "Declaração oficial do Multiculturalismo como política de Estado celebrando a diversidade",
+        "Carta Canadense de Direitos e Liberdades com cláusula de limitação proporcional razoável",
+        "Medicare universal financiado pelo governo federal e administrado pelas províncias",
+        "Afirmação do bilinguismo oficial inglês-francês e combate à fragmentação separatista"
+      ],
+      "quote": "O Estado não tem nada que fazer nos quartos dos cidadãos da nação.",
+      "axes": {
+        "estrutura": -0.25,
+        "representacao": 0.15,
+        "poder": -0.75,
+        "controle": -0.15,
+        "comercio": 0.65,
+        "diplomacia": -0.8,
+        "religiao": -0.7,
+        "moral": -0.75,
+        "intervencao": -0.65,
+        "economia": -0.45,
+        "imigracao": -0.65,
+        "tecnologia": 0.45
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.45,
+          0.4
+        ],
+        "1": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "2": [
+          0.15,
+          0.6,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.4,
+          0.45,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "australia_accord",
+      "name": "Austrália do Acordo Hawke-Keating (Reformas Concertadas)",
+      "subtitle": "Superannuation previdenciário compulsório, câmbio flutuante e rede de segurança pública (Medicare)",
+      "category": "Oceania",
+      "era": "1983 – 1996",
+      "origin": "Austrália 🇦🇺",
+      "summary": "O Partido Trabalhista australiano liderado por Bob Hawke e Paul Keating aliou-se ao movimento sindical no 'Prices and Incomes Accord', flutuando o dólar australiano e desregulamentando finanças enquanto criava a poupança previdenciária obrigatória de aposentadoria (Superannuation).",
+      "highlights": [
+        "Superannuation: fundo trilionário de pensões gerido no mercado com contribuição patronal garantida",
+        "Criação do Medicare australiano com acesso médico subsidiado para toda a população",
+        "Reconhecimento pioneiro dos direitos nativos de posse de terra (Caso Mabo de 1992)",
+        "Abertura ao comércio com a Ásia-Pacífico associada a rigoroso desarmamento civil em 1996"
+      ],
+      "quote": "Modernizar não significa esquecer a solidariedade; significa torná-la sustentável a longo prazo.",
+      "axes": {
+        "estrutura": 0.35,
+        "representacao": 0.2,
+        "poder": -0.65,
+        "controle": 0.5,
+        "comercio": 0.85,
+        "diplomacia": -0.65,
+        "religiao": -0.7,
+        "moral": -0.65,
+        "intervencao": -0.45,
+        "economia": -0.35,
+        "imigracao": -0.6,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "1": [
+          0.6,
+          0.3,
+          0.1
+        ],
+        "2": [
+          0.2,
+          0.55,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.5,
+          0.35,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "urss_nep",
+      "name": "União Soviética da NEP (Nova Política Econômica de Lenin)",
+      "subtitle": "Pequeno comércio permitido, imposto em espécie aos camponeses e controle dos comandos estratégicos",
+      "category": "Eurásia",
+      "era": "1921 – 1928",
+      "origin": "União Soviética 🚩",
+      "summary": "Após as agruras da Guerra Civil e do 'Comunismo de Guerra', Vladimir Lenin introduziu a NEP no 10º Congresso do Partido, reintroduzindo o comércio privado e pequenas empresas no campo para recuperar a produção agrícola, enquanto o Estado mantinha o monopólio da indústria pesada e dos bancos.",
+      "highlights": [
+        "Substituição do confisco forçado de grãos por um imposto fixo em espécie (Prodnalog)",
+        "Retomada de pequenos mercados e cooperativas privadas nas cidades (Nepmen)",
+        "Eletrificação nacional planejada pela comissão GOELRO ('comunismo é o poder soviético mais eletrificação')",
+        "Intensa alfabetização popular em massa através do programa Likbez"
+      ],
+      "quote": "Demos um passo atrás para depois darmos dois passos à frente.",
+      "axes": {
+        "estrutura": -0.75,
+        "representacao": 0.7,
+        "poder": 0.65,
+        "controle": -0.6,
+        "comercio": -0.4,
+        "diplomacia": -0.45,
+        "religiao": -0.92,
+        "moral": -0.8,
+        "intervencao": 0.4,
+        "economia": 0.1,
+        "imigracao": 0.4,
+        "tecnologia": 0.65
+      },
+      "triangles": {
+        "0": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "1": [
+          0.2,
+          0.65,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.7,
+          0.15
+        ],
+        "3": [
+          0.25,
+          0.25,
+          0.5
+        ],
+        "4": [
+          0.25,
+          0.7,
+          0.05
+        ],
+        "5": [
+          0.25,
+          0.65,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "urss_khrushchev",
+      "name": "União Soviética do Degelo (Era Nikita Khrushchev)",
+      "subtitle": "Discurso Secreto contra o stalinismo, Corrida Espacial (Sputnik / Gagarin) e moradias Khrushchyovka",
+      "category": "Eurásia",
+      "era": "1953 – 1964",
+      "origin": "União Soviética 🚩",
+      "summary": "No 20º Congresso de 1956, Khrushchev denunciou o culto à personalidade de Stálin e os expurgos do Grande Terror, libertando milhões do Gulag, inaugurando a era espacial com o primeiro satélite e o primeiro homem em órbita e construindo moradias públicas pré-fabricadas.",
+      "highlights": [
+        "Discurso Secreto e desestalinização oficial reabilitando vítimas políticas",
+        "Triunfos pioneiros na exploração espacial com o Sputnik (1957) e Yuri Gagarin (1961)",
+        "Plano Habitacional de massa com apartamentos Khrushchevka gratuitos para famílias operárias",
+        "Doutrina de Coexistência Pacífica com o bloco capitalista"
+      ],
+      "quote": "Os historiadores do futuro devem registrar a verdade, por mais dolorosa e amarga que seja.",
+      "axes": {
+        "estrutura": -0.92,
+        "representacao": 0.75,
+        "poder": 0.45,
+        "controle": -0.92,
+        "comercio": -0.5,
+        "diplomacia": -0.3,
+        "religiao": -0.95,
+        "moral": -0.7,
+        "intervencao": 0.3,
+        "economia": 0.35,
+        "imigracao": 0.55,
+        "tecnologia": 0.85
+      },
+      "triangles": {
+        "0": [
+          0.75,
+          0.2,
+          0.05
+        ],
+        "1": [
+          0.25,
+          0.6,
+          0.15
+        ],
+        "2": [
+          0.2,
+          0.65,
+          0.15
+        ],
+        "3": [
+          0.35,
+          0.25,
+          0.4
+        ],
+        "4": [
+          0.2,
+          0.75,
+          0.05
+        ],
+        "5": [
+          0.15,
+          0.75,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "cuba_revolucionaria",
+      "name": "Cuba Revolucionária (Fidel Castro e Medicina Preventiva)",
+      "subtitle": "Erradicação do analfabetismo em um ano, brigadas médicas internacionais e soberania anti-embargo",
+      "category": "Caribe",
+      "era": "1959 – Presente",
+      "origin": "Cuba 🇨🇺",
+      "summary": "A revolução de 1959 liderada pelo Movimento 26 de Julho derrubou a ditadura de Fulgencio Batista, implantando um modelo socialista com índices exemplares de expectativa de vida e alfabetização, medicina familiar territorial e resistência geopolítica a mais de seis décadas de embargo econômico dos EUA.",
+      "highlights": [
+        "Campanha de Alfabetização de 1961 mobilizando 250.000 voluntários e erradicando o analfabetismo",
+        "Envio contínuo de missões de médicos cubanos para centenas de países em crises humanitárias",
+        "Desenvolvimento autônomo de vacinas biotecnológicas pioneiras contra hepatite e Covid-19",
+        "Monopólio de Estado do comércio exterior e restrições prolongadas à oposição política"
+      ],
+      "quote": "Um povo instruído será sempre livre; um povo que compartilha o que tem não teme o futuro.",
+      "axes": {
+        "estrutura": -0.92,
+        "representacao": 0.7,
+        "poder": 0.6,
+        "controle": -0.88,
+        "comercio": -0.6,
+        "diplomacia": -0.4,
+        "religiao": -0.7,
+        "moral": -0.65,
+        "intervencao": 0.3,
+        "economia": -0.75,
+        "imigracao": 0.5,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.75,
+          0.2,
+          0.05
+        ],
+        "1": [
+          0.25,
+          0.65,
+          0.1
+        ],
+        "2": [
+          0.2,
+          0.65,
+          0.15
+        ],
+        "3": [
+          0.2,
+          0.35,
+          0.45
+        ],
+        "4": [
+          0.25,
+          0.7,
+          0.05
+        ],
+        "5": [
+          0.15,
+          0.75,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "iran_constitucional",
+      "name": "Irã da Revolução Constitucional Persa",
+      "subtitle": "Primeiro parlamento do Oriente Médio (Majlis de 1906), carta de direitos e limitação ao Xá",
+      "category": "Oriente Médio",
+      "era": "1905 – 1911",
+      "origin": "Irã 🇮🇷",
+      "summary": "A aliança entre intelectuais seculares reformistas, comerciantes do Bazar e clérigos xiitas forçou Mozaffar al-Din Shah Qajar a assinar a primeira constituição do Irã em 1906, fundando a Assembleia Consultiva Nacional (Majlis) para limitar o absolutismo monárquico e as concessões imperialistas britânicas e russas.",
+      "highlights": [
+        "Fundação do Majlis como primeiro parlamento constitucional representativo do Oriente Médio",
+        "Lei Fundamental de 1906 garantindo igualdade perante a lei e liberdade de imprensa incipiente",
+        "Participação das Sociedades Secretas femininas (Anjoman) na defesa das liberdades civis",
+        "Resistência heróica de Sattar Khan em Tabriz contra o bombardeio czarista ao parlamento"
+      ],
+      "quote": "Não somos escravos de déspotas estrangeiros nem de tiranos da nossa própria terra.",
+      "axes": {
+        "estrutura": 0.1,
+        "representacao": -0.45,
+        "poder": -0.5,
+        "controle": 0.2,
+        "comercio": -0.3,
+        "diplomacia": 0.3,
+        "religiao": 0.45,
+        "moral": -0.35,
+        "intervencao": -0.2,
+        "economia": -0.1,
+        "imigracao": -0.4,
+        "tecnologia": 0.2
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "1": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "2": [
+          0.45,
+          0.35,
+          0.2
+        ],
+        "3": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "4": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "turquia_ataturk",
+      "name": "Turquia Kemalizada (Reformas de Mustafa Kemal Atatürk)",
+      "subtitle": "As Seis Flechas do Kemalismo: republicanismo, laicismo estrito, reformas de alfabeto e vestuário",
+      "category": "Eurásia",
+      "era": "1923 – 1938",
+      "origin": "Turquia 🇹🇷",
+      "summary": "Após repelir a partição imperialista do Império Otomano na Guerra de Independência, Mustafa Kemal Atatürk fundou a República da Turquia, aboliu o Califado islâmico, adotou o alfabeto latino, introduziu o Código Civil suíço e concedeu plenos direitos civis e eleitorais às mulheres turcas.",
+      "highlights": [
+        "Abolição do Califado e secularização estrita do judiciário e do sistema de ensino",
+        "Substituição do alfabeto árabe pelo latino em 1928 com escolas públicas abertas à população adulta",
+        "Direito de voto e elegibilidade às mulheres concedidos em 1934, antes de França e Suíça",
+        "Estatismo econômico pragmático construindo ferrovias, fiações têxteis e siderúrgicas"
+      ],
+      "quote": "Paz em casa, paz no mundo.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": 0.65,
+        "poder": 0.35,
+        "controle": -0.4,
+        "comercio": -0.25,
+        "diplomacia": 0.1,
+        "religiao": -0.92,
+        "moral": -0.8,
+        "intervencao": 0.4,
+        "economia": 0.0,
+        "imigracao": 0.8,
+        "tecnologia": 0.65
+      },
+      "triangles": {
+        "0": [
+          0.4,
+          0.4,
+          0.2
+        ],
+        "1": [
+          0.35,
+          0.5,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.7,
+          0.15
+        ],
+        "3": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "4": [
+          0.35,
+          0.6,
+          0.05
+        ],
+        "5": [
+          0.4,
+          0.4,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "tunisia_primavera",
+      "name": "Tunísia da Primavera Árabe (Transição Democrática e Diálogo Nacional)",
+      "subtitle": "Revolução de Jasmim de 2011, Constituição de 2014 e Nobel da Paz ao Quarteto",
+      "category": "Norte da África",
+      "era": "2011 – 2019",
+      "origin": "Tunísia 🇹🇳",
+      "summary": "O autoimolação do feirante Mohamed Bouazizi desencadeou a Revolução de Jasmim, depôs o ditador Ben Ali e inaugurou a Primavera Árabe. Enquanto outros países caíram em guerras civis, a Tunísia forjou uma constituição pluralista em 2014 graças ao pacto entre islamistas moderados (Ennahda) e seculares.",
+      "highlights": [
+        "Quarteto do Diálogo Nacional Tunisiado laureado com o Prêmio Nobel da Paz em 2015",
+        "Constituição de 2014 com igualdade de gênero sem precedentes no mundo árabe",
+        "Comissão de Verdade e Dignidade ouvindo dezenas de milhares de vítimas de tortura e desvio de verbas",
+        "Alternância pacífica de governos por urnas transparentes durante uma década"
+      ],
+      "quote": "Se um dia o povo quiser a vida, o destino terá que responder, a noite terá que se dissipar e as correntes terão que se quebrar.",
+      "axes": {
+        "estrutura": -0.15,
+        "representacao": -0.4,
+        "poder": -0.65,
+        "controle": 0.1,
+        "comercio": 0.4,
+        "diplomacia": -0.55,
+        "religiao": -0.15,
+        "moral": -0.55,
+        "intervencao": -0.5,
+        "economia": -0.35,
+        "imigracao": -0.4,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "3": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.4,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "butao_fib",
+      "name": "Butão (Felicidade Interna Bruta e Reino Budista)",
+      "subtitle": "Felicidade Interna Bruta (FIB) prioritária sobre o PIB, carbono negativo e preservação das florestas",
+      "category": "Himalaia",
+      "era": "1972 – Presente",
+      "origin": "Butão 🇧🇹",
+      "summary": "O rei Jigme Singye Wangchuck postulou que a 'Felicidade Interna Bruta é mais importante que o Produto Interno Bruto', estabelecendo quatro pilares: desenvolvimento socioeconômico sustentável, conservação ambiental (60% de florestas obrigatórias na Constituição), preservação da cultura e boa governança.",
+      "highlights": [
+        "Único país do mundo que absorve mais dióxido de carbono do que emite (carbono negativo)",
+        "Índice de FIB medido por pesquisa científica em nove domínios multidimensionais",
+        "Transição voluntária da monarquia absoluta para monarquia parlamentar constitucional iniciada pelo próprio rei",
+        "Proibição de publicidade comercial agressiva e política de turismo de alto valor e baixo impacto"
+      ],
+      "quote": "O verdadeiro desenvolvimento humano deve equilibrar as necessidades materiais do corpo com as aspirações espirituais da mente.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": 0.1,
+        "poder": -0.3,
+        "controle": -0.35,
+        "comercio": -0.6,
+        "diplomacia": 0.4,
+        "religiao": 0.85,
+        "moral": 0.65,
+        "intervencao": -0.5,
+        "economia": -0.98,
+        "imigracao": -0.2,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.35,
+          0.45,
+          0.2
+        ],
+        "1": [
+          0.45,
+          0.35,
+          0.2
+        ],
+        "2": [
+          0.7,
+          0.15,
+          0.15
+        ],
+        "3": [
+          0.05,
+          0.75,
+          0.2
+        ],
+        "4": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "5": [
+          0.35,
+          0.45,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "liechtenstein_secessao",
+      "name": "Liechtenstein (Monarquia com Direitos Amplos de Secessão)",
+      "subtitle": "Direito constitucional de secessão de cada município, tributação ultra-competitiva e sem dívida",
+      "category": "Europa Central",
+      "era": "1921 – Presente",
+      "origin": "Liechtenstein 🇱🇮",
+      "summary": "O principado alpino entre a Suíça e a Áustria combina um Príncipe com poderes executivos substantivos com o mais descentralizado direito de secessão do mundo: o Artigo 4º da Constituição de 2003 garante que cada uma das 11 comunas pode votar para se separar do Estado.",
+      "highlights": [
+        "Direito municipal explícito de secessão e dissolução da federação na Carta Magna",
+        "Dívida pública zero e fundos soberanos cobrindo múltiplos orçamentos nacionais",
+        "Mais empresas registradas no país do que habitantes (polo de manufatura de precisão)",
+        "Abolição das forças armadas em 1868 sem retorno"
+      ],
+      "quote": "O Estado deve existir para servir o indivíduo, e não o indivíduo para servir o Estado.",
+      "axes": {
+        "estrutura": 0.75,
+        "representacao": 0.1,
+        "poder": -0.6,
+        "controle": 0.82,
+        "comercio": 0.85,
+        "diplomacia": 0.45,
+        "religiao": 0.4,
+        "moral": 0.2,
+        "intervencao": -0.35,
+        "economia": -0.4,
+        "imigracao": -0.9,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "3": [
+          0.05,
+          0.65,
+          0.3
+        ],
+        "4": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "5": [
+          0.7,
+          0.1,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "san_marino_republica",
+      "name": "San Marino (A Mais Antiga República Constitucional do Mundo)",
+      "subtitle": "Fundada por São Marinho em 301, capitães-regentes diárquicos com mandatos de 6 meses e neutralidade",
+      "category": "Península Itálica",
+      "era": "301 – Presente",
+      "origin": "San Marino 🇸🇲",
+      "summary": "Fundada segundo a tradição no ano 301 por um canteiro cristão fugitivo da perseguição de Diocleciano, San Marino manteve sua independência republicana intacta por mais de 17 séculos através de uma diarquia consular de dois Capitães-Regentes eleitos a cada semestre e do Arengo cívico.",
+      "highlights": [
+        "Estatutos de 1600 operando como base contínua de direito constitucional republicano",
+        "Dois chefes de Estado (Capitani Reggenti) governando conjuntamente por apenas 6 meses",
+        "Asilo histórico concedido a Giuseppe Garibaldi e a 100.000 refugiados durante a Segunda Guerra Mundial",
+        "Democracia direta ativa através da assembleia popular de chefes de família (Arengo)"
+      ],
+      "quote": "Relinquo vos liberos ab utroque homine (Deixo-vos livres de ambos os homens: do Imperador e do Papa).",
+      "axes": {
+        "estrutura": 0.15,
+        "representacao": -0.7,
+        "poder": -0.75,
+        "controle": 0.25,
+        "comercio": 0.55,
+        "diplomacia": 0.2,
+        "religiao": 0.15,
+        "moral": -0.3,
+        "intervencao": -0.65,
+        "economia": -0.45,
+        "imigracao": -0.8,
+        "tecnologia": 0.3
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.4,
+          0.45
+        ],
+        "1": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "2": [
+          0.4,
+          0.35,
+          0.25
+        ],
+        "3": [
+          0.0,
+          0.6,
+          0.4
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "grecia_atenas",
+      "name": "Grécia Clássica (Democracia Direta Ateniense)",
+      "subtitle": "Eclésia de cidadãos, sorteio de magistrados (Kleroterion) e ostracismo cívico",
+      "category": "Antiguidade Clássica",
+      "era": "508 a.C. – 322 a.C.",
+      "origin": "Grécia 🇬🇷",
+      "summary": "As reformas de Clístenes e a liderança de Péricles inauguraram a primeira democracia da história humana, na qual a soberania era exercida diretamente na Eclésia por todos os cidadãos masculinos livres, com a maioria das magistraturas preenchidas por sorteio cívico e remuneração pelo dever público (Mistoforia).",
+      "highlights": [
+        "Democracia direta sem representantes: deliberação soberana aberta na colina da Pnyx",
+        "Sorteio aleatório (sortição) para a maior parte dos cargos administrativos da Bulé",
+        "Instituto do Ostracismo para banir temporariamente qualquer líder com ambições tirânicas",
+        "Florescimento sem igual da filosofia, teatro trágico e retórica clássica"
+      ],
+      "quote": "Consideramos um cidadão que não toma parte na vida pública não como alguém pacífico, mas como alguém inútil.",
+      "axes": {
+        "estrutura": -0.2,
+        "representacao": -0.98,
+        "poder": -0.5,
+        "controle": -0.15,
+        "comercio": 0.6,
+        "diplomacia": 0.5,
+        "religiao": 0.45,
+        "moral": -0.5,
+        "intervencao": 0.1,
+        "economia": 0.1,
+        "imigracao": -0.85,
+        "tecnologia": 0.2
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.4,
+          0.35
+        ],
+        "1": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "2": [
+          0.4,
+          0.4,
+          0.2
+        ],
+        "3": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "4": [
+          0.9,
+          0.05,
+          0.05
+        ],
+        "5": [
+          0.5,
+          0.35,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "roma_republicana",
+      "name": "República Romana (Senatus Populusque Romanus - SPQR)",
+      "subtitle": "Freios e contrapesos consulares, tribunato da plebe com poder de veto e Lei das Doze Tábuas",
+      "category": "Antiguidade Clássica",
+      "era": "509 a.C. – 27 a.C.",
+      "origin": "Roma Antiga 🏛️",
+      "summary": "Após a expulsão do tirano Tarquínio, Roma forjou a constituição mista elogiada por Políbio e Cícero, combinando a monarquia (Consulado anual), a aristocracia (Senado) e a democracia (Comícios e Tribunos da Plebe invioláveis com poder de veto).",
+      "highlights": [
+        "Conceito fundamental de Res Publica (a coisa pública pertencente à comunidade cívica)",
+        "Poder de veto (intercessio) e sacrossantidade dos Tribunos da Plebe em defesa dos plebeus",
+        "Codificação escrita e pública dos direitos na Lei das Doze Tábuas",
+        "Cidadania jurídica progressiva estendida aos povos aliados na península itálica"
+      ],
+      "quote": "Salus populi suprema lex esto (O bem-estar do povo deve ser a lei suprema).",
+      "axes": {
+        "estrutura": 0.45,
+        "representacao": 0.3,
+        "poder": -0.3,
+        "controle": 0.45,
+        "comercio": 0.55,
+        "diplomacia": 0.85,
+        "religiao": 0.55,
+        "moral": 0.3,
+        "intervencao": 0.5,
+        "economia": 0.2,
+        "imigracao": 0.4,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.35,
+          0.5
+        ],
+        "1": [
+          0.4,
+          0.45,
+          0.15
+        ],
+        "2": [
+          0.55,
+          0.25,
+          0.2
+        ],
+        "3": [
+          0.7,
+          0.15,
+          0.15
+        ],
+        "4": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "5": [
+          0.6,
+          0.15,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": "veneza_serenissima",
+      "name": "Sereníssima República de Veneza (Estabilidade Mercantil Oligárquica)",
+      "subtitle": "Doge vitalício eleito por sorteio escalonado, comércio marítimo das especiarias e Arsenale estatal",
+      "category": "Idade Média e Renascimento",
+      "era": "697 – 1797",
+      "origin": "Veneza 🛶",
+      "summary": "Sobrevivendo por mais de um milênio sem golpes nem déspotas hereditários, Veneza estabeleceu o mais sofisticado sistema eleitoral antifaccional da história no Maggior Consiglio, impulsionado pelo estaleiro estatal mecanizado do Arsenale e monopólio das rotas do Levante.",
+      "highlights": [
+        "Sistema eleitoral do Doge combinando 10 rodadas alternadas de votação e sorteio aleatório",
+        "Arsenale di Venezia: o maior complexo industrial e manufatura de navios em linha da era pré-industrial",
+        "Conselho dos Dez mantendo rigorosa inteligência de Estado e combate à corrupção interna",
+        "Moeda internacional de referência estável (Ducado veneziano em ouro puro)"
+      ],
+      "quote": "A soberania de Veneza repousa sobre a justiça das leis e o domínio dos mares.",
+      "axes": {
+        "estrutura": 0.2,
+        "representacao": 0.7,
+        "poder": 0.2,
+        "controle": 0.5,
+        "comercio": 0.88,
+        "diplomacia": 0.4,
+        "religiao": 0.1,
+        "moral": 0.1,
+        "intervencao": 0.45,
+        "economia": -0.3,
+        "imigracao": 0.5,
+        "tecnologia": 0.6
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "1": [
+          0.35,
+          0.5,
+          0.15
+        ],
+        "2": [
+          0.5,
+          0.25,
+          0.25
+        ],
+        "3": [
+          0.35,
+          0.25,
+          0.4
+        ],
+        "4": [
+          0.25,
+          0.65,
+          0.1
+        ],
+        "5": [
+          0.6,
+          0.15,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": "florenca_maquiavel",
+      "name": "República Florentina (Humanismo Cívico e Maquiavel)",
+      "subtitle": "Signoria de corporações de ofício (Arti), chancelaria de Maquiavel e milícia cidadã",
+      "category": "Idade Média e Renascimento",
+      "era": "1494 – 1512",
+      "origin": "Florença ⚜️",
+      "summary": "Após a expulsão dos Médici e a queda de Savonarola, Florença reestabeleceu a república cívica descrita por Nicolau Maquiavel (secretário da Segunda Chancelaria), valorizando a virtù republicana dos cidadãos em armas contra mercenários estrangeiros.",
+      "highlights": [
+        "Criação da milícia cidadã nativa recrutada no campo por Maquiavel",
+        "Conselho Maior colegiado com representação de guildas maiores e menores",
+        "Berço esplêndido da Renascença humanista (Leonardo da Vinci, Michelangelo, Botticelli)",
+        "Ponderação permanente entre o 'humor dos grandes' e o 'humor do povo'"
+      ],
+      "quote": "Os que condenam os conflitos entre os nobres e o povo condenam as próprias causas pelas quais Roma se manteve livre.",
+      "axes": {
+        "estrutura": 0.25,
+        "representacao": -0.35,
+        "poder": -0.4,
+        "controle": 0.4,
+        "comercio": 0.65,
+        "diplomacia": 0.35,
+        "religiao": 0.0,
+        "moral": -0.45,
+        "intervencao": 0.15,
+        "economia": -0.1,
+        "imigracao": -0.5,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.4,
+          0.45
+        ],
+        "1": [
+          0.5,
+          0.35,
+          0.15
+        ],
+        "2": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "3": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "4": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "5": [
+          0.5,
+          0.3,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "eua_reagan",
+      "name": "Estados Unidos (Revolução Conservadora de Ronald Reagan)",
+      "subtitle": "Supply-side economics, corte de impostos (ERTA 1981), rearmamento militar e desregulamentação",
+      "category": "América do Norte",
+      "era": "1981 – 1989",
+      "origin": "Estados Unidos 🇺🇸",
+      "summary": "Sob o slogan 'o governo não é a solução para o nosso problema; o governo é o problema', Ronald Reagan redefiniu o conservadorismo americano, reduzindo a alíquota máxima do imposto de renda de 70% para 28%, acelerando a desregulamentação e liderando a Iniciativa de Defesa Estratégica na Guerra Fria.",
+      "highlights": [
+        "Economic Recovery Tax Act (1981) e reforma tributária simplificadora de 1986",
+        "Doutrina Reagan de apoio militar a insurgências anticomunistas no globo",
+        "Déficits orçamentários multiplicados por investimentos em defesa e corrida armamentista",
+        "Demitir 11.000 controladores de tráfego aéreo grevistas (PATCO) em afirmação da autoridade presidencial"
+      ],
+      "quote": "As nove palavras mais aterrorizantes da língua inglesa são: 'Eu sou do governo e estou aqui para ajudar'.",
+      "axes": {
+        "estrutura": 0.9,
+        "representacao": 0.45,
+        "poder": 0.3,
+        "controle": 0.92,
+        "comercio": 0.6,
+        "diplomacia": 0.7,
+        "religiao": 0.65,
+        "moral": 0.55,
+        "intervencao": 0.75,
+        "economia": 0.65,
+        "imigracao": -0.6,
+        "tecnologia": 0.6
+      },
+      "triangles": {
+        "0": [
+          0.05,
+          0.15,
+          0.8
+        ],
+        "1": [
+          0.35,
+          0.5,
+          0.15
+        ],
+        "2": [
+          0.55,
+          0.15,
+          0.3
+        ],
+        "3": [
+          0.45,
+          0.2,
+          0.35
+        ],
+        "4": [
+          0.35,
+          0.35,
+          0.3
+        ],
+        "5": [
+          0.75,
+          0.05,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "franca_frente_popular",
+      "name": "França da Frente Popular (Léon Blum)",
+      "subtitle": "Acordos de Matignon de 1936: férias remuneradas de 15 dias, semana de 40 horas e cultura para todos",
+      "category": "Europa Ocidental",
+      "era": "1936 – 1938",
+      "origin": "França 🇫🇷",
+      "summary": "A vitória da aliança entre socialistas, comunistas e radicais liderada por Léon Blum respondeu à onda de greves operárias com os históricos Acordos de Matignon, concedendo pela primeira vez férias pagas aos trabalhadores franceses e democratizando os teatros e museus.",
+      "highlights": [
+        "Criação das férias remuneradas obrigatórias permitindo que operários vissem o mar pela primeira vez",
+        "Instituição da semana de trabalho de 40 horas sem redução de salário",
+        "Nacionalização das indústrias de armamentos e criação da ferrovia nacional SNCF",
+        "Subsecretaria de Lazer e Esportes promovendo o albergue da juventude e cultura proletária"
+      ],
+      "quote": "Não fomos eleitos para gerir a miséria, mas para arrancar do destino alguns raios de esperança humana.",
+      "axes": {
+        "estrutura": -0.65,
+        "representacao": -0.3,
+        "poder": -0.65,
+        "controle": -0.7,
+        "comercio": -0.35,
+        "diplomacia": -0.6,
+        "religiao": -0.85,
+        "moral": -0.8,
+        "intervencao": -0.65,
+        "economia": -0.2,
+        "imigracao": 0.3,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.45,
+          0.45,
+          0.1
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.65,
+          0.2
+        ],
+        "3": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "4": [
+          0.75,
+          0.2,
+          0.05
+        ],
+        "5": [
+          0.25,
+          0.6,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "portugal_pombal",
+      "name": "Portugal Pombalino (Iluminismo Despótico do Marquês de Pombal)",
+      "subtitle": "Reconstrução sísmica de Lisboa (1755), expulsão dos Jesuítas e Companhias de Comércio das Índias",
+      "category": "Península Ibérica",
+      "era": "1750 – 1777",
+      "origin": "Portugal 🇵🇹",
+      "summary": "O primeiro-ministro Sebastião José de Carvalho e Melo governou com mão de ferro sob Dom José I, reconstruindo a Baixa de Lisboa com tecnologia antissísmica inovadora após o terremoto de 1755, reformando a Universidade de Coimbra com cátedras de ciências experimentais e centralizando a Coroa.",
+      "highlights": [
+        "Reconstrução planejada de Lisboa em malha geométrica com a 'Gaiola Pombalina' pioneira",
+        "Extinção dos 'cristãos-novos' e abolição formal da escravidão no Portugal continental em 1761",
+        "Expulsão da Companhia de Jesus e secularização profunda da administração do Império",
+        "Criação da Real Companhia Geral da Agricultura das Vinhas do Alto Douro para regular o Vinho do Porto"
+      ],
+      "quote": "Enterrar os mortos, cuidar dos vivos e fechar os portos.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": 0.95,
+        "poder": 0.75,
+        "controle": -0.4,
+        "comercio": -0.45,
+        "diplomacia": 0.35,
+        "religiao": -0.7,
+        "moral": -0.4,
+        "intervencao": 0.7,
+        "economia": 0.1,
+        "imigracao": 0.9,
+        "tecnologia": 0.7
+      },
+      "triangles": {
+        "0": [
+          0.45,
+          0.4,
+          0.15
+        ],
+        "1": [
+          0.2,
+          0.65,
+          0.15
+        ],
+        "2": [
+          0.4,
+          0.45,
+          0.15
+        ],
+        "3": [
+          0.35,
+          0.35,
+          0.3
+        ],
+        "4": [
+          0.05,
+          0.9,
+          0.05
+        ],
+        "5": [
+          0.4,
+          0.4,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "mexico_zapata_comuna",
+      "name": "México Zapatista (Comuna de Morelos e Exército Libertador do Sul)",
+      "subtitle": "Terra e Liberdade, Plano de Ayala de 1911, assembleias aldeãs comunitárias e soberania do milho",
+      "category": "América Latina",
+      "era": "1911 – 1919",
+      "origin": "México 🇲🇽",
+      "summary": "Liderados por Emiliano Zapata, os camponeses indígenas de Morelos desapropriaram os latifúndios de cana-de-açúcar dos 'hacendados', redistribuindo os títulos ancestrais às aldeias e administrando a produção agrícola por assembleias comunitárias diretas.",
+      "highlights": [
+        "Plano de Ayala consagrando o lema histórico 'A terra é de quem a trabalha'",
+        "Abolição dos guardas rurais privados e gestão das terras por conselhos locais indígenas",
+        "Banco de Crédito Agrícola operado pelos próprios camponeses em Morelos",
+        "Inspiração direta para o levante do EZLN em Chiapas em 1994"
+      ],
+      "quote": "Prefiro morrer de pé a viver de joelhos.",
+      "axes": {
+        "estrutura": -0.92,
+        "representacao": -0.95,
+        "poder": -0.7,
+        "controle": -0.8,
+        "comercio": -0.65,
+        "diplomacia": 0.2,
+        "religiao": 0.45,
+        "moral": -0.4,
+        "intervencao": -0.6,
+        "economia": -0.75,
+        "imigracao": -0.95,
+        "tecnologia": -0.2
+      },
+      "triangles": {
+        "0": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.4,
+          0.35,
+          0.25
+        ],
+        "3": [
+          0.0,
+          0.7,
+          0.3
+        ],
+        "4": [
+          0.85,
+          0.05,
+          0.1
+        ],
+        "5": [
+          0.2,
+          0.7,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "chile_concertacion",
+      "name": "Chile da Concertación (Pós-Pinochet e Crescimento com Equidade)",
+      "subtitle": "Plebiscito do 'NO' de 1988, estabilidade macroeconômica, redução da pobreza e reformas constitucionais",
+      "category": "América Latina",
+      "era": "1990 – 2010",
+      "origin": "Chile 🇨🇱",
+      "summary": "A coalizão democrática de centro-esquerda governou o Chile por 20 anos contínuos (Aylwin, Frei, Lagos, Bachelet), preservando a disciplina fiscal e abertura comercial externa enquanto triplicava o orçamento social, retirando milhões da pobreza extrema.",
+      "highlights": [
+        "Vitória cívica no Plebiscito de 1988 encerrando 17 anos da ditadura Pinochet",
+        "Comissão Rettig e Comissão Valech investigando e reparando violações de direitos humanos",
+        "Tratados de livre comércio com as maiores economias do Pacífico e da Europa",
+        "Reforma constitucional de 2005 eliminando senadores vitalícios designados pelas Forças Armadas"
+      ],
+      "quote": "A alegria já vem. O Chile precisa da justiça e do rigor econômico para reconciliar sua gente.",
+      "axes": {
+        "estrutura": 0.45,
+        "representacao": 0.2,
+        "poder": -0.65,
+        "controle": 0.55,
+        "comercio": 0.9,
+        "diplomacia": -0.65,
+        "religiao": -0.45,
+        "moral": -0.55,
+        "intervencao": -0.55,
+        "economia": -0.35,
+        "imigracao": 0.45,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.5,
+          0.35,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "colombia_acordo_paz",
+      "name": "Colômbia dos Acordos de Paz (Santos e Justiça Transicional JEP)",
+      "subtitle": "Desmobilização das FARC em Havana (2016), Jurisdição Especial para a Paz e reparação às vítimas",
+      "category": "América Andina",
+      "era": "2016 – Presente",
+      "origin": "Colômbia 🇨🇴",
+      "summary": "O Acordo Final de Havana encerrou mais de cinco décadas de conflito armado com a maior guerrilha do continente, criando o modelo internacional de Jurisdição Especial para a Paz (JEP), desarmando 13.000 combatentes e priorizando a verdade e reintegração rural.",
+      "highlights": [
+        "Entrega e destruição de mais de 9.000 armas das FARC supervisionadas pela ONU",
+        "Jurisdição Especial para a Paz (JEP) condicionando penas restaurativas à confissão sincera da verdade",
+        "Reforma Rural Integral para substituir lavouras de coca por cacau e café comunitários",
+        "Nobel da Paz concedido em 2016 pelo êxito diplomático após meio século de guerra"
+      ],
+      "quote": "A paz não é o ponto de chegada; é o ponto de partida para construirmos uma sociedade justa.",
+      "axes": {
+        "estrutura": 0.2,
+        "representacao": -0.15,
+        "poder": -0.7,
+        "controle": 0.3,
+        "comercio": 0.65,
+        "diplomacia": -0.75,
+        "religiao": 0.1,
+        "moral": -0.55,
+        "intervencao": -0.75,
+        "economia": -0.6,
+        "imigracao": -0.4,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.4,
+          0.45
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.4,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "portugal_geringonca",
+      "name": "Portugal da Geringonça (Pacto de Esquerda de António Costa)",
+      "subtitle": "Reversão da austeridade da Troika, recuperação de pensões e contas públicas equilibradas",
+      "category": "Península Ibérica",
+      "era": "2015 – 2021",
+      "origin": "Portugal 🇵🇹",
+      "summary": "Após os anos de intervenção fiscal da Troika, o Partido Socialista formou um acordo parlamentar inédito com o Bloco de Esquerda e o Partido Comunista Português (Geringonça), devolvendo salários e pensões cortados, aumentando o salário mínimo em 40% e alcançando o primeiro superávit orçamentário da democracia portuguesa.",
+      "highlights": [
+        "Primeiro superávit orçamentário da democracia portuguesa em 2019 sob o ministro Mário Centeno",
+        "Reversão completa dos cortes salariais do funcionalismo público e de feriados retirados",
+        "Descriminalização universal e tratamento de dependência química mantido como referência mundial",
+        "Boom no turismo sustentável e atração de startups tecnológicas na Web Summit"
+      ],
+      "quote": "Virar a página da austeridade mantendo as contas certas e a honra da palavra dada.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.2,
+        "poder": -0.8,
+        "controle": -0.25,
+        "comercio": 0.5,
+        "diplomacia": -0.75,
+        "religiao": -0.7,
+        "moral": -0.75,
+        "intervencao": -0.75,
+        "economia": -0.7,
+        "imigracao": -0.3,
+        "tecnologia": 0.55
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.45,
+          0.3
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.6,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.35,
+          0.5,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "espanha_sanchez",
+      "name": "Espanha de Coalisão Progressista (Ingreso Mínimo e Transição Verde)",
+      "subtitle": "Primeiro governo de coalizão da democracia moderna, reforma laboral concertada e exceção ibérica",
+      "category": "Europa Mediterrânea",
+      "era": "2020 – Presente",
+      "origin": "Espanha 🇪🇸",
+      "summary": "Formado pelo PSOE e Unidas Podemos sob Pedro Sánchez e Yolanda Díaz, implementou a Reforma Trabalhista de 2021 reduzindo contratos temporários recordistas, a 'Exceção Ibérica' limitando o preço do gás na crise europeia e leis pioneiras de licença menstrual e eutanásia.",
+      "highlights": [
+        "Exceção Ibérica energética desacoplando o gás do custo da eletricidade na União Europeia",
+        "Ingreso Mínimo Vital garantido como rede básica contra a pobreza infantil",
+        "Reforma laboral acordada com sindicatos e patronal derrubando a precariedade de contratos",
+        "Liderança na geração de energia solar e eólica na Europa Ocidental"
+      ],
+      "quote": "A justiça social não é inimiga do crescimento econômico; ela é a sua melhor garantia.",
+      "axes": {
+        "estrutura": -0.35,
+        "representacao": -0.3,
+        "poder": -0.8,
+        "controle": -0.25,
+        "comercio": 0.6,
+        "diplomacia": -0.75,
+        "religiao": -0.85,
+        "moral": -0.85,
+        "intervencao": -0.7,
+        "economia": -0.8,
+        "imigracao": -0.7,
+        "tecnologia": 0.5
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.1,
+          0.65,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.35,
+          0.5,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "inglaterra_revolucao_gloriosa",
+      "name": "Inglaterra da Revolução Gloriosa (Bill of Rights de 1689)",
+      "subtitle": "Supremacia parlamentar, deposição de Jaime II, monarquia constitucional e tolerância protestante",
+      "category": "Ilhas Britânicas",
+      "era": "1688 – 1714",
+      "origin": "Inglaterra 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "summary": "A aliança entre parlamentares Whigs e Tories depôs o rei absolutista católico Jaime II, entronizando Guilherme de Orange e Maria II sob a condição formal de subscreverem a Bill of Rights de 1689, retirando da Coroa o poder de criar impostos ou suspender leis sem o consentimento do Parlamento.",
+      "highlights": [
+        "Declaração de Direitos (Bill of Rights) estabelecendo a soberania parlamentar inquestionável",
+        "Lei de Tolerância de 1689 garantindo liberdade de culto aos protestantes dissidentes",
+        "Fundação do Banco da Inglaterra em 1694 iniciando o sistema financeiro moderno",
+        "Inspiração direta para o 'Segundo Tratado sobre o Governo Civil' de John Locke"
+      ],
+      "quote": "A cobrança de tributos para uso da Coroa sem concessão do Parlamento é estritamente ilegal.",
+      "axes": {
+        "estrutura": 0.65,
+        "representacao": 0.5,
+        "poder": -0.6,
+        "controle": 0.6,
+        "comercio": 0.45,
+        "diplomacia": 0.35,
+        "religiao": 0.4,
+        "moral": -0.3,
+        "intervencao": -0.35,
+        "economia": 0.15,
+        "imigracao": 0.3,
+        "tecnologia": 0.3
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.3,
+          0.6
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.4,
+          0.35,
+          0.25
+        ],
+        "3": [
+          0.25,
+          0.45,
+          0.3
+        ],
+        "4": [
+          0.55,
+          0.3,
+          0.15
+        ],
+        "5": [
+          0.65,
+          0.1,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": "venezuela_chavez",
+      "name": "Venezuela Bolivariana (Socialismo do Século XXI de Hugo Chávez)",
+      "subtitle": "Misiones sociais de saúde e educação (Barrio Adentro), nacionalizações e poder comunal",
+      "category": "América Latina",
+      "era": "1999 – 2013",
+      "origin": "Venezuela 🇻🇪",
+      "summary": "Eleito em 1998 com a promessa de refundar o país, Hugo Chávez convocou a Constituinte de 1999, promulgou a Constituição Bolivariana e aproveitou o ciclo de alta do petróleo para criar as 'Misiones' sociais de assistência aos morros, radicalizando o confronto geopolítico com os EUA.",
+      "highlights": [
+        "Misiones Bolivarianas (Barrio Adentro, Robinson, Ribas) de alfabetização e clínicas gratuitas",
+        "Nacionalização de empresas de eletricidade, telefonia (CANTV), cimento e fatias da PDVSA",
+        "Criação da Petrocaribe e da Aliança Bolivariana para os Povos de Nossa América (ALBA)",
+        "Concentração de poder no Executivo com leis habilitantes e enfraquecimento do setor privado"
+      ],
+      "quote": "Aqui não há pacto com as oligarquias. A nossa única fidelidade é com o povo soberano de Bolívar.",
+      "axes": {
+        "estrutura": -0.85,
+        "representacao": 0.65,
+        "poder": 0.6,
+        "controle": -0.88,
+        "comercio": -0.7,
+        "diplomacia": -0.45,
+        "religiao": 0.2,
+        "moral": -0.55,
+        "intervencao": 0.45,
+        "economia": 0.35,
+        "imigracao": 0.6,
+        "tecnologia": 0.2
+      },
+      "triangles": {
+        "0": [
+          0.7,
+          0.25,
+          0.05
+        ],
+        "1": [
+          0.25,
+          0.6,
+          0.15
+        ],
+        "2": [
+          0.35,
+          0.45,
+          0.2
+        ],
+        "3": [
+          0.25,
+          0.3,
+          0.45
+        ],
+        "4": [
+          0.3,
+          0.65,
+          0.05
+        ],
+        "5": [
+          0.2,
+          0.7,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "brasil_lula_primeiro",
+      "name": "Brasil do Bolsa Família e Inclusão Social (Era Lula 2003-2010)",
+      "subtitle": "Bolsa Família, valorização real do salário mínimo, Prouni e diplomacia Sul-Sul",
+      "category": "América Latina",
+      "era": "2003 – 2010",
+      "origin": "Brasil 🇧🇷",
+      "summary": "O primeiro ciclo de Luiz Inácio Lula da Silva combinou disciplina fiscal (metas de inflação e câmbio flutuante) com agressiva transferência de renda condicionada (Bolsa Família), expansão universitária federal e interiorizada (Prouni/Reuni), tirando 36 milhões da pobreza.",
+      "highlights": [
+        "Unificação de programas sociais no Bolsa Família tornando-se referência internacional",
+        "Saída do Brasil do Mapa da Fome da ONU e valorização contínua do salário mínimo acima da inflação",
+        "Criação de 14 novas universidades federais e centenas de Institutos Federais (IFs)",
+        "Diplomacia Sul-Sul com protagonismo na formação do grupo BRICS e Unasul"
+      ],
+      "quote": "A prova de que um país está dando certo é quando o filho do pedreiro consegue se formar médico.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": 0.1,
+        "poder": -0.65,
+        "controle": -0.2,
+        "comercio": 0.35,
+        "diplomacia": -0.65,
+        "religiao": -0.25,
+        "moral": -0.65,
+        "intervencao": -0.45,
+        "economia": -0.55,
+        "imigracao": -0.45,
+        "tecnologia": 0.45
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.2,
+          0.55,
+          0.25
+        ],
+        "3": [
+          0.1,
+          0.25,
+          0.65
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.35,
+          0.5,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "brasil_fhc_real",
+      "name": "Brasil do Plano Real e Reformas Estruturais (Era FHC 1995-2002)",
+      "subtitle": "Fim da hiperinflação com a URV, Lei de Responsabilidade Fiscal e privatizações da Telebrás e Vale",
+      "category": "América Latina",
+      "era": "1995 – 2002",
+      "origin": "Brasil 🇧🇷",
+      "summary": "Sob o sociólogo Fernando Henrique Cardoso, o Brasil domou a hiperinflação crônica de décadas com o Plano Real engenhosamente construído com a Unidade Real de Valor (URV), promulgou a Lei de Responsabilidade Fiscal e modernizou a telefonia e energia com agências reguladoras autônomas (Anatel, Aneel).",
+      "highlights": [
+        "Fim definitivo da hiperinflação com a moeda Real ancorada e paridade cambial",
+        "Promulgação da Lei de Responsabilidade Fiscal (LRF de 2000) banindo dívidas eleitoreiras",
+        "Privatização do sistema Telebrás popularizando o acesso a linhas telefônicas no país",
+        "Criação dos remédios genéricos pelo ministro José Serra democratizando o acesso farmacêutico"
+      ],
+      "quote": "A estabilidade da moeda não é um fim em si, mas a condição indispensável para a justiça e o planejamento.",
+      "axes": {
+        "estrutura": 0.5,
+        "representacao": 0.25,
+        "poder": -0.6,
+        "controle": 0.6,
+        "comercio": 0.7,
+        "diplomacia": -0.6,
+        "religiao": -0.55,
+        "moral": -0.55,
+        "intervencao": -0.45,
+        "economia": -0.4,
+        "imigracao": -0.2,
+        "tecnologia": 0.6
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.55,
+          0.25,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "noruega_gerhardsen",
+      "name": "Noruega Trabalhista do Pós-Guerra (Einar Gerhardsen)",
+      "subtitle": "'Pai da Nação', habitação operária de Oslo, eletrificação hídrica e seguro de saúde universal",
+      "category": "Europa Nórdica",
+      "era": "1945 – 1965",
+      "origin": "Noruega 🇳🇴",
+      "summary": "Einar Gerhardsen governou a Noruega por quase duas décadas após a libertação da ocupação nazista, transformando um país de pescadores e agricultores empobrecidos em uma das sociedades mais igualitárias do mundo antes mesmo do descobrimento do petróleo, por meio de hidrelétricas estatais e cooperativas habitacionais.",
+      "highlights": [
+        "Construção de bairros cooperativos inteiros para a classe trabalhadora em Oslo (OBOS)",
+        "Estatização e investimento intensivo em usinas hidrelétricas para energia limpa abundante",
+        "Lei da Seguridade Social de 1956 garantindo aposentadoria e pensão básica a todos os noruegueses",
+        "Estilo pessoal frugal de vida sem ostentação, atendendo telefonemas no gabinete aberto"
+      ],
+      "quote": "Não podemos descansar enquanto um único cidadão norueguês viver em moradia indigna ou sem trabalho.",
+      "axes": {
+        "estrutura": -0.6,
+        "representacao": -0.4,
+        "poder": -0.75,
+        "controle": -0.5,
+        "comercio": 0.35,
+        "diplomacia": -0.65,
+        "religiao": -0.4,
+        "moral": -0.65,
+        "intervencao": -0.8,
+        "economia": -0.7,
+        "imigracao": -0.55,
+        "tecnologia": 0.35
+      },
+      "triangles": {
+        "0": [
+          0.4,
+          0.45,
+          0.15
+        ],
+        "1": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "2": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "3": [
+          0.05,
+          0.3,
+          0.65
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.3,
+          0.55,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "islandia_mulheres",
+      "name": "Islândia da Greve das Mulheres (Kvennafrídagurinn de 1975)",
+      "subtitle": "90% das mulheres param o país, eleição da primeira presidente mulher do mundo (Vigdís Finnbogadóttir)",
+      "category": "Europa Nórdica",
+      "era": "1975 – 1988",
+      "origin": "Islândia 🇮🇸",
+      "summary": "Em 24 de outubro de 1975, 90% das mulheres islandesas entraram em greve simultânea em seus empregos e afazeres domésticos, paralisando a economia da ilha e mudando permanentemente a percepção pública, o que levou à eleição em 1980 de Vigdís Finnbogadóttir, a primeira mulher chefe de Estado democraticamente eleita do planeta.",
+      "highlights": [
+        "Greve de 24 de outubro de 1975 com creches e escolas fechadas demonstrando o valor do trabalho feminino",
+        "Eleição de Vigdís Finnbogadóttir em 1980 reeleita sucessivamente por 16 anos com ampla aprovação",
+        "Criação da Aliança das Mulheres (Kvennalisti) conquistando assentos no parlamento Alþingi",
+        "Instituição pioneira da licença-maternidade e licença-paternidade compartilhada obrigatória e intransferível"
+      ],
+      "quote": "Se as mulheres param, tudo para. Quando compreendemos a nossa força, a justiça se torna inevitável.",
+      "axes": {
+        "estrutura": -0.2,
+        "representacao": -0.65,
+        "poder": -0.85,
+        "controle": -0.1,
+        "comercio": 0.55,
+        "diplomacia": -0.75,
+        "religiao": -0.75,
+        "moral": -0.95,
+        "intervencao": -0.75,
+        "economia": -0.65,
+        "imigracao": -0.4,
+        "tecnologia": 0.4
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.45,
+          0.4
+        ],
+        "1": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "2": [
+          0.05,
+          0.75,
+          0.2
+        ],
+        "3": [
+          0.0,
+          0.25,
+          0.75
+        ],
+        "4": [
+          0.8,
+          0.15,
+          0.05
+        ],
+        "5": [
+          0.25,
+          0.6,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "alemanha_willy_brandt",
+      "name": "Alemanha da Ostpolitik de Willy Brandt (Mehr Demokratie Wagen)",
+      "subtitle": "Kniefall von Warschau (Ajoelhamento em Varsóvia), distensão com o Leste e cogestão ampliada",
+      "category": "Europa Central",
+      "era": "1969 – 1974",
+      "origin": "Alemanha 🇩🇪",
+      "summary": "Chanceler social-democrata e prêmio Nobel da Paz de 1971, Willy Brandt transformou a Guerra Fria com sua política de aproximação com o Leste europeu (Ostpolitik) e seu gesto histórico de ajoelhar-se no Gueto de Varsóvia, sob o lema interno de 'ousar mais democracia' (Mehr Demokratie wagen).",
+      "highlights": [
+        "Kniefall von Warschau em 1970 reconhecendo as feridas e a culpa histórica dos crimes do nazismo",
+        "Tratado Fundamental de 1972 normalizando as relações entre as duas Alemanhas (RFA e RDA)",
+        "Abertura educacional universitária com bolsas federais BAföG para jovens de famílias operárias",
+        "Redução da idade de voto para 18 anos e modernização cultural da sociedade alemã ocidental"
+      ],
+      "quote": "Onde há injustiça, onde a paz está ameaçada, devemos ousar mais democracia.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.2,
+        "poder": -0.75,
+        "controle": -0.15,
+        "comercio": 0.55,
+        "diplomacia": -0.88,
+        "religiao": -0.65,
+        "moral": -0.75,
+        "intervencao": -0.7,
+        "economia": -0.55,
+        "imigracao": -0.65,
+        "tecnologia": 0.45
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "1": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.6,
+          0.25
+        ],
+        "3": [
+          0.0,
+          0.15,
+          0.85
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.35,
+          0.5,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "mexico_lazaro_card_reforma",
+      "name": "México da Reforma de Benito Juárez (Leyes de Reforma e República Restaurada)",
+      "subtitle": "Laicidade republicana radical, separação Estado-Igreja, registro civil e expulsão de Maximiliano",
+      "category": "América Latina",
+      "era": "1855 – 1872",
+      "origin": "México 🇲🇽",
+      "summary": "O líder indígena zapoteca Benito Juárez liderou os Liberais na Guerra da Reforma e derrotou a invasão imperial francesa de Maximiliano de Habsburgo, promulgando as Leyes de Reforma que confiscaram os bens do clero, criaram o casamento e registro civil e fundaram o México moderno.",
+      "highlights": [
+        "Leyes de Reforma de 1859 separando expressamente a Igreja Católica dos assuntos do Estado",
+        "Criação do Registro Civil e dos cemitérios laicos livres de discriminação religiosa",
+        "Vitória sobre a invasão do exército francês de Napoleão III restaurando a soberania republicana",
+        "Educação primária gratuita, obrigatória e laica formulada por Gabino Barreda"
+      ],
+      "quote": "Entre os indivíduos, como entre as nações, o respeito ao direito alheio é a paz.",
+      "axes": {
+        "estrutura": 0.3,
+        "representacao": 0.15,
+        "poder": -0.65,
+        "controle": 0.45,
+        "comercio": 0.5,
+        "diplomacia": 0.2,
+        "religiao": -0.95,
+        "moral": -0.75,
+        "intervencao": -0.35,
+        "economia": 0.05,
+        "imigracao": -0.55,
+        "tecnologia": 0.3
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.35,
+          0.5
+        ],
+        "1": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "2": [
+          0.15,
+          0.6,
+          0.25
+        ],
+        "3": [
+          0.15,
+          0.5,
+          0.35
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.6,
+          0.2,
+          0.2
+        ]
+      }
+    }
+  ]
+}

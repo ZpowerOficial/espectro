@@ -45,14 +45,16 @@ class HomeScreen extends StatelessWidget {
           _AboutLine(
             icon: Icons.grid_view_rounded,
             title: '12 Eixos',
-            text: 'Doze pares de polos — de federal a unitário, de militarista a pacifista. '
+            text:
+                'Doze pares de polos — de federal a unitário, de militarista a pacifista. '
                 'Disponível em 36, 60 ou 240 perguntas.',
           ),
           const SizedBox(height: 14),
           _AboutLine(
             icon: Icons.change_history_rounded,
             title: 'Six Triangles',
-            text: 'Seis áreas, cada uma com três vértices. O ponto no triângulo mostra '
+            text:
+                'Seis áreas, cada uma com três vértices. O ponto no triângulo mostra '
                 'o peso de cada vértice no seu perfil. Em 72 ou 144 perguntas.',
           ),
           const SizedBox(height: 18),
@@ -128,7 +130,10 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 32),
-            Text('Onde você está\nno espectro?', style: text.displayLarge?.copyWith(fontSize: 42)),
+            Text(
+              'Onde você está\nno espectro?',
+              style: text.displayLarge?.copyWith(fontSize: 42),
+            ),
             const SizedBox(height: 14),
             Text(
               'Duas formas de medir posições políticas. Escolha uma para começar — '
@@ -139,7 +144,8 @@ class HomeScreen extends StatelessWidget {
             _TestCard(
               tag: '12 Eixos',
               title: 'Doze eixos',
-              description: 'Do federal ao unitário, do militarista ao pacifista. '
+              description:
+                  'Do federal ao unitário, do militarista ao pacifista. '
                   'Veja o seu perfil em doze pares de polos.',
               meta: '36 · 60 · 240 perguntas',
               artwork: MiniAxesChart(axes: data.twelveAxes.axes),
@@ -149,7 +155,8 @@ class HomeScreen extends StatelessWidget {
             _TestCard(
               tag: 'Six Triangles',
               title: 'Seis triângulos',
-              description: 'Economia, liberdade, cultura, política externa, governo '
+              description:
+                  'Economia, liberdade, cultura, política externa, governo '
                   'e igualdade — cada área em três vértices.',
               meta: '72 · 144 perguntas',
               artwork: SixWheel(
@@ -164,7 +171,11 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 24),
             Row(
               children: <Widget>[
-                const Icon(Icons.lock_outline_rounded, size: 15, color: AppColors.muted),
+                const Icon(
+                  Icons.lock_outline_rounded,
+                  size: 15,
+                  color: AppColors.muted,
+                ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
@@ -236,7 +247,9 @@ class _TestCard extends StatelessWidget {
                       children: <Widget>[
                         Eyebrow(
                           tag,
-                          color: dark ? const Color(0xFF9AA69E) : AppColors.muted,
+                          color: dark
+                              ? const Color(0xFF9AA69E)
+                              : AppColors.muted,
                         ),
                         const SizedBox(height: 10),
                         Text(
@@ -294,7 +307,11 @@ class _TestCard extends StatelessWidget {
 }
 
 class _AboutLine extends StatelessWidget {
-  const _AboutLine({required this.icon, required this.title, required this.text});
+  const _AboutLine({
+    required this.icon,
+    required this.title,
+    required this.text,
+  });
 
   final IconData icon;
   final String title;

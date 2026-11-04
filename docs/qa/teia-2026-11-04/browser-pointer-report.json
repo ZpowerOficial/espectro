@@ -1,0 +1,426 @@
+{
+  "point": {
+    "x": 200.3819122314453,
+    "y": 88.17147445678711
+  },
+  "quad": [
+    191.68191528320312,
+    79.47147369384766,
+    209.0819091796875,
+    79.47147369384766,
+    209.0819091796875,
+    96.87147521972656,
+    191.68191528320312,
+    96.87147521972656
+  ],
+  "names": [
+    {
+      "name": "Espectro",
+      "role": "RootWebArea"
+    },
+    {
+      "name": "Back Atlas político Comparação livre Copiar link desta exploração Início Testes Atlas Histórico",
+      "role": "generic"
+    },
+    {
+      "name": "Início",
+      "role": "button"
+    },
+    {
+      "name": "Testes",
+      "role": "button"
+    },
+    {
+      "name": "Atlas",
+      "role": "button"
+    },
+    {
+      "name": "Histórico",
+      "role": "button"
+    },
+    {
+      "name": "Back",
+      "role": "button"
+    },
+    {
+      "name": "Atlas político",
+      "role": "heading"
+    },
+    {
+      "name": "Comparação livre",
+      "role": "button"
+    },
+    {
+      "name": "Copiar link desta exploração",
+      "role": "button"
+    },
+    {
+      "name": "Início",
+      "role": "StaticText"
+    },
+    {
+      "name": "Testes",
+      "role": "StaticText"
+    },
+    {
+      "name": "Atlas",
+      "role": "StaticText"
+    },
+    {
+      "name": "Histórico",
+      "role": "StaticText"
+    },
+    {
+      "name": "Back",
+      "role": "StaticText"
+    },
+    {
+      "name": "Atlas político",
+      "role": "StaticText"
+    },
+    {
+      "name": "Comparação livre",
+      "role": "StaticText"
+    },
+    {
+      "name": "Copiar link desta exploração",
+      "role": "StaticText"
+    },
+    {
+      "name": "Tudo",
+      "role": "checkbox"
+    },
+    {
+      "name": "Corrente (84)",
+      "role": "checkbox"
+    },
+    {
+      "name": "Personalidade (84)",
+      "role": "checkbox"
+    },
+    {
+      "name": "Partido / Movimento (56)",
+      "role": "checkbox"
+    },
+    {
+      "name": "Era / Regime Histórico (48)",
+      "role": "checkbox"
+    },
+    {
+      "name": "Livro (76)",
+      "role": "checkbox"
+    },
+    {
+      "name": "País / Modelo (80)",
+      "role": "checkbox"
+    },
+    {
+      "name": "Salvos",
+      "role": "checkbox"
+    },
+    {
+      "name": "Lista",
+      "role": "button"
+    },
+    {
+      "name": "Teia",
+      "role": "button"
+    },
+    {
+      "name": "Limpar filtros",
+      "role": "button"
+    },
+    {
+      "name": "Diminuir zoom",
+      "role": "button"
+    },
+    {
+      "name": "Aumentar zoom",
+      "role": "button"
+    },
+    {
+      "name": "Reenquadrar teia",
+      "role": "button"
+    },
+    {
+      "name": "Pausar movimento",
+      "role": "button"
+    },
+    {
+      "name": "Abrir perfil",
+      "role": "button"
+    },
+    {
+      "name": "Selecionar Platão na teia Platão",
+      "role": "checkbox"
+    },
+    {
+      "name": "Selecionar A Sociedade Aberta e Seus Inimigos na teia A Sociedade Aberta e Seus Inimigos",
+      "role": "checkbox"
+    },
+    {
+      "name": "Início",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Testes",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Atlas",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Histórico",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Back",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Atlas político",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Comparação ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "livre",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Copiar ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "link ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "desta ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "exploração",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "3 verbetes",
+      "role": "StaticText"
+    },
+    {
+      "name": "Lista",
+      "role": "StaticText"
+    },
+    {
+      "name": "Teia",
+      "role": "StaticText"
+    },
+    {
+      "name": "Limpar filtros",
+      "role": "StaticText"
+    },
+    {
+      "name": "TEIA DE IDEIAS",
+      "role": "StaticText"
+    },
+    {
+      "name": "Diminuir zoom",
+      "role": "StaticText"
+    },
+    {
+      "name": "Aumentar zoom",
+      "role": "StaticText"
+    },
+    {
+      "name": "Reenquadrar teia",
+      "role": "StaticText"
+    },
+    {
+      "name": "Pausar movimento",
+      "role": "StaticText"
+    },
+    {
+      "name": "A Sociedade Aberta e Seus Inimigos",
+      "role": "button"
+    },
+    {
+      "name": "Platão",
+      "role": "button"
+    },
+    {
+      "name": "A República",
+      "role": "button"
+    },
+    {
+      "name": "A República",
+      "role": "StaticText"
+    },
+    {
+      "name": "Platão",
+      "role": "StaticText"
+    },
+    {
+      "name": "Abrir perfil",
+      "role": "StaticText"
+    },
+    {
+      "name": "Nesta vizinhança 2D",
+      "role": "StaticText"
+    },
+    {
+      "name": "Selecione uma conexão para continuar explorando.",
+      "role": "StaticText"
+    },
+    {
+      "name": "Arraste para explorar · amplie para separar os pontos · toque para conectar ideias",
+      "role": "StaticText"
+    },
+    {
+      "name": "Centro e reformismo",
+      "role": "StaticText"
+    },
+    {
+      "name": "Outros verbetes",
+      "role": "StaticText"
+    },
+    {
+      "name": "Projeção de Nolan: liberdade econômica e liberdade civil. Duas coordenadas não resumem os 12 eixos. As linhas mostram vizinhança nesta projeção, não influência histórica.",
+      "role": "StaticText"
+    },
+    {
+      "name": "3 verbetes",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Lista",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Teia",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Limpar filtros",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "TEIA DE IDEIAS",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Diminuir ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "zoom",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Aumentar ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "zoom",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Reenquadrar ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "teia",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Pausar ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "movimento",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "A Sociedade Aberta e Seus Inimigos",
+      "role": "StaticText"
+    },
+    {
+      "name": "Platão",
+      "role": "StaticText"
+    },
+    {
+      "name": "A República",
+      "role": "StaticText"
+    },
+    {
+      "name": "A República",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Platão",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Abrir perfil",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Nesta vizinhança 2D",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Selecione uma conexão para continuar explorando.",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Arraste para explorar · amplie para separar os pontos · toque para conectar ideias",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Centro e reformismo",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Outros verbetes",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Projeção de Nolan: liberdade econômica e liberdade civil. Duas coordenadas não resumem os 12 eixos. As linhas mostram vizinhança nesta projeção, não influência histórica.",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "A ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Sociedade ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Aberta ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "e Seus ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Inimigos",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "Platão",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "A ",
+      "role": "InlineTextBox"
+    },
+    {
+      "name": "República",
+      "role": "InlineTextBox"
+    }
+  ]
+}

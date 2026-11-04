@@ -1,0 +1,177 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#main"
+  - banner:
+    - link "12 axes":
+      - /url: /
+    - navigation "Catálogo":
+      - link "Livros":
+        - /url: /books
+      - link "Ideologias":
+        - /url: /ideologies
+      - link "Personalidades":
+        - /url: /personalities
+      - link "Países":
+        - /url: /countries
+      - link "Partidos":
+        - /url: /parties
+      - link "Comparar":
+        - /url: /compare
+      - link "Switch to English":
+        - /url: /en/personalities/mises
+    - link "Visualização em teia":
+      - /url: /tree/personalities?id=mises
+    - link "Começar":
+      - /url: /
+  - main:
+    - paragraph:
+      - link "Início":
+        - /url: /
+      - text: /
+      - link "Personalidades":
+        - /url: /personalities
+      - text: / Ludwig von Mises
+    - article:
+      - text: Expoente da Escola Austríaca Economia 1881–1973
+      - heading "Ludwig von Mises" [level=1]
+      - paragraph: Economista austríaco, Mises foi grande defensor do livre mercado e mostrou a impossibilidade do cálculo econômico racional no socialismo, tornando-se pilar da Escola Austríaca e inspiração do libertarianismo moderno.
+      - term: Espectro mais próximo
+      - definition: Libertário
+      - term: Ideologia mais próxima
+      - definition:
+        - link "Liberalismo Clássico":
+          - /url: /ideologies/liberalismo-classico
+      - term: Personalidade mais próxima
+      - definition:
+        - link "Raphaël Lima":
+          - /url: /personalities/raphael-lima
+      - link "Comparar com…":
+        - /url: /compare?items=personality:mises
+      - figure "Wikimedia Commons / Wikipédia":
+        - img "Retrato de Ludwig von Mises"
+        - link "Wikimedia Commons / Wikipédia":
+          - /url: https://en.wikipedia.org/wiki/Ludwig_von_Mises
+    - tablist "Seções do perfil":
+      - tab "Eixos"
+      - tab "Ideologias"
+      - tab "Personalidades" [selected]
+      - tab "Países"
+    - tabpanel "Personalidades":
+      - heading "Personalidades mais próximas" [level=2]
+      - link "Retrato de Raphaël Lima Mais compatível 98% match Raphaël Lima Ativista e comunicador 1989–presente Comunicador, empresário e ativista político brasileiro, criador do canal Ideias Radicais. Notabilizou-se pela popularização do anarcocapitalismo e da Escola Austríaca, defesa irrestrita da propriedade privada, desregulamentação e secessão política.":
+        - /url: /personalities/raphael-lima
+        - img "Retrato de Raphaël Lima"
+        - text: Mais compatível 98% match
+        - heading "Raphaël Lima" [level=3]
+        - text: Ativista e comunicador 1989–presente
+        - paragraph: Comunicador, empresário e ativista político brasileiro, criador do canal Ideias Radicais. Notabilizou-se pela popularização do anarcocapitalismo e da Escola Austríaca, defesa irrestrita da propriedade privada, desregulamentação e secessão política.
+      - paragraph: Também próximos, por dimensão
+      - list:
+        - listitem:
+          - link "Retrato de Gary Johnson Politicamente Gary Johnson Ex-governador do Novo México 98%":
+            - /url: /personalities/gary-johnson
+            - img "Retrato de Gary Johnson"
+            - text: Politicamente
+            - strong: Gary Johnson
+            - text: Ex-governador do Novo México 98%
+        - listitem:
+          - link "Retrato de Henry Hazlitt Socialmente Henry Hazlitt Economista libertário 99%":
+            - /url: /personalities/henry-hazlitt
+            - img "Retrato de Henry Hazlitt"
+            - text: Socialmente
+            - strong: Henry Hazlitt
+            - text: Economista libertário 99%
+        - listitem:
+          - link "Retrato de Leonard Peikoff Economicamente Leonard Peikoff Filósofo objetivista 100%":
+            - /url: /personalities/leonard-peikoff
+            - img "Retrato de Leonard Peikoff"
+            - text: Economicamente
+            - strong: Leonard Peikoff
+            - text: Filósofo objetivista 100%
+      - paragraph: Outros perfis parecidos
+      - list:
+        - listitem:
+          - link "Retrato de Frédéric Bastiat Economia Frédéric Bastiat Economista liberal clássico 98%":
+            - /url: /personalities/bastiat
+            - img "Retrato de Frédéric Bastiat"
+            - text: Economia
+            - strong: Frédéric Bastiat
+            - text: Economista liberal clássico 98%
+        - listitem:
+          - link "Retrato de Gustave de Molinari Economia Gustave de Molinari Pioneiro do anarcocapitalismo 98%":
+            - /url: /personalities/gustave-de-molinari
+            - img "Retrato de Gustave de Molinari"
+            - text: Economia
+            - strong: Gustave de Molinari
+            - text: Pioneiro do anarcocapitalismo 98%
+        - listitem:
+          - link "Retrato de Milton Friedman Economia Milton Friedman Pai do monetarismo 97%":
+            - /url: /personalities/milton-friedman
+            - img "Retrato de Milton Friedman"
+            - text: Economia
+            - strong: Milton Friedman
+            - text: Pai do monetarismo 97%
+        - listitem:
+          - link "Retrato de Josiah Warren Empresariado Josiah Warren Primeiro anarquista americano 97%":
+            - /url: /personalities/josiah-warren
+            - img "Retrato de Josiah Warren"
+            - text: Empresariado
+            - strong: Josiah Warren
+            - text: Primeiro anarquista americano 97%
+        - listitem:
+          - link "Retrato de Robert Nozick Filosofia Robert Nozick Filósofo libertário 97%":
+            - /url: /personalities/robert-nozick
+            - img "Retrato de Robert Nozick"
+            - text: Filosofia
+            - strong: Robert Nozick
+            - text: Filósofo libertário 97%
+        - listitem:
+          - link "Retrato de David Friedman Economia David Friedman Teórico anarcocapitalista 97%":
+            - /url: /personalities/david-friedman
+            - img "Retrato de David Friedman"
+            - text: Economia
+            - strong: David Friedman
+            - text: Teórico anarcocapitalista 97%
+        - listitem:
+          - link "Retrato de Hal Finney Vida intelectual Hal Finney Pioneiro do Bitcoin 96%":
+            - /url: /personalities/hal-finney
+            - img "Retrato de Hal Finney"
+            - text: Vida intelectual
+            - strong: Hal Finney
+            - text: Pioneiro do Bitcoin 96%
+        - listitem:
+          - link "Retrato de Murray Rothbard Economia Murray Rothbard Pai do anarcocapitalismo 96%":
+            - /url: /personalities/rothbard
+            - img "Retrato de Murray Rothbard"
+            - text: Economia
+            - strong: Murray Rothbard
+            - text: Pai do anarcocapitalismo 96%
+      - paragraph: Os mais distantes de Ludwig von Mises
+      - list:
+        - listitem:
+          - link "Pol Pot Líder do Khmer Vermelho 25%":
+            - /url: /personalities/pol-pot
+            - strong: Pol Pot
+            - text: Líder do Khmer Vermelho 25%
+        - listitem:
+          - link "Zakhar Prilepin Escritor nacionalista russo 25%":
+            - /url: /personalities/zakhar-prilepin
+            - strong: Zakhar Prilepin
+            - text: Escritor nacionalista russo 25%
+        - listitem:
+          - link "Heinrich Himmler Chefe da SS nazista 25%":
+            - /url: /personalities/heinrich-himmler
+            - strong: Heinrich Himmler
+            - text: Chefe da SS nazista 25%
+    - complementary:
+      - heading "E você, com quem se parece?" [level=2]
+      - paragraph: Responda ao quiz e veja sua compatibilidade com Ludwig von Mises, ideologias, países e outras personalidades nos 12 eixos.
+      - link "Fazer o teste":
+        - /url: /
+  - contentinfo:
+    - link "12 axes":
+      - /url: /
+    - paragraph:
+      - text: Quiz político independente · 12axes.vercel.app · © 2026. Todos os direitos reservados ·
+      - link "English":
+        - /url: /en/personalities/mises

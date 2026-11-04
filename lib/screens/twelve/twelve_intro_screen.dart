@@ -22,10 +22,8 @@ class _TwelveIntroScreenState extends State<TwelveIntroScreen> {
   void _start() {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (BuildContext context) => TwelveQuizScreen(
-          data: widget.data,
-          variant: _variant,
-        ),
+        builder: (BuildContext context) =>
+            TwelveQuizScreen(data: widget.data, variant: _variant),
       ),
     );
   }
@@ -90,7 +88,11 @@ class _TwelveIntroScreenState extends State<TwelveIntroScreen> {
                               TextSpan(
                                 text: axis.leftPole,
                                 style: TextStyle(
-                                  color: Color.lerp(axis.leftColor, AppColors.ink, 0.15),
+                                  color: Color.lerp(
+                                    axis.leftColor,
+                                    AppColors.ink,
+                                    0.15,
+                                  ),
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -98,7 +100,11 @@ class _TwelveIntroScreenState extends State<TwelveIntroScreen> {
                               TextSpan(
                                 text: axis.rightPole,
                                 style: TextStyle(
-                                  color: Color.lerp(axis.rightColor, AppColors.ink, 0.15),
+                                  color: Color.lerp(
+                                    axis.rightColor,
+                                    AppColors.ink,
+                                    0.15,
+                                  ),
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -141,7 +147,10 @@ class _TwelveIntroScreenState extends State<TwelveIntroScreen> {
             const SizedBox(height: 28),
             const Eyebrow('12 Eixos'),
             const SizedBox(height: 12),
-            Text('Doze eixos.\nUm retrato do seu poder.', style: text.displayMedium),
+            Text(
+              'Doze eixos.\nUm retrato do seu poder.',
+              style: text.displayMedium,
+            ),
             const SizedBox(height: 14),
             Text(
               'Responda a afirmações sobre como o poder, a economia e a sociedade '
@@ -151,13 +160,15 @@ class _TwelveIntroScreenState extends State<TwelveIntroScreen> {
             const SizedBox(height: 26),
             Text('Escolha a duração', style: text.titleMedium),
             const SizedBox(height: 10),
-            for (final TwelveVariant variant in TwelveVariant.values) ...<Widget>[
+            for (final TwelveVariant variant
+                in TwelveVariant.values) ...<Widget>[
               _VariantCard(
                 variant: variant,
                 selected: _variant == variant,
                 onTap: () => setState(() => _variant = variant),
               ),
-              if (variant != TwelveVariant.values.last) const SizedBox(height: 10),
+              if (variant != TwelveVariant.values.last)
+                const SizedBox(height: 10),
             ],
             const SizedBox(height: 24),
             AppButton(
@@ -193,7 +204,9 @@ class _TwelveIntroScreenState extends State<TwelveIntroScreen> {
                       children: <Widget>[
                         Text(
                           'Conhecer os doze eixos',
-                          style: text.labelLarge?.copyWith(color: AppColors.accent),
+                          style: text.labelLarge?.copyWith(
+                            color: AppColors.accent,
+                          ),
                         ),
                         const SizedBox(width: 4),
                         const Icon(

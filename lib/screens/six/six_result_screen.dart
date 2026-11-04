@@ -20,14 +20,19 @@ class SixResultScreen extends StatelessWidget {
     await Clipboard.setData(ClipboardData(text: result.toShareText()));
     if (!context.mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Resumo copiado para a área de transferência.')),
+      const SnackBar(
+        content: Text('Resumo copiado para a área de transferência.'),
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     final TextTheme text = Theme.of(context).textTheme;
-    final double wheelSize = (MediaQuery.sizeOf(context).width - 84).clamp(190, 320);
+    final double wheelSize = (MediaQuery.sizeOf(context).width - 84).clamp(
+      190,
+      320,
+    );
 
     return Scaffold(
       body: SafeArea(
@@ -38,7 +43,8 @@ class SixResultScreen extends StatelessWidget {
               children: <Widget>[
                 CircleIconButton(
                   icon: Icons.close_rounded,
-                  onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                  onPressed: () =>
+                      Navigator.of(context).popUntil((route) => route.isFirst),
                   tooltip: 'Voltar ao início',
                 ),
                 const Spacer(),
@@ -61,7 +67,9 @@ class SixResultScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Seus seis triângulos',
-                      style: text.headlineLarge?.copyWith(color: AppColors.surface),
+                      style: text.headlineLarge?.copyWith(
+                        color: AppColors.surface,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 6),
@@ -69,7 +77,9 @@ class SixResultScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Cada ponto mostra o peso dos três vértices no seu perfil.',
-                      style: text.bodySmall?.copyWith(color: const Color(0xFF9AA69E)),
+                      style: text.bodySmall?.copyWith(
+                        color: const Color(0xFF9AA69E),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -141,7 +151,8 @@ class SixResultScreen extends StatelessWidget {
             AppButton(
               label: 'Voltar ao início',
               kind: AppButtonKind.outline,
-              onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+              onPressed: () =>
+                  Navigator.of(context).popUntil((route) => route.isFirst),
             ),
             const SizedBox(height: 14),
             Text(
@@ -164,7 +175,9 @@ class _TriangleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextTheme text = Theme.of(context).textTheme;
-    final Color barColor = Color.lerp(triangle.category.color, AppColors.ink, 0.35) ?? AppColors.ink;
+    final Color barColor =
+        Color.lerp(triangle.category.color, AppColors.ink, 0.35) ??
+        AppColors.ink;
 
     return SectionCard(
       child: Column(

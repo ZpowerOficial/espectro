@@ -1,0 +1,118 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#main"
+  - banner:
+    - link "12 axes":
+      - /url: /
+    - navigation "Catálogo":
+      - link "Livros":
+        - /url: /books
+      - link "Ideologias":
+        - /url: /ideologies
+      - link "Personalidades":
+        - /url: /personalities
+      - link "Países":
+        - /url: /countries
+      - link "Partidos":
+        - /url: /parties
+      - link "Comparar":
+        - /url: /compare
+      - link "Switch to English":
+        - /url: /en/ideologies/liberalismo-classico
+    - link "Visualização em teia":
+      - /url: /tree/ideologies?id=liberalismo-classico
+    - link "Começar":
+      - /url: /
+  - main:
+    - paragraph:
+      - link "Início":
+        - /url: /
+      - text: /
+      - link "Ideologias":
+        - /url: /ideologies
+      - text: / Liberalismo Clássico
+    - article:
+      - text: Libertário Ideologia
+      - heading "Liberalismo Clássico" [level=1]
+      - paragraph: Vertente original do liberalismo que defende direitos naturais, propriedade, livre mercado e Estado mínimo, vendo a liberdade individual e a limitação rígida do poder como fundamentos da sociedade justa.
+      - link "Comparar com…":
+        - /url: /compare?items=ideology:liberalismo-classico
+      - link "Retrato de John Locke Personalidade de referência John Locke Pai do liberalismo clássico · 1632–1704":
+        - /url: /personalities/john-locke
+        - img "Retrato de John Locke"
+        - text: Personalidade de referência John Locke
+        - emphasis: Pai do liberalismo clássico · 1632–1704
+      - 'link "Bandeira: Reino Unido País de referência Reino Unido Monarquia liberal-financeira"':
+        - /url: /countries/reino-unido
+        - 'img "Bandeira: Reino Unido"'
+        - text: País de referência Reino Unido
+        - emphasis: Monarquia liberal-financeira
+    - figure:
+      - paragraph: — Em uma frase
+      - blockquote: Quero uma sociedade de direitos naturais e propriedade sagrada, com Estado mínimo e mercado livre como base da vida justa.
+      - text: É assim que alguém do Liberalismo Clássico resumiria a sociedade que quer.
+    - tablist "Seções da ideologia":
+      - tab "Eixos"
+      - tab "Personalidades"
+      - tab "Países"
+      - tab "Ideologias" [selected]
+    - tabpanel "Ideologias":
+      - paragraph: — Proximidade ideológica
+      - heading "Ideologias próximas" [level=2]
+      - paragraph: Mais próximas em libertário
+      - list:
+        - listitem:
+          - link "Libertário Minarquismo Vertente libertária que defende um Estado mínimo, limitado a polícia, justiça e defesa, deixando tudo o mais ao mercado e à iniciativa privada, para proteger direitos individuais sem oprimir a liberdade.":
+            - /url: /ideologies/minarquismo
+            - text: Libertário
+            - heading "Minarquismo" [level=3]
+            - paragraph: Vertente libertária que defende um Estado mínimo, limitado a polícia, justiça e defesa, deixando tudo o mais ao mercado e à iniciativa privada, para proteger direitos individuais sem oprimir a liberdade.
+        - listitem:
+          - link "Libertário Libertarianismo Filosofia que defende a máxima liberdade individual e um Estado reduzido às funções essenciais, valorizando propriedade privada, livre mercado e autonomia pessoal e rejeitando a coerção estatal sobre a vida.":
+            - /url: /ideologies/libertarianismo
+            - text: Libertário
+            - heading "Libertarianismo" [level=3]
+            - paragraph: Filosofia que defende a máxima liberdade individual e um Estado reduzido às funções essenciais, valorizando propriedade privada, livre mercado e autonomia pessoal e rejeitando a coerção estatal sobre a vida.
+        - listitem:
+          - link "Libertário Populismo Libertário Vertente que une antipolítica, livre mercado radical e comunicação popular direta, atacando burocracias, impostos e elites partidárias em nome da liberdade individual, do empreendedorismo e da soberania do cidadão comum.":
+            - /url: /ideologies/populismo-libertario
+            - text: Libertário
+            - heading "Populismo Libertário" [level=3]
+            - paragraph: Vertente que une antipolítica, livre mercado radical e comunicação popular direta, atacando burocracias, impostos e elites partidárias em nome da liberdade individual, do empreendedorismo e da soberania do cidadão comum.
+      - paragraph: Mais próximas em outros espectros
+      - list:
+        - listitem:
+          - link "Direita Neoliberalismo Corrente que defende livre mercado, desregulamentação, privatizações e disciplina fiscal, reduzindo o papel econômico do Estado e confiando na concorrência e na estabilidade monetária como motores da prosperidade.":
+            - /url: /ideologies/neoliberalismo
+            - text: Direita
+            - heading "Neoliberalismo" [level=3]
+            - paragraph: Corrente que defende livre mercado, desregulamentação, privatizações e disciplina fiscal, reduzindo o papel econômico do Estado e confiando na concorrência e na estabilidade monetária como motores da prosperidade.
+        - listitem:
+          - link "Direita Liberalismo Tradição política que coloca a liberdade individual no centro, defendendo direitos, tolerância, Estado de direito, economia de mercado e limites ao poder, com o governo submetido ao consentimento dos cidadãos.":
+            - /url: /ideologies/liberalismo
+            - text: Direita
+            - heading "Liberalismo" [level=3]
+            - paragraph: Tradição política que coloca a liberdade individual no centro, defendendo direitos, tolerância, Estado de direito, economia de mercado e limites ao poder, com o governo submetido ao consentimento dos cidadãos.
+        - listitem:
+          - link "Anarquismo Anarquismo Egoísta Corrente fundada por Max Stirner em O Único e sua Propriedade (1844), que rejeita Estado, moral, religião e direitos como fantasmas e propõe uniões voluntárias de egoístas associados só enquanto isso lhes serve.":
+            - /url: /ideologies/anarquismo-egoista
+            - text: Anarquismo
+            - heading "Anarquismo Egoísta" [level=3]
+            - paragraph: Corrente fundada por Max Stirner em O Único e sua Propriedade (1844), que rejeita Estado, moral, religião e direitos como fantasmas e propõe uniões voluntárias de egoístas associados só enquanto isso lhes serve.
+      - paragraph: A ideologia mais distante
+      - link "Reacionarismo Extrema Direita 26%":
+        - /url: /ideologies/reacionarismo
+        - strong: Reacionarismo
+        - text: Extrema Direita 26%
+    - complementary:
+      - heading "E você, onde está no espectro?" [level=2]
+      - paragraph: Responda ao quiz e veja sua compatibilidade com o Liberalismo Clássico e outras 274 ideologias nos 12 eixos.
+      - link "Fazer o teste":
+        - /url: /
+  - contentinfo:
+    - link "12 axes":
+      - /url: /
+    - paragraph:
+      - text: Quiz político independente · 12axes.vercel.app · © 2026. Todos os direitos reservados ·
+      - link "English":
+        - /url: /en/ideologies/liberalismo-classico

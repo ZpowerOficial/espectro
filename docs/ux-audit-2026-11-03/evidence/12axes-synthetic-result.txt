@@ -1,0 +1,414 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#conteudo-principal"
+  - banner:
+    - button "Voltar para o início": 12 axes
+    - button "Refazer quiz"
+  - main:
+    - paragraph: — Análise concluída
+    - heading "Seu perfil ideológico" [level=1]
+    - article:
+      - text: Centro
+      - heading "Centrismo Radical" [level=2]
+      - 'img "Compatibilidade: 100 por cento"':
+        - img
+        - strong: 100%
+        - text: match
+      - figure:
+        - paragraph: — Uma frase que te descreve
+        - blockquote: Quero uma sociedade sem lado, um poder que nunca pende a nenhum polo e uma economia que pese Estado e mercado exatamente por igual.
+      - group: + Sobre o Centrismo Radical
+    - heading "Seus 12 eixos" [level=2]
+    - list:
+      - listitem:
+        - heading "Estrutura" [level=3]
+        - text: Equilibrado
+        - 'img "Estrutura: Federal 50%, Unitário 50%"'
+        - text: Federal Unitário
+      - listitem:
+        - heading "Representação" [level=3]
+        - text: Equilibrado
+        - 'img "Representação: Democracia 50%, Autocracia 50%"'
+        - text: Democracia Autocracia
+      - listitem:
+        - heading "Poder" [level=3]
+        - text: Equilibrado
+        - 'img "Poder: Segurança 50%, Liberdade 50%"'
+        - text: Segurança Liberdade
+      - listitem:
+        - heading "Imigração" [level=3]
+        - text: Equilibrado
+        - 'img "Imigração: Assimilação 50%, Multicultura 50%"'
+        - text: Assimilação Multicultura
+      - listitem:
+        - heading "Diplomacia" [level=3]
+        - text: Equilibrado
+        - 'img "Diplomacia: Militarista 50%, Pacifista 50%"'
+        - text: Militarista Pacifista
+      - listitem:
+        - heading "Intervenção" [level=3]
+        - text: Equilibrado
+        - 'img "Intervenção: Não intervencionista 50%, Nacionalista 50%"'
+        - text: Não intervencionista Nacionalista
+      - listitem:
+        - heading "Economia" [level=3]
+        - text: Equilibrado
+        - 'img "Economia: Público 50%, Privado 50%"'
+        - text: Público Privado
+      - listitem:
+        - heading "Controle" [level=3]
+        - text: Equilibrado
+        - 'img "Controle: Planejamento 50%, Livre mercado 50%"'
+        - text: Planejamento Livre mercado
+      - listitem:
+        - heading "Comércio" [level=3]
+        - text: Equilibrado
+        - 'img "Comércio: Protecionismo 50%, Globalismo 50%"'
+        - text: Protecionismo Globalismo
+      - listitem:
+        - heading "Religião" [level=3]
+        - text: Equilibrado
+        - 'img "Religião: Irreligioso 50%, Religioso 50%"'
+        - text: Irreligioso Religioso
+      - listitem:
+        - heading "Moral" [level=3]
+        - text: Equilibrado
+        - 'img "Moral: Progressista 50%, Tradicionalista 50%"'
+        - text: Progressista Tradicionalista
+      - listitem:
+        - heading "Tecnologia" [level=3]
+        - text: Equilibrado
+        - 'img "Tecnologia: Tecnologia 50%, Biologia 50%"'
+        - text: Tecnologia Biologia
+    - button "Editar respostas"
+    - button "Compartilhar resultado"
+    - heading "O que te distingue" [level=2]
+    - article:
+      - text: Sua posição mais incomum
+      - heading "Controle" [level=3]
+      - paragraph: Sua posição em Controle é de meio-termo. Mesmo assim, isso já te coloca mais para livre mercado que 64% das ideologias do catálogo.
+      - text: Planejamento Livre mercado
+    - article:
+      - text: Sua posição mais comum
+      - heading "Imigração" [level=3]
+      - paragraph: No centro
+      - paragraph: Você fica no centro em Imigração, e o catálogo também. É onde seu perfil menos se distingue.
+      - text: Assimilação Multicultura
+    - heading "Países mais próximos de você" [level=2]
+    - tablist "Países mais próximos de você":
+      - tab "País atual" [selected]
+      - tab "Experiência histórica"
+    - article:
+      - img "Bandeira de Minas Gerais (Brasil)"
+      - heading "Minas Gerais (Brasil)" [level=3]
+      - paragraph: Região histórico-moderada
+      - 'img "Compatibilidade: 89 por cento"':
+        - img
+        - strong: 89%
+        - text: match
+      - group: + Saber mais sobre Minas Gerais (Brasil)
+    - paragraph: Também próximos, por dimensão
+    - list:
+      - button "Ver detalhes de Itália":
+        - img "Bandeira de Itália"
+        - text: Politicamente
+        - strong: Itália
+        - text: 89%
+      - button "Ver detalhes de Ucrânia":
+        - img "Bandeira de Ucrânia"
+        - text: Socialmente
+        - strong: Ucrânia
+        - text: 92%
+      - button "Ver detalhes de Gana":
+        - img "Bandeira de Gana"
+        - text: Economicamente
+        - strong: Gana
+        - text: 97%
+    - paragraph: Os mais distantes de você
+    - list:
+      - listitem: Coreia do Norte
+      - listitem: Camboja do Khmer Vermelho (Pol Pot)
+      - listitem: Alemanha Nazista (Terceiro Reich)
+    - heading "Personalidades mais próximas de você" [level=2]
+    - article:
+      - img "Retrato de Michelangelo Buonarroti"
+      - heading "Michelangelo Buonarroti" [level=3]
+      - paragraph: Artista do Renascimento · 1475–1564
+      - 'img "Compatibilidade: 94 por cento"':
+        - img
+        - strong: 94%
+        - text: match
+      - group: + Saber mais sobre Michelangelo Buonarroti
+    - paragraph: Também próximos, por dimensão
+    - list:
+      - button "Ver detalhes de Oliver Cromwell":
+        - img "Retrato de Oliver Cromwell"
+        - text: Politicamente
+        - strong: Oliver Cromwell
+        - text: 91%
+      - button "Ver detalhes de James Lovelock":
+        - img "Retrato de James Lovelock"
+        - text: Socialmente
+        - strong: James Lovelock
+        - text: 92%
+      - button "Ver detalhes de Abraham Lincoln":
+        - img "Retrato de Abraham Lincoln"
+        - text: Economicamente
+        - strong: Abraham Lincoln
+        - text: 90%
+    - paragraph: As mais distantes de você
+    - list:
+      - listitem: Subcomandante Marcos
+      - listitem: Pol Pot
+      - listitem: Élisée Reclus
+    - heading "Os mais próximos dos seus resultados" [level=2]
+    - tablist "Modo de exibição das personalidades":
+      - tab "Compatibilidade geral" [selected]
+      - tab "Área de atuação"
+    - list:
+      - button "Ver detalhes de Michelangelo Buonarroti":
+        - text: "01"
+        - img "Retrato de Michelangelo Buonarroti"
+        - text: Michelangelo Buonarroti Vida intelectual 94%
+      - button "Ver detalhes de James Lovelock":
+        - text: "02"
+        - img "Retrato de James Lovelock"
+        - text: James Lovelock Vida intelectual 92%
+      - button "Ver detalhes de Oliver Cromwell":
+        - text: "03"
+        - img "Retrato de Oliver Cromwell"
+        - text: Oliver Cromwell Política 91%
+      - button "Ver detalhes de Abraham Lincoln":
+        - text: "04"
+        - img "Retrato de Abraham Lincoln"
+        - text: Abraham Lincoln Política 90%
+      - button "Ver detalhes de Linus Torvalds":
+        - text: "05"
+        - img "Retrato de Linus Torvalds"
+        - text: Linus Torvalds Vida intelectual 89%
+      - button "Ver detalhes de Heráclito":
+        - text: "06"
+        - img "Retrato de Heráclito"
+        - text: Heráclito Filosofia 89%
+      - button "Ver detalhes de George Washington":
+        - text: "07"
+        - img "Retrato de George Washington"
+        - text: George Washington Política 89%
+      - button "Ver detalhes de Dwight D. Eisenhower":
+        - text: "08"
+        - img "Retrato de Dwight D. Eisenhower"
+        - text: Dwight D. Eisenhower Política 88%
+    - region "Para ler":
+      - heading "Para ler" [level=2]
+      - paragraph: Uma obra de cada uma das personalidades mais próximas dos seus resultados.
+      - list:
+        - listitem:
+          - text: 01 92% compatível
+          - img "Retrato de James Lovelock"
+          - text: Mais próxima de você
+          - strong: James Lovelock
+          - 'heading "Gaia: Um Novo Olhar sobre a Vida na Terra" [level=3]'
+          - text: "1979"
+          - link "Ver na Amazon":
+            - /url: https://www.amazon.com.br/s?k=Gaia%3A+Um+Novo+Olhar+sobre+a+Vida+na+Terra+James+Lovelock&i=stripbooks&tag=12axes-20
+        - listitem:
+          - text: 02 91% compatível
+          - img "Retrato de Oliver Cromwell"
+          - text: Autor
+          - strong: Oliver Cromwell
+          - heading "Oliver Cromwell's Letters and Speeches" [level=3]
+          - text: "1845"
+          - link "Ver na Amazon":
+            - /url: https://www.amazon.com.br/s?k=Oliver+Cromwell%27s+Letters+and+Speeches+Oliver+Cromwell&i=stripbooks&tag=12axes-20
+        - listitem:
+          - text: 03 84% compatível
+          - img "Retrato de Georges Sorel"
+          - text: Autor
+          - strong: Georges Sorel
+          - heading "Reflexões sobre a Violência" [level=3]
+          - text: "1908"
+          - link "Ver na Amazon":
+            - /url: https://www.amazon.com.br/s?k=Reflex%C3%B5es+sobre+a+Viol%C3%AAncia+Georges+Sorel&i=stripbooks&tag=12axes-20
+    - heading "Seu cartão de resultado" [level=2]
+    - button "Compartilhar resultado" [disabled]:
+      - status "Gerando a prévia do seu cartão"
+    - button "Compartilhar resultado" [disabled]
+    - button "Compartilhar resultado"
+    - button "Download PDF"
+    - heading "Partidos mais próximos de você" [level=2]
+    - tablist "Partidos mais próximos de você":
+      - tab "Partido atual" [selected]
+      - tab "Partido histórico"
+    - article:
+      - img "Símbolo de Avante"
+      - img "Bandeira de Brasil"
+      - heading "Avante" [level=3]
+      - paragraph: Partido · Brasil
+      - 'img "Compatibilidade: 88 por cento"':
+        - img
+        - strong: 88%
+        - text: match
+      - group: + Saber mais sobre Avante
+    - paragraph: Também próximos, por dimensão
+    - list:
+      - button "Ver detalhes de Movimento Democrático Brasileiro (MDB)":
+        - img "Símbolo de Movimento Democrático Brasileiro (MDB)"
+        - img "Bandeira de Brasil"
+        - text: Politicamente
+        - strong: Movimento Democrático Brasileiro (MDB)
+        - text: 87%
+      - button "Ver detalhes de Partido Revolucionário Institucional (PRI)":
+        - img "Símbolo de Partido Revolucionário Institucional (PRI)"
+        - img "Bandeira de México"
+        - text: Socialmente
+        - strong: Partido Revolucionário Institucional (PRI)
+        - text: 91%
+      - button "Ver detalhes de Democracia Cristã (DC)":
+        - img "Símbolo de Democracia Cristã (DC)"
+        - img "Bandeira de Brasil"
+        - text: Economicamente
+        - strong: Democracia Cristã (DC)
+        - text: 96%
+    - paragraph: Os mais distantes de você
+    - list:
+      - listitem: Exército Vermelho
+      - listitem: Partido dos Trabalhadores da Coreia (PTC)
+      - listitem: Schutzstaffel (SS)
+    - heading "Seus valores" [level=2]
+    - list:
+      - button "Ver detalhes de Neutralidade política":
+        - text: Política
+        - strong: Neutralidade política
+      - button "Ver detalhes de Neutralidade":
+        - text: Política externa
+        - strong: Neutralidade
+      - button "Ver detalhes de Pragmatismo":
+        - text: Economia
+        - strong: Pragmatismo
+      - button "Ver detalhes de Equilíbrio":
+        - text: Imigração
+        - strong: Equilíbrio
+      - button "Ver detalhes de Moderado":
+        - text: Sociedade
+        - strong: Moderado
+      - button "Ver detalhes de Equilíbrio tecnológico":
+        - text: Tecnologia
+        - strong: Equilíbrio tecnológico
+    - heading "Outras ideologias" [level=2]
+    - list:
+      - listitem:
+        - text: Centro
+        - heading "Pragmatismo" [level=3]
+        - paragraph: Postura política que avalia propostas pelos resultados práticos que produzem, e não pela fidelidade a um dogma ideológico, combinando medidas de mercado, regulação e políticas sociais conforme a evidência e o contexto de cada problema. A compatibilidade indica proximidade entre suas respostas e esse perfil.
+        - button "+ Saber mais sobre Pragmatismo"
+      - listitem:
+        - text: Centro
+        - heading "Centrismo" [level=3]
+        - paragraph: Posição política que busca o equilíbrio entre esquerda e direita, valorizando moderação, pragmatismo e consenso, e combinando elementos de diferentes correntes para evitar extremos e favorecer reformas graduais. A compatibilidade indica proximidade entre suas respostas e esse perfil.
+        - button "+ Saber mais sobre Centrismo"
+      - listitem:
+        - text: Centro
+        - heading "Monarquismo Constitucional" [level=3]
+        - paragraph: Defesa da monarquia como símbolo de unidade e continuidade, com o rei submetido à constituição e ao parlamento, unindo tradição e estabilidade institucional à democracia representativa e ao Estado de direito. A compatibilidade indica proximidade entre suas respostas e esse perfil.
+        - button "+ Saber mais sobre Monarquismo Constitucional"
+    - paragraph: A ideologia mais distante de você
+    - strong: Tecno-Comunismo
+    - text: Anarquismo
+    - group: + Saber mais sobre Tecno-Comunismo
+    - button "Como a bússola política é feita":
+      - heading "Bússola política" [level=2]
+      - 'img "Sua posição: 50% rumo à direita, 50% rumo ao autoritarismo e 50% rumo ao tradicionalismo."': Autoritarismo Esquerda Direita Anarquismo
+      - paragraph:
+        - text: Centrista com valores sociais
+        - mark: Moderados
+    - heading "Desbloquear agora" [level=2]
+    - paragraph: Obtenha o relatório completo para descobrir seu perfil político com profundidade.
+    - button "Desbloquear o relatório completo"
+    - heading "Compare com outra pessoa" [level=2]
+    - paragraph: Cole o link do resultado de outra pessoa e veja, eixo por eixo, onde vocês se aproximam ou se afastam.
+    - text: Nome
+    - textbox "Nome da outra pessoa":
+      - /placeholder: "Ex.: João"
+    - text: Link do resultado
+    - textbox "Link do resultado da outra pessoa":
+      - /placeholder: Cole o link aqui
+    - button "Colar"
+    - button "Comparar"
+    - heading "Análise comparativa" [level=2]
+    - paragraph: Escolha uma personalidade, país ou ideologia e veja, eixo por eixo, onde você se aproxima ou se afasta.
+    - text: Personalidade, país ou ideologia
+    - combobox "Buscar perfil para comparar"
+    - button "Visualizar" [disabled]
+    - complementary "Resumo da análise":
+      - navigation "Nesta página":
+        - paragraph: Nesta página
+        - link "01 12 eixos":
+          - /url: "#eixos-resultado"
+        - link "02 Distinção":
+          - /url: "#assinatura"
+        - link "03 Países":
+          - /url: "#paises"
+        - link "04 Personalidades":
+          - /url: "#personalidades"
+        - link "05 Áreas":
+          - /url: "#areas"
+        - link "06 Livros":
+          - /url: "#livros"
+        - link "07 Partidos":
+          - /url: "#partidos"
+        - link "08 Valores":
+          - /url: "#valores"
+        - link "09 Ideologias":
+          - /url: "#ideologias"
+        - link "10 Bússola":
+          - /url: "#bussola"
+        - link "11 Análise completa":
+          - /url: "#relatorio-completo"
+  - contentinfo:
+    - text: 12 axes
+    - paragraph: © 2026. Todos os direitos reservados
+    - navigation "Projeto":
+      - heading "Projeto" [level=3]
+      - list:
+        - listitem:
+          - link "Sobre":
+            - /url: https://github.com/RomanCypherpunk/12axes#readme
+        - listitem:
+          - link "Contribuições":
+            - /url: https://github.com/RomanCypherpunk/12axes#contributing-ov-file
+        - listitem:
+          - link "Licença":
+            - /url: https://github.com/RomanCypherpunk/12axes/blob/main/LICENSE
+        - listitem:
+          - link "Reportar":
+            - /url: https://github.com/RomanCypherpunk/12axes/issues/new
+        - listitem:
+          - link "Relatório Completo":
+            - /url: /report
+        - listitem:
+          - link "Termos de uso":
+            - /url: /terms
+        - listitem:
+          - link "Privacidade":
+            - /url: /privacy
+        - listitem:
+          - link "Reembolso":
+            - /url: /refund
+    - navigation "Explorar":
+      - heading "Explorar" [level=3]
+      - list:
+        - listitem:
+          - link "Personalidades":
+            - /url: /personalities
+        - listitem:
+          - link "Ideologias":
+            - /url: /ideologies
+        - listitem:
+          - link "Livros":
+            - /url: /books
+        - listitem:
+          - link "Partidos":
+            - /url: /parties
+        - listitem:
+          - link "Países":
+            - /url: /countries

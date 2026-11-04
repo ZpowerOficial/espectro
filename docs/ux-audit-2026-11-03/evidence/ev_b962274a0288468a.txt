@@ -1,0 +1,22 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#conteudo-principal"
+  - banner:
+    - button "Voltar para o início": 12 axes
+    - button "Ativar modo escuro"
+    - button "Reiniciar quiz"
+  - text: Identificando seu arquétipo 1 de 6
+  - 'progressbar "Progresso do quiz: 86%"'
+  - article "A sociedade deve se apoiar em quê?":
+    - paragraph: Sociedade
+    - heading "A sociedade deve se apoiar em quê?" [level=2]
+    - radiogroup "A sociedade deve se apoiar em quê?":
+      - radio "Fé, família e tradição da nação"
+      - radio "Costumes e fé, mudando devagar"
+      - radio "Cada um vive como quiser"
+      - radio "Igualdade, diversidade e direitos civis"
+      - radio "Tradição e ordem, sem religião"
+      - radio "Fé a serviço da justiça social"
+  - navigation "Navegação do quiz":
+    - button "Voltar"
+    - button "Pular"

@@ -47,9 +47,14 @@ class AnswerOption {
   final double score;
 
   factory AnswerOption.fromJson(Map<String, Object?> json, String path) {
-    final score = readDouble(json['scoreTowardAgreement'], '$path.scoreTowardAgreement');
+    final score = readDouble(
+      json['scoreTowardAgreement'],
+      '$path.scoreTowardAgreement',
+    );
     if (score < 0 || score > 1) {
-      throw FormatException('$path.scoreTowardAgreement: esperado 0..1, recebido $score');
+      throw FormatException(
+        '$path.scoreTowardAgreement: esperado 0..1, recebido $score',
+      );
     }
     return AnswerOption(
       id: readString(json['id'], '$path.id'),
@@ -110,7 +115,10 @@ class QuestionHelp {
       disagree: readString(json['disagree'], '$path.disagree'),
       note: readStringOrNull(json['note'], '$path.note'),
       agreeExample: readString(json['agreeExample'], '$path.agreeExample'),
-      disagreeExample: readString(json['disagreeExample'], '$path.disagreeExample'),
+      disagreeExample: readString(
+        json['disagreeExample'],
+        '$path.disagreeExample',
+      ),
     );
   }
 }
@@ -144,7 +152,9 @@ class AxisQuestion {
     }
     final weight = readDouble(json['weight'], '$path.weight');
     if (weight <= 0) {
-      throw FormatException('$path.weight: peso deve ser positivo, recebido $weight');
+      throw FormatException(
+        '$path.weight: peso deve ser positivo, recebido $weight',
+      );
     }
     return AxisQuestion(
       id: readString(json['id'], '$path.id'),
@@ -154,9 +164,15 @@ class AxisQuestion {
       weight: weight,
       terms: <QuestionTerm>[
         for (var i = 0; i < rawTerms.length; i++)
-          QuestionTerm.fromJson(readObject(rawTerms[i], '$path.terms[$i]'), '$path.terms[$i]'),
+          QuestionTerm.fromJson(
+            readObject(rawTerms[i], '$path.terms[$i]'),
+            '$path.terms[$i]',
+          ),
       ],
-      help: QuestionHelp.fromJson(readObject(json['help'], '$path.help'), '$path.help'),
+      help: QuestionHelp.fromJson(
+        readObject(json['help'], '$path.help'),
+        '$path.help',
+      ),
     );
   }
 }
@@ -199,7 +215,10 @@ class ArchetypeQuestion {
       text: readString(json['text'], '$path.text'),
       options: <ArchetypeOption>[
         for (var i = 0; i < rawOptions.length; i++)
-          ArchetypeOption.fromJson(readObject(rawOptions[i], '$path.options[$i]'), '$path.options[$i]'),
+          ArchetypeOption.fromJson(
+            readObject(rawOptions[i], '$path.options[$i]'),
+            '$path.options[$i]',
+          ),
       ],
     );
   }
@@ -220,15 +239,18 @@ class TwelveAxesData {
   final Map<String, Axis> axisById;
 
   List<AxisQuestion> questionsFor(String axisId) => <AxisQuestion>[
-        for (final question in questions)
-          if (question.axisId == axisId) question,
-      ];
+    for (final question in questions)
+      if (question.axisId == axisId) question,
+  ];
 
   factory TwelveAxesData.fromJson(Map<String, Object?> json) {
     final rawAxes = readArray(json['axes'], 'axes');
     final rawOptions = readArray(json['answerOptions'], 'answerOptions');
     final rawQuestions = readArray(json['questions'], 'questions');
-    final rawArchetypes = readArray(json['archetypeQuestions'], 'archetypeQuestions');
+    final rawArchetypes = readArray(
+      json['archetypeQuestions'],
+      'archetypeQuestions',
+    );
     final axes = <Axis>[
       for (var i = 0; i < rawAxes.length; i++)
         Axis.fromJson(readObject(rawAxes[i], 'axes[$i]'), 'axes[$i]'),
@@ -236,18 +258,26 @@ class TwelveAxesData {
     final axisIds = axes.map((a) => a.id).toSet();
     final questions = <AxisQuestion>[
       for (var i = 0; i < rawQuestions.length; i++)
-        AxisQuestion.fromJson(readObject(rawQuestions[i], 'questions[$i]'), 'questions[$i]'),
+        AxisQuestion.fromJson(
+          readObject(rawQuestions[i], 'questions[$i]'),
+          'questions[$i]',
+        ),
     ];
     for (var i = 0; i < questions.length; i++) {
       if (!axisIds.contains(questions[i].axisId)) {
-        throw FormatException('questions[$i].axisId "${questions[i].axisId}" não existe nos eixos');
+        throw FormatException(
+          'questions[$i].axisId "${questions[i].axisId}" não existe nos eixos',
+        );
       }
     }
     return TwelveAxesData(
       axes: axes,
       answerOptions: <AnswerOption>[
         for (var i = 0; i < rawOptions.length; i++)
-          AnswerOption.fromJson(readObject(rawOptions[i], 'answerOptions[$i]'), 'answerOptions[$i]'),
+          AnswerOption.fromJson(
+            readObject(rawOptions[i], 'answerOptions[$i]'),
+            'answerOptions[$i]',
+          ),
       ],
       questions: questions,
       archetypeQuestions: <ArchetypeQuestion>[
@@ -289,7 +319,8 @@ class SixCategory {
       label: readString(json['label'], '$path.label'),
       color: readColor(json['color'], '$path.color'),
       subcategories: <String>[
-        for (var i = 0; i < rawSubs.length; i++) readString(rawSubs[i], '$path.subcategories[$i]'),
+        for (var i = 0; i < rawSubs.length; i++)
+          readString(rawSubs[i], '$path.subcategories[$i]'),
       ],
     );
   }
@@ -327,11 +358,15 @@ class SixQuestion {
     }
     final category = readInt(json['category'], '$path.category');
     if (category < 0 || category > 5) {
-      throw FormatException('$path.category: esperado 0..5, recebido $category');
+      throw FormatException(
+        '$path.category: esperado 0..5, recebido $category',
+      );
     }
     final subcategory = readInt(json['subcategory'], '$path.subcategory');
     if (subcategory < 0 || subcategory > 2) {
-      throw FormatException('$path.subcategory: esperado 0..2, recebido $subcategory');
+      throw FormatException(
+        '$path.subcategory: esperado 0..2, recebido $subcategory',
+      );
     }
     return SixQuestion(
       id: readInt(json['id'], '$path.id'),
@@ -346,7 +381,9 @@ class SixQuestion {
 
 class SixTrianglesData {
   SixTrianglesData({required this.categories, required this.questions})
-      : categoryById = <int, SixCategory>{for (final category in categories) category.id: category};
+    : categoryById = <int, SixCategory>{
+        for (final category in categories) category.id: category,
+      };
 
   final List<SixCategory> categories;
   final List<SixQuestion> questions;
@@ -357,21 +394,26 @@ class SixTrianglesData {
     final rawQuestions = readArray(json['questions'], 'questions');
     final categories = <SixCategory>[
       for (var i = 0; i < rawCategories.length; i++)
-        SixCategory.fromJson(readObject(rawCategories[i], 'categories[$i]'), 'categories[$i]'),
+        SixCategory.fromJson(
+          readObject(rawCategories[i], 'categories[$i]'),
+          'categories[$i]',
+        ),
     ];
     final categoryIds = categories.map((c) => c.id).toSet();
     final questions = <SixQuestion>[
       for (var i = 0; i < rawQuestions.length; i++)
-        SixQuestion.fromJson(readObject(rawQuestions[i], 'questions[$i]'), 'questions[$i]'),
+        SixQuestion.fromJson(
+          readObject(rawQuestions[i], 'questions[$i]'),
+          'questions[$i]',
+        ),
     ];
     for (var i = 0; i < questions.length; i++) {
       if (!categoryIds.contains(questions[i].category)) {
-        throw FormatException('questions[$i].category ${questions[i].category} não existe nas categorias');
+        throw FormatException(
+          'questions[$i].category ${questions[i].category} não existe nas categorias',
+        );
       }
     }
-    return SixTrianglesData(
-      categories: categories,
-      questions: questions,
-    );
+    return SixTrianglesData(categories: categories, questions: questions);
   }
 }

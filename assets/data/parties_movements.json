@@ -1,0 +1,3422 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "2.0.0",
+  "entries": [
+    {
+      "id": "pt_brasil",
+      "name": "Partido dos Trabalhadores (PT)",
+      "subtitle": "Trabalhismo, social-democracia e desenvolvimentismo",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 1980",
+      "origin": "Brasil",
+      "summary": "Atua historicamente com foco em políticas redistributivas, valorização do salário mínimo, ampliação de programas sociais universais e papel indutor do Estado na infraestrutura estratégica.",
+      "highlights": [
+        "Prioridade a programas de transferência de renda e combate à pobreza",
+        "Fortalecimento de bancos públicos e estatais de energia",
+        "Política externa multilateral com ênfase na cooperação Sul-Sul"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.1,
+        "representacao": -0.75,
+        "poder": 0.2,
+        "imigracao": 0.45,
+        "diplomacia": 0.4,
+        "intervencao": 0.35,
+        "economia": -0.65,
+        "controle": -0.6,
+        "comercio": -0.4,
+        "religiao": -0.2,
+        "moral": -0.55,
+        "tecnologia": -0.15
+      },
+      "triangles": {
+        "0": [
+          0.5,
+          0.38,
+          0.12
+        ],
+        "1": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "2": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "3": [
+          0.1,
+          0.4,
+          0.5
+        ],
+        "4": [
+          0.65,
+          0.25,
+          0.1
+        ],
+        "5": [
+          0.2,
+          0.7,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "pl_brasil",
+      "name": "Partido Liberal (PL)",
+      "subtitle": "Conservadorismo social, patriotismo e liberalismo econômico",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 2006",
+      "origin": "Brasil",
+      "summary": "Reúne correntes do conservadorismo político e moral, defendendo pautas de costumes tradicionais, desregulamentação da atividade empresarial e endurecimento das políticas de segurança pública.",
+      "highlights": [
+        "Defesa de valores morais tradicionais e da liberdade religiosa",
+        "Propostas de redução de tributos e privatizações seletivas",
+        "Rigor penal e apoio a medidas de proteção à propriedade rural"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.15,
+        "representacao": -0.1,
+        "poder": -0.65,
+        "imigracao": -0.6,
+        "diplomacia": -0.35,
+        "intervencao": 0.5,
+        "economia": 0.55,
+        "controle": 0.45,
+        "comercio": -0.15,
+        "religiao": 0.65,
+        "moral": 0.75,
+        "tecnologia": 0.05
+      },
+      "triangles": {
+        "0": [
+          0.12,
+          0.3,
+          0.58
+        ],
+        "1": [
+          0.2,
+          0.65,
+          0.15
+        ],
+        "2": [
+          0.7,
+          0.1,
+          0.2
+        ],
+        "3": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "4": [
+          0.35,
+          0.5,
+          0.15
+        ],
+        "5": [
+          0.4,
+          0.1,
+          0.5
+        ]
+      }
+    },
+    {
+      "id": "mdb_brasil",
+      "name": "Movimento Democrático Brasileiro (MDB)",
+      "subtitle": "Centro político pragmático e institucionalismo federativo",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 1966 / 1980",
+      "origin": "Brasil",
+      "summary": "Herdeiro da oposição consentida durante o regime militar, consolidou-se como partido de centro com ampla capilaridade municipal, sustentando governabilidade legislativa e equilíbrio federativo.",
+      "highlights": [
+        "Forte base de prefeitos e governadores nos estados",
+        "Papel mediador no Congresso Nacional e no pacto federativo",
+        "Agenda econômica mista com apoio a reformas graduais"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.65,
+        "poder": 0.05,
+        "imigracao": 0.05,
+        "diplomacia": 0.25,
+        "intervencao": -0.1,
+        "economia": 0.1,
+        "controle": 0.15,
+        "comercio": 0.1,
+        "religiao": 0.15,
+        "moral": 0.05,
+        "tecnologia": -0.1
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.48,
+          0.3
+        ],
+        "1": [
+          0.38,
+          0.34,
+          0.28
+        ],
+        "2": [
+          0.35,
+          0.35,
+          0.3
+        ],
+        "3": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "4": [
+          0.6,
+          0.22,
+          0.18
+        ],
+        "5": [
+          0.45,
+          0.28,
+          0.27
+        ]
+      }
+    },
+    {
+      "id": "psdb_brasil",
+      "name": "Partido da Social Democracia Brasileira (PSDB)",
+      "subtitle": "Social-democracia de terceira via e estabilidade fiscal",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 1988",
+      "origin": "Brasil",
+      "summary": "Nascido de dissidência moderada do MDB em 1988, protagonizou a estabilização monetária do Plano Real, combinando responsabilidade fiscal, privatizações em telecomunicações e agências reguladoras autônomas.",
+      "highlights": [
+        "Criação do Plano Real e defesa da estabilidade da moeda",
+        "Modelo de Estado regulador e descentralização educacional",
+        "Reformas previdenciárias e fiscais no âmbito federativo"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.78,
+        "poder": 0.25,
+        "imigracao": 0.25,
+        "diplomacia": 0.35,
+        "intervencao": -0.2,
+        "economia": 0.35,
+        "controle": 0.3,
+        "comercio": 0.45,
+        "religiao": -0.3,
+        "moral": -0.2,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.16,
+          0.54,
+          0.3
+        ],
+        "1": [
+          0.42,
+          0.28,
+          0.3
+        ],
+        "2": [
+          0.22,
+          0.48,
+          0.3
+        ],
+        "3": [
+          0.1,
+          0.25,
+          0.65
+        ],
+        "4": [
+          0.65,
+          0.18,
+          0.17
+        ],
+        "5": [
+          0.55,
+          0.25,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "pdt_brasil",
+      "name": "Partido Democrático Trabalhista (PDT)",
+      "subtitle": "Trabalhismo brizolista e nacional-desenvolvimentismo",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 1979",
+      "origin": "Brasil",
+      "summary": "Fundado sob liderança de Leonel Brizola em continuidade ao trabalhismo histórico de Vargas e Pasqualini, elege a educação integral e a soberania energética como pilares da emancipação nacional.",
+      "highlights": [
+        "Educação pública em tempo integral (modelo dos CIEPs)",
+        "Defesa irrestrita da CLT e dos direitos sindicais",
+        "Soberania sobre riquezas minerais, petróleo e infraestrutura"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.2,
+        "representacao": -0.68,
+        "poder": 0.05,
+        "imigracao": -0.15,
+        "diplomacia": 0.2,
+        "intervencao": 0.55,
+        "economia": -0.55,
+        "controle": -0.5,
+        "comercio": -0.65,
+        "religiao": -0.1,
+        "moral": -0.25,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.44,
+          0.42,
+          0.14
+        ],
+        "1": [
+          0.36,
+          0.34,
+          0.3
+        ],
+        "2": [
+          0.28,
+          0.46,
+          0.26
+        ],
+        "3": [
+          0.18,
+          0.56,
+          0.26
+        ],
+        "4": [
+          0.58,
+          0.32,
+          0.1
+        ],
+        "5": [
+          0.34,
+          0.54,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "psol_brasil",
+      "name": "Partido Socialismo e Liberdade (PSOL)",
+      "subtitle": "Socialismo democrático, ecossocialismo e direitos civis",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 2004",
+      "origin": "Brasil",
+      "summary": "Formado por dissidentes do PT e movimentos sociais, articula a luta anticapitalista à defesa radical dos direitos humanos, pautas antirracistas, feministas, LGBTQIA+ e preservação socioambiental.",
+      "highlights": [
+        "Tributação progressiva sobre grandes fortunas e heranças",
+        "Reforma agrária e urbana contra especulação imobiliária",
+        "Vanguarda na defesa de direitos civis e liberdades sexuais"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.25,
+        "representacao": -0.88,
+        "poder": 0.55,
+        "imigracao": 0.7,
+        "diplomacia": 0.65,
+        "intervencao": -0.45,
+        "economia": -0.85,
+        "controle": -0.75,
+        "comercio": -0.35,
+        "religiao": -0.6,
+        "moral": -0.85,
+        "tecnologia": 0.15
+      },
+      "triangles": {
+        "0": [
+          0.62,
+          0.3,
+          0.08
+        ],
+        "1": [
+          0.6,
+          0.12,
+          0.28
+        ],
+        "2": [
+          0.05,
+          0.65,
+          0.3
+        ],
+        "3": [
+          0.08,
+          0.35,
+          0.57
+        ],
+        "4": [
+          0.75,
+          0.15,
+          0.1
+        ],
+        "5": [
+          0.15,
+          0.8,
+          0.05
+        ]
+      }
+    },
+    {
+      "id": "novo_brasil",
+      "name": "Partido Novo (NOVO)",
+      "subtitle": "Liberalismo clássico, responsabilidade fiscal e Estado mínimo",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 2011",
+      "origin": "Brasil",
+      "summary": "Defende a diminuição estrutural do tamanho do Estado brasileiro, redução da burocracia, corte de privilégios corporativos e ampla liberdade para empreender e inovar na economia.",
+      "highlights": [
+        "Privatização de empresas estatais e abertura comercial",
+        "Responsabilidade fiscal rígida e teto de gastos públicos",
+        "Gestão pública orientada por metas de eficiência e mérito"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.55,
+        "representacao": -0.55,
+        "poder": 0.4,
+        "imigracao": 0.05,
+        "diplomacia": 0.15,
+        "intervencao": -0.35,
+        "economia": 0.85,
+        "controle": 0.8,
+        "comercio": 0.65,
+        "religiao": -0.1,
+        "moral": 0.15,
+        "tecnologia": -0.45
+      },
+      "triangles": {
+        "0": [
+          0.06,
+          0.2,
+          0.74
+        ],
+        "1": [
+          0.55,
+          0.22,
+          0.23
+        ],
+        "2": [
+          0.28,
+          0.24,
+          0.48
+        ],
+        "3": [
+          0.08,
+          0.32,
+          0.6
+        ],
+        "4": [
+          0.42,
+          0.12,
+          0.46
+        ],
+        "5": [
+          0.52,
+          0.08,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "psd_brasil",
+      "name": "Partido Social Democrático (PSD)",
+      "subtitle": "Pragmatismo de centro, equilíbrio institucional e governabilidade",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 2011",
+      "origin": "Brasil",
+      "summary": "Criado por Gilberto Kassab reunindo lideranças plurais, atua com independência pragmática no Congresso, apoiando estabilidade institucional e conciliação entre setores produtivos e Estado.",
+      "highlights": [
+        "Posição de centro independente articulando maiorias legislativas",
+        "Apoio a pautas do agronegócio e obras de infraestrutura regional",
+        "Pragmatismo em alianças com diferentes chefias do Executivo"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.25,
+        "representacao": -0.6,
+        "poder": 0.0,
+        "imigracao": 0.1,
+        "diplomacia": 0.2,
+        "intervencao": 0.05,
+        "economia": 0.2,
+        "controle": 0.18,
+        "comercio": 0.2,
+        "religiao": 0.1,
+        "moral": 0.1,
+        "tecnologia": -0.2
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.48,
+          0.32
+        ],
+        "1": [
+          0.35,
+          0.38,
+          0.27
+        ],
+        "2": [
+          0.35,
+          0.32,
+          0.33
+        ],
+        "3": [
+          0.12,
+          0.38,
+          0.5
+        ],
+        "4": [
+          0.6,
+          0.25,
+          0.15
+        ],
+        "5": [
+          0.46,
+          0.26,
+          0.28
+        ]
+      }
+    },
+    {
+      "id": "uniao_brasil",
+      "name": "União Brasil",
+      "subtitle": "Liberal-conservadorismo, segurança pública e descentralização",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 2022",
+      "origin": "Brasil",
+      "summary": "Fruto da fusão entre o Democratas (DEM) e o PSL, combina defesa do livre mercado, estímulo ao agronegócio e rigor na segurança pública com ampla bancada no Congresso Nacional.",
+      "highlights": [
+        "Apoio a pautas de segurança pública e combate ao crime",
+        "Defesa da propriedade privada e incentivos ao setor produtivo",
+        "Vigente bancada suprapartidária com influência na governabilidade"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.15,
+        "representacao": -0.45,
+        "poder": -0.35,
+        "imigracao": -0.25,
+        "diplomacia": -0.15,
+        "intervencao": 0.25,
+        "economia": 0.45,
+        "controle": 0.4,
+        "comercio": 0.15,
+        "religiao": 0.35,
+        "moral": 0.45,
+        "tecnologia": -0.1
+      },
+      "triangles": {
+        "0": [
+          0.15,
+          0.38,
+          0.47
+        ],
+        "1": [
+          0.3,
+          0.52,
+          0.18
+        ],
+        "2": [
+          0.52,
+          0.2,
+          0.28
+        ],
+        "3": [
+          0.2,
+          0.45,
+          0.35
+        ],
+        "4": [
+          0.5,
+          0.34,
+          0.16
+        ],
+        "5": [
+          0.46,
+          0.16,
+          0.38
+        ]
+      }
+    },
+    {
+      "id": "psb_brasil",
+      "name": "Partido Socialista Brasileiro (PSB)",
+      "subtitle": "Socialismo democrático reformista e sustentabilidade",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 1947 / 1985",
+      "origin": "Brasil",
+      "summary": "Aliado histórico de causas progressistas e da redemocratização, concilia tradição socialista democrática com valorização da ciência, inovação e modernização da gestão pública.",
+      "highlights": [
+        "Planejamento estratégico e fortalecimento da educação técnica",
+        "Transição ecológica e preservação dos biomas brasileiros",
+        "Alianças plurais de centro-esquerda pela democracia institucional"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.2,
+        "representacao": -0.76,
+        "poder": 0.25,
+        "imigracao": 0.35,
+        "diplomacia": 0.45,
+        "intervencao": 0.1,
+        "economia": -0.45,
+        "controle": -0.35,
+        "comercio": 0.1,
+        "religiao": -0.35,
+        "moral": -0.45,
+        "tecnologia": -0.4
+      },
+      "triangles": {
+        "0": [
+          0.36,
+          0.44,
+          0.2
+        ],
+        "1": [
+          0.44,
+          0.24,
+          0.32
+        ],
+        "2": [
+          0.18,
+          0.52,
+          0.3
+        ],
+        "3": [
+          0.1,
+          0.32,
+          0.58
+        ],
+        "4": [
+          0.65,
+          0.2,
+          0.15
+        ],
+        "5": [
+          0.3,
+          0.58,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "pcdob_brasil",
+      "name": "Partido Comunista do Brasil (PCdoB)",
+      "subtitle": "Marxismo histórico, desenvolvimentismo e soberania nacional",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 1922 / 1962",
+      "origin": "Brasil",
+      "summary": "Partido secular de matriz comunista, reorganizado na clandestinidade e legalizado em 1985, prioriza a defesa dos trabalhadores, o projeto nacional de desenvolvimento e a soberania tecnológica.",
+      "highlights": [
+        "Projeto Nacional de Desenvolvimento capitaneado pelo Estado",
+        "Defesa das organizações sindicais e direitos da juventude",
+        "Integração latino-americana e postura anti-imperialista"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.35,
+        "representacao": -0.58,
+        "poder": -0.15,
+        "imigracao": 0.3,
+        "diplomacia": 0.1,
+        "intervencao": 0.65,
+        "economia": -0.8,
+        "controle": -0.75,
+        "comercio": -0.55,
+        "religiao": -0.65,
+        "moral": -0.45,
+        "tecnologia": -0.5
+      },
+      "triangles": {
+        "0": [
+          0.6,
+          0.3,
+          0.1
+        ],
+        "1": [
+          0.35,
+          0.38,
+          0.27
+        ],
+        "2": [
+          0.16,
+          0.54,
+          0.3
+        ],
+        "3": [
+          0.16,
+          0.5,
+          0.34
+        ],
+        "4": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "5": [
+          0.18,
+          0.72,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "republicanos_brasil",
+      "name": "Republicanos",
+      "subtitle": "Conservadorismo moral cristão e municipalismo",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 2005",
+      "origin": "Brasil",
+      "summary": "Articulado a segmentos cristãos e lideranças evangélicas, defende pautas pró-família tradicional, integridade moral na administração e investimentos em infraestrutura e segurança local.",
+      "highlights": [
+        "Proteção da família clássica e apoio a entidades comunitárias de fé",
+        "Rigor penal e combate ostensivo à violência urbana",
+        "Estímulo à geração de emprego por meio do setor de serviços"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.1,
+        "representacao": -0.35,
+        "poder": -0.55,
+        "imigracao": -0.45,
+        "diplomacia": -0.2,
+        "intervencao": 0.35,
+        "economia": 0.35,
+        "controle": 0.25,
+        "comercio": 0.05,
+        "religiao": 0.75,
+        "moral": 0.78,
+        "tecnologia": 0.15
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.4,
+          0.4
+        ],
+        "1": [
+          0.22,
+          0.6,
+          0.18
+        ],
+        "2": [
+          0.72,
+          0.12,
+          0.16
+        ],
+        "3": [
+          0.2,
+          0.48,
+          0.32
+        ],
+        "4": [
+          0.45,
+          0.42,
+          0.13
+        ],
+        "5": [
+          0.4,
+          0.22,
+          0.38
+        ]
+      }
+    },
+    {
+      "id": "pp_brasil",
+      "name": "Progressistas (PP)",
+      "subtitle": "Conservadorismo pragmático, agronegócio e municipalismo",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 1995",
+      "origin": "Brasil",
+      "summary": "Com raízes históricas ligadas à ARENA e ao PDS, destaca-se pela forte bancada do agronegócio, defesa da produção rural e poder de articulação na mesa diretora do Congresso Nacional.",
+      "highlights": [
+        "Defesa do agronegócio exportador e segurança jurídica no campo",
+        "Orçamento público descentralizado para emendas municipais",
+        "Pragmatismo de centro-direita na sustentação de governos"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.55,
+        "representacao": -0.4,
+        "poder": -0.4,
+        "imigracao": -0.45,
+        "diplomacia": -0.25,
+        "intervencao": 0.4,
+        "economia": 0.35,
+        "controle": 0.25,
+        "comercio": -0.2,
+        "religiao": 0.65,
+        "moral": 0.65,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.42,
+          0.36
+        ],
+        "1": [
+          0.24,
+          0.6,
+          0.16
+        ],
+        "2": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "3": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "4": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "5": [
+          0.42,
+          0.18,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "rede_sustentabilidade",
+      "name": "Rede Sustentabilidade",
+      "subtitle": "Ecologismo político, ética pública e democracia participativa",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 2013",
+      "origin": "Brasil",
+      "summary": "Liderada por Marina Silva, propõe superação do modelo tradicional de desenvolvimento predatório, substituindo-o por bioeconomia sustentável, transparência cívica e ativismo climático.",
+      "highlights": [
+        "Transição energética rápida e proteção integral dos povos indígenas",
+        "Combate implacável ao desmatamento na Amazônia e Cerrado",
+        "Mecanismos de consulta popular direta e transparência no Estado"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.85,
+        "poder": 0.45,
+        "imigracao": 0.5,
+        "diplomacia": 0.55,
+        "intervencao": -0.4,
+        "economia": -0.25,
+        "controle": -0.2,
+        "comercio": 0.15,
+        "religiao": -0.1,
+        "moral": -0.4,
+        "tecnologia": 0.7
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.56,
+          0.22
+        ],
+        "1": [
+          0.55,
+          0.18,
+          0.27
+        ],
+        "2": [
+          0.18,
+          0.54,
+          0.28
+        ],
+        "3": [
+          0.06,
+          0.28,
+          0.66
+        ],
+        "4": [
+          0.7,
+          0.15,
+          0.15
+        ],
+        "5": [
+          0.4,
+          0.48,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "pcb_up_brasil",
+      "name": "Esquerda Marxista e Revolucionária (PCB / UP)",
+      "subtitle": "Comunismo revolucionário, poder popular e anti-imperialismo",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 1922 / 2016",
+      "origin": "Brasil",
+      "summary": "Atuando na linha do marxismo-leninismo, sustentam que a emancipação dos trabalhadores exige a superação revolucionária do capitalismo, estatização bancária e protagonismo da classe trabalhadora organizada.",
+      "highlights": [
+        "Estatização integral do sistema financeiro e das grandes indústrias",
+        "Poder popular deliberativo nas fábricas e bairros periféricos",
+        "Ruptura com o capital financeiro internacional e auditoria da dívida"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.45,
+        "representacao": -0.3,
+        "poder": -0.3,
+        "imigracao": 0.3,
+        "diplomacia": -0.1,
+        "intervencao": 0.7,
+        "economia": -0.95,
+        "controle": -0.92,
+        "comercio": -0.7,
+        "religiao": -0.85,
+        "moral": -0.35,
+        "tecnologia": -0.4
+      },
+      "triangles": {
+        "0": [
+          0.75,
+          0.18,
+          0.07
+        ],
+        "1": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "2": [
+          0.12,
+          0.6,
+          0.28
+        ],
+        "3": [
+          0.15,
+          0.65,
+          0.2
+        ],
+        "4": [
+          0.5,
+          0.45,
+          0.05
+        ],
+        "5": [
+          0.1,
+          0.85,
+          0.05
+        ]
+      }
+    },
+    {
+      "id": "cidadania_brasil",
+      "name": "Cidadania (antigo PPS)",
+      "subtitle": "Socialismo democrático pós-comunista e república laica",
+      "category": "Partidos Brasileiros",
+      "era": "Fundado em 1992",
+      "origin": "Brasil",
+      "summary": "Originado da cisão que sucedeu a dissolução do Partido Comunista Brasileiro histórico, evoluiu para uma postura republicana e reformista, combinando laicidade e responsabilidade fiscal com direitos civis.",
+      "highlights": [
+        "Garantia institucional das liberdades civis e Estado laico",
+        "Apoio a reformas econômicas modernizantes com rede social básica",
+        "Defesa da ética pública e transparência federativa"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.82,
+        "poder": 0.35,
+        "imigracao": 0.4,
+        "diplomacia": 0.4,
+        "intervencao": -0.25,
+        "economia": 0.05,
+        "controle": 0.05,
+        "comercio": 0.35,
+        "religiao": -0.65,
+        "moral": -0.6,
+        "tecnologia": -0.45
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.52,
+          0.26
+        ],
+        "1": [
+          0.5,
+          0.2,
+          0.3
+        ],
+        "2": [
+          0.12,
+          0.58,
+          0.3
+        ],
+        "3": [
+          0.08,
+          0.26,
+          0.66
+        ],
+        "4": [
+          0.68,
+          0.16,
+          0.16
+        ],
+        "5": [
+          0.46,
+          0.38,
+          0.16
+        ]
+      }
+    },
+    {
+      "id": "partido_liberal_imperio",
+      "name": "Partido Liberal do Império",
+      "subtitle": "Descentralização provincial, parlamentarismo e abolicionismo moderado",
+      "category": "Partidos Brasileiros Históricos",
+      "era": "1831–1889",
+      "origin": "Brasil Império",
+      "summary": "Corrente política do Segundo Reinado que pugnava pela autonomia das províncias, limitação dos poderes moderador e central, alternando-se no gabinete com o Partido Conservador sob o manto monárquico.",
+      "highlights": [
+        "Defesa do federalismo e da autonomia administrativa das províncias",
+        "Adesão progressiva à causa abolicionista no final do Império",
+        "Redução da tutela judicial e administrativa exercida pela Corte"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.65,
+        "representacao": -0.55,
+        "poder": 0.35,
+        "imigracao": 0.15,
+        "diplomacia": 0.2,
+        "intervencao": -0.3,
+        "economia": 0.4,
+        "controle": 0.35,
+        "comercio": 0.25,
+        "religiao": 0.25,
+        "moral": -0.15,
+        "tecnologia": -0.1
+      },
+      "triangles": {
+        "0": [
+          0.16,
+          0.38,
+          0.46
+        ],
+        "1": [
+          0.5,
+          0.25,
+          0.25
+        ],
+        "2": [
+          0.28,
+          0.36,
+          0.36
+        ],
+        "3": [
+          0.12,
+          0.48,
+          0.4
+        ],
+        "4": [
+          0.58,
+          0.22,
+          0.2
+        ],
+        "5": [
+          0.52,
+          0.18,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "partido_conservador_imperio",
+      "name": "Partido Conservador do Império (Saquaremas)",
+      "subtitle": "Ordem centralizada, autoridade monárquica e estabilidade institucional",
+      "category": "Partidos Brasileiros Históricos",
+      "era": "1836–1889",
+      "origin": "Brasil Império",
+      "summary": "Conhecido como os 'saquaremas', sustentava a autoridade central do imperador, a magistratura unificada e a ordem pública rigorosa para conter rebeliões separatistas e assegurar a unidade do Brasil.",
+      "highlights": [
+        "Manutenção da unidade territorial contra fragmentações separatistas",
+        "Poder Moderador como árbitro supremo da estabilidade política",
+        "Transição gradual e indenizada nas reformas fundiárias e servis"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.65,
+        "representacao": -0.2,
+        "poder": -0.45,
+        "imigracao": -0.25,
+        "diplomacia": -0.2,
+        "intervencao": 0.45,
+        "economia": 0.3,
+        "controle": 0.2,
+        "comercio": -0.15,
+        "religiao": 0.65,
+        "moral": 0.65,
+        "tecnologia": -0.1
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.44,
+          0.34
+        ],
+        "1": [
+          0.22,
+          0.62,
+          0.16
+        ],
+        "2": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "3": [
+          0.2,
+          0.52,
+          0.28
+        ],
+        "4": [
+          0.38,
+          0.52,
+          0.1
+        ],
+        "5": [
+          0.46,
+          0.14,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "prp_brasil_historico",
+      "name": "Partido Republicano Paulista (PRP)",
+      "subtitle": "Federalismo oligárquico, cafeicultura e autonomia estadual",
+      "category": "Partidos Brasileiros Históricos",
+      "era": "1873–1930",
+      "origin": "Brasil (Primeira República)",
+      "summary": "Força hegemônica da República Velha na aliança do 'café com leite', advogava o federalismo radical com ampla retenção de tributos exportadores e milícias estaduais sob comando de coronéis regionais.",
+      "highlights": [
+        "Federalismo fiscal amplo com impostos de exportação nos estados",
+        "Defesa da cafeicultura por meio da valorização cambial de Taubaté",
+        "Polícia estadual forte e controle eleitoral pelo voto de cabresto"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.85,
+        "representacao": -0.1,
+        "poder": -0.35,
+        "imigracao": -0.2,
+        "diplomacia": -0.15,
+        "intervencao": 0.1,
+        "economia": 0.55,
+        "controle": 0.45,
+        "comercio": 0.1,
+        "religiao": 0.25,
+        "moral": 0.45,
+        "tecnologia": -0.25
+      },
+      "triangles": {
+        "0": [
+          0.14,
+          0.36,
+          0.5
+        ],
+        "1": [
+          0.32,
+          0.48,
+          0.2
+        ],
+        "2": [
+          0.55,
+          0.18,
+          0.27
+        ],
+        "3": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "4": [
+          0.4,
+          0.4,
+          0.2
+        ],
+        "5": [
+          0.48,
+          0.12,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "ptb_historico",
+      "name": "Partido Trabalhista Brasileiro Histórico (PTB 1945–1965)",
+      "subtitle": "Trabalhismo corporativo, CLT e reformas de base",
+      "category": "Partidos Brasileiros Históricos",
+      "era": "1945–1965",
+      "origin": "Brasil",
+      "summary": "Criado por Vargas e depois liderado por Jango e Brizola, mobilizava as massas urbanas organizadas nos sindicatos, combinando benefícios previdenciários e a defesa das Reformas de Base.",
+      "highlights": [
+        "Defesa apaixonada da CLT, salário mínimo e previdência social",
+        "Campanha pelo monopólio estatal do petróleo (Petrobras)",
+        "Plano das Reformas de Base (agrária, bancária, tributária e urbana)"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.45,
+        "representacao": -0.65,
+        "poder": 0.05,
+        "imigracao": 0.05,
+        "diplomacia": 0.15,
+        "intervencao": 0.65,
+        "economia": -0.7,
+        "controle": -0.65,
+        "comercio": -0.65,
+        "religiao": 0.1,
+        "moral": -0.25,
+        "tecnologia": -0.4
+      },
+      "triangles": {
+        "0": [
+          0.52,
+          0.38,
+          0.1
+        ],
+        "1": [
+          0.38,
+          0.32,
+          0.3
+        ],
+        "2": [
+          0.25,
+          0.5,
+          0.25
+        ],
+        "3": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "4": [
+          0.6,
+          0.3,
+          0.1
+        ],
+        "5": [
+          0.25,
+          0.65,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "udn_historico",
+      "name": "União Democrática Nacional (UDN 1945–1965)",
+      "subtitle": "Liberalismo econômico, moralismo cívico e legalismo elitista",
+      "category": "Partidos Brasileiros Históricos",
+      "era": "1945–1965",
+      "origin": "Brasil",
+      "summary": "Principal rival do varguismo, reunia a classe média urbana e as elites intelectuais em cruzadas contra a corrupção e o populismo, defendendo livre iniciativa e aproximação estratégica com os EUA.",
+      "highlights": [
+        "Oposição intransigente ao legado corporativo e sindical de Vargas",
+        "Defesa do capital estrangeiro e contenção de monopólios estatais",
+        "Cruzadas moralistas contra a corrupção na administração pública"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.45,
+        "poder": -0.25,
+        "imigracao": -0.15,
+        "diplomacia": -0.25,
+        "intervencao": -0.3,
+        "economia": 0.65,
+        "controle": 0.6,
+        "comercio": 0.5,
+        "religiao": 0.35,
+        "moral": 0.4,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "1": [
+          0.38,
+          0.44,
+          0.18
+        ],
+        "2": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "3": [
+          0.25,
+          0.25,
+          0.5
+        ],
+        "4": [
+          0.48,
+          0.36,
+          0.16
+        ],
+        "5": [
+          0.55,
+          0.15,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "psd_historico_1945",
+      "name": "Partido Social Democrático Histórico (PSD 1945–1965)",
+      "subtitle": "Centro governista, desenvolvimentismo negociado e pacto federativo",
+      "category": "Partidos Brasileiros Históricos",
+      "era": "1945–1965",
+      "origin": "Brasil",
+      "summary": "Maior bancada parlamentar da República de 1946, formado por interventores estaduais de Vargas, foi o partido de Juscelino Kubitschek, combinando governabilidade estável com obras desenvolvimentistas.",
+      "highlights": [
+        "Base política da modernização desenvolvimentista de JK",
+        "Construção de Brasília e interiorização do centro de decisões",
+        "Equilíbrio entre coronelismo do interior e burocracia do Estado"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.25,
+        "representacao": -0.6,
+        "poder": 0.0,
+        "imigracao": 0.1,
+        "diplomacia": 0.2,
+        "intervencao": 0.4,
+        "economia": -0.2,
+        "controle": -0.15,
+        "comercio": 0.05,
+        "religiao": 0.25,
+        "moral": 0.15,
+        "tecnologia": -0.55
+      },
+      "triangles": {
+        "0": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "1": [
+          0.36,
+          0.36,
+          0.28
+        ],
+        "2": [
+          0.32,
+          0.4,
+          0.28
+        ],
+        "3": [
+          0.14,
+          0.44,
+          0.42
+        ],
+        "4": [
+          0.62,
+          0.26,
+          0.12
+        ],
+        "5": [
+          0.42,
+          0.38,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "arena_historico",
+      "name": "Aliança Renovadora Nacional (ARENA 1966–1979)",
+      "subtitle": "Nacional-desenvolvimentismo autoritário, segurança e ordem institucional",
+      "category": "Partidos Brasileiros Históricos",
+      "era": "1966–1979",
+      "origin": "Brasil (Ditadura Militar)",
+      "summary": "Partido oficial do regime militar de 1964, dava suporte parlamentar aos governos generais, chancelando a Doutrina de Segurança Nacional, censura a opositores e grandes projetos estatais de infraestrutura.",
+      "highlights": [
+        "Sustentação civil e legislativa aos Atos Institucionais do regime",
+        "Investimento massivo em telecomunicações, Itaipu e energia nuclear",
+        "Aliança com o empresariado industrial e elites regionais tradicionais"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.85,
+        "representacao": 0.7,
+        "poder": -0.85,
+        "imigracao": -0.55,
+        "diplomacia": -0.65,
+        "intervencao": 0.75,
+        "economia": -0.35,
+        "controle": -0.55,
+        "comercio": -0.5,
+        "religiao": 0.45,
+        "moral": 0.55,
+        "tecnologia": -0.65
+      },
+      "triangles": {
+        "0": [
+          0.48,
+          0.36,
+          0.16
+        ],
+        "1": [
+          0.08,
+          0.82,
+          0.1
+        ],
+        "2": [
+          0.65,
+          0.22,
+          0.13
+        ],
+        "3": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "4": [
+          0.12,
+          0.8,
+          0.08
+        ],
+        "5": [
+          0.42,
+          0.18,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "prona_historico",
+      "name": "Partido de Reedificação da Ordem Nacional (PRONA 1989–2006)",
+      "subtitle": "Nacionalismo soberanista, tecnocracia estatal e rigor moral",
+      "category": "Partidos Brasileiros Históricos",
+      "era": "1989–2006",
+      "origin": "Brasil",
+      "summary": "Liderado pelo médico Enéas Carneiro, propunha a posse brasileira da bomba atômica para dissuasão, nacionalização das riquezas minerais, combate à usura financeira e moralismo estrito na sociedade.",
+      "highlights": [
+        "Defesa enfática da soberania mineral (em especial o nióbio)",
+        "Capacidade militar de dissuasão estratégica independente",
+        "Crítica mordaz às privatizações e à submissão a agências internacionais"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.75,
+        "representacao": 0.3,
+        "poder": -0.65,
+        "imigracao": -0.75,
+        "diplomacia": -0.7,
+        "intervencao": 0.85,
+        "economia": -0.6,
+        "controle": -0.65,
+        "comercio": -0.8,
+        "religiao": 0.35,
+        "moral": 0.65,
+        "tecnologia": -0.75
+      },
+      "triangles": {
+        "0": [
+          0.5,
+          0.38,
+          0.12
+        ],
+        "1": [
+          0.15,
+          0.72,
+          0.13
+        ],
+        "2": [
+          0.7,
+          0.12,
+          0.18
+        ],
+        "3": [
+          0.48,
+          0.48,
+          0.04
+        ],
+        "4": [
+          0.25,
+          0.68,
+          0.07
+        ],
+        "5": [
+          0.38,
+          0.32,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "labour_uk",
+      "name": "Partido Trabalhista Britânico (Labour)",
+      "subtitle": "Social-democracia, bem-estar público e justiça social",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1900",
+      "origin": "Reino Unido",
+      "summary": "Arquiteto do Estado de Bem-Estar britânico e do Serviço Nacional de Saúde (NHS) no pós-guerra, equilibra a proteção aos direitos sindicais com reformas progressistas e serviços públicos universais.",
+      "highlights": [
+        "Criação e salvaguarda do National Health Service (NHS)",
+        "Defesa do emprego decente e investimentos em infraestrutura verde",
+        "Aliança histórica com federações sindicais e governos locais"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.1,
+        "representacao": -0.8,
+        "poder": 0.3,
+        "imigracao": 0.45,
+        "diplomacia": 0.35,
+        "intervencao": -0.15,
+        "economia": -0.55,
+        "controle": -0.45,
+        "comercio": 0.15,
+        "religiao": -0.4,
+        "moral": -0.55,
+        "tecnologia": -0.2
+      },
+      "triangles": {
+        "0": [
+          0.4,
+          0.45,
+          0.15
+        ],
+        "1": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "2": [
+          0.15,
+          0.55,
+          0.3
+        ],
+        "3": [
+          0.1,
+          0.3,
+          0.6
+        ],
+        "4": [
+          0.68,
+          0.22,
+          0.1
+        ],
+        "5": [
+          0.25,
+          0.65,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "tories_uk",
+      "name": "Partido Conservador Britânico (Tories)",
+      "subtitle": "Conservadorismo One-Nation, livre iniciativa e soberania nacional",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1834",
+      "origin": "Reino Unido",
+      "summary": "Um dos partidos políticos mais antigos do Ocidente, liderou a condução britânica na Segunda Guerra e a revolução liberalizante de Margaret Thatcher, conduzindo o processo de saída da União Europeia (Brexit).",
+      "highlights": [
+        "Liberalização econômica e responsabilidade fiscal rigorosa",
+        "Preservação da monarquia parlamentar e soberania de Westminster",
+        "Concretização do Brexit e controle soberano das fronteiras"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.45,
+        "representacao": -0.65,
+        "poder": -0.3,
+        "imigracao": -0.55,
+        "diplomacia": -0.45,
+        "intervencao": 0.4,
+        "economia": 0.65,
+        "controle": 0.6,
+        "comercio": 0.1,
+        "religiao": 0.3,
+        "moral": 0.45,
+        "tecnologia": -0.1
+      },
+      "triangles": {
+        "0": [
+          0.12,
+          0.34,
+          0.54
+        ],
+        "1": [
+          0.28,
+          0.55,
+          0.17
+        ],
+        "2": [
+          0.6,
+          0.15,
+          0.25
+        ],
+        "3": [
+          0.35,
+          0.45,
+          0.2
+        ],
+        "4": [
+          0.52,
+          0.34,
+          0.14
+        ],
+        "5": [
+          0.48,
+          0.14,
+          0.38
+        ]
+      }
+    },
+    {
+      "id": "libdems_uk",
+      "name": "Liberal Democratas (Reino Unido)",
+      "subtitle": "Social-liberalismo, integração europeia e direitos civis",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1988",
+      "origin": "Reino Unido",
+      "summary": "Defende reformas democráticas profundas no Reino Unido, como o voto proporcional, além de economia de mercado com redistribuição justa, proteção ecológica e retorno ao mercado comum europeu.",
+      "highlights": [
+        "Reforma eleitoral com representação proporcional e descentralização",
+        "Defesa intransigente da União Europeia e das liberdades individuais",
+        "Transição ecológica com incentivos à economia circular"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.5,
+        "representacao": -0.88,
+        "poder": 0.6,
+        "imigracao": 0.65,
+        "diplomacia": 0.55,
+        "intervencao": -0.45,
+        "economia": 0.15,
+        "controle": 0.15,
+        "comercio": 0.65,
+        "religiao": -0.65,
+        "moral": -0.7,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.18,
+          0.48,
+          0.34
+        ],
+        "1": [
+          0.62,
+          0.12,
+          0.26
+        ],
+        "2": [
+          0.1,
+          0.6,
+          0.3
+        ],
+        "3": [
+          0.05,
+          0.2,
+          0.75
+        ],
+        "4": [
+          0.72,
+          0.12,
+          0.16
+        ],
+        "5": [
+          0.46,
+          0.36,
+          0.18
+        ]
+      }
+    },
+    {
+      "id": "spd_alemanha",
+      "name": "Partido Social-Democrata da Alemanha (SPD)",
+      "subtitle": "Social-democracia clássica, cogestão operária e bem-estar",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1863",
+      "origin": "Alemanha",
+      "summary": "Histórico pilar da esquerda democrática europeia, moldou o modelo social de bem-estar alemão, a cogestão de trabalhadores nos conselhos das indústrias e a política de distensão diplomática (Ostpolitik).",
+      "highlights": [
+        "Cogestão operária e fortalecimento da negociação coletiva",
+        "Investimentos maciços em pensões públicas e habitação social",
+        "Defesa da União Europeia como garantidora da paz continental"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.85,
+        "poder": 0.35,
+        "imigracao": 0.45,
+        "diplomacia": 0.5,
+        "intervencao": -0.25,
+        "economia": -0.4,
+        "controle": -0.35,
+        "comercio": 0.35,
+        "religiao": -0.5,
+        "moral": -0.6,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.28,
+          0.52,
+          0.2
+        ],
+        "1": [
+          0.48,
+          0.22,
+          0.3
+        ],
+        "2": [
+          0.14,
+          0.56,
+          0.3
+        ],
+        "3": [
+          0.08,
+          0.26,
+          0.66
+        ],
+        "4": [
+          0.7,
+          0.18,
+          0.12
+        ],
+        "5": [
+          0.32,
+          0.56,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "cdu_csu_alemanha",
+      "name": "União Democrata-Cristã / CSU (Alemanha)",
+      "subtitle": "Economia Social de Mercado, estabilidade fiscal e valores cristãos",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1945",
+      "origin": "Alemanha",
+      "summary": "Criadora da Economia Social de Mercado (Erhard) e da reunificação alemã (Kohl), combina matriz moral humanista cristã com rigor fiscal, parceria transatlântica e liderança pragmática na UE.",
+      "highlights": [
+        "Economia Social de Mercado com competição e colchão social",
+        "Responsabilidade orçamentária rígida (freio da dívida / Schuldenbremse)",
+        "Sustentação da liderança e estabilidade institucional na União Europeia"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.25,
+        "representacao": -0.75,
+        "poder": 0.05,
+        "imigracao": 0.15,
+        "diplomacia": 0.3,
+        "intervencao": 0.1,
+        "economia": 0.35,
+        "controle": 0.3,
+        "comercio": 0.45,
+        "religiao": 0.45,
+        "moral": 0.3,
+        "tecnologia": -0.2
+      },
+      "triangles": {
+        "0": [
+          0.18,
+          0.5,
+          0.32
+        ],
+        "1": [
+          0.34,
+          0.42,
+          0.24
+        ],
+        "2": [
+          0.46,
+          0.28,
+          0.26
+        ],
+        "3": [
+          0.12,
+          0.28,
+          0.6
+        ],
+        "4": [
+          0.62,
+          0.24,
+          0.14
+        ],
+        "5": [
+          0.48,
+          0.24,
+          0.28
+        ]
+      }
+    },
+    {
+      "id": "fdp_alemanha",
+      "name": "Partido Democrático Livre (FDP — Alemanha)",
+      "subtitle": "Liberalismo clássico, desregulamentação e freio fiscal",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1948",
+      "origin": "Alemanha",
+      "summary": "Representante tradicional do liberalismo alemão, defende cortes de impostos, desburocratização de pequenas empresas, proteção intransigente da privacidade digital e disciplina fiscal estrita.",
+      "highlights": [
+        "Manutenção irredutível do teto de endividamento público",
+        "Incentivos fiscais a startups, pesquisa e tecnologia privada",
+        "Defesa das garantias individuais e privacidade digital contra vigilância"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.7,
+        "poder": 0.55,
+        "imigracao": 0.35,
+        "diplomacia": 0.4,
+        "intervencao": -0.35,
+        "economia": 0.7,
+        "controle": 0.65,
+        "comercio": 0.65,
+        "religiao": -0.5,
+        "moral": -0.3,
+        "tecnologia": -0.55
+      },
+      "triangles": {
+        "0": [
+          0.08,
+          0.3,
+          0.62
+        ],
+        "1": [
+          0.6,
+          0.16,
+          0.24
+        ],
+        "2": [
+          0.2,
+          0.35,
+          0.45
+        ],
+        "3": [
+          0.06,
+          0.24,
+          0.7
+        ],
+        "4": [
+          0.55,
+          0.15,
+          0.3
+        ],
+        "5": [
+          0.54,
+          0.12,
+          0.34
+        ]
+      }
+    },
+    {
+      "id": "verdes_alemanha",
+      "name": "Aliança 90 / Os Verdes (Alemanha)",
+      "subtitle": "Ecologia política, multilateralismo ético e direitos civis",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1980 / 1993",
+      "origin": "Alemanha",
+      "summary": "Pioneiro mundial na consolidação do ecologismo eleitoral, transformou a desativação da energia nuclear e o investimento em energias renováveis em consenso político, aliando pacifismo e direitos humanos.",
+      "highlights": [
+        "Neutralidade de carbono rápida e aceleração da matriz renovável",
+        "Diplomacia baseada em valores humanos e firmeza ante autocracias",
+        "Ampliação de direitos sociais para minorias e imigrantes"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.35,
+        "representacao": -0.88,
+        "poder": 0.5,
+        "imigracao": 0.7,
+        "diplomacia": 0.55,
+        "intervencao": -0.4,
+        "economia": -0.3,
+        "controle": -0.2,
+        "comercio": 0.45,
+        "religiao": -0.65,
+        "moral": -0.75,
+        "tecnologia": 0.6
+      },
+      "triangles": {
+        "0": [
+          0.24,
+          0.54,
+          0.22
+        ],
+        "1": [
+          0.55,
+          0.18,
+          0.27
+        ],
+        "2": [
+          0.08,
+          0.65,
+          0.27
+        ],
+        "3": [
+          0.06,
+          0.24,
+          0.7
+        ],
+        "4": [
+          0.72,
+          0.14,
+          0.14
+        ],
+        "5": [
+          0.38,
+          0.5,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "democratas_institucional_eua",
+      "name": "Partido Democrata dos EUA (Ala Institucional)",
+      "subtitle": "Liberalismo moderado, multilateralismo e rede social básica",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1828",
+      "origin": "Estados Unidos",
+      "summary": "Representada por lideranças do establishment como Clinton, Obama e Biden, propõe equilíbrio fiscal com investimentos públicos seletivos em saúde (ACA) e liderança nas alianças transatlânticas (OTAN).",
+      "highlights": [
+        "Expansão do acesso à saúde pública sem estatização total (Obamacare)",
+        "Manutenção de tratados multilaterais e liderança global dos EUA",
+        "Defesa institucional do Estado de Direito e do devido processo"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.82,
+        "poder": 0.25,
+        "imigracao": 0.5,
+        "diplomacia": 0.25,
+        "intervencao": 0.1,
+        "economia": 0.05,
+        "controle": 0.1,
+        "comercio": 0.45,
+        "religiao": -0.45,
+        "moral": -0.55,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.52,
+          0.28
+        ],
+        "1": [
+          0.42,
+          0.3,
+          0.28
+        ],
+        "2": [
+          0.18,
+          0.56,
+          0.26
+        ],
+        "3": [
+          0.22,
+          0.18,
+          0.6
+        ],
+        "4": [
+          0.65,
+          0.22,
+          0.13
+        ],
+        "5": [
+          0.46,
+          0.36,
+          0.18
+        ]
+      }
+    },
+    {
+      "id": "democratas_progressistas_eua",
+      "name": "Partido Democrata dos EUA (Ala Progressista)",
+      "subtitle": "Social-democracia americana, Green New Deal e Medicare for All",
+      "category": "Partidos Internacionais",
+      "era": "Atuação contemporânea",
+      "origin": "Estados Unidos",
+      "summary": "Inspirada por Bernie Sanders e Alexandria Ocasio-Cortez, luta pelo sistema de saúde universal gratuito (Medicare for All), cancelamento de dívidas estudantis, taxação dos super-ricos e Green New Deal.",
+      "highlights": [
+        "Criação de um sistema de saúde público universal de pagador único",
+        "Green New Deal: transição ecológica com empregos sindicais garantidos",
+        "Aumento substancial do salário mínimo federal e fortalecimento sindical"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.55,
+        "representacao": -0.85,
+        "poder": 0.45,
+        "imigracao": 0.65,
+        "diplomacia": 0.45,
+        "intervencao": -0.35,
+        "economia": -0.65,
+        "controle": -0.55,
+        "comercio": 0.15,
+        "religiao": -0.55,
+        "moral": -0.75,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.48,
+          0.38,
+          0.14
+        ],
+        "1": [
+          0.55,
+          0.18,
+          0.27
+        ],
+        "2": [
+          0.1,
+          0.65,
+          0.25
+        ],
+        "3": [
+          0.08,
+          0.32,
+          0.6
+        ],
+        "4": [
+          0.72,
+          0.16,
+          0.12
+        ],
+        "5": [
+          0.26,
+          0.66,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "republicanos_tradicionais_eua",
+      "name": "Partido Republicano dos EUA (Ala Conservadora Tradicional)",
+      "subtitle": "Constitucionalismo originalista, livre comércio e poderio militar",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1854",
+      "origin": "Estados Unidos",
+      "summary": "Matriz do conservadorismo reaganista clássico, preza por juízes originalistas na Suprema Corte, baixos impostos corporativos, desregulamentação, liderança militar firme e valores da moral judaico-cristã.",
+      "highlights": [
+        "Nomeação de magistrados constitucionalistas e respeito ao federalismo",
+        "Redução de alíquotas de impostos sobre renda e capital",
+        "Dissuasão armada global e firme apoio a aliados estratégicos"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.6,
+        "representacao": -0.65,
+        "poder": -0.2,
+        "imigracao": -0.35,
+        "diplomacia": -0.6,
+        "intervencao": 0.45,
+        "economia": 0.75,
+        "controle": 0.7,
+        "comercio": 0.45,
+        "religiao": 0.65,
+        "moral": 0.6,
+        "tecnologia": -0.25
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.28,
+          0.62
+        ],
+        "1": [
+          0.3,
+          0.55,
+          0.15
+        ],
+        "2": [
+          0.62,
+          0.14,
+          0.24
+        ],
+        "3": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "4": [
+          0.5,
+          0.3,
+          0.2
+        ],
+        "5": [
+          0.52,
+          0.1,
+          0.38
+        ]
+      }
+    },
+    {
+      "id": "republicanos_populistas_eua",
+      "name": "Partido Republicano dos EUA (Ala Nacional-Populista / MAGA)",
+      "subtitle": "Protecionismo comercial, restrição migratória e soberania interna",
+      "category": "Partidos Internacionais",
+      "era": "Atuação contemporânea",
+      "origin": "Estados Unidos",
+      "summary": "Articulada em torno do movimento America First e Donald Trump, questiona acordos globais de livre comércio, defende tarifas punitivas contra concorrentes externos e combate a imigração irregular.",
+      "highlights": [
+        "Tarifas alfandegárias para proteger manufaturas e empregos locais",
+        "Controle rigoroso e fortificação de fronteiras contra imigração ilegal",
+        "Ceticismo em relação a intervenções militares externas e tratados da OTAN"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.1,
+        "representacao": -0.3,
+        "poder": -0.65,
+        "imigracao": -0.85,
+        "diplomacia": -0.45,
+        "intervencao": 0.75,
+        "economia": 0.45,
+        "controle": 0.25,
+        "comercio": -0.75,
+        "religiao": 0.7,
+        "moral": 0.75,
+        "tecnologia": -0.05
+      },
+      "triangles": {
+        "0": [
+          0.16,
+          0.38,
+          0.46
+        ],
+        "1": [
+          0.22,
+          0.66,
+          0.12
+        ],
+        "2": [
+          0.75,
+          0.08,
+          0.17
+        ],
+        "3": [
+          0.4,
+          0.5,
+          0.1
+        ],
+        "4": [
+          0.35,
+          0.52,
+          0.13
+        ],
+        "5": [
+          0.42,
+          0.12,
+          0.46
+        ]
+      }
+    },
+    {
+      "id": "libertarian_party_eua",
+      "name": "Partido Libertário dos EUA",
+      "subtitle": "Laissez-faire absoluto, liberdades civis irrestritas e isolacionismo",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1971",
+      "origin": "Estados Unidos",
+      "summary": "Maior terceira força dos EUA, prega a eliminação de agências reguladoras federais, do imposto de renda e do banco central, combinando desregulamentação absoluta com despenalização de todas as condutas civis pacíficas.",
+      "highlights": [
+        "Abolição do imposto de renda e retorno ao padrão monetário privado",
+        "Descriminalização de drogas e liberdade de expressão sem censura",
+        "Não intervencionismo militar total e fechamento de bases externas"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.9,
+        "representacao": -0.7,
+        "poder": 0.88,
+        "imigracao": 0.65,
+        "diplomacia": 0.65,
+        "intervencao": -0.85,
+        "economia": 0.95,
+        "controle": 0.95,
+        "comercio": 0.85,
+        "religiao": -0.55,
+        "moral": -0.1,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.02,
+          0.08,
+          0.9
+        ],
+        "1": [
+          0.8,
+          0.08,
+          0.12
+        ],
+        "2": [
+          0.18,
+          0.22,
+          0.6
+        ],
+        "3": [
+          0.04,
+          0.76,
+          0.2
+        ],
+        "4": [
+          0.3,
+          0.05,
+          0.65
+        ],
+        "5": [
+          0.45,
+          0.05,
+          0.5
+        ]
+      }
+    },
+    {
+      "id": "rassemblement_national_franca",
+      "name": "Rassemblement National (França)",
+      "subtitle": "Nacionalismo soberanista, preferência nacional e segurança pública",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1972",
+      "origin": "França",
+      "summary": "Principal força de direita populista francesa, sustenta o princípio da preferência nacional para benefícios sociais e habitação, combate ao multiculturalismo, laicidade restritiva e soberania frente a Bruxelas.",
+      "highlights": [
+        "Aplicação da preferência nacional para emprego e assistência social",
+        "Redução drástica dos fluxos migratórios e expulsão de irregulares",
+        "Recuperação de competências legislativas e fronteiriças francesas"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.7,
+        "representacao": -0.25,
+        "poder": -0.65,
+        "imigracao": -0.85,
+        "diplomacia": -0.4,
+        "intervencao": 0.7,
+        "economia": -0.15,
+        "controle": -0.25,
+        "comercio": -0.65,
+        "religiao": 0.4,
+        "moral": 0.65,
+        "tecnologia": -0.1
+      },
+      "triangles": {
+        "0": [
+          0.32,
+          0.42,
+          0.26
+        ],
+        "1": [
+          0.2,
+          0.68,
+          0.12
+        ],
+        "2": [
+          0.72,
+          0.12,
+          0.16
+        ],
+        "3": [
+          0.38,
+          0.52,
+          0.1
+        ],
+        "4": [
+          0.38,
+          0.52,
+          0.1
+        ],
+        "5": [
+          0.38,
+          0.24,
+          0.38
+        ]
+      }
+    },
+    {
+      "id": "france_insoumise",
+      "name": "La France Insoumise (França)",
+      "subtitle": "Socialismo soberanista, ecossocialismo e Sexta República",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 2016",
+      "origin": "França",
+      "summary": "Liderada por Jean-Luc Mélenchon, defende uma Assembleia Constituinte para instaurar a 'Sexta República' parlamentar, planejamento ecológico obrigatório, redução da idade de aposentadoria e bloqueio de preços essenciais.",
+      "highlights": [
+        "Assembleia Constituinte para pôr fim à monarquia presidencialista da 5ª República",
+        "Planejamento ecológico estatal e aposentadoria integral aos 60 anos",
+        "Congelamento de preços de alimentos básicos e energia"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.25,
+        "representacao": -0.85,
+        "poder": 0.45,
+        "imigracao": 0.6,
+        "diplomacia": 0.5,
+        "intervencao": -0.4,
+        "economia": -0.85,
+        "controle": -0.75,
+        "comercio": -0.45,
+        "religiao": -0.75,
+        "moral": -0.75,
+        "tecnologia": 0.2
+      },
+      "triangles": {
+        "0": [
+          0.62,
+          0.28,
+          0.1
+        ],
+        "1": [
+          0.55,
+          0.16,
+          0.29
+        ],
+        "2": [
+          0.08,
+          0.66,
+          0.26
+        ],
+        "3": [
+          0.08,
+          0.42,
+          0.5
+        ],
+        "4": [
+          0.72,
+          0.18,
+          0.1
+        ],
+        "5": [
+          0.18,
+          0.76,
+          0.06
+        ]
+      }
+    },
+    {
+      "id": "renaissance_franca",
+      "name": "Renaissance (França — Partido de Macron)",
+      "subtitle": "Centrismo liberal, europeísmo e competitividade econômica",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 2016",
+      "origin": "França",
+      "summary": "Fundado para superar as clivagens tradicionais de esquerda e direita, aposta na integração da União Europeia, flexibilização das leis trabalhistas francesas e atração de investimentos tecnológicos internacionais.",
+      "highlights": [
+        "Aprofundamento da autonomia estratégica e orçamentária da União Europeia",
+        "Reformas para incentivar a produtividade e elevar a taxa de emprego",
+        "Equilíbrio entre investimento em IA, energia nuclear e sustentabilidade"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.45,
+        "representacao": -0.7,
+        "poder": 0.05,
+        "imigracao": 0.3,
+        "diplomacia": 0.1,
+        "intervencao": 0.05,
+        "economia": 0.45,
+        "controle": 0.4,
+        "comercio": 0.65,
+        "religiao": -0.6,
+        "moral": -0.4,
+        "tecnologia": -0.5
+      },
+      "triangles": {
+        "0": [
+          0.16,
+          0.48,
+          0.36
+        ],
+        "1": [
+          0.38,
+          0.34,
+          0.28
+        ],
+        "2": [
+          0.22,
+          0.48,
+          0.3
+        ],
+        "3": [
+          0.18,
+          0.16,
+          0.66
+        ],
+        "4": [
+          0.58,
+          0.26,
+          0.16
+        ],
+        "5": [
+          0.5,
+          0.24,
+          0.26
+        ]
+      }
+    },
+    {
+      "id": "la_libertad_avanza_argentina",
+      "name": "La Libertad Avanza (Argentina)",
+      "subtitle": "Anarcocapitalismo teórico, minarquismo prático e choque fiscal",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 2021",
+      "origin": "Argentina",
+      "summary": "Liderada por Javier Milei, postula o fechamento do Banco Central, corte drástico de ministérios e gastos públicos, privatizações totais e alinhamento incondicional ao comércio livre e ao Ocidente.",
+      "highlights": [
+        "Equilíbrio fiscal imediato via corte profundo de subsídios e estatais",
+        "Desregulamentação de preços, aluguéis e relações de trabalho",
+        "Alinhamento geopolítico claro aos EUA e a democracias ocidentais"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.45,
+        "poder": 0.35,
+        "imigracao": -0.15,
+        "diplomacia": 0.1,
+        "intervencao": -0.65,
+        "economia": 0.95,
+        "controle": 0.92,
+        "comercio": 0.85,
+        "religiao": 0.2,
+        "moral": 0.25,
+        "tecnologia": -0.35
+      },
+      "triangles": {
+        "0": [
+          0.04,
+          0.14,
+          0.82
+        ],
+        "1": [
+          0.46,
+          0.34,
+          0.2
+        ],
+        "2": [
+          0.42,
+          0.16,
+          0.42
+        ],
+        "3": [
+          0.08,
+          0.42,
+          0.5
+        ],
+        "4": [
+          0.4,
+          0.2,
+          0.4
+        ],
+        "5": [
+          0.48,
+          0.08,
+          0.44
+        ]
+      }
+    },
+    {
+      "id": "partido_justicialista_argentina",
+      "name": "Partido Justicialista / Peronista (Argentina)",
+      "subtitle": "Justicialismo, soberania política e justiça social",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1946",
+      "origin": "Argentina",
+      "summary": "Maior movimento político da história argentina, fundado por Juan Domingo Perón, estrutura-se na tríade 'Justiça Social, Independência Econômica e Soberania Política', com forte aliança com os sindicatos (CGT).",
+      "highlights": [
+        "Papel mediador do Estado na redistribuição da renda nacional",
+        "Defesa da indústria nacional por meio de tarifas e crédito subsidiado",
+        "Direitos sindicais arraigados e papel das empresas públicas de energia"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.2,
+        "representacao": -0.55,
+        "poder": -0.1,
+        "imigracao": 0.2,
+        "diplomacia": 0.15,
+        "intervencao": 0.65,
+        "economia": -0.6,
+        "controle": -0.65,
+        "comercio": -0.65,
+        "religiao": 0.3,
+        "moral": -0.1,
+        "tecnologia": -0.3
+      },
+      "triangles": {
+        "0": [
+          0.48,
+          0.4,
+          0.12
+        ],
+        "1": [
+          0.35,
+          0.38,
+          0.27
+        ],
+        "2": [
+          0.34,
+          0.42,
+          0.24
+        ],
+        "3": [
+          0.18,
+          0.54,
+          0.28
+        ],
+        "4": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "5": [
+          0.28,
+          0.6,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "frente_amplio_uruguai",
+      "name": "Frente Amplio (Uruguai)",
+      "subtitle": "Esquerda democrática, consenso cívico e bem-estar republicano",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1971",
+      "origin": "Uruguai",
+      "summary": "Coalizão estável que reúne comunistas, socialistas e democratas-cristãos, governou o Uruguai combinando crescimento com pioneirismo civil: legalização da cannabis, casamento igualitário e matriz elétrica renovável.",
+      "highlights": [
+        "Conselhos de Salários tripartites para correção salarial periódica",
+        "Vanguarda mundial em direitos civis e descriminalização da cannabis",
+        "Matriz energética quase 100% renovável com equilíbrio fiscal estável"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.1,
+        "representacao": -0.88,
+        "poder": 0.45,
+        "imigracao": 0.55,
+        "diplomacia": 0.65,
+        "intervencao": -0.35,
+        "economia": -0.45,
+        "controle": -0.35,
+        "comercio": 0.3,
+        "religiao": -0.75,
+        "moral": -0.8,
+        "tecnologia": 0.15
+      },
+      "triangles": {
+        "0": [
+          0.32,
+          0.5,
+          0.18
+        ],
+        "1": [
+          0.54,
+          0.18,
+          0.28
+        ],
+        "2": [
+          0.1,
+          0.6,
+          0.3
+        ],
+        "3": [
+          0.06,
+          0.26,
+          0.68
+        ],
+        "4": [
+          0.72,
+          0.16,
+          0.12
+        ],
+        "5": [
+          0.32,
+          0.56,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "pap_singapura",
+      "name": "Partido de Ação Popular (PAP — Singapura)",
+      "subtitle": "Tecnocracia de mercado, governança autoritária e habitação pública",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 1954",
+      "origin": "Singapura",
+      "summary": "No poder ininterrupto desde 1959 sob a visão de Lee Kuan Yew, transformou a ilha em potência global associando abertura ao capital estrangeiro, rigor penal extremo e controle estatal de 80% da habitação.",
+      "highlights": [
+        "Meritocracia governamental remunerada a preço de mercado",
+        "Habitação pública universal gerida pelo Estado (HDB)",
+        "Controle estrito da ordem pública, da imprensa e baixa tolerância ao crime"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.85,
+        "representacao": 0.45,
+        "poder": -0.85,
+        "imigracao": -0.1,
+        "diplomacia": 0.2,
+        "intervencao": 0.35,
+        "economia": 0.45,
+        "controle": 0.15,
+        "comercio": 0.85,
+        "religiao": -0.2,
+        "moral": 0.35,
+        "tecnologia": -0.85
+      },
+      "triangles": {
+        "0": [
+          0.28,
+          0.34,
+          0.38
+        ],
+        "1": [
+          0.1,
+          0.75,
+          0.15
+        ],
+        "2": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "3": [
+          0.1,
+          0.25,
+          0.65
+        ],
+        "4": [
+          0.25,
+          0.65,
+          0.1
+        ],
+        "5": [
+          0.48,
+          0.22,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "partido_pirata_europeu",
+      "name": "Partido Pirata Europeu",
+      "subtitle": "Transparência pública, ciberdireitos e democracia digital líquida",
+      "category": "Partidos Internacionais",
+      "era": "Fundado em 2006",
+      "origin": "Europa",
+      "summary": "Movimento internacional nascido na Suécia, defende a reforma ampla dos direitos autorais e patentes, proteção absoluta da privacidade individual contra vigilância estatal e implementação de democracia líquida.",
+      "highlights": [
+        "Reforma das leis de propriedade intelectual e combate a patentes abusivas",
+        "Garantia de privacidade e criptografia como direitos fundamentais",
+        "Acesso aberto ao conhecimento e transparência radical de dados públicos"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.6,
+        "representacao": -0.92,
+        "poder": 0.8,
+        "imigracao": 0.65,
+        "diplomacia": 0.6,
+        "intervencao": -0.65,
+        "economia": -0.1,
+        "controle": 0.1,
+        "comercio": 0.7,
+        "religiao": -0.75,
+        "moral": -0.75,
+        "tecnologia": -0.75
+      },
+      "triangles": {
+        "0": [
+          0.14,
+          0.42,
+          0.44
+        ],
+        "1": [
+          0.72,
+          0.08,
+          0.2
+        ],
+        "2": [
+          0.08,
+          0.5,
+          0.42
+        ],
+        "3": [
+          0.04,
+          0.2,
+          0.76
+        ],
+        "4": [
+          0.65,
+          0.08,
+          0.27
+        ],
+        "5": [
+          0.45,
+          0.35,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "abolicionismo_brasileiro",
+      "name": "Movimento Abolicionista Brasileiro",
+      "subtitle": "Emancipação humana, cidadania e justiça histórica",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "Século XIX (décadas de 1870–1880)",
+      "origin": "Brasil",
+      "summary": "Maior movimento social cívico do Império do Brasil, liderado por Joaquim Nabuco, André Rebouças e José do Patrocínio, articulou campanhas parlamentares, imprensa e redes clandestinas de fuga.",
+      "highlights": [
+        "Extinção incondicional da escravidão como imperativo ético",
+        "Defesa da reforma agrária para integrar os libertos à cidadania",
+        "Mobilização de jornais, clubes cívicos e desobediência pacífica"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.75,
+        "poder": 0.65,
+        "imigracao": 0.6,
+        "diplomacia": 0.45,
+        "intervencao": -0.3,
+        "economia": 0.1,
+        "controle": 0.05,
+        "comercio": 0.35,
+        "religiao": -0.1,
+        "moral": -0.65,
+        "tecnologia": -0.15
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.48,
+          0.3
+        ],
+        "1": [
+          0.65,
+          0.15,
+          0.2
+        ],
+        "2": [
+          0.12,
+          0.6,
+          0.28
+        ],
+        "3": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "4": [
+          0.7,
+          0.15,
+          0.15
+        ],
+        "5": [
+          0.5,
+          0.4,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "cartismo_britanico",
+      "name": "Movimento Cartista Britânico",
+      "subtitle": "Sufrágio universal masculino, direitos políticos e controle operário",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "1838–1848",
+      "origin": "Reino Unido",
+      "summary": "Primeiro movimento operário de massas do mundo moderno, reivindicou na 'Carta do Povo' o sufrágio universal, voto secreto e remuneração aos deputados para viabilizar trabalhadores no Parlamento.",
+      "highlights": [
+        "Sufrágio universal e parlamentos anuais com voto secreto",
+        "Fim da exigência de propriedade fundiária para candidaturas legislativas",
+        "Apresentação de petições gigantescas com milhões de assinaturas"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.1,
+        "representacao": -0.92,
+        "poder": 0.45,
+        "imigracao": 0.15,
+        "diplomacia": 0.3,
+        "intervencao": -0.2,
+        "economia": -0.45,
+        "controle": -0.35,
+        "comercio": 0.1,
+        "religiao": -0.35,
+        "moral": -0.35,
+        "tecnologia": -0.25
+      },
+      "triangles": {
+        "0": [
+          0.35,
+          0.45,
+          0.2
+        ],
+        "1": [
+          0.55,
+          0.18,
+          0.27
+        ],
+        "2": [
+          0.2,
+          0.5,
+          0.3
+        ],
+        "3": [
+          0.12,
+          0.44,
+          0.44
+        ],
+        "4": [
+          0.82,
+          0.12,
+          0.06
+        ],
+        "5": [
+          0.38,
+          0.52,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "movimento_sufragista",
+      "name": "Movimento Sufragista Internacional",
+      "subtitle": "Igualdade de voto, autonomia feminina e direitos civis plenos",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "Final do Séc. XIX e Início do Séc. XX",
+      "origin": "Internacional",
+      "summary": "Conquistou o direito de voto para as mulheres após décadas de manifestações públicas, greves de fome e debates parlamentares, pavimentando o reconhecimento da igualdade civil e política de gênero.",
+      "highlights": [
+        "Direito pleno de votar e ser votada em todos os níveis de governo",
+        "Equiparação dos direitos de herança, custódia e propriedade civil",
+        "Campanhas pioneiras de conscientização e pressão pacífica"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.1,
+        "representacao": -0.95,
+        "poder": 0.6,
+        "imigracao": 0.45,
+        "diplomacia": 0.45,
+        "intervencao": -0.25,
+        "economia": -0.15,
+        "controle": -0.05,
+        "comercio": 0.3,
+        "religiao": -0.5,
+        "moral": -0.8,
+        "tecnologia": -0.25
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.48,
+          0.27
+        ],
+        "1": [
+          0.65,
+          0.12,
+          0.23
+        ],
+        "2": [
+          0.08,
+          0.68,
+          0.24
+        ],
+        "3": [
+          0.08,
+          0.32,
+          0.6
+        ],
+        "4": [
+          0.78,
+          0.12,
+          0.1
+        ],
+        "5": [
+          0.55,
+          0.38,
+          0.07
+        ]
+      }
+    },
+    {
+      "id": "direitos_civis_eua",
+      "name": "Movimento pelos Direitos Civis (EUA)",
+      "subtitle": "Dessegregação racial, não violência e igualdade jurídica",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "1954–1968",
+      "origin": "Estados Unidos",
+      "summary": "Liderado por Martin Luther King Jr., Rosa Parks e John Lewis, derrotou as leis racistas de Jim Crow no sul dos EUA por meio de boicotes, marchas pacíficas e defesa da dignidade humana inalienável.",
+      "highlights": [
+        "Abolição da segregação racial e aprovação da Lei de Direitos Civis de 1964",
+        "Garantia efetiva do direito de voto com a Lei de Direitos de Voto de 1965",
+        "Método moral da resistência não violenta contra a opressão de Estado"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.3,
+        "representacao": -0.9,
+        "poder": 0.65,
+        "imigracao": 0.65,
+        "diplomacia": 0.7,
+        "intervencao": -0.4,
+        "economia": -0.4,
+        "controle": -0.25,
+        "comercio": 0.3,
+        "religiao": 0.25,
+        "moral": -0.7,
+        "tecnologia": -0.2
+      },
+      "triangles": {
+        "0": [
+          0.3,
+          0.48,
+          0.22
+        ],
+        "1": [
+          0.62,
+          0.12,
+          0.26
+        ],
+        "2": [
+          0.15,
+          0.65,
+          0.2
+        ],
+        "3": [
+          0.08,
+          0.32,
+          0.6
+        ],
+        "4": [
+          0.78,
+          0.12,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.48,
+          0.07
+        ]
+      }
+    },
+    {
+      "id": "movimento_sindical_classico",
+      "name": "Movimento Trabalhista e Sindical Clássico",
+      "subtitle": "Jornada de 8 horas, previdência social e solidariedade operária",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "Séculos XIX e XX",
+      "origin": "Internacional",
+      "summary": "Movimento que construiu a proteção laboral moderna através de greves gerais e convenções coletivas, conquistando o fim do trabalho infantil, descanso semanal remunerado e previdência pública.",
+      "highlights": [
+        "Conquista histórica da jornada máxima de trabalho de 8 horas",
+        "Negociação coletiva autônoma e direito irrenunciável de greve",
+        "Sistemas de socorro mútuo e criação da Organização Internacional do Trabalho (OIT)"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.1,
+        "representacao": -0.75,
+        "poder": 0.25,
+        "imigracao": 0.25,
+        "diplomacia": 0.35,
+        "intervencao": -0.15,
+        "economia": -0.8,
+        "controle": -0.65,
+        "comercio": -0.2,
+        "religiao": -0.35,
+        "moral": -0.45,
+        "tecnologia": -0.25
+      },
+      "triangles": {
+        "0": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "1": [
+          0.45,
+          0.25,
+          0.3
+        ],
+        "2": [
+          0.2,
+          0.55,
+          0.25
+        ],
+        "3": [
+          0.1,
+          0.4,
+          0.5
+        ],
+        "4": [
+          0.7,
+          0.2,
+          0.1
+        ],
+        "5": [
+          0.2,
+          0.75,
+          0.05
+        ]
+      }
+    },
+    {
+      "id": "movimento_ambientalista",
+      "name": "Movimento Ambientalista e de Justiça Climática",
+      "subtitle": "Limites ecológicos, descarbonização e direitos da natureza",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "1960–presente",
+      "origin": "Internacional",
+      "summary": "Impulsionado por denúncias científicas sobre contaminação e perda de biodiversidade, defende que a atividade econômica deve respeitar os limites de regeneração da biosfera e das futuras gerações.",
+      "highlights": [
+        "Criação de ministérios e tratados internacionais de clima (Paris)",
+        "Princípio da precaução contra contaminações tóxicas e agrotóxicos",
+        "Justiça climática para comunidades vulneráveis e povos tradicionais"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.45,
+        "representacao": -0.8,
+        "poder": 0.4,
+        "imigracao": 0.65,
+        "diplomacia": 0.65,
+        "intervencao": -0.5,
+        "economia": -0.4,
+        "controle": -0.3,
+        "comercio": 0.35,
+        "religiao": -0.35,
+        "moral": -0.55,
+        "tecnologia": 0.85
+      },
+      "triangles": {
+        "0": [
+          0.3,
+          0.52,
+          0.18
+        ],
+        "1": [
+          0.52,
+          0.18,
+          0.3
+        ],
+        "2": [
+          0.12,
+          0.62,
+          0.26
+        ],
+        "3": [
+          0.05,
+          0.25,
+          0.7
+        ],
+        "4": [
+          0.7,
+          0.15,
+          0.15
+        ],
+        "5": [
+          0.4,
+          0.48,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "cypherpunk_software_livre",
+      "name": "Movimento Cypherpunk e Software Livre",
+      "subtitle": "Criptografia forte, código aberto e privacidade descentralizada",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "1980–presente",
+      "origin": "Global / Digital",
+      "summary": "Articula a defesa da criptografia como ferramenta civil contra a tirania da vigilância em massa, advogando pelo software de código aberto (GPL) e pela descentralização ponto a ponto (P2P).",
+      "highlights": [
+        "Criptografia ponta a ponta como escudo universal da privacidade",
+        "Licenças livres (GPL, MIT) que garantem acesso ao código-fonte",
+        "Protocolos abertos e redes descentralizadas resistentes à censura"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.85,
+        "representacao": -0.75,
+        "poder": 0.95,
+        "imigracao": 0.6,
+        "diplomacia": 0.6,
+        "intervencao": -0.85,
+        "economia": 0.25,
+        "controle": 0.4,
+        "comercio": 0.8,
+        "religiao": -0.65,
+        "moral": -0.4,
+        "tecnologia": -0.85
+      },
+      "triangles": {
+        "0": [
+          0.06,
+          0.26,
+          0.68
+        ],
+        "1": [
+          0.85,
+          0.05,
+          0.1
+        ],
+        "2": [
+          0.1,
+          0.35,
+          0.55
+        ],
+        "3": [
+          0.04,
+          0.26,
+          0.7
+        ],
+        "4": [
+          0.45,
+          0.05,
+          0.5
+        ],
+        "5": [
+          0.5,
+          0.15,
+          0.35
+        ]
+      }
+    },
+    {
+      "id": "movimento_nao_alinhados",
+      "name": "Movimento dos Países Não Alinhados (MNA)",
+      "subtitle": "Anticolonialismo, autodeterminação e soberania Sul-Sul",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "Conferência de Bandung (1955)",
+      "origin": "Sul Global",
+      "summary": "Organizado por líderes como Nehru, Nasser, Tito e Sukarno durante o auge da Guerra Fria, recusou a adesão obrigatória aos blocos soviético ou americano, pugnando pela autodeterminação dos povos libertos do colonialismo.",
+      "highlights": [
+        "Princípio de não alinhamento militar com superpotências",
+        "Condenação irrestrita do apartheid e do domínio colonial remanescente",
+        "Defesa de uma Nova Ordem Econômica Internacional mais justa"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": 0.15,
+        "representacao": -0.45,
+        "poder": 0.15,
+        "imigracao": 0.25,
+        "diplomacia": 0.55,
+        "intervencao": 0.65,
+        "economia": -0.45,
+        "controle": -0.4,
+        "comercio": -0.15,
+        "religiao": -0.2,
+        "moral": -0.2,
+        "tecnologia": -0.25
+      },
+      "triangles": {
+        "0": [
+          0.42,
+          0.44,
+          0.14
+        ],
+        "1": [
+          0.4,
+          0.3,
+          0.3
+        ],
+        "2": [
+          0.35,
+          0.38,
+          0.27
+        ],
+        "3": [
+          0.05,
+          0.75,
+          0.2
+        ],
+        "4": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "5": [
+          0.35,
+          0.55,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "cooperativismo_mondragon",
+      "name": "Movimento Cooperativista e de Autogestão (Rochdale / Mondragón)",
+      "subtitle": "Propriedade compartilhada, democracia no trabalho e intercooperação",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "1844 / 1956–presente",
+      "origin": "Internacional",
+      "summary": "Baseado no princípio 'uma pessoa, um voto', estrutura cooperativas de crédito, produção e consumo onde o capital é subordinado ao trabalho, promovendo desenvolvimento comunitário sem especulação acionária.",
+      "highlights": [
+        "Decisão democrática dos cooperados independente da cota de capital",
+        "Distribuição equitativa de sobras e fundos comunitários de reserva",
+        "Intercooperação entre redes de crédito, agricultura e manufatura"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.75,
+        "representacao": -0.9,
+        "poder": 0.6,
+        "imigracao": 0.35,
+        "diplomacia": 0.55,
+        "intervencao": -0.55,
+        "economia": -0.35,
+        "controle": 0.1,
+        "comercio": 0.2,
+        "religiao": -0.25,
+        "moral": -0.35,
+        "tecnologia": -0.15
+      },
+      "triangles": {
+        "0": [
+          0.25,
+          0.35,
+          0.4
+        ],
+        "1": [
+          0.6,
+          0.15,
+          0.25
+        ],
+        "2": [
+          0.25,
+          0.4,
+          0.35
+        ],
+        "3": [
+          0.06,
+          0.34,
+          0.6
+        ],
+        "4": [
+          0.75,
+          0.05,
+          0.2
+        ],
+        "5": [
+          0.35,
+          0.55,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "reforma_sanitaria_sus",
+      "name": "Movimento da Reforma Sanitária Brasileira (Criação do SUS)",
+      "subtitle": "Saúde como direito de todos e dever do Estado, universalidade e controle social",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "Década de 1970–Constituição de 1988",
+      "origin": "Brasil",
+      "summary": "Articulado por médicos sanitaristas como Sergio Arouca e movimentos comunitários, consagrou na Carta de 1988 que a saúde pública é um direito universal, gerando o maior sistema público de saúde do planeta.",
+      "highlights": [
+        "Criação do Sistema Único de Saúde (SUS) 100% gratuito e universal",
+        "Participação da comunidade através dos Conselhos e Conferências de Saúde",
+        "Descentralização administrativa e epidemiológica para os municípios"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.55,
+        "representacao": -0.9,
+        "poder": 0.4,
+        "imigracao": 0.45,
+        "diplomacia": 0.5,
+        "intervencao": 0.15,
+        "economia": -0.75,
+        "controle": -0.6,
+        "comercio": 0.1,
+        "religiao": -0.5,
+        "moral": -0.55,
+        "tecnologia": -0.4
+      },
+      "triangles": {
+        "0": [
+          0.55,
+          0.35,
+          0.1
+        ],
+        "1": [
+          0.55,
+          0.2,
+          0.25
+        ],
+        "2": [
+          0.15,
+          0.6,
+          0.25
+        ],
+        "3": [
+          0.08,
+          0.27,
+          0.65
+        ],
+        "4": [
+          0.78,
+          0.12,
+          0.1
+        ],
+        "5": [
+          0.2,
+          0.72,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "diretas_ja_movimento",
+      "name": "Movimento pelas Diretas Já",
+      "subtitle": "Redemocratização, eleições diretas presidenciais e mobilização cívica de massas",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "1983–1984",
+      "origin": "Brasil",
+      "summary": "Maior mobilização cívica da história moderna brasileira, reuniu milhões de cidadãos em praças públicas exigindo a emenda Dante de Oliveira para eleger o Presidente da República pelo voto popular direto.",
+      "highlights": [
+        "Exigência intransigente do sufrágio universal direto para Presidente",
+        "Comícios cívicos suprapartidários com união de artistas e sindicatos",
+        "Aceleração do colapso político do regime militar de 1964"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.4,
+        "representacao": -0.98,
+        "poder": 0.7,
+        "imigracao": 0.35,
+        "diplomacia": 0.55,
+        "intervencao": -0.3,
+        "economia": -0.15,
+        "controle": 0.05,
+        "comercio": 0.25,
+        "religiao": -0.3,
+        "moral": -0.5,
+        "tecnologia": -0.25
+      },
+      "triangles": {
+        "0": [
+          0.28,
+          0.44,
+          0.28
+        ],
+        "1": [
+          0.68,
+          0.12,
+          0.2
+        ],
+        "2": [
+          0.16,
+          0.58,
+          0.26
+        ],
+        "3": [
+          0.1,
+          0.3,
+          0.6
+        ],
+        "4": [
+          0.88,
+          0.08,
+          0.04
+        ],
+        "5": [
+          0.46,
+          0.42,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "movimento_municipalista",
+      "name": "Movimento Municipalista e Descentralizador",
+      "subtitle": "Pacto federativo real, autonomia local e subsidiariedade fiscal",
+      "category": "Movimentos Políticos e Cívicos",
+      "era": "Década de 1980–presente",
+      "origin": "Brasil",
+      "summary": "Reúne gestores e cidadãos em torno da ideia de que os serviços públicos essenciais são prestados onde o cidadão vive, defendendo maior fatia das receitas tributárias para as prefeituras.",
+      "highlights": [
+        "Aumento da participação municipal no Fundo de Participação dos Municípios (FPM)",
+        "Aplicação do princípio da subsidiariedade: resolver o problema no nível mais próximo",
+        "Descentralização de políticas públicas com fiscalização pelos cidadãos locais"
+      ],
+      "quote": "Perfil programático estimado para fins educativos, sem vínculo partidário.",
+      "axes": {
+        "estrutura": -0.95,
+        "representacao": -0.75,
+        "poder": 0.45,
+        "imigracao": 0.05,
+        "diplomacia": 0.3,
+        "intervencao": -0.55,
+        "economia": 0.1,
+        "controle": 0.15,
+        "comercio": 0.2,
+        "religiao": 0.05,
+        "moral": -0.05,
+        "tecnologia": -0.2
+      },
+      "triangles": {
+        "0": [
+          0.18,
+          0.48,
+          0.34
+        ],
+        "1": [
+          0.55,
+          0.2,
+          0.25
+        ],
+        "2": [
+          0.3,
+          0.35,
+          0.35
+        ],
+        "3": [
+          0.08,
+          0.52,
+          0.4
+        ],
+        "4": [
+          0.72,
+          0.1,
+          0.18
+        ],
+        "5": [
+          0.5,
+          0.25,
+          0.25
+        ]
+      }
+    }
+  ]
+}

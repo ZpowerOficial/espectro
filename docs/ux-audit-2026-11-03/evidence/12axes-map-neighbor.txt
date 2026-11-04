@@ -1,0 +1,116 @@
+- document:
+  - banner:
+    - link "12 axes":
+      - /url: /
+    - navigation "Teia":
+      - link "Livros":
+        - /url: /books
+      - link "Ideologias":
+        - /url: /tree/ideologies
+      - link "Personalidades":
+        - /url: /tree/personalities
+      - link "Países":
+        - /url: /tree/countries
+      - link "Partidos":
+        - /url: /tree/parties
+      - link "Switch to English":
+        - /url: /en/tree/personalities
+    - searchbox "Buscar personalidade…"
+    - link "Ver em lista":
+      - /url: /personalities
+    - link "Começar":
+      - /url: /
+  - main:
+    - text: Autoritarismo Anarquismo Esquerda Direita
+    - list:
+      - listitem: Esquerda Radical
+      - listitem: Esquerda
+      - listitem: Centro
+      - listitem: Direita
+      - listitem: Extrema Direita
+      - listitem: Terceira Posição
+      - listitem: Libertário
+      - listitem: Anarquismo
+    - complementary "Raphaël Lima":
+      - button "Fechar": ×
+      - text: Libertário
+      - heading "Raphaël Lima" [level=2]
+      - paragraph: Ativista e comunicador
+      - paragraph: Comunicador, empresário e ativista político brasileiro, criador do canal Ideias Radicais. Notabilizou-se pela popularização do anarcocapitalismo e da Escola Austríaca, defesa irrestrita da propriedade privada, desregulamentação e secessão política.
+      - link "Ver perfil completo":
+        - /url: /personalities/raphael-lima
+      - list:
+        - listitem:
+          - heading "Estrutura" [level=3]
+          - text: 84% Federal
+          - 'img "Estrutura: Federal 84%, Unitário 16%"'
+          - text: Federal Unitário
+        - listitem:
+          - heading "Representação" [level=3]
+          - text: 83% Democracia
+          - 'img "Representação: Democracia 83%, Autocracia 17%"'
+          - text: Democracia Autocracia
+        - listitem:
+          - heading "Poder" [level=3]
+          - text: 88% Liberdade
+          - 'img "Poder: Segurança 12%, Liberdade 88%"'
+          - text: Segurança Liberdade
+        - listitem:
+          - heading "Imigração" [level=3]
+          - text: 71% Multicultura
+          - 'img "Imigração: Assimilação 29%, Multicultura 71%"'
+          - text: Assimilação Multicultura
+        - listitem:
+          - heading "Diplomacia" [level=3]
+          - text: 71% Pacifista
+          - 'img "Diplomacia: Militarista 30%, Pacifista 71%"'
+          - text: Militarista Pacifista
+        - listitem:
+          - heading "Intervenção" [level=3]
+          - text: 74% Não intervencionista
+          - 'img "Intervenção: Não intervencionista 74%, Nacionalista 26%"'
+          - text: Não intervencionista Nacionalista
+        - listitem:
+          - heading "Economia" [level=3]
+          - text: 96% Privado
+          - 'img "Economia: Público 4%, Privado 96%"'
+          - text: Público Privado
+        - listitem:
+          - heading "Controle" [level=3]
+          - text: 93% Livre mercado
+          - 'img "Controle: Planejamento 8%, Livre mercado 93%"'
+          - text: Planejamento Livre mercado
+        - listitem:
+          - heading "Comércio" [level=3]
+          - text: 92% Globalismo
+          - 'img "Comércio: Protecionismo 8%, Globalismo 92%"'
+          - text: Protecionismo Globalismo
+        - listitem:
+          - heading "Religião" [level=3]
+          - text: 65% Irreligioso
+          - 'img "Religião: Irreligioso 65%, Religioso 35%"'
+          - text: Irreligioso Religioso
+        - listitem:
+          - heading "Moral" [level=3]
+          - text: Equilibrado
+          - 'img "Moral: Progressista 57%, Tradicionalista 43%"'
+          - text: Progressista Tradicionalista
+        - listitem:
+          - heading "Tecnologia" [level=3]
+          - text: 82% Tecnologia
+          - 'img "Tecnologia: Tecnologia 82%, Biologia 18%"'
+          - text: Tecnologia Biologia
+      - paragraph: — Mais próximas
+      - list:
+        - listitem:
+          - button "David Friedman 98.8%"
+        - listitem:
+          - button "Robert Nozick 98.6%"
+        - listitem:
+          - button "Gustave de Molinari 98.1%"
+        - listitem:
+          - button "Ludwig von Mises 98%"
+        - listitem:
+          - button "Gary Johnson 98%"
+        - listitem:
+          - button "Hal Finney 97.8%"

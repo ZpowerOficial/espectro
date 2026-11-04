@@ -1,0 +1,219 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#main"
+  - banner:
+    - link "12 axes":
+      - /url: /
+    - navigation "Catálogo":
+      - link "Livros":
+        - /url: /books
+      - link "Ideologias":
+        - /url: /ideologies
+      - link "Personalidades":
+        - /url: /personalities
+      - link "Países":
+        - /url: /countries
+      - link "Partidos":
+        - /url: /parties
+      - link "Comparar":
+        - /url: /compare
+      - link "Switch to English":
+        - /url: /en/personalities/mises
+    - link "Visualização em teia":
+      - /url: /tree/personalities?id=mises
+    - link "Começar":
+      - /url: /
+  - main:
+    - paragraph:
+      - link "Início":
+        - /url: /
+      - text: /
+      - link "Personalidades":
+        - /url: /personalities
+      - text: / Ludwig von Mises
+    - article:
+      - text: Expoente da Escola Austríaca Economia 1881–1973
+      - heading "Ludwig von Mises" [level=1]
+      - paragraph: Economista austríaco, Mises foi grande defensor do livre mercado e mostrou a impossibilidade do cálculo econômico racional no socialismo, tornando-se pilar da Escola Austríaca e inspiração do libertarianismo moderno.
+      - term: Espectro mais próximo
+      - definition: Libertário
+      - term: Ideologia mais próxima
+      - definition:
+        - link "Liberalismo Clássico":
+          - /url: /ideologies/liberalismo-classico
+      - term: Personalidade mais próxima
+      - definition:
+        - link "Raphaël Lima":
+          - /url: /personalities/raphael-lima
+      - link "Comparar com…":
+        - /url: /compare?items=personality:mises
+      - figure "Wikimedia Commons / Wikipédia":
+        - img "Retrato de Ludwig von Mises"
+        - link "Wikimedia Commons / Wikipédia":
+          - /url: https://en.wikipedia.org/wiki/Ludwig_von_Mises
+    - tablist "Seções do perfil":
+      - tab "Eixos" [selected]
+      - tab "Ideologias"
+      - tab "Personalidades"
+      - tab "Países"
+    - tabpanel "Eixos":
+      - paragraph: — Eixos políticos
+      - heading "Perfil nos 12 eixos" [level=2]
+      - list:
+        - listitem:
+          - heading "Estrutura" [level=3]
+          - button "O que significa o eixo Estrutura?"
+          - text: Forte · Federal
+          - img
+          - text: Federal
+          - emphasis: 81%
+          - 'img "Estrutura: Federal 81%, Unitário 19%"'
+          - text: Unitário
+          - emphasis: 19%
+          - img
+        - listitem:
+          - heading "Representação" [level=3]
+          - button "O que significa o eixo Representação?"
+          - text: Forte · Democracia
+          - img
+          - text: Democracia
+          - emphasis: 74%
+          - 'img "Representação: Democracia 74%, Autocracia 26%"'
+          - text: Autocracia
+          - emphasis: 26%
+          - img
+        - listitem:
+          - heading "Poder" [level=3]
+          - button "O que significa o eixo Poder?"
+          - text: Forte · Liberdade
+          - img
+          - text: Segurança
+          - emphasis: 24%
+          - 'img "Poder: Segurança 24%, Liberdade 76%"'
+          - text: Liberdade
+          - emphasis: 76%
+          - img
+        - listitem:
+          - heading "Imigração" [level=3]
+          - button "O que significa o eixo Imigração?"
+          - text: Inclinado · Multicultura
+          - img
+          - text: Assimilação
+          - emphasis: 29%
+          - 'img "Imigração: Assimilação 29%, Multicultura 71%"'
+          - text: Multicultura
+          - emphasis: 71%
+          - img
+        - listitem:
+          - heading "Diplomacia" [level=3]
+          - button "O que significa o eixo Diplomacia?"
+          - text: Forte · Pacifista
+          - img
+          - text: Militarista
+          - emphasis: 23%
+          - 'img "Diplomacia: Militarista 23%, Pacifista 78%"'
+          - text: Pacifista
+          - emphasis: 78%
+          - img
+        - listitem:
+          - heading "Intervenção" [level=3]
+          - button "O que significa o eixo Intervenção?"
+          - text: Forte · Não intervencionista
+          - img
+          - text: Não intervencionista
+          - emphasis: 75%
+          - 'img "Intervenção: Não intervencionista 75%, Nacionalista 25%"'
+          - text: Nacionalista
+          - emphasis: 25%
+          - img
+        - listitem:
+          - heading "Economia" [level=3]
+          - button "O que significa o eixo Economia?"
+          - text: Muito forte · Privado
+          - img
+          - text: Público
+          - emphasis: 10%
+          - 'img "Economia: Público 10%, Privado 90%"'
+          - text: Privado
+          - emphasis: 90%
+          - img
+        - listitem:
+          - heading "Controle" [level=3]
+          - button "O que significa o eixo Controle?"
+          - text: Muito forte · Livre mercado
+          - img
+          - text: Planejamento
+          - emphasis: 8%
+          - 'img "Controle: Planejamento 8%, Livre mercado 93%"'
+          - text: Livre mercado
+          - emphasis: 93%
+          - img
+        - listitem:
+          - heading "Comércio" [level=3]
+          - button "O que significa o eixo Comércio?"
+          - text: Muito forte · Globalismo
+          - img
+          - text: Protecionismo
+          - emphasis: 10%
+          - 'img "Comércio: Protecionismo 10%, Globalismo 90%"'
+          - text: Globalismo
+          - emphasis: 90%
+          - img
+        - listitem:
+          - heading "Religião" [level=3]
+          - button "O que significa o eixo Religião?"
+          - text: Inclinado · Irreligioso
+          - img
+          - text: Irreligioso
+          - emphasis: 66%
+          - 'img "Religião: Irreligioso 66%, Religioso 34%"'
+          - text: Religioso
+          - emphasis: 34%
+          - img
+        - listitem:
+          - heading "Moral" [level=3]
+          - button "O que significa o eixo Moral?"
+          - text: Equilibrado
+          - img
+          - text: Progressista
+          - emphasis: 53%
+          - 'img "Moral: Progressista 53%, Tradicionalista 48%"'
+          - text: Tradicionalista
+          - emphasis: 48%
+          - img
+        - listitem:
+          - heading "Tecnologia" [level=3]
+          - button "O que significa o eixo Tecnologia?"
+          - text: Inclinado · Tecnologia
+          - img
+          - text: Tecnologia
+          - emphasis: 71%
+          - 'img "Tecnologia: Tecnologia 71%, Biologia 29%"'
+          - text: Biologia
+          - emphasis: 29%
+          - img
+      - heading "O que distingue Ludwig von Mises" [level=2]
+      - article:
+        - text: Posição mais incomum
+        - heading "Controle" [level=3]
+        - paragraph: Ludwig von Mises puxa mais para livre mercado que 98% das 675 personalidades do catálogo.
+        - text: Mediana das personalidades 62 Ludwig von Mises 8
+        - paragraph: De todos os eixos, Controle é onde Ludwig von Mises mais se afasta do conjunto.
+      - article:
+        - text: Posição mais comum
+        - heading "Representação" [level=3]
+        - paragraph: Em Representação, Ludwig von Mises fica perto da mediana do catálogo.
+        - text: Mediana das personalidades 65 Ludwig von Mises 74
+        - paragraph: Aqui está em terreno comum com a maioria das personalidades.
+    - complementary:
+      - heading "E você, com quem se parece?" [level=2]
+      - paragraph: Responda ao quiz e veja sua compatibilidade com Ludwig von Mises, ideologias, países e outras personalidades nos 12 eixos.
+      - link "Fazer o teste":
+        - /url: /
+  - contentinfo:
+    - link "12 axes":
+      - /url: /
+    - paragraph:
+      - text: Quiz político independente · 12axes.vercel.app · © 2026. Todos os direitos reservados ·
+      - link "English":
+        - /url: /en/personalities/mises

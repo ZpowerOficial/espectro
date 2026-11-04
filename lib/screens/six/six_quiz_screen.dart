@@ -11,11 +11,7 @@ import '../../widgets/quiz_chrome.dart';
 import 'six_result_screen.dart';
 
 class SixQuizScreen extends StatefulWidget {
-  const SixQuizScreen({
-    required this.data,
-    required this.variant,
-    super.key,
-  });
+  const SixQuizScreen({required this.data, required this.variant, super.key});
 
   final AppData data;
   final SixVariant variant;
@@ -44,7 +40,12 @@ class _SixQuizScreenState extends State<SixQuizScreen> {
   }
 
   Color get _accent {
-    final Color base = widget.data.sixTriangles.categoryById[_session.current.category]?.color ??
+    final Color base =
+        widget
+            .data
+            .sixTriangles
+            .categoryById[_session.current.category]
+            ?.color ??
         AppColors.ink;
     return Color.lerp(base, AppColors.ink, 0.4) ?? AppColors.ink;
   }
@@ -102,7 +103,8 @@ class _SixQuizScreenState extends State<SixQuizScreen> {
   }
 
   void _snack(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -111,7 +113,9 @@ class _SixQuizScreenState extends State<SixQuizScreen> {
     final SixQuestion question = _session.current;
     final category = widget.data.sixTriangles.categoryById[question.category];
     if (category == null) {
-      return const Scaffold(body: Center(child: Text('Categoria não encontrada.')));
+      return const Scaffold(
+        body: Center(child: Text('Categoria não encontrada.')),
+      );
     }
     final Color accent = _accent;
 
@@ -124,7 +128,8 @@ class _SixQuizScreenState extends State<SixQuizScreen> {
               child: QuizTopBar(
                 onBack: _goBack,
                 progress: _session.progress,
-                counter: 'Pergunta ${_session.index + 1} de ${_session.questions.length}',
+                counter:
+                    'Pergunta ${_session.index + 1} de ${_session.questions.length}',
                 accent: accent,
               ),
             ),
@@ -146,31 +151,36 @@ class _SixQuizScreenState extends State<SixQuizScreen> {
                           const SizedBox(height: 12),
                           Text(question.text, style: text.headlineSmall),
                           const SizedBox(height: 16),
-                    Builder(
-                      builder: (context) {
-                        final subcategoryLabel = (question.subcategory >= 0 &&
-                                question.subcategory < category.subcategories.length)
-                            ? category.subcategories[question.subcategory]
-                            : '';
-                        return Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-                          decoration: BoxDecoration(
-                            color: accent.withValues(alpha: 0.09),
-                            borderRadius: BorderRadius.circular(9),
+                          Builder(
+                            builder: (context) {
+                              final subcategoryLabel =
+                                  (question.subcategory >= 0 &&
+                                      question.subcategory <
+                                          category.subcategories.length)
+                                  ? category.subcategories[question.subcategory]
+                                  : '';
+                              return Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 7,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: accent.withValues(alpha: 0.09),
+                                  borderRadius: BorderRadius.circular(9),
+                                ),
+                                child: Text(
+                                  question.agreeRaisesWeight
+                                      ? 'Concordar fortalece $subcategoryLabel'
+                                      : 'Concordar enfraquece $subcategoryLabel',
+                                  style: text.bodySmall?.copyWith(
+                                    color: AppColors.inkSoft,
+                                    fontSize: 11.5,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              );
+                            },
                           ),
-                          child: Text(
-                            question.agreeRaisesWeight
-                                ? 'Concordar fortalece $subcategoryLabel'
-                                : 'Concordar enfraquece $subcategoryLabel',
-                            style: text.bodySmall?.copyWith(
-                              color: AppColors.inkSoft,
-                              fontSize: 11.5,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
                         ],
                       ),
                     ),
@@ -180,13 +190,19 @@ class _SixQuizScreenState extends State<SixQuizScreen> {
                         Text('Sua resposta', style: text.titleMedium),
                         const Spacer(),
                         Text(
-                          _session.currentAnswer == null ? 'toque para escolher' : 'respondida',
+                          _session.currentAnswer == null
+                              ? 'toque para escolher'
+                              : 'respondida',
                           style: text.bodySmall,
                         ),
                       ],
                     ),
                     const SizedBox(height: 10),
-                    for (var i = 0; i < agreementLabels.length; i++) ...<Widget>[
+                    for (
+                      var i = 0;
+                      i < agreementLabels.length;
+                      i++
+                    ) ...<Widget>[
                       AnswerTile(
                         label: agreementLabels[i],
                         icon: _answerIcon(i),
@@ -194,7 +210,8 @@ class _SixQuizScreenState extends State<SixQuizScreen> {
                         accent: accent,
                         onTap: () => _selectAnswer(i),
                       ),
-                      if (i != agreementLabels.length - 1) const SizedBox(height: 9),
+                      if (i != agreementLabels.length - 1)
+                        const SizedBox(height: 9),
                     ],
                     const SizedBox(height: 12),
                     Text(
@@ -224,7 +241,9 @@ class _SixQuizScreenState extends State<SixQuizScreen> {
                   const Spacer(),
                   AppButton(
                     label: _session.isLast ? 'Ver resultado' : 'Avançar',
-                    icon: _session.isLast ? Icons.check_rounded : Icons.arrow_forward_rounded,
+                    icon: _session.isLast
+                        ? Icons.check_rounded
+                        : Icons.arrow_forward_rounded,
                     expand: false,
                     onPressed: _session.currentAnswer == null ? null : _goNext,
                   ),

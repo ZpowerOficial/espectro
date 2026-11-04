@@ -1,0 +1,436 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#conteudo-principal"
+  - banner:
+    - link "Voltar para o início":
+      - /url: /
+      - text: 12 axes
+    - button "Abrir menu"
+  - main:
+    - paragraph: — Comparar perfis
+    - heading "Lado a lado, nos 12 eixos" [level=1]
+    - button "Compartilhar comparação"
+    - heading "Perfis" [level=2]
+    - list:
+      - listitem:
+        - button "Remover Murray Rothbard da comparação"
+        - img "Retrato de Murray Rothbard"
+        - text: Personalidade
+        - strong: Murray Rothbard
+      - listitem:
+        - button "Remover Ludwig von Mises da comparação"
+        - img "Retrato de Ludwig von Mises"
+        - text: Personalidade
+        - strong: Ludwig von Mises
+    - combobox "Buscar perfil para comparar" [expanded]: Marx
+    - listbox:
+      - option "Marxismo-Leninismo, Ideologia":
+        - button "Marxismo-Leninismo, Ideologia":
+          - text: Marxismo-Leninismo
+          - emphasis: Esquerda Radical
+          - text: Ideologia
+      - option "Karl Marx, Personalidade":
+        - button "Karl Marx, Personalidade":
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx
+          - emphasis: Pai do socialismo científico
+          - text: Personalidade
+      - option "Socialismo Marxista, Ideologia":
+        - button "Socialismo Marxista, Ideologia":
+          - text: Socialismo Marxista
+          - emphasis: Esquerda Radical
+          - text: Ideologia
+    - heading "Ideologia mais próxima" [level=2]
+    - article:
+      - text: Em comum
+      - heading "Populismo Libertário" [level=3]
+      - paragraph: Libertário
+      - group: + Saber mais sobre Populismo Libertário
+      - 'img "Compatibilidade: 99 por cento"':
+        - img
+        - strong: 99%
+        - text: match
+    - list:
+      - listitem:
+        - paragraph:
+          - img "Retrato de Murray Rothbard"
+          - text: Mais perto de Murray Rothbard
+        - article:
+          - text: Libertário
+          - heading "Anarcocapitalismo" [level=3]
+          - paragraph: Corrente que propõe abolir o Estado e organizar toda a sociedade por contratos e mercados livres, com segurança, justiça e serviços fornecidos por empresas privadas em concorrência, sob propriedade absoluta. A compatibilidade indica proximidade entre suas respostas e esse perfil.
+          - button "+ Saber mais sobre Anarcocapitalismo"
+      - listitem:
+        - paragraph:
+          - img "Retrato de Ludwig von Mises"
+          - text: Mais perto de Ludwig von Mises
+        - article:
+          - text: Libertário
+          - heading "Liberalismo Clássico" [level=3]
+          - paragraph: Vertente original do liberalismo que defende direitos naturais, propriedade, livre mercado e Estado mínimo, vendo a liberdade individual e a limitação rígida do poder como fundamentos da sociedade justa. A compatibilidade indica proximidade entre suas respostas e esse perfil.
+          - button "+ Saber mais sobre Liberalismo Clássico"
+    - heading "Os 12 eixos" [level=2]
+    - list:
+      - listitem:
+        - heading "Estrutura" [level=3]
+        - 'img "Estrutura: Murray Rothbard 96% Federal, Ludwig von Mises 81% Federal"': Murray Murray Rothbard · 96% Ludwig Ludwig von Mises · 81%
+        - text: Federal Unitário
+      - listitem:
+        - heading "Representação" [level=3]
+        - 'img "Representação: Murray Rothbard 78% Democracia, Ludwig von Mises 74% Democracia"': Os dois Murray Rothbard · 78% / Ludwig von Mises · 74%
+        - text: Democracia Autocracia
+      - listitem:
+        - heading "Poder" [level=3]
+        - 'img "Poder: Murray Rothbard 99% Liberdade, Ludwig von Mises 76% Liberdade"': Murray Murray Rothbard · 99% Ludwig Ludwig von Mises · 76%
+        - text: Segurança Liberdade
+      - listitem:
+        - heading "Imigração" [level=3]
+        - 'img "Imigração: Murray Rothbard 61% Multicultura, Ludwig von Mises 71% Multicultura"': Os dois Murray Rothbard · 61% / Ludwig von Mises · 71%
+        - text: Assimilação Multicultura
+      - listitem:
+        - heading "Diplomacia" [level=3]
+        - 'img "Diplomacia: Murray Rothbard 85% Pacifista, Ludwig von Mises 78% Pacifista"': Os dois Murray Rothbard · 85% / Ludwig von Mises · 78%
+        - text: Militarista Pacifista
+      - listitem:
+        - heading "Intervenção" [level=3]
+        - 'img "Intervenção: Murray Rothbard 84% Não intervencionista, Ludwig von Mises 75% Não intervencionista"': Os dois Murray Rothbard · 84% / Ludwig von Mises · 75%
+        - text: Não intervencionista Nacionalista
+      - listitem:
+        - heading "Economia" [level=3]
+        - 'img "Economia: Murray Rothbard 94% Privado, Ludwig von Mises 90% Privado"': Os dois Murray Rothbard · 94% / Ludwig von Mises · 90%
+        - text: Público Privado
+      - listitem:
+        - heading "Controle" [level=3]
+        - 'img "Controle: Murray Rothbard 95% Livre mercado, Ludwig von Mises 93% Livre mercado"': Os dois Murray Rothbard · 95% / Ludwig von Mises · 93%
+        - text: Planejamento Livre mercado
+      - listitem:
+        - heading "Comércio" [level=3]
+        - 'img "Comércio: Murray Rothbard 93% Globalismo, Ludwig von Mises 90% Globalismo"': Os dois Murray Rothbard · 93% / Ludwig von Mises · 90%
+        - text: Protecionismo Globalismo
+      - listitem:
+        - heading "Religião" [level=3]
+        - 'img "Religião: Murray Rothbard 73% Irreligioso, Ludwig von Mises 66% Irreligioso"': Os dois Murray Rothbard · 73% / Ludwig von Mises · 66%
+        - text: Irreligioso Religioso
+      - listitem:
+        - heading "Moral" [level=3]
+        - 'img "Moral: Murray Rothbard Equilibrado (54% Progressista), Ludwig von Mises Equilibrado (53% Progressista)"': Os dois Murray Rothbard · 54% / Ludwig von Mises · 53%
+        - text: Progressista Tradicionalista
+      - listitem:
+        - heading "Tecnologia" [level=3]
+        - 'img "Tecnologia: Murray Rothbard 80% Tecnologia, Ludwig von Mises 71% Tecnologia"': Os dois Murray Rothbard · 80% / Ludwig von Mises · 71%
+        - text: Tecnologia Biologia
+    - heading "O que os distingue" [level=2]
+    - article:
+      - text: Onde mais divergem
+      - heading "Poder" [level=3]
+      - paragraph: 23pts
+      - paragraph: Ludwig von Mises e Murray Rothbard ficam a 23 pontos um do outro nesse eixo.
+      - text: Segurança Liberdade
+    - article:
+      - text: Onde mais concordam
+      - heading "Moral" [level=3]
+      - paragraph: 1pt
+      - paragraph: "Aqui eles se encontram: só 1 ponto de diferença."
+      - text: Progressista Tradicionalista
+    - article:
+      - text: Lados opostos
+      - paragraph: Nenhum eixo coloca os perfis em lados opostos.
+    - heading "Países mais próximos" [level=2]
+    - tablist "Países mais próximos":
+      - tab "País atual" [selected]
+      - tab "Experiência histórica"
+    - paragraph:
+      - img "Retrato de Murray Rothbard"
+      - text: Mais perto de Murray Rothbard
+    - article:
+      - img "Bandeira de New Hampshire (Estados Unidos)"
+      - text: 92% match
+      - heading "New Hampshire (Estados Unidos)" [level=3]
+      - paragraph: Região libertária-fiscal
+      - group: + Saber mais sobre New Hampshire (Estados Unidos)
+    - paragraph:
+      - img "Retrato de Ludwig von Mises"
+      - text: Mais perto de Ludwig von Mises
+    - article:
+      - img "Bandeira de New Hampshire (Estados Unidos)"
+      - text: 94% match
+      - heading "New Hampshire (Estados Unidos)" [level=3]
+      - paragraph: Região libertária-fiscal
+      - group: + Saber mais sobre New Hampshire (Estados Unidos)
+    - paragraph: Também próximos, por dimensão
+    - list:
+      - listitem:
+        - text: Politicamente
+        - button "Ver detalhes de Zug (Suíça)":
+          - img "Bandeira de Zug (Suíça)"
+          - text: Murray Rothbard
+          - strong: Zug (Suíça)
+        - button "Ver detalhes de Zug (Suíça)":
+          - img "Bandeira de Zug (Suíça)"
+          - text: Ludwig von Mises
+          - strong: Zug (Suíça)
+      - listitem:
+        - text: Socialmente
+        - button "Ver detalhes de Nevada (Estados Unidos)":
+          - img "Bandeira de Nevada (Estados Unidos)"
+          - text: Murray Rothbard
+          - strong: Nevada (Estados Unidos)
+        - button "Ver detalhes de Nevada (Estados Unidos)":
+          - img "Bandeira de Nevada (Estados Unidos)"
+          - text: Ludwig von Mises
+          - strong: Nevada (Estados Unidos)
+      - listitem:
+        - text: Economicamente
+        - button "Ver detalhes de Chile de Pinochet":
+          - img "Bandeira / símbolo histórico de Chile de Pinochet"
+          - text: Murray Rothbard
+          - strong: Chile de Pinochet
+        - button "Ver detalhes de Chile de Pinochet":
+          - img "Bandeira / símbolo histórico de Chile de Pinochet"
+          - text: Ludwig von Mises
+          - strong: Chile de Pinochet
+    - heading "Personalidades mais próximas" [level=2]
+    - paragraph:
+      - img "Retrato de Murray Rothbard"
+      - text: Mais perto de Murray Rothbard
+    - article:
+      - img "Retrato de Murray Rothbard"
+      - text: 100% match
+      - heading "Murray Rothbard" [level=3]
+      - paragraph: Pai do anarcocapitalismo · 1926–1995
+      - group: + Saber mais sobre Murray Rothbard
+    - paragraph:
+      - img "Retrato de Ludwig von Mises"
+      - text: Mais perto de Ludwig von Mises
+    - article:
+      - img "Retrato de Ludwig von Mises"
+      - text: 100% match
+      - heading "Ludwig von Mises" [level=3]
+      - paragraph: Expoente da Escola Austríaca · 1881–1973
+      - group: + Saber mais sobre Ludwig von Mises
+    - paragraph: Também próximos, por dimensão
+    - list:
+      - listitem:
+        - text: Politicamente
+        - button "Ver detalhes de Raphaël Lima":
+          - img "Retrato de Raphaël Lima"
+          - text: Murray Rothbard
+          - strong: Raphaël Lima
+        - button "Ver detalhes de Raphaël Lima":
+          - img "Retrato de Raphaël Lima"
+          - text: Ludwig von Mises
+          - strong: Raphaël Lima
+      - listitem:
+        - text: Socialmente
+        - button "Ver detalhes de Lysander Spooner":
+          - img "Retrato de Lysander Spooner"
+          - text: Murray Rothbard
+          - strong: Lysander Spooner
+        - button "Ver detalhes de Robert Nozick":
+          - img "Retrato de Robert Nozick"
+          - text: Ludwig von Mises
+          - strong: Robert Nozick
+      - listitem:
+        - text: Economicamente
+        - button "Ver detalhes de Gustave de Molinari":
+          - img "Retrato de Gustave de Molinari"
+          - text: Murray Rothbard
+          - strong: Gustave de Molinari
+        - button "Ver detalhes de Gary Johnson":
+          - img "Retrato de Gary Johnson"
+          - text: Ludwig von Mises
+          - strong: Gary Johnson
+    - heading "Partidos mais próximos" [level=2]
+    - tablist "Partidos mais próximos":
+      - tab "Partido atual" [selected]
+      - tab "Partido histórico"
+    - paragraph:
+      - img "Retrato de Murray Rothbard"
+      - text: Mais perto de Murray Rothbard
+    - article:
+      - img "Símbolo de Partido Libertário"
+      - img "Bandeira de Estados Unidos"
+      - text: 96% match
+      - heading "Partido Libertário" [level=3]
+      - paragraph: Partido · Estados Unidos
+      - group: + Saber mais sobre Partido Libertário
+    - paragraph:
+      - img "Retrato de Ludwig von Mises"
+      - text: Mais perto de Ludwig von Mises
+    - article:
+      - img "Símbolo de Partido Novo (NOVO)"
+      - img "Bandeira de Brasil"
+      - text: 95% match
+      - heading "Partido Novo (NOVO)" [level=3]
+      - paragraph: Partido · Brasil
+      - group: + Saber mais sobre Partido Novo (NOVO)
+    - paragraph: Também próximos, por dimensão
+    - list:
+      - listitem:
+        - text: Politicamente
+        - button "Ver detalhes de Partido Novo (NOVO)":
+          - img "Símbolo de Partido Novo (NOVO)"
+          - img "Bandeira de Brasil"
+          - text: Murray Rothbard
+          - strong: Partido Novo (NOVO)
+        - button "Ver detalhes de Partido Libertário":
+          - img "Símbolo de Partido Libertário"
+          - img "Bandeira de Estados Unidos"
+          - text: Ludwig von Mises
+          - strong: Partido Libertário
+      - listitem:
+        - text: Socialmente
+        - button "Ver detalhes de Partido Democrático Liberal (FDP)":
+          - img "Símbolo de Partido Democrático Liberal (FDP)"
+          - img "Bandeira de Alemanha"
+          - text: Murray Rothbard
+          - strong: Partido Democrático Liberal (FDP)
+        - button "Ver detalhes de Partido Democrático Liberal (FDP)":
+          - img "Símbolo de Partido Democrático Liberal (FDP)"
+          - img "Bandeira de Alemanha"
+          - text: Ludwig von Mises
+          - strong: Partido Democrático Liberal (FDP)
+      - listitem:
+        - text: Economicamente
+        - button "Ver detalhes de La Libertad Avanza (LLA)":
+          - img "Símbolo de La Libertad Avanza (LLA)"
+          - img "Bandeira de Argentina"
+          - text: Murray Rothbard
+          - strong: La Libertad Avanza (LLA)
+        - button "Ver detalhes de Partido Nacional Libertário (PNL)":
+          - img "Símbolo de Partido Nacional Libertário (PNL)"
+          - img "Bandeira de Chile"
+          - text: Ludwig von Mises
+          - strong: Partido Nacional Libertário (PNL)
+    - heading "Valores" [level=2]
+    - list:
+      - listitem:
+        - text: Política
+        - button "Ver detalhes de Minarquismo":
+          - text: Murray Rothbard
+          - strong: Minarquismo
+        - button "Ver detalhes de Federalismo":
+          - text: Ludwig von Mises
+          - strong: Federalismo
+      - listitem:
+        - text: Política externa
+        - button "Ver detalhes de Não intervencionismo":
+          - text: Murray Rothbard
+          - strong: Não intervencionismo
+        - button "Ver detalhes de Não intervencionismo":
+          - text: Ludwig von Mises
+          - strong: Não intervencionismo
+      - listitem:
+        - text: Economia
+        - button "Ver detalhes de Liberalismo Austríaco":
+          - text: Murray Rothbard
+          - strong: Liberalismo Austríaco
+        - button "Ver detalhes de Liberalismo Austríaco":
+          - text: Ludwig von Mises
+          - strong: Liberalismo Austríaco
+      - listitem:
+        - text: Imigração
+        - button "Ver detalhes de Integração cívica":
+          - text: Murray Rothbard
+          - strong: Integração cívica
+        - button "Ver detalhes de Pluralismo":
+          - text: Ludwig von Mises
+          - strong: Pluralismo
+      - listitem:
+        - text: Sociedade
+        - button "Ver detalhes de Moderado secular":
+          - text: Murray Rothbard
+          - strong: Moderado secular
+        - button "Ver detalhes de Moderado secular":
+          - text: Ludwig von Mises
+          - strong: Moderado secular
+      - listitem:
+        - text: Tecnologia
+        - button "Ver detalhes de Industrialismo":
+          - text: Murray Rothbard
+          - strong: Industrialismo
+        - button "Ver detalhes de Modernismo tecnológico":
+          - text: Ludwig von Mises
+          - strong: Modernismo tecnológico
+    - heading "Valores em comum" [level=2]
+    - list:
+      - button "Ver detalhes de Não intervencionismo":
+        - text: Política externa
+        - strong: Não intervencionismo
+      - button "Ver detalhes de Liberalismo Austríaco":
+        - text: Economia
+        - strong: Liberalismo Austríaco
+      - button "Ver detalhes de Moderado secular":
+        - text: Sociedade
+        - strong: Moderado secular
+    - heading "Bússola política" [level=2]
+    - 'img "Bússola política: Murray Rothbard, 94% à direita, 9% autoritário, 46% tradicionalista; Ludwig von Mises, 91% à direita, 23% autoritário, 48% tradicionalista"': Autoritarismo Esquerda Direita Anarquismo
+    - list "Legenda da bússola":
+      - listitem:
+        - img "Retrato de Murray Rothbard"
+        - text: Murray Rothbard
+      - listitem:
+        - img "Retrato de Ludwig von Mises"
+        - text: Ludwig von Mises
+    - heading "Compatibilidade entre eles" [level=2]
+    - list:
+      - listitem:
+        - img "Retrato de Murray Rothbard"
+        - img "Retrato de Ludwig von Mises"
+        - strong: Murray Rothbard Ludwig von Mises
+        - 'img "Compatibilidade: 96 por cento"'
+        - paragraph: 96%
+    - heading "Cartão da comparação" [level=2]
+    - button "Compartilhar resultado" [disabled]:
+      - status "Gerando a prévia do seu cartão"
+    - button "Compartilhar resultado" [disabled]
+    - button "Compartilhar comparação"
+    - complementary "Nesta página"
+  - contentinfo:
+    - text: 12 axes
+    - paragraph: © 2026. Todos os direitos reservados
+    - navigation "Projeto":
+      - heading "Projeto" [level=3]
+      - list:
+        - listitem:
+          - link "Sobre":
+            - /url: https://github.com/RomanCypherpunk/12axes#readme
+        - listitem:
+          - link "Contribuições":
+            - /url: https://github.com/RomanCypherpunk/12axes#contributing-ov-file
+        - listitem:
+          - link "Licença":
+            - /url: https://github.com/RomanCypherpunk/12axes/blob/main/LICENSE
+        - listitem:
+          - link "Reportar":
+            - /url: https://github.com/RomanCypherpunk/12axes/issues/new
+        - listitem:
+          - link "Relatório Completo":
+            - /url: /report
+        - listitem:
+          - link "Termos de uso":
+            - /url: /terms
+        - listitem:
+          - link "Privacidade":
+            - /url: /privacy
+        - listitem:
+          - link "Reembolso":
+            - /url: /refund
+    - navigation "Explorar":
+      - heading "Explorar" [level=3]
+      - list:
+        - listitem:
+          - link "Personalidades":
+            - /url: /personalities
+        - listitem:
+          - link "Ideologias":
+            - /url: /ideologies
+        - listitem:
+          - link "Livros":
+            - /url: /books
+        - listitem:
+          - link "Partidos":
+            - /url: /parties
+        - listitem:
+          - link "Países":
+            - /url: /countries

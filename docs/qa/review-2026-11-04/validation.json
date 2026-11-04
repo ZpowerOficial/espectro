@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-04",
+  "checks": {
+    "flutter_tests": {
+      "status": "PASS",
+      "count": 184
+    },
+    "flutter_analyze": {
+      "status": "PASS",
+      "issues": 0
+    },
+    "web_release": {
+      "status": "PASS"
+    },
+    "android_debug": {
+      "status": "PASS"
+    },
+    "rea_chromium": {
+      "status": "PASS",
+      "steps": 19,
+      "page_errors": 0
+    },
+    "physical_android": {
+      "status": "NOT_RUN"
+    }
+  },
+  "artifacts": {
+    "build/app/outputs/flutter-apk/espectro-revisao-2026-11-04.apk": {
+      "bytes": 219581813,
+      "sha256": "f06ed2bda5892867b3596c65e6f0c9698630db6023523b9889d4dd7fe28b5375"
+    },
+    "build/web/main.dart.js": {
+      "bytes": 3902379,
+      "sha256": "8acc5f34d4657ee00e649c5cae6fe578d1b5e61b76d2c10d30cfdd50d322452e"
+    }
+  }
+}

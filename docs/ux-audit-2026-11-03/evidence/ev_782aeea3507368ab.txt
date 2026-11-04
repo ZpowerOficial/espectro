@@ -1,0 +1,378 @@
+- document:
+  - link "Pular para o conteúdo":
+    - /url: "#conteudo-principal"
+  - banner:
+    - link "Voltar para o início":
+      - /url: /
+      - text: 12 axes
+    - navigation "Navegação principal":
+      - link "Livros":
+        - /url: /books
+      - link "Ideologias":
+        - /url: /ideologies
+      - link "Personalidades":
+        - /url: /personalities
+      - link "Países":
+        - /url: /countries
+      - link "Partidos":
+        - /url: /parties
+      - text: Comparar
+      - button "Switch to English"
+    - link "Fazer o teste":
+      - /url: /
+  - main:
+    - paragraph: — Comparar perfis
+    - heading "Lado a lado, nos 12 eixos" [level=1]
+    - heading "Perfis" [level=2]
+    - list:
+      - listitem:
+        - button "Remover Murray Rothbard da comparação"
+        - img "Retrato de Murray Rothbard"
+        - text: Personalidade
+        - strong: Murray Rothbard
+      - listitem:
+        - button "Remover Ludwig von Mises da comparação"
+        - img "Retrato de Ludwig von Mises"
+        - text: Personalidade
+        - strong: Ludwig von Mises
+      - listitem:
+        - button "Remover Karl Marx da comparação"
+        - img "Retrato de Karl Marx"
+        - text: Personalidade
+        - strong: Karl Marx
+    - paragraph: Até 3 perfis. Remova um para escolher outro.
+    - heading "Ideologia mais próxima" [level=2]
+    - article:
+      - text: Em comum
+      - heading "Iluminismo" [level=3]
+      - paragraph: Centro
+      - group: + Saber mais sobre Iluminismo
+      - 'img "Compatibilidade: 98 por cento"':
+        - img
+        - strong: 98%
+        - text: match
+    - list:
+      - listitem:
+        - paragraph:
+          - img "Retrato de Murray Rothbard"
+          - text: Mais perto de Murray Rothbard
+        - article:
+          - text: Libertário
+          - heading "Anarcocapitalismo" [level=3]
+          - paragraph: Corrente que propõe abolir o Estado e organizar toda a sociedade por contratos e mercados livres, com segurança, justiça e serviços fornecidos por empresas privadas em concorrência, sob propriedade absoluta. A compatibilidade indica proximidade entre suas respostas e esse perfil.
+          - button "+ Saber mais sobre Anarcocapitalismo"
+      - listitem:
+        - paragraph:
+          - img "Retrato de Ludwig von Mises"
+          - text: Mais perto de Ludwig von Mises
+        - article:
+          - text: Libertário
+          - heading "Liberalismo Clássico" [level=3]
+          - paragraph: Vertente original do liberalismo que defende direitos naturais, propriedade, livre mercado e Estado mínimo, vendo a liberdade individual e a limitação rígida do poder como fundamentos da sociedade justa. A compatibilidade indica proximidade entre suas respostas e esse perfil.
+          - button "+ Saber mais sobre Liberalismo Clássico"
+      - listitem:
+        - paragraph:
+          - img "Retrato de Karl Marx"
+          - text: Mais perto de Karl Marx
+        - article:
+          - text: Esquerda Radical
+          - heading "Socialismo Marxista" [level=3]
+          - paragraph: Doutrina original de Marx, que analisa a história como luta de classes e prevê a superação do capitalismo pela revolução do proletariado, com abolição da propriedade privada dos meios de produção e forte crítica à religião. A compatibilidade indica proximidade entre suas respostas e esse perfil.
+          - button "+ Saber mais sobre Socialismo Marxista"
+    - heading "Os 12 eixos" [level=2]
+    - list:
+      - listitem:
+        - heading "Estrutura" [level=3]
+        - 'img "Estrutura: Murray Rothbard 96% Federal, Ludwig von Mises 81% Federal, Karl Marx 76% Unitário"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 96%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 81%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 76%
+        - text: Federal Unitário
+      - listitem:
+        - heading "Representação" [level=3]
+        - 'img "Representação: Murray Rothbard 78% Democracia, Ludwig von Mises 74% Democracia, Karl Marx Equilibrado (50% Democracia)"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 78%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 74%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 50%
+        - text: Democracia Autocracia
+      - listitem:
+        - heading "Poder" [level=3]
+        - 'img "Poder: Murray Rothbard 99% Liberdade, Ludwig von Mises 76% Liberdade, Karl Marx 68% Segurança"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 99%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 76%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 68%
+        - text: Segurança Liberdade
+      - listitem:
+        - heading "Imigração" [level=3]
+        - 'img "Imigração: Murray Rothbard 61% Multicultura, Ludwig von Mises 71% Multicultura, Karl Marx 83% Multicultura"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 61%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 71%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 83%
+        - text: Assimilação Multicultura
+      - listitem:
+        - heading "Diplomacia" [level=3]
+        - 'img "Diplomacia: Murray Rothbard 85% Pacifista, Ludwig von Mises 78% Pacifista, Karl Marx 59% Pacifista"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 85%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 78%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 59%
+        - text: Militarista Pacifista
+      - listitem:
+        - heading "Intervenção" [level=3]
+        - 'img "Intervenção: Murray Rothbard 84% Não intervencionista, Ludwig von Mises 75% Não intervencionista, Karl Marx 71% Não intervencionista"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 84%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 75%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 71%
+        - text: Não intervencionista Nacionalista
+      - listitem:
+        - heading "Economia" [level=3]
+        - 'img "Economia: Murray Rothbard 94% Privado, Ludwig von Mises 90% Privado, Karl Marx 89% Público"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 94%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 90%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 89%
+        - text: Público Privado
+      - listitem:
+        - heading "Controle" [level=3]
+        - 'img "Controle: Murray Rothbard 95% Livre mercado, Ludwig von Mises 93% Livre mercado, Karl Marx 83% Planejamento"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 95%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 93%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 83%
+        - text: Planejamento Livre mercado
+      - listitem:
+        - heading "Comércio" [level=3]
+        - 'img "Comércio: Murray Rothbard 93% Globalismo, Ludwig von Mises 90% Globalismo, Karl Marx 61% Globalismo"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 93%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 90%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 61%
+        - text: Protecionismo Globalismo
+      - listitem:
+        - heading "Religião" [level=3]
+        - 'img "Religião: Murray Rothbard 73% Irreligioso, Ludwig von Mises 66% Irreligioso, Karl Marx 93% Irreligioso"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 73%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 66%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 93%
+        - text: Irreligioso Religioso
+      - listitem:
+        - heading "Moral" [level=3]
+        - 'img "Moral: Murray Rothbard Equilibrado (54% Progressista), Ludwig von Mises Equilibrado (53% Progressista), Karl Marx 73% Progressista"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 54%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 53%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 73%
+        - text: Progressista Tradicionalista
+      - listitem:
+        - heading "Tecnologia" [level=3]
+        - 'img "Tecnologia: Murray Rothbard 80% Tecnologia, Ludwig von Mises 71% Tecnologia, Karl Marx 69% Tecnologia"':
+          - img "Retrato de Murray Rothbard"
+          - text: Murray Rothbard · 80%
+          - img "Retrato de Ludwig von Mises"
+          - text: Ludwig von Mises · 71%
+          - img "Retrato de Karl Marx"
+          - text: Karl Marx · 69%
+        - text: Tecnologia Biologia
+    - heading "O que os distingue" [level=2]
+    - article:
+      - text: Onde mais divergem
+      - heading "Economia" [level=3]
+      - paragraph: 83pts
+      - paragraph: Karl Marx e Murray Rothbard ficam a 83 pontos um do outro nesse eixo.
+      - text: Público Privado
+    - article:
+      - text: Onde mais concordam
+      - heading "Tecnologia" [level=3]
+      - paragraph: 11pts
+      - paragraph: "Aqui eles se encontram: só 11 pontos de diferença."
+      - text: Tecnologia Biologia
+    - article:
+      - text: Lados opostos
+      - paragraph: Em 4 dos 12 eixos eles ficam em lados opostos.
+      - list:
+        - listitem: Estrutura
+        - listitem: Poder
+        - listitem: Economia
+        - listitem: Controle
+    - heading "Países mais próximos" [level=2]
+    - list:
+      - listitem:
+        - paragraph:
+          - img "Retrato de Murray Rothbard"
+          - text: Mais perto de Murray Rothbard
+        - article:
+          - img "Bandeira de New Hampshire (Estados Unidos)"
+          - heading "New Hampshire (Estados Unidos)" [level=3]
+          - text: 92% match
+      - listitem:
+        - paragraph:
+          - img "Retrato de Ludwig von Mises"
+          - text: Mais perto de Ludwig von Mises
+        - article:
+          - img "Bandeira de New Hampshire (Estados Unidos)"
+          - heading "New Hampshire (Estados Unidos)" [level=3]
+          - text: 94% match
+      - listitem:
+        - paragraph:
+          - img "Retrato de Karl Marx"
+          - text: Mais perto de Karl Marx
+        - article:
+          - img "Bandeira / símbolo histórico de Segunda República Espanhola"
+          - heading "Segunda República Espanhola" [level=3]
+          - paragraph: 1933–1939
+          - text: 89% match
+    - heading "Partidos mais próximos" [level=2]
+    - list:
+      - listitem:
+        - paragraph:
+          - img "Retrato de Murray Rothbard"
+          - text: Mais perto de Murray Rothbard
+        - article:
+          - img "Símbolo de Partido Libertário"
+          - img "Bandeira de Estados Unidos"
+          - heading "Partido Libertário" [level=3]
+          - text: 96% match
+      - listitem:
+        - paragraph:
+          - img "Retrato de Ludwig von Mises"
+          - text: Mais perto de Ludwig von Mises
+        - article:
+          - img "Símbolo de Partido Novo (NOVO)"
+          - img "Bandeira de Brasil"
+          - heading "Partido Novo (NOVO)" [level=3]
+          - text: 95% match
+      - listitem:
+        - paragraph:
+          - img "Retrato de Karl Marx"
+          - text: Mais perto de Karl Marx
+        - article:
+          - img "Símbolo de Mencheviques"
+          - img "Bandeira / símbolo histórico de Império Russo Czarista"
+          - heading "Mencheviques" [level=3]
+          - paragraph: 1903–1922
+          - text: 91% match
+    - heading "Bússola política" [level=2]
+    - 'img "Bússola política: Murray Rothbard, 94% à direita, 9% autoritário, 46% tradicionalista; Ludwig von Mises, 91% à direita, 23% autoritário, 48% tradicionalista; Karl Marx, 14% à direita, 65% autoritário, 28% tradicionalista"': Autoritarismo Esquerda Direita Anarquismo
+    - list "Legenda da bússola":
+      - listitem:
+        - img "Retrato de Murray Rothbard"
+        - text: Murray Rothbard
+      - listitem:
+        - img "Retrato de Ludwig von Mises"
+        - text: Ludwig von Mises
+      - listitem:
+        - img "Retrato de Karl Marx"
+        - text: Karl Marx
+    - heading "Compatibilidade entre eles" [level=2]
+    - list:
+      - listitem:
+        - img "Retrato de Murray Rothbard"
+        - img "Retrato de Ludwig von Mises"
+        - strong: Murray Rothbard Ludwig von Mises
+        - 'img "Compatibilidade: 96 por cento"'
+        - paragraph: 96%
+      - listitem:
+        - img "Retrato de Murray Rothbard"
+        - img "Retrato de Karl Marx"
+        - strong: Murray Rothbard Karl Marx
+        - 'img "Compatibilidade: 55 por cento"'
+        - paragraph: 55%
+      - listitem:
+        - img "Retrato de Ludwig von Mises"
+        - img "Retrato de Karl Marx"
+        - strong: Ludwig von Mises Karl Marx
+        - 'img "Compatibilidade: 60 por cento"'
+        - paragraph: 60%
+    - complementary "Nesta página":
+      - navigation "Nesta página":
+        - paragraph: Nesta página
+        - link "01 Ideologias":
+          - /url: "#cmp-ideologia"
+        - link "02 12 Eixos":
+          - /url: "#cmp-eixos"
+        - link "03 Distinção":
+          - /url: "#cmp-assinatura"
+        - link "04 Países":
+          - /url: "#cmp-paises"
+        - link "05 Partidos":
+          - /url: "#cmp-partidos"
+        - link "06 Bússola":
+          - /url: "#cmp-bussola"
+        - link "07 Compatibilidade":
+          - /url: "#cmp-pares"
+  - contentinfo:
+    - text: 12 axes
+    - paragraph: © 2026. Todos os direitos reservados
+    - navigation "Projeto":
+      - heading "Projeto" [level=3]
+      - list:
+        - listitem:
+          - link "Sobre":
+            - /url: https://github.com/RomanCypherpunk/12axes#readme
+        - listitem:
+          - link "Contribuições":
+            - /url: https://github.com/RomanCypherpunk/12axes#contributing-ov-file
+        - listitem:
+          - link "Licença":
+            - /url: https://github.com/RomanCypherpunk/12axes/blob/main/LICENSE
+        - listitem:
+          - link "Reportar":
+            - /url: https://github.com/RomanCypherpunk/12axes/issues/new
+        - listitem:
+          - link "Relatório Completo":
+            - /url: /report
+        - listitem:
+          - link "Termos de uso":
+            - /url: /terms
+        - listitem:
+          - link "Privacidade":
+            - /url: /privacy
+        - listitem:
+          - link "Reembolso":
+            - /url: /refund
+    - navigation "Explorar":
+      - heading "Explorar" [level=3]
+      - list:
+        - listitem:
+          - link "Personalidades":
+            - /url: /personalities
+        - listitem:
+          - link "Ideologias":
+            - /url: /ideologies
+        - listitem:
+          - link "Livros":
+            - /url: /books
+        - listitem:
+          - link "Partidos":
+            - /url: /parties
+        - listitem:
+          - link "Países":
+            - /url: /countries

@@ -1,0 +1,2934 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "2.0.0",
+  "entries": [
+    {
+      "id": "atenas_pericles",
+      "name": "Democracia Ateniense (Século de Péricles)",
+      "subtitle": "Democracia direta cidadã e hegemonia marítima na Liga de Delos",
+      "category": "Antiguidade e Modernidade",
+      "era": "Século V a.C.",
+      "origin": "Grécia Antiga",
+      "summary": "Organizava a tomada de decisões políticas na Assembleia popular direta (Eclésia), no Conselho dos Quinhentos e em tribunais populares remunerados, preenchendo grande parte das magistraturas por sorteio rotativo. Sustentava-se economicamente no comércio marítimo do Egeu, na tributação das cidades aliadas da Liga de Delos e em uma cidadania cívica intensa, porém restrita aos homens adultos filhos de pai e mãe atenienses.",
+      "highlights": [
+        "Assembleia popular direta (Eclésia) e sorteio de magistraturas civis",
+        "Remuneração de funções públicas (mistoforia) e financiamento de obras cívicas",
+        "Comércio naval ativo combinado à hegemonia militar sobre a Liga de Delos"
+      ],
+      "quote": "Marco clássico da participação cívica direta e da deliberação pública na Antiguidade.",
+      "axes": {
+        "estrutura": 0.42,
+        "representacao": -0.62,
+        "poder": 0.18,
+        "imigracao": -0.58,
+        "diplomacia": -0.56,
+        "intervencao": 0.64,
+        "economia": 0.16,
+        "controle": 0.12,
+        "comercio": 0.48,
+        "religiao": 0.44,
+        "moral": 0.34,
+        "tecnologia": -0.18
+      },
+      "triangles": {
+        "0": [
+          0.24,
+          0.3,
+          0.46
+        ],
+        "1": [
+          0.46,
+          0.3,
+          0.24
+        ],
+        "2": [
+          0.42,
+          0.32,
+          0.26
+        ],
+        "3": [
+          0.58,
+          0.12,
+          0.3
+        ],
+        "4": [
+          0.68,
+          0.22,
+          0.1
+        ],
+        "5": [
+          0.46,
+          0.26,
+          0.28
+        ]
+      }
+    },
+    {
+      "id": "republica_romana",
+      "name": "República Romana Clássica",
+      "subtitle": "Constituição mista senatorial, direito civil e expansão mediterrânica",
+      "category": "Antiguidade e Modernidade",
+      "era": "Séculos IV–II a.C.",
+      "origin": "Roma Antiga",
+      "summary": "Combinava magistraturas anuais colegiadas, autoridade estratégica do Senado patrício-plebeu e assembleias comiciais organizadas por centúrias e tribos, incluindo o poder de veto dos tribunos da plebe. A ordem socioeconômica apoiava-se na propriedade fundiária privada, na codificação jurídica civil, no dever militar dos cidadãos e na incorporação gradual de aliados itálicos e províncias conquistadas.",
+      "highlights": [
+        "Equilíbrio institucional misto entre cônsules, Senado e tribunato da plebe",
+        "Desenvolvimento do direito civil romano e forte proteção à propriedade privada",
+        "Exército cívico disciplinado, ética tradicional (mos maiorum) e expansão territorial"
+      ],
+      "quote": "Arquitetura clássica da república mista, do império da lei escrita e da virtude marcial.",
+      "axes": {
+        "estrutura": 0.28,
+        "representacao": 0.14,
+        "poder": -0.36,
+        "imigracao": -0.12,
+        "diplomacia": -0.84,
+        "intervencao": 0.82,
+        "economia": 0.48,
+        "controle": 0.28,
+        "comercio": 0.26,
+        "religiao": 0.62,
+        "moral": 0.74,
+        "tecnologia": -0.34
+      },
+      "triangles": {
+        "0": [
+          0.18,
+          0.28,
+          0.54
+        ],
+        "1": [
+          0.26,
+          0.52,
+          0.22
+        ],
+        "2": [
+          0.68,
+          0.18,
+          0.14
+        ],
+        "3": [
+          0.76,
+          0.08,
+          0.16
+        ],
+        "4": [
+          0.3,
+          0.54,
+          0.16
+        ],
+        "5": [
+          0.32,
+          0.12,
+          0.56
+        ]
+      }
+    },
+    {
+      "id": "republica_veneza",
+      "name": "República de Veneza (Sereníssima)",
+      "subtitle": "República mercantil patricial, freios constitucionais e capitalismo marítimo",
+      "category": "Antiguidade e Modernidade",
+      "era": "Séculos XIII–XVI",
+      "origin": "Península Itálica",
+      "summary": "Estabeleceu uma república aristocrática longeva governada pelo Grande Conselho, pelo Senado e por um Doge vitalício submetido a rigorosos controles legais e eleitorais para impedir a tirania pessoal. Combinava supremacia comercial e financeira no Mediterrâneo com administração estatal estratégica do Arsenal naval, vigilância interna pelo Conselho dos Dez e autonomia pragmática diante do poder papal.",
+      "highlights": [
+        "Sistema complexo de sorteios e votações para conter facções oligárquicas",
+        "Capitalismo mercantil e bancário articulado ao Arsenal naval estatal",
+        "Diplomacia permanente, pragmatismo religioso e aparelho de segurança interna"
+      ],
+      "quote": "Longevidade republicana sustentada pelo comércio marítimo e por freios contra o poder pessoal.",
+      "axes": {
+        "estrutura": 0.46,
+        "representacao": 0.36,
+        "poder": -0.44,
+        "imigracao": 0.16,
+        "diplomacia": -0.34,
+        "intervencao": 0.44,
+        "economia": 0.52,
+        "controle": 0.22,
+        "comercio": 0.72,
+        "religiao": 0.32,
+        "moral": 0.46,
+        "tecnologia": -0.42
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.34,
+          0.46
+        ],
+        "1": [
+          0.24,
+          0.54,
+          0.22
+        ],
+        "2": [
+          0.5,
+          0.22,
+          0.28
+        ],
+        "3": [
+          0.46,
+          0.1,
+          0.44
+        ],
+        "4": [
+          0.24,
+          0.58,
+          0.18
+        ],
+        "5": [
+          0.34,
+          0.1,
+          0.56
+        ]
+      }
+    },
+    {
+      "id": "provincias_unidas",
+      "name": "Províncias Unidas Neerlandesas (Século de Ouro)",
+      "subtitle": "Confederação mercantil, bolsa de valores e tolerância civil relativa",
+      "category": "Antiguidade e Modernidade",
+      "era": "Século XVII",
+      "origin": "Países Baixos",
+      "summary": "Estruturou-se como uma república confederada descentralizada na qual sete províncias autônomas e burguesias urbanas compartilhavam decisões nos Estados Gerais, equilibrando os regentes civis e a Casa de Orange. Foi pioneira nas sociedades por ações, no mercado financeiro de Amsterdã e na relativa liberdade editorial e religiosa, ao mesmo tempo em que projetava companhias comerciais armadas no ultramar.",
+      "highlights": [
+        "Soberania provincial descentralizada e governança urbana de regentes mercantis",
+        "Inovação financeira com bolsa de valores, banco de câmbio e companhias por ações",
+        "Refúgio editorial e relativa tolerância religiosa na Europa seiscentista"
+      ],
+      "quote": "Laboratório moderno do federalismo comercial, das finanças abertas e do pluralismo urbano.",
+      "axes": {
+        "estrutura": -0.78,
+        "representacao": -0.18,
+        "poder": 0.44,
+        "imigracao": 0.38,
+        "diplomacia": -0.28,
+        "intervencao": 0.42,
+        "economia": 0.74,
+        "controle": 0.56,
+        "comercio": 0.78,
+        "religiao": 0.18,
+        "moral": 0.12,
+        "tecnologia": -0.52
+      },
+      "triangles": {
+        "0": [
+          0.1,
+          0.24,
+          0.66
+        ],
+        "1": [
+          0.58,
+          0.24,
+          0.18
+        ],
+        "2": [
+          0.34,
+          0.26,
+          0.4
+        ],
+        "3": [
+          0.44,
+          0.12,
+          0.44
+        ],
+        "4": [
+          0.36,
+          0.24,
+          0.4
+        ],
+        "5": [
+          0.44,
+          0.08,
+          0.48
+        ]
+      }
+    },
+    {
+      "id": "inglaterra_1688",
+      "name": "Inglaterra Pós-Revolução Gloriosa (1688)",
+      "subtitle": "Monarquia constitucional parlamentar, Bill of Rights e crédito público",
+      "category": "Antiguidade e Modernidade",
+      "era": "1688–Século XVIII",
+      "origin": "Inglaterra / Grã-Bretanha",
+      "summary": "Subordinou a Coroa à supremacia legislativa e fiscal do Parlamento por meio da Declaração de Direitos de 1689, consolidando garantias jurídicas como o habeas corpus, o julgamento por júri e a proteção da propriedade. Criou o Banco da Inglaterra e um sistema estável de dívida pública, convivendo ainda com sufrágio censitário, primazia confessional anglicana e políticas mercantilistas dos Atos de Navegação.",
+      "highlights": [
+        "Supremacia parlamentar sobre tributos, exército permanente e sucessão real",
+        "Independência judicial do common law, habeas corpus e fim da censura prévia",
+        "Revolução financeira do Banco da Inglaterra aliada ao mercantilismo naval"
+      ],
+      "quote": "Transição decisiva do absolutismo régio para o constitucionalismo parlamentar moderno.",
+      "axes": {
+        "estrutura": 0.48,
+        "representacao": -0.24,
+        "poder": 0.42,
+        "imigracao": -0.22,
+        "diplomacia": -0.46,
+        "intervencao": 0.52,
+        "economia": 0.62,
+        "controle": 0.34,
+        "comercio": -0.36,
+        "religiao": 0.48,
+        "moral": 0.48,
+        "tecnologia": -0.38
+      },
+      "triangles": {
+        "0": [
+          0.14,
+          0.34,
+          0.52
+        ],
+        "1": [
+          0.54,
+          0.28,
+          0.18
+        ],
+        "2": [
+          0.52,
+          0.18,
+          0.3
+        ],
+        "3": [
+          0.54,
+          0.18,
+          0.28
+        ],
+        "4": [
+          0.38,
+          0.3,
+          0.32
+        ],
+        "5": [
+          0.34,
+          0.08,
+          0.58
+        ]
+      }
+    },
+    {
+      "id": "eua_fundacional_1787",
+      "name": "EUA Fundacional (Constituição de 1787)",
+      "subtitle": "República federal presidencialista, freios e contrapesos e Bill of Rights",
+      "category": "Antiguidade e Modernidade",
+      "era": "1787–Anos 1820",
+      "origin": "Estados Unidos",
+      "summary": "Inaugurou uma república constitucional escrita baseada na divisão vertical do federalismo e na separação horizontal entre Executivo, Congresso bicameral e Judiciário independente, acrescida das dez emendas de direitos individuais. Combinava separação jurídica entre Igreja e Estado, economia agrária e comercial de governo central enxuto e diplomacia cautelosa frente às alianças europeias, apesar da contradição estrutural da escravidão nos estados do Sul.",
+      "highlights": [
+        "Federalismo dual e sistema constitucional de freios e contrapesos (checks and balances)",
+        "Primeira Emenda protegendo liberdade religiosa, imprensa, reunião e petição",
+        "Estado federal reduzido e cautela isolacionista diante das potências europeias"
+      ],
+      "quote": "Desenho clássico da república federativa constitucional com governo central limitado.",
+      "axes": {
+        "estrutura": -0.84,
+        "representacao": -0.48,
+        "poder": 0.66,
+        "imigracao": 0.14,
+        "diplomacia": 0.12,
+        "intervencao": -0.58,
+        "economia": 0.72,
+        "controle": 0.64,
+        "comercio": 0.08,
+        "religiao": 0.16,
+        "moral": 0.38,
+        "tecnologia": -0.14
+      },
+      "triangles": {
+        "0": [
+          0.06,
+          0.22,
+          0.72
+        ],
+        "1": [
+          0.7,
+          0.16,
+          0.14
+        ],
+        "2": [
+          0.42,
+          0.18,
+          0.4
+        ],
+        "3": [
+          0.18,
+          0.6,
+          0.22
+        ],
+        "4": [
+          0.44,
+          0.12,
+          0.44
+        ],
+        "5": [
+          0.46,
+          0.06,
+          0.48
+        ]
+      }
+    },
+    {
+      "id": "convencao_jacobina_1793",
+      "name": "Primeira República Francesa (Convenção Jacobina, 1793)",
+      "subtitle": "República una e indivisível, mobilização revolucionária e igualitarismo cívico",
+      "category": "Antiguidade e Modernidade",
+      "era": "1792–1794",
+      "origin": "França",
+      "summary": "Proclamou a soberania popular republicana, o sufrágio universal masculino, a abolição dos direitos feudais e da escravidão colonial, concentrando o poder executivo emergencial no Comitê de Salvação Pública. Diante da guerra externa e de revoltas internas, instituiu a mobilização militar em massa (levée en masse), o tabelamento de preços essenciais (Lei do Máximo), intensa secularização e tribunais políticos de exceção.",
+      "highlights": [
+        "Centralização republicana unitária e abolição radical de privilégios estamentais e coloniais",
+        "Tabelamento de gêneros básicos, requisição de guerra e instrução cívica pública",
+        "Secularização profunda combinada ao estado de exceção do Comitê de Salvação Pública"
+      ],
+      "quote": "Ruptura revolucionária que fundiu igualdade cívica universal, centralismo estatal e emergência bélica.",
+      "axes": {
+        "estrutura": 0.9,
+        "representacao": 0.18,
+        "poder": -0.78,
+        "imigracao": -0.32,
+        "diplomacia": -0.68,
+        "intervencao": 0.72,
+        "economia": -0.46,
+        "controle": -0.72,
+        "comercio": -0.64,
+        "religiao": -0.88,
+        "moral": -0.62,
+        "tecnologia": -0.36
+      },
+      "triangles": {
+        "0": [
+          0.54,
+          0.34,
+          0.12
+        ],
+        "1": [
+          0.12,
+          0.56,
+          0.32
+        ],
+        "2": [
+          0.06,
+          0.78,
+          0.16
+        ],
+        "3": [
+          0.52,
+          0.24,
+          0.24
+        ],
+        "4": [
+          0.36,
+          0.6,
+          0.04
+        ],
+        "5": [
+          0.34,
+          0.58,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "imperio_napoleonico",
+      "name": "Império Napoleônico (Código Civil e Estado Administrativo)",
+      "subtitle": "Burocracia meritocrática, codificação jurídica burguesa e hegemonia continental",
+      "category": "Antiguidade e Modernidade",
+      "era": "1799–1815",
+      "origin": "França",
+      "summary": "Consolidou conquistas jurídicas da Revolução — como igualdade perante a lei, fim do feudalismo e garantia da propriedade privada no Código Civil de 1804 — sob um regime autocrático plebiscitário altamente centralizado. Estruturou prefeitos departamentais, liceus estatais, o Banco da França e a Concordata religiosa sob tutela civil, enquanto conduzia guerras de expansão hegemônica e o Bloqueio Continental na Europa.",
+      "highlights": [
+        "Código Civil de 1804 consagrando igualdade jurídica civil, contrato e propriedade",
+        "Administração departamental centralizada, liceus técnicos e carreira aberta ao talento",
+        "Autoritarismo plebiscitário, censura política e expansão militar continental"
+      ],
+      "quote": "Matriz moderna do Estado burocrático racional, do direito civil codificado e da centralização administrativa.",
+      "axes": {
+        "estrutura": 0.94,
+        "representacao": 0.78,
+        "poder": -0.64,
+        "imigracao": -0.46,
+        "diplomacia": -0.92,
+        "intervencao": 0.92,
+        "economia": 0.36,
+        "controle": -0.22,
+        "comercio": -0.68,
+        "religiao": -0.08,
+        "moral": 0.42,
+        "tecnologia": -0.56
+      },
+      "triangles": {
+        "0": [
+          0.26,
+          0.42,
+          0.32
+        ],
+        "1": [
+          0.16,
+          0.58,
+          0.26
+        ],
+        "2": [
+          0.46,
+          0.38,
+          0.16
+        ],
+        "3": [
+          0.8,
+          0.08,
+          0.12
+        ],
+        "4": [
+          0.12,
+          0.8,
+          0.08
+        ],
+        "5": [
+          0.58,
+          0.1,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "inglaterra_vitoriana",
+      "name": "Inglaterra Vitoriana Livre-Cambista",
+      "subtitle": "Parlamentarismo liberal, padrão-ouro, livre comércio e Pax Britannica",
+      "category": "Século XIX e Entre-Guerras",
+      "era": "1846–1901",
+      "origin": "Reino Unido",
+      "summary": "Após a revogação das Leis dos Cereais em 1846 e as reformas eleitorais graduais, combinou governo de gabinete parlamentar, liberdades civis e imprensa ativa com capitalismo industrial privado e padrão-ouro. Praticava livre comércio unilateral, baixa tributação interna e moralidade social vitoriana rigorosa, apoiando sua primazia econômica global na supremacia naval e na expansão do Império Britânico.",
+      "highlights": [
+        "Livre-cambismo após o fim das Corn Laws, padrão-ouro e Estado fiscal enxuto",
+        "Ampliação gradual do sufrágio masculino sob monarquia parlamentar estável",
+        "Industrialização privada acelerada, moralidade vitoriana e hegemonia naval imperial"
+      ],
+      "quote": "Apogeu oitocentista do capitalismo industrial livre-cambista articulado à hegemonia marítima.",
+      "axes": {
+        "estrutura": 0.52,
+        "representacao": -0.44,
+        "poder": 0.36,
+        "imigracao": -0.16,
+        "diplomacia": -0.62,
+        "intervencao": 0.74,
+        "economia": 0.84,
+        "controle": 0.8,
+        "comercio": 0.88,
+        "religiao": 0.42,
+        "moral": 0.66,
+        "tecnologia": -0.78
+      },
+      "triangles": {
+        "0": [
+          0.06,
+          0.16,
+          0.78
+        ],
+        "1": [
+          0.54,
+          0.3,
+          0.16
+        ],
+        "2": [
+          0.58,
+          0.22,
+          0.2
+        ],
+        "3": [
+          0.56,
+          0.06,
+          0.38
+        ],
+        "4": [
+          0.4,
+          0.24,
+          0.36
+        ],
+        "5": [
+          0.36,
+          0.06,
+          0.58
+        ]
+      }
+    },
+    {
+      "id": "alemanha_bismarck",
+      "name": "Alemanha de Bismarck (Estado Social Conservador)",
+      "subtitle": "Monarquia imperial federativa, industrialização protegida e previdência pioneira",
+      "category": "Século XIX e Entre-Guerras",
+      "era": "1871–1890",
+      "origin": "Império Alemão",
+      "summary": "Unificou os estados alemães sob hegemonia prussiana em um império formalmente federativo dotado de sufrágio universal masculino para o Reichstag, mas com chanceler responsável apenas perante o Imperador. Criou os primeiros seguros públicos obrigatórios de saúde, acidentes e aposentadoria do mundo moderno, combinando tarifas protecionistas industriais-agrárias, militarismo disciplinado e restrições legais a socialistas.",
+      "highlights": [
+        "Pioneirismo mundial em seguros sociais estatais de doença, acidentes e velhice",
+        "Aliança protecionista entre grande indústria pesada e aristocracia agrária",
+        "Executivo monárquico-militar forte com diplomacia realista de equilíbrio europeu"
+      ],
+      "quote": "Invenção conservadora da seguridade social moderna a serviço da coesão nacional e industrial.",
+      "axes": {
+        "estrutura": -0.16,
+        "representacao": 0.44,
+        "poder": -0.54,
+        "imigracao": -0.62,
+        "diplomacia": -0.74,
+        "intervencao": 0.48,
+        "economia": 0.18,
+        "controle": -0.28,
+        "comercio": -0.56,
+        "religiao": 0.46,
+        "moral": 0.68,
+        "tecnologia": -0.72
+      },
+      "triangles": {
+        "0": [
+          0.26,
+          0.44,
+          0.3
+        ],
+        "1": [
+          0.18,
+          0.58,
+          0.24
+        ],
+        "2": [
+          0.6,
+          0.26,
+          0.14
+        ],
+        "3": [
+          0.54,
+          0.26,
+          0.2
+        ],
+        "4": [
+          0.2,
+          0.68,
+          0.12
+        ],
+        "5": [
+          0.36,
+          0.34,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "restauracao_meiji",
+      "name": "Restauração Meiji no Japão",
+      "subtitle": "Centralização imperial, abolição feudal e modernização industrial dirigida",
+      "category": "Século XIX e Entre-Guerras",
+      "era": "1868–1912",
+      "origin": "Japão",
+      "summary": "Extinguiu os domínios feudais dos xoguns e daimiôs para erguer um Estado unitário moderno em torno da soberania imperial, da Constituição de 1889, da escolarização universal e da conscrição militar nacional. Impulsionou ferrovias, estaleiros e indústrias-piloto transferidas depois a conglomerados privados (zaibatsu), articulando assimilação tecnológica ocidental acelerada com culto xintoísta cívico e expansão geopolítica asiática.",
+      "highlights": [
+        "Substituição dos feudos por prefeituras centralizadas, ensino obrigatório e código fiscal moderno",
+        "Industrialização induzida pelo Estado em parceria com grandes grupos privados (zaibatsu)",
+        "Síntese entre ciência ocidental, culto cívico ao Imperador e ascensão militar regional"
+      ],
+      "quote": "Modernização estatal acelerada que transformou uma sociedade feudal em potência industrial em poucas décadas.",
+      "axes": {
+        "estrutura": 0.88,
+        "representacao": 0.62,
+        "poder": -0.62,
+        "imigracao": -0.86,
+        "diplomacia": -0.82,
+        "intervencao": 0.78,
+        "economia": 0.24,
+        "controle": -0.36,
+        "comercio": -0.28,
+        "religiao": 0.72,
+        "moral": 0.76,
+        "tecnologia": -0.84
+      },
+      "triangles": {
+        "0": [
+          0.3,
+          0.4,
+          0.3
+        ],
+        "1": [
+          0.14,
+          0.6,
+          0.26
+        ],
+        "2": [
+          0.58,
+          0.34,
+          0.08
+        ],
+        "3": [
+          0.68,
+          0.16,
+          0.16
+        ],
+        "4": [
+          0.14,
+          0.78,
+          0.08
+        ],
+        "5": [
+          0.42,
+          0.16,
+          0.42
+        ]
+      }
+    },
+    {
+      "id": "comuna_paris_1871",
+      "name": "Comuna de Paris (1871)",
+      "subtitle": "Autogoverno municipal operário, mandatos revogáveis e laicidade radical",
+      "category": "Século XIX e Entre-Guerras",
+      "era": "Março–Maio de 1871",
+      "origin": "França",
+      "summary": "Experiência insurrecional de autogoverno municipal em Paris que instituiu conselheiros eleitos por sufrágio universal, remunerados com salário equivalente ao de operários qualificados e sujeitos à revogação imediata. Separou Igreja e Estado, tornou o ensino gratuito e laico, substituiu o exército permanente pela Guarda Nacional cidadã e entregou oficinas abandonadas à gestão de cooperativas de trabalhadores.",
+      "highlights": [
+        "Democracia delegada direta com mandatos imperativos revogáveis e teto salarial público",
+        "Separação integral entre Igreja e Estado e ensino público gratuito e secular",
+        "Cooperativas operárias em oficinas vagas, moratória de aluguéis e federalismo comunal"
+      ],
+      "quote": "Referência histórica do municipalismo socialista, da democracia delegada revogável e da autogestão urbana.",
+      "axes": {
+        "estrutura": -0.86,
+        "representacao": -0.88,
+        "poder": 0.46,
+        "imigracao": 0.62,
+        "diplomacia": 0.24,
+        "intervencao": -0.64,
+        "economia": -0.82,
+        "controle": -0.64,
+        "comercio": -0.18,
+        "religiao": -0.86,
+        "moral": -0.78,
+        "tecnologia": -0.22
+      },
+      "triangles": {
+        "0": [
+          0.66,
+          0.24,
+          0.1
+        ],
+        "1": [
+          0.62,
+          0.18,
+          0.2
+        ],
+        "2": [
+          0.06,
+          0.56,
+          0.38
+        ],
+        "3": [
+          0.06,
+          0.38,
+          0.56
+        ],
+        "4": [
+          0.76,
+          0.06,
+          0.18
+        ],
+        "5": [
+          0.2,
+          0.76,
+          0.04
+        ]
+      }
+    },
+    {
+      "id": "republica_weimar",
+      "name": "República de Weimar (1919–1933)",
+      "subtitle": "Constitucionalismo social pioneiro, pluralismo cultural e instabilidade de crise",
+      "category": "Século XIX e Entre-Guerras",
+      "era": "1919–1933",
+      "origin": "Alemanha",
+      "summary": "Inaugurou uma democracia parlamentar federal com representação proporcional pura, sufrágio feminino, conselhos de fábrica e a primeira constituição europeia a positivar amplos direitos econômicos e sociais. Floresceu na vanguarda científica, artística e urbana dos anos 1920 e buscou reinserção diplomática pacífica em Locarno, mas sofreu polarização extrema, choques econômicos e uso recorrente de decretos emergenciais.",
+      "highlights": [
+        "Constituição de 1919 pioneira na consagração de direitos trabalhistas, sindicais e sociais",
+        "Representação proporcional ampla, sufrágio universal feminino e federalismo parlamentar",
+        "Efervescência cultural e científica moderna sob forte pressão econômica do entre-guerras"
+      ],
+      "quote": "Laboratório avançado do constitucionalismo social e da cultura moderna sob severa tensão institucional.",
+      "axes": {
+        "estrutura": -0.44,
+        "representacao": -0.76,
+        "poder": 0.42,
+        "imigracao": 0.24,
+        "diplomacia": 0.46,
+        "intervencao": -0.34,
+        "economia": -0.28,
+        "controle": -0.32,
+        "comercio": 0.22,
+        "religiao": -0.32,
+        "moral": -0.6,
+        "tecnologia": -0.58
+      },
+      "triangles": {
+        "0": [
+          0.26,
+          0.5,
+          0.24
+        ],
+        "1": [
+          0.54,
+          0.24,
+          0.22
+        ],
+        "2": [
+          0.16,
+          0.46,
+          0.38
+        ],
+        "3": [
+          0.1,
+          0.32,
+          0.58
+        ],
+        "4": [
+          0.68,
+          0.22,
+          0.1
+        ],
+        "5": [
+          0.38,
+          0.5,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "turquia_kemalista",
+      "name": "Turquia Kemalista (Anos 1920–1930)",
+      "subtitle": "República unitária secularizante, nacionalismo cívico e estatismo modernizador",
+      "category": "Século XIX e Entre-Guerras",
+      "era": "1923–1938",
+      "origin": "Turquia",
+      "summary": "Aboliu o sultanato e o califado otomano para fundar uma república nacional unitária sob regime de partido hegemônico tutelar, adotando códigos civis europeus, alfabeto latino e direitos políticos para as mulheres. Promoveu laicismo estatal estrito, assimilação linguística nacional, política externa prudente ('paz no país, paz no mundo') e industrialização estatal planejada durante a Grande Depressão.",
+      "highlights": [
+        "Abolição do Califado, códigos jurídicos seculares, alfabeto latino e voto feminino",
+        "Estado unitário assimilacionista guiado por partido único modernizador",
+        "Estatismo industrial nos anos 1930 aliado a não intervencionismo militar externo"
+      ],
+      "quote": "Projeto clássico de modernização secularizante e construção nacional conduzido de cima para baixo.",
+      "axes": {
+        "estrutura": 0.9,
+        "representacao": 0.64,
+        "poder": -0.52,
+        "imigracao": -0.84,
+        "diplomacia": 0.08,
+        "intervencao": -0.38,
+        "economia": -0.44,
+        "controle": -0.54,
+        "comercio": -0.52,
+        "religiao": -0.84,
+        "moral": -0.36,
+        "tecnologia": -0.66
+      },
+      "triangles": {
+        "0": [
+          0.48,
+          0.36,
+          0.16
+        ],
+        "1": [
+          0.18,
+          0.5,
+          0.32
+        ],
+        "2": [
+          0.18,
+          0.68,
+          0.14
+        ],
+        "3": [
+          0.14,
+          0.64,
+          0.22
+        ],
+        "4": [
+          0.18,
+          0.76,
+          0.06
+        ],
+        "5": [
+          0.5,
+          0.34,
+          0.16
+        ]
+      }
+    },
+    {
+      "id": "urss_nep",
+      "name": "URSS sob a NEP (1921–1928)",
+      "subtitle": "Partido único soviético com economia mista de transição e mercado camponês",
+      "category": "Século XIX e Entre-Guerras",
+      "era": "1921–1928",
+      "origin": "União Soviética",
+      "summary": "Substituiu as requisições do comunismo de guerra pela Nova Política Econômica, mantendo os 'altos comandos' da indústria pesada, bancos, transportes e comércio exterior sob propriedade estatal, mas legalizando o comércio agrícola camponês e pequenas empresas privadas. Politicamente consolidou o monopólio do Partido Comunista em uma federação multinacional soviética, convivendo com políticas de indigenização cultural e vanguardas sociais.",
+      "highlights": [
+        "Controle estatal da grande indústria e dos bancos combinado a mercado livre para camponeses",
+        "Monopólio político do Partido Comunista com proibição de facções opositoras",
+        "Política de nacionalidades (korenizatsiya) e legislação familiar secular vanguardista"
+      ],
+      "quote": "Experimento soviético de economia mista sob monopólio partidário após a devastação da guerra civil.",
+      "axes": {
+        "estrutura": 0.18,
+        "representacao": 0.76,
+        "poder": -0.68,
+        "imigracao": 0.28,
+        "diplomacia": -0.28,
+        "intervencao": -0.14,
+        "economia": -0.62,
+        "controle": -0.52,
+        "comercio": -0.58,
+        "religiao": -0.86,
+        "moral": -0.58,
+        "tecnologia": -0.64
+      },
+      "triangles": {
+        "0": [
+          0.58,
+          0.24,
+          0.18
+        ],
+        "1": [
+          0.14,
+          0.54,
+          0.32
+        ],
+        "2": [
+          0.1,
+          0.72,
+          0.18
+        ],
+        "3": [
+          0.22,
+          0.46,
+          0.32
+        ],
+        "4": [
+          0.14,
+          0.8,
+          0.06
+        ],
+        "5": [
+          0.26,
+          0.66,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "urss_stalinista",
+      "name": "URSS Stalinista (Planos Quinquenais)",
+      "subtitle": "Planificação estatal integral, coletivização forçada e partido-Estado totalitário",
+      "category": "Século XIX e Entre-Guerras",
+      "era": "1928–1953",
+      "origin": "União Soviética",
+      "summary": "Aboliu o setor privado da NEP para implantar a planificação central imperativa da indústria pesada pelos Planos Quinquenais (Gosplan) e a coletivização compulsória da agricultura em kolkhozes e sovkhozes. Concentrou poder absoluto na cúpula do Partido-Estado com aparato policial repressivo, expurgos, censura doutrinária, ateísmo oficial, autarquia comercial, poderio militar industrial e retorno a normas familiares conservadoras nos anos 1930.",
+      "highlights": [
+        "Planificação centralizada integral (Gosplan) e industrialização pesada acelerada",
+        "Coletivização agrícola compulsória e eliminação da propriedade privada produtiva",
+        "Concentração autocrática extrema, vigilância policial, censura e projeção geopolítica"
+      ],
+      "quote": "Expressão máxima da economia de comando centralizada e do poder totalizante do partido-Estado.",
+      "axes": {
+        "estrutura": 0.86,
+        "representacao": 0.98,
+        "poder": -0.96,
+        "imigracao": -0.44,
+        "diplomacia": -0.86,
+        "intervencao": 0.74,
+        "economia": -0.98,
+        "controle": -0.98,
+        "comercio": -0.88,
+        "religiao": -0.94,
+        "moral": 0.26,
+        "tecnologia": -0.9
+      },
+      "triangles": {
+        "0": [
+          0.94,
+          0.04,
+          0.02
+        ],
+        "1": [
+          0.02,
+          0.62,
+          0.36
+        ],
+        "2": [
+          0.3,
+          0.66,
+          0.04
+        ],
+        "3": [
+          0.68,
+          0.22,
+          0.1
+        ],
+        "4": [
+          0.04,
+          0.94,
+          0.02
+        ],
+        "5": [
+          0.18,
+          0.78,
+          0.04
+        ]
+      }
+    },
+    {
+      "id": "new_deal_eua",
+      "name": "New Deal nos EUA (1933–1941)",
+      "subtitle": "Capitalismo regulado, obras públicas, seguridade social e negociação sindical",
+      "category": "Século XIX e Entre-Guerras",
+      "era": "1933–1941",
+      "origin": "Estados Unidos",
+      "summary": "Respondeu à Grande Depressão expandindo a capacidade regulatória e anticíclica do governo federal norte-americano sem abolir a propriedade privada nem o regime constitucional democrático. Criou o seguro de depósitos bancários, a comissão do mercado de capitais (SEC), a Previdência Social (Social Security), grandes agências de obras públicas e infraestrutura regional (TVA) e garantias legais à sindicalização.",
+      "highlights": [
+        "Regulação bancária e financeira (FDIC e SEC) após a crise de 1929",
+        "Criação da Previdência Social federal, programas de emprego público e eletrificação rural",
+        "Reconhecimento federal da negociação coletiva sindical dentro da democracia constitucional"
+      ],
+      "quote": "Reconfiguração histórica do liberalismo norte-americano pela regulação financeira e pela proteção social.",
+      "axes": {
+        "estrutura": -0.24,
+        "representacao": -0.74,
+        "poder": 0.32,
+        "imigracao": 0.08,
+        "diplomacia": 0.1,
+        "intervencao": -0.28,
+        "economia": -0.14,
+        "controle": -0.38,
+        "comercio": 0.06,
+        "religiao": 0.14,
+        "moral": -0.12,
+        "tecnologia": -0.56
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.54,
+          0.24
+        ],
+        "1": [
+          0.52,
+          0.26,
+          0.22
+        ],
+        "2": [
+          0.3,
+          0.42,
+          0.28
+        ],
+        "3": [
+          0.16,
+          0.48,
+          0.36
+        ],
+        "4": [
+          0.62,
+          0.26,
+          0.12
+        ],
+        "5": [
+          0.46,
+          0.42,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "catalunha_coletivizada",
+      "name": "Catalunha Coletivizada e Anarcossindicalista (1936–1937)",
+      "subtitle": "Autogestão sindical de fábricas e terras, milícias antifascistas e antiestatismo",
+      "category": "Século XIX e Entre-Guerras",
+      "era": "1936–1937",
+      "origin": "Catalunha / Espanha",
+      "summary": "No início da Guerra Civil Espanhola, sindicatos anarcossindicalistas (CNT-FAI) e operários assumiram a gestão direta de indústrias, transportes urbanos, serviços públicos e coletivos agrários em Barcelona e Aragão. Substituíram hierarquias empresariais e estatais por comitês eleitos em assembleia, promoveram anticlericalismo militante e emancipação feminina (Mujeres Libres), sob as tensões e coerções de uma guerra civil aberta.",
+      "highlights": [
+        "Coletivização autogestionária de indústrias, bondes, serviços de saúde e terras agrícolas",
+        "Organização horizontal por federações sindicais e assembleias de local de trabalho",
+        "Anticlericalismo radical, emancipação social e mobilização armada de milícias voluntárias"
+      ],
+      "quote": "Experiência histórica mais abrangente de coletivização industrial e agrária sob inspiração anarcossindicalista.",
+      "axes": {
+        "estrutura": -0.94,
+        "representacao": -0.84,
+        "poder": 0.34,
+        "imigracao": 0.68,
+        "diplomacia": -0.22,
+        "intervencao": -0.52,
+        "economia": -0.92,
+        "controle": -0.7,
+        "comercio": -0.26,
+        "religiao": -0.94,
+        "moral": -0.84,
+        "tecnologia": -0.16
+      },
+      "triangles": {
+        "0": [
+          0.74,
+          0.18,
+          0.08
+        ],
+        "1": [
+          0.56,
+          0.26,
+          0.18
+        ],
+        "2": [
+          0.04,
+          0.56,
+          0.4
+        ],
+        "3": [
+          0.06,
+          0.3,
+          0.64
+        ],
+        "4": [
+          0.58,
+          0.06,
+          0.36
+        ],
+        "5": [
+          0.14,
+          0.82,
+          0.04
+        ]
+      }
+    },
+    {
+      "id": "reino_unido_beveridge",
+      "name": "Reino Unido Pós-Guerra (Consenso de Beveridge e NHS)",
+      "subtitle": "Saúde pública universal gratuita, nacionalizações-chave e pleno emprego keynesiano",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "1945–1975",
+      "origin": "Reino Unido",
+      "summary": "Implementou as propostas do Relatório Beveridge criando o Serviço Nacional de Saúde (NHS) universal e gratuito no ponto de atendimento, seguridade social abrangente e políticas keynesianas de pleno emprego aceitas pelos principais partidos. Nacionalizou carvão, ferrovias, energia, aço e o Banco da Inglaterra em um Estado unitário parlamentar, enquanto conduzia a descolonização gradual e integrava a aliança atlântica da OTAN.",
+      "highlights": [
+        "Criação do NHS gratuito e universal financiado por tributação geral",
+        "Nacionalização de setores básicos (carvão, ferrovias, eletricidade) em economia mista",
+        "Pacto multipartidário pelo pleno emprego keynesiano e democracia parlamentar"
+      ],
+      "quote": "Marco fundador do Estado de bem-estar universalista e do consenso social-keynesiano no pós-guerra britânico.",
+      "axes": {
+        "estrutura": 0.58,
+        "representacao": -0.8,
+        "poder": 0.36,
+        "imigracao": 0.16,
+        "diplomacia": -0.22,
+        "intervencao": 0.24,
+        "economia": -0.54,
+        "controle": -0.5,
+        "comercio": 0.18,
+        "religiao": 0.06,
+        "moral": -0.18,
+        "tecnologia": -0.44
+      },
+      "triangles": {
+        "0": [
+          0.46,
+          0.38,
+          0.16
+        ],
+        "1": [
+          0.52,
+          0.26,
+          0.22
+        ],
+        "2": [
+          0.28,
+          0.42,
+          0.3
+        ],
+        "3": [
+          0.28,
+          0.2,
+          0.52
+        ],
+        "4": [
+          0.68,
+          0.22,
+          0.1
+        ],
+        "5": [
+          0.34,
+          0.58,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "alemanha_ocidental_ordoliberal",
+      "name": "Alemanha Ocidental (Economia Social de Mercado)",
+      "subtitle": "Ordoliberalismo concorrencial, moeda estável, federalismo e cogestão trabalhista",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "1949–Anos 1970",
+      "origin": "Alemanha Ocidental",
+      "summary": "Sob a Lei Fundamental de Bonn e as reformas de Ludwig Erhard, articulou livre formação de preços, rigoroso combate a cartéis e autonomia monetária do Bundesbank com ampla rede de seguridade social e cogestão operária (Mitbestimmung) nos conselhos empresariais. Consolidou federalismo forte dos Länder, democracia cristã-social moderada e engajamento decisivo na integração europeia ocidental.",
+      "highlights": [
+        "Regras concorrenciais antitruste estritas e estabilidade monetária do Bundesbank",
+        "Cogestão sindical nas grandes empresas (Mitbestimmung) e seguridade social robusta",
+        "Federalismo constitucional descentralizado e integração cooperativa na Europa Ocidental"
+      ],
+      "quote": "Síntese alemã entre ordem concorrencial de mercado, estabilidade monetária e parceria social institucionalizada.",
+      "axes": {
+        "estrutura": -0.66,
+        "representacao": -0.82,
+        "poder": 0.34,
+        "imigracao": 0.04,
+        "diplomacia": 0.28,
+        "intervencao": -0.26,
+        "economia": 0.32,
+        "controle": 0.22,
+        "comercio": 0.62,
+        "religiao": 0.28,
+        "moral": 0.16,
+        "tecnologia": -0.54
+      },
+      "triangles": {
+        "0": [
+          0.14,
+          0.44,
+          0.42
+        ],
+        "1": [
+          0.48,
+          0.28,
+          0.24
+        ],
+        "2": [
+          0.38,
+          0.32,
+          0.3
+        ],
+        "3": [
+          0.08,
+          0.24,
+          0.68
+        ],
+        "4": [
+          0.64,
+          0.22,
+          0.14
+        ],
+        "5": [
+          0.46,
+          0.36,
+          0.18
+        ]
+      }
+    },
+    {
+      "id": "suecia_folkhemmet",
+      "name": "Suécia Social-Democrata (Folkhemmet)",
+      "subtitle": "Negociação coletiva centralizada, bem-estar universalista e neutralidade ativa",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "Anos 1930–1980",
+      "origin": "Suécia",
+      "summary": "Construiu o 'Lar do Povo' (Folkhemmet) mediante pacto histórico entre confederações sindicais e patronais (Acordo de Saltsjöbaden), combinando empresas privadas exportadoras competitivas com tributação progressiva elevada e serviços públicos universais desmercantilizados. Manteve democracia parlamentar estável, políticas pioneiras de igualdade de gênero, requalificação ativa da mão de obra e neutralidade diplomática na Guerra Fria.",
+      "highlights": [
+        "Pacto corporativo democrático entre sindicatos de alta adesão e indústria privada exportadora",
+        "Serviços universais de creche, educação, saúde e previdência financiados por impostos progressivos",
+        "Neutralidade militar não alinhada na Guerra Fria combinada a internacionalismo humanitário"
+      ],
+      "quote": "Paradigma clássico da social-democracia universalista sustentada por pleno emprego e pacto sindical.",
+      "axes": {
+        "estrutura": 0.34,
+        "representacao": -0.88,
+        "poder": 0.52,
+        "imigracao": 0.44,
+        "diplomacia": 0.56,
+        "intervencao": -0.48,
+        "economia": -0.48,
+        "controle": -0.42,
+        "comercio": 0.48,
+        "religiao": -0.58,
+        "moral": -0.68,
+        "tecnologia": -0.42
+      },
+      "triangles": {
+        "0": [
+          0.34,
+          0.48,
+          0.18
+        ],
+        "1": [
+          0.54,
+          0.2,
+          0.26
+        ],
+        "2": [
+          0.1,
+          0.52,
+          0.38
+        ],
+        "3": [
+          0.06,
+          0.34,
+          0.6
+        ],
+        "4": [
+          0.74,
+          0.18,
+          0.08
+        ],
+        "5": [
+          0.34,
+          0.6,
+          0.06
+        ]
+      }
+    },
+    {
+      "id": "franca_gaullista",
+      "name": "França Gaullista (Dirigismo da Quinta República)",
+      "subtitle": "Semipresidencialismo forte, planejamento indicativo, campeãs nacionais e autonomia estratégica",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "1958–1974",
+      "origin": "França",
+      "summary": "A Constituição de 1958 fortaleceu o Executivo presidencial eleito por sufrágio universal dentro de uma democracia unitária dotada de alta burocracia técnica formada nas grandes escolas estatais. Durante os 'Trinta Gloriosos', articulou planejamento econômico indicativo, grandes projetos tecnológicos estatais (energia nuclear, aeroespacial, ferrovias) e política externa soberanista com dissuasão nuclear própria.",
+      "highlights": [
+        "Executivo semipresidencialista forte e administração centralizada de alta capacidade técnica",
+        "Dirigismo industrial, planejamento indicativo e grandes projetos tecnológicos nacionais",
+        "Autonomia estratégica geopolítica, dissuasão nuclear própria e liderança europeia intergovernamental"
+      ],
+      "quote": "Combinação republicana entre Estado estratégico tecnocrático, dirigismo industrial e soberania geopolítica.",
+      "axes": {
+        "estrutura": 0.82,
+        "representacao": -0.46,
+        "poder": -0.18,
+        "imigracao": -0.34,
+        "diplomacia": -0.44,
+        "intervencao": 0.58,
+        "economia": -0.34,
+        "controle": -0.44,
+        "comercio": 0.04,
+        "religiao": 0.08,
+        "moral": 0.28,
+        "tecnologia": -0.78
+      },
+      "triangles": {
+        "0": [
+          0.4,
+          0.42,
+          0.18
+        ],
+        "1": [
+          0.34,
+          0.42,
+          0.24
+        ],
+        "2": [
+          0.4,
+          0.38,
+          0.22
+        ],
+        "3": [
+          0.42,
+          0.26,
+          0.32
+        ],
+        "4": [
+          0.48,
+          0.44,
+          0.08
+        ],
+        "5": [
+          0.44,
+          0.4,
+          0.16
+        ]
+      }
+    },
+    {
+      "id": "iugoslavia_autogestionaria",
+      "name": "Iugoslávia Autogestionária",
+      "subtitle": "Socialismo de mercado autogestionário, federalismo multinacional e Não Alinhamento",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "1950–1980",
+      "origin": "Iugoslávia",
+      "summary": "Após a ruptura com Moscou em 1948, substituiu a planificação central stalinista pela propriedade social administrada por conselhos operários nas empresas, que competiam em mercados regulados com maior abertura a viagens externas e bens de consumo. Manteve regime de partido único sob a liderança de Tito em uma federação descentralizada de seis repúblicas e cofundou o Movimento dos Países Não Alinhados.",
+      "highlights": [
+        "Conselhos operários de autogestão empresarial combinados a mecanismos de mercado socialista",
+        "Federação multinacional descentralizada sob tutela política da Liga dos Comunistas",
+        "Liderança do Movimento dos Países Não Alinhados e abertura relativa ao Ocidente e ao Leste"
+      ],
+      "quote": "Via singular do socialismo do pós-guerra que buscou unir autogestão operária, mercado e não alinhamento.",
+      "axes": {
+        "estrutura": -0.68,
+        "representacao": 0.54,
+        "poder": -0.34,
+        "imigracao": 0.42,
+        "diplomacia": 0.14,
+        "intervencao": -0.42,
+        "economia": -0.74,
+        "controle": -0.32,
+        "comercio": 0.12,
+        "religiao": -0.56,
+        "moral": -0.28,
+        "tecnologia": -0.46
+      },
+      "triangles": {
+        "0": [
+          0.54,
+          0.28,
+          0.18
+        ],
+        "1": [
+          0.28,
+          0.46,
+          0.26
+        ],
+        "2": [
+          0.2,
+          0.56,
+          0.24
+        ],
+        "3": [
+          0.1,
+          0.44,
+          0.46
+        ],
+        "4": [
+          0.26,
+          0.66,
+          0.08
+        ],
+        "5": [
+          0.28,
+          0.64,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "japao_pos_guerra_miti",
+      "name": "Japão Desenvolvimentista do Pós-Guerra (MITI)",
+      "subtitle": "Democracia parlamentar, política industrial coordenada, pacifismo constitucional e emprego vitalício",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "1952–1989",
+      "origin": "Japão",
+      "summary": "Sob a Constituição pacifista de 1947 (Artigo 9) e o predomínio eleitoral do Partido Liberal Democrata, protagonizou crescimento industrial e tecnológico extraordinário guiado pela coordenação estratégica do Ministério da Indústria e Comércio Internacional (MITI). Articulava conglomerados privados (keiretsu), crédito direcionado à exportação manufatureira, emprego vitalício corporativo, baixa desigualdade salarial e forte coesão cultural.",
+      "highlights": [
+        "Política industrial estratégica do MITI orientando crédito, tecnologia e exportações",
+        "Capitalismo privado de keiretsu com práticas de emprego estável e compressão salarial moderada",
+        "Pacifismo constitucional do Artigo 9 sob guarda-chuva defensivo bilateral"
+      ],
+      "quote": "Arquétipo do Estado desenvolvimentista capitalista que uniu coordenação burocrática e excelência manufatureira.",
+      "axes": {
+        "estrutura": 0.66,
+        "representacao": -0.58,
+        "poder": -0.14,
+        "imigracao": -0.82,
+        "diplomacia": 0.64,
+        "intervencao": -0.62,
+        "economia": 0.44,
+        "controle": -0.26,
+        "comercio": 0.16,
+        "religiao": 0.06,
+        "moral": 0.48,
+        "tecnologia": -0.88
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.48,
+          0.32
+        ],
+        "1": [
+          0.38,
+          0.4,
+          0.22
+        ],
+        "2": [
+          0.5,
+          0.34,
+          0.16
+        ],
+        "3": [
+          0.06,
+          0.5,
+          0.44
+        ],
+        "4": [
+          0.54,
+          0.34,
+          0.12
+        ],
+        "5": [
+          0.52,
+          0.28,
+          0.2
+        ]
+      }
+    },
+    {
+      "id": "eua_grande_sociedade",
+      "name": "EUA da Grande Sociedade (Anos 1960)",
+      "subtitle": "Direitos civis federais, expansão social (Medicare/Medicaid) e intervencionismo da Guerra Fria",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "1961–1969",
+      "origin": "Estados Unidos",
+      "summary": "Marcou o auge do liberalismo social norte-americano do pós-guerra com as Leis dos Direitos Civis e do Direito de Voto — desmontando a segregação racial legal —, além da criação do Medicare, do Medicaid e de programas federais contra a pobreza e pela educação. Simultaneamente impulsionou a corrida espacial da NASA e manteve intenso intervencionismo militar externo na Guerra Fria, notadamente no Vietnã.",
+      "highlights": [
+        "Leis federais de Direitos Civis (1964) e Direito de Voto (1965) contra a segregação racial",
+        "Criação do Medicare e do Medicaid, reforma imigratória de 1965 e investimento educacional",
+        "Corrida tecnológica espacial combinada a forte projeção militar global na Guerra Fria"
+      ],
+      "quote": "Conjunção norte-americana entre emancipação dos direitos civis, expansão social federal e hegemonia global.",
+      "axes": {
+        "estrutura": -0.28,
+        "representacao": -0.76,
+        "poder": 0.44,
+        "imigracao": 0.42,
+        "diplomacia": -0.64,
+        "intervencao": 0.72,
+        "economia": 0.18,
+        "controle": -0.18,
+        "comercio": 0.46,
+        "religiao": 0.12,
+        "moral": -0.44,
+        "tecnologia": -0.82
+      },
+      "triangles": {
+        "0": [
+          0.18,
+          0.46,
+          0.36
+        ],
+        "1": [
+          0.54,
+          0.26,
+          0.2
+        ],
+        "2": [
+          0.2,
+          0.48,
+          0.32
+        ],
+        "3": [
+          0.54,
+          0.1,
+          0.36
+        ],
+        "4": [
+          0.64,
+          0.24,
+          0.12
+        ],
+        "5": [
+          0.52,
+          0.34,
+          0.14
+        ]
+      }
+    },
+    {
+      "id": "chile_pinochet_chicago",
+      "name": "Chile de Pinochet e Chicago Boys (1973–1990)",
+      "subtitle": "Ditadura militar de segurança nacional e reformas radicais de livre mercado",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "1973–1990",
+      "origin": "Chile",
+      "summary": "Instaurou uma ditadura militar altamente centralizada e repressiva que fechou o Congresso, suspendeu partidos e sindicatos e perseguiu opositores sob a doutrina de segurança nacional. No plano econômico, economistas monetaristas ('Chicago Boys') implementaram abertura comercial unilateral, privatizações amplas (mantendo a estatal cuprífera Codelco), previdência por capitalização individual e Estado subsidiário na Constituição de 1980.",
+      "highlights": [
+        "Privatização de empresas e serviços, abertura tarifária unilateral e desregulação de mercados",
+        "Criação do sistema previdenciário de capitalização individual (AFPs) e princípio do Estado subsidiário",
+        "Regime militar autocrático com repressão política, censura e conservadorismo moral católico"
+      ],
+      "quote": "Caso paradigmático de acoplamento entre autocracia militar repressiva e choque econômico neoliberal.",
+      "axes": {
+        "estrutura": 0.86,
+        "representacao": 0.92,
+        "poder": -0.9,
+        "imigracao": -0.52,
+        "diplomacia": -0.66,
+        "intervencao": 0.16,
+        "economia": 0.82,
+        "controle": 0.86,
+        "comercio": 0.82,
+        "religiao": 0.64,
+        "moral": 0.78,
+        "tecnologia": -0.36
+      },
+      "triangles": {
+        "0": [
+          0.08,
+          0.14,
+          0.78
+        ],
+        "1": [
+          0.06,
+          0.72,
+          0.22
+        ],
+        "2": [
+          0.68,
+          0.16,
+          0.16
+        ],
+        "3": [
+          0.28,
+          0.28,
+          0.44
+        ],
+        "4": [
+          0.04,
+          0.82,
+          0.14
+        ],
+        "5": [
+          0.3,
+          0.04,
+          0.66
+        ]
+      }
+    },
+    {
+      "id": "reino_unido_thatcherista",
+      "name": "Reino Unido Thatcherista (1979–1990)",
+      "subtitle": "Privatizações em massa, desregulação financeira, monetarismo e contenção sindical",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "1979–1990",
+      "origin": "Reino Unido",
+      "summary": "Rompeu o consenso trabalhista do pós-guerra em uma democracia parlamentar unitária mediante combate monetarista à inflação, privatização de telecomunicações, gás, água, aviação e moradias populares, além da desregulação financeira da City de Londres ('Big Bang'). Restringiu legalmente o poder de greve dos sindicatos, centralizou competências fiscais frente a governos locais e reafirmou postura militar firme na Guerra das Malvinas e na OTAN.",
+      "highlights": [
+        "Privatização de estatais, venda de habitações públicas (Right to Buy) e desregulação financeira",
+        "Legislação restritiva ao poder sindical e redução das alíquotas marginais do imposto de renda",
+        "Governo central unitário forte, euroceticismo crescente e firmeza militar atlântica"
+      ],
+      "quote": "Virada britânica rumo ao capitalismo de acionistas, à desregulação financeira e ao recuo do consenso keynesiano.",
+      "axes": {
+        "estrutura": 0.74,
+        "representacao": -0.64,
+        "poder": -0.22,
+        "imigracao": -0.46,
+        "diplomacia": -0.58,
+        "intervencao": 0.56,
+        "economia": 0.78,
+        "controle": 0.8,
+        "comercio": 0.74,
+        "religiao": 0.22,
+        "moral": 0.48,
+        "tecnologia": -0.48
+      },
+      "triangles": {
+        "0": [
+          0.08,
+          0.2,
+          0.72
+        ],
+        "1": [
+          0.44,
+          0.4,
+          0.16
+        ],
+        "2": [
+          0.52,
+          0.16,
+          0.32
+        ],
+        "3": [
+          0.46,
+          0.16,
+          0.38
+        ],
+        "4": [
+          0.46,
+          0.26,
+          0.28
+        ],
+        "5": [
+          0.38,
+          0.08,
+          0.54
+        ]
+      }
+    },
+    {
+      "id": "eua_reaganista",
+      "name": "EUA Reaganista (Anos 1980)",
+      "subtitle": "Cortes tributários supply-side, novo federalismo, conservadorismo moral e ofensiva na Guerra Fria",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "1981–1989",
+      "origin": "Estados Unidos",
+      "summary": "Articulou economia pelo lado da oferta (supply-side) — com cortes expressivos nas alíquotas de imposto de renda, desregulação setorial e aperto monetário anti-inflacionário do Federal Reserve — à devolução de autonomia aos estados ('Novo Federalismo'). Uniu coalizão política com a direita cristã conservadora, endurecimento penal contra drogas e forte expansão orçamentária militar para pressionar a União Soviética no desfecho da Guerra Fria.",
+      "highlights": [
+        "Reformas tributárias de 1981 e 1986 reduzindo alíquotas marginais e desregulando setores econômicos",
+        "Defesa do federalismo estadual aliada à valorização pública da família tradicional e da religiosidade",
+        "Rearmamento estratégico e doutrina de contenção ofensiva global contra o bloco soviético"
+      ],
+      "quote": "Coalizão norte-americana entre livre mercado desregulado, conservadorismo religioso e primazia militar global.",
+      "axes": {
+        "estrutura": -0.62,
+        "representacao": -0.68,
+        "poder": -0.24,
+        "imigracao": -0.08,
+        "diplomacia": -0.72,
+        "intervencao": 0.7,
+        "economia": 0.8,
+        "controle": 0.76,
+        "comercio": 0.6,
+        "religiao": 0.62,
+        "moral": 0.62,
+        "tecnologia": -0.54
+      },
+      "triangles": {
+        "0": [
+          0.06,
+          0.2,
+          0.74
+        ],
+        "1": [
+          0.46,
+          0.38,
+          0.16
+        ],
+        "2": [
+          0.58,
+          0.14,
+          0.28
+        ],
+        "3": [
+          0.54,
+          0.12,
+          0.34
+        ],
+        "4": [
+          0.46,
+          0.22,
+          0.32
+        ],
+        "5": [
+          0.4,
+          0.06,
+          0.54
+        ]
+      }
+    },
+    {
+      "id": "india_nehruviana",
+      "name": "Índia Nehruviana (Não Alinhamento e Planejamento Misto)",
+      "subtitle": "Democracia parlamentar federal secular, substituição de importações e autonomia pós-colonial",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "1947–1964",
+      "origin": "Índia",
+      "summary": "Consolidou após a independência a maior democracia parlamentar federal do mundo sob sufrágio universal adulto, secularismo constitucional pluralista para acomodar enorme diversidade religiosa e linguística e ações afirmativas para castas historicamente discriminadas. Adotou economia mista planejada com indústria pesada estatal, licenciamento regulatório e substituição de importações, liderando o Não Alinhamento diplomático.",
+      "highlights": [
+        "Democracia parlamentar federal, sufrágio universal e secularismo pluralista pós-colonial",
+        "Planos quinquenais em economia mista com indústria de base pública e proteção tarifária",
+        "Cofundação do Movimento dos Países Não Alinhados e diplomacia anticolonial pacífica"
+      ],
+      "quote": "Construção democrática e secular em sociedade megadiversa recém-emancipada do domínio colonial.",
+      "axes": {
+        "estrutura": -0.48,
+        "representacao": -0.72,
+        "poder": 0.22,
+        "imigracao": 0.64,
+        "diplomacia": 0.44,
+        "intervencao": -0.44,
+        "economia": -0.52,
+        "controle": -0.62,
+        "comercio": -0.68,
+        "religiao": -0.34,
+        "moral": -0.14,
+        "tecnologia": -0.48
+      },
+      "triangles": {
+        "0": [
+          0.48,
+          0.38,
+          0.14
+        ],
+        "1": [
+          0.46,
+          0.3,
+          0.24
+        ],
+        "2": [
+          0.3,
+          0.48,
+          0.22
+        ],
+        "3": [
+          0.08,
+          0.5,
+          0.42
+        ],
+        "4": [
+          0.64,
+          0.26,
+          0.1
+        ],
+        "5": [
+          0.4,
+          0.5,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "israel_kibutzim_trabalhista",
+      "name": "Israel Trabalhista e Movimento dos Kibutzim (1948–1977)",
+      "subtitle": "Sionismo trabalhista, comunas agrárias coletivistas, sindicato Histadrut e defesa mobilizada",
+      "category": "Pós-Guerra e Guerra Fria",
+      "era": "1948–1977",
+      "origin": "Israel",
+      "summary": "Nas três primeiras décadas após 1948, a hegemonia parlamentar trabalhista (Mapai) estruturou uma economia fortemente cooperativa e sindical em torno da central Histadrut e das comunidades agrícolas igualitárias voluntárias dos kibutzim. Combinava democracia parlamentar proporcional, absorção massiva de imigrantes judeus, ética pioneira secularizante e estado permanente de mobilização militar diante dos conflitos regionais.",
+      "highlights": [
+        "Comunidades voluntárias igualitárias (kibutzim) com propriedade coletiva e autogoverno direto",
+        "Protagonismo econômico, produtivo e previdenciário da central sindical Histadrut",
+        "Democracia parlamentar proporcional combinada a serviço militar universal e prontidão bélica"
+      ],
+      "quote": "Combinação histórica singular entre cooperativismo trabalhista igualitário, construção nacional e mobilização defensiva.",
+      "axes": {
+        "estrutura": 0.56,
+        "representacao": -0.62,
+        "poder": -0.26,
+        "imigracao": -0.38,
+        "diplomacia": -0.76,
+        "intervencao": 0.64,
+        "economia": -0.64,
+        "controle": -0.54,
+        "comercio": -0.34,
+        "religiao": 0.14,
+        "moral": -0.22,
+        "tecnologia": -0.52
+      },
+      "triangles": {
+        "0": [
+          0.54,
+          0.32,
+          0.14
+        ],
+        "1": [
+          0.34,
+          0.46,
+          0.2
+        ],
+        "2": [
+          0.3,
+          0.46,
+          0.24
+        ],
+        "3": [
+          0.48,
+          0.26,
+          0.26
+        ],
+        "4": [
+          0.58,
+          0.34,
+          0.08
+        ],
+        "5": [
+          0.3,
+          0.62,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "brasil_segundo_reinado",
+      "name": "Império do Brasil — Segundo Reinado Parlamentar (1840–1889)",
+      "subtitle": "Monarquia constitucional unitária, Poder Moderador, parlamentarismo e economia agroexportadora",
+      "category": "História do Brasil",
+      "era": "1840–1889",
+      "origin": "Brasil",
+      "summary": "Manteve a unidade territorial brasileira sob a Constituição de 1824 mediante monarquia unitária centralizada, alternância parlamentar entre liberais e conservadores arbitrável pelo Poder Moderador de D. Pedro II e ampla liberdade de imprensa na corte. Apoiava-se, contudo, em sufrágio censitário restrito, catolicismo oficial sob padroado régio e economia agroexportadora cafeeira que preservou a escravidão até 1888.",
+      "highlights": [
+        "Parlamentarismo 'às avessas' articulado ao Poder Moderador e à centralização provincial",
+        "Estabilidade constitucional, imprensa ativa na corte e regime de padroado católico",
+        "Economia agroexportadora patrimonial marcada pela longa persistência da escravidão até 1888"
+      ],
+      "quote": "Longa estabilidade monárquico-parlamentar oitocentista atravessada pelo centralismo unitário e pelo dilema servil.",
+      "axes": {
+        "estrutura": 0.84,
+        "representacao": 0.22,
+        "poder": 0.06,
+        "imigracao": 0.12,
+        "diplomacia": -0.24,
+        "intervencao": 0.34,
+        "economia": 0.56,
+        "controle": 0.36,
+        "comercio": 0.34,
+        "religiao": 0.64,
+        "moral": 0.72,
+        "tecnologia": 0.18
+      },
+      "triangles": {
+        "0": [
+          0.14,
+          0.3,
+          0.56
+        ],
+        "1": [
+          0.4,
+          0.38,
+          0.22
+        ],
+        "2": [
+          0.66,
+          0.16,
+          0.18
+        ],
+        "3": [
+          0.36,
+          0.28,
+          0.36
+        ],
+        "4": [
+          0.28,
+          0.52,
+          0.2
+        ],
+        "5": [
+          0.22,
+          0.06,
+          0.72
+        ]
+      }
+    },
+    {
+      "id": "brasil_primeira_republica",
+      "name": "Primeira República — Federalismo Oligárquico (1889–1930)",
+      "subtitle": "Constituição laica de 1891, autonomia estadual, política dos governadores e café",
+      "category": "História do Brasil",
+      "era": "1889–1930",
+      "origin": "Brasil",
+      "summary": "A Constituição de 1891 implantou o presidencialismo federativo descentralizado e a separação formal entre Igreja e Estado, concedendo ampla autonomia fiscal, policial e de endividamento externo aos estados. Na prática política, operou sob o pacto oligárquico da 'política dos governadores', o coronelismo municipal de voto aberto restrito, a atração em massa de imigrantes europeus e asiáticos e esquemas estaduais de valorização do café.",
+      "highlights": [
+        "Descentralização federativa ampla e laicização civil do registro, casamento e ensino público",
+        "Política dos governadores, coronelismo local e baixa participação eleitoral efetiva",
+        "Liberalismo agroexportador combinado a intervenções de defesa do preço do café e imigração em massa"
+      ],
+      "quote": "Descentralização federativa e laicidade republicana moldadas pelo predomínio das oligarquias agrárias estaduais.",
+      "axes": {
+        "estrutura": -0.82,
+        "representacao": 0.36,
+        "poder": -0.28,
+        "imigracao": 0.34,
+        "diplomacia": 0.22,
+        "intervencao": -0.32,
+        "economia": 0.68,
+        "controle": 0.44,
+        "comercio": 0.42,
+        "religiao": -0.22,
+        "moral": 0.54,
+        "tecnologia": 0.12
+      },
+      "triangles": {
+        "0": [
+          0.12,
+          0.24,
+          0.64
+        ],
+        "1": [
+          0.32,
+          0.48,
+          0.2
+        ],
+        "2": [
+          0.56,
+          0.2,
+          0.24
+        ],
+        "3": [
+          0.12,
+          0.44,
+          0.44
+        ],
+        "4": [
+          0.22,
+          0.44,
+          0.34
+        ],
+        "5": [
+          0.26,
+          0.06,
+          0.68
+        ]
+      }
+    },
+    {
+      "id": "brasil_era_vargas",
+      "name": "Era Vargas e Estado Novo — Trabalhismo CLT (1930–1945)",
+      "subtitle": "Centralização nacional, corporativismo trabalhista, indústria de base estatal e autoritarismo",
+      "category": "História do Brasil",
+      "era": "1930–1945",
+      "origin": "Brasil",
+      "summary": "Rompeu a hegemonia oligárquica estadual centralizando o poder na União, criando o serviço público concursado (DASP), o voto feminino (1932), a Justiça Eleitoral e, a partir de 1937, a ditadura centralizadora do Estado Novo. Instituiu a Consolidação das Leis do Trabalho (CLT) e o sindicalismo corporativo tutelado pelo Estado, enquanto erguia a indústria de base estatal (CSN, Vale) sob forte nacionalismo econômico e cultural.",
+      "highlights": [
+        "Consolidação das Leis do Trabalho (CLT), salário mínimo e previdência urbana corporativa",
+        "Criação da siderurgia e mineração estatais (CSN e Vale) e substituição de importações",
+        "Interventores federais nos estados, censura do DIP no Estado Novo e nacionalização cultural"
+      ],
+      "quote": "Fundação do Estado nacional-desenvolvimentista, burocrático e trabalhista na modernização urbana brasileira.",
+      "axes": {
+        "estrutura": 0.88,
+        "representacao": 0.76,
+        "poder": -0.7,
+        "imigracao": -0.64,
+        "diplomacia": -0.32,
+        "intervencao": 0.54,
+        "economia": -0.52,
+        "controle": -0.66,
+        "comercio": -0.7,
+        "religiao": 0.26,
+        "moral": 0.42,
+        "tecnologia": -0.58
+      },
+      "triangles": {
+        "0": [
+          0.5,
+          0.38,
+          0.12
+        ],
+        "1": [
+          0.14,
+          0.56,
+          0.3
+        ],
+        "2": [
+          0.44,
+          0.42,
+          0.14
+        ],
+        "3": [
+          0.26,
+          0.52,
+          0.22
+        ],
+        "4": [
+          0.16,
+          0.78,
+          0.06
+        ],
+        "5": [
+          0.36,
+          0.46,
+          0.18
+        ]
+      }
+    },
+    {
+      "id": "brasil_jk_desenvolvimentista",
+      "name": "Democracia Desenvolvimentista de JK (1956–1961)",
+      "subtitle": "Constituição democrática de 1946, Plano de Metas, Brasília e tripé industrializante",
+      "category": "História do Brasil",
+      "era": "1956–1961",
+      "origin": "Brasil",
+      "summary": "Sob a democracia pluripartidária e as liberdades civis da Constituição de 1946, executou o Plano de Metas ('cinquenta anos em cinco') e a construção de Brasília para integrar o território nacional. Articulou um modelo econômico tripartite entre investimento público em energia e rodovias ( apoiado pelo BNDE), capital privado nacional e atração de multinacionais automobilísticas e de bens duráveis, convivendo com pressões inflacionárias.",
+      "highlights": [
+        "Democracia representativa pluripartidária, imprensa livre e otimismo cultural modernista",
+        "Plano de Metas unindo infraestrutura estatal, empresas nacionais e capital multinacional",
+        "Interiorização territorial com a construção de Brasília e expansão rodoviária e hidrelétrica"
+      ],
+      "quote": "Momento emblemático de conciliação brasileira entre liberdade democrática e industrialização acelerada.",
+      "axes": {
+        "estrutura": 0.16,
+        "representacao": -0.66,
+        "poder": 0.38,
+        "imigracao": 0.26,
+        "diplomacia": 0.34,
+        "intervencao": 0.14,
+        "economia": -0.16,
+        "controle": -0.36,
+        "comercio": -0.18,
+        "religiao": 0.18,
+        "moral": 0.06,
+        "tecnologia": -0.76
+      },
+      "triangles": {
+        "0": [
+          0.32,
+          0.4,
+          0.28
+        ],
+        "1": [
+          0.54,
+          0.26,
+          0.2
+        ],
+        "2": [
+          0.28,
+          0.46,
+          0.26
+        ],
+        "3": [
+          0.14,
+          0.38,
+          0.48
+        ],
+        "4": [
+          0.62,
+          0.26,
+          0.12
+        ],
+        "5": [
+          0.48,
+          0.28,
+          0.24
+        ]
+      }
+    },
+    {
+      "id": "brasil_regime_militar",
+      "name": "Regime Militar Brasileiro — Nacional-Desenvolvimentismo Autoritário (1964–1985)",
+      "subtitle": "Tutela militar, Atos Institucionais, grandes obras estatais e modernização conservadora",
+      "category": "História do Brasil",
+      "era": "1964–1985",
+      "origin": "Brasil",
+      "summary": "Instaurou um regime autoritário militarizado governado por eleições indiretas, bipartidarismo tutelado, Atos Institucionais (como o AI-5), censura e aparato repressivo da Doutrina de Segurança Nacional. Ao contrário de modelos liberais ortodoxos, expandiu fortemente empresas estatais, telecomunicações, hidrelétricas (Itaipu), petroquímica e crédito subsidiado, combinando crescimento industrial com contenção salarial e concentração de renda.",
+      "highlights": [
+        "Expansão de estatais estratégicas, infraestrutura energética, telecomunicações e pesquisa agropecuária",
+        "Autoritarismo institucionalizado por Atos Institucionais, eleições indiretas e aparato de segurança",
+        "Modernização produtiva conservadora marcada por arrocho salarial, concentração de renda e endividamento externo"
+      ],
+      "quote": "Modernização industrial e infraestrutural conduzida por tecnocracia civil-militar sob regime autoritário.",
+      "axes": {
+        "estrutura": 0.72,
+        "representacao": 0.84,
+        "poder": -0.84,
+        "imigracao": -0.46,
+        "diplomacia": -0.64,
+        "intervencao": 0.56,
+        "economia": -0.18,
+        "controle": -0.48,
+        "comercio": -0.54,
+        "religiao": 0.48,
+        "moral": 0.68,
+        "tecnologia": -0.78
+      },
+      "triangles": {
+        "0": [
+          0.42,
+          0.36,
+          0.22
+        ],
+        "1": [
+          0.08,
+          0.68,
+          0.24
+        ],
+        "2": [
+          0.58,
+          0.3,
+          0.12
+        ],
+        "3": [
+          0.38,
+          0.4,
+          0.22
+        ],
+        "4": [
+          0.08,
+          0.84,
+          0.08
+        ],
+        "5": [
+          0.34,
+          0.14,
+          0.52
+        ]
+      }
+    },
+    {
+      "id": "brasil_constituicao_1988",
+      "name": "Nova República e Constituição Cidadã de 1988",
+      "subtitle": "Redemocratização plena, federalismo cooperativo, direitos fundamentais e criação do SUS",
+      "category": "História do Brasil",
+      "era": "1985–1993",
+      "origin": "Brasil",
+      "summary": "Selou a transição democrática brasileira com sufrágio universal (incluindo analfabetos), amplo catálogo de liberdades civis, fortalecimento do Ministério Público e do Judiciário e descentralização fiscal em favor de estados e municípios. Consagrou a seguridade social universal — instituindo o Sistema Único de Saúde (SUS) —, direitos indígenas e ambientais, em meio aos desafios macroeconômicos da alta inflação da época.",
+      "highlights": [
+        "Restauração plena das liberdades civis, do pluripartidarismo e da autonomia municipal federativa",
+        "Universalização constitucional da saúde pública pelo SUS e ampliação da seguridade social",
+        "Fortalecimento de garantias judiciais, Ministério Público autônomo e proteção ambiental e indígena"
+      ],
+      "quote": "Pacto constitucional da redemocratização brasileira centrado em garantias civis e direitos sociais universais.",
+      "axes": {
+        "estrutura": -0.54,
+        "representacao": -0.84,
+        "poder": 0.58,
+        "imigracao": 0.42,
+        "diplomacia": 0.52,
+        "intervencao": -0.34,
+        "economia": -0.4,
+        "controle": -0.34,
+        "comercio": -0.22,
+        "religiao": -0.14,
+        "moral": -0.38,
+        "tecnologia": 0.16
+      },
+      "triangles": {
+        "0": [
+          0.34,
+          0.46,
+          0.2
+        ],
+        "1": [
+          0.6,
+          0.18,
+          0.22
+        ],
+        "2": [
+          0.2,
+          0.48,
+          0.32
+        ],
+        "3": [
+          0.06,
+          0.38,
+          0.56
+        ],
+        "4": [
+          0.74,
+          0.18,
+          0.08
+        ],
+        "5": [
+          0.4,
+          0.52,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "brasil_plano_real_anos90",
+      "name": "Plano Real e Reformas Regulatórias dos Anos 1990",
+      "subtitle": "Estabilização monetária, responsabilidade fiscal, privatizações e agências reguladoras",
+      "category": "História do Brasil",
+      "era": "1994–2002",
+      "origin": "Brasil",
+      "summary": "Debelou décadas de inflação crônica por meio do Plano Real (1994) e institucionalizou o tripé macroeconômico — metas de inflação, câmbio flutuante e superávit primário — reforçado pela Lei de Responsabilidade Fiscal. Privatizou telecomunicações, mineração e bancos estaduais criando agências reguladoras setoriais, abriu a economia ao comércio exterior e manteve políticas sociais focalizadas e universalização do ensino fundamental.",
+      "highlights": [
+        "Estabilização monetária do Plano Real, tripé macroeconômico e Lei de Responsabilidade Fiscal",
+        "Privatizações em telecomunicações, siderurgia e energia acompanhadas de agências reguladoras",
+        "Abertura comercial, consolidação do Mercosul e expansão da matrícula no ensino fundamental"
+      ],
+      "quote": "Transição brasileira do Estado empresário inflacionário para o Estado regulador com estabilidade monetária.",
+      "axes": {
+        "estrutura": -0.18,
+        "representacao": -0.78,
+        "poder": 0.38,
+        "imigracao": 0.28,
+        "diplomacia": 0.48,
+        "intervencao": -0.28,
+        "economia": 0.48,
+        "controle": 0.42,
+        "comercio": 0.52,
+        "religiao": -0.12,
+        "moral": -0.22,
+        "tecnologia": -0.32
+      },
+      "triangles": {
+        "0": [
+          0.12,
+          0.42,
+          0.46
+        ],
+        "1": [
+          0.5,
+          0.24,
+          0.26
+        ],
+        "2": [
+          0.24,
+          0.42,
+          0.34
+        ],
+        "3": [
+          0.06,
+          0.22,
+          0.72
+        ],
+        "4": [
+          0.64,
+          0.2,
+          0.16
+        ],
+        "5": [
+          0.52,
+          0.24,
+          0.24
+        ]
+      }
+    },
+    {
+      "id": "brasil_social_desenvolvimentismo_2000",
+      "name": "Ciclo Social-Desenvolvimentista Brasileiro dos Anos 2000",
+      "subtitle": "Transferência de renda, valorização do salário mínimo, bancos públicos e diplomacia Sul-Sul",
+      "category": "História do Brasil",
+      "era": "2003–2014",
+      "origin": "Brasil",
+      "summary": "Preservou em linhas iniciais a estabilidade monetária enquanto ampliava programas de transferência condicionada de renda (Bolsa Família), valorização real contínua do salário mínimo, expansão universitária e ações afirmativas sob democracia de coalizão. Fortaleceu o crédito direcionado de bancos públicos (BNDES), investimentos estatais em energia e infraestrutura (PAC) e protagonismo diplomático multilateral no Sul Global e nos BRICS.",
+      "highlights": [
+        "Redução da pobreza extrema via Bolsa Família, valorização real do salário mínimo e inclusão universitária",
+        "Atuação anticíclica de bancos públicos (BNDES, Caixa, BB), conteúdo local e obras do PAC",
+        "Política externa ativa e altiva voltada à integração sul-americana e à cooperação Sul-Sul"
+      ],
+      "quote": "Combinação democrática entre inclusão pelo consumo popular, ativismo creditício estatal e multilateralismo Sul-Sul.",
+      "axes": {
+        "estrutura": 0.14,
+        "representacao": -0.74,
+        "poder": 0.34,
+        "imigracao": 0.48,
+        "diplomacia": 0.44,
+        "intervencao": 0.18,
+        "economia": -0.44,
+        "controle": -0.42,
+        "comercio": -0.24,
+        "religiao": -0.06,
+        "moral": -0.34,
+        "tecnologia": -0.26
+      },
+      "triangles": {
+        "0": [
+          0.36,
+          0.44,
+          0.2
+        ],
+        "1": [
+          0.48,
+          0.24,
+          0.28
+        ],
+        "2": [
+          0.22,
+          0.48,
+          0.3
+        ],
+        "3": [
+          0.12,
+          0.28,
+          0.6
+        ],
+        "4": [
+          0.66,
+          0.24,
+          0.1
+        ],
+        "5": [
+          0.38,
+          0.52,
+          0.1
+        ]
+      }
+    },
+    {
+      "id": "suica_contemporanea",
+      "name": "Suíça Contemporânea (Federalismo Cantonal e Democracia Semidireta)",
+      "subtitle": "Referendos vinculantes, executivo colegiado multipartidário, economia aberta e neutralidade",
+      "category": "Modelos Contemporâneos",
+      "era": "Séculos XX–XXI",
+      "origin": "Suíça",
+      "summary": "Opera uma confederação altamente descentralizada de 26 cantões plurilíngues, governada por um Conselho Federal colegiado consensual de sete membros e por frequentes referendos e iniciativas populares vinculantes. Alia liberdade econômica elevada, competição tributária cantonal, indústria farmacêutica e financeira de ponta e neutralidade armada tradicional com políticas rigorosas de integração cívica local para naturalização.",
+      "highlights": [
+        "Democracia semidireta com referendos frequentes e Executivo colegiado consensual",
+        "Autonomia fiscal, educacional e administrativa profunda dos cantões e comunas",
+        "Economia de mercado inovadora e aberta combinada a neutralidade militar permanente"
+      ],
+      "quote": "Referência mundial contemporânea em subsidiariedade federativa, democracia direta e consenso institucional.",
+      "axes": {
+        "estrutura": -0.92,
+        "representacao": -0.94,
+        "poder": 0.56,
+        "imigracao": -0.22,
+        "diplomacia": 0.42,
+        "intervencao": -0.86,
+        "economia": 0.68,
+        "controle": 0.58,
+        "comercio": 0.72,
+        "religiao": 0.04,
+        "moral": -0.16,
+        "tecnologia": -0.46
+      },
+      "triangles": {
+        "0": [
+          0.08,
+          0.28,
+          0.64
+        ],
+        "1": [
+          0.6,
+          0.22,
+          0.18
+        ],
+        "2": [
+          0.32,
+          0.28,
+          0.4
+        ],
+        "3": [
+          0.02,
+          0.52,
+          0.46
+        ],
+        "4": [
+          0.66,
+          0.08,
+          0.26
+        ],
+        "5": [
+          0.46,
+          0.18,
+          0.36
+        ]
+      }
+    },
+    {
+      "id": "modelo_nordico_contemporaneo",
+      "name": "Modelo Nórdico Contemporâneo (Dinamarca e Noruega)",
+      "subtitle": "Flexigurança trabalhista, livre comércio competitivo, bem-estar universal e transição verde",
+      "category": "Modelos Contemporâneos",
+      "era": "Anos 1990–Presente",
+      "origin": "Escandinávia",
+      "summary": "Atualizou a tradição social-democrata escandinava ao combinar elevada liberdade empresarial, abertura comercial e facilidade de contratação ('flexigurança') com generoso seguro-desemprego, requalificação ativa, educação e saúde públicas universais e fundos soberanos transparentes (como na Noruega). Destaca-se por altíssima confiança institucional, digitalização pública, igualdade de gênero e metas ambiciosas de descarbonização.",
+      "highlights": [
+        "Flexigurança unindo mercado de trabalho dinâmico, negociação coletiva e forte proteção de renda",
+        "Ambiente de negócios aberto e competitivo coexistindo com alta carga tributária e serviços universais",
+        "Transparência institucional máxima, equidade social e liderança em transição energética verde"
+      ],
+      "quote": "Equilíbrio contemporâneo entre dinamismo de mercado aberto, proteção social universal e governança transparente.",
+      "axes": {
+        "estrutura": 0.12,
+        "representacao": -0.92,
+        "poder": 0.56,
+        "imigracao": 0.14,
+        "diplomacia": 0.36,
+        "intervencao": -0.24,
+        "economia": -0.18,
+        "controle": 0.08,
+        "comercio": 0.74,
+        "religiao": -0.62,
+        "moral": -0.76,
+        "tecnologia": 0.14
+      },
+      "triangles": {
+        "0": [
+          0.22,
+          0.44,
+          0.34
+        ],
+        "1": [
+          0.54,
+          0.2,
+          0.26
+        ],
+        "2": [
+          0.1,
+          0.5,
+          0.4
+        ],
+        "3": [
+          0.06,
+          0.2,
+          0.74
+        ],
+        "4": [
+          0.74,
+          0.16,
+          0.1
+        ],
+        "5": [
+          0.44,
+          0.48,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "singapura_moderna",
+      "name": "Singapura Moderna (Tecnocracia de Mercado e Habitação Pública)",
+      "subtitle": "Burocracia meritocrática, hub global livre-cambista, ordem legal rigorosa e Estado investidor",
+      "category": "Modelos Contemporâneos",
+      "era": "1965–Presente",
+      "origin": "Singapura",
+      "summary": "Cidade-Estado unitária governada continuamente por um partido dominante sob eleições regulares, mas com restrições rígidas à oposição, à imprensa e à ordem pública, combinadas a uma burocracia meritocrática de altíssima remuneração e baixíssima corrupção. Une livre comércio absoluto, impostos baixos e atração financeira global a poupança compulsória (CPF), habitação pública para cerca de 80% da população (HDB) e holdings estatais estratégicas.",
+      "highlights": [
+        "Porto livre global, segurança jurídica contratual e tributação empresarial competitiva",
+        "Habitação pública planejada (HDB), poupança previdenciária individual obrigatória e fundos soberanos",
+        "Tecnocracia meritocrática com rigor penal severo, convivência multiétnica gerida e limites civis"
+      ],
+      "quote": "Síntese singular entre hiperglobalização mercantil, planejamento urbano público e tecnocracia iliberal disciplinada.",
+      "axes": {
+        "estrutura": 0.94,
+        "representacao": 0.48,
+        "poder": -0.74,
+        "imigracao": 0.22,
+        "diplomacia": -0.26,
+        "intervencao": -0.44,
+        "economia": 0.42,
+        "controle": 0.34,
+        "comercio": 0.96,
+        "religiao": -0.08,
+        "moral": 0.44,
+        "tecnologia": -0.82
+      },
+      "triangles": {
+        "0": [
+          0.24,
+          0.28,
+          0.48
+        ],
+        "1": [
+          0.14,
+          0.6,
+          0.26
+        ],
+        "2": [
+          0.46,
+          0.4,
+          0.14
+        ],
+        "3": [
+          0.06,
+          0.16,
+          0.78
+        ],
+        "4": [
+          0.2,
+          0.68,
+          0.12
+        ],
+        "5": [
+          0.56,
+          0.14,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "china_pos_reforma",
+      "name": "China Pós-Reforma (Socialismo de Mercado e Capitalismo de Estado)",
+      "subtitle": "Monopólio do Partido Comunista, industrialização exportadora, estatais estratégicas e vigilância digital",
+      "category": "Modelos Contemporâneos",
+      "era": "1978–Presente",
+      "origin": "China",
+      "summary": "Desde as reformas de Deng Xiaoping, introduziu zonas econômicas especiais, empresas privadas dinâmicas e inserção profunda nas cadeias globais de manufatura e tecnologia, retirando centenas de milhões da pobreza. Mantém, contudo, o monopólio político unitário do Partido Comunista Chinês, o controle estatal sobre bancos, terra, energia e telecomunicações, política industrial de longo prazo e amplo aparato digital de vigilância e censura.",
+      "highlights": [
+        "Coexistência de setor privado competitivo e cadeias exportadoras com bancos e conglomerados estatais",
+        "Planejamento tecnológico e infraestrutural de longo prazo sob comando do Partido Comunista",
+        "Estado unitário autocrático com controle informacional digital e crescente projeção geoeconômica"
+      ],
+      "quote": "Arquitetura híbrida contemporânea que articula mercados competitivos globais ao comando estratégico do partido-Estado.",
+      "axes": {
+        "estrutura": 0.88,
+        "representacao": 0.92,
+        "poder": -0.88,
+        "imigracao": -0.74,
+        "diplomacia": -0.58,
+        "intervencao": 0.52,
+        "economia": -0.32,
+        "controle": -0.48,
+        "comercio": 0.28,
+        "religiao": -0.78,
+        "moral": 0.36,
+        "tecnologia": -0.92
+      },
+      "triangles": {
+        "0": [
+          0.5,
+          0.28,
+          0.22
+        ],
+        "1": [
+          0.06,
+          0.62,
+          0.32
+        ],
+        "2": [
+          0.4,
+          0.5,
+          0.1
+        ],
+        "3": [
+          0.42,
+          0.22,
+          0.36
+        ],
+        "4": [
+          0.06,
+          0.9,
+          0.04
+        ],
+        "5": [
+          0.44,
+          0.3,
+          0.26
+        ]
+      }
+    },
+    {
+      "id": "estonia_digital",
+      "name": "Estônia Digital (Governo Eletrônico e Liberalismo Báltico)",
+      "subtitle": "Identidade digital universal, imposto plano, abertura econômica e integração euro-atlântica",
+      "category": "Modelos Contemporâneos",
+      "era": "Anos 1990–Presente",
+      "origin": "Estônia",
+      "summary": "Após recuperar a independência em 1991, construiu uma democracia parlamentar unitária marcada por reformas liberais pró-mercado, imposto de renda de alíquota única (flat tax), isenção sobre lucros reinvestidos e disciplina orçamentária rigorosa. Tornou-se referência mundial em Estado digital (e-Estonia), com identidade eletrônica universal, serviços públicos quase 100% online, educação pública de excelência e firme adesão à UE e à OTAN.",
+      "highlights": [
+        "Plataforma digital pública interoperável (X-Road), assinatura eletrônica e e-Residency",
+        "Imposto plano simples, lucros reinvestidos isentos e elevado dinamismo de startups tecnológicas",
+        "Democracia parlamentar secular fortemente integrada à União Europeia e à defesa coletiva da OTAN"
+      ],
+      "quote": "Laboratório contemporâneo da administração pública 100% digital aliada ao liberalismo econômico aberto.",
+      "axes": {
+        "estrutura": 0.54,
+        "representacao": -0.82,
+        "poder": 0.48,
+        "imigracao": -0.18,
+        "diplomacia": -0.24,
+        "intervencao": 0.08,
+        "economia": 0.68,
+        "controle": 0.66,
+        "comercio": 0.84,
+        "religiao": -0.68,
+        "moral": -0.34,
+        "tecnologia": -0.9
+      },
+      "triangles": {
+        "0": [
+          0.08,
+          0.26,
+          0.66
+        ],
+        "1": [
+          0.56,
+          0.24,
+          0.2
+        ],
+        "2": [
+          0.22,
+          0.42,
+          0.36
+        ],
+        "3": [
+          0.08,
+          0.16,
+          0.76
+        ],
+        "4": [
+          0.6,
+          0.16,
+          0.24
+        ],
+        "5": [
+          0.5,
+          0.14,
+          0.36
+        ]
+      }
+    },
+    {
+      "id": "uruguai_contemporaneo",
+      "name": "Uruguai Contemporâneo (Laicidade, Bem-Estar e Estabilidade Cívica)",
+      "subtitle": "Democracia pluralista sólida, herança batllista de proteção social e liberdades individuais avançadas",
+      "category": "Modelos Contemporâneos",
+      "era": "Século XXI",
+      "origin": "Uruguai",
+      "summary": "Herdeiro da tradição reformista batllista do início do século XX, destaca-se na América Latina pela solidez dos partidos políticos, uso recorrente de plebiscitos diretos, baixa corrupção e laicidade republicana profundamente enraizada. Combina economia mista estável — com empresas públicas relevantes em energia e telecomunicações ao lado de segurança jurídica ao investimento privado — com matriz elétrica renovável e legislação pioneira em liberdades civis.",
+      "highlights": [
+        "Instituições democráticas de alta estabilidade, mecanismos plebiscitários e laicidade histórica estrita",
+        "Rede de proteção social abrangente combinada a empresas públicas de serviços e segurança jurídica",
+        "Vanguarda regional em liberdades civis individuais e matriz elétrica quase integralmente renovável"
+      ],
+      "quote": "Referência latino-americana de institucionalidade republicana laica, coesão social e liberdades civis.",
+      "axes": {
+        "estrutura": 0.62,
+        "representacao": -0.9,
+        "poder": 0.68,
+        "imigracao": 0.56,
+        "diplomacia": 0.64,
+        "intervencao": -0.56,
+        "economia": -0.22,
+        "controle": -0.18,
+        "comercio": 0.32,
+        "religiao": -0.76,
+        "moral": -0.74,
+        "tecnologia": 0.18
+      },
+      "triangles": {
+        "0": [
+          0.28,
+          0.44,
+          0.28
+        ],
+        "1": [
+          0.64,
+          0.16,
+          0.2
+        ],
+        "2": [
+          0.1,
+          0.42,
+          0.48
+        ],
+        "3": [
+          0.04,
+          0.32,
+          0.64
+        ],
+        "4": [
+          0.76,
+          0.14,
+          0.1
+        ],
+        "5": [
+          0.42,
+          0.46,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "uniao_europeia_supranacional",
+      "name": "União Europeia Supranacional (Mercado Único e Regulação)",
+      "subtitle": "Soberania compartilhada, quatro liberdades econômicas, regulação global e direitos fundamentais",
+      "category": "Modelos Contemporâneos",
+      "era": "1992–Presente",
+      "origin": "Europa",
+      "summary": "Arquitetura político-jurídica inédita que articula 27 Estados democráticos sob instituições supranacionais (Comissão, Parlamento Europeu, Conselho, Tribunal de Justiça e Banco Central Europeu), regida pelo princípio da subsidiariedade. Combina mercado único de livre circulação de bens, serviços, capitais e pessoas com intensa padronização regulatória antitruste, digital (GDPR), ambiental e fundos regionais de coesão.",
+      "highlights": [
+        "Mercado Único com livre circulação interna de pessoas, mercadorias, serviços e capitais",
+        "Potência regulatória global em concorrência, proteção de dados digitais, consumo e clima",
+        "Governança multinível supranacional pacífica fundada no Estado de direito e na subsidiariedade"
+      ],
+      "quote": "Experimento histórico mais avançado de integração pacífica supranacional e regulação transfronteiriça de mercados.",
+      "axes": {
+        "estrutura": -0.74,
+        "representacao": -0.72,
+        "poder": 0.44,
+        "imigracao": 0.46,
+        "diplomacia": 0.54,
+        "intervencao": -0.36,
+        "economia": 0.26,
+        "controle": -0.14,
+        "comercio": 0.78,
+        "religiao": -0.38,
+        "moral": -0.54,
+        "tecnologia": 0.12
+      },
+      "triangles": {
+        "0": [
+          0.12,
+          0.56,
+          0.32
+        ],
+        "1": [
+          0.5,
+          0.2,
+          0.3
+        ],
+        "2": [
+          0.16,
+          0.48,
+          0.36
+        ],
+        "3": [
+          0.06,
+          0.1,
+          0.84
+        ],
+        "4": [
+          0.64,
+          0.22,
+          0.14
+        ],
+        "5": [
+          0.46,
+          0.38,
+          0.16
+        ]
+      }
+    },
+    {
+      "id": "costa_rica_desmilitarizada",
+      "name": "Costa Rica Desmilitarizada (Pacifismo Constitucional e Ecoturismo)",
+      "subtitle": "Abolição permanente do exército desde 1948, investimento social e conservação da biodiversidade",
+      "category": "Modelos Contemporâneos",
+      "era": "1949–Presente",
+      "origin": "Costa Rica",
+      "summary": "Aboliu constitucionalmente suas Forças Armadas permanentes em 1948–1949, redirecionando recursos históricos de defesa para a universalização da educação pública, do seguro social de saúde (CCSS) e da estabilidade democrática na América Central. Nas últimas décadas, associou abertura comercial, atração de serviços e manufatura médica a políticas pioneiras de reflorestamento, pagamento por serviços ambientais e ecoturismo.",
+      "highlights": [
+        "Abolição constitucional do exército permanente e resolução jurídica internacional de disputas",
+        "Investimento sustentado em saúde pública universal e educação básica de amplo alcance",
+        "Reversão do desmatamento, matriz elétrica limpa e economia aberta voltada a serviços e ecoturismo"
+      ],
+      "quote": "Demonstração institucional de que a desmilitarização constitucional pode financiar bem-estar e conservação ecológica.",
+      "axes": {
+        "estrutura": 0.48,
+        "representacao": -0.86,
+        "poder": 0.54,
+        "imigracao": 0.36,
+        "diplomacia": 0.96,
+        "intervencao": -0.84,
+        "economia": 0.14,
+        "controle": 0.04,
+        "comercio": 0.56,
+        "religiao": 0.22,
+        "moral": -0.18,
+        "tecnologia": 0.72
+      },
+      "triangles": {
+        "0": [
+          0.2,
+          0.44,
+          0.36
+        ],
+        "1": [
+          0.58,
+          0.2,
+          0.22
+        ],
+        "2": [
+          0.28,
+          0.42,
+          0.3
+        ],
+        "3": [
+          0.02,
+          0.34,
+          0.64
+        ],
+        "4": [
+          0.74,
+          0.14,
+          0.12
+        ],
+        "5": [
+          0.46,
+          0.38,
+          0.16
+        ]
+      }
+    },
+    {
+      "id": "monarquias_golfo_modernizadoras",
+      "name": "Monarquias do Golfo Contemporâneas (Modernização Econômica e Tradicionalismo)",
+      "subtitle": "Dinastias hereditárias, fundos soberanos globais, isenção tributária pessoal e ordem tradicional",
+      "category": "Modelos Contemporâneos",
+      "era": "Anos 1990–Presente",
+      "origin": "Península Arábica / Golfo Pérsico",
+      "summary": "Exemplificadas pelos Emirados Árabes Unidos e congêneres do Golfo, articulam monarquias hereditárias autocráticas, ordenamento moral-religioso islâmico e forte vigilância de segurança interna com zonas francas ultramodernas de negócios, aviação, logística e tecnologia. Financiam amplos benefícios exclusivos aos cidadãos nacionais via rendas energéticas e fundos soberanos globais, apoiando-se em força de trabalho majoritariamente estrangeira sem acesso à cidadania.",
+      "highlights": [
+        "Zonas francas globais, baixíssima tributação direta e megaprojetos logísticos e tecnológicos",
+        "Fundos soberanos estatais gigantescos combinados a bem-estar exclusivo para cidadãos nacionais",
+        "Governo dinástico sem partidos políticos, tradicionalismo religioso e imigração laboral temporária"
+      ],
+      "quote": "Combinação contemporânea entre hipermodernização logística-financeira, rendas soberanas e monarquia tradicional.",
+      "axes": {
+        "estrutura": -0.18,
+        "representacao": 0.94,
+        "poder": -0.82,
+        "imigracao": -0.48,
+        "diplomacia": -0.46,
+        "intervencao": 0.34,
+        "economia": 0.38,
+        "controle": 0.26,
+        "comercio": 0.86,
+        "religiao": 0.84,
+        "moral": 0.82,
+        "tecnologia": -0.78
+      },
+      "triangles": {
+        "0": [
+          0.28,
+          0.2,
+          0.52
+        ],
+        "1": [
+          0.1,
+          0.64,
+          0.26
+        ],
+        "2": [
+          0.68,
+          0.22,
+          0.1
+        ],
+        "3": [
+          0.28,
+          0.14,
+          0.58
+        ],
+        "4": [
+          0.04,
+          0.84,
+          0.12
+        ],
+        "5": [
+          0.3,
+          0.24,
+          0.46
+        ]
+      }
+    },
+    {
+      "id": "rojava_confederalismo_democratico",
+      "name": "Rojava e Confederalismo Democrático",
+      "subtitle": "Assembleias comunais multiétnicas, copresidência paritária de gênero, cooperativas e ecologia social",
+      "category": "Modelos Contemporâneos",
+      "era": "2012–Presente",
+      "origin": "Norte e Leste da Síria",
+      "summary": "Inspirada no municipalismo libertário e no confederalismo democrático, a Administração Autônoma do Norte e Leste da Síria estruturou conselhos locais de bairro, copresidência obrigatória homem-mulher em todos os órgãos públicos e representação plural de curdos, árabes, assírios e outras minorias. Promove economia cooperativa comunitária (preservando pequena propriedade privada), laicidade pluralista e ecologia social em contexto de conflito armado defensivo.",
+      "highlights": [
+        "Confederação descentralizada de comunas locais com copresidência obrigatória de gênero",
+        "Pluralismo multiétnico e multirreligioso secularizado em região historicamente conflagrada",
+        "Fomento a cooperativas agrícolas e comunitárias inspirado na ecologia social, sob autodefesa armada"
+      ],
+      "quote": "Experiência contemporânea de municipalismo confederal, paridade radical de gênero e pluralismo comunitário.",
+      "axes": {
+        "estrutura": -0.92,
+        "representacao": -0.74,
+        "poder": 0.38,
+        "imigracao": 0.84,
+        "diplomacia": -0.18,
+        "intervencao": -0.58,
+        "economia": -0.68,
+        "controle": -0.46,
+        "comercio": -0.22,
+        "religiao": -0.62,
+        "moral": -0.82,
+        "tecnologia": 0.48
+      },
+      "triangles": {
+        "0": [
+          0.56,
+          0.28,
+          0.16
+        ],
+        "1": [
+          0.54,
+          0.28,
+          0.18
+        ],
+        "2": [
+          0.08,
+          0.56,
+          0.36
+        ],
+        "3": [
+          0.04,
+          0.42,
+          0.54
+        ],
+        "4": [
+          0.66,
+          0.1,
+          0.24
+        ],
+        "5": [
+          0.24,
+          0.7,
+          0.06
+        ]
+      }
+    }
+  ]
+}

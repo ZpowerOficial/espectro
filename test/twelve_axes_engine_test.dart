@@ -49,22 +49,26 @@ TwelveAxesData _fixture() {
   for (final Axis axis in axes) {
     for (var i = 0; i < 20; i++) {
       questions.add(
-        _question(
-          id: '${axis.id}_$i',
-          axisId: axis.id,
-          agreeIsLeft: i.isEven,
-        ),
+        _question(id: '${axis.id}_$i', axisId: axis.id, agreeIsLeft: i.isEven),
       );
     }
   }
   return TwelveAxesData(
     axes: axes,
     answerOptions: const <AnswerOption>[
-      AnswerOption(id: 'STRONGLY_AGREE', label: 'Concordo totalmente', score: 1),
+      AnswerOption(
+        id: 'STRONGLY_AGREE',
+        label: 'Concordo totalmente',
+        score: 1,
+      ),
       AnswerOption(id: 'AGREE', label: 'Concordo', score: 0.75),
       AnswerOption(id: 'NEUTRAL', label: 'Neutro', score: 0.5),
       AnswerOption(id: 'DISAGREE', label: 'Discordo', score: 0.25),
-      AnswerOption(id: 'STRONGLY_DISAGREE', label: 'Discordo totalmente', score: 0),
+      AnswerOption(
+        id: 'STRONGLY_DISAGREE',
+        label: 'Discordo totalmente',
+        score: 0,
+      ),
     ],
     questions: questions,
     archetypeQuestions: const <ArchetypeQuestion>[],
@@ -159,8 +163,11 @@ void main() {
   group('seleção de perguntas', () {
     test('curta tem 36 perguntas e 3 por eixo', () {
       final TwelveAxesData data = _fixture();
-      final List<AxisQuestion> questions =
-          selectTwelveQuestions(data, TwelveVariant.short, Random(2));
+      final List<AxisQuestion> questions = selectTwelveQuestions(
+        data,
+        TwelveVariant.short,
+        Random(2),
+      );
       expect(questions.length, 36);
       for (final Axis axis in data.axes) {
         expect(questions.where((q) => q.axisId == axis.id).length, 3);
@@ -171,8 +178,11 @@ void main() {
 
     test('completa tem 60 perguntas e 5 por eixo', () {
       final TwelveAxesData data = _fixture();
-      final List<AxisQuestion> questions =
-          selectTwelveQuestions(data, TwelveVariant.complete, Random(3));
+      final List<AxisQuestion> questions = selectTwelveQuestions(
+        data,
+        TwelveVariant.complete,
+        Random(3),
+      );
       expect(questions.length, 60);
       for (final Axis axis in data.axes) {
         expect(questions.where((q) => q.axisId == axis.id).length, 5);
@@ -181,8 +191,11 @@ void main() {
 
     test('extrema usa todas as 240 perguntas', () {
       final TwelveAxesData data = _fixture();
-      final List<AxisQuestion> questions =
-          selectTwelveQuestions(data, TwelveVariant.extreme, Random(4));
+      final List<AxisQuestion> questions = selectTwelveQuestions(
+        data,
+        TwelveVariant.extreme,
+        Random(4),
+      );
       expect(questions.length, 240);
       expect(questions.map((q) => q.id).toSet().length, 240);
     });

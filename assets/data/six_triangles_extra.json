@@ -1,0 +1,2492 @@
+{
+  "questions": [
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Recursos minerais estratégicos do subsolo devem permanecer sob propriedade pública.",
+      "id": 193
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Redes de água potável e saneamento básico funcionam melhor sob gestão direta do poder público.",
+      "id": 194
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Laboratórios farmacêuticos estatais devem fabricar medicamentos essenciais para garantir o abastecimento nacional.",
+      "id": 195
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Bancos públicos devem conduzir diretamente o financiamento de obras de infraestrutura e habitação popular.",
+      "id": 196
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Setores de base, como siderurgia, refino de petróleo e ferrovias, devem ser operados exclusivamente por empresas estatais.",
+      "id": 197
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "O governo deve elaborar planos plurianuais vinculantes para definir metas de produção industrial e agrícola no país.",
+      "id": 198
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Grandes fábricas, bancos e conglomerados agrícolas deveriam ser desapropriados e integrados a um sistema produtivo estatal.",
+      "id": 199
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "A propriedade estatal de uma empresa não garante, por si só, atendimento eficiente ao cidadão.",
+      "id": 200
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Ministérios governamentais não conseguem prever em detalhes todas as preferências de consumo da população.",
+      "id": 201
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Centralizar decisões produtivas no Estado frequentemente gera lentidão administrativa evitável.",
+      "id": 202
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Empresas públicas também podem priorizar interesses corporativos internos em vez do bem coletivo.",
+      "id": 203
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Companhias estatais costumam sofrer loteamento político que prejudica sua gestão técnica e financeira.",
+      "id": 204
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "O planejamento estatal da produção tem dificuldade para inovar na mesma velocidade que empreendimentos autônomos.",
+      "id": 205
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Cobrir prejuízos recorrentes de estatais deficitárias desvia recursos públicos que fariam mais diferença em outras áreas.",
+      "id": 206
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "A estatização de setores produtivos tende a gerar escassez crônica, desperdício de recursos e estagnação tecnológica.",
+      "id": 207
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "O Estado não deveria ser dono nem administrador direto de empresas comerciais ou industriais.",
+      "id": 208
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Concentrar a produção econômica nas mãos do governo concede aos governantes um poder perigoso sobre a subsistência civil.",
+      "id": 209
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Entregar a direção de toda a produção econômica ao Estado conduz inevitavelmente ao empobrecimento geral.",
+      "id": 210
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Nenhuma atividade industrial, agrícola ou financeira deveria jamais ser operada diretamente pelo governo.",
+      "id": 211
+    },
+    {
+      "category": 0,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A economia planificada pelo Estado é um modelo historicamente fracassado que não deve ser retomado sob nenhuma forma.",
+      "id": 212
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Fabricantes de alimentos e medicamentos devem passar por fiscalização sanitária obrigatória antes de vender ao público.",
+      "id": 213
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Regras claras de transparência contábil para instituições financeiras são indispensáveis para evitar fraudes e crises.",
+      "id": 214
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Agências públicas devem impor limites rigorosos a juros abusivos, cláusulas ocultas e algoritmos de precificação predatória.",
+      "id": 215
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Toda grande empresa privada deveria submeter fusões, demissões em massa e novos produtos financeiros à aprovação estatal prévia.",
+      "id": 216
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "O poder público deve fixar tetos de lucro e padrões técnicos obrigatórios em todos os setores privados de utilidade coletiva.",
+      "id": 217
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Nenhum setor privado consegue atuar de modo ético sem supervisão estatal permanente sobre preços, contratos e investimentos.",
+      "id": 218
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Empresas privadas só deveriam operar sob licenças estatais renováveis condicionadas ao cumprimento estrito de metas sociais.",
+      "id": 219
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Códigos regulatórios excessivamente extensos costumam produzir efeitos colaterais que seus criadores não previram.",
+      "id": 220
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Agências reguladoras muitas vezes demoram a atualizar normas diante de mudanças tecnológicas rápidas.",
+      "id": 221
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Multiplicar exigências burocráticas de conformidade não garante, por si só, conduta empresarial mais responsável.",
+      "id": 222
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Regras complexas de licenciamento costumam sufocar pequenos negócios enquanto grandes grupos pagam advogados para contorná-las.",
+      "id": 223
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Órgãos reguladores são frequentemente capturados pelo lobby das próprias grandes empresas que deveriam fiscalizar.",
+      "id": 224
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "O excesso de alvarás, pareceres e carimbos estatais encarece produtos básicos sem entregar proteção real à sociedade.",
+      "id": 225
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Tentar domesticar grandes corporações apenas com normas burocráticas gera brechas jurídicas e privilégios em vez de justiça econômica.",
+      "id": 226
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "O aparato de agências reguladoras cria cartéis protegidos por lei e distorce a economia mais do que corrige abusos.",
+      "id": 227
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Confiar na burocracia regulatória para equilibrar o apetite de lucro privado e o interesse público é uma estratégia ineficaz.",
+      "id": 228
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A malha atual de agências e códigos de regulação econômica causa muito mais prejuízo que benefício e deveria ser extinta.",
+      "id": 229
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Gerir a economia por meio de intermináveis regulamentos estatais sobre empresas privadas é o pior caminho possível.",
+      "id": 230
+    },
+    {
+      "category": 0,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O modelo de capitalismo tutelado por burocratas reguladores é um fracasso completo que deveria ser abandonado de vez.",
+      "id": 231
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Facilitar a abertura rápida de novos negócios amplia a oferta de serviços e reduz preços para os consumidores.",
+      "id": 232
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Sinais livres de oferta e procura coordenam a distribuição cotidiana de mercadorias melhor que tabelas oficiais.",
+      "id": 233
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Eliminar subsídios governamentais e socorros a empresas falidas torna a economia mais produtiva e menos sujeita a privilégios.",
+      "id": 234
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Contratos voluntários e livre empreendedorismo geram mais prosperidade duradoura do que programas estatais de estímulo.",
+      "id": 235
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Aposentadorias, ensino superior e hospitais teriam qualidade superior se funcionassem exclusivamente em mercados competitivos.",
+      "id": 236
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Toda infraestrutura, emissão monetária e prestação de serviços deveria operar apenas por contratos privados de livre mercado.",
+      "id": 237
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "O livre mercado, sozinho, não resolve automaticamente todos os problemas sociais e ambientais de um país.",
+      "id": 238
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "A busca imediata por lucro privado às vezes negligencia pesquisas básicas que só dão retorno após décadas.",
+      "id": 239
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "A livre concorrência nem sempre impede que consumidores sejam lesados por assimetria de informação técnica.",
+      "id": 240
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Deixar serviços essenciais apenas ao critério da rentabilidade pode desassistir regiões remotas ou de baixa renda.",
+      "id": 241
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Mercados sem contrapesos institucionais tendem a concentrar capital em oligopólios que eliminam concorrentes menores.",
+      "id": 242
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Decisões guiadas exclusivamente por preços de mercado costumam ignorar danos ecológicos lançados sobre toda a coletividade.",
+      "id": 243
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Mercados financeiros entregues apenas à autorregulação privada produzem bolhas especulativas e crises recorrentes.",
+      "id": 244
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Tratar atendimento médico de urgência e acesso à água apenas como mercadorias de mercado produz injustiças humanas graves.",
+      "id": 245
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "A crença de que o mercado desimpedido premia sempre o mérito e promove o bem comum não resiste à realidade econômica.",
+      "id": 246
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Forças de mercado sem freios públicos subordinam a dignidade do trabalho e a estabilidade social ao ganho trimestral.",
+      "id": 247
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O livre mercado irrestrito é um sistema predatório que inevitavelmente explora os mais vulneráveis e degrada a sociedade.",
+      "id": 248
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Entregar o destino econômico de uma nação ao laissez-faire absoluto é socialmente desastroso e moralmente indefensável.",
+      "id": 249
+    },
+    {
+      "category": 0,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A fé na mão invisível do mercado livre deveria ser completamente descartada como princípio de organização econômica.",
+      "id": 250
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Cidadãos devem ter direito inviolável à criptografia ponta a ponta e ao anonimato digital, sem portas de acesso para autoridades.",
+      "id": 251
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Todo órgão estatal de inteligência doméstica deveria ser extinto para garantir soberania absoluta à privacidade individual.",
+      "id": 252
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "A liberdade individual encontra um limite legítimo quando uma conduta coloca terceiros inocentes em risco direto.",
+      "id": 253
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "A convivência em sociedade exige aceitar regras mínimas que equilibram autonomia pessoal e responsabilidade coletiva.",
+      "id": 254
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "O anonimato absoluto em qualquer situação tornaria quase impossível responsabilizar autores de fraudes e ameaças graves.",
+      "id": 255
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Tratar a liberdade de expressão como ilimitada deixa cidadãos comuns indefesos diante de calúnias coordenadas e extorsão.",
+      "id": 256
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "O direito ao sigilo de comunicações não deve impedir investigações com ordem judicial sobre crimes violentos ou corrupção.",
+      "id": 257
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Manifestações de rua não deveriam ter permissão irrestrita para bloquear ambulâncias, destruir bens ou paralisar hospitais.",
+      "id": 258
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Plataformas totalmente anônimas e sem qualquer rastro jurídico facilitam golpes financeiros, assédio e redes criminosas.",
+      "id": 259
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Colocar a autonomia individual acima de qualquer dever cívico enfraquece a capacidade da sociedade de conter abusos graves.",
+      "id": 260
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "A recusa sistemática a limites legais sobre discurso e privacidade protege sabotadores e fraudadores à custa da coletividade.",
+      "id": 261
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Privacidade pessoal e livre manifestação são concessões secundárias que devem ceder sempre que a estabilidade coletiva exigir.",
+      "id": 262
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Cidadãos comuns não deveriam dispor de ampla autonomia individual sem supervisão institucional constante sobre seus atos.",
+      "id": 263
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Liberdades civis amplas degeneram inevitavelmente em desordem social e deveriam ser drasticamente restringidas por lei.",
+      "id": 264
+    },
+    {
+      "category": 1,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O culto à liberdade individual é uma doutrina nociva que deve ser substituída pela disciplina e pelo controle institucional.",
+      "id": 265
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Inspeções de segurança em aeroportos, portos e fronteiras são precauções razoáveis para prevenir atentados e contrabando.",
+      "id": 266
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Forças de segurança devem poder infiltrar grupos radicais e interceptar comunicações suspeitas sem aguardar trâmites judiciais lentos.",
+      "id": 267
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O Estado deveria manter rastreamento biométrico e digital contínuo de toda a população para neutralizar crimes antes que ocorram.",
+      "id": 268
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Agentes policiais e de inteligência devem responder perante a lei quando cometem abusos no exercício do cargo.",
+      "id": 269
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Invocar segurança nacional não pode servir de desculpa automática para ocultar erros administrativos do governo.",
+      "id": 270
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Ampliar poderes policiais, isoladamente, não resolve as causas profundas da violência nem garante paz duradoura.",
+      "id": 271
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Medidas excepcionais de segurança adotadas em emergências devem ter prazo estrito e fiscalização independente.",
+      "id": 272
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Programas amplos de vigilância estatal acabam sendo usados com frequência para espionar jornalistas e adversários políticos.",
+      "id": 273
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "O excesso de sigilo oficial em órgãos de segurança alimenta a impunidade e esconde desvios graves do escrutínio público.",
+      "id": 274
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Conceder imunidade ampla a operações policiais costuma corroer a confiança dos moradores em vez de reduzir a criminalidade.",
+      "id": 275
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "O monitoramento estatal em massa trata todo cidadão honesto como suspeito permanente e corrói uma sociedade livre por dentro.",
+      "id": 276
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Governos exageram rotineiramente ameaças internas e externas para justificar a supressão de garantias civis fundamentais.",
+      "id": 277
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Buscas sem mandado judicial e detenções preventivas por suspeita política são abusos inaceitáveis mesmo em tempos de crise.",
+      "id": 278
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Serviços secretos e aparatos de vigilância interna representam um perigo maior para a população do que as ameaças que dizem combater.",
+      "id": 279
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Nenhum risco criminal ou ameaça à ordem justifica conceder ao Estado poder de espionagem ou coerção preventiva sobre civis.",
+      "id": 280
+    },
+    {
+      "category": 1,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Todo o aparato de segredo de Estado e monitoramento doméstico de segurança deveria ser completamente desmantelado.",
+      "id": 281
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Órgãos públicos devem divulgar bases de dados abertas e auditáveis para que qualquer cidadão confira os números oficiais.",
+      "id": 282
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Veículos jornalísticos devem separar com clareza visual a reportagem de dados comprovados dos artigos de opinião.",
+      "id": 283
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Empresas que lucram com propaganda enganosa sobre curas médicas ou retornos financeiros falsos devem sofrer multas pesadas.",
+      "id": 284
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Plataformas digitais deveriam ser obrigadas por lei a rotular e reduzir o alcance de falsidades comprovadas sobre saúde e eleições.",
+      "id": 285
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Um conselho público independente de verificação factual deveria ter poder de suspender veículos que difundam mentiras sistemáticas.",
+      "id": 286
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Agências de checagem de fatos também estão sujeitas a vieses interpretativos e erros de avaliação.",
+      "id": 287
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Em controvérsias políticas complexas, nem sempre existe uma fronteira simples entre fato bruto e interpretação.",
+      "id": 288
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Proibir hipóteses minoritárias que contrariam o consenso do momento pode atrasar descobertas científicas legítimas.",
+      "id": 289
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Sanções penais raramente são o meio mais eficaz para corrigir crenças equivocadas no debate cotidiano.",
+      "id": 290
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Dar a órgãos estatais o poder de definir o que é desinformação cria um risco elevado de perseguição a críticos legítimos.",
+      "id": 291
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Exigir comprovação prévia antes de qualquer comentário público tornaria o jornalismo investigativo lento e excessivamente tímido.",
+      "id": 292
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Afirmações rotuladas pelas autoridades como boatos falsos às vezes se revelam denúncias verdadeiras meses depois.",
+      "id": 293
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Leis que punem declarações consideradas falsas acabam servindo inevitavelmente para silenciar dissidências e ideias heterodoxas.",
+      "id": 294
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Nenhum tribunal, agência ou consórcio de imprensa possui neutralidade suficiente para atuar como árbitro oficial da verdade.",
+      "id": 295
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Tentar tutelar a veracidade do discurso público causa mais dano democrático do que deixar os cidadãos julgarem as informações.",
+      "id": 296
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A ideia de verdade objetiva na política é uma ilusão, pois toda narrativa factual serve apenas a disputas de poder.",
+      "id": 297
+    },
+    {
+      "category": 1,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Não deveria existir nenhuma obrigação jurídica ou institucional de veracidade na comunicação pública, na imprensa ou na política.",
+      "id": 298
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Preservar o patrimônio histórico, as festas populares tradicionais e a memória cívica fortalece os laços entre gerações.",
+      "id": 299
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Costumes sociais consolidados ao longo de séculos costumam guardar aprendizados práticos que merecem consideração.",
+      "id": 300
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Políticas fiscais, habitacionais e educacionais do Estado devem favorecer ativamente a família conjugal tradicional e a natalidade.",
+      "id": 301
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "A legislação civil sobre bioética, família e costumes públicos deve subordinar-se estritamente aos preceitos morais tradicionais.",
+      "id": 302
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O divórcio facilitado e o reconhecimento jurídico de arranjos familiares não tradicionais deveriam ser revogados para proteger a ordem moral.",
+      "id": 303
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Nem todo costume herdado de gerações passadas merece ser mantido intacto diante de novas realidades sociais.",
+      "id": 304
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Uma pessoa pode levar uma vida íntegra e responsável sem seguir ritos ou preceitos morais tradicionais.",
+      "id": 305
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Tradições culturais devem poder ser reavaliadas criticamente quando entram em atrito com o bem-estar contemporâneo.",
+      "id": 306
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "A antiguidade de um costume é um argumento frágil para manter leis que restringem escolhas pessoais ou avanços médicos.",
+      "id": 307
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "A idealização nostálgica do passado costuma apagar desigualdades e exclusões severas que marcavam os costumes antigos.",
+      "id": 308
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Usar a lei para impor padrões tradicionais de moralidade íntima oprime pessoas pacíficas que vivem de modo diferente.",
+      "id": 309
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Apegar-se a dogmas culturais herdados trava o florescimento artístico, científico e humano de uma sociedade aberta.",
+      "id": 310
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Instituições públicas não têm legitimidade para tutelar a vida afetiva dos cidadãos em nome de costumes ancestrais.",
+      "id": 311
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "As instituições familiares e morais tradicionais são estruturas ultrapassadas que a sociedade deveria superar por completo.",
+      "id": 312
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Tradições morais e religiosas herdadas servem muito mais para perpetuar atraso e preconceito do que para civilizar a convivência.",
+      "id": 313
+    },
+    {
+      "category": 2,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A deferência a costumes ancestrais não deveria ter absolutamente nenhuma influência sobre leis, ética pública ou educação.",
+      "id": 314
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Políticas públicas devem promover ativamente a inclusão cultural, a alfabetização científica e a transição para hábitos sustentáveis.",
+      "id": 315
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Mudanças tecnológicas e culturais aceleradas podem produzir efeitos colaterais imprevistos sobre a coesão social.",
+      "id": 316
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Nem toda novidade comportamental ou campanha de reforma cultural representa um avanço real na qualidade de vida.",
+      "id": 317
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "O conhecimento técnico e científico, embora valioso, não responde sozinho a todos os dilemas éticos da vida humana.",
+      "id": 318
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Campanhas oficiais para remodelar hábitos cotidianos às vezes desconsideram a realidade prática da população comum.",
+      "id": 319
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "O poder público extrapola suas funções quando tenta reeducar a linguagem, a dieta e o consumo diário dos cidadãos por decreto.",
+      "id": 320
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Reformas culturais impostas de cima para baixo costumam gerar ressentimento social em vez de convivência harmoniosa.",
+      "id": 321
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Presumir que ideias e tecnologias recentes são automaticamente superiores leva a experimentos sociais precipitados.",
+      "id": 322
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Proibições paternalistas sobre bens de consumo e hábitos cotidianos em nome de metas coletivas são uma intrusão abusiva.",
+      "id": 323
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Programas estatais de engenharia cultural tratam cidadãos adultos como peças a serem moldadas por especialistas iluminados.",
+      "id": 324
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Submeter decisões éticas e políticas a algoritmos ou comitês tecnocráticos desumaniza a vida pública e destrói o bom senso.",
+      "id": 325
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "O ativismo permanente do Estado para reformar costumes e comportamentos cria tutela burocrática em vez de emancipação real.",
+      "id": 326
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Projetos estatais de modernização cultural, controle de hábitos e engenharia social são intrinsecamente autoritários e destrutivos.",
+      "id": 327
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A obsessão contemporânea por reforma cultural incessante e remodelagem tecnocrática da sociedade causou mais ruína que avanço.",
+      "id": 328
+    },
+    {
+      "category": 2,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O governo deveria abandonar por completo qualquer missão de promover transformação cultural, reeducação moral ou engenharia social.",
+      "id": 329
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Adultos devem poder escolher livremente suas leituras, músicas e expressões artísticas sem censura moral ou dirigismo oficial.",
+      "id": 330
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O Estado deve manter igualdade jurídica estrita entre cidadãos religiosos, agnósticos e ateus, sem privilegiar nenhuma visão.",
+      "id": 331
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Jogos de azar, apostas esportivas e vida noturna entre adultos devem ser escolhas legais, e não alvo de proibições moralistas.",
+      "id": 332
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Adultos capazes devem poder definir livremente seus contratos afetivos e domésticos sem que a lei imponha um modelo único.",
+      "id": 333
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Cada adulto deve ter soberania legal plena sobre o próprio corpo, incluindo modificações estéticas extremas e morte assistida voluntária.",
+      "id": 334
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O governo deveria extinguir todos os impostos punitivos sobre vícios e abster-se de incentivar ou desencorajar qualquer estilo de vida.",
+      "id": 335
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Nenhuma prática cultural, hábito recreativo ou escolha moral consensual entre adultos deveria jamais ser regulada ou julgada pela lei.",
+      "id": 336
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Hábitos pessoais aparentemente privados podem gerar custos pesados para famílias, vizinhanças e sistemas públicos de saúde.",
+      "id": 337
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Uma sociedade precisa cultivar alguns referenciais cívicos comuns, e não apenas deixar cada indivíduo isolado em suas preferências.",
+      "id": 338
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "A indiferença total da lei diante de dependências químicas graves ignora como o vício compromete a própria capacidade de escolha.",
+      "id": 339
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "A liberação irrestrita de apostas predatórias e substâncias viciantes explora vulnerabilidades psicológicas e arruína famílias.",
+      "id": 340
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "A neutralidade cultural absoluta do Estado é impraticável, pois toda legislação reflete escolhas sobre o que protege a convivência.",
+      "id": 341
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Tratar qualquer comportamento autodestrutivo apenas como direito individual transfere a conta humana e financeira para toda a comunidade.",
+      "id": 342
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Limites etários formais, sozinhos, raramente bastam para conter os danos sociais causados por indústrias agressivas de vício.",
+      "id": 343
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "O individualismo cultural radical dissolve vínculos comunitários e reduz a vida em sociedade a caprichos de consumo imediato.",
+      "id": 344
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Políticas públicas têm o dever legítimo de desestimular vícios destrutivos e orientar a cultura para padrões mais saudáveis e responsáveis.",
+      "id": 345
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Um Estado que se recusa a assumir qualquer critério moral ou cultural abdica de sua responsabilidade pelo bem comum.",
+      "id": 346
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Deixar costumes, vícios e estilos de vida entregues apenas ao arbítrio individual conduz inevitavelmente à degradação social.",
+      "id": 347
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A autonomia individual sobre hábitos e costumes deve subordinar-se sempre a padrões coletivos de responsabilidade definidos em lei.",
+      "id": 348
+    },
+    {
+      "category": 2,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O princípio de neutralidade do Estado perante os hábitos pessoais e escolhas culturais dos cidadãos é um erro grave que deve ser rejeitado.",
+      "id": 349
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Manter capacidade de projeção naval e aérea além das fronteiras protege rotas comerciais vitais do país.",
+      "id": 350
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Um país com peso econômico relevante deve exercer liderança estratégica sobre sua região geopolítica.",
+      "id": 351
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Instalar bases militares no exterior mediante acordos estratégicos é legítimo para ampliar nossa influência.",
+      "id": 352
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Nações poderosas têm justificativa para impor bloqueios econômicos severos a países menores que desafiem sua hegemonia.",
+      "id": 353
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Anexar territórios estrangeiros ricos em minerais críticos é aceitável quando garante a supremacia nacional de longo prazo.",
+      "id": 354
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Anexar o território de outro povo pela força das armas é inaceitável na política contemporânea.",
+      "id": 355
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Nenhuma potência deveria explorar recursos estratégicos de países mais fracos por meio de pressão militar ou diplomática.",
+      "id": 356
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Financiar golpes de Estado no exterior para instalar governos alinhados gera ressentimento duradouro e instabilidade.",
+      "id": 357
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Tratar países vizinhos como zona exclusiva de influência alimenta conflitos desnecessários nas relações exteriores.",
+      "id": 358
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Usar coerção comercial ou tecnológica para submeter governos mais fracos aos nossos interesses é diplomaticamente inaceitável.",
+      "id": 359
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Manter tropas ou bases militares permanentes fora do próprio território nacional deveria ser proibido pela Constituição.",
+      "id": 360
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Buscar hegemonia geopolítica sobre outras nações desvia recursos públicos que deveriam atender necessidades civis.",
+      "id": 361
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Operações cibernéticas ofensivas contra infraestruturas de outros países não deveriam fazer parte da estratégia nacional.",
+      "id": 362
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Um país jamais deveria usar intimidação militar ou sanções unilaterais para impor sua vontade além de suas fronteiras.",
+      "id": 363
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Toda ambição de projetar poder geopolítico sobre outros povos deve ser eliminada da doutrina de Estado.",
+      "id": 364
+    },
+    {
+      "category": 3,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "As forças de defesa devem ser estruturadas exclusivamente sem qualquer capacidade de expedição ou ataque externo.",
+      "id": 365
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Problemas internos urgentes devem receber prioridade orçamentária absoluta antes de qualquer compromisso externo.",
+      "id": 366
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Evitar envolvimento em disputas territoriais distantes preserva vidas e recursos do nosso país.",
+      "id": 367
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Nosso país deveria recusar pactos de defesa mútua que possam nos arrastar para conflitos de terceiros.",
+      "id": 368
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Alcançar autossuficiência energética, alimentar e industrial vale o custo de reduzir drasticamente o comércio exterior.",
+      "id": 369
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "O país deveria encerrar sua participação em missões internacionais, cúpulas diplomáticas e programas de auxílio externo.",
+      "id": 370
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Fechar as fronteiras ao fluxo externo de mercadorias, capitais e pessoas seria o caminho mais seguro para a estabilidade.",
+      "id": 371
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Cortar todas as relações comerciais e diplomáticas com o resto do mundo empobreceria gravemente a população.",
+      "id": 372
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Nenhuma economia moderna consegue fabricar sozinha todos os medicamentos, insumos e tecnologias de que necessita.",
+      "id": 373
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Ignorar pandemias ou desastres ambientais em outros continentes é imprudente, pois seus efeitos atravessam fronteiras.",
+      "id": 374
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Ausentar-se das negociações internacionais sobre rotas marítimas, satélites e padrões técnicos prejudica o país.",
+      "id": 375
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "A neutralidade passiva diante de crises externas graves costuma deixar o país vulnerável quando a instabilidade se espalha.",
+      "id": 376
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "O intercâmbio científico e universitário com o exterior é indispensável para não ficarmos tecnologicamente defasados.",
+      "id": 377
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Recusar alianças estratégicas e acordos externos em nome da autossuficiência enfraquece a posição do país no mundo.",
+      "id": 378
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Uma política externa retraída abre espaço para que outros atores decidam sozinhos o futuro político do planeta.",
+      "id": 379
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Pretender resolver desafios econômicos e de segurança olhando apenas para dentro das fronteiras é um erro estratégico.",
+      "id": 380
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O isolamento diplomático e econômico deve ser totalmente rejeitado, pois atuar ativamente no cenário externo é vital.",
+      "id": 381
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Abandonar a presença internacional do país em nome de um foco exclusivamente doméstico seria uma falha histórica grave.",
+      "id": 382
+    },
+    {
+      "category": 3,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Todo Estado relevante precisa manter atuação externa constante e incisiva em vez de se fechar em si mesmo.",
+      "id": 383
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Acordos multilaterais de padronização sanitária e ambiental facilitam a convivência e o comércio entre os países.",
+      "id": 384
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Riscos como inteligência artificial descontrolada e crimes cibernéticos exigem agências internacionais com regras vinculantes.",
+      "id": 385
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "A soberania nacional deveria ser gradualmente transferida para um parlamento mundial eleito por toda a humanidade.",
+      "id": 386
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Um governo mundial único estaria distante demais das realidades locais para administrar povos tão diferentes.",
+      "id": 387
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Abolir completamente as fronteiras nacionais causaria desorganização administrativa e sobrecarga nos serviços públicos.",
+      "id": 388
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Adotar uma moeda única mundial tiraria dos países instrumentos essenciais para enfrentar crises econômicas próprias.",
+      "id": 389
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Organismos internacionais não deveriam ter poder para cobrar impostos diretamente dos cidadãos de cada país.",
+      "id": 390
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Tribunais supranacionais não deveriam poder anular decisões tomadas legitimamente pelas instituições internas de um país.",
+      "id": 391
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Burocracias multilaterais frequentemente impõem regras padronizadas que ignoram as particularidades históricas de cada nação.",
+      "id": 392
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Subordinar a política energética ou industrial do país a metas vinculantes de órgãos globais compromete nossa autonomia.",
+      "id": 393
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Governos nacionais têm obrigação prioritária com seus próprios cidadãos, e não um dever igual para com estrangeiros.",
+      "id": 394
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Integrar o país a blocos supranacionais que diluem a soberania jurídica e fiscal traz mais prejuízos do que ganhos.",
+      "id": 395
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Nenhuma instituição internacional deveria ter qualquer autoridade vinculante sobre as leis ou decisões do nosso Estado.",
+      "id": 396
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O projeto de governança global integrada deve ser rejeitado em defesa da plena independência decisória de cada nação.",
+      "id": 397
+    },
+    {
+      "category": 3,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Tratados multilaterais permanentes só engessam a soberania nacional e deveriam ser substituídos por decisões autônomas.",
+      "id": 398
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Governantes precisam prestar contas periodicamente aos eleitores em processos transparentes e competitivos.",
+      "id": 399
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Orçamentos participativos permitem que moradores decidam melhor as prioridades de investimento de seus bairros.",
+      "id": 400
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Mudanças constitucionais profundas só deveriam entrar em vigor após aprovação expressa em referendo popular.",
+      "id": 401
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Cidadãos deveriam poder revogar o mandato de representantes eleitos a qualquer momento por meio de petição e voto popular.",
+      "id": 402
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Conselhos sorteados entre cidadãos comuns deveriam ter poder deliberativo real sobre grandes políticas nacionais.",
+      "id": 403
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Mesmo decisões técnicas de política monetária e juros básicos deveriam ser submetidas à aprovação direta dos eleitores.",
+      "id": 404
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Submeter sentenças criminais ao voto popular substituiria provas jurídicas pela emoção momentânea da multidão.",
+      "id": 405
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Questões altamente técnicas, como protocolos de segurança nuclear ou aérea, não deveriam ser decididas em plebiscito.",
+      "id": 406
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Nem toda decisão aprovada por maioria simples de votos é justa ou benéfica no longo prazo.",
+      "id": 407
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Ciclos eleitorais curtos levam governantes a priorizar medidas imediatistas de apelo popular em vez de reformas duradouras.",
+      "id": 408
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Campanhas eleitorais de massa costumam premiar carisma e retórica emocional em vez de competência administrativa.",
+      "id": 409
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "O voto majoritário da população não deveria ter poder para definir os rumos econômicos e institucionais do país.",
+      "id": 410
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Ampliar mecanismos de consulta e deliberação popular torna a administração pública lenta, incoerente e vulnerável a paixões.",
+      "id": 411
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A escolha de governantes por sufrágio universal é um método falho que deveria ser abandonado.",
+      "id": 412
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A ideia de soberania popular é uma ficção política que produz governos piores do que alternativas não eleitorais.",
+      "id": 413
+    },
+    {
+      "category": 4,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Decisões de Estado jamais deveriam depender da aprovação das urnas ou da vontade numérica da maioria.",
+      "id": 414
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Em momentos de calamidade pública, o comando central precisa de prerrogativas ágeis para restabelecer a ordem.",
+      "id": 415
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O respeito à hierarquia institucional e à disciplina cívica é indispensável para a estabilidade de qualquer país.",
+      "id": 416
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Concentrar decisões estratégicas em um Executivo forte evita a paralisia causada por disputas intermináveis entre órgãos.",
+      "id": 417
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "O chefe de Estado deveria poder governar por decreto sem freios parlamentares quando julgar que a coesão nacional está em risco.",
+      "id": 418
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Governos provinciais e municipais deveriam atuar apenas como executores obedientes das diretrizes fixadas pelo poder central.",
+      "id": 419
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Toda organização social, sindical ou midiática deveria operar sob supervisão e comando direto da autoridade estatal suprema.",
+      "id": 420
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Nenhum governante deveria estar acima da lei ou imune a responsabilização por abusos de poder.",
+      "id": 421
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Exigir obediência cega às autoridades impede que erros graves do Estado sejam identificados e corrigidos a tempo.",
+      "id": 422
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Suprimir manifestações pacíficas de divergência política em nome da ordem enfraquece a legitimidade das instituições.",
+      "id": 423
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Concentrar poder excessivo na cúpula do Executivo aumenta o risco de decisões arbitrárias e favoritismo político.",
+      "id": 424
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Poderes de emergência concedidos ao governo central costumam se prolongar muito além da crise que os justificou.",
+      "id": 425
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Estruturas administrativas rigidamente hierárquicas sufocam a iniciativa local e demoram a enxergar problemas reais.",
+      "id": 426
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "A busca por um Estado forte e centralizador quase sempre termina corroendo a autonomia da sociedade civil.",
+      "id": 427
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Governantes nunca deveriam ter prerrogativa para impor projetos nacionais contra a resistência pacífica da sociedade.",
+      "id": 428
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "A ideia de que a população precisa de tutela e mão firme do Estado trata adultos como incapazes.",
+      "id": 429
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Descentralizar radicalmente o poder decisório é sempre preferível a confiar na sabedoria de um comando central forte.",
+      "id": 430
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Nenhuma pessoa ou instituição estatal possui legitimidade moral para exercer comando coercitivo hierárquico sobre a sociedade.",
+      "id": 431
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Toda concentração vertical de autoridade política é intrinsecamente nociva e deve ser desmantelada.",
+      "id": 432
+    },
+    {
+      "category": 4,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O princípio de subordinação dos cidadãos a uma liderança estatal forte deve ser inteiramente rejeitado.",
+      "id": 433
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Muitas funções hoje acumuladas por ministérios e autarquias seriam resolvidas melhor pela própria sociedade civil.",
+      "id": 434
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Toda nova atribuição estatal deveria ser vista com ceticismo, pois órgãos públicos tendem a expandir seu próprio escopo.",
+      "id": 435
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "O papel do Estado deveria se restringir estritamente a proteger contratos, segurança física básica e tribunais.",
+      "id": 436
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Mesmo obras de infraestrutura urbana, bombeiros e certificação técnica deveriam operar apenas por arranjos voluntários privados.",
+      "id": 437
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Quase todos os ministérios, agências e tributos atuais deveriam ser extintos para reduzir o Estado ao mínimo absoluto.",
+      "id": 438
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Tribunais, policiamento e defesa poderiam funcionar por associações contratuais voluntárias, dispensando totalmente o Estado.",
+      "id": 439
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Uma sociedade complexa entraria em colapso rápido se abolisse completamente leis públicas, tribunais e forças de segurança.",
+      "id": 440
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Onde o Estado desaparece por completo, milícias privadas e grupos armados costumam ocupar o vazio de poder.",
+      "id": 441
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Justiça criminal e policiamento não deveriam depender da contratação privada de quem tem dinheiro para pagar proteção.",
+      "id": 442
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Encolher o governo apenas à guarda noturna deixa o país despreparado para enfrentar epidemias, secas e desastres naturais.",
+      "id": 443
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Redes nacionais de saneamento, energia e controle aéreo exigem coordenação pública que vai muito além de um Estado mínimo.",
+      "id": 444
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Sem fiscalização pública efetiva, contratos privados sozinhos não impedem fraudes sistêmicas nem danos ambientais difusos.",
+      "id": 445
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Tratar o governo apenas como um estorvo a ser minimizado ignora o papel vital das instituições públicas no desenvolvimento.",
+      "id": 446
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Um Estado reduzido ao mínimo e sem capacidade administrativa deixa o país vulnerável a monopólios privados e choques externos.",
+      "id": 447
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Limitar o setor público a funções policiais e judiciais básicas é insuficiente para sustentar uma civilização próspera.",
+      "id": 448
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Instituições estatais dotadas de recursos amplos e planejamento ativo são indispensáveis para organizar a vida coletiva.",
+      "id": 449
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A proposta de reduzir drasticamente o tamanho e as atribuições do Estado deve ser rejeitada em favor de uma presença pública abrangente.",
+      "id": 450
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Enfraquecer a máquina pública e cortar o alcance da ação governamental é sempre um retrocesso para o país.",
+      "id": 451
+    },
+    {
+      "category": 4,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O Estado deve assumir responsabilidade ampla sobre os rumos da sociedade, jamais se limitar a um papel mínimo.",
+      "id": 452
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Toda criança deveria ter acesso a ensino básico de excelente qualidade para competir em condições justas na vida adulta.",
+      "id": 453
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Concursos e processos seletivos baseados em competência comprovada são mais justos do que indicações por laços familiares.",
+      "id": 454
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Programas públicos de mentoria, creche integral e acesso digital na infância são essenciais para nivelar o ponto de partida.",
+      "id": 455
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Grandes heranças deveriam ser fortemente tributadas para financiar capital inicial e formação técnica a todos os jovens adultos.",
+      "id": 456
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Toda riqueza acumulada em vida deveria retornar a um fundo público de oportunidades no falecimento, zerando vantagens hereditárias.",
+      "id": 457
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Confiscar integralmente a herança deixada pelos pais vai longe demais na tentativa de igualar o ponto de partida dos jovens.",
+      "id": 458
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Nivelar completamente as condições iniciais de todas as crianças exigiria uma interferência estatal excessiva na vida familiar.",
+      "id": 459
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Reduzir o valor humano de alguém apenas à sua produtividade individual desconsidera dimensões importantes da vida em comum.",
+      "id": 460
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Nem todo revés financeiro na vida adulta decorre de falta de esforço ou de escolhas individuais malfeitas.",
+      "id": 461
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Exames competitivos e rankings de desempenho medem treino específico muito mais do que o verdadeiro mérito de uma pessoa.",
+      "id": 462
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "A sorte, a saúde e mudanças econômicas imprevistas pesam tanto na trajetória pessoal que a pura meritocracia é ilusória.",
+      "id": 463
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Concentrar políticas sociais apenas na juventude e na largada profissional negligencia quem enfrenta crises mais tarde na vida.",
+      "id": 464
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Sistemas que classificam pessoas continuamente por desempenho competitivo geram desgaste social e desvalorizam funções essenciais.",
+      "id": 465
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Atrelar a remuneração das pessoas estritamente ao seu desempenho competitivo individual não é uma base desejável para a economia.",
+      "id": 466
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Programas voltados a fabricar igualdade de condições iniciais raramente cumprem o que prometem e distorcem escolhas familiares.",
+      "id": 467
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "O mérito individual não deveria ser tratado como o critério central para distribuir prestígio, cargos ou prosperidade.",
+      "id": 468
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O ideal de nivelar o ponto de partida para promover uma corrida meritocrática deve ser totalmente descartado.",
+      "id": 469
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Políticas de igualdade de oportunidades combinadas com competição por mérito são um modelo falho que não deveríamos perseguir.",
+      "id": 470
+    },
+    {
+      "category": 5,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A ideia de organizar a justiça econômica em torno da igualdade de largada e da recompensa ao talento individual está errada.",
+      "id": 471
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Disparidades extremas de patrimônio entre o topo e a base da sociedade corroem a coesão social e precisam ser reduzidas.",
+      "id": 472
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Políticas públicas deveriam garantir alimentação básica e acesso a serviços essenciais a quem vive em situação de miséria.",
+      "id": 473
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "A razão entre o maior e o menor rendimento dentro de qualquer empresa deveria ser limitada por um teto legal rígido.",
+      "id": 474
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Impor a mesma remuneração para tarefas com níveis muito diferentes de risco, estudo e dedicação desestimularia o esforço.",
+      "id": 475
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Abolir toda diferença salarial eliminaria incentivos importantes para inovar, assumir responsabilidades e resolver problemas difíceis.",
+      "id": 476
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Tentar igualar completamente o patrimônio final de todos os cidadãos exigiria um controle estatal sufocante sobre a vida econômica.",
+      "id": 477
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Fixar um teto legal máximo de renda ou patrimônio provocaria fuga de talentos e queda nos investimentos produtivos.",
+      "id": 478
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Garantir padrão de vida confortável a adultos aptos que escolhem não trabalhar sobrecarrega injustamente quem produz.",
+      "id": 479
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "A existência de grandes fortunas não é um problema em si quando elas resultam da criação de produtos úteis à sociedade.",
+      "id": 480
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "O Estado não deveria usar políticas fiscais ou salariais para comprimir as diferenças finais de renda entre os cidadãos.",
+      "id": 481
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Tratar a desigualdade material de resultados como uma injustiça a ser corrigida atrapalha o dinamismo e a prosperidade.",
+      "id": 482
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Direitos garantidos pela lei não deveriam incluir promessas estatais de moradia, renda ou padrão material equivalente.",
+      "id": 483
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Qualquer política pública cujo objetivo seja reduzir disparidades de riqueza ou nivelar resultados econômicos deve ser rejeitada.",
+      "id": 484
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O governo jamais deveria transferir renda ou limitar ganhos para aproximar a condição financeira dos mais pobres e dos mais ricos.",
+      "id": 485
+    },
+    {
+      "category": 5,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "A busca por igualdade material de condições finais entre as pessoas é nociva em qualquer grau e deveria ser abandonada.",
+      "id": 486
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Regras fiscais simples e alíquotas uniformes são mais transparentes do que sistemas cheios de faixas e isenções compensatórias.",
+      "id": 487
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Famílias têm pleno direito de investir seus próprios recursos na melhor formação e saúde possíveis para seus membros.",
+      "id": 488
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Serviços públicos como rodovias, universidades e parques deveriam ser custeados por taxas cobradas de quem efetivamente os utiliza.",
+      "id": 489
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Impostos progressivos punem indevidamente o sucesso financeiro e deveriam dar lugar a uma alíquota proporcional única para todos.",
+      "id": 490
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "O orçamento público não deveria financiar programas compensatórios, cotas socioeconômicas nem subsídios focalizados em grupos específicos.",
+      "id": 491
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Todo cidadão adulto deveria contribuir com um valor fixo idêntico para custear apenas as despesas básicas comuns do país.",
+      "id": 492
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Qualquer transferência redistributiva de impostos ou benefício assistencial gratuito deveria ser permanentemente proibido por lei.",
+      "id": 493
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Cobrar um imposto em valor fixo igual de um trabalhador humilde e de um grande empresário seria profundamente injusto.",
+      "id": 494
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Eliminar toda rede pública de amparo deixaria órfãos, idosos sem renda e pessoas com deficiência grave em desamparo inaceitável.",
+      "id": 495
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Quem tem maior capacidade contributiva deve pagar uma alíquota proporcionalmente maior de impostos do que quem ganha pouco.",
+      "id": 496
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Exigir que cada pessoa pague apenas pelos serviços que usa inviabilizaria hospitais, escolas e infraestrutura em regiões carentes.",
+      "id": 497
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Contribuintes devem financiar bens coletivos essenciais mesmo quando não utilizam diretamente cada um desses serviços públicos.",
+      "id": 498
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Aplicar encargos tributários uniformes sem programas compensatórios perpetua privilégios herdados e bloqueia a mobilidade social.",
+      "id": 499
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Permitir que famílias abastadas comprem vantagens educacionais ilimitadas enquanto faltam recursos públicos básicos é socialmente corrosivo.",
+      "id": 500
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O modelo de tributação uniforme sem redistribuição nem políticas compensatórias deve ser integralmente rejeitado como injusto.",
+      "id": 501
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Recusar transferências sociais e progressividade tributária em nome de encargos iguais ignora a realidade concreta da pobreza.",
+      "id": 502
+    },
+    {
+      "category": 5,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Um sistema fiscal justo não pode exigir que cada indivíduo arque sozinho com todos os seus riscos sem mecanismos redistributivos.",
+      "id": 503
+    }
+  ]
+}

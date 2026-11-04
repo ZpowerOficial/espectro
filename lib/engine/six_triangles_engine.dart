@@ -6,21 +6,21 @@ enum SixVariant { short, long }
 
 extension SixVariantInfo on SixVariant {
   String get label => switch (this) {
-        SixVariant.short => 'Curta',
-        SixVariant.long => 'Longa',
-      };
+    SixVariant.short => 'Curta',
+    SixVariant.long => 'Longa',
+  };
 
   int get questionsPerBucket => switch (this) {
-        SixVariant.short => 1,
-        SixVariant.long => 2,
-      };
+    SixVariant.short => 1,
+    SixVariant.long => 2,
+  };
 
   int get questionCount => 72 * questionsPerBucket;
 
   String get duration => switch (this) {
-        SixVariant.short => '± 10 min',
-        SixVariant.long => '± 20 min',
-      };
+    SixVariant.short => '± 10 min',
+    SixVariant.long => '± 20 min',
+  };
 }
 
 /// Escala de 5 pontos usada nos dois testes, do mais concorde ao mais discorde.
@@ -33,16 +33,24 @@ const List<String> agreementLabels = <String>[
 ];
 
 int _bucketOf(SixQuestion question) {
-  final int strength = question.multiplier == 1 ? question.strength : 5 - question.strength;
+  final int strength = question.multiplier == 1
+      ? question.strength
+      : 5 - question.strength;
   return strength - 1;
 }
 
 /// Sorteia `perBucket` perguntas de cada uma das 72 células
 /// (6 categorias × 3 subcategorias × 4 faixas de força), como no site.
-List<SixQuestion> selectSixQuestions(SixTrianglesData data, SixVariant variant, Random random) {
+List<SixQuestion> selectSixQuestions(
+  SixTrianglesData data,
+  SixVariant variant,
+  Random random,
+) {
   final Map<int, List<SixQuestion>> buckets = <int, List<SixQuestion>>{};
   for (final SixQuestion question in data.questions) {
-    final int key = (question.category * 3 + question.subcategory) * 4 + _bucketOf(question);
+    final int key =
+        (question.category * 3 + question.subcategory) * 4 +
+        _bucketOf(question);
     buckets.putIfAbsent(key, () => <SixQuestion>[]).add(question);
   }
 
@@ -51,9 +59,12 @@ List<SixQuestion> selectSixQuestions(SixTrianglesData data, SixVariant variant, 
     for (var subcategory = 0; subcategory < 3; subcategory++) {
       for (var bucket = 0; bucket < 4; bucket++) {
         final int key = (category * 3 + subcategory) * 4 + bucket;
-        final List<SixQuestion> pool = <SixQuestion>[...?buckets[key]]..shuffle(random);
+        final List<SixQuestion> pool = <SixQuestion>[...?buckets[key]]
+          ..shuffle(random);
         if (pool.length < variant.questionsPerBucket) {
-          throw StateError('Célula $key sem perguntas suficientes para ${variant.label}');
+          throw StateError(
+            'Célula $key sem perguntas suficientes para ${variant.label}',
+          );
         }
         selected.addAll(pool.take(variant.questionsPerBucket));
       }
@@ -107,7 +118,10 @@ String classifyTriangle(List<int> points, List<String> subcategories) {
 }
 
 class SixTrianglesResult {
-  const SixTrianglesResult({required this.triangles, required this.answeredCount});
+  const SixTrianglesResult({
+    required this.triangles,
+    required this.answeredCount,
+  });
 
   final List<TriangleScore> triangles;
   final int answeredCount;
@@ -117,7 +131,9 @@ class SixTrianglesResult {
     for (final TriangleScore triangle in triangles) {
       buffer.writeln('${triangle.category.label}: ${triangle.classification}');
       for (var i = 0; i < 3; i++) {
-        buffer.writeln('  ${triangle.category.subcategories[i]}: ${triangle.percents[i].toStringAsFixed(1)}%');
+        buffer.writeln(
+          '  ${triangle.category.subcategories[i]}: ${triangle.percents[i].toStringAsFixed(1)}%',
+        );
       }
     }
     return buffer.toString().trimRight();
@@ -151,7 +167,8 @@ class SixTrianglesSession {
 
   bool get isLast => index == questions.length - 1;
 
-  double get progress => questions.isEmpty ? 0 : answeredCount / questions.length;
+  double get progress =>
+      questions.isEmpty ? 0 : answeredCount / questions.length;
 
   void select(int optionIndex) {
     if (optionIndex < 0 || optionIndex >= agreementLabels.length) {
@@ -198,6 +215,9 @@ class SixTrianglesSession {
         ),
       );
     }
-    return SixTrianglesResult(triangles: triangles, answeredCount: answeredCount);
+    return SixTrianglesResult(
+      triangles: triangles,
+      answeredCount: answeredCount,
+    );
   }
 }

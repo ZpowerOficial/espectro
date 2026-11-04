@@ -91,20 +91,26 @@ class _TwelveQuizScreenState extends State<TwelveQuizScreen> {
     }
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (BuildContext context) => TwelveArchetypeScreen(session: _session),
+        builder: (BuildContext context) =>
+            TwelveArchetypeScreen(session: _session),
       ),
     );
   }
 
   void _snack(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _showHelp() {
     final AxisQuestion question = _session.current;
     final Axis axis = _session.currentAxis;
-    final String agreePole = question.agreeIsLeft ? axis.leftPole : axis.rightPole;
-    final String disagreePole = question.agreeIsLeft ? axis.rightPole : axis.leftPole;
+    final String agreePole = question.agreeIsLeft
+        ? axis.leftPole
+        : axis.rightPole;
+    final String disagreePole = question.agreeIsLeft
+        ? axis.rightPole
+        : axis.leftPole;
     showInfoSheet(
       context,
       title: 'Entenda a afirmação',
@@ -160,9 +166,14 @@ class _TwelveQuizScreenState extends State<TwelveQuizScreen> {
     final Axis axis = _session.currentAxis;
     final List<({int start, int end, String term, String definition})> terms =
         <({int start, int end, String term, String definition})>[
-      for (final QuestionTerm term in question.terms)
-        (start: term.start, end: term.end, term: term.term, definition: term.definition),
-    ];
+          for (final QuestionTerm term in question.terms)
+            (
+              start: term.start,
+              end: term.end,
+              term: term.term,
+              definition: term.definition,
+            ),
+        ];
 
     return Scaffold(
       body: SafeArea(
@@ -173,7 +184,8 @@ class _TwelveQuizScreenState extends State<TwelveQuizScreen> {
               child: QuizTopBar(
                 onBack: _goBack,
                 progress: _session.progress,
-                counter: 'Pergunta ${_session.index + 1} de ${_session.questions.length}',
+                counter:
+                    'Pergunta ${_session.index + 1} de ${_session.questions.length}',
               ),
             ),
             Expanded(
@@ -200,7 +212,10 @@ class _TwelveQuizScreenState extends State<TwelveQuizScreen> {
                           const SizedBox(height: 6),
                           TextButton.icon(
                             onPressed: _showHelp,
-                            icon: const Icon(Icons.info_outline_rounded, size: 16),
+                            icon: const Icon(
+                              Icons.info_outline_rounded,
+                              size: 16,
+                            ),
                             label: const Text('Entenda esta afirmação'),
                             style: TextButton.styleFrom(
                               foregroundColor: AppColors.inkSoft,
@@ -220,13 +235,19 @@ class _TwelveQuizScreenState extends State<TwelveQuizScreen> {
                         Text('Sua resposta', style: text.titleMedium),
                         const Spacer(),
                         Text(
-                          _session.currentAnswer == null ? 'toque para escolher' : 'respondida',
+                          _session.currentAnswer == null
+                              ? 'toque para escolher'
+                              : 'respondida',
                           style: text.bodySmall,
                         ),
                       ],
                     ),
                     const SizedBox(height: 10),
-                    for (var i = 0; i < widget.data.twelveAxes.answerOptions.length; i++) ...<Widget>[
+                    for (
+                      var i = 0;
+                      i < widget.data.twelveAxes.answerOptions.length;
+                      i++
+                    ) ...<Widget>[
                       AnswerTile(
                         label: widget.data.twelveAxes.answerOptions[i].label,
                         icon: _answerIcon(i),
@@ -258,7 +279,9 @@ class _TwelveQuizScreenState extends State<TwelveQuizScreen> {
                     onPressed: _swapQuestion,
                     icon: const Icon(Icons.swap_horiz_rounded, size: 18),
                     label: const Text('Trocar'),
-                    style: TextButton.styleFrom(foregroundColor: AppColors.inkSoft),
+                    style: TextButton.styleFrom(
+                      foregroundColor: AppColors.inkSoft,
+                    ),
                   ),
                   const Spacer(),
                   Opacity(
@@ -272,7 +295,9 @@ class _TwelveQuizScreenState extends State<TwelveQuizScreen> {
                   const SizedBox(width: 9),
                   AppButton(
                     label: _session.isLast ? 'Continuar' : 'Avançar',
-                    icon: _session.isLast ? Icons.check_rounded : Icons.arrow_forward_rounded,
+                    icon: _session.isLast
+                        ? Icons.check_rounded
+                        : Icons.arrow_forward_rounded,
                     expand: false,
                     onPressed: _session.currentAnswer == null ? null : _goNext,
                   ),
@@ -333,7 +358,10 @@ class _HelpBlock extends StatelessWidget {
         const SizedBox(height: 6),
         Text(text, style: theme.bodyMedium),
         const SizedBox(height: 6),
-        Text('Ex.: $example', style: theme.bodySmall?.copyWith(fontStyle: FontStyle.italic)),
+        Text(
+          'Ex.: $example',
+          style: theme.bodySmall?.copyWith(fontStyle: FontStyle.italic),
+        ),
       ],
     );
   }

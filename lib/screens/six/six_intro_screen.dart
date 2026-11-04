@@ -22,10 +22,8 @@ class _SixIntroScreenState extends State<SixIntroScreen> {
   void _start() {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (BuildContext context) => SixQuizScreen(
-          data: widget.data,
-          variant: _variant,
-        ),
+        builder: (BuildContext context) =>
+            SixQuizScreen(data: widget.data, variant: _variant),
       ),
     );
   }
@@ -120,7 +118,10 @@ class _SixIntroScreenState extends State<SixIntroScreen> {
             const SizedBox(height: 28),
             const Eyebrow('Six Triangles'),
             const SizedBox(height: 12),
-            Text('Seis triângulos.\nDezoito vértices.', style: text.displayMedium),
+            Text(
+              'Seis triângulos.\nDezoito vértices.',
+              style: text.displayMedium,
+            ),
             const SizedBox(height: 14),
             Text(
               'Cada área tem três caminhos possíveis. Responda e veja onde o seu '
@@ -142,7 +143,11 @@ class _SixIntroScreenState extends State<SixIntroScreen> {
                           width: 10,
                           height: 10,
                           decoration: BoxDecoration(
-                            color: Color.lerp(categories[i].color, AppColors.ink, 0.25),
+                            color: Color.lerp(
+                              categories[i].color,
+                              AppColors.ink,
+                              0.25,
+                            ),
                             borderRadius: BorderRadius.circular(3),
                           ),
                         ),
@@ -200,14 +205,22 @@ class _SixIntroScreenState extends State<SixIntroScreen> {
               behavior: HitTestBehavior.opaque,
               child: Row(
                 children: <Widget>[
-                  const Icon(Icons.info_outline_rounded, size: 16, color: AppColors.inkSoft),
+                  const Icon(
+                    Icons.info_outline_rounded,
+                    size: 16,
+                    color: AppColors.inkSoft,
+                  ),
                   const SizedBox(width: 7),
                   Text(
                     'Como o triângulo é calculado',
                     style: text.labelLarge?.copyWith(color: AppColors.inkSoft),
                   ),
                   const SizedBox(width: 4),
-                  const Icon(Icons.arrow_outward_rounded, size: 15, color: AppColors.inkSoft),
+                  const Icon(
+                    Icons.arrow_outward_rounded,
+                    size: 15,
+                    color: AppColors.inkSoft,
+                  ),
                 ],
               ),
             ),

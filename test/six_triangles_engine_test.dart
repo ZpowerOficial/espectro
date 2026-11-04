@@ -39,8 +39,11 @@ SixTrianglesData _fixture() {
 void main() {
   group('seleção do Six Triangles', () {
     test('curta usa 1 pergunta por célula e totaliza 72', () {
-      final List<SixQuestion> questions =
-          selectSixQuestions(_fixture(), SixVariant.short, Random(3));
+      final List<SixQuestion> questions = selectSixQuestions(
+        _fixture(),
+        SixVariant.short,
+        Random(3),
+      );
       expect(questions.length, 72);
       expect(questions.map((q) => q.id).toSet().length, 72);
     });
@@ -83,7 +86,10 @@ void main() {
       for (final TriangleScore triangle in result.triangles) {
         for (var sub = 0; sub < 3; sub++) {
           final int raw = expected[triangle.category.id * 3 + sub];
-          expect(triangle.points[sub], closeTo(raw * 1000 / totals[triangle.category.id], 1));
+          expect(
+            triangle.points[sub],
+            closeTo(raw * 1000 / totals[triangle.category.id], 1),
+          );
         }
         expect(triangle.points.reduce((a, b) => a + b), closeTo(1000, 2));
         expect(triangle.classification, isNotEmpty);

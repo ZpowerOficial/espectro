@@ -1,0 +1,412 @@
+import 'package:flutter/material.dart' hide Axis;
+
+import '../../../data/models.dart';
+import '../../../domain/engine/compatibility_engine.dart';
+import '../../../domain/engine/comparison_engine.dart';
+import '../../../domain/models/political_models.dart';
+import '../../../theme.dart';
+import '../../../widgets/common.dart';
+import '../../../widgets/editorial.dart';
+import '../../../widgets/espectro_scaffold.dart';
+import '../../charts/evolution_line_chart.dart';
+import '../../view_models/app_view_model.dart';
+import '../compare/compare_evaluations_screen.dart';
+import '../results/espectro_result_screen.dart';
+
+/// Tela de histórico completo de avaliações e acompanhamento cronológico da
+/// evolução por eixo bipolar ou vértice triangular.
+class HistoryEvolutionScreen extends StatefulWidget {
+  const HistoryEvolutionScreen({required this.appViewModel, super.key});
+
+  final AppViewModel appViewModel;
+
+  @override
+  State<HistoryEvolutionScreen> createState() => _HistoryEvolutionScreenState();
+}
+
+class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
+  bool _trackTriad = false;
+  late String _selectedAxisId;
+  int _selectedTriadCat = 0;
+  int _selectedVertexIdx = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedAxisId = widget.appViewModel.data.twelveAxes.axes.first.id;
+  }
+
+  String _formatDate(DateTime dt) {
+    final String d = dt.day.toString().padLeft(2, '0');
+    final String m = dt.month.toString().padLeft(2, '0');
+    final String hh = dt.hour.toString().padLeft(2, '0');
+    final String mm = dt.minute.toString().padLeft(2, '0');
+    return '$d/$m/${dt.year} às $hh:$mm';
+  }
+
+  Future<void> _confirmDelete(EvaluationRecord record) async {
+    final EspectroPalette p = context.palette;
+    final bool? ok = await showDialog<bool>(
+      context: context,
+      builder: (BuildContext ctx) => AlertDialog(
+        backgroundColor: p.surface,
+        title: const Text('Excluir avaliação?'),
+        content: Text('Remover "${record.displayTitle}" do histórico local?'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: const Text('Cancelar'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: const Text('Excluir'),
+          ),
+        ],
+      ),
+    );
+    if (ok == true) {
+      await widget.appViewModel.deleteRecord(record.id);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
+    final TextTheme text = Theme.of(context).textTheme;
+
+    return ListenableBuilder(
+      listenable: widget.appViewModel,
+      builder: (BuildContext context, _) {
+        final List<EvaluationRecord> records = widget.appViewModel.history;
+
+        return DefaultTabController(
+          length: 2,
+          child: EspectroScaffold(
+            appViewModel: widget.appViewModel,
+            selectedIndex: 3,
+            isSectionRoot: true,
+            appBar: AppBar(
+              leading: Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: Center(
+                  child: CircleIconButton(
+                    icon: Icons.arrow_back_rounded,
+                    onPressed: () => Navigator.of(context).pop(),
+                    tooltip: 'Voltar',
+                  ),
+                ),
+              ),
+              title: const Text('Histórico'),
+              actions: <Widget>[
+                if (records.length >= 2)
+                  IconButton(
+                    icon: const Icon(Icons.compare_arrows_rounded),
+                    tooltip: 'Comparar duas avaliações',
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          builder: (_) => CompareEvaluationsScreen(
+                            appViewModel: widget.appViewModel,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+              ],
+              bottom: TabBar(
+                labelColor: p.accent,
+                unselectedLabelColor: p.muted,
+                indicatorColor: p.accent,
+                dividerColor: p.line,
+                tabs: <Widget>[
+                  Tab(text: 'Avaliações (${records.length})'),
+                  const Tab(text: 'Evolução no Tempo'),
+                ],
+              ),
+            ),
+            body: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(22, 18, 22, 22),
+                  child: EditorialHeading(
+                    eyebrow: 'Histórico / Comparação',
+                    title: 'Suas ideias podem\nmudar.',
+                    description: 'Compare avaliações sem apagar a metodologia utilizada em cada período.',
+                  ),
+                ),
+                Expanded(
+                  child: TabBarView(
+                    children: <Widget>[
+                      _buildRecordsList(context, records, p, text),
+                      _buildEvolutionView(context, records, p, text),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildRecordsList(
+    BuildContext context,
+    List<EvaluationRecord> records,
+    EspectroPalette p,
+    TextTheme text,
+  ) {
+    if (records.isEmpty) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(Icons.history_rounded, size: 46, color: p.muted),
+              const SizedBox(height: 14),
+              Text('Nenhuma avaliação salva', style: text.headlineSmall),
+              const SizedBox(height: 8),
+              Text(
+                'Conclua qualquer teste no Espectro para registrar seu histórico '
+                'local e acompanhar sua evolução ao longo do tempo.',
+                textAlign: TextAlign.center,
+                style: text.bodyMedium,
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return ListView.separated(
+      padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
+      itemCount: records.length,
+      separatorBuilder: (_, _) => const SizedBox(height: 12),
+      itemBuilder: (BuildContext context, int index) {
+        final EvaluationRecord rec = records[index];
+        final CompatibilityReport compat = EspectroCompatibilityEngine.evaluate(
+          catalog: widget.appViewModel.data.catalog,
+          axes: rec.axes,
+          triads: rec.triads,
+        );
+
+        return InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => EspectroResultScreen(
+                  appViewModel: widget.appViewModel,
+                  record: rec,
+                ),
+              ),
+            );
+          },
+          child: SectionCard(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Tag(
+                      label: rec.suite.title,
+                      background: p.accentSoft,
+                      foreground: p.accent,
+                    ),
+                    const SizedBox(width: 8),
+                    Tag(label: rec.depth.label),
+                    const Spacer(),
+                    IconButton(
+                      icon: Icon(
+                        Icons.delete_outline_rounded,
+                        size: 19,
+                        color: p.muted,
+                      ),
+                      visualDensity: VisualDensity.compact,
+                      tooltip: 'Excluir',
+                      onPressed: () => _confirmDelete(rec),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 6),
+                Text(rec.displayTitle, style: text.titleLarge),
+                const SizedBox(height: 3),
+                Text(_formatDate(rec.createdAt), style: text.bodySmall),
+                const SizedBox(height: 10),
+                Text(
+                  compat.headline,
+                  style: text.bodyMedium?.copyWith(
+                    color: p.ink,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '${rec.quality.totalAnswered} respostas · '
+                  'cobertura ${(rec.quality.coverage * 100).round()}%',
+                  style: text.bodySmall,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildEvolutionView(
+    BuildContext context,
+    List<EvaluationRecord> records,
+    EspectroPalette p,
+    TextTheme text,
+  ) {
+    if (records.length < 2) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(Icons.timeline_rounded, size: 46, color: p.muted),
+              const SizedBox(height: 14),
+              Text('Complete ao menos 2 avaliações', style: text.headlineSmall),
+              const SizedBox(height: 8),
+              Text(
+                'Com duas ou mais avaliações registradas, o Espectro plota a curva '
+                'de evolução e a margem de incerteza em cada eixo e tríade.',
+                textAlign: TextAlign.center,
+                style: text.bodyMedium,
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    final List<Axis> axes = widget.appViewModel.data.twelveAxes.axes;
+    final List<SixCategory> cats =
+        widget.appViewModel.data.sixTriangles.categories;
+
+    final List<EvolutionPoint> points;
+    final String topLabel;
+    final String bottomLabel;
+    if (!_trackTriad) {
+      final Axis ax = axes.firstWhere((a) => a.id == _selectedAxisId);
+      points = EspectroComparisonEngine.axisSeries(
+        records: records,
+        axisId: ax.id,
+      );
+      topLabel = ax.rightPole;
+      bottomLabel = ax.leftPole;
+    } else {
+      final SixCategory cat = cats[_selectedTriadCat];
+      points = EspectroComparisonEngine.triadVertexSeries(
+        records: records,
+        categoryId: cat.id,
+        vertexIndex: _selectedVertexIdx,
+      );
+      topLabel = cat.subcategories[_selectedVertexIdx];
+      bottomLabel = 'Demais vértices';
+    }
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: ChoiceChip(
+                label: const Text('Eixos Bipolares'),
+                selected: !_trackTriad,
+                onSelected: (_) => setState(() => _trackTriad = false),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: ChoiceChip(
+                label: const Text('Vértices Triangulares'),
+                selected: _trackTriad,
+                onSelected: (_) => setState(() => _trackTriad = true),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 14),
+        if (!_trackTriad)
+          Wrap(
+            spacing: 7,
+            runSpacing: 7,
+            children: <Widget>[
+              for (final Axis ax in axes)
+                ChoiceChip(
+                  label: Text(ax.label),
+                  selected: _selectedAxisId == ax.id,
+                  onSelected: (_) => setState(() => _selectedAxisId = ax.id),
+                ),
+            ],
+          )
+        else ...<Widget>[
+          Wrap(
+            spacing: 7,
+            runSpacing: 7,
+            children: <Widget>[
+              for (final SixCategory cat in cats)
+                ChoiceChip(
+                  label: Text(cat.label),
+                  selected: _selectedTriadCat == cat.id,
+                  onSelected: (_) => setState(() {
+                    _selectedTriadCat = cat.id;
+                    _selectedVertexIdx = 0;
+                  }),
+                ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Wrap(
+            spacing: 7,
+            children: <Widget>[
+              for (var v = 0; v < 3; v++)
+                ChoiceChip(
+                  label: Text(cats[_selectedTriadCat].subcategories[v]),
+                  selected: _selectedVertexIdx == v,
+                  onSelected: (_) => setState(() => _selectedVertexIdx = v),
+                ),
+            ],
+          ),
+        ],
+        const SizedBox(height: 16),
+        SectionCard(
+          child: points.isEmpty
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 28),
+                  child: Text(
+                    'Nenhuma avaliação no histórico mediu esta dimensão ainda.',
+                    textAlign: TextAlign.center,
+                    style: text.bodyMedium,
+                  ),
+                )
+              : EvolutionLineChart(
+                  points: points,
+                  topLabel: topLabel,
+                  bottomLabel: bottomLabel,
+                ),
+        ),
+        const SizedBox(height: 16),
+        AppButton(
+          label: 'Comparar duas avaliações lado a lado',
+          kind: AppButtonKind.outline,
+          icon: Icons.compare_arrows_rounded,
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) =>
+                    CompareEvaluationsScreen(appViewModel: widget.appViewModel),
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
+}

@@ -10,19 +10,16 @@ class Eyebrow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color resolved = color ?? AppColors.muted;
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Container(width: 18, height: 1.5, color: resolved),
-        const SizedBox(width: 8),
-        Flexible(
-          child: Text(
-            text.toUpperCase(),
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(color: resolved),
-          ),
-        ),
-      ],
+    final EspectroPalette p = context.palette;
+    final Color resolved = color ?? p.muted;
+    return Text(
+      text.toUpperCase(),
+      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+        color: resolved,
+        fontSize: 11,
+        letterSpacing: 0,
+        fontWeight: FontWeight.w600,
+      ),
     );
   }
 }
@@ -32,29 +29,30 @@ class CircleIconButton extends StatelessWidget {
     required this.icon,
     required this.onPressed,
     this.tooltip,
-    this.foreground = AppColors.ink,
-    this.background = AppColors.surface,
+    this.foreground,
+    this.background,
     super.key,
   });
 
   final IconData icon;
   final VoidCallback? onPressed;
   final String? tooltip;
-  final Color foreground;
-  final Color background;
+  final Color? foreground;
+  final Color? background;
 
   @override
   Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
     final Widget button = Material(
-      color: background,
-      shape: CircleBorder(side: BorderSide(color: AppColors.line, width: 1)),
+      color: background ?? p.surface,
+      shape: CircleBorder(side: BorderSide(color: p.line, width: 1)),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onPressed,
         child: SizedBox(
-          width: 46,
-          height: 46,
-          child: Icon(icon, size: 20, color: foreground),
+          width: 44,
+          height: 44,
+          child: Icon(icon, size: 20, color: foreground ?? p.ink),
         ),
       ),
     );
@@ -72,6 +70,7 @@ class AppButton extends StatelessWidget {
     this.kind = AppButtonKind.filled,
     this.icon,
     this.expand = true,
+    this.onDark = false,
     super.key,
   });
 
@@ -80,27 +79,41 @@ class AppButton extends StatelessWidget {
   final AppButtonKind kind;
   final IconData? icon;
   final bool expand;
+  final bool onDark;
 
   @override
   Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
     final bool enabled = onPressed != null;
-    final (Color background, Color foreground, BorderSide border) = switch (kind) {
-      AppButtonKind.filled => (AppColors.ink, AppColors.surface, BorderSide.none),
-      AppButtonKind.outline => (Colors.transparent, AppColors.ink, const BorderSide(color: AppColors.ink, width: 1.3)),
-      AppButtonKind.ghost => (Colors.transparent, AppColors.inkSoft, BorderSide.none),
+    final (
+      Color background,
+      Color foreground,
+      BorderSide border,
+    ) = switch (kind) {
+      AppButtonKind.filled => (
+        onDark ? const Color(0xFF6AE0CB) : p.accent,
+        (onDark || p.isDark) ? const Color(0xFF061318) : Colors.white,
+        BorderSide.none,
+      ),
+      AppButtonKind.outline => (
+        Colors.transparent,
+        p.ink,
+        BorderSide(color: p.line, width: 1.4),
+      ),
+      AppButtonKind.ghost => (Colors.transparent, p.inkSoft, BorderSide.none),
     };
 
     final Widget content = Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: expand ? MainAxisSize.max : MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Text(
-          label,
-          style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: foreground,
-                fontSize: 15,
-                letterSpacing: 0,
-              ),
+        Flexible(
+          child: Text(
+            label,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.labelLarge
+                ?.copyWith(color: foreground, fontSize: 16, letterSpacing: 0),
+          ),
         ),
         if (icon != null) ...<Widget>[
           const SizedBox(width: 8),
@@ -114,16 +127,15 @@ class AppButton extends StatelessWidget {
       child: Material(
         color: background,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(13),
           side: border,
         ),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onPressed,
           child: Container(
-            height: 54,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            alignment: Alignment.center,
+            constraints: const BoxConstraints(minHeight: 52),
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
             child: content,
           ),
         ),
@@ -141,7 +153,7 @@ class AnswerTile extends StatelessWidget {
     required this.onTap,
     this.icon,
     this.badge,
-    this.accent = AppColors.ink,
+    this.accent,
     super.key,
   }) : assert(icon != null || badge != null, 'informe icon ou badge');
 
@@ -150,30 +162,30 @@ class AnswerTile extends StatelessWidget {
   final VoidCallback onTap;
   final IconData? icon;
   final String? badge;
-  final Color accent;
+  final Color? accent;
 
   @override
   Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
+    final Color resolvedAccent = accent ?? p.accent;
+    final Color onAccent = p.isDark ? const Color(0xFF061318) : Colors.white;
+
     final Widget marker = AnimatedContainer(
-      duration: const Duration(milliseconds: 160),
-      width: 28,
-      height: 28,
+      duration: const Duration(milliseconds: 150),
+      width: 16,
+      height: 16,
       decoration: BoxDecoration(
-        color: selected ? accent : Colors.transparent,
+        color: selected ? resolvedAccent : p.canvas,
         shape: BoxShape.circle,
-        border: Border.all(color: selected ? accent : AppColors.line, width: 1.4),
+        border: Border.all(
+          color: selected ? resolvedAccent : p.canvas,
+          width: 1.4,
+        ),
       ),
       alignment: Alignment.center,
       child: badge != null
-          ? Text(
-              badge!,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w800,
-                color: selected ? AppColors.surface : AppColors.muted,
-              ),
-            )
-          : Icon(icon, size: 15, color: selected ? AppColors.surface : AppColors.muted),
+          ? Text(badge!, style: TextStyle(fontSize: 9, color: onAccent))
+          : null,
     );
 
     return Material(
@@ -182,14 +194,14 @@ class AnswerTile extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(14),
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 160),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+          duration: const Duration(milliseconds: 150),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           decoration: BoxDecoration(
-            color: selected ? accent.withValues(alpha: 0.07) : AppColors.surface,
+            color: selected ? p.accentSoft : p.surface,
             borderRadius: BorderRadius.circular(14),
             border: Border.all(
-              color: selected ? accent : AppColors.line,
-              width: selected ? 1.6 : 1,
+              color: selected ? resolvedAccent : p.line,
+              width: 1,
             ),
           ),
           child: Row(
@@ -200,11 +212,11 @@ class AnswerTile extends StatelessWidget {
                 child: Text(
                   label,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontSize: 15,
-                        height: 1.25,
-                        fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
-                        color: AppColors.ink,
-                      ),
+                    fontSize: 14,
+                    height: 1.25,
+                    fontWeight: FontWeight.w400,
+                    color: p.ink,
+                  ),
                 ),
               ),
             ],
@@ -218,27 +230,28 @@ class AnswerTile extends StatelessWidget {
 class SectionCard extends StatelessWidget {
   const SectionCard({
     required this.child,
-    this.padding = const EdgeInsets.all(20),
-    this.color = AppColors.surface,
-    this.borderColor = AppColors.line,
-    this.radius = 22,
+    this.padding = const EdgeInsets.all(18),
+    this.color,
+    this.borderColor,
+    this.radius = 17,
     super.key,
   });
 
   final Widget child;
   final EdgeInsets padding;
-  final Color color;
-  final Color borderColor;
+  final Color? color;
+  final Color? borderColor;
   final double radius;
 
   @override
   Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
     return Container(
       padding: padding,
       decoration: BoxDecoration(
-        color: color,
+        color: color ?? p.surface,
         borderRadius: BorderRadius.circular(radius),
-        border: Border.all(color: borderColor),
+        border: Border.all(color: borderColor ?? p.line),
       ),
       child: child,
     );
@@ -246,25 +259,27 @@ class SectionCard extends StatelessWidget {
 }
 
 class ProgressRail extends StatelessWidget {
-  const ProgressRail({required this.value, this.color = AppColors.ink, super.key});
+  const ProgressRail({required this.value, this.color, super.key});
 
   final double value;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
+    final Color bar = color ?? p.accent;
     return ClipRRect(
       borderRadius: BorderRadius.circular(99),
       child: Stack(
         children: <Widget>[
-          Container(height: 6, color: AppColors.line),
+          Container(height: 6, color: p.surfaceMuted),
           FractionallySizedBox(
-            widthFactor: value.clamp(0, 1),
+            widthFactor: value.clamp(0.0, 1.0),
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 220),
+              duration: const Duration(milliseconds: 200),
               height: 6,
               decoration: BoxDecoration(
-                color: color,
+                color: bar,
                 borderRadius: BorderRadius.circular(99),
               ),
             ),
@@ -275,33 +290,55 @@ class ProgressRail extends StatelessWidget {
   }
 }
 
-class Tag extends StatelessWidget {
-  const Tag({
-    required this.label,
-    this.background = AppColors.surfaceAlt,
-    this.foreground = AppColors.ink,
+/// Container responsivo que centraliza o conteúdo em telas largas (Desktop/Web/Tablet)
+/// limitando a largura máxima para preservar a legibilidade e evitar overflow ou estiramento.
+class ResponsiveContentFrame extends StatelessWidget {
+  const ResponsiveContentFrame({
+    required this.child,
+    this.maxWidth = 760.0,
+    this.padding = EdgeInsets.zero,
     super.key,
   });
 
-  final String label;
-  final Color background;
-  final Color foreground;
+  final Widget child;
+  final double maxWidth;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
+    return Center(
+      heightFactor: 1,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: maxWidth),
+        child: Padding(padding: padding, child: child),
+      ),
+    );
+  }
+}
+
+class Tag extends StatelessWidget {
+  const Tag({required this.label, this.background, this.foreground, super.key});
+
+  final String label;
+  final Color? background;
+  final Color? foreground;
+
+  @override
+  Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: background,
-        borderRadius: BorderRadius.circular(99),
+        color: background ?? p.surfaceMuted,
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
         label.toUpperCase(),
         style: Theme.of(context).textTheme.labelSmall?.copyWith(
-              color: foreground,
-              fontSize: 9.5,
-              letterSpacing: 1.1,
-            ),
+          color: foreground ?? p.inkSoft,
+          fontSize: 9.5,
+          letterSpacing: 1.1,
+        ),
       ),
     );
   }
@@ -324,15 +361,24 @@ class TermText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle base = style ?? Theme.of(context).textTheme.headlineSmall ?? const TextStyle();
-    final List<({int start, int end, String term, String definition})> valid = terms
-        .where((term) => term.start >= 0 && term.end <= text.length && term.start < term.end)
-        .toList()
-      ..sort((a, b) => a.start.compareTo(b.start));
+    final EspectroPalette p = context.palette;
+    final TextStyle base =
+        style ?? Theme.of(context).textTheme.headlineSmall ?? const TextStyle();
+    final List<({int start, int end, String term, String definition})> valid =
+        terms
+            .where(
+              (term) =>
+                  term.start >= 0 &&
+                  term.end <= text.length &&
+                  term.start < term.end,
+            )
+            .toList()
+          ..sort((a, b) => a.start.compareTo(b.start));
 
     final List<InlineSpan> spans = <InlineSpan>[];
     var cursor = 0;
-    for (final term in valid) {
+    for (final ({int start, int end, String term, String definition}) term
+        in valid) {
       if (term.start < cursor) continue;
       if (term.start > cursor) {
         spans.add(TextSpan(text: text.substring(cursor, term.start)));
@@ -348,7 +394,7 @@ class TermText extends StatelessWidget {
               style: base.copyWith(
                 decoration: TextDecoration.underline,
                 decorationThickness: 2,
-                decorationColor: AppColors.accent,
+                decorationColor: p.accent,
                 decorationStyle: TextDecorationStyle.solid,
               ),
             ),
@@ -369,30 +415,31 @@ Future<void> showInfoSheet(
   required String title,
   required Widget child,
 }) {
+  final EspectroPalette p = context.palette;
   return showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
-    backgroundColor: AppColors.surface,
+    backgroundColor: p.surface,
     shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(26)),
+      borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
     ),
     builder: (BuildContext context) {
       return DraggableScrollableSheet(
         expand: false,
-        initialChildSize: 0.62,
+        initialChildSize: 0.64,
         maxChildSize: 0.92,
         minChildSize: 0.35,
         builder: (BuildContext context, ScrollController controller) {
           return ListView(
             controller: controller,
-            padding: const EdgeInsets.fromLTRB(22, 14, 22, 30),
+            padding: const EdgeInsets.fromLTRB(22, 14, 22, 32),
             children: <Widget>[
               Center(
                 child: Container(
                   width: 38,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: AppColors.line,
+                    color: p.line,
                     borderRadius: BorderRadius.circular(99),
                   ),
                 ),
@@ -401,6 +448,12 @@ Future<void> showInfoSheet(
               Text(title, style: Theme.of(context).textTheme.headlineSmall),
               const SizedBox(height: 16),
               child,
+              const SizedBox(height: 20),
+              AppButton(
+                label: 'Entendi',
+                icon: Icons.arrow_forward_rounded,
+                onPressed: () => Navigator.of(context).pop(),
+              ),
             ],
           );
         },

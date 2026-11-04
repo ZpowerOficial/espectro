@@ -50,7 +50,8 @@ class _MiniAxesPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant _MiniAxesPainter oldDelegate) => !listEquals(oldDelegate.axes, axes);
+  bool shouldRepaint(covariant _MiniAxesPainter oldDelegate) =>
+      !listEquals(oldDelegate.axes, axes);
 }
 
 /// Mapa radial do resultado: cada raio é um eixo, a barra vai do centro para
@@ -100,7 +101,9 @@ class _AxisRadialPainter extends CustomPainter {
       final AxisScore score = scores[i];
       final double factor = (score.distanceFromCenter / 50).clamp(0.05, 1.0);
       final Offset end = start + direction * (radius * 0.86 * factor);
-      final Color color = score.leansLeft ? score.axis.leftColor : score.axis.rightColor;
+      final Color color = score.leansLeft
+          ? score.axis.leftColor
+          : score.axis.rightColor;
 
       canvas.drawLine(
         start,
@@ -110,7 +113,11 @@ class _AxisRadialPainter extends CustomPainter {
           ..strokeWidth = 9
           ..strokeCap = StrokeCap.round,
       );
-      canvas.drawCircle(center + direction * (radius * 0.14), 2.4, Paint()..color = color);
+      canvas.drawCircle(
+        center + direction * (radius * 0.14),
+        2.4,
+        Paint()..color = color,
+      );
     }
 
     canvas.drawCircle(
@@ -125,7 +132,8 @@ class _AxisRadialPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant _AxisRadialPainter oldDelegate) => !listEquals(oldDelegate.scores, scores);
+  bool shouldRepaint(covariant _AxisRadialPainter oldDelegate) =>
+      !listEquals(oldDelegate.scores, scores);
 }
 
 /// Roda com os seis triângulos do Six Triangles, cada um com o ponto calculado
@@ -202,10 +210,16 @@ class _SixWheelPainter extends CustomPainter {
       if (showDots) {
         final List<int> weights = triangles[i].points;
         if (weights.length >= 3) {
-          final double total = weights.fold<double>(0, (sum, value) => sum + value);
+          final double total = weights.fold<double>(
+            0,
+            (sum, value) => sum + value,
+          );
           final Offset dot = total == 0
               ? (apex + right + left) / 3
-              : (apex * weights[2].toDouble() + right * weights[1].toDouble() + left * weights[0].toDouble()) / total;
+              : (apex * weights[2].toDouble() +
+                        right * weights[1].toDouble() +
+                        left * weights[0].toDouble()) /
+                    total;
           canvas.drawCircle(dot, 4.6, Paint()..color = AppColors.surface);
           canvas.drawCircle(
             dot,
@@ -259,7 +273,10 @@ class _TriangleMiniPainter extends CustomPainter {
       ..lineTo(right.dx, right.dy)
       ..lineTo(left.dx, left.dy)
       ..close();
-    canvas.drawPath(path, Paint()..color = triangle.category.color.withValues(alpha: 0.9));
+    canvas.drawPath(
+      path,
+      Paint()..color = triangle.category.color.withValues(alpha: 0.9),
+    );
     canvas.drawPath(
       path,
       Paint()
@@ -273,12 +290,23 @@ class _TriangleMiniPainter extends CustomPainter {
       final double total = weights.fold<double>(0, (sum, value) => sum + value);
       final Offset dot = total == 0
           ? (apex + left + right) / 3
-          : (apex * weights[2].toDouble() + right * weights[1].toDouble() + left * weights[0].toDouble()) / total;
+          : (apex * weights[2].toDouble() +
+                    right * weights[1].toDouble() +
+                    left * weights[0].toDouble()) /
+                total;
       canvas.drawCircle(dot, 4, Paint()..color = AppColors.ink);
-      canvas.drawCircle(dot, 4, Paint()..color = AppColors.surface..style = PaintingStyle.stroke..strokeWidth = 1.4);
+      canvas.drawCircle(
+        dot,
+        4,
+        Paint()
+          ..color = AppColors.surface
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.4,
+      );
     }
   }
 
   @override
-  bool shouldRepaint(covariant _TriangleMiniPainter oldDelegate) => oldDelegate.triangle != triangle;
+  bool shouldRepaint(covariant _TriangleMiniPainter oldDelegate) =>
+      oldDelegate.triangle != triangle;
 }
