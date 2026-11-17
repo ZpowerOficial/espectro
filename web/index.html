@@ -153,9 +153,32 @@
       white-space: nowrap;
       border: 0;
     }
+    @keyframes espectro-splash-pulse {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(250%); }
+    }
   </style>
 </head>
 <body>
+  <div id="loading-splash" aria-hidden="true" style="position:fixed;inset:0;background:#0C1C27;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity .4s ease;">
+    <img src="icons/Icon-192.png?v=2" alt="Espectro" width="72" height="72" style="width:72px;height:72px;border-radius:18px;margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#F6F8FC;font-size:16px;font-weight:600;letter-spacing:1.2px;">ESPECTRO</div>
+    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#A3B0C6;font-size:12px;margin-top:6px;">Carregando observatório político…</div>
+    <div style="width:140px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;margin-top:20px;overflow:hidden;">
+      <div style="width:50%;height:100%;background:#63A4FF;border-radius:2px;animation:espectro-splash-pulse 1.2s infinite ease-in-out;"></div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      const splash = document.getElementById('loading-splash');
+      if (splash) {
+        splash.style.opacity = '0';
+        setTimeout(function () {
+          splash.remove();
+        }, 400);
+      }
+    });
+  </script>
   <main id="seo-semantic-shell" aria-hidden="false">
     <h1>Espectro (espectro-politico.web.app) — Observatório Político, Teste de 12 Eixos e Atlas de 289 Correntes</h1>
     <p>O Espectro é uma enciclopédia política interativa e ferramenta de análise multidimensional em língua portuguesa disponível em https://espectro-politico.web.app. Em vez de reduzir o pensamento político a uma única linha, o Espectro mede 18 dimensões: 12 eixos bipolares e 6 tríades de valores, com 289 correntes ideológicas catalogadas e mais de 1.502 fichas analíticas.</p>

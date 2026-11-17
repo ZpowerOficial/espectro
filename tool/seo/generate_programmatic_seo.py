@@ -67,6 +67,14 @@ def esc(text: str | None) -> str:
     return html.escape(str(text or ""), quote=True)
 
 
+def excerpt(text: str | None, max_len: int = 145) -> str:
+    clean = " ".join(str(text or "").split())
+    if len(clean) <= max_len:
+        return clean
+    cut = clean[:max_len].rsplit(" ", 1)[0].rstrip(" ,;:-")
+    return f"{cut}…" if cut else f"{clean[:max_len]}…"
+
+
 def is_canonical_personality(entry: dict) -> bool:
     basis = entry.get("editorialBasis") or {}
     if basis.get("evidenceTier") == "tier2_institutional_record":
@@ -345,8 +353,8 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
     app_deep_link = f"/#/atlas?v=1&subject={quote(item['key'])}"
     teia_deep_link = f"/#/atlas?v=1&view=map&select={quote(item['key'])}"
 
-    title = f"{item['name']} no Espectro Político — 12 Eixos, {kind_singular} &amp; Análise | Espectro"
-    desc = f"{item['name']} ({item['subtitle']}) no Espectro: {item['summary'][:145].strip()} Veja as posições exatas nos 12 eixos políticos, 6 tríades de valores e fontes primárias."
+    title = f"{item['name']} no Espectro Político — 12 Eixos, {kind_singular} & Análise | Espectro"
+    desc = f"{item['name']} ({item['subtitle']}) no Espectro: {excerpt(item['summary'], 145)} Veja as posições exatas nos 12 eixos políticos, 6 tríades de valores e fontes primárias."
     keywords = f"{item['name']}, {item['name']} espectro, {item['name']} espectro político, {item['name']} posicionamento político, {kind_singular}, {spec_name}, 12 eixos, Espectro observatório político"
 
     schema_entity_type = {
@@ -515,9 +523,9 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
       <h2 style="margin-top:0;font-size:1.2rem">Síntese Política e Ideológica</h2>
       <p style="margin-bottom:1.2rem">{esc(item['summary'])}</p>
       <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
-        <a class="cta-btn" href="{esc(app_deep_link)}">Comparar {esc(item['name'])} no App Interativo →</a>
+        <a class="cta-btn" href="/#/quiz">Descubra sua afinidade com {esc(item['name'])} no Teste do Espectro →</a>
+        <a class="cta-btn secondary" href="{esc(app_deep_link)}">Comparar {esc(item['name'])} no App Interativo</a>
         <a class="cta-btn secondary" href="{esc(teia_deep_link)}">Ver na Teia de Ideias 2D</a>
-        <a class="cta-btn secondary" href="/#/quiz">Fazer o Teste Político (12 Eixos)</a>
       </div>
     </div>
 
