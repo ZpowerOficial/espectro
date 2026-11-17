@@ -437,38 +437,62 @@ class ShareCardCanvas extends StatelessWidget {
                       ],
                       const Spacer(),
                       Container(height: 1, color: ruleBorder),
-                      const SizedBox(height: 7),
-                      Text(
-                        'Fonte: avaliação nativa Espectro · ${record.suite.title}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontSize: 9, color: inkMuted),
-                      ),
-                      Text(
-                        'Motor ${record.engineVersion} · Banco ${record.bankVersion}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontSize: 9, color: inkMuted),
-                      ),
-                      const SizedBox(height: 2),
-                      const Text(
-                        'Cobertura não é validade psicométrica. Resultado exploratório.',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 9, color: inkMuted),
-                      ),
-                      if (entryLink != null) ...[
-                        const SizedBox(height: 3),
-                        Text(
-                          entryLink!,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 9.5,
-                            color: Color(0xFF7FAFFF),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'DESCUBRA SUA POSIÇÃO',
+                                  style: TextStyle(
+                                    fontFamily: 'IBMPlexMono',
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w700,
+                                    letterSpacing: 0.8,
+                                    color: Color(0xFF63A4FF),
+                                  ),
+                                ),
+                                const SizedBox(height: 2),
+                                Text(
+                                  entryLink ?? 'espectro-politico.web.app',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w600,
+                                    color: inkLight,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(width: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 5,
+                            ),
+                            decoration: BoxDecoration(
+                              color: traditionColor.withValues(alpha: 0.15),
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: traditionColor.withValues(alpha: 0.4),
+                              ),
+                            ),
+                            child: const Text(
+                              '100% ANÔNIMO',
+                              style: TextStyle(
+                                fontFamily: 'IBMPlexMono',
+                                fontSize: 9,
+                                fontWeight: FontWeight.w700,
+                                color: inkLight,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),

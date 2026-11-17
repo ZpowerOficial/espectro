@@ -94,7 +94,8 @@ void main() {
       final tile = find.byWidgetPredicate(
         (w) => w is StudySubjectTile && w.subject.key == 'personality:platao',
       );
-      await tester.ensureVisible(tile);
+      await top(tester);
+      await reveal(tester, tile);
       await tester.tap(
         find.descendant(of: tile, matching: find.byTooltip('Salvar verbete')),
       );

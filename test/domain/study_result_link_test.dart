@@ -160,4 +160,43 @@ void main() {
       throwsFormatException,
     );
   });
+
+  test('codec compacto v2 empacota 12 eixos e 6 tríades em ~34 caracteres preservando ausências', () {
+    final EvaluationRecord integrated = build(
+      TestSuite.espectroIntegrated,
+      TestDepth.standard,
+    );
+    final String compact = encodeCompactProfile(integrated);
+    expect(compact.length, lessThanOrEqualTo(36));
+    expect(compact.length, greaterThanOrEqualTo(32));
+
+    final EvaluationRecord? decoded = decodeStudyResult(compact);
+    expect(decoded, isNotNull);
+    expect(decoded!.rawAnswers, isEmpty);
+    for (final axis in integrated.axes) {
+      final restored = decoded.axisById(axis.axisId)!;
+      expect(restored.isIndeterminate, axis.isIndeterminate);
+      if (!axis.isIndeterminate) {
+        expect(restored.score, closeTo(axis.score, 0.015));
+      }
+    }
+    for (final triad in integrated.triads) {
+      final restored = decoded.triadByCategoryId(triad.categoryId)!;
+      expect(restored.isIndeterminate, triad.isIndeterminate);
+      if (!triad.isIndeterminate) {
+        for (var i = 0; i < 3; i++) {
+          expect(restored.composition[i], closeTo(triad.composition[i], 0.02));
+        }
+      }
+    }
+
+    // Modalidade apenas 12 Eixos deve preservar tríades como indeterminadas (sem centro falso)
+    final EvaluationRecord axesOnly = build(TestSuite.bipolarAxes, TestDepth.quick);
+    final EvaluationRecord? decodedAxesOnly = decodeCompactProfile(
+      encodeCompactProfile(axesOnly),
+    );
+    expect(decodedAxesOnly, isNotNull);
+    expect(decodedAxesOnly!.triads.every((t) => t.isIndeterminate), isTrue);
+    expect(decodeCompactProfile('invalid_token_xyz'), isNull);
+  });
 }

@@ -9,6 +9,7 @@ import 'ui/features/quiz/espectro_quiz_screen.dart';
 import 'ui/features/results/espectro_result_screen.dart';
 import 'ui/features/atlas/atlas_explorer_screen.dart';
 import 'ui/features/atlas/study_profile_screen.dart';
+import 'ui/features/compare/compare_evaluations_screen.dart';
 import 'ui/features/compare/study_comparison_screen.dart';
 import 'ui/features/home/espectro_home_screen.dart';
 import 'ui/view_models/app_view_model.dart';
@@ -62,33 +63,124 @@ class EspectroApp extends StatelessWidget {
         return null;
       }
       final v = uri.queryParameters['v'];
-      if ((v != null && v != '1') || (uri.path == '/shared' && v != '1')) {
+      if (uri.path == '/shared') {
+        if (v != '1' && v != '2') return null;
+      } else if (v != null && v != '1') {
         return null;
       }
       Widget? screen;
       if (uri.path == '/shared') {
-        final record = decodeStudyResult(uri.queryParameters['data'] ?? '');
+        final token =
+            uri.queryParameters['c'] ?? uri.queryParameters['data'] ?? '';
+        final record = decodeStudyResult(token);
         if (record != null) {
-          screen = Scaffold(
-            body: SafeArea(
-              child: Column(
-                children: [
-                  MaterialBanner(
-                    content: const Text(
-                      'Resultado recebido por link. Conteúdo fornecido por quem compartilhou, sem verificação de autenticidade. Não foi salvo no seu histórico.',
-                    ),
-                    actions: [const SizedBox.shrink()],
+          screen = Builder(
+            builder: (context) {
+              final hasMyResult = appViewModel.history.isNotEmpty;
+              final p = context.palette;
+              return Scaffold(
+                body: SafeArea(
+                  child: Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          color: p.surfaceMuted,
+                          border: Border(bottom: BorderSide(color: p.line)),
+                        ),
+                        child: Wrap(
+                          spacing: 12,
+                          runSpacing: 8,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          alignment: WrapAlignment.spaceBetween,
+                          children: [
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 560),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.people_alt_rounded,
+                                    color: p.accent,
+                                    size: 20,
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Flexible(
+                                    child: Text(
+                                      hasMyResult
+                                          ? 'Resultado recebido por link. Não foi salvo no seu histórico. Compare com o seu perfil!'
+                                          : 'Resultado recebido por link. Não foi salvo no seu histórico. Faça o teste para comparar!',
+                                      style: TextStyle(
+                                        fontSize: 12.5,
+                                        color: p.ink,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            if (hasMyResult)
+                              FilledButton.icon(
+                                icon: const Icon(
+                                  Icons.compare_arrows_rounded,
+                                  size: 16,
+                                ),
+                                label: const Text('Comparar com meu perfil'),
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute<void>(
+                                      builder: (_) => CompareEvaluationsScreen(
+                                        appViewModel: appViewModel,
+                                        initialBaseline:
+                                            appViewModel.history.first,
+                                        initialTarget: record,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              )
+                            else
+                              FilledButton.icon(
+                                icon: const Icon(
+                                  Icons.play_arrow_rounded,
+                                  size: 16,
+                                ),
+                                label: const Text('Fazer teste para comparar'),
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute<void>(
+                                      builder: (_) => EspectroQuizScreen(
+                                        appViewModel: appViewModel,
+                                        quizViewModel: QuizViewModel.startNew(
+                                          data: appViewModel.data,
+                                          repository: appViewModel.repository,
+                                          suite: TestSuite.espectroIntegrated,
+                                          depth: TestDepth.standard,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: EspectroResultScreen(
+                          appViewModel: appViewModel,
+                          record: record,
+                          readOnly: true,
+                        ),
+                      ),
+                    ],
                   ),
-                  Expanded(
-                    child: EspectroResultScreen(
-                      appViewModel: appViewModel,
-                      record: record,
-                      readOnly: true,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           );
         }
       } else if (uri.path == '/atlas') {

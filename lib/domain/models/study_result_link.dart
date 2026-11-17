@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import '../../data/strict_json.dart';
 import 'political_models.dart';
@@ -40,7 +41,208 @@ String encodeStudyResult(EvaluationRecord record) {
   return token;
 }
 
-/// Decodifica somente o formato v1, com limites antes de alocar/interpretar JSON.
+class _CompactAxisMeta {
+  const _CompactAxisMeta(this.id, this.label, this.leftPole, this.rightPole);
+  final String id, label, leftPole, rightPole;
+}
+
+const List<_CompactAxisMeta> _canonicalAxes = <_CompactAxisMeta>[
+  _CompactAxisMeta('estrutura', 'Estrutura', 'Federal', 'Unitário'),
+  _CompactAxisMeta('representacao', 'Representação', 'Democracia', 'Autocracia'),
+  _CompactAxisMeta('poder', 'Poder', 'Segurança', 'Liberdade'),
+  _CompactAxisMeta('imigracao', 'Imigração', 'Assimilação', 'Multicultura'),
+  _CompactAxisMeta('diplomacia', 'Diplomacia', 'Militarista', 'Pacifista'),
+  _CompactAxisMeta('intervencao', 'Intervenção', 'Não intervencionista', 'Nacionalista'),
+  _CompactAxisMeta('economia', 'Economia', 'Público', 'Privado'),
+  _CompactAxisMeta('controle', 'Controle', 'Planejamento', 'Livre mercado'),
+  _CompactAxisMeta('comercio', 'Comércio', 'Protecionismo', 'Globalismo'),
+  _CompactAxisMeta('religiao', 'Religião', 'Irreligioso', 'Religioso'),
+  _CompactAxisMeta('moral', 'Moral', 'Progressista', 'Tradicionalista'),
+  _CompactAxisMeta('tecnologia', 'Tecnologia', 'Tecnologia', 'Biologia'),
+];
+
+class _CompactTriadMeta {
+  const _CompactTriadMeta(this.id, this.label, this.vertices);
+  final int id;
+  final String label;
+  final List<String> vertices;
+}
+
+const List<_CompactTriadMeta> _canonicalTriads = <_CompactTriadMeta>[
+  _CompactTriadMeta(0, 'Economia', <String>['Controle', 'Regulação', 'Mercados']),
+  _CompactTriadMeta(1, 'Liberdade Individual', <String>['Liberdade', 'Segurança', 'Verdade']),
+  _CompactTriadMeta(2, 'Cultura', <String>['Tradição', 'Progresso', 'Liberdade']),
+  _CompactTriadMeta(3, 'Política Externa', <String>['Imperialismo', 'Isolacionismo', 'Globalismo']),
+  _CompactTriadMeta(4, 'Governo', <String>['Democracia', 'Autoridade', 'Anarquismo']),
+  _CompactTriadMeta(5, 'Igualdade', <String>['Oportunidade', 'Resultado', 'Responsabilidade Individual']),
+];
+
+/// Codifica o perfil resumido (12 eixos + 6 tríades) em 25 bytes (~34 chars Base64URL),
+/// sem incluir respostas individuais, timestamps ou dados pessoais.
+/// Eixos ausentes/indeterminados usam sentinela `127`; tríades usam `255`.
+String encodeCompactProfile(EvaluationRecord record) {
+  final Uint8List bytes = Uint8List(25);
+  final ByteData data = ByteData.sublistView(bytes);
+  bytes[0] = 2; // Protocolo v2 compacto
+
+  for (var i = 0; i < _canonicalAxes.length; i++) {
+    final axis = record.axisById(_canonicalAxes[i].id);
+    if (axis == null || axis.isIndeterminate) {
+      data.setInt8(1 + i, 127);
+    } else {
+      data.setInt8(1 + i, (axis.score * 100).round().clamp(-100, 100));
+    }
+  }
+
+  for (var i = 0; i < _canonicalTriads.length; i++) {
+    final triad = record.triadByCategoryId(_canonicalTriads[i].id);
+    if (triad == null || triad.isIndeterminate) {
+      bytes[13 + i * 2] = 255;
+      bytes[14 + i * 2] = 255;
+    } else {
+      final b0 = (triad.composition[0] * 100).round().clamp(0, 100);
+      final b1 = (triad.composition[1] * 100).round().clamp(0, 100 - b0);
+      bytes[13 + i * 2] = b0;
+      bytes[14 + i * 2] = b1;
+    }
+  }
+
+  return base64Url.encode(bytes).replaceAll('=', '');
+}
+
+/// Decodifica um token compacto v2 (~34 chars) em um [EvaluationRecord] somente leitura.
+EvaluationRecord? decodeCompactProfile(String token) {
+  if (token.isEmpty ||
+      token.length > 64 ||
+      !RegExp(r'^[A-Za-z0-9_-]+={0,2}$').hasMatch(token)) {
+    return null;
+  }
+  try {
+    final Uint8List bytes = base64Url.decode(base64Url.normalize(token));
+    if (bytes.length != 25 || bytes[0] != 2) return null;
+    final ByteData data = ByteData.sublistView(bytes);
+
+    final List<BipolarDimensionScore> axes = <BipolarDimensionScore>[];
+    var observedAxes = 0;
+    for (var i = 0; i < _canonicalAxes.length; i++) {
+      final meta = _canonicalAxes[i];
+      final raw = data.getInt8(1 + i);
+      if (raw == 127) {
+        axes.add(
+          BipolarDimensionScore(
+            axisId: meta.id,
+            label: meta.label,
+            leftPole: meta.leftPole,
+            rightPole: meta.rightPole,
+            score: 0.0,
+            standardError: 1.0,
+            coverage: 0.0,
+            answeredCount: 0,
+            presentedCount: 4,
+            tensionScore: 0.0,
+          ),
+        );
+        continue;
+      }
+      if (raw < -100 || raw > 100) return null;
+      observedAxes++;
+      axes.add(
+        BipolarDimensionScore(
+          axisId: meta.id,
+          label: meta.label,
+          leftPole: meta.leftPole,
+          rightPole: meta.rightPole,
+          score: (raw / 100.0).clamp(-1.0, 1.0),
+          standardError: 0.12,
+          coverage: 1.0,
+          answeredCount: 4,
+          presentedCount: 4,
+          tensionScore: 0.0,
+        ),
+      );
+    }
+
+    final List<TriadDimensionScore> triads = <TriadDimensionScore>[];
+    var observedTriads = 0;
+    for (var i = 0; i < _canonicalTriads.length; i++) {
+      final meta = _canonicalTriads[i];
+      final b0 = bytes[13 + i * 2];
+      final b1 = bytes[14 + i * 2];
+      if (b0 == 255 || b1 == 255) {
+        triads.add(
+          TriadDimensionScore(
+            categoryId: meta.id,
+            label: meta.label,
+            vertices: meta.vertices,
+            vertexScores: const <double>[0.0, 0.0, 0.0],
+            vertexSupport: const <double>[0.0, 0.0, 0.0],
+            composition: const <double>[1 / 3, 1 / 3, 1 / 3],
+            engagement: 0.0,
+            standardError: 1.0,
+            coverage: 0.0,
+            answeredCount: 0,
+            presentedCount: 6,
+            classification: 'Indeterminado',
+          ),
+        );
+        continue;
+      }
+      if (b0 > 100 || b1 > 100 || b0 + b1 > 100) return null;
+      observedTriads++;
+      final b2 = 100 - b0 - b1;
+      final comp = <double>[b0 / 100.0, b1 / 100.0, b2 / 100.0];
+      triads.add(
+        TriadDimensionScore(
+          categoryId: meta.id,
+          label: meta.label,
+          vertices: meta.vertices,
+          vertexScores: const <double>[0.0, 0.0, 0.0],
+          vertexSupport: comp,
+          composition: comp,
+          engagement: 1.0,
+          standardError: 0.12,
+          coverage: 1.0,
+          answeredCount: 6,
+          presentedCount: 6,
+          classification: 'Perfil Compartilhado',
+        ),
+      );
+    }
+
+    final TestSuite suite = observedAxes > 0 && observedTriads > 0
+        ? TestSuite.espectroIntegrated
+        : (observedTriads > 0 ? TestSuite.triads : TestSuite.bipolarAxes);
+    final int totalDims = observedAxes + observedTriads;
+
+    return EvaluationRecord(
+      id: 'shared_v2_$token',
+      createdAt: DateTime.now(),
+      suite: suite,
+      depth: TestDepth.standard,
+      seed: 0,
+      engineVersion: '2.5.0',
+      bankVersion: '1.2.0',
+      title: 'Perfil Compartilhado',
+      rawAnswers: const <String, int?>{},
+      axes: axes,
+      triads: triads,
+      quality: ResponseQualityReport(
+        totalPresented: 18,
+        totalAnswered: totalDims,
+        totalSkipped: 18 - totalDims,
+        acquiescenceIndex: 0.0,
+        extremeResponseRate: 0.2,
+        neutralResponseRate: 0.1,
+        axesInTension: const <String>[],
+        answeredAxisCount: observedAxes,
+      ),
+    );
+  } on Object {
+    return null;
+  }
+}
+
+/// Decodifica formato compacto v2 (~34 chars) ou formato completo v1 JSON.
 /// Dados recebidos são uma cópia informada por quem compartilhou o link: não
 /// substituem o histórico local e não são assinados pelo Espectro.
 EvaluationRecord? decodeStudyResult(String token) {
@@ -48,6 +250,10 @@ EvaluationRecord? decodeStudyResult(String token) {
       token.length > studyResultLinkLimit ||
       !RegExp(r'^[A-Za-z0-9_-]+={0,2}$').hasMatch(token)) {
     return null;
+  }
+  if (token.length <= 64) {
+    final compact = decodeCompactProfile(token);
+    if (compact != null) return compact;
   }
   try {
     final List<int> bytes = base64Url.decode(base64Url.normalize(token));

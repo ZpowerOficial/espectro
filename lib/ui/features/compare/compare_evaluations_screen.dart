@@ -43,16 +43,18 @@ class _CompareEvaluationsScreenState extends State<CompareEvaluationsScreen> {
   @override
   void initState() {
     super.initState();
+    final bool hasExternal =
+        widget.initialTarget != null || widget.initialBaseline != null;
     assert(
-      _records.length >= 2,
-      'Comparação exige ao menos 2 avaliações salvas.',
+      hasExternal || _records.length >= 2,
+      'Comparação exige ao menos 2 avaliações (ou uma avaliação recebida por link).',
     );
     _target = widget.initialTarget ?? _records.first;
     _baseline =
         widget.initialBaseline ??
         _records.firstWhere(
           (r) => r.id != _target.id,
-          orElse: () => _records[1],
+          orElse: () => _records.length > 1 ? _records[1] : _target,
         );
   }
 

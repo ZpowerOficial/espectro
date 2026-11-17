@@ -123,6 +123,23 @@ class _ShareableCardSheetState extends State<ShareableCardSheet> {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value)));
   }
 
+  Future<void> _copyCompactLink() async {
+    final token = encodeCompactProfile(widget.record);
+    final route = Uri(
+      path: '/shared',
+      queryParameters: <String, String>{'v': '2', 'c': token},
+    ).toString();
+    final link = buildPublicStudyLink(route);
+    try {
+      await Clipboard.setData(ClipboardData(text: link));
+      _message(
+        'Link curto de comparação copiado (~34 chars)! Sem respostas pessoais.',
+      );
+    } on Object {
+      _message('Não foi possível copiar o link. Tente novamente.');
+    }
+  }
+
   Future<void> _copyEntryLink() async {
     final link = shareCardEntryLink();
     if (link == null) return;
@@ -305,6 +322,23 @@ class _ShareableCardSheetState extends State<ShareableCardSheet> {
                     ],
                   ),
                   const SizedBox(height: 20),
+                  Text(
+                    'Desafiar amigo e comparar perfis',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    'Link curto (~34 caracteres) com suas coordenadas resumidas para comparar afinidade com amigos no WhatsApp ou redes, sem expor suas respostas.',
+                    style: TextStyle(color: p.inkSoft, fontSize: 13),
+                  ),
+                  const SizedBox(height: 10),
+                  FilledButton.icon(
+                    key: const ValueKey('copy-compact-compare-link'),
+                    onPressed: _copyCompactLink,
+                    icon: const Icon(Icons.compare_arrows_rounded),
+                    label: const Text('Copiar link curto para comparar'),
+                  ),
+                  const SizedBox(height: 18),
                   Text(
                     'Convide alguém a explorar',
                     style: Theme.of(context).textTheme.titleMedium,
