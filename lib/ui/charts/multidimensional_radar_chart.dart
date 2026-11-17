@@ -12,12 +12,14 @@ class MultidimensionalRadarChart extends StatelessWidget {
     required this.axes,
     this.baselineAxes,
     this.size = 248,
+    this.showLabels = true,
     super.key,
   });
 
   final List<BipolarDimensionScore> axes;
   final List<BipolarDimensionScore>? baselineAxes;
   final double size;
+  final bool showLabels;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class MultidimensionalRadarChart extends StatelessWidget {
           axes: axes,
           baselineAxes: baselineAxes,
           palette: p,
+          showLabels: showLabels,
         ),
       ),
     );
@@ -41,17 +44,20 @@ class _RadarPainter extends CustomPainter {
     required this.axes,
     required this.baselineAxes,
     required this.palette,
+    required this.showLabels,
   });
 
   final List<BipolarDimensionScore> axes;
   final List<BipolarDimensionScore>? baselineAxes;
   final EspectroPalette palette;
+  final bool showLabels;
 
   @override
   void paint(Canvas canvas, Size size) {
     if (axes.isEmpty) return;
     final Offset center = Offset(size.width / 2, size.height / 2);
-    final double maxR = size.shortestSide / 2 - 26;
+    final bool drawAxisLabels = showLabels && size.shortestSide >= 170;
+    final double maxR = size.shortestSide / 2 - (drawAxisLabels ? 26 : 8);
     if (maxR <= 10) return;
 
     final Paint ringPaint = Paint()
@@ -77,6 +83,14 @@ class _RadarPainter extends CustomPainter {
       final double angle = -math.pi / 2 + i * 2 * math.pi / n;
       final Offset dir = Offset(math.cos(angle), math.sin(angle));
       canvas.drawLine(center, center + dir * maxR, ringPaint);
+
+      if (!drawAxisLabels) {
+        final Paint tipPaint = Paint()
+          ..color = palette.accent.withValues(alpha: 0.45)
+          ..style = PaintingStyle.fill;
+        canvas.drawCircle(center + dir * maxR, 1.8, tipPaint);
+        continue;
+      }
 
       // Rótulo curto na borda externa.
       final String shortLabel = axes[i].label.length > 6
@@ -186,6 +200,7 @@ class _RadarPainter extends CustomPainter {
   bool shouldRepaint(covariant _RadarPainter oldDelegate) {
     return oldDelegate.axes != axes ||
         oldDelegate.baselineAxes != baselineAxes ||
-        oldDelegate.palette != palette;
+        oldDelegate.palette != palette ||
+        oldDelegate.showLabels != showLabels;
   }
 }

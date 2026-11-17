@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-05",
+  "method": "Navegação por MCP REA nos sites oficiais; leitura de documentos e entrevistas por trechos. Não é revisão integral da produção dos autores.",
+  "captures": [
+    {
+      "subject": "jones_rea",
+      "evidenceId": "ev_1af49352419afcedfeb4045f5ffaf4bb7cba2dc5f064b496bfc727cd24d61a3d",
+      "url": "https://www.jonesmanoel2026.com.br/",
+      "provider": {
+        "id": "rea-playwright-browser-scenario",
+        "name": "REA Playwright browser scenario capture provider",
+        "version": "1"
+      },
+      "domSha256": "177d5654acd3fc1dc477c98ac79dba3c8831cb03ef96756d65f677c9c0adae66",
+      "accessibilitySha256": "46d695027f87a3c70d3f92af7cb46f96a8ee8c8423b0e6cb684e3721aa32b98a",
+      "completeness": {
+        "status": "complete",
+        "equality_eligible": true,
+        "missing_sections": [],
+        "truncated_sections": []
+      }
+    },
+    {
+      "subject": "gilson_rea",
+      "evidenceId": "ev_e9f174df12e3a6f074849f0094e1594a2945620ae71352d171fd829174dccdc5",
+      "url": "https://gilsonmarques.com/",
+      "provider": {
+        "id": "rea-playwright-browser-scenario",
+        "name": "REA Playwright browser scenario capture provider",
+        "version": "1"
+      },
+      "accessibilitySha256": "5d0f9c462ef65c38dbe8d14463f2486a417b444302d519464ed9552fc184631a",
+      "completeness": {
+        "status": "complete",
+        "equality_eligible": true,
+        "missing_sections": [],
+        "truncated_sections": []
+      }
+    }
+  ],
+  "accessLimitations": [
+    {
+      "url": "https://pica00.org/estatuto.pdf",
+      "state": "indexed_text_read_direct_tls_failed",
+      "note": "Texto indexado do PDF consultado; requisição HTTPS direta com validação padrão falhou por incompatibilidade do certificado com o domínio. Nenhuma validação TLS foi desativada."
+    },
+    {
+      "url": "https://free-cities.org/raphael-lima-should-you-fix-your-country-or-leave-it",
+      "state": "edited_asr_transcript",
+      "note": "O publicador informa reconhecimento de voz e edição de transcrição; atribuições podem conter erros."
+    }
+  ],
+  "cachedPrimaryDocument": {
+    "url": "https://www.jonesmanoel2026.com.br/assets/files/Programa%20Jones%20Manoel.pdf",
+    "sha256": "f98006e078bf12d68f81b5864101563432967cd06d0b07fcbebe0fc2691d0e0d",
+    "bytes": 10012868,
+    "pages": 69,
+    "storedOutsideRepository": true
+  }
+}

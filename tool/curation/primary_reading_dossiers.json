@@ -1,0 +1,1503 @@
+[
+  {
+    "id": "ns_women",
+    "title": "Discurso à Liga Nacional-Socialista das Mulheres",
+    "author": "Adolf Hitler",
+    "date": "08/09/1934",
+    "url": "https://germanhistorydocs.org/en/nazi-germany-1933-1945/ghdi:document-1557",
+    "targets": [
+      "current:nazismo"
+    ],
+    "readings": {
+      "axis:moral": {
+        "value": 0.8,
+        "locator": "Passagens sobre emancipação e esferas atribuídas a homens e mulheres",
+        "rationale": "O discurso rejeita a emancipação feminina e prescreve funções distintas por sexo, vinculadas à maternidade e à comunidade racial. Sustenta uma posição normativa restritiva neste tema; não torna o nazismo equivalente a todo conservadorismo ou a toda tradição religiosa."
+      },
+      "triad:2": {
+        "value": null,
+        "locator": "Discurso de 1934: papéis de gênero e emancipação",
+        "rationale": "Prescreve esferas distintas para homens e mulheres e rejeita emancipação. Há evidência cultural, mas o texto não mede conjuntamente tradição, progresso e liberdade; não se inventam três proporções."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "hossbach",
+    "title": "Registro da reunião de 5 de novembro de 1937",
+    "author": "Friedrich Hossbach, registrando declarações de Hitler",
+    "date": "10/11/1937",
+    "url": "https://germanhistorydocs.org/en/nazi-germany-1933-1945/ghdi:document-1540",
+    "targets": [
+      "current:nazismo"
+    ],
+    "readings": {
+      "axis:diplomacia": {
+        "value": -0.9,
+        "locator": "Trecho que propõe resolver a questão territorial pela força; cenários 1–3",
+        "rationale": "O registro apresenta o recurso à força e o planejamento de expansão territorial. É evidência de orientação militarista da liderança em 1937, não uma transcrição literal nem uma descrição de cada negociação diplomática."
+      },
+      "axis:comercio": {
+        "value": -0.65,
+        "locator": "Seções Autarky e Participation in World Economy",
+        "rationale": "Discute limites da autarquia, vulnerabilidade do comércio marítimo e aquisição territorial como solução. A leitura indica subordinação estratégica do comércio à segurança e à expansão; não afirma isolamento comercial completo."
+      },
+      "triad:3": {
+        "value": null,
+        "locator": "Registro de 1937: território, força e comércio",
+        "rationale": "Expansão militar e segurança econômica sustentam a leitura de ambição imperial. Isolacionismo e globalismo não são quantificados pela ata; o registro não oferece uma composição completa."
+      }
+    },
+    "provenance": "Registro primário escrito cinco dias após a reunião, não taquigrafia; tradução documental publicada pelo German Historical Institute. As interpretações introdutórias não são confundidas com a ata."
+  },
+  {
+    "id": "manifesto",
+    "title": "Manifesto do Partido Comunista",
+    "author": "Karl Marx e Friedrich Engels",
+    "date": "1848",
+    "url": "https://www.marxists.org/archive/marx/works/1848/communist-manifesto/ch02.htm",
+    "targets": [
+      "current:socialismo_marxista",
+      "current:comunismo",
+      "personality:karl_marx",
+      "personality:friedrich_engels",
+      "book:manifesto_comunista_marx_engels"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": -0.9,
+        "locator": "Capítulo II: propriedade burguesa e medidas de transição",
+        "rationale": "Propõe abolir a propriedade burguesa dos meios de produção; distingue-a da apropriação pessoal dos produtos do trabalho. O recorte não confunde bens pessoais com capital."
+      },
+      "axis:controle": {
+        "value": -0.8,
+        "locator": "Capítulo II: centralização de crédito e transportes; plano comum da produção",
+        "rationale": "As medidas de transição conferem coordenação econômica aos produtores organizados como classe dominante; não são descrição de uma economia soviética posterior."
+      },
+      "axis:moral": {
+        "value": -0.65,
+        "locator": "Capítulo II: família burguesa, educação e posição das mulheres",
+        "rationale": "Critica a família burguesa em sua relação com a propriedade e a sujeição das mulheres. Não se extrapola o texto a cada debate moral contemporâneo."
+      },
+      "triad:0": {
+        "value": null,
+        "locator": "Capítulo II: medidas de transição e associação futura",
+        "rationale": "O programa de transição tem coordenação coletiva e medidas estatais, enquanto o horizonte é uma associação sem classes. Não se fundem essas fases em três percentuais supostamente medidos."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "gotha",
+    "title": "Crítica do Programa de Gotha",
+    "author": "Karl Marx",
+    "date": "1875",
+    "url": "https://www.marxists.org/archive/marx/works/1875/gotha/ch01.htm",
+    "targets": [
+      "current:comunismo",
+      "current:socialismo_marxista",
+      "personality:karl_marx",
+      "book:critica_programa_gotha_marx"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": -0.9,
+        "locator": "Parte I: sociedade cooperativa e fases da sociedade comunista",
+        "rationale": "Discute produção com meios comuns e distingue distribuição na fase inicial e na fase superior. O comunismo final não é identificado automaticamente com administração estatal permanente."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "civil_war",
+    "title": "A Guerra Civil na França",
+    "author": "Karl Marx",
+    "date": "1871",
+    "url": "https://www.marxists.org/archive/marx/works/1871/civil-war-france/ch05.htm",
+    "targets": [
+      "current:socialismo_marxista",
+      "personality:karl_marx",
+      "book:guerra_civil_franca_marx",
+      "history:comuna_paris_1871"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": -0.7,
+        "locator": "Seção III: conselheiros eleitos, responsabilidade e revogabilidade",
+        "rationale": "A descrição da Comuna valoriza eleição e revogação dos delegados. É um desenho comunal de representação, sem inferir que todo movimento posterior o executou."
+      },
+      "axis:estrutura": {
+        "value": -0.6,
+        "locator": "Seção III: organização comunal e delegação nacional",
+        "rationale": "Articula comunas com delegados responsáveis, em vez de tratar descentralização como ausência de qualquer coordenação."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "lenin_state",
+    "title": "O Estado e a Revolução",
+    "author": "Vladimir Lênin",
+    "date": "1917",
+    "url": "https://www.marxists.org/archive/lenin/works/1917/staterev/ch05.htm",
+    "targets": [
+      "current:marxismo_leninismo",
+      "personality:vladimir_lenin",
+      "book:estado_e_revolucao_lenin"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": -0.9,
+        "locator": "Capítulo V: fase inicial da sociedade comunista",
+        "rationale": "Defende meios de produção comuns e distingue a transição política do horizonte de desaparecimento do Estado."
+      },
+      "axis:controle": {
+        "value": -0.8,
+        "locator": "Capítulo V: contabilidade e controle",
+        "rationale": "Propõe coordenação coletiva e controle da produção. O texto não é balanço do funcionamento econômico posterior."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "lux_reform",
+    "title": "Reforma ou Revolução?",
+    "author": "Rosa Luxemburgo",
+    "date": "1899",
+    "url": "https://www.marxists.org/archive/luxemburg/1900/reform-revolution/ch08.htm",
+    "targets": [
+      "current:luxemburguismo",
+      "personality:rosa_luxemburgo",
+      "book:reforma_ou_revolucao_luxemburgo"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": -0.8,
+        "locator": "Capítulo VIII: conquista do poder e transformação social",
+        "rationale": "Distingue reformas dentro do capitalismo da transformação das relações de propriedade; rejeita apresentar uma sucessão de reformas como equivalente automático ao socialismo."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "mill_liberty",
+    "title": "Sobre a Liberdade",
+    "author": "John Stuart Mill",
+    "date": "1859",
+    "url": "https://www.gutenberg.org/ebooks/34901",
+    "targets": [
+      "current:liberalismo_classico",
+      "current:liberalismo_utilitarista",
+      "personality:john_stuart_mill",
+      "book:sobre_a_liberdade_mill"
+    ],
+    "readings": {
+      "axis:poder": {
+        "value": 0.85,
+        "locator": "Capítulos I–IV: limites da autoridade e princípio de dano",
+        "rationale": "Limita coerção contra adultos às ações que prejudicam outros; defende liberdade de discussão e individualidade. Não equivale a ausência de toda regra coletiva."
+      },
+      "axis:moral": {
+        "value": -0.55,
+        "locator": "Capítulo III: individualidade como elemento do bem-estar",
+        "rationale": "Protege modos de vida individuais contra imposição social de costumes, sem atribuir ao autor posições sobre todas as pautas atuais."
+      },
+      "triad:1": {
+        "value": null,
+        "locator": "Capítulos II–III: expressão, discussão e individualidade",
+        "rationale": "A liberdade de discussão é defendida também por sua relação com a busca da verdade; não se trata de escolher automaticamente um único vértice. A fonte não fornece proporções de liberdade, segurança e verdade."
+      }
+    },
+    "provenance": "Catálogo e texto integral do Project Gutenberg. A edição deve ser aberta pelo leitor; número de página varia entre formatos."
+  },
+  {
+    "id": "locke_treatise",
+    "title": "Segundo Tratado do Governo",
+    "author": "John Locke",
+    "date": "1689",
+    "url": "https://www.gutenberg.org/ebooks/7370",
+    "targets": [
+      "current:liberalismo_constitucional",
+      "personality:john_locke",
+      "book:segundo_tratado_locke"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": 0.7,
+        "locator": "Capítulo V: propriedade",
+        "rationale": "Defende aquisição e proteção da propriedade, com condições no argumento original; não é defesa retrospectiva de toda forma de concentração econômica."
+      },
+      "axis:poder": {
+        "value": 0.65,
+        "locator": "Capítulos IX e XI: fins e limites do governo",
+        "rationale": "O governo existe para preservar direitos e encontra limites no consentimento e nas leis."
+      },
+      "axis:representacao": {
+        "value": -0.55,
+        "locator": "Capítulos XI–XIII e XIX: legislativo e dissolução do governo",
+        "rationale": "Legitimidade condicionada à comunidade e limites à autoridade; não confundir com sufrágio universal contemporâneo."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "hobbes",
+    "title": "Leviatã",
+    "author": "Thomas Hobbes",
+    "date": "1651",
+    "url": "https://www.gutenberg.org/ebooks/3207",
+    "targets": [
+      "current:absolutismo_monarquico",
+      "personality:thomas_hobbes",
+      "book:leviata_hobbes"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": 0.85,
+        "locator": "Capítulos XVII–XIX: instituição e direitos do soberano",
+        "rationale": "Defende soberania com poderes extensos, que pode pertencer a um homem ou assembleia. Absolutismo não é reduzido exclusivamente a monarquia."
+      },
+      "axis:poder": {
+        "value": -0.8,
+        "locator": "Capítulos XVIII e XXI: soberania e liberdade dos súditos",
+        "rationale": "Prioriza a paz civil garantida pelo soberano, conservando distinções sobre autodefesa e silêncio da lei."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "rousseau",
+    "title": "Do Contrato Social",
+    "author": "Jean-Jacques Rousseau",
+    "date": "1762",
+    "url": "https://www.gutenberg.org/ebooks/46333",
+    "targets": [
+      "current:republicanismo_classico",
+      "personality:jean_jacques_rousseau",
+      "book:contrato_social_rousseau"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": -0.65,
+        "locator": "Livro II e Livro III, capítulo XV: soberania e representação",
+        "rationale": "Afirma soberania popular e critica a representação da vontade soberana. Não se equipara automaticamente ao parlamentarismo liberal."
+      },
+      "axis:religiao": {
+        "value": 0.25,
+        "locator": "Livro IV, capítulo VIII: religião civil",
+        "rationale": "Admite uma profissão civil de fé, distinguindo-a do poder de uma igreja. A proposta não é teocracia clerical."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "smith",
+    "title": "A Riqueza das Nações",
+    "author": "Adam Smith",
+    "date": "1776",
+    "url": "https://www.gutenberg.org/ebooks/3300",
+    "targets": [
+      "current:liberalismo_classico",
+      "personality:adam_smith",
+      "book:riqueza_das_nacoes_smith"
+    ],
+    "readings": {
+      "axis:controle": {
+        "value": 0.7,
+        "locator": "Livro IV, capítulo II: restrições às importações",
+        "rationale": "Critica privilégios e restrições mercantilistas e valoriza coordenação por trocas, preservando funções públicas no Livro V."
+      },
+      "axis:comercio": {
+        "value": 0.7,
+        "locator": "Livro IV, capítulos II–III: comércio e restrições",
+        "rationale": "Argumenta contra muitas barreiras comerciais, com exceções discutidas no próprio texto; não afirma rejeição irrestrita de toda tarifa."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "burke",
+    "title": "Reflexões sobre a Revolução na França",
+    "author": "Edmund Burke",
+    "date": "1790",
+    "url": "https://www.gutenberg.org/ebooks/15679",
+    "targets": [
+      "current:conservadorismo_burkeano",
+      "current:conservadorismo_tradicionalista",
+      "personality:edmund_burke",
+      "book:reflexoes_revolucao_franca_burke"
+    ],
+    "readings": {
+      "axis:moral": {
+        "value": 0.75,
+        "locator": "Passagens sobre herança, continuidade e reforma",
+        "rationale": "Defende instituições herdadas e reforma prudente em vez da reconstrução abstrata da ordem social. A leitura admite mudança gradual; não significa imobilidade absoluta."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "bastiat",
+    "title": "A Lei",
+    "author": "Frédéric Bastiat",
+    "date": "1850",
+    "url": "https://www.gutenberg.org/ebooks/44800",
+    "targets": [
+      "personality:frederic_bastiat",
+      "book:lei_bastiat",
+      "current:libertarianismo_direitos_naturais"
+    ],
+    "readings": {
+      "axis:poder": {
+        "value": 0.85,
+        "locator": "Discussão da lei como defesa coletiva de direitos",
+        "rationale": "Restringe a força legal à proteção de pessoa, liberdade e propriedade."
+      },
+      "axis:economia": {
+        "value": 0.85,
+        "locator": "Discussão da espoliação legal e propriedade",
+        "rationale": "Rejeita redistribuição compulsória que considera violação da propriedade. Não se infere uma teoria inteira da política monetária."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "rothbard",
+    "title": "Por uma Nova Liberdade",
+    "author": "Murray N. Rothbard",
+    "date": "1973",
+    "url": "https://cdn.mises.org/For%20a%20New%20Liberty%20The%20Libertarian%20Manifesto_3.pdf",
+    "targets": [
+      "personality:murray_rothbard",
+      "current:anarcocapitalismo",
+      "current:libertarianismo_direitos_naturais",
+      "current:voluntarismo",
+      "book:por_nova_liberdade_rothbard"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": 0.95,
+        "locator": "Capítulo 2: propriedade e intercâmbio",
+        "rationale": "Defende propriedade privada, autopropriedade e trocas voluntárias como princípios."
+      },
+      "axis:poder": {
+        "value": 0.9,
+        "locator": "Capítulos 5–6: liberdades pessoais e coerção",
+        "rationale": "Aplica a não agressão à coerção estatal e às escolhas pessoais."
+      },
+      "axis:controle": {
+        "value": 0.95,
+        "locator": "Capítulos 10–12: setor público, ruas e polícia",
+        "rationale": "Propõe provisão por acordos e mercados de serviços habitualmente estatais."
+      },
+      "axis:diplomacia": {
+        "value": 0.85,
+        "locator": "Capítulo 14: guerra e política externa",
+        "rationale": "Critica militarismo, guerra estatal e intervenções externas. Não se confunde não intervenção com ausência de autodefesa."
+      },
+      "triad:0": {
+        "value": null,
+        "locator": "Capítulos 10–12: provisão privada",
+        "rationale": "A proposta enfatiza mercados e contratos voluntários; os vértices controle e regulação não recebem uma unidade de medida comum no livro."
+      },
+      "triad:4": {
+        "value": null,
+        "locator": "Capítulo 3 e capítulo 12: Estado e provisão de justiça",
+        "rationale": "A proposta é de ausência de monopólio estatal, não apenas minarquia. O vértice minarquia não representa plenamente o anarcocapitalismo; não se força um ponto enganoso no triângulo."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "mises",
+    "title": "Liberalismo",
+    "author": "Ludwig von Mises",
+    "date": "1927",
+    "url": "https://cdn.mises.org/Liberalism%20In%20the%20Classical%20Tradition_0.pdf",
+    "targets": [
+      "personality:ludwig_von_mises",
+      "current:escola_austriaca"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": 0.9,
+        "locator": "Capítulo I: propriedade",
+        "rationale": "Apresenta a propriedade privada dos meios de produção como fundamento do programa liberal."
+      },
+      "axis:controle": {
+        "value": 0.9,
+        "locator": "Capítulo II: política econômica",
+        "rationale": "Defende coordenação por preços e critica o intervencionismo."
+      },
+      "axis:comercio": {
+        "value": 0.9,
+        "locator": "Capítulo III: política externa e livre comércio",
+        "rationale": "Argumenta por livre comércio e contra barreiras econômicas nacionais."
+      },
+      "axis:diplomacia": {
+        "value": 0.75,
+        "locator": "Capítulos I e III: paz e política externa",
+        "rationale": "Defende paz como condição da cooperação e critica conquista e guerra."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "hayek_knowledge",
+    "title": "O Uso do Conhecimento na Sociedade",
+    "author": "Friedrich A. Hayek",
+    "date": "1945",
+    "url": "https://www.econlib.org/library/Essays/hykKnw.html",
+    "targets": [
+      "personality:friedrich_hayek",
+      "current:liberalismo_ordem_espontanea",
+      "book:uso_conhecimento_hayek"
+    ],
+    "readings": {
+      "axis:controle": {
+        "value": 0.8,
+        "locator": "Seções I, IV–VI: conhecimento disperso e sistema de preços",
+        "rationale": "Argumenta que preços coordenam conhecimentos distribuídos que nenhum planejador possui integralmente. O artigo não determina posições sobre moral, imigração ou religião."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "kropotkin_bread",
+    "title": "A Conquista do Pão",
+    "author": "Piotr Kropotkin",
+    "date": "1892",
+    "url": "https://www.gutenberg.org/ebooks/23428",
+    "targets": [
+      "personality:piotr_kropotkin",
+      "current:anarcocomunismo",
+      "current:anarquismo_social",
+      "book:conquista_pao_kropotkin"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": -0.9,
+        "locator": "Capítulos I–IV: riqueza social e expropriação",
+        "rationale": "Defende acesso comum aos meios de vida e rejeita propriedade privada excludente sobre a produção."
+      },
+      "axis:estrutura": {
+        "value": -0.85,
+        "locator": "Capítulo XI: livre acordo",
+        "rationale": "Propõe organização por livre associação e federação, sem um comando estatal central."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "goldman",
+    "title": "Anarquismo: o que realmente significa",
+    "author": "Emma Goldman",
+    "date": "1910",
+    "url": "https://www.marxists.org/reference/archive/goldman/works/1910s/anarchism.htm",
+    "targets": [
+      "personality:emma_goldman",
+      "current:anarcofeminismo",
+      "current:anarquismo_social",
+      "book:anarquismo_ensaios_goldman"
+    ],
+    "readings": {
+      "axis:poder": {
+        "value": 0.9,
+        "locator": "Ensaio Anarchism: What It Really Stands For",
+        "rationale": "Rejeita autoridade coercitiva sobre a pessoa e defende liberdade individual articulada à cooperação social."
+      },
+      "axis:economia": {
+        "value": -0.75,
+        "locator": "Crítica da propriedade e organização econômica voluntária",
+        "rationale": "Critica propriedade monopolista e exploração; defende associações produtivas voluntárias, sem converter isso em estatização."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "malatesta",
+    "title": "A Anarquia",
+    "author": "Errico Malatesta",
+    "date": "1891",
+    "url": "https://theanarchistlibrary.org/library/errico-malatesta-anarchy",
+    "targets": [
+      "personality:errico_malatesta",
+      "current:anarquismo_social",
+      "current:anarquismo_sem_adjetivos",
+      "book:anarquia_malatesta"
+    ],
+    "readings": {
+      "axis:poder": {
+        "value": 0.9,
+        "locator": "Discussão de governo, autoridade e associação",
+        "rationale": "Defende substituição do governo coercitivo por cooperação voluntária."
+      },
+      "axis:economia": {
+        "value": -0.8,
+        "locator": "Discussão de propriedade e emancipação",
+        "rationale": "Vincula emancipação à socialização dos meios de vida; não propõe um Estado proprietário permanente."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "bakunin",
+    "title": "Deus e o Estado",
+    "author": "Mikhail Bakunin",
+    "date": "1871; publicação 1882",
+    "url": "https://www.marxists.org/reference/archive/bakunin/works/godstate/ch02.htm",
+    "targets": [
+      "personality:mikhail_bakunin",
+      "current:anarquismo_coletivista",
+      "book:deus_e_o_estado_bakunin"
+    ],
+    "readings": {
+      "axis:religiao": {
+        "value": -0.9,
+        "locator": "Crítica à autoridade divina e religiosa",
+        "rationale": "Rejeita fundamentação teológica da obediência política, sem transformar essa crítica em descrição de todos os anarquismos."
+      },
+      "axis:poder": {
+        "value": 0.85,
+        "locator": "Crítica à autoridade de Estado e à autoridade científica imposta",
+        "rationale": "Contesta autoridade política coercitiva e a imposição de especialistas como governo."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "barlow",
+    "title": "Declaração de Independência do Ciberespaço",
+    "author": "John Perry Barlow",
+    "date": "08/02/1996",
+    "url": "https://www.eff.org/cyberspace-independence",
+    "targets": [
+      "current:ciberlibertarianismo",
+      "current:pirataria_digital",
+      "party:partido_pirata_europeu"
+    ],
+    "readings": {
+      "axis:poder": {
+        "value": 0.85,
+        "locator": "Passagens sobre soberania estatal, expressão e identidade",
+        "rationale": "Contesta a legitimidade da coerção estatal sobre o ciberespaço e defende expressão e associação. Documento histórico, não prova de ausência real de jurisdição."
+      },
+      "axis:estrutura": {
+        "value": -0.85,
+        "locator": "Passagens sobre governança e consenso",
+        "rationale": "Prefere ordem construída pelos participantes à soberania territorial imposta; recorte limitado ao ambiente digital."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "cypherpunk",
+    "title": "A Cypherpunk’s Manifesto",
+    "author": "Eric Hughes",
+    "date": "09/03/1993",
+    "url": "https://www.activism.net/cypherpunk/manifesto.html",
+    "targets": [
+      "current:criptoanarquismo",
+      "party:cypherpunk_software_livre"
+    ],
+    "readings": {
+      "axis:poder": {
+        "value": 0.9,
+        "locator": "Parágrafos sobre privacidade, anonimato e criptografia",
+        "rationale": "Defende capacidade de revelar seletivamente informações pessoais e comunicação criptografada. Privacidade não é confundida com segredo obrigatório."
+      },
+      "axis:tecnologia": {
+        "value": -0.8,
+        "locator": "Trecho sobre escrever e distribuir software",
+        "rationale": "Propõe construção de ferramentas criptográficas como meio de ação política. Isso não determina posições sobre biotecnologia ou sobre todo progresso técnico."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "rerum",
+    "title": "Rerum Novarum",
+    "author": "Leão XIII",
+    "date": "15/05/1891",
+    "url": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_15051891_rerum-novarum.html",
+    "targets": [
+      "personality:papa_leao_xiii",
+      "current:democracia_crista",
+      "current:corporativismo_social",
+      "current:conservadorismo_catolico",
+      "book:rerum_novarum_leao_xiii"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": 0.5,
+        "locator": "Parágrafos sobre propriedade privada e deveres de empregadores e trabalhadores",
+        "rationale": "Defende propriedade privada e simultaneamente obrigações sociais; não equivale a laissez-faire."
+      },
+      "axis:religiao": {
+        "value": 0.85,
+        "locator": "Passagens sobre a Igreja e a questão operária",
+        "rationale": "Fundamenta a orientação social na doutrina católica."
+      },
+      "axis:controle": {
+        "value": -0.25,
+        "locator": "Passagens sobre ação do Estado e associações operárias",
+        "rationale": "Admite proteção legal do trabalho e associações com autonomia; não propõe planejamento integral da economia."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "quadragesimo",
+    "title": "Quadragesimo Anno",
+    "author": "Pio XI",
+    "date": "15/05/1931",
+    "url": "https://www.vatican.va/content/pius-xi/en/encyclicals/documents/hf_p-xi_enc_19310515_quadragesimo-anno.html",
+    "targets": [
+      "current:corporativismo_social",
+      "current:distributismo_comunitarismo",
+      "book:quadragesimo_pio"
+    ],
+    "readings": {
+      "axis:estrutura": {
+        "value": -0.55,
+        "locator": "Parágrafos 79–80: subsidiariedade",
+        "rationale": "Defende que instâncias maiores não absorvam funções realizáveis por associações menores. A subsidiariedade não define, por si só, uma constituição federal."
+      },
+      "axis:controle": {
+        "value": -0.3,
+        "locator": "Parágrafos sobre ordem econômica, concorrência e justiça social",
+        "rationale": "Rejeita concorrência sem limites como princípio ordenador suficiente e defende regulação subordinada à justiça social."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "laudato",
+    "title": "Laudato Si’",
+    "author": "Francisco",
+    "date": "24/05/2015",
+    "url": "https://www.vatican.va/content/francesco/en/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html",
+    "targets": [
+      "book:laudato_si_francisco"
+    ],
+    "readings": {
+      "axis:tecnologia": {
+        "value": 0.55,
+        "locator": "Capítulo III, especialmente 101–114: paradigma tecnocrático",
+        "rationale": "Critica o domínio técnico ilimitado e requer limites ecológicos. Não rejeita toda tecnologia nem representa todo o ecologismo."
+      },
+      "axis:religiao": {
+        "value": 0.85,
+        "locator": "Capítulo II: evangelho da criação",
+        "rationale": "Argumenta também a partir da fé cristã. Para correntes ecológicas não confessionais, a referência é de diálogo, não posição religiosa imputável."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "un_charter",
+    "title": "Carta das Nações Unidas",
+    "author": "Estados signatários da ONU",
+    "date": "26/06/1945",
+    "url": "https://www.un.org/en/about-us/un-charter/full-text",
+    "targets": [
+      "current:cosmopolitismo_institucional"
+    ],
+    "readings": {
+      "axis:diplomacia": {
+        "value": 0.7,
+        "locator": "Artigos 2(3), 2(4), 33 e 51",
+        "rationale": "Privilegia solução pacífica, restringe uso da força e preserva autodefesa. Não equivale a pacifismo absoluto."
+      },
+      "axis:intervencao": {
+        "value": -0.55,
+        "locator": "Artigos 2(7) e 39–42",
+        "rationale": "Protege jurisdição interna com exceções de segurança coletiva. A tensão entre soberania e ação multilateral é mantida explícita."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "iww",
+    "title": "Preâmbulo da Constituição da IWW",
+    "author": "Industrial Workers of the World",
+    "date": "1905; texto com revisões posteriores",
+    "url": "https://archive.iww.org/culture/official/preamble/",
+    "targets": [
+      "party:industrial_workers_world",
+      "current:sindicalismo_revolucionario"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": -0.85,
+        "locator": "Preâmbulo: classe trabalhadora, propriedade e sistema salarial",
+        "rationale": "Propõe organização da produção pelos trabalhadores e superação do sistema salarial; não é simples negociação por aumento de salários."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "panthers",
+    "title": "Programa de Dez Pontos",
+    "author": "Black Panther Party",
+    "date": "Outubro de 1966",
+    "url": "https://www.marxists.org/history/usa/workers/black-panthers/1966/10/15.htm",
+    "targets": [
+      "party:black_panther_party",
+      "current:nacionalismo_negro"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": -0.7,
+        "locator": "Ponto 1: autodeterminação da comunidade",
+        "rationale": "Reivindica poder da comunidade sobre seu destino; não pressupõe autocracia de uma liderança."
+      },
+      "axis:poder": {
+        "value": 0.65,
+        "locator": "Pontos 7–9: violência policial, presos e julgamento",
+        "rationale": "Reivindica proteção contra violência policial e garantias de julgamento. A posição não é uma defesa de desarmamento ou de pacifismo geral."
+      },
+      "axis:economia": {
+        "value": -0.65,
+        "locator": "Pontos 2–4: emprego, exploração e moradia",
+        "rationale": "Exige emprego e habitação e critica exploração econômica. O documento não especifica um modelo único para todos os setores."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "plato",
+    "title": "A República",
+    "author": "Platão",
+    "date": "Século IV a.C.",
+    "url": "https://www.gutenberg.org/ebooks/1497",
+    "targets": [
+      "personality:platao",
+      "book:a_republica_platao"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": 0.8,
+        "locator": "Livros V–VI: filósofos governantes",
+        "rationale": "Atribui o governo aos que conhecem o bem; o argumento não equivale a eleição popular dos governantes."
+      },
+      "axis:economia": {
+        "value": -0.6,
+        "locator": "Livro III: bens dos guardiões; Livro V: comunidade entre guardiões",
+        "rationale": "Prescreve restrições à propriedade dos guardiões. Não abole indistintamente a propriedade de toda a cidade."
+      },
+      "axis:moral": {
+        "value": null,
+        "locator": "Livro V: educação das mulheres e organização familiar dos guardiões",
+        "rationale": "Há organização hierárquica e prescrição coletiva, mas também ruptura com padrões familiares e educação comum para mulheres guardiãs. Não cabe resumir essas tensões como tradicionalismo uniforme."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "aristotle",
+    "title": "Política",
+    "author": "Aristóteles",
+    "date": "Século IV a.C.",
+    "url": "https://www.gutenberg.org/ebooks/6762",
+    "targets": [
+      "personality:aristoteles",
+      "book:a_politica_aristoteles"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": 0.55,
+        "locator": "Livro II: crítica à comunidade de propriedade",
+        "rationale": "Defende posse privada com uso comum e critica a comunhão integral de bens. O argumento não é uma teoria moderna de livre mercado."
+      },
+      "axis:representacao": {
+        "value": null,
+        "locator": "Livros III–IV: formas de governo e constituição mista",
+        "rationale": "Compara monarquia, aristocracia e politeia e suas corrupções. Não há uma única resposta trans-histórica ao eixo democracia/autocracia."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "machiavelli",
+    "title": "O Príncipe",
+    "author": "Nicolau Maquiavel",
+    "date": "1513; publicado em 1532",
+    "url": "https://www.gutenberg.org/ebooks/1232",
+    "targets": [
+      "personality:nicolau_maquiavel",
+      "book:o_principe_maquiavel"
+    ],
+    "readings": {
+      "axis:diplomacia": {
+        "value": -0.7,
+        "locator": "Capítulos XII–XIV: armas e organização militar",
+        "rationale": "Atribui importância central à capacidade militar própria e ao estudo da guerra; não descreve pacifismo."
+      },
+      "axis:representacao": {
+        "value": 0.65,
+        "locator": "Capítulos IX e XV–XIX: principado civil e manutenção do poder",
+        "rationale": "O recorte analisa o governo de um príncipe. Isso não apaga o republicanismo desenvolvido pelo autor em outra obra."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "federalist",
+    "title": "O Federalista",
+    "author": "Alexander Hamilton, James Madison e John Jay",
+    "date": "1787–1788",
+    "url": "https://www.gutenberg.org/ebooks/1404",
+    "targets": [
+      "book:o_federalista",
+      "current:liberalismo_constitucional"
+    ],
+    "readings": {
+      "axis:estrutura": {
+        "value": -0.65,
+        "locator": "Artigos 39 e 45: federação e poderes delegados",
+        "rationale": "Defende união federal com competências nacionais e estaduais; não equivale a dissolução da União."
+      },
+      "axis:representacao": {
+        "value": -0.65,
+        "locator": "Artigos 10 e 51: representação e freios ao poder",
+        "rationale": "Justifica representação e controles institucionais contra concentração de poder e facções."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "kant_peace",
+    "title": "À Paz Perpétua",
+    "author": "Immanuel Kant",
+    "date": "1795",
+    "url": "https://www.gutenberg.org/ebooks/50922",
+    "targets": [
+      "book:paz_perpetua_kant",
+      "current:pacifismo_radical",
+      "current:cosmopolitismo_institucional"
+    ],
+    "readings": {
+      "axis:diplomacia": {
+        "value": 0.85,
+        "locator": "Artigos preliminares e definitivos para a paz",
+        "rationale": "Defende ordem jurídica de paz entre Estados. O argumento é institucional; não é submissão passiva a qualquer agressão."
+      },
+      "axis:intervencao": {
+        "value": -0.75,
+        "locator": "Quinto artigo preliminar: intervenção em outro Estado",
+        "rationale": "Rejeita ingerência violenta na constituição e no governo de outro Estado."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "paine",
+    "title": "Direitos do Homem",
+    "author": "Thomas Paine",
+    "date": "1791–1792",
+    "url": "https://www.gutenberg.org/ebooks/3742",
+    "targets": [
+      "personality:thomas_paine",
+      "book:direitos_homem_paine",
+      "current:radicalismo_liberal"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": -0.85,
+        "locator": "Parte II: origem dos governos e representação",
+        "rationale": "Rejeita direito hereditário de governar e defende representação fundada nos direitos dos vivos."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "wollstonecraft",
+    "title": "Reivindicação dos Direitos da Mulher",
+    "author": "Mary Wollstonecraft",
+    "date": "1792",
+    "url": "https://www.gutenberg.org/ebooks/3420",
+    "targets": [
+      "book:vindicacao_mulher_wollstonecraft",
+      "current:feminismo_liberal"
+    ],
+    "readings": {
+      "axis:moral": {
+        "value": -0.7,
+        "locator": "Capítulos II–IV e XII: educação, razão e cidadania",
+        "rationale": "Rejeita inferiorização intelectual das mulheres e defende educação racional. O recorte não atribui automaticamente posições sobre toda pauta contemporânea."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "mill_women",
+    "title": "A Sujeição das Mulheres",
+    "author": "John Stuart Mill",
+    "date": "1869",
+    "url": "https://www.gutenberg.org/ebooks/27083",
+    "targets": [
+      "personality:john_stuart_mill",
+      "book:sujeicao_mulheres_mill",
+      "current:feminismo_liberal"
+    ],
+    "readings": {
+      "axis:moral": {
+        "value": -0.8,
+        "locator": "Capítulos I–III: igualdade jurídica e matrimônio",
+        "rationale": "Defende substituição da subordinação legal entre os sexos pela igualdade, inclusive no casamento."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "spooner",
+    "title": "No Treason: The Constitution of No Authority",
+    "author": "Lysander Spooner",
+    "date": "1870",
+    "url": "https://www.gutenberg.org/ebooks/36145",
+    "targets": [
+      "personality:lysander_spooner",
+      "book:no_treason_spooner",
+      "current:anarquismo_individualista"
+    ],
+    "readings": {
+      "axis:poder": {
+        "value": 0.9,
+        "locator": "Seções I–II: consentimento e obrigação",
+        "rationale": "Contesta obrigação política sem consentimento individual efetivo; votação não é tratada como autorização irrestrita."
+      },
+      "axis:representacao": {
+        "value": null,
+        "locator": "Discussão de representação e consentimento",
+        "rationale": "Rejeita a autoridade constitucional compulsória, não oferece uma escolha simples entre autocracia e governo representativo."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "thoreau",
+    "title": "A Desobediência Civil",
+    "author": "Henry David Thoreau",
+    "date": "1849",
+    "url": "https://www.gutenberg.org/ebooks/71",
+    "targets": [
+      "book:resistencia_civil_thoreau",
+      "current:anarquismo_filosofico"
+    ],
+    "readings": {
+      "axis:poder": {
+        "value": 0.8,
+        "locator": "Passagens sobre consciência e obediência ao governo",
+        "rationale": "Defende responsabilidade moral individual diante de leis injustas, com resistência à escravidão e à guerra."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "gandhi",
+    "title": "Hind Swaraj",
+    "author": "Mahatma Gandhi",
+    "date": "1909",
+    "url": "https://www.mkgandhi.org/ebks/hind_swaraj.pdf",
+    "targets": [
+      "personality:mahatma_gandhi",
+      "current:gandhismo",
+      "current:sarvodaya",
+      "book:hind_swaraj_gandhi"
+    ],
+    "readings": {
+      "axis:diplomacia": {
+        "value": 0.85,
+        "locator": "Capítulo XVII: resistência passiva / força da alma",
+        "rationale": "Defende resistência sem violência como força política; não é simples inação."
+      },
+      "axis:tecnologia": {
+        "value": 0.8,
+        "locator": "Capítulos IX e XIX: ferrovias e maquinaria",
+        "rationale": "Critica a civilização industrial e os efeitos sociais da maquinaria. O texto de 1909 não descreve cada posição posterior de Gandhi."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "ocalan",
+    "title": "Confederalismo Democrático",
+    "author": "Abdullah Öcalan",
+    "date": "2011",
+    "url": "https://ocalanbooks.com/downloads/EN-brochure_democratic-confederalism_2017.pdf",
+    "targets": [
+      "current:confederalismo_democratico",
+      "book:confederalismo_ocalan",
+      "history:rojava_confederalismo_democratico"
+    ],
+    "readings": {
+      "axis:estrutura": {
+        "value": -0.9,
+        "locator": "Seções sobre autoadministração e confederalismo",
+        "rationale": "Propõe redes de autoadministração em vez de Estado-nação centralizado. Para Rojava, o texto é fundamento declarado, não comprovação de toda prática."
+      },
+      "axis:representacao": {
+        "value": -0.8,
+        "locator": "Seção sobre participação e decisão",
+        "rationale": "Defende participação de base e delegação confederada; a proposta não equivale a avaliação independente de sua implementação."
+      },
+      "triad:4": {
+        "value": null,
+        "locator": "Participação e autoadministração",
+        "rationale": "Propõe democracia de base e autoadministração; ausência de Estado-nação não é idêntica ao vértice minarquia. A fonte permite discutir a tensão, mas não uma porcentagem completa."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "constitution_us",
+    "title": "Constituição dos Estados Unidos",
+    "author": "Convenção da Filadélfia e ratificadores",
+    "date": "1787; emendas indicadas no documento",
+    "url": "https://www.archives.gov/founding-docs/constitution-transcript",
+    "targets": [
+      "country:eua_founding",
+      "history:eua_fundacional_1787"
+    ],
+    "readings": {
+      "axis:estrutura": {
+        "value": -0.7,
+        "locator": "Artigos I e IV: competências e relações federais",
+        "rationale": "Institui competências federais e preserva a existência política dos estados. A transcrição é normativa, não uma medição da prática histórica."
+      },
+      "axis:representacao": {
+        "value": -0.65,
+        "locator": "Artigos I–III: ramos e composição dos poderes",
+        "rationale": "Estabelece representação legislativa e poderes separados; o sufrágio da época não era universal."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "constitution_br88",
+    "title": "Constituição da República Federativa do Brasil",
+    "author": "Assembleia Nacional Constituinte",
+    "date": "05/10/1988; texto compilado identificado no portal",
+    "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+    "targets": [
+      "country:brasil_cf88",
+      "history:brasil_constituicao_1988",
+      "party:reforma_sanitaria_sus"
+    ],
+    "readings": {
+      "axis:estrutura": {
+        "value": -0.7,
+        "locator": "Artigos 1º, 18 e 30: federação e autonomia",
+        "rationale": "Define federação com entes autônomos, não confederação com secessão."
+      },
+      "axis:representacao": {
+        "value": -0.85,
+        "locator": "Artigos 1º e 14: soberania e participação",
+        "rationale": "Prevê representação eletiva e mecanismos diretos de participação. Norma constitucional não comprova qualidade democrática em cada período."
+      },
+      "axis:religiao": {
+        "value": -0.25,
+        "locator": "Artigo 19, I, combinado com art. 5º, VI",
+        "rationale": "Veda estabelecimento de igrejas pelo Estado e protege crença. Laicidade jurídica não significa ateísmo dos cidadãos."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "constitution_sa",
+    "title": "Constituição da República da África do Sul",
+    "author": "Assembleia Constituinte sul-africana",
+    "date": "1996",
+    "url": "https://www.justice.gov.za/constitution/SAConstitution-web-eng.pdf",
+    "targets": [
+      "country:africa_do_sul_mandela",
+      "history:africa_sul_transicao"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": -0.85,
+        "locator": "Seção 1: valores fundadores; seção 19: direitos políticos",
+        "rationale": "Constitui democracia multipartidária com sufrágio adulto e direitos políticos."
+      },
+      "axis:moral": {
+        "value": -0.8,
+        "locator": "Seção 9: igualdade e proibição de discriminação",
+        "rationale": "Protege igualdade jurídica inclusive por sexo, gênero e orientação sexual. Isso descreve a norma, não ausência de discriminação social."
+      },
+      "triad:5": {
+        "value": null,
+        "locator": "Seções 9 e 26–29: igualdade e direitos sociais",
+        "rationale": "Combina não discriminação e direitos sociais, com possibilidade de medidas reparadoras. Não se reduzem igualdade formal, reparação e resultados a proporções observadas."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "constitution_portugal",
+    "title": "Constituição da República Portuguesa",
+    "author": "Assembleia Constituinte portuguesa",
+    "date": "1976; edição consolidada com revisões",
+    "url": "https://www.parlamento.pt/Legislacao/Paginas/ConstituicaoRepublicaPortuguesa.aspx",
+    "targets": [
+      "country:portugal_cravos",
+      "history:portugal_prec"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": -0.85,
+        "locator": "Artigos 1º–3º e 10º: Estado democrático e sufrágio",
+        "rationale": "Institui soberania popular e pluralismo. O texto consolidado precisa ser distinguido da redação econômica original de 1976."
+      },
+      "axis:religiao": {
+        "value": -0.3,
+        "locator": "Artigo 41º: liberdade de consciência e separação",
+        "rationale": "Protege crença e separa igrejas e Estado; não impõe irreligião à população."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "constitution_japan",
+    "title": "Constituição do Japão",
+    "author": "Promulgação imperial e Dieta",
+    "date": "03/11/1946; vigência 03/05/1947",
+    "url": "https://www.shugiin.go.jp/internet/itdb_english.nsf/html/statics/english/constitution_e.htm",
+    "targets": [
+      "country:japao_pos_guerra",
+      "history:japao_pos_guerra_miti"
+    ],
+    "readings": {
+      "axis:diplomacia": {
+        "value": 0.8,
+        "locator": "Artigo 9: renúncia à guerra",
+        "rationale": "Renuncia à guerra e à ameaça ou uso da força para resolver disputas. O texto não resolve sozinho a interpretação das Forças de Autodefesa."
+      },
+      "axis:representacao": {
+        "value": -0.85,
+        "locator": "Preâmbulo e artigos 41–43: soberania e Dieta",
+        "rationale": "Situa soberania no povo e institui legislativo eletivo."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "constitution_france",
+    "title": "Constituição da Quinta República",
+    "author": "República Francesa",
+    "date": "04/10/1958; versão consolidada",
+    "url": "https://www.conseil-constitutionnel.fr/en/constitution-of-4-october-1958",
+    "targets": [
+      "country:franca_gaullista",
+      "history:franca_gaullista"
+    ],
+    "readings": {
+      "axis:estrutura": {
+        "value": 0.65,
+        "locator": "Artigo 1: República indivisível e organização descentralizada",
+        "rationale": "Combina unidade constitucional e descentralização administrativa; não é uma federação."
+      },
+      "axis:representacao": {
+        "value": -0.65,
+        "locator": "Artigos 3, 6 e 24: soberania, presidência e Parlamento",
+        "rationale": "Combina eleições presidenciais e representação parlamentar; a revisão de 1962 deve ser distinguida da eleição original de 1958."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "constitution_weimar",
+    "title": "Constituição de Weimar",
+    "author": "Assembleia Nacional Alemã",
+    "date": "11/08/1919",
+    "url": "https://germanhistorydocs.org/en/weimar-germany-1918-1933/ghdi:document-3937",
+    "targets": [
+      "country:weimar_rep",
+      "history:republica_weimar"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": -0.65,
+        "locator": "Artigos 1, 22 e 41: soberania e eleições",
+        "rationale": "Prevê república e representação eletiva; os poderes excepcionais do art. 48 limitam uma leitura idealizada."
+      },
+      "axis:economia": {
+        "value": 0.15,
+        "locator": "Artigos 151–156: ordem econômica e propriedade",
+        "rationale": "Protege propriedade e admite socialização e finalidade social. Não descreve uma economia integralmente pública."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "tucker",
+    "title": "Instead of a Book",
+    "author": "Benjamin R. Tucker",
+    "date": "1893",
+    "url": "https://theanarchistlibrary.org/library/benjamin-tucker-instead-of-a-book",
+    "targets": [
+      "personality:benjamin_tucker",
+      "book:em_lugar_livro_tucker",
+      "current:anarquismo_mercado_esquerda"
+    ],
+    "readings": {
+      "axis:poder": {
+        "value": 0.85,
+        "locator": "State Socialism and Anarchism: indivíduo e autoridade",
+        "rationale": "Defende soberania do indivíduo e associação voluntária."
+      },
+      "axis:controle": {
+        "value": 0.8,
+        "locator": "State Socialism and Anarchism: monopólios e concorrência",
+        "rationale": "Critica monopólios sustentados pelo Estado e propõe concorrência livre. Não equivale a endosso dos títulos de propriedade de todo capitalismo existente."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "pannekoek",
+    "title": "Conselhos Operários",
+    "author": "Anton Pannekoek",
+    "date": "1942–1947; tradução inglesa 1947–1949",
+    "url": "https://www.marxists.org/archive/pannekoe/1947/workers-councils.htm",
+    "targets": [
+      "personality:anton_pannekoek",
+      "current:comunismo_de_conselhos"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": -0.85,
+        "locator": "Parte I, seção 7: Council Organization",
+        "rationale": "A decisão pertence aos trabalhadores organizados e aos delegados responsáveis perante eles; os conselhos não são apresentados como novo governo separado."
+      },
+      "axis:economia": {
+        "value": -0.85,
+        "locator": "Parte I: tarefa e organização da produção",
+        "rationale": "Defende apropriação comum da produção pelos trabalhadores, distinguindo-a de propriedade estatal administrada por uma camada dirigente."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "bernstein",
+    "title": "Socialismo Evolucionário",
+    "author": "Eduard Bernstein",
+    "date": "1899",
+    "url": "https://www.marxists.org/reference/archive/bernstein/works/1899/evsoc/ch03-2.htm",
+    "targets": [
+      "personality:eduard_bernstein",
+      "current:revisionismo_bernsteiniano",
+      "current:social_democracia",
+      "current:socialismo_democratico"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": -0.85,
+        "locator": "Capítulo III: Democracy and Socialism",
+        "rationale": "Trata a democracia como condição e meio de emancipação, em oposição ao privilégio político de uma classe. Esse recorte é uma tradição reformista, não a voz de todo socialismo democrático."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "fabian",
+    "title": "Fabian Essays in Socialism",
+    "author": "George Bernard Shaw, Sidney Webb e outros",
+    "date": "1889; edição digital com prefácio posterior",
+    "url": "https://www.gutenberg.org/ebooks/69088",
+    "targets": [
+      "current:socialismo_fabiano",
+      "party:fabian_society"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": -0.7,
+        "locator": "The Transition to Social Democracy e The Basis of Socialism",
+        "rationale": "Defende expansão de propriedade e provisão coletivas por mudança institucional. A coleção tem vários autores e não deve ser reduzida a uma única política de execução."
+      },
+      "axis:controle": {
+        "value": -0.65,
+        "locator": "Ensaios sobre organização e transição",
+        "rationale": "Valoriza planejamento e administração coletiva em lugar da coordenação exclusiva pelo mercado."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "proudhon",
+    "title": "O que é a Propriedade?",
+    "author": "Pierre-Joseph Proudhon",
+    "date": "1840",
+    "url": "https://www.gutenberg.org/ebooks/360",
+    "targets": [
+      "personality:pierre_joseph_proudhon",
+      "current:mutualismo_proudhoniano",
+      "book:o_que_e_a_propriedade_proudhon"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": null,
+        "locator": "Capítulos II–V: domínio, posse e propriedade",
+        "rationale": "Distingue posse de propriedade como domínio que permite renda sem trabalho. Público/privado não exprime adequadamente a posse mutualista; não se atribui um número de estatização à crítica da propriedade."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "mao_new",
+    "title": "Sobre a Nova Democracia",
+    "author": "Mao Zedong",
+    "date": "Janeiro de 1940",
+    "url": "https://www.marxists.org/reference/archive/mao/selected-works/volume-2/mswv2_26.htm",
+    "targets": [
+      "personality:mao_zedong",
+      "current:maoismo",
+      "party:partido_comunista_chines_formacao"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": 0.6,
+        "locator": "Seção V: política da Nova Democracia",
+        "rationale": "Propõe poder conjunto de classes revolucionárias sob direção proletária e centralismo democrático. Não equivale à democracia liberal multipartidária."
+      },
+      "axis:economia": {
+        "value": -0.5,
+        "locator": "Seção VI: economia da Nova Democracia",
+        "rationale": "Prevê propriedade estatal de grandes bancos e empresas, junto a espaços para capital privado e economia camponesa. Não descreve a coletivização integral posterior."
+      },
+      "axis:controle": {
+        "value": -0.6,
+        "locator": "Seção VI: economia da Nova Democracia",
+        "rationale": "A direção pública dos setores decisivos convive com formas privadas limitadas. O recorte de 1940 não é tratado como toda política maoísta."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "trotsky",
+    "title": "A Revolução Permanente: teses finais",
+    "author": "Leon Trotsky",
+    "date": "1929–1930",
+    "url": "https://www.marxists.org/archive/trotsky/1931/tpr/pr10.htm",
+    "targets": [
+      "personality:leon_trotsky",
+      "current:trotskismo",
+      "book:revolucao_permanente_trotsky"
+    ],
+    "readings": {
+      "axis:intervencao": {
+        "value": null,
+        "locator": "Teses 8–12: caráter internacional da revolução",
+        "rationale": "Defende internacionalização da revolução e nega autossuficiência nacional do socialismo. Internacionalismo revolucionário não equivale nem a nacionalismo expansionista nem a não intervenção pacifista."
+      },
+      "axis:economia": {
+        "value": -0.85,
+        "locator": "Teses sobre transição de tarefas democráticas a socialistas",
+        "rationale": "A revolução passa à transformação socialista das relações econômicas; não se restringe a reformas de propriedade dentro da ordem burguesa."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "thatcher1979",
+    "title": "Manifesto Conservador de 1979",
+    "author": "Partido Conservador britânico; liderança de Margaret Thatcher",
+    "date": "1979",
+    "url": "https://www.margaretthatcher.org/document/110858",
+    "targets": [
+      "personality:margaret_thatcher",
+      "party:tories_uk",
+      "current:conservadorismo_fiscal",
+      "country:reino_unido_thatcher",
+      "history:reino_unido_thatcherista"
+    ],
+    "readings": {
+      "axis:economia": {
+        "value": 0.8,
+        "locator": "Seção A more prosperous country: propriedade e indústria",
+        "rationale": "Propõe ampliar propriedade privada e reduzir presença estatal em atividades empresariais. Programa não é comprovação da execução de cada privatização."
+      },
+      "axis:controle": {
+        "value": 0.75,
+        "locator": "Passagens sobre controle de preços, concorrência e incentivos",
+        "rationale": "Defende maior papel de preços e concorrência, preservando normas e serviços públicos específicos. Não é um programa de ausência total de Estado."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "fdr_four",
+    "title": "Mensagem ao Congresso: Quatro Liberdades",
+    "author": "Franklin D. Roosevelt",
+    "date": "06/01/1941",
+    "url": "https://www.archives.gov/milestone-documents/president-franklin-roosevelts-annual-message-to-congress",
+    "targets": [
+      "personality:franklin_d_roosevelt",
+      "country:eua_new_deal",
+      "history:new_deal_eua"
+    ],
+    "readings": {
+      "axis:poder": {
+        "value": 0.65,
+        "locator": "Conclusão: expressão, culto, privação e medo",
+        "rationale": "Defende liberdades civis e proteção social articuladas à segurança internacional. O discurso de 1941 não é medida isolada de toda a prática do governo."
+      },
+      "axis:diplomacia": {
+        "value": -0.45,
+        "locator": "Trechos sobre defesa e ajuda aos países que resistem à agressão",
+        "rationale": "Rejeita isolamento diante da expansão militar do Eixo e defende preparação e auxílio material. Defender liberdades não implica pacifismo ou desarmamento neste contexto."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "reagan1981",
+    "title": "Primeiro discurso de posse",
+    "author": "Ronald Reagan",
+    "date": "20/01/1981",
+    "url": "https://avalon.law.yale.edu/20th_century/reagan1.asp",
+    "targets": [
+      "personality:ronald_reagan",
+      "country:eua_reagan",
+      "history:eua_reaganista"
+    ],
+    "readings": {
+      "axis:estrutura": {
+        "value": -0.6,
+        "locator": "Passagens sobre poderes delegados e relação com os estados",
+        "rationale": "Propõe limitar competências federais às delegadas e ampliar espaço dos estados. Não reivindica dissolução da federação."
+      },
+      "axis:controle": {
+        "value": 0.7,
+        "locator": "Passagens sobre tamanho do governo, tributação e iniciativa",
+        "rationale": "Defende reduzir interferências e incentivar iniciativa produtiva. Não se usa a promessa inaugural como prova do resultado fiscal posterior."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  },
+  {
+    "id": "allende_un",
+    "title": "Discurso às Nações Unidas: excertos",
+    "author": "Salvador Allende",
+    "date": "04/12/1972",
+    "url": "https://www.marxists.org/archive/allende/1972/december/04.htm",
+    "targets": [
+      "personality:salvador_allende",
+      "country:chile_allende",
+      "history:chile_unidade_popular"
+    ],
+    "readings": {
+      "axis:representacao": {
+        "value": -0.75,
+        "locator": "Passagens sobre liberdades políticas e democracia econômica",
+        "rationale": "Apresenta transformação socialista por exercício das liberdades políticas. É autodescrição do projeto, não validação independente de todas as práticas."
+      },
+      "axis:economia": {
+        "value": -0.65,
+        "locator": "Passagens sobre recursos naturais, cobre e empresas transnacionais",
+        "rationale": "Defende controle nacional sobre recursos estratégicos e critica poder das transnacionais. Não afirma abolição de toda propriedade pessoal ou empresarial privada."
+      }
+    },
+    "provenance": "Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório."
+  }
+]

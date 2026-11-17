@@ -5,14 +5,80 @@ import 'package:flutter/services.dart';
 
 import 'strict_json.dart';
 
+/// Resolve o caminho raiz (`.../v2`) da persistência local por sistema operacional:
+/// - Android: `applicationContext.filesDir` informado pelo canal nativo.
+/// - Windows: `%LOCALAPPDATA%\espectro`, `%APPDATA%\espectro` ou `%USERPROFILE%\AppData\Local\espectro`.
+/// - Linux/POSIX: `$XDG_DATA_HOME/espectro` ou `$HOME/.local/share/espectro`.
+/// - Contingência final: diretório temporário do sistema.
+String resolveNativeStorageDirectoryPath({
+  required bool isAndroid,
+  required bool isWindows,
+  String? androidFilesDir,
+  Map<String, String>? environment,
+  String? systemTempPath,
+  String? pathSeparator,
+}) {
+  final Map<String, String> env = environment ?? Platform.environment;
+  final String sep =
+      pathSeparator ?? (isWindows ? '\\' : Platform.pathSeparator);
+
+  String joinSegments(String base, String tail) {
+    final String cleanBase = base.replaceFirst(RegExp(r'[\\/]+$'), '');
+    final String cleanTail = tail.replaceFirst(RegExp(r'^[\\/]+'), '');
+    return '$cleanBase$sep$cleanTail';
+  }
+
+  String? nonEmptyEnv(String key) {
+    final String? value = env[key]?.trim();
+    return (value == null || value.isEmpty) ? null : value;
+  }
+
+  String? basePath;
+  if (isAndroid && androidFilesDir != null && androidFilesDir.isNotEmpty) {
+    basePath = androidFilesDir;
+  } else if (isWindows) {
+    final String? localAppData = nonEmptyEnv('LOCALAPPDATA');
+    final String? appData = nonEmptyEnv('APPDATA');
+    final String? userProfile = nonEmptyEnv('USERPROFILE');
+    final String? home = nonEmptyEnv('HOME');
+    if (localAppData != null) {
+      basePath = joinSegments(localAppData, 'espectro');
+    } else if (appData != null) {
+      basePath = joinSegments(appData, 'espectro');
+    } else if (userProfile != null) {
+      basePath = joinSegments(
+        userProfile,
+        'AppData${sep}Local${sep}espectro',
+      );
+    } else if (home != null) {
+      basePath = joinSegments(home, '.local${sep}share${sep}espectro');
+    }
+  } else {
+    final String? xdg = nonEmptyEnv('XDG_DATA_HOME');
+    final String? home = nonEmptyEnv('HOME');
+    if (xdg != null) {
+      basePath = joinSegments(xdg, 'espectro');
+    } else if (home != null) {
+      basePath = joinSegments(home, '.local${sep}share${sep}espectro');
+    }
+  }
+
+  basePath ??= joinSegments(
+    systemTempPath ?? Directory.systemTemp.path,
+    'espectro_local',
+  );
+  return joinSegments(basePath, 'v2');
+}
+
 /// Serviço de persistência local em arquivos JSON com escrita atômica e fila serializada.
 ///
 /// Não depende de pacotes externos nem de rede:
 /// - No Android obtém `applicationContext.filesDir` via `MethodChannel` nativo.
+/// - No Windows usa `%LOCALAPPDATA%\espectro`, `%APPDATA%\espectro` ou `%USERPROFILE%`.
 /// - Em Linux/Desktop usa `$XDG_DATA_HOME/espectro` ou `$HOME/.local/share/espectro`.
 /// - Em testes de persistência aceita um [Directory] temporário injetado.
 /// - Em testes de widget (`FakeAsync`) oferece [LocalStorageService.inMemory] com a mesma
-///   codificação/decodificação JSON estrita sem bloquear descritores de arquivo do SO.
+///   codificação/decificação JSON estrita sem bloquear descritores de arquivo do SO.
 class LocalStorageService {
   LocalStorageService({this.overrideDirectory}) : _memoryStore = null;
 
@@ -50,27 +116,22 @@ class LocalStorageService {
     }
     if (_resolvedRoot != null) return _resolvedRoot!;
 
-    String? basePath;
+    String? androidBasePath;
     if (Platform.isAndroid) {
       try {
-        basePath = await _channel.invokeMethod<String>('getFilesDir');
+        androidBasePath = await _channel.invokeMethod<String>('getFilesDir');
       } on Object {
-        basePath = null;
-      }
-    }
-    if (basePath == null || basePath.isEmpty) {
-      final String? xdg = Platform.environment['XDG_DATA_HOME'];
-      final String? home = Platform.environment['HOME'];
-      if (xdg != null && xdg.isNotEmpty) {
-        basePath = '$xdg/espectro';
-      } else if (home != null && home.isNotEmpty) {
-        basePath = '$home/.local/share/espectro';
-      } else {
-        basePath = '${Directory.systemTemp.path}/espectro_local';
+        androidBasePath = null;
       }
     }
 
-    final Directory dir = Directory('$basePath/v2');
+    final Directory dir = Directory(
+      resolveNativeStorageDirectoryPath(
+        isAndroid: Platform.isAndroid,
+        isWindows: Platform.isWindows,
+        androidFilesDir: androidBasePath,
+      ),
+    );
     if (!dir.existsSync()) {
       await dir.create(recursive: true);
     }

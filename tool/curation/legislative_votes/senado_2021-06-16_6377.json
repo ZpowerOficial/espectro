@@ -1,0 +1,3090 @@
+{
+  "requestUrl": "https://legis.senado.leg.br/dadosabertos/votacao?dataInicio=2021-06-16&dataFim=2021-06-18",
+  "sha256": "cefd6d332114855f893e2d2cb081868cc2a2e24b25450506b410bc7bcf9d2ded",
+  "payload": [
+    {
+      "ano": 2021,
+      "casaSessao": "SF",
+      "codigoMateria": 146740,
+      "codigoSessao": 234933,
+      "codigoSessaoLegislativa": 865,
+      "codigoSessaoVotacao": 6376,
+      "dataApresentacao": "2021-02-23",
+      "dataSessao": "2021-06-16",
+      "descricaoVotacao": "(Pressupostos de relevância e urgência, adequação financeira e orçamentária e pertinência temática da matéria.)",
+      "ementa": "Dispõe sobre a desestatização da empresa Centrais Elétricas Brasileiras S.A. - Eletrobras e altera a Lei nº 5.899, de 5 de julho de 1973, a Lei nº 9.991, de 24 de julho de 2000, e a Lei nº 10.438, de 26 de abril de 2002.",
+      "idProcesso": 8025319,
+      "identificacao": "MPV 1031/2021",
+      "informeLegislativo": {
+        "casaColegiado": "SF",
+        "casaEnteAdm": "SF",
+        "codigoColegiado": 1998,
+        "data": "2021-06-17",
+        "id": 2055878,
+        "idEnteAdm": 13594,
+        "idEvento": 10180559,
+        "nomeColegiado": "Plenário do Senado Federal",
+        "nomeEnteAdm": "Secretaria de Atas e Diários",
+        "numeroAutuacao": 1,
+        "siglaColegiado": "PLEN",
+        "siglaEnteAdm": "SEADI",
+        "texto": "(Sessão Deliberativa Remota realizada em 17/06/2021 – continuação da Sessão Deliberativa Remota iniciada em 16/06/2021) \r\nProferido pelo Senador Marcos Rogério, em complemento ao Parecer nº 134/2021, o Parecer nº 136/2021-PLEN/SF, favorável ao Projeto de Lei de Conversão e às Emendas nºs 575 e 589, com ajustes redacionais, 581, 591, 596, 599, 603, 604, 609, 624, 626, 627 e 631, parcialmente favorável às Emendas nºs 573, 574, 590, 592, 597, 598, 615, na forma das Emendas nºs 650 a 666, que apresenta, e pela rejeição das Emendas nºs 572, 576, 577, 578, 579, 580, 582, 583, 584, 585, 586, 587, 588, 593, 594, 600, 602, 605, 606, 607, 608, 610, 611, 612, 613, 614, 616, 617, 618, 619, 620, 621, 622, 623, 625, 628, 629, 630, 632 e 633. \r\nPrejudicado, em virtude do acatamento pelo Relator, o Requerimento nº 1665/2021, da Liderança do PODEMOS, que solicita destaque para votação em separado da Emenda nº 599.  \r\nRetirados os RQS nºs 1666/2021 e 1667/2021, respectivamente, pelos Senadores Flávio Arns e Carlos Portinho.  \r\nDeferido o nº 1672/2021, da Liderança do PSDB, que solicita destaque para votação em separado da Emenda nº 610.  \r\nEncaminhados à publicação os seguintes Requerimentos:  \r\n- nº 1675/2021, da Liderança do PSD, que solicita destaque para votação em separado da Emenda nº 582 (retirado pelo RQS nº 1680/2021, encaminhado à publicação); \r\n- nº 1676/2021, da Liderança do PT, que solicita destaque para votação em separado da Emenda nº 618 (deferido); e \r\n-nº 1677/2021, da Liderança do DEMOCRATAS, que solicita destaque para votação em separado da Emenda nº 619 (retirado pelo RQS nº 1682/2021, encaminhado à publicação). \r\nMantidos os RQS nºs 1672 e 1676, de 2021, solicitando destaque para votação em separado. \r\nAprovados os pressupostos de relevância e urgência, adequação financeira e orçamentária e pertinência temática da Medida Provisória, com o seguinte resultado: Sim - 44, Não - 35, Pres. - 1, Total – 80, com a retificação para “Não” do voto da Senadora Zenaide Maia, conforme notas taquigráficas. \r\nAprovado o mérito do Projeto de Lei de Conversão com emendas, nos termos do Parecer nº 136, de 2021-PLEN/SF, na forma das emendas e dos ajustes redacionais procedidos pelo Relator, com o seguinte resultado: Sim - 42, Não - 37, Pres. - 1, Total - 80, ressalvados os destaques. \r\nRejeitada a Emenda nº 610, destacada por meio do RQS nº 1672/2021, com o seguinte resultado: Sim - 35, Não - 41, Pres. - 1, Total - 77. \r\nRejeitada a Emenda nº 618, destacada por meio do RQS nº 1676/2021, com o seguinte resultado: Sim - 32, Não - 41, Pres. - 1, Total - 74. \r\nAprovado o PLV, com emendas, ficam prejudicadas a Medida Provisória e as demais emendas a ela apresentadas.  \r\nAs adequações de técnica legislativa serão apostas aos autógrafos da matéria, dispensada a redação final.   \r\nA matéria retorna à Câmara dos Deputados."
+      },
+      "numero": "1031",
+      "numeroSessao": 66,
+      "resultadoVotacao": "A",
+      "sequencialSessao": 1,
+      "sequencialVotacao": 3611,
+      "sigla": "MPV",
+      "siglaTipoSessao": "SDR",
+      "totalVotosAbstencao": null,
+      "totalVotosNao": null,
+      "totalVotosSim": null,
+      "votacaoSecreta": "N",
+      "votos": [
+        {
+          "codigoParlamentar": 4981,
+          "descricaoVotoParlamentar": "Não Compareceu",
+          "nomeParlamentar": "Acir Gurgacz",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "NCom"
+        },
+        {
+          "codigoParlamentar": 5982,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Alessandro Vieira",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "CIDADANIA",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 945,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Alvaro Dias",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5967,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Angelo Coronel",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5529,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Antonio Anastasia",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 6295,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Carlos Fávaro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5936,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Carlos Portinho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5990,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Carlos Viana",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 470,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Chico Rodrigues",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5973,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Cid Gomes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 739,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Ciro Nogueira",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 475,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Confúcio Moura",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5998,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Daniella Ribeiro",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 3830,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Davi Alcolumbre",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5537,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Dário Berger",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4994,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Braga",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5976,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Girão",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 3777,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Gomes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5718,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eliziane Gama",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "CIDADANIA",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5531,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Elmano Férrer",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 22,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Esperidião Amin",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5953,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fabiano Contarato",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REDE",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5540,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fernando Bezerra Coelho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 4525,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fernando Collor",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 345,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Flávio Arns",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5894,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Flávio Bolsonaro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PATRIOTA",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 6008,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Giordano",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSL",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5008,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Humberto Costa",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5385,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Irajá",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 4770,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Izalci Lucas",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 35,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jader Barbalho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 581,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jaques Wagner",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4545,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jarbas Vasconcelos",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4531,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jayme Campos",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5627,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jean-Paul Prates",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5895,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jorge Kajuru",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5350,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jorginho Mello",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 90,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "José Serra",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 1249,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Kátia Abreu",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5533,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Lasier Martins",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5979,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Leila Barros",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSB",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5926,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Lucas Barreto",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 1186,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Luis Carlos Heinze",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5585,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Luiz Carlos do Carmo",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5557,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Mailza Gomes",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5376,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Mara Gabrilli",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 742,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcelo Castro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 285,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcio Bittar",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5422,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcos Rogério",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5942,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcos do Val",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 1023,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Maria do Carmo Alves",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 6027,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Mecias de Jesus",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REPUBLICANOS",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5985,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Nelsinho Trad",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5281,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Nilda Gondim",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5525,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Omar Aziz",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5924,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Oriovisto Guimarães",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5523,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Otto Alencar",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 825,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Paulo Paim",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 374,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Paulo Rocha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5502,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Plínio Valério",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5012,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Randolfe Rodrigues",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REDE",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5236,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Reguffe",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 70,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Renan Calheiros",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 677,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Roberto Rocha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5905,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rodrigo Cunha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5732,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rodrigo Pacheco",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "Presidente (art. 51 RISF)"
+        },
+        {
+          "codigoParlamentar": 5352,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rogério Carvalho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5322,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Romário",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 2331,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rose de Freitas",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5527,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Simone Tebet",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5988,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Soraya Thronicke",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSL",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5959,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Styvenson Valentim",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4560,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Sérgio Petecão",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 3396,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Tasso Jereissati",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5535,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Telmário Mota",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5899,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Vanderlan Cardoso",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5748,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Veneziano Vital do Rêgo",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 1173,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Wellington Fagundes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5411,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Weverton",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5783,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Zenaide Maia",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 3806,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Zequinha Marinho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSC",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Sim"
+        }
+      ]
+    },
+    {
+      "ano": 2021,
+      "casaSessao": "SF",
+      "codigoMateria": 146740,
+      "codigoSessao": 234933,
+      "codigoSessaoLegislativa": 865,
+      "codigoSessaoVotacao": 6377,
+      "dataApresentacao": "2021-02-23",
+      "dataSessao": "2021-06-16",
+      "descricaoVotacao": "(Dispõe sobre a desestatização da empresa Centrais Elétricas Brasileiras S.A. (Eletrobras); altera as Leis nºs 5.899, de 1973, 9.991, de 2000, 10.438, de 2002, 10.848, de 2004, 13.182, de 2015, e 14.118, de 2021; e revoga dispositivos da Lei nº 3.890-A, de 1961.)",
+      "ementa": "Dispõe sobre a desestatização da empresa Centrais Elétricas Brasileiras S.A. - Eletrobras e altera a Lei nº 5.899, de 5 de julho de 1973, a Lei nº 9.991, de 24 de julho de 2000, e a Lei nº 10.438, de 26 de abril de 2002.",
+      "idProcesso": 8025319,
+      "identificacao": "MPV 1031/2021",
+      "informeLegislativo": {
+        "casaColegiado": "SF",
+        "casaEnteAdm": "SF",
+        "codigoColegiado": 1998,
+        "data": "2021-06-17",
+        "id": 2055878,
+        "idEnteAdm": 13594,
+        "idEvento": 10180559,
+        "nomeColegiado": "Plenário do Senado Federal",
+        "nomeEnteAdm": "Secretaria de Atas e Diários",
+        "numeroAutuacao": 1,
+        "siglaColegiado": "PLEN",
+        "siglaEnteAdm": "SEADI",
+        "texto": "(Sessão Deliberativa Remota realizada em 17/06/2021 – continuação da Sessão Deliberativa Remota iniciada em 16/06/2021) \r\nProferido pelo Senador Marcos Rogério, em complemento ao Parecer nº 134/2021, o Parecer nº 136/2021-PLEN/SF, favorável ao Projeto de Lei de Conversão e às Emendas nºs 575 e 589, com ajustes redacionais, 581, 591, 596, 599, 603, 604, 609, 624, 626, 627 e 631, parcialmente favorável às Emendas nºs 573, 574, 590, 592, 597, 598, 615, na forma das Emendas nºs 650 a 666, que apresenta, e pela rejeição das Emendas nºs 572, 576, 577, 578, 579, 580, 582, 583, 584, 585, 586, 587, 588, 593, 594, 600, 602, 605, 606, 607, 608, 610, 611, 612, 613, 614, 616, 617, 618, 619, 620, 621, 622, 623, 625, 628, 629, 630, 632 e 633. \r\nPrejudicado, em virtude do acatamento pelo Relator, o Requerimento nº 1665/2021, da Liderança do PODEMOS, que solicita destaque para votação em separado da Emenda nº 599.  \r\nRetirados os RQS nºs 1666/2021 e 1667/2021, respectivamente, pelos Senadores Flávio Arns e Carlos Portinho.  \r\nDeferido o nº 1672/2021, da Liderança do PSDB, que solicita destaque para votação em separado da Emenda nº 610.  \r\nEncaminhados à publicação os seguintes Requerimentos:  \r\n- nº 1675/2021, da Liderança do PSD, que solicita destaque para votação em separado da Emenda nº 582 (retirado pelo RQS nº 1680/2021, encaminhado à publicação); \r\n- nº 1676/2021, da Liderança do PT, que solicita destaque para votação em separado da Emenda nº 618 (deferido); e \r\n-nº 1677/2021, da Liderança do DEMOCRATAS, que solicita destaque para votação em separado da Emenda nº 619 (retirado pelo RQS nº 1682/2021, encaminhado à publicação). \r\nMantidos os RQS nºs 1672 e 1676, de 2021, solicitando destaque para votação em separado. \r\nAprovados os pressupostos de relevância e urgência, adequação financeira e orçamentária e pertinência temática da Medida Provisória, com o seguinte resultado: Sim - 44, Não - 35, Pres. - 1, Total – 80, com a retificação para “Não” do voto da Senadora Zenaide Maia, conforme notas taquigráficas. \r\nAprovado o mérito do Projeto de Lei de Conversão com emendas, nos termos do Parecer nº 136, de 2021-PLEN/SF, na forma das emendas e dos ajustes redacionais procedidos pelo Relator, com o seguinte resultado: Sim - 42, Não - 37, Pres. - 1, Total - 80, ressalvados os destaques. \r\nRejeitada a Emenda nº 610, destacada por meio do RQS nº 1672/2021, com o seguinte resultado: Sim - 35, Não - 41, Pres. - 1, Total - 77. \r\nRejeitada a Emenda nº 618, destacada por meio do RQS nº 1676/2021, com o seguinte resultado: Sim - 32, Não - 41, Pres. - 1, Total - 74. \r\nAprovado o PLV, com emendas, ficam prejudicadas a Medida Provisória e as demais emendas a ela apresentadas.  \r\nAs adequações de técnica legislativa serão apostas aos autógrafos da matéria, dispensada a redação final.   \r\nA matéria retorna à Câmara dos Deputados."
+      },
+      "numero": "1031",
+      "numeroSessao": 66,
+      "resultadoVotacao": "A",
+      "sequencialSessao": 2,
+      "sequencialVotacao": 3612,
+      "sigla": "MPV",
+      "siglaTipoSessao": "SDR",
+      "totalVotosAbstencao": null,
+      "totalVotosNao": null,
+      "totalVotosSim": null,
+      "votacaoSecreta": "N",
+      "votos": [
+        {
+          "codigoParlamentar": 4981,
+          "descricaoVotoParlamentar": "Não Compareceu",
+          "nomeParlamentar": "Acir Gurgacz",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "NCom"
+        },
+        {
+          "codigoParlamentar": 5982,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Alessandro Vieira",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "CIDADANIA",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 945,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Alvaro Dias",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5967,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Angelo Coronel",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5529,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Antonio Anastasia",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 6295,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Carlos Fávaro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5936,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Carlos Portinho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5990,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Carlos Viana",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 470,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Chico Rodrigues",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5973,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Cid Gomes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 739,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Ciro Nogueira",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 475,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Confúcio Moura",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5998,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Daniella Ribeiro",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 3830,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Davi Alcolumbre",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5537,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Dário Berger",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4994,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Braga",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5976,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Girão",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 3777,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Gomes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5718,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eliziane Gama",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "CIDADANIA",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5531,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Elmano Férrer",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 22,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Esperidião Amin",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5953,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fabiano Contarato",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REDE",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5540,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fernando Bezerra Coelho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 4525,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fernando Collor",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 345,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Flávio Arns",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5894,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Flávio Bolsonaro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PATRIOTA",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 6008,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Giordano",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSL",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5008,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Humberto Costa",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5385,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Irajá",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 4770,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Izalci Lucas",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 35,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jader Barbalho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 581,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jaques Wagner",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4545,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jarbas Vasconcelos",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4531,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jayme Campos",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5627,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jean-Paul Prates",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5895,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jorge Kajuru",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5350,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jorginho Mello",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 90,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "José Serra",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 1249,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Kátia Abreu",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5533,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Lasier Martins",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5979,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Leila Barros",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSB",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5926,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Lucas Barreto",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 1186,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Luis Carlos Heinze",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5585,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Luiz Carlos do Carmo",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5557,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Mailza Gomes",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5376,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Mara Gabrilli",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 742,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcelo Castro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 285,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcio Bittar",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5422,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcos Rogério",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5942,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcos do Val",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 1023,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Maria do Carmo Alves",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 6027,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Mecias de Jesus",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REPUBLICANOS",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5985,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Nelsinho Trad",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5281,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Nilda Gondim",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5525,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Omar Aziz",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5924,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Oriovisto Guimarães",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5523,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Otto Alencar",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 825,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Paulo Paim",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 374,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Paulo Rocha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5502,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Plínio Valério",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5012,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Randolfe Rodrigues",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REDE",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5236,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Reguffe",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 70,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Renan Calheiros",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 677,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Roberto Rocha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5905,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rodrigo Cunha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5732,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rodrigo Pacheco",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "Presidente (art. 51 RISF)"
+        },
+        {
+          "codigoParlamentar": 5352,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rogério Carvalho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5322,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Romário",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 2331,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rose de Freitas",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5527,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Simone Tebet",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5988,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Soraya Thronicke",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSL",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5959,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Styvenson Valentim",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4560,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Sérgio Petecão",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 3396,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Tasso Jereissati",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5535,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Telmário Mota",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5899,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Vanderlan Cardoso",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5748,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Veneziano Vital do Rêgo",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 1173,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Wellington Fagundes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5411,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Weverton",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5783,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Zenaide Maia",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 3806,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Zequinha Marinho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSC",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Sim"
+        }
+      ]
+    },
+    {
+      "ano": 2021,
+      "casaSessao": "SF",
+      "codigoMateria": 146740,
+      "codigoSessao": 234933,
+      "codigoSessaoLegislativa": 865,
+      "codigoSessaoVotacao": 6378,
+      "dataApresentacao": "2021-02-23",
+      "dataSessao": "2021-06-16",
+      "descricaoVotacao": "Emenda nº 610, destacada.",
+      "ementa": "Dispõe sobre a desestatização da empresa Centrais Elétricas Brasileiras S.A. - Eletrobras e altera a Lei nº 5.899, de 5 de julho de 1973, a Lei nº 9.991, de 24 de julho de 2000, e a Lei nº 10.438, de 26 de abril de 2002.",
+      "idProcesso": 8025319,
+      "identificacao": "MPV 1031/2021",
+      "informeLegislativo": {
+        "casaColegiado": "SF",
+        "casaEnteAdm": "SF",
+        "codigoColegiado": 1998,
+        "data": "2021-06-17",
+        "id": 2055878,
+        "idEnteAdm": 13594,
+        "idEvento": 10180559,
+        "nomeColegiado": "Plenário do Senado Federal",
+        "nomeEnteAdm": "Secretaria de Atas e Diários",
+        "numeroAutuacao": 1,
+        "siglaColegiado": "PLEN",
+        "siglaEnteAdm": "SEADI",
+        "texto": "(Sessão Deliberativa Remota realizada em 17/06/2021 – continuação da Sessão Deliberativa Remota iniciada em 16/06/2021) \r\nProferido pelo Senador Marcos Rogério, em complemento ao Parecer nº 134/2021, o Parecer nº 136/2021-PLEN/SF, favorável ao Projeto de Lei de Conversão e às Emendas nºs 575 e 589, com ajustes redacionais, 581, 591, 596, 599, 603, 604, 609, 624, 626, 627 e 631, parcialmente favorável às Emendas nºs 573, 574, 590, 592, 597, 598, 615, na forma das Emendas nºs 650 a 666, que apresenta, e pela rejeição das Emendas nºs 572, 576, 577, 578, 579, 580, 582, 583, 584, 585, 586, 587, 588, 593, 594, 600, 602, 605, 606, 607, 608, 610, 611, 612, 613, 614, 616, 617, 618, 619, 620, 621, 622, 623, 625, 628, 629, 630, 632 e 633. \r\nPrejudicado, em virtude do acatamento pelo Relator, o Requerimento nº 1665/2021, da Liderança do PODEMOS, que solicita destaque para votação em separado da Emenda nº 599.  \r\nRetirados os RQS nºs 1666/2021 e 1667/2021, respectivamente, pelos Senadores Flávio Arns e Carlos Portinho.  \r\nDeferido o nº 1672/2021, da Liderança do PSDB, que solicita destaque para votação em separado da Emenda nº 610.  \r\nEncaminhados à publicação os seguintes Requerimentos:  \r\n- nº 1675/2021, da Liderança do PSD, que solicita destaque para votação em separado da Emenda nº 582 (retirado pelo RQS nº 1680/2021, encaminhado à publicação); \r\n- nº 1676/2021, da Liderança do PT, que solicita destaque para votação em separado da Emenda nº 618 (deferido); e \r\n-nº 1677/2021, da Liderança do DEMOCRATAS, que solicita destaque para votação em separado da Emenda nº 619 (retirado pelo RQS nº 1682/2021, encaminhado à publicação). \r\nMantidos os RQS nºs 1672 e 1676, de 2021, solicitando destaque para votação em separado. \r\nAprovados os pressupostos de relevância e urgência, adequação financeira e orçamentária e pertinência temática da Medida Provisória, com o seguinte resultado: Sim - 44, Não - 35, Pres. - 1, Total – 80, com a retificação para “Não” do voto da Senadora Zenaide Maia, conforme notas taquigráficas. \r\nAprovado o mérito do Projeto de Lei de Conversão com emendas, nos termos do Parecer nº 136, de 2021-PLEN/SF, na forma das emendas e dos ajustes redacionais procedidos pelo Relator, com o seguinte resultado: Sim - 42, Não - 37, Pres. - 1, Total - 80, ressalvados os destaques. \r\nRejeitada a Emenda nº 610, destacada por meio do RQS nº 1672/2021, com o seguinte resultado: Sim - 35, Não - 41, Pres. - 1, Total - 77. \r\nRejeitada a Emenda nº 618, destacada por meio do RQS nº 1676/2021, com o seguinte resultado: Sim - 32, Não - 41, Pres. - 1, Total - 74. \r\nAprovado o PLV, com emendas, ficam prejudicadas a Medida Provisória e as demais emendas a ela apresentadas.  \r\nAs adequações de técnica legislativa serão apostas aos autógrafos da matéria, dispensada a redação final.   \r\nA matéria retorna à Câmara dos Deputados."
+      },
+      "numero": "1031",
+      "numeroSessao": 66,
+      "resultadoVotacao": "R",
+      "sequencialSessao": 3,
+      "sequencialVotacao": 3613,
+      "sigla": "MPV",
+      "siglaTipoSessao": "SDR",
+      "totalVotosAbstencao": null,
+      "totalVotosNao": null,
+      "totalVotosSim": null,
+      "votacaoSecreta": "N",
+      "votos": [
+        {
+          "codigoParlamentar": 4981,
+          "descricaoVotoParlamentar": "Não Compareceu",
+          "nomeParlamentar": "Acir Gurgacz",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "NCom"
+        },
+        {
+          "codigoParlamentar": 5982,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Alessandro Vieira",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "CIDADANIA",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 945,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Alvaro Dias",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5967,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Angelo Coronel",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5529,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Antonio Anastasia",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 6295,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Carlos Fávaro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5936,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Carlos Portinho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5990,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Carlos Viana",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 470,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Chico Rodrigues",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5973,
+          "descricaoVotoParlamentar": "Presente – Não registrou voto",
+          "nomeParlamentar": "Cid Gomes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "P-NRV"
+        },
+        {
+          "codigoParlamentar": 739,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Ciro Nogueira",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 475,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Confúcio Moura",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5998,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Daniella Ribeiro",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 3830,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Davi Alcolumbre",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5537,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Dário Berger",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 4994,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Braga",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5976,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Girão",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 3777,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Gomes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5718,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eliziane Gama",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "CIDADANIA",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5531,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Elmano Férrer",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 22,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Esperidião Amin",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5953,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fabiano Contarato",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REDE",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5540,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fernando Bezerra Coelho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4525,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fernando Collor",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 345,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Flávio Arns",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5894,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Flávio Bolsonaro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PATRIOTA",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 6008,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Giordano",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSL",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5008,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Humberto Costa",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5385,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Irajá",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4770,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Izalci Lucas",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 35,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jader Barbalho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 581,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jaques Wagner",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 4545,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jarbas Vasconcelos",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 4531,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jayme Campos",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5627,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jean-Paul Prates",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5895,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jorge Kajuru",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5350,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jorginho Mello",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 90,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "José Serra",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 1249,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Kátia Abreu",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5533,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Lasier Martins",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5979,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Leila Barros",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSB",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5926,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Lucas Barreto",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 1186,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Luis Carlos Heinze",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5585,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Luiz Carlos do Carmo",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5557,
+          "descricaoVotoParlamentar": "Presente – Não registrou voto",
+          "nomeParlamentar": "Mailza Gomes",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "P-NRV"
+        },
+        {
+          "codigoParlamentar": 5376,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Mara Gabrilli",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 742,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcelo Castro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 285,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcio Bittar",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5422,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcos Rogério",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5942,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcos do Val",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 1023,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Maria do Carmo Alves",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 6027,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Mecias de Jesus",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REPUBLICANOS",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5985,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Nelsinho Trad",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5281,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Nilda Gondim",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5525,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Omar Aziz",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5924,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Oriovisto Guimarães",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5523,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Otto Alencar",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 825,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Paulo Paim",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 374,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Paulo Rocha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5502,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Plínio Valério",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5012,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Randolfe Rodrigues",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REDE",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5236,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Reguffe",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 70,
+          "descricaoVotoParlamentar": "Presente – Não registrou voto",
+          "nomeParlamentar": "Renan Calheiros",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "P-NRV"
+        },
+        {
+          "codigoParlamentar": 677,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Roberto Rocha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5905,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rodrigo Cunha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5732,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rodrigo Pacheco",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "Presidente (art. 51 RISF)"
+        },
+        {
+          "codigoParlamentar": 5352,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rogério Carvalho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5322,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Romário",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 2331,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rose de Freitas",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5527,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Simone Tebet",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5988,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Soraya Thronicke",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSL",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5959,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Styvenson Valentim",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 4560,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Sérgio Petecão",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 3396,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Tasso Jereissati",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5535,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Telmário Mota",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5899,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Vanderlan Cardoso",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5748,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Veneziano Vital do Rêgo",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 1173,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Wellington Fagundes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5411,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Weverton",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5783,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Zenaide Maia",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 3806,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Zequinha Marinho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSC",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Não"
+        }
+      ]
+    },
+    {
+      "ano": 2021,
+      "casaSessao": "SF",
+      "codigoMateria": 146740,
+      "codigoSessao": 234933,
+      "codigoSessaoLegislativa": 865,
+      "codigoSessaoVotacao": 6379,
+      "dataApresentacao": "2021-02-23",
+      "dataSessao": "2021-06-16",
+      "descricaoVotacao": "Emenda nº 618, destacada.",
+      "ementa": "Dispõe sobre a desestatização da empresa Centrais Elétricas Brasileiras S.A. - Eletrobras e altera a Lei nº 5.899, de 5 de julho de 1973, a Lei nº 9.991, de 24 de julho de 2000, e a Lei nº 10.438, de 26 de abril de 2002.",
+      "idProcesso": 8025319,
+      "identificacao": "MPV 1031/2021",
+      "informeLegislativo": {
+        "casaColegiado": "SF",
+        "casaEnteAdm": "SF",
+        "codigoColegiado": 1998,
+        "data": "2021-06-17",
+        "id": 2055878,
+        "idEnteAdm": 13594,
+        "idEvento": 10180559,
+        "nomeColegiado": "Plenário do Senado Federal",
+        "nomeEnteAdm": "Secretaria de Atas e Diários",
+        "numeroAutuacao": 1,
+        "siglaColegiado": "PLEN",
+        "siglaEnteAdm": "SEADI",
+        "texto": "(Sessão Deliberativa Remota realizada em 17/06/2021 – continuação da Sessão Deliberativa Remota iniciada em 16/06/2021) \r\nProferido pelo Senador Marcos Rogério, em complemento ao Parecer nº 134/2021, o Parecer nº 136/2021-PLEN/SF, favorável ao Projeto de Lei de Conversão e às Emendas nºs 575 e 589, com ajustes redacionais, 581, 591, 596, 599, 603, 604, 609, 624, 626, 627 e 631, parcialmente favorável às Emendas nºs 573, 574, 590, 592, 597, 598, 615, na forma das Emendas nºs 650 a 666, que apresenta, e pela rejeição das Emendas nºs 572, 576, 577, 578, 579, 580, 582, 583, 584, 585, 586, 587, 588, 593, 594, 600, 602, 605, 606, 607, 608, 610, 611, 612, 613, 614, 616, 617, 618, 619, 620, 621, 622, 623, 625, 628, 629, 630, 632 e 633. \r\nPrejudicado, em virtude do acatamento pelo Relator, o Requerimento nº 1665/2021, da Liderança do PODEMOS, que solicita destaque para votação em separado da Emenda nº 599.  \r\nRetirados os RQS nºs 1666/2021 e 1667/2021, respectivamente, pelos Senadores Flávio Arns e Carlos Portinho.  \r\nDeferido o nº 1672/2021, da Liderança do PSDB, que solicita destaque para votação em separado da Emenda nº 610.  \r\nEncaminhados à publicação os seguintes Requerimentos:  \r\n- nº 1675/2021, da Liderança do PSD, que solicita destaque para votação em separado da Emenda nº 582 (retirado pelo RQS nº 1680/2021, encaminhado à publicação); \r\n- nº 1676/2021, da Liderança do PT, que solicita destaque para votação em separado da Emenda nº 618 (deferido); e \r\n-nº 1677/2021, da Liderança do DEMOCRATAS, que solicita destaque para votação em separado da Emenda nº 619 (retirado pelo RQS nº 1682/2021, encaminhado à publicação). \r\nMantidos os RQS nºs 1672 e 1676, de 2021, solicitando destaque para votação em separado. \r\nAprovados os pressupostos de relevância e urgência, adequação financeira e orçamentária e pertinência temática da Medida Provisória, com o seguinte resultado: Sim - 44, Não - 35, Pres. - 1, Total – 80, com a retificação para “Não” do voto da Senadora Zenaide Maia, conforme notas taquigráficas. \r\nAprovado o mérito do Projeto de Lei de Conversão com emendas, nos termos do Parecer nº 136, de 2021-PLEN/SF, na forma das emendas e dos ajustes redacionais procedidos pelo Relator, com o seguinte resultado: Sim - 42, Não - 37, Pres. - 1, Total - 80, ressalvados os destaques. \r\nRejeitada a Emenda nº 610, destacada por meio do RQS nº 1672/2021, com o seguinte resultado: Sim - 35, Não - 41, Pres. - 1, Total - 77. \r\nRejeitada a Emenda nº 618, destacada por meio do RQS nº 1676/2021, com o seguinte resultado: Sim - 32, Não - 41, Pres. - 1, Total - 74. \r\nAprovado o PLV, com emendas, ficam prejudicadas a Medida Provisória e as demais emendas a ela apresentadas.  \r\nAs adequações de técnica legislativa serão apostas aos autógrafos da matéria, dispensada a redação final.   \r\nA matéria retorna à Câmara dos Deputados."
+      },
+      "numero": "1031",
+      "numeroSessao": 66,
+      "resultadoVotacao": "R",
+      "sequencialSessao": 4,
+      "sequencialVotacao": 3614,
+      "sigla": "MPV",
+      "siglaTipoSessao": "SDR",
+      "totalVotosAbstencao": null,
+      "totalVotosNao": null,
+      "totalVotosSim": null,
+      "votacaoSecreta": "N",
+      "votos": [
+        {
+          "codigoParlamentar": 4981,
+          "descricaoVotoParlamentar": "Não Compareceu",
+          "nomeParlamentar": "Acir Gurgacz",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "NCom"
+        },
+        {
+          "codigoParlamentar": 5982,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Alessandro Vieira",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "CIDADANIA",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 945,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Alvaro Dias",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5967,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Angelo Coronel",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5529,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Antonio Anastasia",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 6295,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Carlos Fávaro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5936,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Carlos Portinho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5990,
+          "descricaoVotoParlamentar": "Presente – Não registrou voto",
+          "nomeParlamentar": "Carlos Viana",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "P-NRV"
+        },
+        {
+          "codigoParlamentar": 470,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Chico Rodrigues",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5973,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Cid Gomes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 739,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Ciro Nogueira",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 475,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Confúcio Moura",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5998,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Daniella Ribeiro",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 3830,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Davi Alcolumbre",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5537,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Dário Berger",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 4994,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Braga",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5976,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Girão",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 3777,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eduardo Gomes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5718,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Eliziane Gama",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "CIDADANIA",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5531,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Elmano Férrer",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 22,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Esperidião Amin",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5953,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fabiano Contarato",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REDE",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5540,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fernando Bezerra Coelho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4525,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Fernando Collor",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 345,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Flávio Arns",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5894,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Flávio Bolsonaro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PATRIOTA",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 6008,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Giordano",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSL",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5008,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Humberto Costa",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5385,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Irajá",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 4770,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Izalci Lucas",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 35,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jader Barbalho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 581,
+          "descricaoVotoParlamentar": "Presente – Não registrou voto",
+          "nomeParlamentar": "Jaques Wagner",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "P-NRV"
+        },
+        {
+          "codigoParlamentar": 4545,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jarbas Vasconcelos",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 4531,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jayme Campos",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5627,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jean-Paul Prates",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5895,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jorge Kajuru",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5350,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Jorginho Mello",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "SC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 90,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "José Serra",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 1249,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Kátia Abreu",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "TO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5533,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Lasier Martins",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5979,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Leila Barros",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSB",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5926,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Lucas Barreto",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 1186,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Luis Carlos Heinze",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5585,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Luiz Carlos do Carmo",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5557,
+          "descricaoVotoParlamentar": "Presente – Não registrou voto",
+          "nomeParlamentar": "Mailza Gomes",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PP",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "P-NRV"
+        },
+        {
+          "codigoParlamentar": 5376,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Mara Gabrilli",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "SP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 742,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcelo Castro",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PI",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 285,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcio Bittar",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5422,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcos Rogério",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "RO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5942,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Marcos do Val",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 1023,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Maria do Carmo Alves",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 6027,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Mecias de Jesus",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REPUBLICANOS",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5985,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Nelsinho Trad",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5281,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Nilda Gondim",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5525,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Omar Aziz",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5924,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Oriovisto Guimarães",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "PR",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5523,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Otto Alencar",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "BA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 825,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Paulo Paim",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "RS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 374,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Paulo Rocha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5502,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Plínio Valério",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "AM",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5012,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Randolfe Rodrigues",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "REDE",
+          "siglaUFParlamentar": "AP",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5236,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Reguffe",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "DF",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 70,
+          "descricaoVotoParlamentar": "Presente – Não registrou voto",
+          "nomeParlamentar": "Renan Calheiros",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "P-NRV"
+        },
+        {
+          "codigoParlamentar": 677,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Roberto Rocha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5905,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rodrigo Cunha",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "AL",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5732,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rodrigo Pacheco",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "DEM",
+          "siglaUFParlamentar": "MG",
+          "siglaVotoParlamentar": "Presidente (art. 51 RISF)"
+        },
+        {
+          "codigoParlamentar": 5352,
+          "descricaoVotoParlamentar": "Presente – Não registrou voto",
+          "nomeParlamentar": "Rogério Carvalho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PT",
+          "siglaUFParlamentar": "SE",
+          "siglaVotoParlamentar": "P-NRV"
+        },
+        {
+          "codigoParlamentar": 5322,
+          "descricaoVotoParlamentar": "Presente – Não registrou voto",
+          "nomeParlamentar": "Romário",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "RJ",
+          "siglaVotoParlamentar": "P-NRV"
+        },
+        {
+          "codigoParlamentar": 2331,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Rose de Freitas",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "ES",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5527,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Simone Tebet",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5988,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Soraya Thronicke",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PSL",
+          "siglaUFParlamentar": "MS",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5959,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Styvenson Valentim",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PODE",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 4560,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Sérgio Petecão",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "AC",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 3396,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Tasso Jereissati",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSDB",
+          "siglaUFParlamentar": "CE",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5535,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Telmário Mota",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "RR",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5899,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Vanderlan Cardoso",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSD",
+          "siglaUFParlamentar": "GO",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5748,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Veneziano Vital do Rêgo",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "MDB",
+          "siglaUFParlamentar": "PB",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 1173,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Wellington Fagundes",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PL",
+          "siglaUFParlamentar": "MT",
+          "siglaVotoParlamentar": "Não"
+        },
+        {
+          "codigoParlamentar": 5411,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Weverton",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PDT",
+          "siglaUFParlamentar": "MA",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 5783,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Zenaide Maia",
+          "sexoParlamentar": "F",
+          "siglaPartidoParlamentar": "PROS",
+          "siglaUFParlamentar": "RN",
+          "siglaVotoParlamentar": "Sim"
+        },
+        {
+          "codigoParlamentar": 3806,
+          "descricaoVotoParlamentar": null,
+          "nomeParlamentar": "Zequinha Marinho",
+          "sexoParlamentar": "M",
+          "siglaPartidoParlamentar": "PSC",
+          "siglaUFParlamentar": "PA",
+          "siglaVotoParlamentar": "Não"
+        }
+      ]
+    }
+  ]
+}

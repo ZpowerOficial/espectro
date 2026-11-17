@@ -1,0 +1,27 @@
+{
+  "evidence_id": "ev_520652a4e1bf8d7fdcd7e6656a29707802ae7c3c17a44cd3c53c1e3a80f8cf57",
+  "provider": {
+    "id": "rea-playwright-browser-scenario",
+    "name": "REA Playwright browser scenario capture provider",
+    "version": "1"
+  },
+  "operation": "capture_browser_scenario",
+  "start_url": "https://12axes.vercel.app/compare?items=personality:rothbard,personality:mises,personality:hoppe",
+  "events": {
+    "retained": 0,
+    "dropped": 0,
+    "items": []
+  },
+  "steps": [
+    {
+      "step_id": "scenario_start",
+      "status": "completed"
+    },
+    {
+      "step_id": "load",
+      "status": "completed",
+      "accessibilitySha256": "2a1fe601c9db2cb576285edf3611e5a371e7950da477ff4b04386b868c1080d8"
+    }
+  ],
+  "notice": "Observação controlada via REA; não certifica precisão científica, funcionamento offline ou privacidade. Conteúdo editorial do concorrente não reproduzido."
+}

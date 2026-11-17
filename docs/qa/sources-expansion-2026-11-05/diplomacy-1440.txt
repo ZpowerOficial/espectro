@@ -1,0 +1,41 @@
+- group:
+  - img "Símbolo do Espectro"
+  - text: ESPECTRO NAVEGAÇÃO
+  - button "Visão geral"
+  - button "Meus testes"
+  - button "Atlas político"
+  - button "Comparar"
+  - button "Histórico"
+  - button "Método aberto"
+  - text: SUA INVESTIGAÇÃO É PRIVADA Dados locais e exportação sob seu controle.
+- button "Back"
+- heading "Corrente" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - 'group "Diplomacia Militarista Pacifista Nazismo -0.90 Nazismo: -0.90 entre Militarista e Pacifista O registro apresenta o recurso à força e o planejamento de expansão territorial. É evidência de orientação militarista da liderança em 1937, não uma transcrição literal nem uma descrição de cada negociação diplomática. Posição editorial provisória: o documento fundamenta a direção qualitativa, não a magnitude numérica."':
+      - button "Entender Diplomacia"
+      - 'button "Fonte primária e interpretação Registro da reunião de 5 de novembro de 1937: Trecho que propõe resolver a questão territorial pela força; cenários 1–3"'
+      - group "O registro apresenta o recurso à força e o planejamento de expansão territorial. É evidência de orientação militarista da liderança em 1937, não uma transcrição literal nem uma descrição de cada negociação diplomática. Registro da reunião de 5 de novembro de 1937. Friedrich Hossbach, registrando declarações de Hitler · 10/11/1937. Registro primário escrito cinco dias após a reunião, não taquigrafia; tradução documental publicada pelo German Historical Institute. As interpretações introdutórias não são confundidas com a ata. Trechos indicados conferidos nesta revisão; não significa leitura crítica integral de todas as afirmações da obra.. https://germanhistorydocs.org/en/nazi-germany-1933-1945/ghdi:document-1540":
+        - text: O registro apresenta o recurso à força e o planejamento de expansão territorial. É evidência de orientação militarista da liderança em 1937, não uma transcrição literal nem uma descrição de cada negociação diplomática. Registro da reunião de 5 de novembro de 1937 Friedrich Hossbach, registrando declarações de Hitler · 10/11/1937. Registro primário escrito cinco dias após a reunião, não taquigrafia; tradução documental publicada pelo German Historical Institute. As interpretações introdutórias não são confundidas com a ata. Trechos indicados conferidos nesta revisão; não significa leitura crítica integral de todas as afirmações da obra.
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: O documento fundamenta a leitura qualitativa. As coordenadas e proporções são estimativas do Espectro, não percentuais publicados pelo autor.
+    - 'group "Intervenção Não intervencionista Nacionalista Nazismo 0.85 Nazismo: 0.85 entre Não intervencionista e Nacionalista Unificação nacional e demanda territorial colonial. Posição qualitativa convertida em estimativa editorial, sem escala validada."':
+      - button "Entender Intervenção"
+      - button "Fonte primária e interpretação Programa, pontos 1–3"
+    - 'group "Economia Público Privado Nazismo Sem posição Lacuna explícita: sem posição parametrizada neste recorte; valor de armazenamento inativo."':
+      - button "Entender Economia"
+      - button "Fonte primária e interpretação Pontos 13–17; explicação de 13/04/1928"
+    - 'group "Controle Planejamento Livre mercado Nazismo -0.60 Nazismo: -0.60 entre Planejamento e Livre mercado Intervenção econômica proposta, sem supor que foi integralmente executada. Posição qualitativa convertida em estimativa editorial, sem escala validada."':
+      - button "Entender Controle"
+      - button "Fonte primária e interpretação Programa, pontos 13–17 e 25"
+    - 'group "Comércio Protecionismo Globalismo Nazismo -0.65 Nazismo: -0.65 entre Protecionismo e Globalismo Discute limites da autarquia, vulnerabilidade do comércio marítimo e aquisição territorial como solução. A leitura indica subordinação estratégica do comércio à segurança e à expansão; não afirma isolamento comercial completo. Posição editorial provisória: o documento fundamenta a direção qualitativa, não a magnitude numérica."':
+      - button "Entender Comércio"

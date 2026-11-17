@@ -30,28 +30,101 @@ class StudyRelation {
   final String note;
   final String sourceUrl;
   final StudyRelationKind kind;
+
+  factory StudyRelation.fromJson(Map<String, Object?> json) {
+    final kindStr = json['kind'] as String? ?? 'tradition';
+    final kind = switch (kindStr) {
+      'authorship' => StudyRelationKind.authorship,
+      'reception' => StudyRelationKind.reception,
+      'debate' => StudyRelationKind.debate,
+      _ => StudyRelationKind.tradition,
+    };
+    return StudyRelation(
+      sourceKey: json['sourceKey']! as String,
+      targetKey: json['targetKey']! as String,
+      label: json['label']! as String,
+      note: json['note']! as String,
+      sourceUrl: json['sourceUrl']! as String,
+      kind: kind,
+    );
+  }
+}
+
+List<StudyRelation> _extendedStudyRelations = const [];
+Map<String, List<StudyRelation>>? _relationsIndex;
+
+void registerExtendedStudyRelations(List<StudyRelation> relations) {
+  _extendedStudyRelations = List.unmodifiable(relations);
+  _relationsIndex = null;
+}
+
+void _ensureRelationsIndex() {
+  if (_relationsIndex != null) return;
+  final map = <String, List<StudyRelation>>{};
+  final all = [...studyRelations, ..._extendedStudyRelations];
+  for (final relation in all) {
+    map.putIfAbsent(relation.sourceKey, () => []).add(relation);
+    final reverse = StudyRelation(
+      sourceKey: relation.targetKey,
+      targetKey: relation.sourceKey,
+      label: relation.kind == StudyRelationKind.authorship
+          ? 'Autoria da obra'
+          : relation.label,
+      note: relation.note,
+      sourceUrl: relation.sourceUrl,
+      kind: relation.kind,
+    );
+    map.putIfAbsent(relation.targetKey, () => []).add(reverse);
+  }
+  _relationsIndex = {
+    for (final e in map.entries) e.key: List.unmodifiable(e.value),
+  };
 }
 
 /// Both ends of a documented link can be explored. These edges are curated;
 /// they are never manufactured from vector distance or a shared name token.
-List<StudyRelation> relationsForStudy(String key) => List.unmodifiable([
-  for (final relation in studyRelations)
-    if (relation.sourceKey == key)
-      relation
-    else if (relation.targetKey == key)
-      StudyRelation(
-        sourceKey: key,
-        targetKey: relation.sourceKey,
-        label: relation.kind == StudyRelationKind.authorship
-            ? 'Autoria da obra'
-            : relation.label,
-        note: relation.note,
-        sourceUrl: relation.sourceUrl,
-        kind: relation.kind,
-      ),
-]);
+List<StudyRelation> relationsForStudy(String key) {
+  _ensureRelationsIndex();
+  return _relationsIndex![key] ?? const [];
+}
 
 const studyRelations = <StudyRelation>[
+  StudyRelation(
+    sourceKey: 'personality:raphael_lima',
+    targetKey: 'current:anarcocapitalismo',
+    label: 'Horizonte anarcocapitalista declarado',
+    note: 'Na entrevista de 2017, declara o anarcocapitalismo como ideal e distingue esse horizonte da participação eleitoral. O perfil também consulta seu recorte cultural de 2026.',
+    sourceUrl: 'https://www.boletimdaliberdade.com.br/2017/04/16/nao-e-necessariamente-antietico-participar-da-politica-diz-raphael-lima-do-canal-do-youtube-ideias-radicais/',
+  ),
+  StudyRelation(
+    sourceKey: 'personality:peter_turguniev',
+    targetKey: 'current:anarcocapitalismo',
+    label: 'Não agressão, propriedade e organização voluntária',
+    note: 'O documento fundador da associação que identifica Peter no art. 6º adota não agressão, propriedade e contratos. Não é atribuição automática de todos os textos de colaboradores do canal.',
+    sourceUrl: 'https://pica00.org/estatuto.pdf',
+  ),
+  StudyRelation(
+    sourceKey: 'personality:gilson_marques',
+    targetKey: 'current:liberalismo_classico',
+    label: 'Debate sobre propriedade, mercado e funções públicas',
+    note: 'A agenda de privatizações, pacto federativo e menos impostos permite estudar esses temas em diálogo com o liberalismo. A conexão não declara identidade entre todas as suas posições e uma corrente.',
+    sourceUrl: 'https://gilsonmarques.com/',
+    kind: StudyRelationKind.debate,
+  ),
+  StudyRelation(
+    sourceKey: 'personality:jones_manoel',
+    targetKey: 'current:comunismo',
+    label: 'Horizonte comunista e organização de trabalhadores',
+    note: 'A entrevista apresenta sua militância e estratégia de transformação social. Distingue conquistas imediatas, tática parlamentar e horizonte revolucionário.',
+    sourceUrl: 'https://diplomatique.org.br/jones-manoel-e-a-esperanca-da-revolucao-brasileira/',
+  ),
+  StudyRelation(
+    sourceKey: 'personality:jones_manoel',
+    targetKey: 'current:marxismo_leninismo',
+    label: 'Referência marxista e leninista declarada',
+    note: 'A referência intelectual é documentada na entrevista, sem transferir automaticamente a ele toda instituição ou prática de regimes historicamente chamados marxistas-leninistas.',
+    sourceUrl: 'https://diplomatique.org.br/jones-manoel-e-a-esperanca-da-revolucao-brasileira/',
+  ),
   StudyRelation(
     sourceKey: 'personality:karl_marx',
     targetKey: 'current:socialismo_marxista',
@@ -547,5 +620,21 @@ const studyRelations = <StudyRelation>[
     note: "Crítica de Gotha discute fases da sociedade comunista e transição. O marxismo clássico é uma tradição teórica e política; comunismo também designa um horizonte de sociedade sem classes e não é exclusivo dessa tradição.",
     sourceUrl: "https://www.marxists.org/archive/marx/works/1875/gotha/",
     kind: StudyRelationKind.tradition,
+  ),
+  StudyRelation(
+    sourceKey: "personality:frederick_douglass",
+    targetKey: "current:republicanismo_civico",
+    label: "Cidadania ativa, sufrágio igual e constitucionalismo abolicionista",
+    note: "Nos discursos de 1860 e 1865, Douglass sustenta que a liberdade sem voto e sem proteção constitucional permanece incompleta. A relação documenta convergência conceitual, não equivalência com toda tradição republicana posterior.",
+    sourceUrl: "https://teachingamericanhistory.org/document/what-the-black-man-wants-2/",
+    kind: StudyRelationKind.tradition,
+  ),
+  StudyRelation(
+    sourceKey: "personality:frederick_douglass",
+    targetKey: "current:liberalismo_classico",
+    label: "Direitos naturais, trabalho livre e crítica às desigualdades de partida",
+    note: "Em Self-Made Men e nos discursos sobre a Constituição, Douglass articula direitos naturais e propriedade do próprio trabalho com escolas públicas e garantias contra a exclusão racial.",
+    sourceUrl: "https://americanliterature.com/author/frederick-douglass/essay/self-made-men",
+    kind: StudyRelationKind.debate,
   ),
 ];

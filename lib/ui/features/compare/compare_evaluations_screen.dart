@@ -105,14 +105,16 @@ class _CompareEvaluationsScreenState extends State<CompareEvaluationsScreen> {
           ),
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 14, 20, 32),
-        children: <Widget>[
-          const EditorialHeading(
-            eyebrow: 'Histórico / Comparação',
-            title: 'Um perfil,\ndiferentes momentos.',
-            description: 'Explore as mudanças entre duas avaliações e os limites da comparação.',
-          ),
+      body: ResponsiveContentFrame(
+        maxWidth: 960,
+        child: ListView(
+          padding: const EdgeInsets.fromLTRB(20, 14, 20, 32),
+          children: <Widget>[
+            const EditorialHeading(
+              eyebrow: 'Histórico / Comparação',
+              title: 'Um perfil,\ndiferentes momentos.',
+              description: 'Explore as mudanças entre duas avaliações e os limites da comparação.',
+            ),
           const SizedBox(height: 28),
           SectionCard(
             padding: const EdgeInsets.all(16),
@@ -475,7 +477,8 @@ class _CompareEvaluationsScreenState extends State<CompareEvaluationsScreen> {
               ),
             ),
           ],
-        ],
+          ],
+        ),
       ),
     );
   }

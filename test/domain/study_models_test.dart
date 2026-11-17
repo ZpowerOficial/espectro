@@ -23,6 +23,25 @@ void main() {
   setUpAll(() async {
     catalog = StudyCatalog(await AppData.load());
   });
+  test(
+    'sparse exact matches remain comparable but cannot lead suggestions',
+    () {
+      final full = catalog.find('personality:murray_rothbard')!;
+      final sparse = subject('one-topic', axes: {'economia': full.axes['economia']!});
+      final match = catalog.compare(sparse, full)!;
+      expect(match.similarity, 100);
+      expect(match.supportsRanking, false);
+      expect(catalog.related(sparse, limit: 862), isEmpty);
+      final related = catalog.related(full, limit: 862);
+      expect(related, isNotEmpty);
+      expect(
+        related.every(
+          (m) => m.sharedAxes + m.sharedTriads >= 8 && m.coverage >= .6,
+        ),
+        true,
+      );
+    },
+  );
 
   test('every explicit search alias resolves its actual dataset subject', () {
     for (final entry in StudyCatalog.searchAliases.entries) {
@@ -70,6 +89,40 @@ void main() {
       spectrumOf(catalog.find('personality:pierre_joseph_proudhon')!)?.id,
       'anarchist',
     );
+  });
+
+  test('perfis classificados como libertários mantêm alta coerência com Mercados e Minarquia', () {
+    for (final personality in catalog.data.atlas.personalities) {
+      final subject = catalog.find('personality:${personality.id}');
+      if (subject == null) continue;
+      final spectrum = spectrumOf(subject);
+      if (spectrum?.id == 'libertarian') {
+        final t0 = personality.triangles[0];
+        if (t0 != null) {
+          expect(
+            t0[2],
+            greaterThanOrEqualTo(0.60),
+            reason: '${personality.id} no espectro libertário deve ter Mercados >= 0.60 na Tríade 0 (atual: ${t0[2]})',
+          );
+        }
+        final t4 = personality.triangles[4];
+        if (t4 != null) {
+          expect(
+            t4[2],
+            greaterThanOrEqualTo(0.48),
+            reason: '${personality.id} no espectro libertário deve ter Minarquia >= 0.48 na Tríade 4 (atual: ${t4[2]})',
+          );
+        }
+        final econ = personality.axes['economia'];
+        if (econ != null) {
+          expect(
+            econ,
+            greaterThanOrEqualTo(0.40),
+            reason: '${personality.id} no espectro libertário deve ter economia >= 0.40 (atual: $econ)',
+          );
+        }
+      }
+    }
   });
 
   test(

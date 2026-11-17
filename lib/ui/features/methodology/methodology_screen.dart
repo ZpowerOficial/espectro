@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../data/app_data.dart';
 import '../../../domain/models/political_models.dart';
+import '../../../domain/models/study_models.dart';
 import '../../../theme.dart';
 import '../../../widgets/common.dart';
 import '../../../widgets/editorial.dart';
 import '../../../widgets/espectro_scaffold.dart';
 import '../../view_models/app_view_model.dart';
+import '../atlas/study_taxonomy.dart';
 
 /// Tela de transparência metodológica, fórmulas matemáticas e explorador
 /// aberto do catálogo de correntes ideológicas.
@@ -175,7 +177,7 @@ class MethodologyScreen extends StatelessWidget {
                       const SizedBox(height: 10),
                       Text(
                         'Cada afirmação respondida recebe um valor simétrico '
-                        'r ∈ {−2, −1, 0, +1, +2}, normalizado para x = r / 2 ∈ [−1, +1].',
+                        'r em {−2, −1, 0, +1, +2}, normalizado para x = r / 2 em [−1, +1].',
                         style: text.bodyMedium,
                       ),
                       const SizedBox(height: 8),
@@ -199,21 +201,22 @@ class MethodologyScreen extends StatelessWidget {
                       const SizedBox(height: 10),
                       Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
                           color: p.surfaceMuted,
                           borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: p.line),
                         ),
                         child: Text(
                           'c_i = sinal_i · x_i\n'
-                          'S   = Σ(w_i · c_i) / Σ(w_i)   ∈ [−1, +1]\n'
+                          'S   = Σ(w_i · c_i) / Σ(w_i)   em [−1, +1]\n'
                           '%PoloDireito  = 50 · (1 + S)\n'
                           '%PoloEsquerdo = 50 · (1 − S)\n'
                           'Faixa indicativa = S ± 1,96 · SE',
                           style: text.bodySmall?.copyWith(
-                            fontFamily: 'monospace',
+                            fontFamily: 'IBMPlexMono',
                             color: p.ink,
-                            height: 1.5,
+                            height: 1.55,
                           ),
                         ),
                       ),
@@ -243,20 +246,21 @@ class MethodologyScreen extends StatelessWidget {
                       const SizedBox(height: 8),
                       Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
                           color: p.surfaceMuted,
                           borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: p.line),
                         ),
                         child: Text(
-                          'v_k = Σ(w · c) / Σw       ∈ [−1, +1] (por vértice)\n'
-                          'u_k = (v_k + 1) / 2       ∈ [0, 1]   (apoio absoluto)\n'
-                          'p_k = u_k / (u_1+u_2+u_3) ∈ [0, 1]   (posição no triângulo)\n'
-                          'I   = (u_1 + u_2 + u_3)/3 ∈ [0, 1]   (engajamento médio)',
+                          'v_k = Σ(w · c) / Σw       em [−1, +1] (por vértice)\n'
+                          'u_k = (v_k + 1) / 2       em [0, 1]   (apoio absoluto)\n'
+                          'p_k = u_k / (u_1+u_2+u_3) em [0, 1]   (posição no triângulo)\n'
+                          'I   = (u_1 + u_2 + u_3)/3 em [0, 1]   (engajamento médio)',
                           style: text.bodySmall?.copyWith(
-                            fontFamily: 'monospace',
+                            fontFamily: 'IBMPlexMono',
                             color: p.ink,
-                            height: 1.5,
+                            height: 1.55,
                           ),
                         ),
                       ),
@@ -280,19 +284,20 @@ class MethodologyScreen extends StatelessWidget {
                       const SizedBox(height: 8),
                       Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
                           color: p.surfaceMuted,
                           borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: p.line),
                         ),
                         child: Text(
-                          'd_comp = ‖p − μ‖₂ / √2                    ∈ [0, 1]\n'
+                          'd_comp = ||p − μ||_2 / √2                 em [0, 1]\n'
                           'g      = clamp((|I − 0,5| − 0,15) / 0,35, 0, 1)\n'
-                          'dist   = √(d_comp² + 0,16 · g²)            ∈ [0, 1,077]',
+                          'dist   = √(d_comp² + 0,16 · g²)           em [0, 1,077]',
                           style: text.bodySmall?.copyWith(
-                            fontFamily: 'monospace',
+                            fontFamily: 'IBMPlexMono',
                             color: p.ink,
-                            height: 1.5,
+                            height: 1.55,
                           ),
                         ),
                       ),
@@ -330,10 +335,11 @@ class MethodologyScreen extends StatelessWidget {
                       const SizedBox(height: 10),
                       Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
                           color: p.surfaceMuted,
                           borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: p.line),
                         ),
                         child: Text(
                           'z_d    = dist(x_d, μ_d) / √(σ_d² + SE_d²)\n'
@@ -343,9 +349,9 @@ class MethodologyScreen extends StatelessWidget {
                           'eixos:  dist = |S − μ|\n'
                           'tríades: dist = √(d_comp² + 0,16 · g²)',
                           style: text.bodySmall?.copyWith(
-                            fontFamily: 'monospace',
+                            fontFamily: 'IBMPlexMono',
                             color: p.ink,
-                            height: 1.5,
+                            height: 1.55,
                           ),
                         ),
                       ),
@@ -446,6 +452,15 @@ class MethodologyScreen extends StatelessWidget {
                       children: <Widget>[
                         Row(
                           children: <Widget>[
+                            SpectrumBar(
+                              color: spectrumOf(
+                                    StudySubject.fromCurrent(current),
+                                  )?.color ??
+                                  context.palette.accent,
+                              height: 18,
+                              width: 3.5,
+                            ),
+                            const SizedBox(width: 8),
                             Expanded(
                               child: Text(
                                 current.name,

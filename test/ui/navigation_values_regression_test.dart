@@ -431,6 +431,14 @@ void main() {
           isTrue,
         );
         expect(observer.pushes, pushesAtProfile);
+        // A Teia em tela cheia só exibe o campo de busca inline em larguras
+        // >= 500; no mobile ele vive na folha "Buscar e filtrar". Em ambos os
+        // casos o controlador é o mesmo e deve preservar o filtro.
+        final bool inlineSearch = find.byType(TextField).evaluate().isNotEmpty;
+        if (!inlineSearch) {
+          await tester.tap(find.byTooltip('Buscar e filtrar'));
+          await tester.pumpAndSettle();
+        }
         expect(
           tester
               .widget<TextField>(find.byType(TextField).first)
@@ -438,6 +446,10 @@ void main() {
               .text,
           'Karl Marx',
         );
+        if (!inlineSearch) {
+          Navigator.of(tester.element(find.text('Explorar a teia'))).pop();
+          await tester.pumpAndSettle();
+        }
         expect(
           tester
               .widget<StudyConstellation>(find.byType(StudyConstellation))
@@ -450,11 +462,22 @@ void main() {
             .transformationController!;
         expect(identical(camera, recovered), isTrue);
         expect(recovered.value.storage, before);
+        // A Teia oculta a navegação global por design; ao voltar para a lista,
+        // a aba Atlas ativa não deve empilhar uma nova rota.
+        await tester.tap(find.byTooltip('Voltar à lista'));
+        await tester.pumpAndSettle();
+        expect(
+          identical(tester.state(find.byType(AtlasExplorerScreen)), original),
+          isTrue,
+        );
+        // A folha modal de busca (mobile) conta como push; a base de
+        // comparação passa a ser o estado após fechá-la.
+        final int pushesBeforeTab = observer.pushes;
         await tester.tap(
           find.text(width >= 1100 ? 'Atlas político' : 'Atlas').last,
         );
         await tester.pumpAndSettle();
-        expect(observer.pushes, pushesAtProfile);
+        expect(observer.pushes, pushesBeforeTab);
         expect(tester.takeException(), isNull);
       },
     );

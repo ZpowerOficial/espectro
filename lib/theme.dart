@@ -1,5 +1,79 @@
 import 'package:flutter/material.dart';
 
+/// Tokens de movimento do Espectro inspirados em princípios táteis de interface:
+/// saída rápida com desaceleração forte (`Cubic(0.23, 1, 0.32, 1)`), sempre
+/// abaixo de 300ms e sem `ease-in` em entradas ou feedback de toque.
+abstract final class EspectroMotion {
+  static const Duration fast = Duration(milliseconds: 160);
+  static const Duration medium = Duration(milliseconds: 220);
+  static const Duration slow = Duration(milliseconds: 280);
+  static const Curve easeOut = Cubic(0.23, 1, 0.32, 1);
+}
+
+/// Elevação com camada dupla sutil (anel hairline + sombra ambiente colorida pela
+/// tinta do tema, evitando sombras cinzentas lavadas ou pretos absolutos).
+abstract final class EspectroElevation {
+  static List<BoxShadow> cardShadows(
+    EspectroPalette p, {
+    Color? tint,
+    bool elevated = true,
+  }) {
+    if (!elevated) return const <BoxShadow>[];
+    if (p.isDark) {
+      // No tema escuro, usar sombra profunda (nunca p.ink que é claro/branco).
+      final Color darkShadow = tint != null
+          ? Color.alphaBlend(tint.withValues(alpha: 0.28), const Color(0xFF020408))
+          : const Color(0xFF020408);
+      return <BoxShadow>[
+        BoxShadow(
+          color: darkShadow.withValues(alpha: 0.42),
+          blurRadius: 6,
+          offset: const Offset(0, 2),
+        ),
+        BoxShadow(
+          color: darkShadow.withValues(alpha: 0.34),
+          blurRadius: 18,
+          spreadRadius: -3,
+          offset: const Offset(0, 8),
+        ),
+      ];
+    }
+    final Color baseTint = tint ?? p.ink;
+    return <BoxShadow>[
+      BoxShadow(
+        color: baseTint.withValues(alpha: 0.035),
+        blurRadius: 3,
+        offset: const Offset(0, 1),
+      ),
+      BoxShadow(
+        color: baseTint.withValues(alpha: 0.055),
+        blurRadius: 16,
+        spreadRadius: -2,
+        offset: const Offset(0, 6),
+      ),
+    ];
+  }
+
+  static BoxDecoration cardDecoration(
+    EspectroPalette p, {
+    Color? color,
+    Color? borderColor,
+    Color? tint,
+    double radius = 17,
+    bool elevated = true,
+    double borderWidth = 1,
+  }) {
+    final Color resolvedBorder =
+        borderColor ?? p.line.withValues(alpha: p.isDark ? 0.88 : 0.82);
+    return BoxDecoration(
+      color: color ?? p.surface,
+      borderRadius: BorderRadius.circular(radius),
+      border: Border.all(color: resolvedBorder, width: borderWidth),
+      boxShadow: cardShadows(p, tint: tint, elevated: elevated),
+    );
+  }
+}
+
 /// Extensão de tema do Espectro com tokens semânticos próprios para modo claro e escuro.
 ///
 /// Identidade visual própria: ardósia arquitetônica + petróleo mineral + âmbar ocre
@@ -47,56 +121,67 @@ class EspectroPalette extends ThemeExtension<EspectroPalette> {
   final Color heroMuted;
   final List<Color> triadPalette;
 
+  static const List<Color> spectrumStops = <Color>[
+    Color(0xFFD6373E),
+    Color(0xFFDF7A1E),
+    Color(0xFFD9A518),
+    Color(0xFF0F9D6B),
+    Color(0xFF2563EB),
+    Color(0xFF7C4DFF),
+  ];
+
   static const EspectroPalette light = EspectroPalette(
     isDark: false,
-    canvas: Color(0xFFF4F7F6),
+    canvas: Color(0xFFF6F4EE),
     surface: Color(0xFFFFFFFF),
-    surfaceMuted: Color(0xFFE8EEED),
-    ink: Color(0xFF142630),
-    inkSoft: Color(0xFF52616B),
-    muted: Color(0xFF80919C),
-    line: Color(0xFFDAE5E5),
-    accent: Color(0xFF087B75),
-    accentSoft: Color(0xFFD9F6F0),
-    poleLeft: Color(0xFF087B75),
-    poleRight: Color(0xFFA15704),
+    surfaceMuted: Color(0xFFEDEAE0),
+    ink: Color(0xFF0E1117),
+    inkSoft: Color(0xFF3E4554),
+    // AA para texto normal também sobre surfaceMuted (#EDEAE0).
+    muted: Color(0xFF5D6575),
+    line: Color(0xFFDFDBD0),
+    accent: Color(0xFF1A4FD6),
+    accentSoft: Color(0xFFE8EEFC),
+    poleLeft: Color(0xFF1A4FD6),
+    poleRight: Color(0xFFC94B14),
     warning: Color(0xFFB45309),
-    success: Color(0xFF13795B),
-    heroBackground: Color(0xFF0C1C27),
-    heroForeground: Color(0xFFFFFFFF),
-    heroMuted: Color(0xFFBCD2D2),
+    success: Color(0xFF0E7C58),
+    heroBackground: Color(0xFF0C1018),
+    heroForeground: Color(0xFFF8FAFC),
+    heroMuted: Color(0xFFB5C0D4),
     triadPalette: <Color>[
-      Color(0xFF087B75),
-      Color(0xFFA15704),
+      Color(0xFF1A4FD6),
+      Color(0xFFC94B14),
       Color(0xFF776ABD),
-      Color(0xFF177E5E),
-      Color(0xFFA84266),
+      Color(0xFF0E7C58),
+      Color(0xFFB53B66),
       Color(0xFF3A6EA5),
     ],
   );
 
   static const EspectroPalette dark = EspectroPalette(
     isDark: true,
-    canvas: Color(0xFF0B141C),
-    surface: Color(0xFF15313D),
-    surfaceMuted: Color(0xFF1C3442),
-    ink: Color(0xFFF4F7F6),
-    inkSoft: Color(0xFFBCD2D2),
-    muted: Color(0xFF80919C),
-    line: Color(0xFF223E4F),
-    accent: Color(0xFF6AE0CB),
-    accentSoft: Color(0xFF163C38),
-    poleLeft: Color(0xFF6AE0CB),
-    poleRight: Color(0xFFEDA23B),
+    canvas: Color(0xFF090C12),
+    surface: Color(0xFF121722),
+    surfaceMuted: Color(0xFF1B2231),
+    ink: Color(0xFFF5F7FB),
+    inkSoft: Color(0xFFBFC8D8),
+    // AA para texto normal sobre superfícies elevadas no tema escuro.
+    muted: Color(0xFF8C96AA),
+    line: Color(0xFF232C3E),
+    accent: Color(0xFF63A4FF),
+    accentSoft: Color(0xFF172642),
+    poleLeft: Color(0xFF63A4FF),
+    poleRight: Color(0xFFF59E42),
     warning: Color(0xFFF59E0B),
     success: Color(0xFF34D399),
-    heroBackground: Color(0xFF15313D),
+    heroBackground: Color(0xFF101624),
     heroForeground: Color(0xFFFFFFFF),
-    heroMuted: Color(0xFF88A4A4),
+    heroMuted: Color(0xFF9EABC2),
     triadPalette: <Color>[
-      Color(0xFF6AE0CB),
-      Color(0xFFEDA23B),
-      Color(0xFF9B95EC),
+      Color(0xFF63A4FF),
+      Color(0xFFF59E42),
+      Color(0xFFA79DF5),
       Color(0xFF42C99E),
       Color(0xFFE6779E),
       Color(0xFF6DA6E4),
@@ -214,7 +299,7 @@ ThemeData buildAppTheme({Brightness brightness = Brightness.light}) {
         brightness: brightness,
       ).copyWith(
         primary: p.accent,
-        onPrimary: isDark ? const Color(0xFF061318) : Colors.white,
+        onPrimary: isDark ? const Color(0xFF071020) : Colors.white,
         secondary: p.poleRight,
         onSecondary: isDark ? const Color(0xFF1A1002) : Colors.white,
         surface: p.surface,
@@ -342,7 +427,7 @@ ThemeData buildAppTheme({Brightness brightness = Brightness.light}) {
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        minimumSize: const Size(48, 48),
+        minimumSize: const Size(48, 52),
         side: BorderSide(color: p.line),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
       ),
@@ -359,18 +444,56 @@ ThemeData buildAppTheme({Brightness brightness = Brightness.light}) {
         borderRadius: BorderRadius.circular(13),
         borderSide: BorderSide(color: p.line),
       ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(13),
+        borderSide: BorderSide(color: p.accent, width: 1.6),
+      ),
     ),
     tabBarTheme: TabBarThemeData(
       labelStyle: const TextStyle(
         fontFamily: 'IBMPlexMono',
-        fontSize: 11,
-        fontWeight: FontWeight.w600,
+        fontSize: 11.5,
+        fontWeight: FontWeight.w700,
       ),
       unselectedLabelStyle: const TextStyle(
         fontFamily: 'IBMPlexMono',
-        fontSize: 11,
+        fontSize: 11.5,
+        fontWeight: FontWeight.w500,
       ),
       indicatorSize: TabBarIndicatorSize.tab,
+      dividerColor: p.line,
+    ),
+    scrollbarTheme: ScrollbarThemeData(
+      radius: const Radius.circular(999),
+      thickness: const WidgetStatePropertyAll<double>(5),
+      thumbColor: WidgetStateProperty.resolveWith<Color?>((states) {
+        if (states.contains(WidgetState.hovered) ||
+            states.contains(WidgetState.dragged)) {
+          return p.inkSoft.withValues(alpha: 0.45);
+        }
+        return p.muted.withValues(alpha: 0.24);
+      }),
+    ),
+    dialogTheme: DialogThemeData(
+      backgroundColor: p.surface,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+        side: BorderSide(color: p.line),
+      ),
+    ),
+    tooltipTheme: TooltipThemeData(
+      waitDuration: const Duration(milliseconds: 450),
+      decoration: BoxDecoration(
+        color: isDark ? p.surfaceMuted : p.ink,
+        borderRadius: BorderRadius.circular(9),
+        border: Border.all(color: p.line.withValues(alpha: 0.35)),
+      ),
+      textStyle: TextStyle(
+        color: isDark ? p.ink : p.surface,
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+      ),
     ),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: isDark ? p.surfaceMuted : p.ink,

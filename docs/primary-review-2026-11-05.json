@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-05",
+  "reviewedSubjects": [
+    "current:fascismo_historico",
+    "current:nazismo",
+    "personality:jair_bolsonaro"
+  ],
+  "spectrumConvention": "Terceira posição é o agrupamento editorial adotado pelo Espectro para estes projetos, com aplicação retrospectiva do termo. Isso não transforma a categoria em um fato declarado pelo documento nem em sinônimo de centro. Há classificação historiográfica de fascismo e nazismo como extrema-direita, como a do USHMM. As categorias usam critérios diferentes; a ficha mantém explícitas doutrina, organização e fontes, sem apagar práticas históricas documentadas.",
+  "movedToThirdPosition": [
+    "clerofascismo",
+    "ecofascismo_nacionalismo_ecologico",
+    "falangismo_nacional_sindicalismo",
+    "fascismo_historico",
+    "franquismo",
+    "integralismo_brasileiro",
+    "legionarismo_romeno",
+    "nazismo",
+    "neofascismo",
+    "neonazismo",
+    "rexismo",
+    "salazarismo",
+    "ustashismo"
+  ],
+  "movedToRight": [
+    "integralismo_lusitano",
+    "nacional_conservadorismo_populista",
+    "personality:jair_bolsonaro"
+  ],
+  "documents": {
+    "doctrine": {
+      "author": "Benito Mussolini, com Giovanni Gentile",
+      "title": "What is Fascism / Doutrina do Fascismo",
+      "date": "1932",
+      "typeAndProvenance": "Documento doutrinário primário; excertos em tradução inglesa no Fordham IHSP. Não confundir com a introdução do editor.",
+      "url": "https://sourcebooks.web.fordham.edu/mod/mussolini-fascism.asp"
+    },
+    "labour": {
+      "author": "Grande Conselho do Fascismo",
+      "title": "Carta del Lavoro",
+      "date": "21/04/1927",
+      "typeAndProvenance": "Documento primário transcrito em italiano no Polyarchy; usa-se o texto dos artigos, não o comentário do anfitrião. Fac-símile de 1941 no Ministério da Justiça italiano bloqueou acesso automático.",
+      "url": "https://www.polyarchy.org/basta/documenti/carta.lavoro.1927.html"
+    },
+    "nsdap": {
+      "author": "NSDAP; programa apresentado por Adolf Hitler",
+      "title": "Programa de 25 pontos e explicação sobre propriedade",
+      "date": "1920; explicação de 13/04/1928",
+      "typeAndProvenance": "Documento primário em tradução no Avalon/Yale; documento 1708-PS publicado em Nazi Conspiracy and Aggression, vol. IV, GPO, 1946. Programa e explicação posterior são distinguidos.",
+      "url": "https://avalon.law.yale.edu/imt/1708-ps.asp"
+    },
+    "enabling": {
+      "author": "Governo do Reich; promulgada por Paul von Hindenburg",
+      "title": "Lei de Plenos Poderes",
+      "date": "24/03/1933",
+      "typeAndProvenance": "Texto legal primário; tradução do GPO de 1943 editada pelo German Historical Institute. A análise introdutória do portal não é o texto da lei.",
+      "url": "https://germanhistorydocs.org/en/nazi-germany-1933-1945/ghdi:document-1496"
+    },
+    "inauguration": {
+      "author": "Jair Bolsonaro; registro da Agência Câmara",
+      "title": "Declarações no discurso de posse ao Congresso",
+      "date": "01/01/2019",
+      "typeAndProvenance": "Registro institucional de declarações: usam-se apenas os trechos atribuídos diretamente ao orador; não é a íntegra do discurso nem uma avaliação do governo posterior.",
+      "url": "https://www.camara.leg.br/noticias/550448-ao-tomar-posse-bolsonaro-pede-apoio-ao-congresso-para-restaurar-e-reerguer-o-brasil"
+    },
+    "economic_law": {
+      "author": "Congresso Nacional; sanção de Jair Bolsonaro",
+      "title": "Lei nº 13.874 — Liberdade Econômica",
+      "date": "20/09/2019",
+      "typeAndProvenance": "Texto legal primário, edição da Câmara dos Deputados reproduzida pelo CEVS/RS. Recorte histórico: não é consulta à legislação vigente nem prova isolada de implementação.",
+      "url": "https://www.cevs.rs.gov.br/upload/arquivos/202009/01143704-lei-da-liberdade-economica-federal.pdf"
+    },
+    "historiography": {
+      "author": "United States Holocaust Memorial Museum",
+      "title": "Fascism",
+      "date": "Referência institucional de contexto",
+      "typeAndProvenance": "Fonte secundária de classificação histórica; não usada para preencher coordenadas primárias.",
+      "url": "https://encyclopedia.ushmm.org/content/en/article/fascism-1"
+    }
+  },
+  "limitations": [
+    "No empirical validation of coordinates.",
+    "A primary document is evidence of its statements, not automatic proof of implementation.",
+    "Full 289-current primary-source review remains outstanding; no claim of complete primary verification.",
+    "TSE PDF blocked HTTP403; Biblioteca Presidência failed TLS/HTTP502. Neither is marked as read."
+  ]
+}

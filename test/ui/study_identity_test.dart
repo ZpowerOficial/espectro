@@ -100,11 +100,6 @@ void main() {
               final Text spectrumLabel = tester.widget<Text>(
                 find.text(spectrumName),
               );
-              expect(
-                _contrast(spectrumLabel.style!.color!, identity.$3),
-                greaterThanOrEqualTo(4.5),
-                reason: spectrumName,
-              );
               final Container hero = tester.widget<Container>(
                 find
                     .descendant(
@@ -115,6 +110,11 @@ void main() {
               );
               final Color background =
                   (hero.decoration! as BoxDecoration).color!;
+              expect(
+                _contrast(spectrumLabel.style!.color!, background),
+                greaterThanOrEqualTo(4.5),
+                reason: spectrumName,
+              );
               final Text kindLabel = tester.widget<Text>(
                 find.text(subject.kindLabel),
               );
@@ -144,7 +144,12 @@ void main() {
   testWidgets(
     'avatar sem retrato apresenta iniciais e nome acessível sem imagem fictícia',
     (tester) async {
-      final subject = catalog.find('personality:karl_marx')!;
+      final StudySubject subject = catalog.subjects.firstWhere(
+        (StudySubject s) =>
+            s.kind == 'personality' &&
+            s.photoUrl == null &&
+            data.portraits[s.key] == null,
+      );
       await tester.pumpWidget(
         MaterialApp(
           theme: buildAppTheme(brightness: Brightness.dark),
@@ -152,7 +157,13 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      expect(find.text('KM'), findsOneWidget);
+      final String initials = subject.name
+          .split(' ')
+          .where((String s) => s.isNotEmpty)
+          .take(2)
+          .map((String s) => s.characters.first)
+          .join();
+      expect(find.text(initials), findsOneWidget);
       expect(find.byType(Image), findsNothing);
       expect(
         tester

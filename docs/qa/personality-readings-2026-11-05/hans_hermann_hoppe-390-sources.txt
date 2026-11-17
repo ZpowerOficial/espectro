@@ -1,0 +1,26 @@
+- button "Back"
+- heading "Personalidade" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - 'group "Comércio Protecionismo Globalismo Hans-Hermann Hoppe 0.86 Hans-Hermann Hoppe: 0.86 entre Protecionismo e Globalismo Inferência editorial de tendência a abertura comercial ou integração econômica internacional. A posição 0.86 é uma aproximação ordinal não validada, não percentual de apoio nem fato medido. Recorte: Posições interpretadas a partir de Hans-Hermann Hoppe — Democracy: The God That Failed. Não cobre uniformemente toda a vida do autor; temas não sustentados são omitidos. Leitura contextual: Hans-Hermann Hoppe — Democracy: The God That Failed."':
+      - button "Base documental desta dimensão Revisão por dimensão pendente"
+    - 'group "Religião Irreligioso Religioso Hans-Hermann Hoppe 0.50 Hans-Hermann Hoppe: 0.50 entre Irreligioso e Religioso Declara agnosticismo e, simultaneamente, valoriza instituições e cultura cristãs. Os itens selecionados medem valorização social da religião, não uma afirmação de fé teísta ou defesa de igreja estatal. As interpretações históricas da entrevista são teses do autor. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Religião"
+      - button "Respostas reconstruídas e fontes Livro, capítulo Coming of Age with Murray, p. 102; entrevista, resposta sobre cristianismo e Ocidente"
+      - group:
+        - text: "Declara agnosticismo e, simultaneamente, valoriza instituições e cultura cristãs. Os itens selecionados medem valorização social da religião, não uma afirmação de fé teísta ou defesa de igreja estatal. As interpretações históricas da entrevista são teses do autor. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. Simulação editorial: o autor não respondeu ao teste. As respostas abaixo traduzem a leitura das fontes para o banco do Espectro; as intensidades e a seleção dos itens podem ser questionadas. Prefiro uma sociedade sem religião a uma sociedade religiosa. Resposta atribuída: Discordo Declara agnosticismo e, simultaneamente, valoriza instituições e cultura cristãs. Ressalva: Os itens selecionados medem valorização social da religião, não uma afirmação de fé teísta ou defesa de igreja estatal. As interpretações históricas da entrevista são teses do autor. A prática religiosa deve ser incentivada na vida em comunidade. Resposta atribuída: Concordo Declara agnosticismo e, simultaneamente, valoriza instituições e cultura cristãs. Ressalva: Os itens selecionados medem valorização social da religião, não uma afirmação de fé teísta ou defesa de igreja estatal. As interpretações históricas da entrevista são teses do autor. Getting Libertarianism Right Hans-Hermann Hoppe · 2018; capítulos de autoria de Hoppe, excluída a introdução de Sean Gabb. Texto primário em edição ou transcrição digital. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração literal do autor."
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: "Hoppe: The In-Depth Interview"
+- button "Início"
+- button "Testes"
+- button "Atlas"
+- button "Histórico"

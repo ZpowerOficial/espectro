@@ -1,0 +1,13 @@
+{
+  "requestUrl": "https://dadosabertos.camara.leg.br/api/v2/votacoes/2078295-198/votos",
+  "sha256": "09e5ad0df56a67b018cbc526c5c0effe22a3e9a1e7bc25c0477180b5c824e299",
+  "payload": {
+    "dados": [],
+    "links": [
+      {
+        "rel": "self",
+        "href": "https://dadosabertos.camara.leg.br/api/v2/votacoes/2078295-198/votos"
+      }
+    ]
+  }
+}

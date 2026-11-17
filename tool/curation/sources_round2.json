@@ -203,10 +203,6 @@
     "Mao Zedong — arquivo histórico de textos",
     "https://www.marxists.org/reference/archive/mao/selected-works/index.htm"
   ],
-  "che": [
-    "Ernesto Che Guevara — arquivo de textos",
-    "https://www.marxists.org/archive/guevara/index.htm"
-  ],
   "nyerere": [
     "Julius Nyerere — Declaração de Arusha e textos",
     "https://www.marxists.org/subject/africa/nyerere/index.htm"
@@ -246,14 +242,6 @@
   "bakunin": [
     "Mikhail Bakunin — arquivo de textos",
     "https://www.marxists.org/reference/archive/bakunin/index.htm"
-  ],
-  "kropotkin": [
-    "Piotr Kropotkin — arquivo de textos",
-    "https://www.marxists.org/reference/archive/kropotkin-peter/index.htm"
-  ],
-  "tolstoy": [
-    "The Kingdom of God Is Within You — Leo Tolstoy",
-    "https://www.gutenberg.org/ebooks/4602"
   ],
   "ferrer": [
     "Francisco Ferrer — The Origin and Ideals of the Modern School",
@@ -311,14 +299,6 @@
     "Abdullah Öcalan — Democratic Confederalism",
     "https://ocalanbooks.com/downloads/EN-brochure_democratic-confederalism_2017.pdf"
   ],
-  "rothbard": [
-    "Murray Rothbard — The Ethics of Liberty",
-    "https://mises.org/library/book/ethics-liberty"
-  ],
-  "barlow": [
-    "John Perry Barlow — A Declaration of the Independence of Cyberspace",
-    "https://www.eff.org/cyberspace-independence"
-  ],
   "cryptomay": [
     "Timothy C. May — The Crypto Anarchist Manifesto",
     "https://www.activism.net/cypherpunk/crypto-anarchy.html"
@@ -327,10 +307,6 @@
     "Paul Émile de Puydt — Panarchy",
     "https://www.panarchy.org/depuydt/1860.eng.html"
   ],
-  "george": [
-    "Henry George — Progress and Poverty",
-    "https://www.econlib.org/library/YPDBooks/George/grgPP.html"
-  ],
   "geoanarchism": [
     "Geolibertarianism — referências a Fred Foldvary e geoanarchism",
     "https://en.wikipedia.org/wiki/Geolibertarianism"
@@ -338,10 +314,6 @@
   "tomasi": [
     "John Tomasi — Free Market Fairness",
     "https://press.princeton.edu/books/paperback/9780691162752/free-market-fairness"
-  ],
-  "bleedingheart": [
-    "Matt Zwolinski — Libertarianism and Social Justice",
-    "https://plato.stanford.edu/entries/libertarianism/"
   ],
   "narveson": [
     "Jan Narveson — The Libertarian Idea",
@@ -358,10 +330,6 @@
   "newdevelopment": [
     "Luiz Carlos Bresser-Pereira — New Developmentalism",
     "https://www.bresserpereira.org.br/"
-  ],
-  "keynes": [
-    "J. M. Keynes — The General Theory",
-    "https://www.marxists.org/reference/subject/economics/keynes/general-theory/"
   ],
   "postkeynes": [
     "Post-Keynesian Economics Society — tradição e bibliografia",
@@ -402,10 +370,6 @@
   "cobden": [
     "Richard Cobden — arquivo Online Library of Liberty",
     "https://oll.libertyfund.org/people/richard-cobden"
-  ],
-  "jefferson": [
-    "Thomas Jefferson — Notes on the State of Virginia",
-    "https://www.gutenberg.org/ebooks/65190"
   ],
   "ushmm": [
     "United States Holocaust Memorial Museum — Nazi Racism",
@@ -499,10 +463,6 @@
     "Marxism–Leninism–Maoism — documentos e bibliografia",
     "https://en.wikipedia.org/wiki/Marxism%E2%80%93Leninism%E2%80%93Maoism"
   ],
-  "sigloxxi": [
-    "Socialism of the 21st century — contexto e bibliografia",
-    "https://en.wikipedia.org/wiki/Socialism_of_the_21st_century"
-  ],
   "melanesian": [
     "Melanesian socialism — contexto e bibliografia",
     "https://en.wikipedia.org/wiki/Melanesian_socialism"
@@ -559,10 +519,6 @@
     "Green conservatism — contexto e bibliografia",
     "https://en.wikipedia.org/wiki/Green_conservatism"
   ],
-  "constitutionalmonarchy": [
-    "Constitutional monarchy — contexto e bibliografia",
-    "https://en.wikipedia.org/wiki/Constitutional_monarchy"
-  ],
   "carlism": [
     "Carlism — contexto e bibliografia",
     "https://en.wikipedia.org/wiki/Carlism"
@@ -578,10 +534,6 @@
   "technoliberalism": [
     "Technoliberalism — contexto e bibliografia",
     "https://en.wikipedia.org/wiki/Technoliberalism"
-  ],
-  "popularcapitalism": [
-    "Margaret Thatcher Foundation — discursos sobre popular capitalism",
-    "https://www.margaretthatcher.org/document/106693"
   ],
   "franco": [
     "Francoist Spain — contexto e bibliografia",
@@ -663,10 +615,6 @@
     "Communization — contexto e bibliografia",
     "https://en.wikipedia.org/wiki/Communization"
   ],
-  "autonomist": [
-    "Autonomism — contexto e bibliografia",
-    "https://en.wikipedia.org/wiki/Autonomism"
-  ],
   "ricardiansocialism": [
     "Ricardian socialism — contexto e bibliografia",
     "https://en.wikipedia.org/wiki/Ricardian_socialism"
@@ -713,11 +661,11 @@
   ],
   "book:carta_tolerancia_locke": [
     "Carta sobre a Tolerância — John Locke",
-    "https://www.gutenberg.org/ebooks/22339"
+    "https://oll.libertyfund.org/titles/goldie-a-letter-concerning-toleration-and-other-writings"
   ],
   "book:sentimentos_morais_smith": [
     "Teoria dos Sentimentos Morais — Adam Smith",
-    "https://www.gutenberg.org/ebooks/58559"
+    "https://www.gutenberg.org/ebooks/67363"
   ],
   "book:discurso_desigualdade_rousseau": [
     "Discurso sobre a Origem da Desigualdade — Jean-Jacques Rousseau",
@@ -801,11 +749,11 @@
   ],
   "book:campos_fabricas_kropotkin": [
     "Campos, Fábricas e Oficinas — Piotr Kropotkin",
-    "https://www.gutenberg.org/ebooks/6431"
+    "https://theanarchistlibrary.org/library/petr-kropotkin-fields-factories-and-workshops-or-industry-combined-with-agriculture-and-brain-w"
   ],
   "book:memorias_revolucionario_kropotkin": [
     "Memórias de um Revolucionário — Piotr Kropotkin",
-    "https://www.gutenberg.org/ebooks/27105"
+    "https://theanarchistlibrary.org/library/petr-kropotkin-memoirs-of-a-revolutionist"
   ],
   "book:anarquismo_ensaios_goldman": [
     "Anarquismo e Outros Ensaios — Emma Goldman",
@@ -841,11 +789,11 @@
   ],
   "book:estatica_social_spencer": [
     "Estática Social — Herbert Spencer",
-    "https://www.gutenberg.org/ebooks/54676"
+    "https://oll.libertyfund.org/titles/spencer-social-statics-1851"
   ],
   "book:homem_estado_spencer": [
     "O Homem contra o Estado — Herbert Spencer",
-    "https://www.gutenberg.org/ebooks/16510"
+    "https://www.econlib.org/library/LFBooks/Spencer/spnMvS.html"
   ],
   "book:lei_bastiat": [
     "A Lei — Frédéric Bastiat",
@@ -858,10 +806,6 @@
   "book:socialismo_mises": [
     "Socialismo: Uma Análise Econômica e Sociológica — Ludwig von Mises",
     "https://mises.org/library/book/socialism-economic-and-sociological-analysis"
-  ],
-  "book:liberalismo_mises": [
-    "Liberalismo — Ludwig von Mises",
-    "https://mises.org/library/book/liberalism"
   ],
   "book:burocracia_mises": [
     "Burocracia — Ludwig von Mises",
@@ -889,7 +833,7 @@
   ],
   "book:individualismo_ordem_hayek": [
     "Individualismo e Ordem Econômica — Friedrich Hayek",
-    "https://oll.libertyfund.org/titles/hayek-individualism-and-economic-order"
+    "https://press.uchicago.edu/ucp/books/book/chicago/I/bo26122439.html"
   ],
   "book:calculo_consenso": [
     "O Cálculo do Consenso — James M. Buchanan e Gordon Tullock",
@@ -941,7 +885,7 @@
   ],
   "book:homem_unidimensional_marcuse": [
     "O Homem Unidimensional — Herbert Marcuse",
-    "https://www.marxists.org/reference/archive/marcuse/works/one-dimensional-man/"
+    "https://www.marcuse.org/herbert/publications/1960s/1965-one-dimensional-man.html"
   ],
   "book:sociedade_espetaculo_debord": [
     "A Sociedade do Espetáculo — Guy Debord",
@@ -973,7 +917,7 @@
   ],
   "book:africa_unir_nkrumah": [
     "Africa Must Unite — Kwame Nkrumah",
-    "https://www.marxists.org/subject/africa/nkrumah/1963/africa-must-unite/index.htm"
+    "https://www.marxists.org/subject/africa/nkrumah/1963/africa-must-unite.pdf"
   ],
   "book:declaracao_arusha_nyerere": [
     "Declaração de Arusha — Julius Nyerere",
@@ -1001,7 +945,7 @@
   ],
   "book:servidao_voluntaria_boetie": [
     "Discurso da Servidão Voluntária — Étienne de La Boétie",
-    "https://www.gutenberg.org/ebooks/48335"
+    "https://classicslaunch.org/works/discourse-on-voluntary-servitude/read/"
   ],
   "book:resistencia_civil_thoreau": [
     "A Desobediência Civil — Henry David Thoreau",
@@ -1111,17 +1055,9 @@
     "PSOE — transição e consolidação democrática — referência do recorte",
     "https://www.britannica.com/topic/Spanish-Socialist-Workers-Party"
   ],
-  "party:partido_popular_espanha_formacao": [
-    "Partido Popular — reorganização — referência do recorte",
-    "https://www.britannica.com/topic/Popular-Party-political-party-Spain"
-  ],
   "party:pce_eurocomunismo": [
     "Partido Comunista da Espanha — eurocomunismo — referência do recorte",
     "https://www.britannica.com/topic/Communist-Party-of-Spain"
-  ],
-  "party:pci_eurocomunismo": [
-    "Partido Comunista Italiano — eurocomunismo — referência do recorte",
-    "https://www.britannica.com/topic/Italian-Communist-Party"
   ],
   "party:democracia_crista_italia": [
     "Democracia Cristã Italiana — pós-guerra — referência do recorte",
@@ -1135,10 +1071,6 @@
     "Partido Comunista Francês — Frente Popular — referência do recorte",
     "https://www.britannica.com/topic/French-Communist-Party"
   ],
-  "party:die_linke_fundacao": [
-    "Die Linke — fundação programática — referência do recorte",
-    "https://www.die-linke.de/partei/programm/parteiprogramm/"
-  ],
   "party:syriza_formacao": [
     "SYRIZA — formação e oposição — referência do recorte",
     "https://www.britannica.com/topic/Syriza"
@@ -1147,13 +1079,9 @@
     "PASOK — período fundador — referência do recorte",
     "https://www.britannica.com/topic/Panhellenic-Socialist-Movement"
   ],
-  "party:pcp_resistencia": [
-    "Partido Comunista Português — resistência e revolução — referência do recorte",
-    "https://www.pcp.pt/historia"
-  ],
   "party:ps_portugal_transicao": [
     "Partido Socialista Português — transição — referência do recorte",
-    "https://www.britannica.com/topic/Socialist-Party-political-party-Portugal"
+    "https://www.psparlamento.pt/sobre-nos/historia/"
   ],
   "party:cnt_espanha": [
     "Confederação Nacional do Trabalho — ciclo revolucionário — referência do recorte",
@@ -1210,10 +1138,6 @@
   "party:socialistas_revolucionarios_russos": [
     "Partido Socialista-Revolucionário Russo — referência do recorte",
     "https://www.britannica.com/topic/Socialist-Revolutionary-Party"
-  ],
-  "party:levellers_movimento": [
-    "Levellers — movimento político — referência do recorte",
-    "https://www.britannica.com/event/Leveller"
   ],
   "party:fabian_society": [
     "Sociedade Fabiana — primeiras décadas — referência do recorte",
@@ -1273,7 +1197,7 @@
   ],
   "history:magna_carta": [
     "Magna Carta e limitação régia — referência do recorte",
-    "https://www.bl.uk/magna-carta"
+    "https://www.archives.gov/exhibits/featured-documents/magna-carta"
   ],
   "history:republica_florentina": [
     "República Florentina — período savonaroliano — referência do recorte",
@@ -1294,10 +1218,6 @@
   "history:revolucao_haitiana": [
     "Revolução Haitiana — referência do recorte",
     "https://www.britannica.com/event/Haitian-Revolution"
-  ],
-  "history:haiti_constituicao_1805": [
-    "Constituição Haitiana de 1805 — referência do recorte",
-    "https://www.brown.edu/initiatives/haiti-renaissance/1805-constitution"
   ],
   "history:revolucao_1848_franca": [
     "Segunda República Francesa — experiência de 1848 — referência do recorte",
@@ -1353,7 +1273,7 @@
   ],
   "history:portugal_prec": [
     "Processo Revolucionário em Curso — referência do recorte",
-    "https://www.parlamento.pt/Parlamento/Paginas/25-Abril.aspx"
+    "https://debates.parlamento.pt/catalogo/r3"
   ],
   "history:espanha_transicao": [
     "Transição Democrática Espanhola — referência do recorte",

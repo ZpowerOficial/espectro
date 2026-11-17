@@ -1,0 +1,8 @@
+- group:
+  - text: Escolher eixos O plano mostra duas dimensões por vez. Explore qualquer combinação dos 12 eixos ou volte à projeção de Nolan.
+  - checkbox "Nolan quadrado"
+  - checkbox "12 eixos" [checked]
+  - button "Eixo horizontal Economia"
+  - button "Eixo vertical Poder"
+  - text: Perfis sem dados nos dois eixos continuam disponíveis na busca; não são colocados artificialmente no centro.
+  - button "Aplicar projeção"

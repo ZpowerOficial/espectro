@@ -1,0 +1,37 @@
+- group:
+  - img "Símbolo do Espectro"
+  - text: ESPECTRO NAVEGAÇÃO
+  - button "Visão geral"
+  - button "Meus testes"
+  - button "Atlas político"
+  - button "Comparar"
+  - button "Histórico"
+  - button "Método aberto"
+  - text: SUA INVESTIGAÇÃO É PRIVADA Dados locais e exportação sob seu controle.
+- button "Back"
+- heading "Personalidade" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - text: POSIÇÕES DO PERFIL Doze eixos. Mais de uma leitura. −1 e +1 são os polos da escala. O centro não significa ausência de dados. 6/18 dimensões com leitura primária direta; 7/18 com reconstrução editorial documentada. Consulte as respostas e ressalvas em cada dimensão.
+    - 'group "Estrutura Federal Unitário Jair Bolsonaro -0.50 Jair Bolsonaro: -0.50 entre Federal e Unitário Propõe descentralizar recursos e gestão federativa. Autonomia fiscal não resolve toda divergência legislativa; intensidades moderadas registram essa transposição. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Estrutura"
+      - 'button "Respostas reconstruídas e fontes PDF, p. 19: federalismo e recursos de municípios e estados"'
+      - group:
+        - text: "Propõe descentralizar recursos e gestão federativa. Autonomia fiscal não resolve toda divergência legislativa; intensidades moderadas registram essa transposição. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. Simulação editorial: o autor não respondeu ao teste. As respostas abaixo traduzem a leitura das fontes para o banco do Espectro; as intensidades e a seleção dos itens podem ser questionadas. As leis sobre assuntos locais devem ser definidas pelos governos municipais ou estaduais. Resposta atribuída: Concordo Propõe descentralizar recursos e gestão federativa. Ressalva: Autonomia fiscal não resolve toda divergência legislativa; intensidades moderadas registram essa transposição. O país inteiro deve seguir as mesmas leis, mesmo contra as preferências de cada estado. Resposta atribuída: Discordo Propõe descentralizar recursos e gestão federativa. Ressalva: Autonomia fiscal não resolve toda divergência legislativa; intensidades moderadas registram essa transposição. O Caminho da Prosperidade — plano de governo registrado em 2018 Jair Bolsonaro / campanha presidencial · 2018; documento do candidato 280000614517 no TSE. Documento primário de campanha em cópia arquivada. Identidade: candidato TSE 280000614517, proposta_1534284632231.pdf; 81 páginas. SHA-256 da cópia lida: 35a67dff4ebc802db20b2f59723c3d32e52146c896caf923456b00059e2577eb. O endereço histórico do TSE não ficou acessível nesta consulta. Não é auditoria de cumprimento das propostas. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração literal do autor."
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: O documento fundamenta a leitura qualitativa. As coordenadas e proporções são estimativas do Espectro, não percentuais publicados pelo autor.
+    - 'group "Representação Democracia Autocracia Jair Bolsonaro -0.50 Jair Bolsonaro: -0.50 entre Democracia e Autocracia Compromisso declarado com a legitimidade parlamentar; não comprova prática democrática posterior. Posição qualitativa convertida em estimativa editorial, sem escala validada."':
+      - button "Entender Representação"
+      - 'button "Fonte primária e interpretação Seção Equipe técnica: declaração sobre o Parlamento"'
+    - 'group "Poder Segurança Liberdade Jair Bolsonaro -0.25 Jair Bolsonaro: -0.25 entre Segurança e Liberdade Combina liberdade de opinião declarada com rigor policial. Não transforma promessa em prática comprovada, nem deduz apoio a vigilância digital de apoio à polícia. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Poder"
+      - 'button "Respostas reconstruídas e fontes PDF, pp. 7 e 32: imprensa, opinião e segurança pública"'

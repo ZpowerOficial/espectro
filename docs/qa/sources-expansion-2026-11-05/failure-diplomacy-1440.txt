@@ -1,0 +1,32 @@
+- group:
+  - img "Símbolo do Espectro"
+  - text: ESPECTRO NAVEGAÇÃO
+  - button "Visão geral"
+  - button "Meus testes"
+  - button "Atlas político"
+  - button "Comparar"
+  - button "Histórico"
+  - button "Método aberto"
+  - text: SUA INVESTIGAÇÃO É PRIVADA Dados locais e exportação sob seu controle.
+- button "Back"
+- heading "Corrente" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - 'button "Comércio Protecionismo Globalismo Nazismo -0.65 Nazismo: -0.65 entre Protecionismo e Globalismo Discute limites da autarquia, vulnerabilidade do comércio marítimo e aquisição territorial como solução. A leitura indica subordinação estratégica do comércio à segurança e à expansão; não afirma isolamento comercial completo. Posição editorial provisória: o documento fundamenta a direção qualitativa, não a magnitude numérica. Fonte primária e interpretação Registro da reunião de 5 de novembro de 1937: Seções Autarky e Participation in World Economy"'
+    - 'group "Religião Irreligioso Religioso Nazismo 0.35 Nazismo: 0.35 entre Irreligioso e Religioso Cristianismo positivo com liberdade religiosa condicionada; não equivale a toda tradição cristã. Posição qualitativa convertida em estimativa editorial, sem escala validada. Fonte primária e interpretação Programa, ponto 24"':
+      - button "Entender Religião"
+    - 'group "Moral Progressista Tradicionalista Nazismo 0.80 Nazismo: 0.80 entre Progressista e Tradicionalista O discurso rejeita a emancipação feminina e prescreve funções distintas por sexo, vinculadas à maternidade e à comunidade racial. Sustenta uma posição normativa restritiva neste tema; não torna o nazismo equivalente a todo conservadorismo ou a toda tradição religiosa. Posição editorial provisória: o documento fundamenta a direção qualitativa, não a magnitude numérica. Fonte primária e interpretação Discurso à Liga Nacional-Socialista das Mulheres: Passagens sobre emancipação e esferas atribuídas a homens e mulheres"':
+      - button "Entender Moral"
+    - 'group "Tecnologia Tecnologia Biologia Nazismo Sem posição Lacuna explícita: sem posição parametrizada neste recorte; valor de armazenamento inativo. Base documental desta dimensão O recorte consultado não permite fixar uma posição"':
+      - button "Entender Tecnologia"
+    - text: Seis tríades de valores Composições editoriais provisórias. A existência de um ponto não equivale a uma medição do autor; consulte a base documental abaixo de cada triângulo. Composição relativa de três valores. Somar 100% não implica apoio absoluto; no relatório pessoal a intensidade e a incerteza são apresentadas separadamente.
+    - 'group "Economia A · Controle B · Regulação C · Mercados Nazismo Sem composição documentada Toque no triângulo para entender suas proporções. Lacuna explícita: sem composição parametrizada neste recorte; nenhum ponto deve ser desenhado."':
+      - 'button "Triângulo: A Controle, B Regulação, C Mercados. Sem composição documentada; nenhum ponto atribuído."'

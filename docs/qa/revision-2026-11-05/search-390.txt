@@ -1,0 +1,18 @@
+- text: Buscar e filtrar Explorar a teia
+- textbox "Buscar na teia"
+- button "Limpar busca"
+- button "Catálogo Correntes"
+- button "Espectro Todos os oito espectros"
+- text: 289 verbetes · sem limite de pontos
+- button "Todas as correntes"
+- group:
+  - button "Aceleracionismo de Esquerda (L/Acc) Corrente · Esquerda radical"
+  - button "Austromarxismo Corrente · Esquerda radical"
+  - button "Autonomismo Marxista Corrente · Esquerda radical"
+  - button "Babouvismo Corrente · Esquerda radical"
+  - button "Blanquismo Corrente · Esquerda radical"
+  - button "Bolivarianismo Socialista Corrente · Esquerda radical"
+  - button "Comunismo Corrente · Esquerda radical"
+  - button "Comunismo de Conselhos (Conselhismo) Corrente · Esquerda radical"
+  - button "Comunismo de Esquerda Corrente · Esquerda radical"
+  - button "Comunização Corrente · Esquerda radical"

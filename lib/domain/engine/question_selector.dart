@@ -31,12 +31,15 @@ List<UnifiedQuestion> selectUnifiedQuestions({
       final List<AxisQuestion> right =
           allAxis.where((q) => !q.agreeIsLeft).toList()..shuffle(random);
 
+      UnifiedQuestion wrapAxis(AxisQuestion q) =>
+          UnifiedQuestion.bipolar(q, sixQuestion: q.asSixQuestion);
+
       if (perAxis == 0) {
         for (final AxisQuestion q in left) {
-          negativePool.add(UnifiedQuestion.bipolar(q));
+          negativePool.add(wrapAxis(q));
         }
         for (final AxisQuestion q in right) {
-          positivePool.add(UnifiedQuestion.bipolar(q));
+          positivePool.add(wrapAxis(q));
         }
       } else {
         final int fromLeft = axisIndex.isEven
@@ -50,10 +53,10 @@ List<UnifiedQuestion> selectUnifiedQuestions({
           );
         }
         for (final AxisQuestion q in left.take(fromLeft)) {
-          negativePool.add(UnifiedQuestion.bipolar(q));
+          negativePool.add(wrapAxis(q));
         }
         for (final AxisQuestion q in right.take(fromRight)) {
-          positivePool.add(UnifiedQuestion.bipolar(q));
+          positivePool.add(wrapAxis(q));
         }
       }
     }
@@ -73,6 +76,9 @@ List<UnifiedQuestion> selectUnifiedQuestions({
       }
     }
 
+    UnifiedQuestion wrapTriad(SixQuestion q) =>
+        UnifiedQuestion.triad(q, axisQuestion: q.asAxisQuestion);
+
     for (var cat = 0; cat < trianglesData.categories.length; cat++) {
       for (var sub = 0; sub < 3; sub++) {
         final int key = cat * 3 + sub;
@@ -83,16 +89,14 @@ List<UnifiedQuestion> selectUnifiedQuestions({
 
         if (perVertex == 0) {
           for (final SixQuestion q in pos) {
-            positivePool.add(UnifiedQuestion.triad(q));
+            positivePool.add(wrapTriad(q));
           }
           for (final SixQuestion q in neg) {
-            negativePool.add(UnifiedQuestion.triad(q));
+            negativePool.add(wrapTriad(q));
           }
         } else {
           int wantPos = key.isEven ? (perVertex + 1) ~/ 2 : perVertex ~/ 2;
           int wantNeg = perVertex - wantPos;
-          // Caso o banco base sem expansão tenha menos negativos em algum vértice,
-          // compensa de forma graciosa com o outro polo sem falhar se houver total suficiente.
           if (neg.length < wantNeg) {
             final int deficit = wantNeg - neg.length;
             wantNeg = neg.length;
@@ -108,10 +112,10 @@ List<UnifiedQuestion> selectUnifiedQuestions({
             );
           }
           for (final SixQuestion q in pos.take(wantPos)) {
-            positivePool.add(UnifiedQuestion.triad(q));
+            positivePool.add(wrapTriad(q));
           }
           for (final SixQuestion q in neg.take(wantNeg)) {
-            negativePool.add(UnifiedQuestion.triad(q));
+            negativePool.add(wrapTriad(q));
           }
         }
       }

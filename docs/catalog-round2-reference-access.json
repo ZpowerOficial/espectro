@@ -511,16 +511,6 @@
       "contentType": "text/html",
       "sha256Prefix": "72958b195b627e1028a4757009010ac246ba831ea58eca5100edcee1e5d27483"
     },
-    "che": {
-      "title": "Che Guevara Archive",
-      "url": "https://www.marxists.org/archive/guevara/index.htm",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://www.marxists.org/archive/guevara/index.htm",
-      "contentType": "text/html",
-      "sha256Prefix": "41ae765306c300eeebe4bf970175ba8b2a1070a667a7b5bb57eedc199f51c178"
-    },
     "nyerere": {
       "title": "Marxism and Anti-Imperialism in Africa: Julius Nyerere",
       "url": "https://www.marxists.org/subject/africa/nyerere/index.htm",
@@ -620,26 +610,6 @@
       "finalUrl": "https://www.marxists.org/reference/archive/bakunin/index.htm",
       "contentType": "text/html",
       "sha256Prefix": "4d9ad4e416d0e074cef7b80056928526c1865066a33381552d83cd0e07bc459b"
-    },
-    "kropotkin": {
-      "title": "Kropotkin Reference Archive",
-      "url": "https://www.marxists.org/reference/archive/kropotkin-peter/index.htm",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://www.marxists.org/reference/archive/kropotkin-peter/index.htm",
-      "contentType": "text/html",
-      "sha256Prefix": "b5c03a90916a71126b73c8700293bfc7bdd1ef65902ffa575b7193ac6d5d4d59"
-    },
-    "tolstoy": {
-      "title": "\"The Kingdom of God Is Within You\" by graf Leo Tolstoy | Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/4602",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://www.gutenberg.org/ebooks/4602",
-      "contentType": "text/html;charset=utf-8",
-      "sha256Prefix": "94b21de9f68a43ebb3129ce97b9ab0992f101039fdeaa7eae6506c6b42b47ee3"
     },
     "ferrer": {
       "title": "The Origin and Ideals of the Modern School | The Anarchist Library",
@@ -777,24 +747,6 @@
       "contentType": "application/pdf",
       "sha256Prefix": "000b82af920d2d414dd5ed2fa4479e8ee016ff255f52c0e4cc4caa63a8f45b92"
     },
-    "rothbard": {
-      "title": "Murray Rothbard — The Ethics of Liberty",
-      "url": "https://mises.org/library/book/ethics-liberty",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 403,
-      "error": "HTTP Error 403: Forbidden"
-    },
-    "barlow": {
-      "title": "A Declaration of the Independence of Cyberspace | Electronic Frontier Foundation",
-      "url": "https://www.eff.org/cyberspace-independence",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://www.eff.org/cyberspace-independence",
-      "contentType": "text/html; charset=utf-8",
-      "sha256Prefix": "d0309e18d6ec4a34c6cd6ed538e4428ff1abf6e18c27bc688766990fdd90f581"
-    },
     "cryptomay": {
       "title": "The Crypto Anarchist Manifesto",
       "url": "https://www.activism.net/cypherpunk/crypto-anarchy.html",
@@ -815,16 +767,6 @@
       "contentType": "text/html",
       "sha256Prefix": "7a57a0ddfb15bf2b8d3caf92364298c392738016052d1dfdc9015f8937ef72b2"
     },
-    "george": {
-      "title": "Progress and Poverty - Econlib",
-      "url": "https://www.econlib.org/library/YPDBooks/George/grgPP.html",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://www.econlib.org/library/YPDBooks/George/grgPP.html",
-      "contentType": "text/html; charset=UTF-8",
-      "sha256Prefix": "09a7d57cb1a59e7f0275ffafc1ef6d512ca67ee607be687cc2f5e8859902c58b"
-    },
     "geoanarchism": {
       "title": "Geolibertarianism - Wikipedia",
       "url": "https://en.wikipedia.org/wiki/Geolibertarianism",
@@ -842,16 +784,6 @@
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
       "status": 403,
       "error": "HTTP Error 403: Forbidden"
-    },
-    "bleedingheart": {
-      "title": "Libertarianism (Stanford Encyclopedia of Philosophy)",
-      "url": "https://plato.stanford.edu/entries/libertarianism/",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://plato.stanford.edu/entries/libertarianism/",
-      "contentType": "text/html",
-      "sha256Prefix": "0a59ea21edceb39e494332a31e0e15360cafd2b9d3f8fd182fed65fb0c933e04"
     },
     "narveson": {
       "title": "Jan Narveson — The Libertarian Idea",
@@ -888,16 +820,6 @@
       "finalUrl": "https://www.bresserpereira.org.br/",
       "contentType": "text/html; charset=utf-8",
       "sha256Prefix": "7c655664e171195cc846f9d4190a354148ac938783d2f504f611bf7786ebc810"
-    },
-    "keynes": {
-      "title": "The General Theory of Employment, Interest and Money by John Maynard Keynes",
-      "url": "https://www.marxists.org/reference/subject/economics/keynes/general-theory/",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://www.marxists.org/reference/subject/economics/keynes/general-theory/",
-      "contentType": "text/html",
-      "sha256Prefix": "a4a3272637cc979dfa79c84e09f7f978cf2949dfca15e779928148bfff034e67"
     },
     "postkeynes": {
       "title": "Post-Keynesian Economics Society | PKES",
@@ -996,16 +918,6 @@
       "finalUrl": "https://oll.libertyfund.org/people/richard-cobden",
       "contentType": "text/html; charset=utf-8",
       "sha256Prefix": "e34863788789a864941603704779d3cedee953c64d96d21713dabf89142e2f2e"
-    },
-    "jefferson": {
-      "title": "Motion pictures and filmstrips, 1972 : Catalog of copyright entries, third… | Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/65190",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://www.gutenberg.org/ebooks/65190",
-      "contentType": "text/html;charset=utf-8",
-      "sha256Prefix": "cc28e94d7dbb7fea6db76c2b059c52f587888e6eb5b0cd124fbaee2dbae7a948"
     },
     "ushmm": {
       "title": "Nazi Racism | Holocaust Encyclopedia",
@@ -1233,16 +1145,6 @@
       "contentType": "text/html; charset=UTF-8",
       "sha256Prefix": "eaa109f4552928312448991fc400c958c76b07e3707b104d80db8cdff7f8f56d"
     },
-    "sigloxxi": {
-      "title": "Socialism of the 21st century - Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Socialism_of_the_21st_century",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://en.wikipedia.org/wiki/Socialism_of_the_21st_century",
-      "contentType": "text/html; charset=UTF-8",
-      "sha256Prefix": "c80447f5850436538f4d8eb899861c47d9f8ace389d5d386f5b75b8d9bafad18"
-    },
     "melanesian": {
       "title": "Melanesian socialism - Wikipedia",
       "url": "https://en.wikipedia.org/wiki/Melanesian_socialism",
@@ -1383,16 +1285,6 @@
       "contentType": "text/html; charset=UTF-8",
       "sha256Prefix": "1d01f3ae9351ac144a7d73f4c14708296e03ecc3b2d6f12cfe7d2b3b5f8ac540"
     },
-    "constitutionalmonarchy": {
-      "title": "Constitutional monarchy - Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Constitutional_monarchy",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://en.wikipedia.org/wiki/Constitutional_monarchy",
-      "contentType": "text/html; charset=UTF-8",
-      "sha256Prefix": "f919c6259ea937f2a1df806f3324e6979b511d3ab63f356a37c71b825b7538e2"
-    },
     "carlism": {
       "title": "Carlism - Wikipedia",
       "url": "https://en.wikipedia.org/wiki/Carlism",
@@ -1432,16 +1324,6 @@
       "finalUrl": "https://en.wikipedia.org/wiki/Technoliberalism",
       "contentType": "text/html; charset=UTF-8",
       "sha256Prefix": "31bf92cea70b711f6da540461a1d6b030a3a7badab727a66265d0a55405dccda"
-    },
-    "popularcapitalism": {
-      "title": "Remarks on EU budget (must remain within legal limits) | Margaret Thatcher Foundation",
-      "url": "https://www.margaretthatcher.org/document/106693",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://www.margaretthatcher.org/document/106693",
-      "contentType": "text/html; charset=utf-8",
-      "sha256Prefix": "fc34a2e8fb42a99aa6eb89ceed0851cf5a170a532992637c3d465cbb1f7936ed"
     },
     "franco": {
       "title": "Francoist Spain - Wikipedia",
@@ -1643,16 +1525,6 @@
       "contentType": "text/html; charset=UTF-8",
       "sha256Prefix": "8f30451f924f2bcf3f55759062428780473b48c84b0df317bbac52c650e9fdeb"
     },
-    "autonomist": {
-      "title": "Autonomism - Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Autonomism",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 200,
-      "finalUrl": "https://en.wikipedia.org/wiki/Autonomism",
-      "contentType": "text/html; charset=UTF-8",
-      "sha256Prefix": "0383d3859ca7b60b88c3de193b54c54597a1713e63707bf0aa4358816fbacfb4"
-    },
     "ricardiansocialism": {
       "title": "Ricardian socialism - Wikipedia",
       "url": "https://en.wikipedia.org/wiki/Ricardian_socialism",
@@ -1764,24 +1636,24 @@
       "sha256Prefix": "cad56ed5fac71d9acd68dcba5256f281332135138b1dbeda98cc6d1436b6b24c"
     },
     "book:carta_tolerancia_locke": {
-      "title": "Notes and Queries, Number 66, February 1, 1851 by Various | Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/22339",
+      "title": "A Letter concerning Toleration and Other Writings | Online Library of Liberty",
+      "url": "https://oll.libertyfund.org/titles/goldie-a-letter-concerning-toleration-and-other-writings",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
       "status": 200,
-      "finalUrl": "https://www.gutenberg.org/ebooks/22339",
-      "contentType": "text/html;charset=utf-8",
-      "sha256Prefix": "f8796d7f6d5d36229957d4a99ed2fdc9c6e88d0c4e0044a53d703a83f5b92401"
+      "finalUrl": "https://oll.libertyfund.org/titles/goldie-a-letter-concerning-toleration-and-other-writings",
+      "contentType": "text/html; charset=utf-8",
+      "sha256Prefix": "f385527b7d03b7c1c99103d8b304f7245646ec8702dd5a62a59fb368ed34ed8e"
     },
     "book:sentimentos_morais_smith": {
-      "title": "The Essays of Adam Smith by Adam Smith | Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/58559",
+      "title": "The Theory of Moral Sentiments by Adam Smith | Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/67363",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
       "status": 200,
-      "finalUrl": "https://www.gutenberg.org/ebooks/58559",
+      "finalUrl": "https://www.gutenberg.org/ebooks/67363",
       "contentType": "text/html;charset=utf-8",
-      "sha256Prefix": "aeb5c973843cc075270a077795c30e381cfcdc35886b127cf167b3403a12b8b6"
+      "sha256Prefix": "3768dc6e64ccf5742995cffd5384f3fd673efc0e5d645c61429df8b6e48f62fc"
     },
     "book:discurso_desigualdade_rousseau": {
       "title": "A Discourse Upon the Origin and the Foundation of the Inequality Among Mankind | Project Gutenberg",
@@ -1984,24 +1856,24 @@
       "sha256Prefix": "105666694594e8d3263e2154f347ea078280825ecfeea2b4084dd306118f1384"
     },
     "book:campos_fabricas_kropotkin": {
-      "title": "The Law of the Land by Emerson Hough | Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/6431",
+      "title": "Fields, Factories and Workshops | The Anarchist Library",
+      "url": "https://theanarchistlibrary.org/library/petr-kropotkin-fields-factories-and-workshops-or-industry-combined-with-agriculture-and-brain-w",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
       "status": 200,
-      "finalUrl": "https://www.gutenberg.org/ebooks/6431",
-      "contentType": "text/html;charset=utf-8",
-      "sha256Prefix": "ef6136d838db1863b32273bdf2839ab9fa4a967d676dd3422c70358984050ab5"
+      "finalUrl": "https://theanarchistlibrary.org/library/petr-kropotkin-fields-factories-and-workshops-or-industry-combined-with-agriculture-and-brain-w",
+      "contentType": "text/html; charset=utf-8",
+      "sha256Prefix": "ea93f8616a6f224c994b8b0c040a11746f38723b3c2b8ac0c31269f81c1e55a5"
     },
     "book:memorias_revolucionario_kropotkin": {
-      "title": "玉支机 by Tianhuazangzhuren | Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/27105",
+      "title": "Memoirs of a Revolutionist | The Anarchist Library",
+      "url": "https://theanarchistlibrary.org/library/petr-kropotkin-memoirs-of-a-revolutionist",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
       "status": 200,
-      "finalUrl": "https://www.gutenberg.org/ebooks/27105",
-      "contentType": "text/html;charset=utf-8",
-      "sha256Prefix": "2452a17b32a79e8c059a4cebcf143f35fb261f8dd8d142ffd265c173dc7e175f"
+      "finalUrl": "https://theanarchistlibrary.org/library/petr-kropotkin-memoirs-of-a-revolutionist",
+      "contentType": "text/html; charset=utf-8",
+      "sha256Prefix": "4cfe9c73523c38fdbd64de08f0007c5647f51f4d0f5f94e60cb1b782065f8644"
     },
     "book:anarquismo_ensaios_goldman": {
       "title": "Anarchism and Other Essays by Emma Goldman | Project Gutenberg",
@@ -2084,24 +1956,24 @@
       "sha256Prefix": "77e4b0dd11c745cca2d141dae8b36cc63d1967e705f12124d2c51e269932a489"
     },
     "book:estatica_social_spencer": {
-      "title": "Friendship Village Love Stories by Zona Gale | Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/54676",
+      "title": "Social Statics (1851) | Online Library of Liberty",
+      "url": "https://oll.libertyfund.org/titles/spencer-social-statics-1851",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
       "status": 200,
-      "finalUrl": "https://www.gutenberg.org/ebooks/54676",
-      "contentType": "text/html;charset=utf-8",
-      "sha256Prefix": "523594ed713ca8113641e6fcbb6bc474d433d28f72647a13289ef6d64ac9fed7"
+      "finalUrl": "https://oll.libertyfund.org/titles/spencer-social-statics-1851",
+      "contentType": "text/html; charset=utf-8",
+      "sha256Prefix": "5b232952954825e8af6cd8776028a82c0f696e76ab624ca0d2922266d29acae7"
     },
     "book:homem_estado_spencer": {
-      "title": "Essays on education and kindred subjects by Herbert Spencer | Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/16510",
+      "title": "The Man Versus The State, with Six Essays on Government, Society, and Freedom - Econlib",
+      "url": "https://www.econlib.org/library/LFBooks/Spencer/spnMvS.html",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
       "status": 200,
-      "finalUrl": "https://www.gutenberg.org/ebooks/16510",
-      "contentType": "text/html;charset=utf-8",
-      "sha256Prefix": "39d4b8263c1878035a77faeafef39226fc3986b4b2b221af44b508f11c3cdd41"
+      "finalUrl": "https://www.econlib.org/library/LFBooks/Spencer/spnMvS.html",
+      "contentType": "text/html; charset=UTF-8",
+      "sha256Prefix": "13d4c07eceb711744cb952b224a12f8ed8c7765c88d2b62cde51ec051e4ecc50"
     },
     "book:lei_bastiat": {
       "title": "The Law by Frédéric Bastiat | Project Gutenberg",
@@ -2130,14 +2002,6 @@
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
       "status": 403,
       "error": "HTTP Error 403: Forbidden"
-    },
-    "book:liberalismo_mises": {
-      "title": "Liberalismo — Ludwig von Mises",
-      "url": "https://mises.org/library/book/liberalism",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
     },
     "book:burocracia_mises": {
       "title": "Burocracia — Ludwig von Mises",
@@ -2192,12 +2056,14 @@
       "sha256Prefix": "bfef6adf52511188c7c1115065c65551fb029b22a290605b13abd9afd8599f4e"
     },
     "book:individualismo_ordem_hayek": {
-      "title": "Individualismo e Ordem Econômica — Friedrich Hayek",
-      "url": "https://oll.libertyfund.org/titles/hayek-individualism-and-economic-order",
+      "title": "Individualism and Economic Order, Hayek",
+      "url": "https://press.uchicago.edu/ucp/books/book/chicago/I/bo26122439.html",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
+      "status": 200,
+      "finalUrl": "https://press.uchicago.edu/ucp/books/book/chicago/I/bo26122439.html",
+      "contentType": "text/html;charset=UTF-8",
+      "sha256Prefix": "d7f8b32c08597344e063f37ff8fe9f50f5dac03b52cf06dd95d8630d5cd9e2fa"
     },
     "book:calculo_consenso": {
       "title": "The Calculus of Consent: Logical Foundations of Constitutional Democracy - Econlib",
@@ -2316,12 +2182,14 @@
       "sha256Prefix": "855aa2f400b268978668054d2632a1410754f53149d84294dd6b5f4b031611a0"
     },
     "book:homem_unidimensional_marcuse": {
-      "title": "O Homem Unidimensional — Herbert Marcuse",
-      "url": "https://www.marxists.org/reference/archive/marcuse/works/one-dimensional-man/",
+      "title": "One-Dimensional Man - Herbert Marcuse Official Website",
+      "url": "https://www.marcuse.org/herbert/publications/1960s/1965-one-dimensional-man.html",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
+      "status": 200,
+      "finalUrl": "https://www.marcuse.org/herbert/publications/1960s/1965-one-dimensional-man.html",
+      "contentType": "text/html; charset=utf-8",
+      "sha256Prefix": "5a448613ce5d677838c404fb337d5e3ab3484d0910499e8d5b27161a24eb0709"
     },
     "book:sociedade_espetaculo_debord": {
       "title": "Society of the Spectacle",
@@ -2395,11 +2263,13 @@
     },
     "book:africa_unir_nkrumah": {
       "title": "Africa Must Unite — Kwame Nkrumah",
-      "url": "https://www.marxists.org/subject/africa/nkrumah/1963/africa-must-unite/index.htm",
+      "url": "https://www.marxists.org/subject/africa/nkrumah/1963/africa-must-unite.pdf",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
+      "status": 200,
+      "finalUrl": "https://www.marxists.org/subject/africa/nkrumah/1963/africa-must-unite.pdf",
+      "contentType": "application/pdf",
+      "sha256Prefix": "1be3248c1cd452f168acac21de3421e19fb0a159e7b7269e2774442a63aea4bb"
     },
     "book:declaracao_arusha_nyerere": {
       "title": "The Arusha Declaration by Julius Nyerere 1967",
@@ -2462,14 +2332,14 @@
       "sha256Prefix": "516fe879d417aa972e1a120d36d48924fcbf87ec6add2ad88076abd24bed5e35"
     },
     "book:servidao_voluntaria_boetie": {
-      "title": "Viaggio pel lago di Como by conte Giambatista Giovio | Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/48335",
+      "title": "Read Discourse on Voluntary Servitude | Classics Library",
+      "url": "https://classicslaunch.org/works/discourse-on-voluntary-servitude/read/",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
       "status": 200,
-      "finalUrl": "https://www.gutenberg.org/ebooks/48335",
-      "contentType": "text/html;charset=utf-8",
-      "sha256Prefix": "022ffaec02729ce4cc1087084a6791a1c8decdb5c075c40f13428639ee9db185"
+      "finalUrl": "https://classicslaunch.org/works/discourse-on-voluntary-servitude/read/",
+      "contentType": "text/html; charset=UTF-8",
+      "sha256Prefix": "5ffa72413afe90378b697eb9f8c1775ee929901a263bb44f594eb23a9cb63c3d"
     },
     "book:resistencia_civil_thoreau": {
       "title": "On the Duty of Civil Disobedience by Henry David Thoreau | Project Gutenberg",
@@ -2709,14 +2579,6 @@
       "status": 403,
       "error": "HTTP Error 403: Forbidden"
     },
-    "party:partido_popular_espanha_formacao": {
-      "title": "Partido Popular — reorganização — referência do recorte",
-      "url": "https://www.britannica.com/topic/Popular-Party-political-party-Spain",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
-    },
     "party:pce_eurocomunismo": {
       "title": "Partido Comunista da Espanha — eurocomunismo — referência do recorte",
       "url": "https://www.britannica.com/topic/Communist-Party-of-Spain",
@@ -2724,14 +2586,6 @@
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
       "status": 403,
       "error": "HTTP Error 403: Forbidden"
-    },
-    "party:pci_eurocomunismo": {
-      "title": "Partido Comunista Italiano — eurocomunismo — referência do recorte",
-      "url": "https://www.britannica.com/topic/Italian-Communist-Party",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
     },
     "party:democracia_crista_italia": {
       "title": "Democracia Cristã Italiana — pós-guerra — referência do recorte",
@@ -2757,14 +2611,6 @@
       "status": 403,
       "error": "HTTP Error 403: Forbidden"
     },
-    "party:die_linke_fundacao": {
-      "title": "Die Linke — fundação programática — referência do recorte",
-      "url": "https://www.die-linke.de/partei/programm/parteiprogramm/",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
-    },
     "party:syriza_formacao": {
       "title": "SYRIZA — formação e oposição — referência do recorte",
       "url": "https://www.britannica.com/topic/Syriza",
@@ -2781,21 +2627,15 @@
       "status": 403,
       "error": "HTTP Error 403: Forbidden"
     },
-    "party:pcp_resistencia": {
-      "title": "Partido Comunista Português — resistência e revolução — referência do recorte",
-      "url": "https://www.pcp.pt/historia",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
-    },
     "party:ps_portugal_transicao": {
-      "title": "Partido Socialista Português — transição — referência do recorte",
-      "url": "https://www.britannica.com/topic/Socialist-Party-political-party-Portugal",
+      "title": "História - Grupo Parlamentar do Partido Socialista",
+      "url": "https://www.psparlamento.pt/sobre-nos/historia/",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
+      "status": 200,
+      "finalUrl": "https://www.psparlamento.pt/sobre-nos/historia/",
+      "contentType": "text/html; charset=UTF-8",
+      "sha256Prefix": "0732359fcc874e1a2c08fda5a0362adf590579f637201453c9c2707d82750e66"
     },
     "party:cnt_espanha": {
       "title": "¿Qué es CNT? - Confederación Nacional del Trabajo",
@@ -2920,14 +2760,6 @@
       "finalUrl": "https://www.britannica.com/topic/Socialist-Revolutionary-Party",
       "contentType": "text/html;charset=UTF-8",
       "sha256Prefix": "fda3ad76729f4ffe100064d1c5c3a33cd45bd04a5e4c2f519170b7d51f94716c"
-    },
-    "party:levellers_movimento": {
-      "title": "Levellers — movimento político — referência do recorte",
-      "url": "https://www.britannica.com/event/Leveller",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
     },
     "party:fabian_society": {
       "title": "Our history | Fabian Society",
@@ -3054,12 +2886,14 @@
       "sha256Prefix": "ad0c01fc83135bc282170753770461893ef1208955a24101539f17d73de56532"
     },
     "history:magna_carta": {
-      "title": "Magna Carta e limitação régia — referência do recorte",
-      "url": "https://www.bl.uk/magna-carta",
+      "title": "Magna Carta | National Archives",
+      "url": "https://www.archives.gov/exhibits/featured-documents/magna-carta",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
+      "status": 200,
+      "finalUrl": "https://www.archives.gov/exhibits/featured-documents/magna-carta",
+      "contentType": "text/html; charset=utf-8",
+      "sha256Prefix": "b4db1e4dd4349af9bd1e6fa1bacaf5e3ca5b947c0fe1f61637cf855c17df114b"
     },
     "history:republica_florentina": {
       "title": "República Florentina — período savonaroliano — referência do recorte",
@@ -3100,14 +2934,6 @@
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
       "status": 403,
       "error": "HTTP Error 403: Forbidden"
-    },
-    "history:haiti_constituicao_1805": {
-      "title": "Constituição Haitiana de 1805 — referência do recorte",
-      "url": "https://www.brown.edu/initiatives/haiti-renaissance/1805-constitution",
-      "checkedAt": "2026-11-04",
-      "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
     },
     "history:revolucao_1848_franca": {
       "title": "Segunda República Francesa — experiência de 1848 — referência do recorte",
@@ -3230,12 +3056,14 @@
       "sha256Prefix": "eee94277a2a17a0783dde63bab7755bfdc446f073064dd04e6aef0553794f339"
     },
     "history:portugal_prec": {
-      "title": "Processo Revolucionário em Curso — referência do recorte",
-      "url": "https://www.parlamento.pt/Parlamento/Paginas/25-Abril.aspx",
+      "title": "Debates Parlamentares - 3ª República",
+      "url": "https://debates.parlamento.pt/catalogo/r3",
       "checkedAt": "2026-11-04",
       "method": "HTTP GET, at most 300000 bytes; not full editorial validation",
-      "status": 404,
-      "error": "HTTP Error 404: Not Found"
+      "status": 200,
+      "finalUrl": "https://debates.parlamento.pt/catalogo/r3",
+      "contentType": "text/html;charset=UTF-8",
+      "sha256Prefix": "2db4b46c06b31a70afddc8061d78fe426affd7131744f0674a0ba395e22a9083"
     },
     "history:espanha_transicao": {
       "title": "Constitución de 1978 - Congreso de los Diputados",

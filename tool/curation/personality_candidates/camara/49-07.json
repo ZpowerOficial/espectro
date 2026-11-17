@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "authority": "Câmara dos Deputados — Dados Abertos",
+  "requestUrl": "https://dadosabertos.camara.leg.br/api/v2/deputados?idLegislatura=49&itens=100&pagina=7&ordem=ASC&ordenarPor=id",
+  "requestedLegislature": 49,
+  "page": 7,
+  "fetchedAt": "2026-11-06T01:47:14.361945+00:00",
+  "responseSha256": "f0a193d5198c90dc1051dc44a178df0689d6fbc600f3ac5e475d659591ccdabe",
+  "projection": "id, nome, uri only; not the complete API response",
+  "hasNextPage": false,
+  "identities": [
+    {
+      "id": 133985,
+      "name": "VLADIMIR PALMEIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133985"
+    },
+    {
+      "id": 133986,
+      "name": "SANDRA CAVALCANTI",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133986"
+    },
+    {
+      "id": 133987,
+      "name": "CESAR MAIA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133987"
+    },
+    {
+      "id": 133988,
+      "name": "ALOÍSIO VASCONCELOS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133988"
+    },
+    {
+      "id": 133989,
+      "name": "DÉLIO BRAZ",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133989"
+    },
+    {
+      "id": 133990,
+      "name": "AIRTON SANDOVAL",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133990"
+    },
+    {
+      "id": 133991,
+      "name": "CHICO AMARAL",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133991"
+    },
+    {
+      "id": 133992,
+      "name": "ROBERTO ROLLEMBERG",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133992"
+    },
+    {
+      "id": 133993,
+      "name": "DOMINGOS JUVENIL",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133993"
+    },
+    {
+      "id": 133994,
+      "name": "MANOEL RIBEIRO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133994"
+    },
+    {
+      "id": 133995,
+      "name": "CID CARVALHO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133995"
+    },
+    {
+      "id": 133996,
+      "name": "ARNO MAGARINOS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133996"
+    },
+    {
+      "id": 133997,
+      "name": "CELSO BERNARDI",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/133997"
+    },
+    {
+      "id": 160608,
+      "name": "TERESA JUCÁ",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/160608"
+    }
+  ],
+  "unresolvedIdentities": [],
+  "sourceRecordCount": 14
+}

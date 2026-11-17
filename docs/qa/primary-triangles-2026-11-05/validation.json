@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-05",
+  "catalogVersion": "4.1.0",
+  "apk": {
+    "path": "build/app/outputs/flutter-apk/espectro-fontes-triades-2026-11-05.apk",
+    "sha256": "dec347364491dfcde5392b36d42fbf775befbd71ddca9162187afa55ccf9fc7f",
+    "kind": "debug test build",
+    "bytes": 219631487
+  },
+  "checks": {
+    "fullFlutterSuite": {
+      "status": "PASS",
+      "count": 201,
+      "log": "/tmp/espectro-primary-tests-final.log"
+    },
+    "staticAnalysis": {
+      "status": "PASS",
+      "log": "/tmp/espectro-primary-analyze.log"
+    },
+    "webReleaseBuild": {
+      "status": "PASS",
+      "log": "/tmp/espectro-primary-web.log"
+    },
+    "androidDebugBuild": {
+      "status": "PASS",
+      "log": "/tmp/espectro-primary-apk.log"
+    },
+    "triangularBrowserUI": {
+      "status": "PASS",
+      "viewports": [
+        390,
+        1440
+      ],
+      "report": "browser.json",
+      "primarySourcePane": "PASS"
+    },
+    "reaMCP": {
+      "status": "PASS",
+      "evidence": "ev_0099edc7b43e3e28dc509f747bfdff0cde5f6c1c7c652a5a060f02191fdb0f27",
+      "report": "rea-dimensions.json"
+    },
+    "physicalAndroid": {
+      "status": "NOT_RUN"
+    },
+    "focusedAfterSemanticsAndLabels": {
+      "status": "PASS",
+      "count": 23,
+      "log": "/tmp/espectro-primary-focused.log"
+    }
+  },
+  "limitations": [
+    "Three profiles reviewed in detail; remaining corpus is not claimed primary-verified.",
+    "Primary statements and legal enactments do not prove implementation.",
+    "Numerical coordinates remain provisional editorial estimates.",
+    "Grouping fascist traditions as third position is an explicit editorial convention, not a claim of historical consensus."
+  ]
+}

@@ -6,11 +6,15 @@ class EspectroBrandMark extends StatelessWidget {
   final double size;
 
   @override
-  Widget build(BuildContext context) => Image.asset(
-    'assets/figma/espectro-mascot.png',
-    width: size,
-    height: size,
-    fit: BoxFit.contain,
-    semanticLabel: 'Símbolo do Espectro',
+  Widget build(BuildContext context) => ClipRRect(
+    borderRadius: BorderRadius.circular(size * 0.24),
+    clipBehavior: Clip.antiAlias,
+    child: Image.asset(
+      'assets/figma/espectro-mascot.png',
+      width: size,
+      height: size,
+      fit: BoxFit.cover,
+      semanticLabel: 'Símbolo do Espectro',
+    ),
   );
 }

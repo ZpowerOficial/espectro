@@ -1,0 +1,29 @@
+- group:
+  - img "Símbolo do Espectro"
+  - text: ESPECTRO NAVEGAÇÃO
+  - button "Visão geral"
+  - button "Meus testes"
+  - button "Atlas político"
+  - button "Comparar"
+  - button "Histórico"
+  - button "Método aberto"
+  - text: SUA INVESTIGAÇÃO É PRIVADA Dados locais e exportação sob seu controle.
+- button "Back"
+- heading "Corrente" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - text: "Política Externa A · Imperialismo B · Isolacionismo C · Globalismo Nazismo Sem composição documentada Toque no triângulo para entender suas proporções. Lacuna explícita de parametrização numérica, apesar de fonte qualitativa disponível. Expansão militar e segurança econômica sustentam a leitura de ambição imperial. Isolacionismo e globalismo não são quantificados pela ata; o registro não oferece uma composição completa. Posição editorial provisória: o documento fundamenta a direção qualitativa, não a magnitude numérica. Composição relativa: não é medida de apoio absoluto nem resposta reconstruída ao teste."
+    - group "Governo A · Democracia B · Autoridade C · Minarquia Nazismo Democracia 5% · Autoridade 90% · Minarquia 5% Toque no triângulo para entender suas proporções. Composição editorial que enfatiza a concentração de competência legislativa no governo. Proporções relativas estimadas pelo editor; não medem apoio absoluto.":
+      - 'button "Triângulo: A Democracia, B Autoridade, C Minarquia. Nazismo: Democracia 5% · Autoridade 90% · Minarquia 5%"'
+      - button "Fonte primária e interpretação Lei de 24/03/1933, artigos 1–4"
+    - 'group "Igualdade A · Oportunidade B · Resultado C · Ônus Nazismo Sem composição documentada Toque no triângulo para entender suas proporções. Lacuna explícita: sem composição parametrizada neste recorte; nenhum ponto deve ser desenhado."':
+      - 'button "Triângulo: A Oportunidade, B Resultado, C Ônus. Sem composição documentada; nenhum ponto atribuído."'
+      - button "Base documental desta dimensão O recorte consultado não permite fixar uma posição"

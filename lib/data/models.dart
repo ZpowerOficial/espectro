@@ -123,6 +123,92 @@ class QuestionHelp {
   }
 }
 
+class QuestionTriadTarget {
+  const QuestionTriadTarget({
+    required this.category,
+    required this.subcategory,
+    required this.multiplier,
+    this.strength = 3,
+  });
+
+  final int category;
+  final int subcategory;
+  final int multiplier;
+  final int strength;
+
+  factory QuestionTriadTarget.fromJson(Map<String, Object?> json, String path) {
+    return QuestionTriadTarget(
+      category: readInt(json['category'], '$path.category'),
+      subcategory: readInt(json['subcategory'], '$path.subcategory'),
+      multiplier: readInt(json['multiplier'], '$path.multiplier'),
+      strength: json['strength'] != null ? readInt(json['strength'], '$path.strength') : 3,
+    );
+  }
+
+  Map<String, Object?> toJson() => <String, Object?>{
+    'category': category,
+    'subcategory': subcategory,
+    'multiplier': multiplier,
+    'strength': strength,
+  };
+}
+
+/// Mapeamento sistemático de cada eixo bipolar para sua contraparte ternária correspondente.
+QuestionTriadTarget defaultTriadTargetFor(String axisId, bool agreeIsLeft) {
+  switch (axisId) {
+    case 'controle':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 0, subcategory: 0, multiplier: 1) // Controle
+          : const QuestionTriadTarget(category: 0, subcategory: 2, multiplier: 1); // Mercados
+    case 'economia':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 0, subcategory: 0, multiplier: 1) // Controle
+          : const QuestionTriadTarget(category: 0, subcategory: 2, multiplier: 1); // Mercados
+    case 'intervencao':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 0, subcategory: 1, multiplier: 1) // Regulação
+          : const QuestionTriadTarget(category: 0, subcategory: 2, multiplier: 1); // Mercados
+    case 'poder':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 1, subcategory: 1, multiplier: 1) // Segurança
+          : const QuestionTriadTarget(category: 1, subcategory: 0, multiplier: 1); // Liberdade
+    case 'religiao':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 1, subcategory: 2, multiplier: -1) // -Verdade
+          : const QuestionTriadTarget(category: 1, subcategory: 2, multiplier: 1); // +Verdade
+    case 'moral':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 2, subcategory: 1, multiplier: 1) // Progresso
+          : const QuestionTriadTarget(category: 2, subcategory: 0, multiplier: 1); // Tradição
+    case 'tecnologia':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 5, subcategory: 0, multiplier: 1) // Preservação / Equilíbrio Ecológico
+          : const QuestionTriadTarget(category: 5, subcategory: 2, multiplier: 1); // Transumanismo / Tecnocentrismo
+    case 'imigracao':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 2, subcategory: 0, multiplier: 1) // Tradição
+          : const QuestionTriadTarget(category: 2, subcategory: 2, multiplier: 1); // Liberdade cultural
+    case 'diplomacia':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 3, subcategory: 0, multiplier: 1) // Imperialismo
+          : const QuestionTriadTarget(category: 3, subcategory: 1, multiplier: 1); // Isolacionismo
+    case 'comercio':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 3, subcategory: 1, multiplier: 1) // Isolacionismo
+          : const QuestionTriadTarget(category: 3, subcategory: 2, multiplier: 1); // Globalismo
+    case 'representacao':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 4, subcategory: 0, multiplier: 1) // Democracia
+          : const QuestionTriadTarget(category: 4, subcategory: 1, multiplier: 1); // Autoridade
+    case 'estrutura':
+      return agreeIsLeft
+          ? const QuestionTriadTarget(category: 4, subcategory: 2, multiplier: 1) // Anarquismo
+          : const QuestionTriadTarget(category: 4, subcategory: 1, multiplier: 1); // Autoridade
+    default:
+      return const QuestionTriadTarget(category: 0, subcategory: 0, multiplier: 1);
+  }
+}
+
 class AxisQuestion {
   const AxisQuestion({
     required this.id,
@@ -132,6 +218,7 @@ class AxisQuestion {
     required this.weight,
     required this.terms,
     required this.help,
+    this.triadTarget,
   });
 
   final String id;
@@ -143,6 +230,19 @@ class AxisQuestion {
   final double weight;
   final List<QuestionTerm> terms;
   final QuestionHelp help;
+  final QuestionTriadTarget? triadTarget;
+
+  SixQuestion get asSixQuestion {
+    final target = triadTarget ?? defaultTriadTargetFor(axisId, agreeIsLeft);
+    return SixQuestion(
+      id: id.hashCode.abs() % 1000000,
+      category: target.category,
+      subcategory: target.subcategory,
+      strength: target.strength,
+      multiplier: target.multiplier,
+      text: text,
+    );
+  }
 
   factory AxisQuestion.fromJson(Map<String, Object?> json, String path) {
     final rawTerms = readArray(json['terms'], '$path.terms');
@@ -173,6 +273,12 @@ class AxisQuestion {
         readObject(json['help'], '$path.help'),
         '$path.help',
       ),
+      triadTarget: json['triad'] != null
+          ? QuestionTriadTarget.fromJson(
+              readObject(json['triad'], '$path.triad'),
+              '$path.triad',
+            )
+          : null,
     );
   }
 }
@@ -326,6 +432,88 @@ class SixCategory {
   }
 }
 
+class QuestionAxisTarget {
+  const QuestionAxisTarget({
+    required this.axisId,
+    required this.agreeIsLeft,
+    this.weight = 1.0,
+  });
+
+  final String axisId;
+  final bool agreeIsLeft;
+  final double weight;
+
+  factory QuestionAxisTarget.fromJson(Map<String, Object?> json, String path) {
+    return QuestionAxisTarget(
+      axisId: readString(json['axisId'], '$path.axisId'),
+      agreeIsLeft: readBool(json['agreeIsLeft'], '$path.agreeIsLeft'),
+      weight: json['weight'] != null ? readDouble(json['weight'], '$path.weight') : 1.0,
+    );
+  }
+
+  Map<String, Object?> toJson() => <String, Object?>{
+    'axisId': axisId,
+    'agreeIsLeft': agreeIsLeft,
+    'weight': weight,
+  };
+}
+
+/// Mapeamento sistemático de cada vértice ternário para seu eixo bipolar correspondente.
+QuestionAxisTarget defaultAxisTargetFor(int category, int subcategory, int multiplier) {
+  switch (category) {
+    case 0: // Economia: Controle, Regulação, Mercados
+      if (subcategory == 0) { // Controle
+        return QuestionAxisTarget(axisId: 'controle', agreeIsLeft: multiplier == 1);
+      } else if (subcategory == 1) { // Regulação
+        return QuestionAxisTarget(axisId: 'intervencao', agreeIsLeft: multiplier == 1);
+      } else { // Mercados
+        return QuestionAxisTarget(axisId: 'controle', agreeIsLeft: multiplier != 1);
+      }
+    case 1: // Liberdade Individual: Liberdade, Segurança, Verdade
+      if (subcategory == 0) { // Liberdade
+        return QuestionAxisTarget(axisId: 'poder', agreeIsLeft: multiplier != 1);
+      } else if (subcategory == 1) { // Segurança
+        return QuestionAxisTarget(axisId: 'poder', agreeIsLeft: multiplier == 1);
+      } else { // Verdade
+        return QuestionAxisTarget(axisId: 'religiao', agreeIsLeft: multiplier != 1);
+      }
+    case 2: // Cultura: Tradição, Progresso, Liberdade
+      if (subcategory == 0) { // Tradição
+        return QuestionAxisTarget(axisId: 'moral', agreeIsLeft: multiplier != 1);
+      } else if (subcategory == 1) { // Progresso
+        return QuestionAxisTarget(axisId: 'moral', agreeIsLeft: multiplier == 1);
+      } else { // Liberdade
+        return QuestionAxisTarget(axisId: 'imigracao', agreeIsLeft: multiplier != 1);
+      }
+    case 3: // Política Externa: Imperialismo, Isolacionismo, Globalismo
+      if (subcategory == 0) { // Imperialismo
+        return QuestionAxisTarget(axisId: 'diplomacia', agreeIsLeft: multiplier == 1);
+      } else if (subcategory == 1) { // Isolacionismo
+        return QuestionAxisTarget(axisId: 'comercio', agreeIsLeft: multiplier == 1);
+      } else { // Globalismo
+        return QuestionAxisTarget(axisId: 'comercio', agreeIsLeft: multiplier != 1);
+      }
+    case 4: // Governo: Democracia, Autoridade, Anarquismo
+      if (subcategory == 0) { // Democracia
+        return QuestionAxisTarget(axisId: 'representacao', agreeIsLeft: multiplier == 1);
+      } else if (subcategory == 1) { // Autoridade
+        return QuestionAxisTarget(axisId: 'representacao', agreeIsLeft: multiplier != 1);
+      } else { // Anarquismo
+        return QuestionAxisTarget(axisId: 'estrutura', agreeIsLeft: multiplier == 1);
+      }
+    case 5: // Igualdade: Oportunidade, Resultado, Responsabilidade Individual
+      if (subcategory == 0) { // Oportunidade
+        return QuestionAxisTarget(axisId: 'intervencao', agreeIsLeft: multiplier == 1);
+      } else if (subcategory == 1) { // Resultado
+        return QuestionAxisTarget(axisId: 'economia', agreeIsLeft: multiplier == 1);
+      } else { // Responsabilidade Individual
+        return QuestionAxisTarget(axisId: 'economia', agreeIsLeft: multiplier != 1);
+      }
+    default:
+      return const QuestionAxisTarget(axisId: 'controle', agreeIsLeft: true);
+  }
+}
+
 class SixQuestion {
   const SixQuestion({
     required this.id,
@@ -334,6 +522,7 @@ class SixQuestion {
     required this.strength,
     required this.multiplier,
     required this.text,
+    this.axisTarget,
   });
 
   final int id;
@@ -344,8 +533,28 @@ class SixQuestion {
   /// `1` quando concordar aumenta o vértice; `-1` quando concordar o reduz.
   final int multiplier;
   final String text;
+  final QuestionAxisTarget? axisTarget;
 
   bool get agreeRaisesWeight => multiplier == 1;
+
+  AxisQuestion get asAxisQuestion {
+    final target = axisTarget ?? defaultAxisTargetFor(category, subcategory, multiplier);
+    return AxisQuestion(
+      id: 'tri_$id',
+      axisId: target.axisId,
+      text: text,
+      agreeIsLeft: target.agreeIsLeft,
+      weight: target.weight,
+      terms: const <QuestionTerm>[],
+      help: QuestionHelp(
+        agree: text,
+        disagree: 'Oposição a: $text',
+        agreeExample: '',
+        disagreeExample: '',
+        note: null,
+      ),
+    );
+  }
 
   factory SixQuestion.fromJson(Map<String, Object?> json, String path) {
     final multiplier = readInt(json['multiplier'], '$path.multiplier');
@@ -375,6 +584,12 @@ class SixQuestion {
       strength: strength,
       multiplier: multiplier,
       text: readString(json['text'], '$path.text'),
+      axisTarget: json['axis'] != null
+          ? QuestionAxisTarget.fromJson(
+              readObject(json['axis'], '$path.axis'),
+              '$path.axis',
+            )
+          : null,
     );
   }
 }

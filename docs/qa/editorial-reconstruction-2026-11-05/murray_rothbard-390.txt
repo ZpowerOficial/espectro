@@ -1,0 +1,25 @@
+- button "Back"
+- heading "Personalidade" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - text: POSIÇÕES DO PERFIL Doze eixos. Mais de uma leitura. −1 e +1 são os polos da escala. O centro não significa ausência de dados. 0/18 dimensões com leitura primária direta; 18/18 com reconstrução editorial documentada. Consulte as respostas e ressalvas em cada dimensão.
+    - 'group "Estrutura Federal Unitário Murray N. Rothbard -1.00 Murray N. Rothbard: -1.00 entre Federal e Unitário A rejeição do monopólio territorial e a defesa de jurisdições voluntárias apoiam descentralização. A escala federal/unitário aproxima imperfeitamente uma proposta sem Estado. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Estrutura"
+      - 'button "Respostas reconstruídas e fontes Capítulos 3 e 12: limites constitucionais, justiça privada e secessão"'
+      - 'group "A rejeição do monopólio territorial e a defesa de jurisdições voluntárias apoiam descentralização. A escala federal/unitário aproxima imperfeitamente uma proposta sem Estado. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. For a New Liberty: The Libertarian Manifesto. Murray N. Rothbard · 1973; edição revista de 1978. Texto primário em edição ou transcrição digital. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração do autor.. https://cdn.mises.org/For%20a%20New%20Liberty%20The%20Libertarian%20Manifesto_3.pdf"':
+        - text: "A rejeição do monopólio territorial e a defesa de jurisdições voluntárias apoiam descentralização. A escala federal/unitário aproxima imperfeitamente uma proposta sem Estado. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. Simulação editorial: o autor não respondeu ao teste. As respostas abaixo traduzem a leitura das fontes para o banco do Espectro; as intensidades e a seleção dos itens podem ser questionadas. As leis sobre assuntos locais devem ser definidas pelos governos municipais ou estaduais. Resposta atribuída: Concordo totalmente A rejeição do monopólio territorial e a defesa de jurisdições voluntárias apoiam descentralização. A escala federal/unitário aproxima imperfeitamente uma proposta sem Estado. O país inteiro deve seguir as mesmas leis, mesmo contra as preferências de cada estado. Resposta atribuída: Discordo totalmente A rejeição do monopólio territorial e a defesa de jurisdições voluntárias apoiam descentralização. A escala federal/unitário aproxima imperfeitamente uma proposta sem Estado. For a New Liberty: The Libertarian Manifesto Murray N. Rothbard · 1973; edição revista de 1978. Texto primário em edição ou transcrição digital. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração do autor."
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: O documento fundamenta a leitura qualitativa. As coordenadas e proporções são estimativas do Espectro, não percentuais publicados pelo autor.
+- button "Início"
+- button "Testes"
+- button "Atlas"
+- button "Histórico"

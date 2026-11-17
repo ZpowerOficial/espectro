@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_mobile_ads: ^9.1.0
   path_provider: ^2.1.6
   pdf: ^3.13.1
   share_plus: ^13.3.1
@@ -25,17 +26,22 @@ flutter:
   assets:
     - assets/figma/
     - assets/portraits/
+    - assets/currents/
     - assets/data/study_media.json
+    - assets/data/study_relations_extended.json
     - assets/data/twelve_axes.json
     - assets/data/twelve_axes_extra.json
     - assets/data/six_triangles.json
     - assets/data/six_triangles_extra.json
     - assets/data/ideological_currents.json
     - assets/data/personalities.json
+    - assets/data/personalities_extended.json
+    - assets/data/dossiers/
     - assets/data/parties_movements.json
     - assets/data/historical_eras.json
     - assets/data/books_catalog.json
     - assets/data/countries.json
+    - assets/data/external_catalog.json
 
   fonts:
     - family: IBMPlexSans

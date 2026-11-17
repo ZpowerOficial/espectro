@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-05",
+  "status": "PASS_FOR_THIS_ROUND",
+  "testSuite": {
+    "status": "PASS",
+    "passed": 218
+  },
+  "analyze": "PASS: 0 issues",
+  "buildWeb": "PASS",
+  "browser": {
+    "status": "PASS",
+    "cases": 8,
+    "widths": [
+      390,
+      1440
+    ],
+    "checks": [
+      "new profiles loaded",
+      "editorial answers expandable",
+      "source buttons reachable by scrolling",
+      "no page errors"
+    ]
+  },
+  "integrationIdempotence": "PASS",
+  "pythonCompile": "PASS",
+  "newPersonalities": 4,
+  "newPersonalitiesFullReconstructedDimensions": 72,
+  "supplementedMissingDimensions": 11,
+  "catalog": {
+    "subjects": 866,
+    "personalities": 128,
+    "numericComplete": 422,
+    "numericMissingDimensions": 5696,
+    "numericMissingExcludingBooks": 4318,
+    "primarySupportedDimensions": 349,
+    "editoriallyReconstructedDimensions": 137
+  },
+  "completeCatalogReview": "PENDING",
+  "sourceLimitations": "See source-access.json; PICA PDF read from indexed copy, direct HTTPS certificate mismatch observed.",
+  "physicalDevice": "NOT_RUN"
+}

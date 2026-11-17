@@ -1,0 +1,26 @@
+- button "Back"
+- heading "Personalidade" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - 'group "Estrutura Federal Unitário Peter Turguniev (Ancapsu) -1.00 Peter Turguniev (Ancapsu): -1.00 entre Federal e Unitário Associação voluntária e autonomia dos capítulos sustentam recusa da uniformização compulsória. A estrutura associativa não é automaticamente um projeto de federação estatal. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Estrutura"
+      - 'button "Respostas reconstruídas e fontes Arts. 1º–3º: consentimento individual e capítulos autônomos"'
+      - group:
+        - text: "Associação voluntária e autonomia dos capítulos sustentam recusa da uniformização compulsória. A estrutura associativa não é automaticamente um projeto de federação estatal. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. Simulação editorial: o autor não respondeu ao teste. As respostas abaixo traduzem a leitura das fontes para o banco do Espectro; as intensidades e a seleção dos itens podem ser questionadas. As leis sobre assuntos locais devem ser definidas pelos governos municipais ou estaduais. Resposta atribuída: Concordo totalmente Associação voluntária e autonomia dos capítulos sustentam recusa da uniformização compulsória. Ressalva: A estrutura associativa não é automaticamente um projeto de federação estatal. O país inteiro deve seguir as mesmas leis, mesmo contra as preferências de cada estado. Resposta atribuída: Discordo totalmente Associação voluntária e autonomia dos capítulos sustentam recusa da uniformização compulsória. Ressalva: A estrutura associativa não é automaticamente um projeto de federação estatal. Documento de fundação do Partido Informal da Causa Anarquista PICA 00; Peter Turguniev identificado como fundador inicial no art. 6º · Versão com referência a 2023–2024; sem data editorial completa. Programa de associação voluntária, não partido registrado no TSE. Texto consultado na cópia indexada do PDF. Em 05/11/2026 o acesso HTTPS direto falhou por certificado incompatível com o domínio; a disponibilidade atual não está confirmada. Não atribui ao fundador todo conteúdo coletivo do ANCAPSU. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração literal do autor."
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: O documento fundamenta a leitura qualitativa. As coordenadas e proporções são estimativas do Espectro, não percentuais publicados pelo autor.
+    - 'group "Representação Democracia Autocracia Peter Turguniev (Ancapsu) -0.75 Peter Turguniev (Ancapsu): -0.75 entre Democracia e Autocracia A decisão interna por assembleia permanece subordinada aos direitos; rejeita coerção política por mera maioria. A possibilidade de assembleias privadas não significa soberania majoritária ilimitada. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Representação"
+- button "Início"
+- button "Testes"
+- button "Atlas"
+- button "Histórico"

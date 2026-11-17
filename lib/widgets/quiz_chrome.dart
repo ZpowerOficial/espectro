@@ -10,17 +10,18 @@ class QuizTopBar extends StatelessWidget {
     required this.onBack,
     required this.progress,
     required this.counter,
-    this.accent = AppColors.ink,
+    this.accent,
     super.key,
   });
 
   final VoidCallback onBack;
   final double progress;
   final String counter;
-  final Color accent;
+  final Color? accent;
 
   @override
   Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
     return Row(
       children: <Widget>[
         CircleIconButton(
@@ -33,7 +34,7 @@ class QuizTopBar extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              ProgressRail(value: progress, color: accent),
+              ProgressRail(value: progress, color: accent ?? p.accent),
               const SizedBox(height: 8),
               Text(
                 counter.toUpperCase(),
@@ -55,13 +56,14 @@ class AxisChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
     final TextTheme text = Theme.of(context).textTheme;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.line),
+      decoration: EspectroElevation.cardDecoration(
+        p,
+        radius: 14,
+        elevated: false,
       ),
       child: Row(
         children: <Widget>[
@@ -76,10 +78,7 @@ class AxisChip extends StatelessWidget {
           const SizedBox(width: 7),
           Text(
             axis.label.toUpperCase(),
-            style: text.labelSmall?.copyWith(
-              color: AppColors.ink,
-              letterSpacing: 1.3,
-            ),
+            style: text.labelSmall?.copyWith(color: p.ink, letterSpacing: 1.3),
           ),
           const Spacer(),
           Text(
@@ -92,10 +91,7 @@ class AxisChip extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Text(
-              '·',
-              style: text.bodySmall?.copyWith(color: AppColors.muted),
-            ),
+            child: Text('·', style: text.bodySmall?.copyWith(color: p.muted)),
           ),
           Text(
             axis.rightPole,
@@ -119,14 +115,18 @@ class CategoryChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
       decoration: BoxDecoration(
         color: Color.alphaBlend(
-          category.color.withValues(alpha: 0.35),
-          AppColors.surface,
+          category.color.withValues(alpha: p.isDark ? 0.22 : 0.30),
+          p.surface,
         ),
         borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: category.color.withValues(alpha: p.isDark ? 0.35 : 0.28),
+        ),
       ),
       child: Row(
         children: <Widget>[
@@ -134,23 +134,25 @@ class CategoryChip extends StatelessWidget {
             width: 9,
             height: 9,
             decoration: BoxDecoration(
-              color: Color.lerp(category.color, AppColors.ink, 0.35),
+              color: Color.lerp(category.color, p.ink, 0.35),
               shape: BoxShape.circle,
             ),
           ),
           const SizedBox(width: 8),
           Text(
             category.label.toUpperCase(),
-            style: Theme.of(context).textTheme.labelSmall
-                ?.copyWith(color: AppColors.ink, letterSpacing: 1.3),
+            style: Theme.of(
+              context,
+            ).textTheme.labelSmall?.copyWith(color: p.ink, letterSpacing: 1.3),
           ),
           const Spacer(),
           Flexible(
             child: Text(
               category.subcategories.join(' · '),
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.bodySmall
-                  ?.copyWith(fontSize: 11.5),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(fontSize: 11.5, color: p.inkSoft),
             ),
           ),
         ],

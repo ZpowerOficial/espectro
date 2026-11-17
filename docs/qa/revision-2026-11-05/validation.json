@@ -1,0 +1,119 @@
+{
+  "date": "2026-11-05",
+  "catalog": {
+    "currents": {
+      "previous": 124,
+      "added": 165,
+      "total": 289
+    },
+    "book": {
+      "previous": 80,
+      "added": 85,
+      "total": 165
+    },
+    "party": {
+      "previous": 56,
+      "added": 54,
+      "total": 110
+    },
+    "history": {
+      "previous": 48,
+      "added": 46,
+      "total": 94
+    },
+    "spectrumOrder": [
+      "radical_left",
+      "left",
+      "center",
+      "right",
+      "far_right",
+      "anarchist",
+      "libertarian",
+      "third_position"
+    ],
+    "addedCurrentsBySpectrum": {
+      "radical_left": 24,
+      "left": 44,
+      "center": 25,
+      "anarchist": 18,
+      "right": 21,
+      "far_right": 17,
+      "libertarian": 7,
+      "third_position": 9
+    },
+    "method": "Original Portuguese summaries and selective provisional coordinates; no empirical validation. Missing evidence remains absent. References audited separately."
+  },
+  "checks": {
+    "flutter_tests": {
+      "status": "PASS",
+      "count": 192,
+      "log": "/tmp/espectro-full-final.log"
+    },
+    "dart_analyze": {
+      "status": "PASS",
+      "log": "/tmp/espectro-analyze-final.log"
+    },
+    "web_release_build": {
+      "status": "PASS",
+      "log": "/tmp/espectro-web-final.log"
+    },
+    "android_debug_build": {
+      "status": "PASS",
+      "log": "/tmp/espectro-apk-final.log"
+    },
+    "png_capture": {
+      "status": "PASS",
+      "dimensions": [
+        [
+          1080,
+          1080
+        ],
+        [
+          1080,
+          1920
+        ]
+      ],
+      "method": "Flutter real rendering and PNG codec in widget tests"
+    },
+    "physical_android": {
+      "status": "NOT_RUN"
+    },
+    "production_deploy": {
+      "status": "NOT_RUN"
+    },
+    "chromium_browser": {
+      "status": "PASS",
+      "viewportWidths": [
+        390,
+        1440
+      ],
+      "pan": true,
+      "wheelZoom": true,
+      "allCurrentsSearch": 289,
+      "pageErrors": 0,
+      "report": "browser.json"
+    },
+    "rea_mcp": {
+      "status": "PASS",
+      "evidenceId": "ev_b8307e40c8b86f4875dfc09201c3024d2bc6514b9395c47b41c1b3e0dab2ca24",
+      "report": "rea-axes.json"
+    }
+  },
+  "apk": {
+    "path": "build/app/outputs/flutter-apk/espectro-revisao-2026-11-05.apk",
+    "sha256": "b4a491f7ef3794f9777d13ff0c0cb4209d270d35909b7c87a15c87e7a4969876"
+  },
+  "limits": [
+    "62 currents have insufficient Nolan coordinates and appear in a separate selectable tray, never at an artificial center.",
+    "New partial editorial entries are excluded from native diagnosis pending dimensional review.",
+    "HTTP access audit does not certify every historical claim or numerical parameter.",
+    "Android runtime and OS share sheet not tested on a physical device."
+  ],
+  "sourceAudit": {
+    "editorialLinks": 341,
+    "uniqueUrls": 317,
+    "http200": 242,
+    "http404": 0,
+    "notice": "HTTP status is not claim or coordinate validation"
+  }
+}

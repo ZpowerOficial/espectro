@@ -4,12 +4,14 @@ import '../../../data/models.dart';
 import '../../../domain/engine/compatibility_engine.dart';
 import '../../../domain/engine/comparison_engine.dart';
 import '../../../domain/models/political_models.dart';
+import '../../../domain/models/study_models.dart';
 import '../../../theme.dart';
 import '../../../widgets/common.dart';
 import '../../../widgets/editorial.dart';
 import '../../../widgets/espectro_scaffold.dart';
 import '../../charts/evolution_line_chart.dart';
 import '../../view_models/app_view_model.dart';
+import '../atlas/study_taxonomy.dart';
 import '../compare/compare_evaluations_screen.dart';
 import '../results/espectro_result_screen.dart';
 
@@ -124,25 +126,14 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
                 ],
               ),
             ),
-            body: Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(22, 18, 22, 22),
-                  child: EditorialHeading(
-                    eyebrow: 'Histórico / Comparação',
-                    title: 'Suas ideias podem\nmudar.',
-                    description: 'Compare avaliações sem apagar a metodologia utilizada em cada período.',
-                  ),
-                ),
-                Expanded(
-                  child: TabBarView(
-                    children: <Widget>[
-                      _buildRecordsList(context, records, p, text),
-                      _buildEvolutionView(context, records, p, text),
-                    ],
-                  ),
-                ),
-              ],
+            body: ResponsiveContentFrame(
+              maxWidth: 920,
+              child: TabBarView(
+                children: <Widget>[
+                  _buildRecordsList(context, records, p, text),
+                  _buildEvolutionView(context, records, p, text),
+                ],
+              ),
             ),
           ),
         );
@@ -156,100 +147,217 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
     EspectroPalette p,
     TextTheme text,
   ) {
+    const Widget heading = EditorialHeading(
+      eyebrow: 'Histórico / Comparação',
+      title: 'Suas ideias podem\nmudar.',
+      description:
+          'Compare avaliações sem apagar a metodologia utilizada em cada período.',
+    );
+
     if (records.isEmpty) {
-      return Center(
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Icon(Icons.history_rounded, size: 46, color: p.muted),
-              const SizedBox(height: 14),
-              Text('Nenhuma avaliação salva', style: text.headlineSmall),
-              const SizedBox(height: 8),
-              Text(
-                'Conclua qualquer teste no Espectro para registrar seu histórico '
-                'local e acompanhar sua evolução ao longo do tempo.',
-                textAlign: TextAlign.center,
-                style: text.bodyMedium,
+      return ListView(
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 32),
+        children: <Widget>[
+          heading,
+          const SizedBox(height: 28),
+          SectionCard(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Icon(Icons.history_rounded, size: 42, color: p.muted),
+                  const SizedBox(height: 14),
+                  Text('Nenhuma avaliação salva', style: text.headlineSmall),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Conclua qualquer teste no Espectro para registrar seu histórico '
+                    'local e acompanhar sua evolução ao longo do tempo.',
+                    textAlign: TextAlign.center,
+                    style: text.bodyMedium,
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       );
     }
 
     return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
-      itemCount: records.length,
-      separatorBuilder: (_, _) => const SizedBox(height: 12),
+      padding: const EdgeInsets.fromLTRB(20, 20, 20, 32),
+      itemCount: records.length + 1,
+      separatorBuilder: (_, int index) =>
+          SizedBox(height: index == 0 ? 20 : 12),
       itemBuilder: (BuildContext context, int index) {
-        final EvaluationRecord rec = records[index];
+        if (index == 0) return heading;
+        final EvaluationRecord rec = records[index - 1];
         final CompatibilityReport compat = EspectroCompatibilityEngine.evaluate(
           catalog: widget.appViewModel.data.catalog,
           axes: rec.axes,
           triads: rec.triads,
         );
 
-        return InkWell(
-          borderRadius: BorderRadius.circular(20),
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) => EspectroResultScreen(
-                  appViewModel: widget.appViewModel,
-                  record: rec,
-                ),
+        void openRecord() {
+          Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (_) => EspectroResultScreen(
+                appViewModel: widget.appViewModel,
+                record: rec,
               ),
-            );
-          },
-          child: SectionCard(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Tag(
-                      label: rec.suite.title,
-                      background: p.accentSoft,
-                      foreground: p.accent,
-                    ),
-                    const SizedBox(width: 8),
-                    Tag(label: rec.depth.label),
-                    const Spacer(),
-                    IconButton(
-                      icon: Icon(
-                        Icons.delete_outline_rounded,
-                        size: 19,
-                        color: p.muted,
+            ),
+          );
+        }
+
+        final topMatch = compat.primaryMatch;
+        final StudySpectrum? topSpectrum = topMatch != null
+            ? spectrumOf(StudySubject.fromCurrent(topMatch.current))
+            : null;
+        final Color stripeColor = topSpectrum?.color ?? p.accent;
+        final double coveragePct = rec.quality.coverage.clamp(0.0, 1.0);
+
+        return Stack(
+          children: <Widget>[
+            SizedBox(
+              width: double.infinity,
+              child: Semantics(
+                container: true,
+                button: true,
+                label:
+                    'Abrir avaliação ${rec.displayTitle}, ${compat.headline}, ${_formatDate(rec.createdAt)}',
+                onTap: openRecord,
+                child: ExcludeSemantics(
+                  child: TactilePress(
+                    scale: 0.988,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(18),
+                      onTap: openRecord,
+                      child: Container(
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          color: p.surface,
+                          borderRadius: BorderRadius.circular(18),
+                          border: Border.all(color: p.line),
+                          boxShadow: EspectroElevation.cardShadows(p),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            Container(height: 4, color: stripeColor),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(
+                                18,
+                                16,
+                                18,
+                                18,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 40),
+                                    child: Wrap(
+                                      spacing: 8,
+                                      runSpacing: 6,
+                                      crossAxisAlignment:
+                                          WrapCrossAlignment.center,
+                                      children: <Widget>[
+                                        Tag(
+                                          label: rec.suite.title,
+                                          background: p.accentSoft,
+                                          foreground: p.accent,
+                                        ),
+                                        Tag(label: rec.depth.label),
+                                        if (topSpectrum != null &&
+                                            topMatch != null)
+                                          Tag(
+                                            label:
+                                                '${topSpectrum.name} · ${topMatch.compatibilityPercent.round()}%',
+                                            background: stripeColor.withValues(
+                                              alpha: p.isDark ? 0.18 : 0.10,
+                                            ),
+                                            foreground:
+                                                topSpectrum.ink(p.isDark),
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(height: 12),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.baseline,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Text(
+                                          rec.displayTitle,
+                                          style: text.titleLarge,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 12),
+                                      Text(
+                                        _formatDate(rec.createdAt),
+                                        style: text.bodySmall?.copyWith(
+                                          fontFamily: 'IBMPlexMono',
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    compat.headline,
+                                    style: text.bodyMedium?.copyWith(
+                                      color: p.ink,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 12),
+                                  Row(
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: ProgressRail(
+                                          value: coveragePct,
+                                          color: stripeColor,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 12),
+                                      Text(
+                                        '${rec.quality.totalAnswered} respostas · '
+                                        'cobertura ${(coveragePct * 100).round()}%',
+                                        style: text.bodySmall?.copyWith(
+                                          fontFamily: 'IBMPlexMono',
+                                          fontSize: 11,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      visualDensity: VisualDensity.compact,
-                      tooltip: 'Excluir',
-                      onPressed: () => _confirmDelete(rec),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 6),
-                Text(rec.displayTitle, style: text.titleLarge),
-                const SizedBox(height: 3),
-                Text(_formatDate(rec.createdAt), style: text.bodySmall),
-                const SizedBox(height: 10),
-                Text(
-                  compat.headline,
-                  style: text.bodyMedium?.copyWith(
-                    color: p.ink,
-                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  '${rec.quality.totalAnswered} respostas · '
-                  'cobertura ${(rec.quality.coverage * 100).round()}%',
-                  style: text.bodySmall,
-                ),
-              ],
+              ),
             ),
-          ),
+            Positioned(
+              top: 14,
+              right: 10,
+              child: IconButton(
+                icon: Icon(
+                  Icons.delete_outline_rounded,
+                  size: 19,
+                  color: p.muted,
+                ),
+                visualDensity: VisualDensity.compact,
+                tooltip: 'Excluir',
+                onPressed: () => _confirmDelete(rec),
+              ),
+            ),
+          ],
         );
       },
     );

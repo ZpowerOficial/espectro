@@ -1,0 +1,27 @@
+- button "Back"
+- heading "Corrente" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - 'group "Economia A · Controle B · Regulação C · Mercados Fascismo Italiano (1927–1932) Controle 25% · Regulação 60% · Mercados 15% Área explorada: Controle 25% · Regulação 25% · Mercados 50%. Esta exploração não altera o perfil. Composição editorial de controle, regulação e mercados; preserva a distinção entre iniciativa privada e livre mercado. Proporções relativas estimadas pelo editor; não medem apoio absoluto."':
+      - 'button "Triângulo: A Controle, B Regulação, C Mercados. Fascismo Italiano (1927–1932): Controle 25% · Regulação 60% · Mercados 15%"'
+      - button "Fonte primária e interpretação Carta del Lavoro, III–IX"
+      - group "Composição editorial de controle, regulação e mercados; preserva a distinção entre iniciativa privada e livre mercado. Carta del Lavoro. Grande Conselho do Fascismo · 21/04/1927. Documento primário transcrito em italiano no Polyarchy; usa-se o texto dos artigos, não o comentário do anfitrião. Fac-símile de 1941 no Ministério da Justiça italiano bloqueou acesso automático.. https://www.polyarchy.org/basta/documenti/carta.lavoro.1927.html":
+        - text: Composição editorial de controle, regulação e mercados; preserva a distinção entre iniciativa privada e livre mercado. Carta del Lavoro Grande Conselho do Fascismo · 21/04/1927. Documento primário transcrito em italiano no Polyarchy; usa-se o texto dos artigos, não o comentário do anfitrião. Fac-símile de 1941 no Ministério da Justiça italiano bloqueou acesso automático.
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: O documento fundamenta a leitura qualitativa. As coordenadas e proporções são estimativas do Espectro, não percentuais publicados pelo autor.
+    - 'group "Liberdade Individual A · Liberdade B · Segurança C · Verdade Fascismo Italiano (1927–1932) Sem composição documentada Toque no triângulo para entender suas proporções. Lacuna explícita: sem composição parametrizada neste recorte; nenhum ponto deve ser desenhado."':
+      - 'button "Triângulo: A Liberdade, B Segurança, C Verdade. Sem composição documentada; nenhum ponto atribuído."'
+      - button "Base documental desta dimensão Sem suporte primário específico suficiente"
+- button "Início"
+- button "Testes"
+- button "Atlas"
+- button "Histórico"

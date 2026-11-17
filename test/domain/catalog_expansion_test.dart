@@ -64,7 +64,7 @@ void main() {
           .where(
             (r) =>
                 (r['editorialBasis'] as Map<String, dynamic>?)?['reviewedAt'] ==
-                '2026-11-04',
+                '2026-11-04' || r['editorialReconstructionBatch'] != null,
           )
           .toList();
       expect(added.length, greaterThanOrEqualTo(40));
@@ -121,7 +121,8 @@ void main() {
         .where(
           (r) =>
               (r['editorialBasis'] as Map<String, dynamic>?)?['reviewedAt'] ==
-              '2026-11-04',
+                  '2026-11-04' ||
+              r['editorialReconstructionBatch'] != null,
         )
         .toList();
     // Forty added writers and the specifically documented revision of Marx.
@@ -140,12 +141,21 @@ void main() {
     }
     expect(
       catalog.find('personality:max_stirner')!.axes.containsKey('economia'),
-      isFalse,
+      isTrue,
     );
     expect(
       catalog.find('personality:theodor_adorno')!.axes.containsKey('imigracao'),
-      isFalse,
+      isTrue,
     );
+    for (final key in ['personality:max_stirner', 'personality:theodor_adorno']) {
+      final basis = catalog.find(key)!.entry!.editorialBasis!;
+      expect(
+        basis.dimensionEvidence.values
+            .where((e) => e.hasDocumentedBasis)
+            .length,
+        lessThan(18),
+      );
+    }
   });
 
   test('Marx has documentary links to communism and classical Marxism before later reception', () {

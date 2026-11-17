@@ -137,12 +137,11 @@ class QuizViewModel extends ChangeNotifier {
   double get progress =>
       totalCount == 0 ? 0.0 : (answeredCount + skippedCount) / totalCount;
 
-  Axis? get currentAxis => currentQuestion.kind == UnifiedQuestionKind.bipolar
+  Axis? get currentAxis => currentQuestion.axisQuestion != null
       ? data.twelveAxes.axisById[currentQuestion.axisQuestion!.axisId]
       : null;
 
-  SixCategory? get currentTriadCategory =>
-      currentQuestion.kind == UnifiedQuestionKind.triad
+  SixCategory? get currentTriadCategory => currentQuestion.sixQuestion != null
       ? data.sixTriangles.categoryById[currentQuestion.sixQuestion!.category]
       : null;
 
@@ -192,7 +191,22 @@ class QuizViewModel extends ChangeNotifier {
     final UnifiedQuestion cur = currentQuestion;
     final List<UnifiedQuestion> candidates = <UnifiedQuestion>[];
 
-    if (cur.kind == UnifiedQuestionKind.bipolar) {
+    if (cur.kind == UnifiedQuestionKind.integrated) {
+      final AxisQuestion aq = cur.axisQuestion!;
+      for (final AxisQuestion candidate in data.twelveAxes.questionsFor(
+        aq.axisId,
+      )) {
+        final UnifiedQuestion u = UnifiedQuestion.integrated(
+          axisQuestion: candidate,
+          sixQuestion: candidate.asSixQuestion,
+        );
+        if (candidate.agreeIsLeft == aq.agreeIsLeft &&
+            !_usedUids.contains(u.uid) &&
+            !_swappedOutUids.contains(u.uid)) {
+          candidates.add(u);
+        }
+      }
+    } else if (cur.kind == UnifiedQuestionKind.bipolar) {
       final AxisQuestion aq = cur.axisQuestion!;
       for (final AxisQuestion candidate in data.twelveAxes.questionsFor(
         aq.axisId,
@@ -232,6 +246,87 @@ class QuizViewModel extends ChangeNotifier {
     return true;
   }
 
+  bool get canPreview => answeredCount >= 4;
+
+  /// Retorna os marcos/etapas sugeridos de calibração para esta bateria.
+  List<int> get milestoneSteps {
+    if (totalCount <= 24) return <int>[totalCount];
+    if (totalCount <= 48) return <int>[24, totalCount];
+    if (totalCount <= 96) return <int>[24, 48, totalCount];
+    return <int>[24, 48, 96, totalCount];
+  }
+
+  int get currentMilestoneStepIndex {
+    final steps = milestoneSteps;
+    for (var i = 0; i < steps.length; i++) {
+      if (answeredCount < steps[i]) return i;
+    }
+    return steps.length - 1;
+  }
+
+  String get currentStageLabel {
+    final steps = milestoneSteps;
+    final idx = currentMilestoneStepIndex;
+    final target = steps[idx];
+    if (answeredCount >= totalCount) return 'Concluído ($totalCount)';
+    return 'Etapa ${idx + 1}/${steps.length} · Alvo: $target itens';
+  }
+
+  int get currentStageTarget {
+    final steps = milestoneSteps;
+    return steps[currentMilestoneStepIndex];
+  }
+
+  int get currentStageStart {
+    final idx = currentMilestoneStepIndex;
+    if (idx == 0) return 0;
+    return milestoneSteps[idx - 1];
+  }
+
+  int get currentStageAnswered {
+    final start = currentStageStart;
+    final target = currentStageTarget;
+    final inStage = answeredCount - start;
+    return inStage.clamp(0, target - start);
+  }
+
+  int get currentStageTotal => (currentStageTarget - currentStageStart).clamp(1, totalCount);
+
+  double get currentStageProgress {
+    final total = currentStageTotal;
+    if (total <= 0) return 1.0;
+    return (currentStageAnswered / total).clamp(0.0, 1.0);
+  }
+
+  int get itemsRemainingForCurrentStage =>
+      (currentStageTarget - answeredCount).clamp(0, totalCount);
+
+  String get currentStageTitle {
+    final idx = currentMilestoneStepIndex;
+    switch (idx) {
+      case 0:
+        return 'Base Essencial';
+      case 1:
+        return 'Calibração Fina';
+      case 2:
+        return 'Alta Resolução';
+      default:
+        return 'Bateria Integral';
+    }
+  }
+
+  String get milestoneStatusMessage {
+    if (answeredCount >= 96) {
+      return 'Mapeamento de alta resolução atingido! Seu perfil já possui consistência estatística sólida.';
+    } else if (answeredCount >= 48) {
+      return 'Resolução padrão alcançada! Todos os eixos e tríades foram refinados.';
+    } else if (answeredCount >= 24) {
+      return 'Calibração básica completa! Você já possui dados para gerar resultado com 12 eixos e 6 tríades.';
+    } else {
+      return 'Responda as 24 primeiras afirmações para calibrar todos os 12 eixos e 6 tríades.';
+    }
+  }
+
   int? firstUntouchedIndex() {
     for (var i = 0; i < _questions.length; i++) {
       if (_answers[i] == null && !_skippedUids.contains(_questions[i].uid)) {
@@ -241,7 +336,10 @@ class QuizViewModel extends ChangeNotifier {
     return null;
   }
 
-  EvaluationRecord buildCompletedRecord({DateTime? now}) {
+  EvaluationRecord buildCompletedRecord({
+    DateTime? now,
+    bool isPreliminary = false,
+  }) {
     final DateTime timestamp = now ?? DateTime.now();
     final Map<String, int?> rawMap = <String, int?>{};
     for (var i = 0; i < _questions.length; i++) {
@@ -268,21 +366,30 @@ class QuizViewModel extends ChangeNotifier {
       axes: scored.axes,
       triads: scored.triads,
       quality: scored.quality,
+      isPreliminary: isPreliminary,
     );
   }
 
+  EvaluationRecord buildPreliminaryRecord({DateTime? now}) =>
+      buildCompletedRecord(now: now, isPreliminary: true);
+
+  ActiveQuizDraft toDraft() => ActiveQuizDraft(
+        suite: suite,
+        depth: depth,
+        seed: seed,
+        questionUids: _questions.map((q) => q.uid).toList(),
+        answers: List<int?>.from(_answers),
+        skippedSet: Set<String>.from(_skippedUids),
+        currentIndex: _currentIndex,
+        updatedAt: DateTime.now(),
+      );
+
+  Future<void> saveDraftAsync() async {
+    await repository.saveActiveDraft(toDraft());
+  }
+
   void _persistDraft() {
-    final ActiveQuizDraft draft = ActiveQuizDraft(
-      suite: suite,
-      depth: depth,
-      seed: seed,
-      questionUids: _questions.map((q) => q.uid).toList(),
-      answers: List<int?>.from(_answers),
-      skippedSet: Set<String>.from(_skippedUids),
-      currentIndex: _currentIndex,
-      updatedAt: DateTime.now(),
-    );
     // Persiste em background sem bloquear animação de resposta.
-    repository.saveActiveDraft(draft);
+    repository.saveActiveDraft(toDraft());
   }
 }

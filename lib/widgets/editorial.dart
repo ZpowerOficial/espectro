@@ -15,25 +15,34 @@ class EditorialHeading extends StatelessWidget {
   final String title;
   final String? description;
   @override
-  Widget build(BuildContext context) => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Eyebrow(eyebrow, color: context.palette.accent),
-      const SizedBox(height: 22),
-      Text(
-        title,
-        style: Theme.of(context).textTheme.displayLarge
-            ?.copyWith(fontSize: 38, height: 1.24),
-      ),
-      if (description != null) ...[
-        const SizedBox(height: 10),
+  Widget build(BuildContext context) {
+    final bool compact = MediaQuery.sizeOf(context).width < 600;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Eyebrow(eyebrow, color: context.palette.accent),
+        SizedBox(height: compact ? 6 : 12),
         Text(
-          description!,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.3),
+          title,
+          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+            fontSize: compact ? 24 : 36,
+            height: 1.15,
+            letterSpacing: compact ? -0.5 : -0.7,
+          ),
         ),
+        if (description != null) ...[
+          SizedBox(height: compact ? 6 : 10),
+          Text(
+            description!,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              fontSize: compact ? 13 : null,
+              height: 1.38,
+            ),
+          ),
+        ],
       ],
-    ],
-  );
+    );
+  }
 }
 
 class EditorialHero extends StatelessWidget {
@@ -43,6 +52,7 @@ class EditorialHero extends StatelessWidget {
     this.description,
     this.badges = const <String>[],
     this.footer,
+    this.showcase,
     super.key,
   });
   final String eyebrow;
@@ -50,61 +60,189 @@ class EditorialHero extends StatelessWidget {
   final String? description;
   final List<String> badges;
   final Widget? footer;
+  final Widget? showcase;
+
   @override
-  Widget build(BuildContext context) => SectionCard(
-    color: context.palette.heroBackground,
-    borderColor: context.palette.heroBackground,
-    radius: 21,
-    padding: const EdgeInsets.all(23),
-    child: Column(
+  Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
+    final Color heroStart = p.heroBackground;
+    final Color heroEnd = Color.alphaBlend(
+      const Color(0xFF2563EB).withValues(alpha: p.isDark ? 0.16 : 0.14),
+      p.heroBackground,
+    );
+
+    Widget buildMainColumn(BuildContext context) => Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 2),
-        Eyebrow(eyebrow, color: const Color(0xFF6AE0CB)),
-        const SizedBox(height: 28),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 7,
+              height: 7,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0xFF63A4FF),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Eyebrow(eyebrow, color: const Color(0xFF8DBBFF)),
+            ),
+          ],
+        ),
+        const SizedBox(height: 16),
         Text(
           title,
-          style: Theme.of(context).textTheme.displayMedium
-              ?.copyWith(color: Colors.white, fontSize: 34, height: 1.24),
+          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+            color: p.heroForeground,
+            fontSize: 34,
+            height: 1.14,
+            letterSpacing: -0.8,
+          ),
         ),
         if (description != null) ...[
-          const SizedBox(height: 18),
+          const SizedBox(height: 12),
           Text(
             description!,
-            style: Theme.of(context).textTheme.bodyMedium
-                ?.copyWith(color: const Color(0xFFB9CFD1), height: 1.3),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: p.heroMuted,
+              height: 1.46,
+            ),
           ),
         ],
         if (badges.isNotEmpty) ...[
-          const SizedBox(height: 18),
+          const SizedBox(height: 16),
           Wrap(
             spacing: 8,
             runSpacing: 6,
             children: [
               for (final b in badges)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.08),
+                    color: p.heroForeground.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
+                    border: Border.all(
+                      color: p.heroForeground.withValues(alpha: 0.15),
+                    ),
                   ),
                   child: Text(
                     b,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: 'IBMPlexMono',
                       fontSize: 10,
                       fontWeight: FontWeight.w600,
-                      letterSpacing: 1.1,
-                      color: Color(0xFF86D9C8),
+                      color: p.heroForeground.withValues(alpha: 0.90),
+                      letterSpacing: 0.9,
                     ),
                   ),
                 ),
             ],
           ),
         ],
-        if (footer != null) ...[const SizedBox(height: 24), footer!],
+        if (footer != null) ...[const SizedBox(height: 22), footer!],
       ],
-    ),
-  );
+    );
+
+    return Container(
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: <Color>[heroStart, heroEnd],
+          stops: const <double>[0.0, 1.0],
+        ),
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(
+          color: const Color(0xFF63A4FF).withValues(alpha: 0.24),
+        ),
+        boxShadow: EspectroElevation.cardShadows(
+          p,
+          tint: const Color(0xFF1A4FD6),
+        ),
+      ),
+      child: Stack(
+        children: <Widget>[
+          const Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: SpectrumGradientRule(height: 3.5, radius: 0),
+          ),
+          Positioned(
+            top: -120,
+            right: -85,
+            child: Container(
+              width: 300,
+              height: 300,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: <Color>[
+                    const Color(0xFF2563EB).withValues(alpha: 0.22),
+                    const Color(0xFF7C4DFF).withValues(alpha: 0.08),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -95,
+            left: -60,
+            child: Container(
+              width: 220,
+              height: 220,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: <Color>[
+                    const Color(0xFFDF7A1E).withValues(alpha: 0.14),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final bool splitHero =
+                  showcase != null && constraints.maxWidth >= 740;
+              if (splitHero) {
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(28, 28, 26, 26),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(flex: 6, child: buildMainColumn(context)),
+                      const SizedBox(width: 24),
+                      Expanded(flex: 5, child: showcase!),
+                    ],
+                  ),
+                );
+              }
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(22, 24, 22, 22),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    buildMainColumn(context),
+                    if (showcase != null) ...[
+                      const SizedBox(height: 20),
+                      showcase!,
+                    ],
+                  ],
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
 }

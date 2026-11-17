@@ -1,0 +1,24 @@
+- button "Back"
+- heading "Corrente" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - 'button "Tecnologia Tecnologia Biologia Fascismo Italiano (1927–1932) Sem posição Lacuna explícita: sem posição parametrizada neste recorte; valor de armazenamento inativo. Base documental desta dimensão Sem suporte primário específico suficiente"'
+    - text: Seis tríades de valores Composições editoriais provisórias. A existência de um ponto não equivale a uma medição do autor; consulte a base documental abaixo de cada triângulo. Composição relativa de três valores. Somar 100% não implica apoio absoluto; no relatório pessoal a intensidade e a incerteza são apresentadas separadamente.
+    - 'group "Economia A · Controle B · Regulação C · Mercados Fascismo Italiano (1927–1932) Controle 25% · Regulação 60% · Mercados 15% Área explorada: Controle 25% · Regulação 25% · Mercados 50%. Esta exploração não altera o perfil. Composição editorial de controle, regulação e mercados; preserva a distinção entre iniciativa privada e livre mercado. Proporções relativas estimadas pelo editor; não medem apoio absoluto."':
+      - 'button "Triângulo: A Controle, B Regulação, C Mercados. Fascismo Italiano (1927–1932): Controle 25% · Regulação 60% · Mercados 15%"'
+      - button "Fonte primária e interpretação Carta del Lavoro, III–IX"
+    - 'group "Liberdade Individual A · Liberdade B · Segurança C · Verdade Fascismo Italiano (1927–1932) Sem composição documentada Toque no triângulo para entender suas proporções. Lacuna explícita: sem composição parametrizada neste recorte; nenhum ponto deve ser desenhado."':
+      - 'button "Triângulo: A Liberdade, B Segurança, C Verdade. Sem composição documentada; nenhum ponto atribuído."'
+      - button "Base documental desta dimensão Sem suporte primário específico suficiente"
+- button "Início"
+- button "Testes"
+- button "Atlas"
+- button "Histórico"

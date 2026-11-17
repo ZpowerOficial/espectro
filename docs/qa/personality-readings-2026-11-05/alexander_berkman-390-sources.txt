@@ -1,0 +1,28 @@
+- button "Back"
+- heading "Personalidade" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - 'group "Estrutura Federal Unitário Alexander Berkman -0.98 Alexander Berkman: -0.98 entre Federal e Unitário Inferência editorial de tendência a autonomia local, pactos federativos e descentralização. A posição -0.98 é uma aproximação ordinal não validada, não percentual de apoio nem fato medido. Recorte: Posições interpretadas a partir de Alexander Berkman — What Is Communist Anarchism?. Não cobre uniformemente toda a vida do autor; temas não sustentados são omitidos. Leitura contextual: Alexander Berkman — What Is Communist Anarchism?."':
+      - button "Base documental desta dimensão Revisão por dimensão pendente"
+    - 'group "Representação Democracia Autocracia Alexander Berkman -1.00 Alexander Berkman: -1.00 entre Democracia e Autocracia Recusa domínio sem consentimento; sua crítica à maioria não legitima elites coercivas. Consentimento aproxima o polo Democracia, sem implicar defesa do Estado parlamentar. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Representação"
+      - 'button "Respostas reconstruídas e fontes Capítulos 20–22: liberdade, imposição e diversidade individual"'
+      - group "Recusa domínio sem consentimento; sua crítica à maioria não legitima elites coercivas. Consentimento aproxima o polo Democracia, sem implicar defesa do Estado parlamentar. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. What Is Communist Anarchism?. Alexander Berkman · 1929. Texto primário em edição ou transcrição digital. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração literal do autor.. https://theanarchistlibrary.org/library/alexander-berkman-what-is-communist-anarchism":
+        - text: "Recusa domínio sem consentimento; sua crítica à maioria não legitima elites coercivas. Consentimento aproxima o polo Democracia, sem implicar defesa do Estado parlamentar. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. Simulação editorial: o autor não respondeu ao teste. As respostas abaixo traduzem a leitura das fontes para o banco do Espectro; as intensidades e a seleção dos itens podem ser questionadas. Quem governa deve ter o consentimento e a aprovação das pessoas afetadas por suas decisões. Resposta atribuída: Concordo totalmente Recusa domínio sem consentimento; sua crítica à maioria não legitima elites coercivas. Ressalva: Consentimento aproxima o polo Democracia, sem implicar defesa do Estado parlamentar. Prefiro decisões de um pequeno grupo de líderes a poder dividido entre instituições. Resposta atribuída: Discordo totalmente Recusa domínio sem consentimento; sua crítica à maioria não legitima elites coercivas. Ressalva: Consentimento aproxima o polo Democracia, sem implicar defesa do Estado parlamentar. What Is Communist Anarchism? Alexander Berkman · 1929. Texto primário em edição ou transcrição digital. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração literal do autor."
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: O documento fundamenta a leitura qualitativa. As coordenadas e proporções são estimativas do Espectro, não percentuais publicados pelo autor.
+    - 'group "Poder Segurança Liberdade Alexander Berkman 0.99 Alexander Berkman: 0.99 entre Segurança e Liberdade Inferência editorial de tendência a autonomia civil e limitação da coerção. A posição 0.99 é uma aproximação ordinal não validada, não percentual de apoio nem fato medido. Recorte: Posições interpretadas a partir de Alexander Berkman — What Is Communist Anarchism?. Não cobre uniformemente toda a vida do autor; temas não sustentados são omitidos. Leitura contextual: Alexander Berkman — What Is Communist Anarchism?."':
+      - button "Entender Poder"
+- button "Início"
+- button "Testes"
+- button "Atlas"
+- button "Histórico"

@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import '../models/atlas_models.dart';
 import '../models/political_models.dart';
+import '../models/twelve_axes_affinity.dart';
 import 'triad_distance.dart';
 import 'compatibility_engine.dart';
 
@@ -196,7 +197,7 @@ abstract final class EspectroNolanEngine {
     }
     final TriadDimensionScore? triGov = triadMap[4];
     if (triGov != null) {
-      // [Democracia, Autoridade, Minarquia]
+      // [Democracia, Autoridade, Anarquismo]
       final List<double> p = triGov.composition;
       personal.add(
         _WeightedComponent(
@@ -355,9 +356,10 @@ class _WeightedComponent {
 /// combinações doutrinárias singulares.
 abstract final class EspectroAtlasEngine {
   /// Tolerância padrão `σ` das entradas do Atlas (personalidades, partidos,
-  /// períodos históricos e obras).
-  static const double defaultAtlasAxisSigma = 0.32;
-  static const double defaultAtlasTriadSigma = 0.24;
+  /// períodos históricos e obras). Parâmetros editoriais heurísticos, sem
+  /// calibração empírica; não são precisão estatística validada.
+  static const double defaultAtlasAxisSigma = 0.42;
+  static const double defaultAtlasTriadSigma = 0.32;
 
   /// Ordena as entradas de qualquer acervo do Atlas por compatibilidade contínua
   /// `100 · exp(-D² / 2)` com o perfil avaliado do usuário.
@@ -377,12 +379,18 @@ abstract final class EspectroAtlasEngine {
       return const <AtlasMatchResult>[];
     }
 
+    final Map<String, double> userAxisMap = <String, double>{
+      for (final BipolarDimensionScore axis in validAxes)
+        axis.axisId: axis.score,
+    };
     final List<AtlasMatchResult> ranked = <AtlasMatchResult>[];
 
     for (final AtlasEntry entry in entries) {
       var z2Sum = 0.0;
       var count = 0;
       final List<_AtlasDimDelta> deltas = <_AtlasDimDelta>[];
+      final List<DimensionAlignmentDetail> details =
+          <DimensionAlignmentDetail>[];
 
       for (final BipolarDimensionScore axis in validAxes) {
         final double? target = entry.axes[axis.axisId];
@@ -393,13 +401,44 @@ abstract final class EspectroAtlasEngine {
               axis.standardError * axis.standardError,
         );
         final double z = dist / math.max(0.05, denom);
-        z2Sum += z * z;
+        // Quadrática limitada (não é perda de Huber). Heurística que limita
+        // a contribuição de discrepâncias, sem validação empírica.
+        // observada nas outras 16 dimensões do acervo histórico.
+        final double effZ2 = (z * z) / (1.0 + (z * z) / 8.0);
+        z2Sum += effZ2;
         count++;
         deltas.add(
           _AtlasDimDelta(
             z: z,
             summary:
                 '${axis.label}: ${_describeAxisValue(target, axis.leftPole, axis.rightPole)}',
+          ),
+        );
+        final ev =
+            entry.editorialBasis?.dimensionEvidence['axis:${axis.axisId}'];
+        final note = entry.coordinateNotes[axis.axisId] ?? ev?.rationale ?? '';
+        final locator = ev?.locator;
+        final sourceUrl = ev?.sourceUrls.firstOrNull;
+        details.add(
+          DimensionAlignmentDetail(
+            dimensionId: axis.axisId,
+            dimensionLabel: axis.label,
+            isTriad: false,
+            normalizedZ: z,
+            relevance: 1.0,
+            rawDistance: dist,
+            compositionDistance: dist,
+            combinedDistance: dist,
+            effectiveZ2: effZ2,
+            userSummary: axis.summary,
+            currentSummary: _describeAxisValue(
+              target,
+              axis.leftPole,
+              axis.rightPole,
+            ),
+            note: note,
+            locator: locator,
+            sourceUrl: sourceUrl,
           ),
         );
       }
@@ -417,7 +456,8 @@ abstract final class EspectroAtlasEngine {
               triad.standardError * triad.standardError,
         );
         final double z = breakdown.combinedDistance / math.max(0.05, denom);
-        z2Sum += z * z;
+        final double effZ2 = (z * z) / (1.0 + (z * z) / 8.0);
+        z2Sum += effZ2;
         count++;
         deltas.add(
           _AtlasDimDelta(
@@ -426,11 +466,40 @@ abstract final class EspectroAtlasEngine {
                 '${triad.label}: ${_describeTriadValue(target, triad.vertices)}',
           ),
         );
+        final ev = entry
+            .editorialBasis
+            ?.dimensionEvidence['triad:${triad.categoryId}'];
+        final note =
+            entry.compositionNotes[triad.categoryId] ?? ev?.rationale ?? '';
+        final locator = ev?.locator;
+        final sourceUrl = ev?.sourceUrls.firstOrNull;
+        details.add(
+          DimensionAlignmentDetail(
+            dimensionId: 'tri_${triad.categoryId}',
+            dimensionLabel: triad.label,
+            isTriad: true,
+            normalizedZ: z,
+            relevance: 1.0,
+            rawDistance: breakdown.compositionDistance,
+            compositionDistance: breakdown.compositionDistance,
+            engagement: triad.engagement,
+            engagementPenalty: breakdown.engagementPenalty,
+            combinedDistance: breakdown.combinedDistance,
+            effectiveZ2: effZ2,
+            userSummary: _describeTriadValue(triad.composition, triad.vertices),
+            currentSummary: _describeTriadValue(target, triad.vertices),
+            note: note,
+            locator: locator,
+            sourceUrl: sourceUrl,
+          ),
+        );
       }
 
       if (count == 0) continue;
       final double d2 = z2Sum / count;
-      final double compat = (100.0 * math.exp(-d2 / 2.0)).clamp(0.0, 100.0);
+      final double compat = double.parse(
+        (100.0 * math.exp(-d2 / 2.0)).clamp(0.0, 100.0).toStringAsFixed(2),
+      );
 
       final List<_AtlasDimDelta> asc = <_AtlasDimDelta>[...deltas]
         ..sort((a, b) => a.z.compareTo(b.z));
@@ -446,6 +515,11 @@ abstract final class EspectroAtlasEngine {
           divergences: <String>[
             for (final d in desc.where((x) => x.z > 0.65).take(3)) d.summary,
           ],
+          details: List<DimensionAlignmentDetail>.unmodifiable(details),
+          twelveAxesAffinity: TwelveAxesAffinity.between(
+            userAxisMap,
+            entry.axes,
+          ),
         ),
       );
     }
@@ -594,8 +668,8 @@ abstract final class EspectroAtlasEngine {
           'Valoriza privacidade, devido processo legal amplo, controle cidadão sobre governantes e autonomia local/federativa.',
         ),
         _ => (
-          'Autonomia Civil Radical e Poder Limitado',
-          'Rejeita vigilância estatal e concentração executiva, defendendo máxima liberdade individual, autogoverno e descentralização.',
+          'Limites ao Poder e Autonomia Política',
+          'Predominam democracia, descentralização ou autonomia individual. Esses sinais não comprovam, isoladamente, rejeição ampla à vigilância; consulte separadamente o eixo Poder.',
         ),
       };
       out.add(
@@ -670,28 +744,40 @@ abstract final class EspectroAtlasEngine {
     ];
     if (worldVals.isNotEmpty) {
       final double m = _mean(worldVals);
-      final (String title, String summary) = switch (m) {
-        <= -0.42 => (
-          'Soberanismo Nacional e Dissuasão',
-          'Prioriza proteção produtiva doméstica, controle rigoroso de fronteiras, interesse nacional ativo e capacidade militar própria.',
-        ),
-        <= -0.14 => (
-          'Realismo Autonomista',
-          'Vê acordos externos com pragmatismo seletivo, preservando margem de política industrial, defesa nacional e integração exigente.',
-        ),
-        < 0.16 => (
-          'Inserção Internacional Equilibrada',
-          'Combina cooperação multilateral e comércio externo com salvaguardas estratégicas e defesa proporcional da soberania.',
-        ),
-        < 0.45 => (
-          'Multilateralismo Cooperativo e Aberto',
-          'Favorece integração comercial, solução pacífica de controvérsias, acolhimento plural e governança internacional compartilhada.',
-        ),
-        _ => (
-          'Cosmopolitismo Pacifista e Fronteiras Abertas',
-          'Aposta em livre circulação, desmilitarização progressiva, multiculturalismo amplo e instituições globais vinculantes.',
-        ),
-      };
+      final nonIntervention =
+          ax['intervencao'] != null && ax['intervencao']!.score <= -.3;
+      final isolation = tr[3] != null && tr[3]!.composition[1] >= .5;
+      final openTrade = ax['comercio'] != null && ax['comercio']!.score >= .5;
+      final (
+        String title,
+        String summary,
+      ) = nonIntervention && isolation && openTrade
+          ? (
+              'Comércio Aberto e Não Intervenção',
+              'Combina abertura comercial com preferência por não intervenção e menor envolvimento político externo. Comércio livre não implica apoio a governança supranacional.',
+            )
+          : switch (m) {
+              <= -0.42 => (
+                'Soberanismo Nacional e Dissuasão',
+                'Prioriza proteção produtiva doméstica, controle rigoroso de fronteiras, interesse nacional ativo e capacidade militar própria.',
+              ),
+              <= -0.14 => (
+                'Realismo Autonomista',
+                'Vê acordos externos com pragmatismo seletivo, preservando margem de política industrial, defesa nacional e integração exigente.',
+              ),
+              < 0.16 => (
+                'Inserção Internacional Equilibrada',
+                'Combina cooperação multilateral e comércio externo com salvaguardas estratégicas e defesa proporcional da soberania.',
+              ),
+              < 0.45 => (
+                'Abertura Comercial e Cooperação Seletiva',
+                'Há sinais de abertura comercial ou cooperação nas dimensões avaliadas. Isso não permite concluir, por si só, apoio a fronteiras irrestritas ou governança supranacional.',
+              ),
+              _ => (
+                'Abertura Externa nas Dimensões Avaliadas',
+                'Predominam sinais de abertura comercial, pluralidade ou solução pacífica. Essas preferências são distintas e não comprovam adesão a instituições globais vinculantes.',
+              ),
+            };
       out.add(
         ThematicSynthesis(
           arena: 'Diplomacia e Inserção Global',
@@ -714,8 +800,8 @@ abstract final class EspectroAtlasEngine {
           summary = 'Entende que liberdades formais são insuficientes sem redução direta das disparidades materiais de renda, patrimônio e poder.';
           intensity = eq[1];
         } else if (eq[2] >= eq[0] && eq[2] >= eq[1] && eq[2] > 0.40) {
-          title = 'Isonomia Formal e Ônus Proporcional';
-          summary = 'Prioriza regras universais idênticas e tributação enxuta sem engenharia redistributiva sobre os resultados de mercado.';
+          title = 'Isonomia Formal e Responsabilidade Individual';
+          summary = 'Prioriza regras universais idênticas, responsabilidade pessoal pelo próprio sustento e tributação enxuta sem engenharia redistributiva compulsória.';
           intensity = eq[2];
         } else {
           title = 'Igualdade de Oportunidades e Mérito';
@@ -932,12 +1018,14 @@ abstract final class EspectroAtlasEngine {
       name: entry.name,
       subtitle: entry.subtitle,
       kind: entry.kind.singularLabel,
+      photoUrl: entry.photoUrl,
       summary: entry.summary,
       targetAxes: entry.axes,
       targetTriads: entry.triangles,
       userAxes: userAxes,
       userTriads: userTriads,
       compatibility: match?.compatibilityPercent,
+      alignmentDetails: match?.details ?? const <DimensionAlignmentDetail>[],
     );
   }
 
@@ -960,6 +1048,7 @@ abstract final class EspectroAtlasEngine {
       name: current.name,
       subtitle: current.family,
       kind: 'Corrente Ideológica',
+      photoUrl: null,
       summary: current.summary,
       targetAxes: {
         for (final e in current.axes.entries)
@@ -972,6 +1061,7 @@ abstract final class EspectroAtlasEngine {
       userAxes: userAxes,
       userTriads: userTriads,
       compatibility: match?.compatibilityPercent,
+      alignmentDetails: match?.details ?? const <DimensionAlignmentDetail>[],
     );
   }
 
@@ -980,12 +1070,15 @@ abstract final class EspectroAtlasEngine {
     required String name,
     required String subtitle,
     required String kind,
+    String? photoUrl,
     required String summary,
     required Map<String, double> targetAxes,
     required Map<int, List<double>> targetTriads,
     required List<BipolarDimensionScore> userAxes,
     required List<TriadDimensionScore> userTriads,
     required double? compatibility,
+    List<DimensionAlignmentDetail> alignmentDetails =
+        const <DimensionAlignmentDetail>[],
   }) {
     final axisDeltas = <String, double>{
       for (final axis in userAxes)
@@ -1005,12 +1098,16 @@ abstract final class EspectroAtlasEngine {
     final ordered = axisDeltas.entries.toList()
       ..sort((a, b) => a.value.abs().compareTo(b.value.abs()));
     final distances = [...axisDeltas.values, ...triadDeltas.values];
+    final roundedCompat = compatibility != null
+        ? double.parse(compatibility.toStringAsFixed(2))
+        : null;
     return EntityComparisonResult(
       targetId: targetId,
       targetName: name,
       targetSubtitle: subtitle,
       targetKindLabel: kind,
-      compatibilityPercent: distances.isEmpty ? null : compatibility,
+      photoUrl: photoUrl,
+      compatibilityPercent: distances.isEmpty ? null : roundedCompat,
       rmsd: distances.isEmpty
           ? null
           : math.sqrt(
@@ -1027,6 +1124,16 @@ abstract final class EspectroAtlasEngine {
       ),
       axisDeltas: Map.unmodifiable(axisDeltas),
       triadDeltas: Map.unmodifiable(triadDeltas),
+      userAxes: {
+        for (final a in userAxes)
+          if (!a.isIndeterminate) a.axisId: a.score,
+      },
+      targetAxes: Map.unmodifiable(targetAxes),
+      userTriads: {
+        for (final t in userTriads)
+          if (!t.isIndeterminate) t.categoryId: t.composition,
+      },
+      targetTriads: Map.unmodifiable(targetTriads),
       convergentAxes: ordered
           .where((d) => d.value.abs() <= .5)
           .take(3)
@@ -1038,6 +1145,7 @@ abstract final class EspectroAtlasEngine {
           .map((d) => d.key)
           .toList(),
       summary: summary,
+      alignmentDetails: alignmentDetails,
     );
   }
 }

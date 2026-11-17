@@ -1,0 +1,37 @@
+- group:
+  - img "Símbolo do Espectro"
+  - text: ESPECTRO NAVEGAÇÃO
+  - button "Visão geral"
+  - button "Meus testes"
+  - button "Atlas político"
+  - button "Comparar"
+  - button "Histórico"
+  - button "Método aberto"
+  - text: SUA INVESTIGAÇÃO É PRIVADA Dados locais e exportação sob seu controle.
+- button "Back"
+- heading "Corrente" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - 'group "Moral Progressista Tradicionalista Nazismo 0.80 Nazismo: 0.80 entre Progressista e Tradicionalista O discurso rejeita a emancipação feminina e prescreve funções distintas por sexo, vinculadas à maternidade e à comunidade racial. Sustenta uma posição normativa restritiva neste tema; não torna o nazismo equivalente a todo conservadorismo ou a toda tradição religiosa. Posição editorial provisória: o documento fundamenta a direção qualitativa, não a magnitude numérica."':
+      - button "Entender Moral"
+      - 'button "Fonte primária e interpretação Discurso à Liga Nacional-Socialista das Mulheres: Passagens sobre emancipação e esferas atribuídas a homens e mulheres"'
+      - group "O discurso rejeita a emancipação feminina e prescreve funções distintas por sexo, vinculadas à maternidade e à comunidade racial. Sustenta uma posição normativa restritiva neste tema; não torna o nazismo equivalente a todo conservadorismo ou a toda tradição religiosa. Discurso à Liga Nacional-Socialista das Mulheres. Adolf Hitler · 08/09/1934. Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório. Trechos indicados conferidos nesta revisão; não significa leitura crítica integral de todas as afirmações da obra.. https://germanhistorydocs.org/en/nazi-germany-1933-1945/ghdi:document-1557":
+        - text: O discurso rejeita a emancipação feminina e prescreve funções distintas por sexo, vinculadas à maternidade e à comunidade racial. Sustenta uma posição normativa restritiva neste tema; não torna o nazismo equivalente a todo conservadorismo ou a toda tradição religiosa. Discurso à Liga Nacional-Socialista das Mulheres Adolf Hitler · 08/09/1934. Texto primário em edição/transcrição digital; distinguir o texto da introdução do repositório. Trechos indicados conferidos nesta revisão; não significa leitura crítica integral de todas as afirmações da obra.
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: O documento fundamenta a leitura qualitativa. As coordenadas e proporções são estimativas do Espectro, não percentuais publicados pelo autor.
+    - 'group "Tecnologia Tecnologia Biologia Nazismo Sem posição Lacuna explícita: sem posição parametrizada neste recorte; valor de armazenamento inativo."':
+      - button "Entender Tecnologia"
+      - button "Base documental desta dimensão O recorte consultado não permite fixar uma posição"
+    - text: Seis tríades de valores Composições editoriais provisórias. A existência de um ponto não equivale a uma medição do autor; consulte a base documental abaixo de cada triângulo. Composição relativa de três valores. Somar 100% não implica apoio absoluto; no relatório pessoal a intensidade e a incerteza são apresentadas separadamente.
+    - 'group "Economia Triângulo: A Controle, B Regulação, C Mercados. Sem composição documentada; nenhum ponto atribuído. A · Controle B · Regulação C · Mercados Nazismo Sem composição documentada Toque no triângulo para entender suas proporções. Lacuna explícita: sem composição parametrizada neste recorte; nenhum ponto deve ser desenhado."':
+      - button "Base documental desta dimensão O recorte consultado não permite fixar uma posição"
+    - 'button "Liberdade Individual Triângulo: A Liberdade, B Segurança, C Verdade. Sem composição documentada; nenhum ponto atribuído. A · Liberdade B · Segurança C · Verdade Nazismo Sem composição documentada Toque no triângulo para entender suas proporções. Lacuna explícita: sem composição parametrizada neste recorte; nenhum ponto deve ser desenhado."'

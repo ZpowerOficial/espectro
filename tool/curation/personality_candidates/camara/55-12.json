@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "authority": "Câmara dos Deputados — Dados Abertos",
+  "requestUrl": "https://dadosabertos.camara.leg.br/api/v2/deputados?idLegislatura=55&itens=100&pagina=12&ordem=ASC&ordenarPor=id",
+  "requestedLegislature": 55,
+  "page": 12,
+  "fetchedAt": "2026-11-06T01:43:31.618491+00:00",
+  "responseSha256": "c8d5de273452f53e1b3c76d39652af8e97b231871f0d4fa85e45e17114080e40",
+  "projection": "id, nome, uri only; not the complete API response",
+  "hasNextPage": false,
+  "identities": [
+    {
+      "id": 195143,
+      "name": "ANDRÉ AMARAL",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/195143"
+    },
+    {
+      "id": 195278,
+      "name": "MOISÉS DINIZ",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/195278"
+    },
+    {
+      "id": 195581,
+      "name": "RICARDO BENTINHO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/195581"
+    },
+    {
+      "id": 195826,
+      "name": "MARCELO DELAROLI",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/195826"
+    },
+    {
+      "id": 195866,
+      "name": "VAIDON OLIVEIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/195866"
+    },
+    {
+      "id": 195866,
+      "name": "VAIDON OLIVEIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/195866"
+    },
+    {
+      "id": 195866,
+      "name": "VAIDON OLIVEIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/195866"
+    },
+    {
+      "id": 195997,
+      "name": "POLLYANA GAMA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/195997"
+    },
+    {
+      "id": 196357,
+      "name": "DEJORGE PATRÍCIO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/196357"
+    },
+    {
+      "id": 196357,
+      "name": "DEJORGE PATRÍCIO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/196357"
+    },
+    {
+      "id": 196358,
+      "name": "LOURIVAL GOMES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/196358"
+    },
+    {
+      "id": 196358,
+      "name": "LOURIVAL GOMES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/196358"
+    },
+    {
+      "id": 196358,
+      "name": "LOURIVAL GOMES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/196358"
+    },
+    {
+      "id": 196359,
+      "name": "ADÉRMIS MARINI",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/196359"
+    },
+    {
+      "id": 196378,
+      "name": "IZAQUE SILVA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/196378"
+    },
+    {
+      "id": 198198,
+      "name": "LUZIA FERREIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/198198"
+    },
+    {
+      "id": 198963,
+      "name": "ROGÉRIO SILVA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/198963"
+    },
+    {
+      "id": 198963,
+      "name": "ROGÉRIO SILVA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/198963"
+    },
+    {
+      "id": 198963,
+      "name": "ROGÉRIO SILVA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/198963"
+    },
+    {
+      "id": 199809,
+      "name": "XUXU DAL MOLIN",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/199809"
+    },
+    {
+      "id": 199809,
+      "name": "XUXU DAL MOLIN",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/199809"
+    },
+    {
+      "id": 200153,
+      "name": "PROF. GEDEÃO AMORIM",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/200153"
+    },
+    {
+      "id": 200153,
+      "name": "PROF. GEDEÃO AMORIM",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/200153"
+    },
+    {
+      "id": 201357,
+      "name": "JUNIOR CORINGA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/201357"
+    },
+    {
+      "id": 202063,
+      "name": "OSVALDO MAFRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/202063"
+    },
+    {
+      "id": 202063,
+      "name": "OSVALDO MAFRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/202063"
+    },
+    {
+      "id": 202915,
+      "name": "EURICELIA CARDOSO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/202915"
+    },
+    {
+      "id": 202915,
+      "name": "EURICELIA CARDOSO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/202915"
+    },
+    {
+      "id": 204011,
+      "name": "PROFESSOR PACCO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204011"
+    },
+    {
+      "id": 204011,
+      "name": "PROFESSOR PACCO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204011"
+    },
+    {
+      "id": 204651,
+      "name": "FREITAS DO PT",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204651"
+    },
+    {
+      "id": 204760,
+      "name": "WASHINGTON CORAÇÃO VALENTE",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204760"
+    },
+    {
+      "id": 205234,
+      "name": "FELIPE SOUZA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/205234"
+    },
+    {
+      "id": 205234,
+      "name": "FELIPE SOUZA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/205234"
+    },
+    {
+      "id": 205297,
+      "name": "MARFIZA GALVÃO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/205297"
+    },
+    {
+      "id": 205298,
+      "name": "GUSTAVO MITRE",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/205298"
+    },
+    {
+      "id": 205302,
+      "name": "CORONEL BITTENCOURT",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/205302"
+    },
+    {
+      "id": 205303,
+      "name": "CARLA STEPHANINI",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/205303"
+    }
+  ]
+}

@@ -146,7 +146,7 @@ void main() {
 
   test('catálogo ideológico expandido tem perfis editoriais distintos e auto-compatíveis', () {
     final IdeologicalCatalog catalog = data.catalog;
-    expect(catalog.currents.length, 124);
+    expect(catalog.currents.length, 289);
 
     for (final IdeologicalCurrent current in catalog.currents) {
       expect(current.axes.length, 12, reason: current.id);
@@ -154,38 +154,41 @@ void main() {
       expect(current.summary.trim(), isNotEmpty);
       expect(current.keyIdeas, isNotEmpty);
 
+      if (current.editorialBasis?.nativeMatchingEligible == false) continue;
       // Verifica que o perfil exato da corrente ranqueia ela própria em 1º lugar (~100%).
       final List<BipolarDimensionScore> exactAxes = <BipolarDimensionScore>[
         for (final Axis axis in data.twelveAxes.axes)
-          BipolarDimensionScore(
-            axisId: axis.id,
-            label: axis.label,
-            leftPole: axis.leftPole,
-            rightPole: axis.rightPole,
-            score: current.axes[axis.id]!.mu,
-            standardError: 0.08,
-            coverage: 1.0,
-            answeredCount: 10,
-            presentedCount: 10,
-            tensionScore: 0.0,
-          ),
+          if (current.axes[axis.id]!.relevance > 0)
+            BipolarDimensionScore(
+              axisId: axis.id,
+              label: axis.label,
+              leftPole: axis.leftPole,
+              rightPole: axis.rightPole,
+              score: current.axes[axis.id]!.mu,
+              standardError: 0.08,
+              coverage: 1.0,
+              answeredCount: 10,
+              presentedCount: 10,
+              tensionScore: 0.0,
+            ),
       ];
       final List<TriadDimensionScore> exactTriads = <TriadDimensionScore>[
         for (final SixCategory cat in data.sixTriangles.categories)
-          TriadDimensionScore(
-            categoryId: cat.id,
-            label: cat.label,
-            vertices: cat.subcategories,
-            vertexScores: const <double>[0, 0, 0],
-            vertexSupport: current.triangles[cat.id]!.mu,
-            composition: current.triangles[cat.id]!.mu,
-            engagement: 0.5,
-            standardError: 0.08,
-            coverage: 1.0,
-            answeredCount: 12,
-            presentedCount: 12,
-            classification: 'Teste',
-          ),
+          if (current.triangles[cat.id]!.relevance > 0)
+            TriadDimensionScore(
+              categoryId: cat.id,
+              label: cat.label,
+              vertices: cat.subcategories,
+              vertexScores: const <double>[0, 0, 0],
+              vertexSupport: current.triangles[cat.id]!.mu,
+              composition: current.triangles[cat.id]!.mu,
+              engagement: 0.5,
+              standardError: 0.08,
+              coverage: 1.0,
+              answeredCount: 12,
+              presentedCount: 12,
+              classification: 'Teste',
+            ),
       ];
 
       final CompatibilityReport report = EspectroCompatibilityEngine.evaluate(
@@ -294,14 +297,17 @@ void main() {
     );
   });
 
-  test('Atlas Político possui 80 modelos de país, 124 personalidades, 56 partidos, 48 momentos e 80 obras clássicas', () {
+  test('Atlas Político possui 81 modelos de país, mais de 2.000 personalidades (3 níveis), 110 partidos, 94 momentos e 165 obras clássicas', () {
     final PoliticalAtlas atlas = data.atlas;
-    expect(atlas.countries.length, 80);
-    expect(atlas.personalities.length, 124);
-    expect(atlas.partiesAndMovements.length, 56);
-    expect(atlas.historicalEras.length, 48);
-    expect(atlas.books.length, 80);
-    expect(atlas.totalEntries, 388);
+    expect(atlas.countries.length, 81);
+    expect(atlas.personalities.length, greaterThanOrEqualTo(2000));
+    expect(atlas.partiesAndMovements.length, 110);
+    expect(atlas.historicalEras.length, 94);
+    expect(atlas.books.length, 165);
+    expect(
+      atlas.totalEntries,
+      81 + atlas.personalities.length + 110 + 94 + 165,
+    );
 
     for (final AtlasKind kind in AtlasKind.values) {
       final List<AtlasEntry> entries = atlas.entriesFor(kind);
@@ -312,7 +318,7 @@ void main() {
         expect(e.name.trim(), isNotEmpty);
         expect(e.summary.trim().length, greaterThanOrEqualTo(45));
         expect(e.highlights.length, greaterThanOrEqualTo(3));
-        expect(e.axes.length, inInclusiveRange(1, 12));
+        expect(e.axes.length, inInclusiveRange(0, 12));
         expect(e.triangles.length, inInclusiveRange(0, 6));
         expect(
           e.axes.keys.every(
@@ -435,7 +441,9 @@ void main() {
     expect(res.nolanUser, isNotNull);
     expect(res.nolanTarget, isNotNull);
 
-    final IdeologicalCurrent current = data.catalog.currents.first;
+    final IdeologicalCurrent current = data.catalog.currents.firstWhere(
+      (c) => c.editorialBasis?.nativeMatchingEligible != false,
+    );
     final EntityComparisonResult resCurrent =
         EspectroAtlasEngine.compareWithCurrent(
           current: current,

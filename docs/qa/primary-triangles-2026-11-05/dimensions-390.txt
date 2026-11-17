@@ -1,0 +1,23 @@
+- button "Back"
+- heading "Corrente" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - text: POSIÇÕES DO PERFIL Doze eixos. Mais de uma leitura. −1 e +1 são os polos da escala. O centro não significa ausência de dados. 8/18 dimensões com suporte primário específico vinculado. Cobertura documental não equivale a precisão numérica.
+    - 'group "Estrutura Federal Unitário Fascismo Italiano (1927–1932) Sem posição Lacuna explícita: sem posição parametrizada neste recorte; valor de armazenamento inativo. Base documental desta dimensão Sem suporte primário específico suficiente"':
+      - button "Entender Estrutura"
+    - 'group "Representação Democracia Autocracia Fascismo Italiano (1927–1932) 0.85 Fascismo Italiano (1927–1932): 0.85 entre Democracia e Autocracia Rejeição expressa do governo pela maioria. Posição qualitativa convertida em estimativa editorial, sem escala validada. Fonte primária e interpretação Doutrina de 1932: crítica à democracia e ao sufrágio"':
+      - button "Entender Representação"
+    - 'group "Poder Segurança Liberdade Fascismo Italiano (1927–1932) -0.90 Fascismo Italiano (1927–1932): -0.90 entre Segurança e Liberdade Liberdades subordinadas à decisão estatal. Posição qualitativa convertida em estimativa editorial, sem escala validada. Fonte primária e interpretação Doutrina: primazia do Estado e liberdades individuais"':
+      - button "Entender Poder"
+- button "Início"
+- button "Testes"
+- button "Atlas"
+- button "Histórico"

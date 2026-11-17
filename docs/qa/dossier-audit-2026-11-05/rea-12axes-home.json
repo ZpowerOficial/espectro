@@ -1,0 +1,27 @@
+{
+  "evidence_id": "ev_3c50e7ad181b7a00688ff98e323e146b2ebfdb882be219e77f348f8ab3dc4c8d",
+  "provider": {
+    "id": "rea-playwright-browser-scenario",
+    "name": "REA Playwright browser scenario capture provider",
+    "version": "1"
+  },
+  "operation": "capture_browser_scenario",
+  "start_url": "https://12axes.vercel.app/",
+  "events": {
+    "retained": 0,
+    "dropped": 0,
+    "items": []
+  },
+  "steps": [
+    {
+      "step_id": "scenario_start",
+      "status": "completed"
+    },
+    {
+      "step_id": "load",
+      "status": "completed",
+      "accessibilitySha256": "ef6d64912a3c9685fa67f336b380aa53ba2b321314f4e6b9ee8e3cfa6f3a0039"
+    }
+  ],
+  "notice": "Observação controlada via REA; não certifica precisão científica, funcionamento offline ou privacidade. Conteúdo editorial do concorrente não reproduzido."
+}

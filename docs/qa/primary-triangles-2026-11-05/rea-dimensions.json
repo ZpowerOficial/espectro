@@ -1,0 +1,350 @@
+{
+  "evidence_id": "ev_0099edc7b43e3e28dc509f747bfdff0cde5f6c1c7c652a5a060f02191fdb0f27",
+  "subject": null,
+  "provider": {
+    "id": "rea-playwright-browser-scenario",
+    "name": "REA Playwright browser scenario capture provider",
+    "version": "1"
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.browser-scenario-capture",
+  "operation": "capture_browser_scenario",
+  "parameters": {
+    "browser": {
+      "mode": "launch",
+      "executable_path": "/home/zpower/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome",
+      "headless": true
+    },
+    "start_url": {
+      "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=current%3Afascismo_historico",
+      "query": []
+    },
+    "environment": {
+      "viewport": {
+        "width": 390,
+        "height": 1000,
+        "device_scale_factor": 1
+      },
+      "locale": "pt-BR",
+      "timezone": "UTC",
+      "color_scheme": "light",
+      "reduced_motion": "reduce",
+      "service_workers": "block"
+    },
+    "actions": [
+      {
+        "step_id": "settle",
+        "action": "wait_for_timeout",
+        "duration_ms": 4500
+      },
+      {
+        "step_id": "enable",
+        "timeout_ms": 5000,
+        "action": "press",
+        "locator": {
+          "kind": "css",
+          "selector": "flt-semantics-placeholder"
+        },
+        "key": "Enter"
+      },
+      {
+        "step_id": "dimensions",
+        "timeout_ms": 5000,
+        "action": "click",
+        "locator": {
+          "kind": "role",
+          "role": "tab",
+          "name": "Dimensões"
+        },
+        "button": "left",
+        "click_count": 1
+      }
+    ],
+    "storage": {
+      "cookies": [],
+      "local_storage": [],
+      "session_storage": []
+    },
+    "secrets": [],
+    "capture": {
+      "after_each_step": [],
+      "at_end": [
+        "accessibility",
+        "screenshot"
+      ],
+      "events": [
+        "page-errors"
+      ],
+      "network": {
+        "request_body": false,
+        "response_body": false,
+        "header_values": false
+      }
+    },
+    "scenario_sha256": "0e0facda8ba75948c246fc109aa924db4e679597e1476401c315edcebc2f92b5"
+  },
+  "raw_result": null,
+  "normalized_result": {
+    "browser": {
+      "mode": "launch",
+      "process_ownership": "provider-owned",
+      "cleanup": "terminated-owned-process",
+      "product": "Chromium",
+      "version": "153.0.8010.12"
+    },
+    "scenario": {
+      "start_origin": "http://127.0.0.1:4173",
+      "action_count": 3,
+      "secret_references": [],
+      "network_content": {
+        "request_body": false,
+        "response_body": false,
+        "header_values": false
+      }
+    },
+    "duration_ms": 5652,
+    "steps": [
+      {
+        "step_index": 0,
+        "step_id": "scenario_start",
+        "action": "goto_start",
+        "elapsed_ms": 356,
+        "before_url": {
+          "url": "about:blank",
+          "origin": null,
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=current%3Afascismo_historico",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "not_requested"
+          },
+          "url": {
+            "state": "not_requested"
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 1,
+        "step_id": "settle",
+        "action": "wait_for_timeout",
+        "elapsed_ms": 4505,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=current%3Afascismo_historico",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=current:fascismo_historico",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "not_requested"
+          },
+          "url": {
+            "state": "not_requested"
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 2,
+        "step_id": "enable",
+        "action": "press",
+        "elapsed_ms": 225,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=current:fascismo_historico",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=current:fascismo_historico",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "not_requested"
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "not_requested"
+          },
+          "url": {
+            "state": "not_requested"
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      },
+      {
+        "step_index": 3,
+        "step_id": "dimensions",
+        "action": "click",
+        "elapsed_ms": 492,
+        "before_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=current:fascismo_historico",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "after_url": {
+          "url": "http://127.0.0.1:4173/#/atlas?v=1&subject=current:fascismo_historico",
+          "origin": "http://127.0.0.1:4173",
+          "query_parameter_names": [],
+          "redacted": false
+        },
+        "event_sequence_start": 1,
+        "event_sequence_end": 0,
+        "artifacts": {
+          "screenshot": {
+            "state": "captured",
+            "value": {
+              "sha256": "bf355b6add91ade2fa62c06491f5a6d6beb3cbcc1e714f8a4f4e93cceff3e03f",
+              "bytes": 64439,
+              "media_type": "image/png"
+            }
+          },
+          "dom": {
+            "state": "not_requested"
+          },
+          "accessibility": {
+            "state": "captured",
+            "value": {
+              "sha256": "b5ab71ecb453755dcd4ad23658d53b144a46f92beed700f9c9b7a31d733990e5",
+              "bytes": 1768,
+              "text": "- document:\n  - button \"Back\"\n  - heading \"Corrente\" [level=2]\n  - button \"Salvar verbete\"\n  - button \"Copiar link do verbete\"\n  - group:\n    - tablist:\n      - tab \"Visão geral\"\n      - tab \"Dimensões\" [selected]\n      - tab \"Conexões\"\n      - tab \"Fontes e limites\"\n  - tabpanel:\n    - group:\n      - text: POSIÇÕES DO PERFIL Doze eixos. Mais de uma leitura. −1 e +1 são os polos da escala. O centro não significa ausência de dados. 8/18 dimensões com suporte primário específico vinculado. Cobertura documental não equivale a precisão numérica.\n      - 'group \"Estrutura Federal Unitário Fascismo Italiano (1927–1932) Sem evidência Lacuna explícita: sem posição parametrizada neste recorte; valor de armazenamento inativo. Base documental desta dimensão Sem suporte primário específico suficiente\"':\n        - button \"Entender Estrutura\"\n      - 'group \"Representação Democracia Autocracia Fascismo Italiano (1927–1932) 0.85 Fascismo Italiano (1927–1932): 0.85 entre Democracia e Autocracia Rejeição expressa do governo pela maioria. Posição qualitativa convertida em estimativa editorial, sem escala validada. Fonte primária e interpretação Doutrina de 1932: crítica à democracia e ao sufrágio\"':\n        - button \"Entender Representação\"\n      - 'group \"Poder Segurança Liberdade Fascismo Italiano (1927–1932) -0.90 Fascismo Italiano (1927–1932): -0.90 entre Segurança e Liberdade Liberdades subordinadas à decisão estatal. Posição qualitativa convertida em estimativa editorial, sem escala validada. Fonte primária e interpretação Doutrina: primazia do Estado e liberdades individuais\"':\n        - button \"Entender Poder\"\n  - button \"Início\"\n  - button \"Testes\"\n  - button \"Atlas\"\n  - button \"Histórico\""
+            }
+          },
+          "url": {
+            "state": "not_requested"
+          },
+          "history": {
+            "state": "not_requested"
+          },
+          "storage": {
+            "state": "not_requested"
+          }
+        },
+        "completeness": {
+          "status": "complete",
+          "equality_eligible": true,
+          "missing_sections": [],
+          "truncated_sections": []
+        },
+        "status": "completed",
+        "error": null
+      }
+    ],
+    "events": {
+      "retained": 0,
+      "dropped": 0,
+      "items": []
+    },
+    "completeness": {
+      "status": "complete",
+      "equality_eligible": true,
+      "missing_sections": [],
+      "truncated_sections": []
+    },
+    "limitations": [
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction."
+    ]
+  },
+  "confidence": "observed",
+  "authority": "controlled-replay",
+  "environment": {
+    "id": "Chromium@153.0.8010.12",
+    "platform": "unknown",
+    "architecture": "unknown",
+    "isolation": "process"
+  },
+  "limitations": [
+    "Artifact identity is unavailable for this observation.",
+    "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+    "Network content is retained only when selected; response bytes are browser-decoded, not compressed wire bytes.",
+    "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+    "Network content reads settle within 5 seconds each and never wait for unfinished responses or refetch them.",
+    "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+    "Storage values are hashed only after declared-secret redaction.",
+    "Browser host platform and architecture were not observed."
+  ],
+  "locations": [],
+  "evidence_links": []
+}

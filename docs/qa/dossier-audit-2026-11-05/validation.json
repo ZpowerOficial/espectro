@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-05",
+  "engineVersion": "2.2.0",
+  "source": {
+    "answers": 60,
+    "matchingQuestionSet": true,
+    "replay": "Real answers, decoded locally; not synthetic"
+  },
+  "pdf": {
+    "path": "build/artifacts/dossier-audit/resultado_reprocessado_60_respostas.pdf",
+    "sha256": "dab43b468e15c6cbb11f4d8953a3c6ecdd6818ecdf6071bfadeafa43e7aec291",
+    "nolanEconomic": 98.8,
+    "nolanCivil": 80.9,
+    "pageCount": 6
+  },
+  "checks": {
+    "fullFlutterSuite": {
+      "status": "PASS",
+      "count": 209,
+      "log": "/tmp/espectro-dossier-tests-final.log"
+    },
+    "staticAnalysis": {
+      "status": "PASS",
+      "log": "/tmp/espectro-dossier-analyze-final.log"
+    },
+    "realReplay": {
+      "status": "PASS",
+      "log": "/tmp/espectro-real-replay.log"
+    },
+    "pdfVisualInspection": {
+      "status": "PASS",
+      "pages": [
+        3,
+        4
+      ]
+    },
+    "browser": {
+      "status": "PASS",
+      "viewports": [
+        390,
+        1440
+      ],
+      "checks": [
+        "real replay rendered",
+        "60/60 session count explicit",
+        "technical tie references visible",
+        "low sample confidence visible in axis details",
+        "no page errors"
+      ],
+      "report": "build/artifacts/dossier-audit/browser/validation.json"
+    },
+    "webBuild": {
+      "status": "PASS",
+      "log": "/tmp/espectro-dossier-web.log"
+    },
+    "androidDebugBuild": {
+      "status": "PASS",
+      "log": "/tmp/espectro-dossier-apk.log"
+    },
+    "physicalAndroid": {
+      "status": "NOT_RUN"
+    },
+    "empiricalCalibration": {
+      "status": "NOT_RUN"
+    },
+    "eligibilityIdempotence": {
+      "status": "PASS"
+    }
+  },
+  "limitations": [
+    "Scores and eligibility thresholds are editorial heuristics.",
+    "Restoring geometric coherence does not establish psychometric validity.",
+    "Catalog source review remains incomplete.",
+    "Country-score saturation was preserved, not empirically validated."
+  ],
+  "apk": {
+    "path": "build/app/outputs/flutter-apk/espectro-dossie-auditado-2026-11-05.apk",
+    "kind": "debug test build",
+    "sha256": "72835ae99e1733941e36d82ce2909342198d702754b5e683d0cf0a6a46d636e0",
+    "bytes": 219637063
+  }
+}

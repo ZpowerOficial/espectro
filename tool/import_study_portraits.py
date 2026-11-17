@@ -40,6 +40,10 @@ OVERRIDES = {
 'lee_kuan_yew':'Lee Kuan Yew','papa_leao_xiii':'Pope Leo XIII','jose_bonifacio':'José Bonifácio de Andrada e Silva',
 'dom_pedro_ii':'Pedro II of Brazil','luis_carlos_prestes':'Luís Carlos Prestes','fhc':'Fernando Henrique Cardoso',
 'lula':'Luiz Inácio Lula da Silva','jose_mujica':'José Mujica','eneas_carneiro':'Enéas Carneiro',
+'charles_de_gaulle':'Charles de Gaulle','margaret_thatcher':'Margaret Thatcher','rui_barbosa':'Ruy Barbosa',
+'juan_domingo_peron':'Juan Perón','frederick_douglass':'Frederick Douglass','georg_lukacs':'György Lukács',
+'karl_korsch':'Karl Korsch','amadeo_bordiga':'Amadeo Bordiga','errico_malatesta':'Errico Malatesta',
+'alberto_torres':'Alberto Torres',
 }
 NEW = {
 'friedrich_engels':'Friedrich Engels','ludwig_von_mises':'Ludwig von Mises','murray_rothbard':'Murray Rothbard','hans_hermann_hoppe':'Hans-Hermann Hoppe',
@@ -72,9 +76,19 @@ def main():
                 if page==title and e.get('claims',{}).get('P18'):
                     image=e['claims']['P18'][0]['mainsnak'].get('datavalue',{}).get('value')
                     if isinstance(image,str): entities[key]=(image,e['id'],page)
+        missing_chunk = [item for item in chunk if item[0] not in entities]
+        if missing_chunk:
+            d_pt=api('www.wikidata.org',action='wbgetentities',sites='ptwiki',titles='|'.join(v for k,v in missing_chunk),props='claims|labels|sitelinks',languages='en|pt')
+            for e in d_pt.get('entities',{}).values():
+                page=e.get('sitelinks',{}).get('ptwiki',{}).get('title')
+                for key,title in missing_chunk:
+                    if page==title and e.get('claims',{}).get('P18'):
+                        image=e['claims']['P18'][0]['mainsnak'].get('datavalue',{}).get('value')
+                        if isinstance(image,str): entities[key]=(image,e['id'],page)
     # Known upright Marx photograph avoids an unnecessary digital restoration.
     if 'karl_marx' in entities: entities['karl_marx']=('Karl Marx 001.jpg','Q9061','Karl Marx')
     if 'murray_rothbard' in entities: entities['murray_rothbard']=('Murray Rothbard Portrait.jpg','Q297079','Murray Rothbard')
+    if 'amadeo_bordiga' in entities: entities['amadeo_bordiga']=('Amadeo Bordiga.jpg','Q314288','Amadeo Bordiga')
     infos={}
     names=list({v[0] for v in entities.values()})
     for i in range(0,len(names),20):
@@ -89,7 +103,7 @@ def main():
         m=info.get('extmetadata',{})
         val=lambda field:text(m.get(field,{}).get('value',''))
         license=val('LicenseShortName')
-        if not (license.lower().startswith(('cc by ', 'cc by-sa ', 'public domain', 'cc0', 'pd ')) or license in ['CC BY','CC BY-SA']):
+        if not (license.lower().startswith(('cc by ', 'cc by-sa ', 'public domain', 'cc0', 'pd ', 'no restrictions', 'copyrighted free use')) or license in ['CC BY','CC BY-SA']):
             print('SKIP LICENSE',key,license,flush=True);return None
         url=info.get('thumburl') or info['url']
         try: data=get(url,True)

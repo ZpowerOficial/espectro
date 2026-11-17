@@ -1,0 +1,58 @@
+[
+  {
+    "id": "jair_bolsonaro",
+    "width": 390,
+    "reconstructedDimensions": 7,
+    "reconstructedAnswersVisible": true,
+    "sourceLink": true,
+    "errors": []
+  },
+  {
+    "id": "milton_friedman",
+    "width": 390,
+    "reconstructedDimensions": 2,
+    "reconstructedAnswersVisible": true,
+    "sourceLink": true,
+    "errors": []
+  },
+  {
+    "id": "hans_hermann_hoppe",
+    "width": 390,
+    "reconstructedDimensions": 2,
+    "reconstructedAnswersVisible": true,
+    "sourceLink": true,
+    "errors": []
+  },
+  {
+    "id": "alexander_berkman",
+    "width": 390,
+    "reconstructedDimensions": 5,
+    "reconstructedAnswersVisible": true,
+    "sourceLink": true,
+    "errors": []
+  },
+  {
+    "id": "jair_bolsonaro",
+    "width": 1440,
+    "reconstructedDimensions": 7,
+    "reconstructedAnswersVisible": true,
+    "sourceLink": true,
+    "errors": []
+  },
+  {
+    "id": "milton_friedman",
+    "width": 1440,
+    "reconstructedDimensions": 2,
+    "reconstructedAnswersVisible": true,
+    "sourceLink": true,
+    "errors": []
+  },
+  {
+    "id": "hans_hermann_hoppe",
+    "width": 1440,
+    "reconstructedDimensions": 2,
+    "reconstructedAnswersVisible": true,
+    "sourceLink": true,
+    "errors": []
+  }
+]

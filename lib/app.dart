@@ -1,18 +1,52 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'theme.dart';
+import 'domain/models/political_models.dart';
 import 'domain/models/study_result_link.dart';
+import 'ui/analytics/espectro_analytics.dart';
+import 'ui/features/quiz/espectro_quiz_screen.dart';
 import 'ui/features/results/espectro_result_screen.dart';
 import 'ui/features/atlas/atlas_explorer_screen.dart';
 import 'ui/features/atlas/study_profile_screen.dart';
 import 'ui/features/compare/study_comparison_screen.dart';
 import 'ui/features/home/espectro_home_screen.dart';
 import 'ui/view_models/app_view_model.dart';
+import 'ui/view_models/quiz_view_model.dart';
+
+/// Permite arrasto fluido em listas horizontais e carrosséis usando mouse,
+/// trackpad, caneta ou toque em Web, Linux, Windows e Android.
+class EspectroScrollBehavior extends MaterialScrollBehavior {
+  const EspectroScrollBehavior();
+
+  @override
+  Set<PointerDeviceKind> get dragDevices => const <PointerDeviceKind>{
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+    PointerDeviceKind.trackpad,
+    PointerDeviceKind.stylus,
+    PointerDeviceKind.invertedStylus,
+  };
+}
 
 class EspectroApp extends StatelessWidget {
   const EspectroApp({required this.appViewModel, super.key});
 
   final AppViewModel appViewModel;
+
+  static final RegExp _safeKeyRegExp = RegExp(r'^[a-zA-Z0-9_:-]{1,100}$');
+  static final RegExp _controlCharsRegExp = RegExp(r'[\x00-\x1F\x7F<>]');
+
+  static String? _sanitizeKey(String? raw) {
+    if (raw == null || !_safeKeyRegExp.hasMatch(raw)) return null;
+    return raw;
+  }
+
+  static String _sanitizeQuery(String? raw) {
+    if (raw == null || raw.isEmpty) return '';
+    final cleaned = raw.replaceAll(_controlCharsRegExp, '').trim();
+    return cleaned.length > 100 ? cleaned.substring(0, 100) : cleaned;
+  }
 
   Route<dynamic>? _studyRoute(RouteSettings settings) {
     if (settings.name == '/') {
@@ -24,8 +58,11 @@ class EspectroApp extends StatelessWidget {
     try {
       final uri = Uri.tryParse(settings.name ?? '');
       if (uri == null ||
-          uri.toString().length > (uri.path == '/shared' ? 101000 : 4096) ||
-          uri.queryParameters['v'] != '1') {
+          uri.toString().length > (uri.path == '/shared' ? 101000 : 4096)) {
+        return null;
+      }
+      final v = uri.queryParameters['v'];
+      if ((v != null && v != '1') || (uri.path == '/shared' && v != '1')) {
         return null;
       }
       Widget? screen;
@@ -55,16 +92,29 @@ class EspectroApp extends StatelessWidget {
           );
         }
       } else if (uri.path == '/atlas') {
-        final key = uri.queryParameters['subject'];
+        final rawKey = uri.queryParameters['subject'];
+        final key = _sanitizeKey(rawKey);
+        if (rawKey != null && key == null) return null;
+        final tabParam = uri.queryParameters['tab'];
+        final initialTab = tabParam == 'dimensoes'
+            ? 1
+            : (int.tryParse(tabParam ?? '') ?? 0);
         screen = key == null
             ? AtlasExplorerScreen(
                 appViewModel: appViewModel,
-                initialQuery: uri.queryParameters['q'] ?? '',
-                initialSpectrum: uri.queryParameters['spectrum'],
+                initialQuery: _sanitizeQuery(uri.queryParameters['q']),
+                initialSpectrum: _sanitizeQuery(uri.queryParameters['spectrum']),
                 initialMap: uri.queryParameters['view'] == 'map',
-                initialType: uri.queryParameters['kind'],
+                initialType: _sanitizeQuery(uri.queryParameters['kind']),
+                initialSelectedSubject: _sanitizeKey(
+                  uri.queryParameters['select'],
+                ),
               )
-            : StudyProfileScreen(appViewModel: appViewModel, subjectKey: key);
+            : StudyProfileScreen(
+                appViewModel: appViewModel,
+                subjectKey: key,
+                initialTab: initialTab,
+              );
       } else if (uri.path == '/compare') {
         screen = StudyComparisonScreen(
           appViewModel: appViewModel,
@@ -72,10 +122,31 @@ class EspectroApp extends StatelessWidget {
               ? null
               : (uri.queryParameters['items'] ?? '')
                     .split(',')
-                    .where((s) => s.isNotEmpty)
+                    .map(_sanitizeKey)
+                    .whereType<String>()
                     .toSet()
                     .take(3)
                     .toList(),
+        );
+      } else if (uri.path == '/quiz') {
+        final suiteStr = uri.queryParameters['suite'];
+        final depthStr = uri.queryParameters['depth'];
+        final suite = TestSuite.values.firstWhere(
+          (s) => s.name == suiteStr,
+          orElse: () => TestSuite.espectroIntegrated,
+        );
+        final depth = TestDepth.values.firstWhere(
+          (d) => d.name == depthStr,
+          orElse: () => TestDepth.standard,
+        );
+        screen = EspectroQuizScreen(
+          appViewModel: appViewModel,
+          quizViewModel: QuizViewModel.startNew(
+            data: appViewModel.data,
+            repository: appViewModel.repository,
+            suite: suite,
+            depth: depth,
+          ),
         );
       }
       return screen == null
@@ -124,6 +195,7 @@ class EspectroApp extends StatelessWidget {
         return MaterialApp(
           title: 'Espectro',
           debugShowCheckedModeBanner: false,
+          scrollBehavior: const EspectroScrollBehavior(),
           theme: buildAppTheme(brightness: Brightness.light),
           darkTheme: buildAppTheme(brightness: Brightness.dark),
           themeMode: appViewModel.themeMode,
@@ -148,6 +220,7 @@ class EspectroApp extends StatelessWidget {
                 ),
           onGenerateRoute: _studyRoute,
           onUnknownRoute: _unknownRoute,
+          navigatorObservers: <NavigatorObserver>[EspectroAnalyticsObserver()],
           onGenerateInitialRoutes: (name) {
             final home = MaterialPageRoute<void>(
               settings: const RouteSettings(name: '/'),
@@ -175,6 +248,7 @@ class EspectroErrorApp extends StatelessWidget {
     return MaterialApp(
       title: 'Espectro',
       debugShowCheckedModeBanner: false,
+      scrollBehavior: const EspectroScrollBehavior(),
       theme: buildAppTheme(brightness: Brightness.light),
       darkTheme: buildAppTheme(brightness: Brightness.dark),
       themeMode: ThemeMode.system,

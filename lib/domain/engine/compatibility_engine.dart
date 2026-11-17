@@ -14,10 +14,14 @@ class DimensionAlignmentDetail {
     required this.userSummary,
     required this.currentSummary,
     required this.note,
+    this.rawDistance = 0.0,
     this.compositionDistance = 0.0,
     this.engagement = 0.5,
     this.engagementPenalty = 0.0,
     this.combinedDistance = 0.0,
+    this.effectiveZ2,
+    this.locator,
+    this.sourceUrl,
   });
 
   final String dimensionId;
@@ -25,12 +29,17 @@ class DimensionAlignmentDetail {
   final bool isTriad;
 
   /// Distância padronizada `z_d = dist / √(σ² + SE²)`.
-  /// `z_d < 0.7` = forte convergência; `z_d > 1.3` = divergência relevante.
+  /// `z_d < 0.8` = proximidade relativa; `z_d > 1.3` = divergência relevante.
   final double normalizedZ;
   final double relevance;
   final String userSummary;
   final String currentSummary;
   final String note;
+
+  /// Distância bruta real medida na dimensão (sem normalização e sem constantes artificiais).
+  /// Nos eixos bipolares: |score - mu| ∈ [0.0, 2.0].
+  /// Nas tríades: distância baricêntrica de composição d_comp ∈ [0.0, √2].
+  final double rawDistance;
 
   /// Distância apenas na composição relativa (tríades) ou no eixo (eixos).
   final double compositionDistance;
@@ -44,7 +53,15 @@ class DimensionAlignmentDetail {
   /// Distância efetivamente usada no cálculo de `z` (composição + engajamento).
   final double combinedDistance;
 
-  double get weightedImpact => relevance * normalizedZ * normalizedZ;
+  /// Contribuição quadrática efetiva (usada pelo Atlas: effZ2 = z² / (1 + z²/8)).
+  final double? effectiveZ2;
+
+  final String? locator;
+  final String? sourceUrl;
+
+  double get weightedImpact => effectiveZ2 != null
+      ? (relevance * effectiveZ2!)
+      : (relevance * normalizedZ * normalizedZ);
 }
 
 /// Resultado de compatibilidade do usuário com uma corrente ideológica.
@@ -56,12 +73,16 @@ class CurrentCompatibility {
     required this.evaluatedDimensions,
     required this.convergences,
     required this.divergences,
+    this.details = const <DimensionAlignmentDetail>[],
     this.evaluatedTriads = 0,
     this.meanTriadEngagement = 0.5,
     this.meanEngagementPenalty = 0.0,
   });
 
   final IdeologicalCurrent current;
+
+  /// Decomposição analítica completa de todas as dimensões válidas avaliadas.
+  final List<DimensionAlignmentDetail> details;
 
   /// Nota contínua em `[0.0, 100.0]`: `100 · exp(-D² / 2)`.
   /// Interpretação direta:
@@ -133,16 +154,17 @@ class CompatibilityReport {
 /// g      = clamp((|I - 0.5| - 0.15) / 0.35, 0, 1)
 /// dist   = √(d_comp² + 0.16 · g²)
 /// ```
-/// A inclusão de `g` impede que dois perfis de resposta com a mesma
-/// composição e apoios absolutos opostos sejam tratados como equivalentes
-/// pelo motor. Como os perfis do catálogo não declaram intensidade absoluta,
-/// a coordenada de engajamento do perfil é fixada no plano neutro; a métrica
-/// é, por construção, invariante ao sinal de `I - 0.5`. O sinal é preservado
-/// e comunicado separadamente ([TriadDistanceBreakdown.engagementDirection],
-/// classificação e contribuições), sem inventar intensidade para o perfil.
+/// A inclusão de `g` penaliza respostas com engajamento extremo (apoio ou rejeição
+/// total) em relação ao ponto de referência neutro (`I = 0.5`). Como os perfis do
+/// catálogo definem apenas a composição relativa e não intensidades absolutas,
+/// a distância escalar é simétrica em torno de `I = 0.5` (isto é, `I = 1.0` e `I = 0.0`
+/// produzem a mesma penalidade `g`). Portanto, a distinção entre apoio militante e
+/// rejeição veemente é comunicada qualitativamente na classificação da tríade e no
+/// sumário de apoio aos vértices, e não na magnitude da distância escalar.
 abstract final class EspectroCompatibilityEngine {
   static const double hybridThresholdPercent = 52.0;
   static const double tieMarginPercent = 4.5;
+  static const double minimumComparisonCoverage = .60;
 
   static CompatibilityReport evaluate({
     required IdeologicalCatalog catalog,
@@ -170,6 +192,9 @@ abstract final class EspectroCompatibilityEngine {
 
     final List<CurrentCompatibility> list = <CurrentCompatibility>[];
     for (final IdeologicalCurrent current in catalog.currents) {
+      // New qualitative archive entries remain explorable without becoming
+      // native diagnostic candidates before their dimensional review.
+      if (current.editorialBasis?.nativeMatchingEligible == false) continue;
       var weightedZ2Sum = 0.0;
       var relevanceSum = 0.0;
       var triadCount = 0;
@@ -197,6 +222,9 @@ abstract final class EspectroCompatibilityEngine {
             isTriad: false,
             normalizedZ: z,
             relevance: prof.relevance,
+            rawDistance: dist,
+            compositionDistance: dist,
+            combinedDistance: dist,
             userSummary: axis.summary,
             currentSummary: _describeAxisMu(
               prof.mu,
@@ -235,23 +263,32 @@ abstract final class EspectroCompatibilityEngine {
             isTriad: true,
             normalizedZ: z,
             relevance: prof.relevance,
+            rawDistance: breakdown.compositionDistance,
+            compositionDistance: breakdown.compositionDistance,
+            engagement: breakdown.engagement,
+            engagementPenalty: breakdown.engagementPenalty,
+            combinedDistance: breakdown.combinedDistance,
             userSummary: _describeTriadShares(
               triad.composition,
               triad.vertices,
             ),
             currentSummary: _describeTriadShares(prof.mu, triad.vertices),
             note: prof.note,
-            compositionDistance: breakdown.compositionDistance,
-            engagement: breakdown.engagement,
-            engagementPenalty: breakdown.engagementPenalty,
-            combinedDistance: breakdown.combinedDistance,
           ),
         );
       }
 
       if (relevanceSum <= 0) continue;
+      // A sparse reference must not win by omitting the user's divergences.
+      // Missing dimensions are never imputed as neutral or as disagreement.
+      if (details.length / (validAxes.length + validTriads.length) <
+          minimumComparisonCoverage) {
+        continue;
+      }
       final double d2 = weightedZ2Sum / relevanceSum;
-      final double compat = (100.0 * math.exp(-d2 / 2.0)).clamp(0.0, 100.0);
+      final double compat = double.parse(
+        (100.0 * math.exp(-d2 / 2.0)).clamp(0.0, 100.0).toStringAsFixed(2),
+      );
 
       final List<DimensionAlignmentDetail> meaningful = details
           .where((d) => d.relevance >= 0.35)
@@ -273,6 +310,7 @@ abstract final class EspectroCompatibilityEngine {
           compatibilityPercent: compat,
           rmsZ: math.sqrt(d2),
           evaluatedDimensions: details.length,
+          details: List<DimensionAlignmentDetail>.unmodifiable(details),
           convergences: conv.take(3).toList(),
           divergences: div.where((d) => d.normalizedZ > 0.65).take(3).toList(),
           evaluatedTriads: triadCount,
@@ -313,7 +351,8 @@ abstract final class EspectroCompatibilityEngine {
         tensionAxisCount >= 2 &&
         tensionAxisCount / validAxes.length >= 0.5;
     final bool isHybrid =
-        !lowDiscrimination && first.compatibilityPercent < hybridThresholdPercent;
+        !lowDiscrimination &&
+        first.compatibilityPercent < hybridThresholdPercent;
     final bool isTie =
         !lowDiscrimination &&
         !isHybrid &&

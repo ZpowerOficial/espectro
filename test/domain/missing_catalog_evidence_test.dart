@@ -4,6 +4,7 @@ import 'package:politico/data/app_data.dart';
 import 'package:politico/data/evaluation_repository.dart';
 import 'package:politico/data/local_storage_service.dart';
 import 'package:politico/domain/engine/atlas_and_nolan_engine.dart';
+import 'package:politico/domain/models/atlas_models.dart';
 import 'package:politico/domain/models/political_models.dart';
 import 'package:politico/theme.dart';
 import 'package:politico/ui/charts/nolan_diagram_chart.dart';
@@ -49,6 +50,18 @@ void main() {
   });
   IdeologicalCurrent current(String id) =>
       data.catalog.currents.firstWhere((c) => c.id == id);
+  IdeologicalCurrent emptyCurrent(String id) => IdeologicalCurrent(
+    id: id,
+    name: 'Corrente Sem Evidência',
+    family: 'Teste',
+    summary: 'Sem evidência para teste de omissão',
+    keyIdeas: const [],
+    axes: {
+      'economia': const CurrentAxisProfile(mu: 0, sigma: 0.65, relevance: 0, note: ''),
+      'poder': const CurrentAxisProfile(mu: 0, sigma: 0.65, relevance: 0, note: ''),
+    },
+    triangles: const {},
+  );
 
   test(
     'Nolan omits a missing basis but retains an observed neutral position',
@@ -74,11 +87,11 @@ void main() {
 
   test('new currents with excluded economics or civil evidence never acquire a fabricated center', () {
     expect(
-      EspectroNolanEngine.fromCurrent(current('anarquismo_egoista')),
+      EspectroNolanEngine.fromCurrent(emptyCurrent('anarquismo_egoista')),
       isNull,
     );
     expect(
-      EspectroNolanEngine.fromCurrent(current('socialismo_de_mercado')),
+      EspectroNolanEngine.fromCurrent(emptyCurrent('socialismo_de_mercado')),
       isNull,
     );
     expect(
@@ -89,7 +102,7 @@ void main() {
 
   test('native current comparison excludes relevance zero and has no score without overlap', () {
     final result = EspectroAtlasEngine.compareWithCurrent(
-      current: current('anarquismo_egoista'),
+      current: emptyCurrent('anarquismo_egoista'),
       userAxes: [axis('economia', 0)],
       userTriads: [],
     );
@@ -102,12 +115,29 @@ void main() {
   });
 
   test('native Atlas comparison preserves both missing projections and missing affinity', () {
-    final entry = data.atlas.books.firstWhere(
+    final realEntry = data.atlas.books.firstWhere(
       (b) => b.id == 'acao_humana_mises',
     );
-    expect(EspectroNolanEngine.fromAtlasEntry(entry), isNull);
+    expect(EspectroNolanEngine.fromAtlasEntry(realEntry), isNotNull);
+
+    final partialEntry = AtlasEntry(
+      id: 'partial_test_book',
+      kind: realEntry.kind,
+      name: 'Obra Parcial Sem Eixo Poder',
+      subtitle: 'Ludwig von Mises',
+      category: 'Economia',
+      era: '1949',
+      origin: 'Áustria',
+      spectrumId: 'libertarian',
+      summary: 'Entrada sintética parcial para validar omissão sem eixo poder',
+      highlights: const [],
+      quote: null,
+      axes: const {'economia': 0.96},
+      triangles: const {},
+    );
+    expect(EspectroNolanEngine.fromAtlasEntry(partialEntry), isNull);
     final result = EspectroAtlasEngine.compareWithAtlasEntry(
-      entry: entry,
+      entry: partialEntry,
       userAxes: [axis('poder', .9)],
       userTriads: [],
     );
@@ -117,7 +147,7 @@ void main() {
   });
 
   test('triad-only current comparison uses observed compositions and absolute engagement', () {
-    final target = current('socialismo_marxista');
+    final target = current('libertarianismo_minarquista');
     final mean = target.triangles[0]!.mu;
     final matching = EspectroAtlasEngine.compareWithCurrent(
       current: target,
@@ -151,7 +181,7 @@ void main() {
       );
       await vm.initialize();
       final comparison = EspectroAtlasEngine.compareWithCurrent(
-        current: current('anarquismo_egoista'),
+        current: emptyCurrent('anarquismo_egoista'),
         userAxes: [axis('economia', 0)],
         userTriads: [],
       );

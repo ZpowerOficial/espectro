@@ -1,0 +1,43 @@
+{
+  "currents": {
+    "previous": 124,
+    "added": 165,
+    "total": 289
+  },
+  "book": {
+    "previous": 80,
+    "added": 85,
+    "total": 165
+  },
+  "party": {
+    "previous": 56,
+    "added": 54,
+    "total": 110
+  },
+  "history": {
+    "previous": 48,
+    "added": 46,
+    "total": 94
+  },
+  "spectrumOrder": [
+    "radical_left",
+    "left",
+    "center",
+    "right",
+    "far_right",
+    "anarchist",
+    "libertarian",
+    "third_position"
+  ],
+  "addedCurrentsBySpectrum": {
+    "radical_left": 24,
+    "left": 44,
+    "center": 25,
+    "anarchist": 18,
+    "right": 21,
+    "third_position": 19,
+    "far_right": 7,
+    "libertarian": 7
+  },
+  "method": "Original Portuguese summaries and selective provisional coordinates; no empirical validation. Missing evidence remains absent. References audited separately."
+}

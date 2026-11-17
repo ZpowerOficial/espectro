@@ -154,127 +154,336 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
         ],
       ),
       body: ResponsiveContentFrame(
-        maxWidth: 600,
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(19, 12, 19, 32),
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 4),
-              child: EditorialHeading(
-                eyebrow: 'Etapa 02 / 02',
-                title: 'Quanto quer\naprofundar?',
-                description: 'Escolha o número de perguntas. Quanto maior a cobertura, mais nuances são observadas.',
-              ),
-            ),
-            const SizedBox(height: 48),
-            for (final depth in TestDepth.values) ...[
-              Builder(
-                builder: (_) {
-                  final n = depth.expectedCount(
-                    widget.suite,
-                    totalAxesPool: axesPool,
-                    totalTriadsPool: triadsPool,
-                  );
-                  final selected = _depth == depth;
-                  return Semantics(
-                    selected: selected,
-                    button: true,
-                    child: Material(
-                      color: selected ? p.accentSoft : p.surface,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        side: BorderSide(color: selected ? p.accent : p.line),
-                      ),
-                      clipBehavior: Clip.antiAlias,
-                      child: InkWell(
-                        onTap: () => setState(() => _depth = depth),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 18,
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                width: 84,
-                                child: Text(
-                                  '$n',
-                                  style: text.headlineLarge?.copyWith(
-                                    fontFamily: 'IBMPlexMono',
-                                    fontSize: 27,
-                                  ),
-                                ),
+        maxWidth: 960,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
+            final bool sideBySide = constraints.maxWidth >= 820 && scale <= 1.35;
+
+            final Widget depthList = Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                for (var idx = 0; idx < TestDepth.values.length; idx++) ...[
+                  () {
+                    final depth = TestDepth.values[idx];
+                    final n = depth.expectedCount(
+                      widget.suite,
+                      totalAxesPool: axesPool,
+                      totalTriadsPool: triadsPool,
+                    );
+                    final selected = _depth == depth;
+                    final int level = idx + 1;
+                    final String? badgeText = switch (depth) {
+                      TestDepth.standard => 'Equilibrada',
+                      TestDepth.exhaustive => 'Completa',
+                      _ => null,
+                    };
+                    return Semantics(
+                      selected: selected,
+                      button: true,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: selected
+                              ? EspectroElevation.cardShadows(p)
+                              : null,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Material(
+                            color: selected ? p.accentSoft : p.surface,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                              side: BorderSide(
+                                color: selected ? p.accent : p.line,
+                                width: selected ? 1.6 : 1.0,
                               ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      depth.label,
-                                      style: text.titleLarge?.copyWith(
-                                        fontSize: 19,
-                                      ),
+                            ),
+                            child: InkWell(
+                              onTap: () => setState(() => _depth = depth),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  if (selected)
+                                    Container(height: 3, color: p.accent),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                      vertical: 16,
                                     ),
-                                    const SizedBox(height: 3),
-                                    Text(
-                                      switch (depth) {
-                                        TestDepth.quick => 'Panorama inicial',
-                                        TestDepth.standard => 'Mais equilíbrio',
-                                        TestDepth.deep => 'Mais nuances',
-                                        TestDepth.exhaustive =>
-                                          'Banco completo',
-                                      },
-                                      style: text.bodySmall?.copyWith(
-                                        fontSize: 12,
-                                      ),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          width: 72,
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 8,
+                                          ),
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            color: selected
+                                                ? p.surface
+                                                : p.surfaceMuted,
+                                            borderRadius:
+                                                BorderRadius.circular(11),
+                                            border: Border.all(
+                                              color: selected
+                                                  ? p.accent.withValues(
+                                                      alpha: 0.45,
+                                                    )
+                                                  : p.line,
+                                            ),
+                                          ),
+                                          child: Text(
+                                            '$n',
+                                            style: text.headlineLarge?.copyWith(
+                                              fontFamily: 'IBMPlexMono',
+                                              fontSize: 24,
+                                              color: selected ? p.accent : p.ink,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 14),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Wrap(
+                                                spacing: 8,
+                                                runSpacing: 4,
+                                                crossAxisAlignment:
+                                                    WrapCrossAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    depth.label,
+                                                    style: text.titleLarge
+                                                        ?.copyWith(fontSize: 18),
+                                                  ),
+                                                  if (badgeText != null)
+                                                    Tag(
+                                                      label: badgeText,
+                                                      background: selected
+                                                          ? p.accent.withValues(
+                                                              alpha: 0.16,
+                                                            )
+                                                          : p.surfaceMuted,
+                                                      foreground: selected
+                                                          ? p.accent
+                                                          : p.inkSoft,
+                                                    ),
+                                                ],
+                                              ),
+                                              const SizedBox(height: 3),
+                                              Text(
+                                                switch (depth) {
+                                                  TestDepth.quick =>
+                                                    'Panorama inicial',
+                                                  TestDepth.standard =>
+                                                    'Mais equilíbrio',
+                                                  TestDepth.deep =>
+                                                    'Mais nuances',
+                                                  TestDepth.exhaustive =>
+                                                    'Banco completo',
+                                                },
+                                                style: text.bodySmall?.copyWith(
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                              const SizedBox(height: 8),
+                                              Row(
+                                                children: [
+                                                  for (var b = 1; b <= 4; b++)
+                                                    Expanded(
+                                                      child: Container(
+                                                        height: 3.5,
+                                                        margin: EdgeInsets.only(
+                                                          right: b < 4 ? 4 : 0,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                        999,
+                                                                      ),
+                                                              color: b <= level
+                                                                  ? (selected
+                                                                        ? p.accent
+                                                                        : p.inkSoft
+                                                                              .withValues(
+                                                                                alpha: 0.55,
+                                                                              ))
+                                                                  : p.line,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 9,
+                                            vertical: 6,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: selected
+                                                ? p.surface
+                                                : p.canvas,
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            border: Border.all(color: p.line),
+                                          ),
+                                          child: Text(
+                                            depth.estimatedDuration(n),
+                                            style: text.labelSmall?.copyWith(
+                                              fontSize: 10,
+                                              color: p.accent,
+                                              letterSpacing: 0,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 8),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 9,
-                                  vertical: 7,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: selected
-                                      ? p.accent.withValues(alpha: .10)
-                                      : p.canvas,
-                                  borderRadius: BorderRadius.circular(7),
-                                ),
-                                child: Text(
-                                  depth.estimatedDuration(n),
-                                  style: text.labelSmall?.copyWith(
-                                    fontSize: 10,
-                                    color: p.accent,
-                                    letterSpacing: 0,
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  }(),
+                  const SizedBox(height: 12),
+                ],
+                const SizedBox(height: 6),
+                Text(
+                  'Pode pausar e continuar depois. Sem cronômetro.',
+                  style: text.bodySmall,
+                ),
+                const SizedBox(height: 12),
+                AppButton(
+                  label: 'Iniciar avaliação · $count perguntas',
+                  icon: Icons.arrow_forward_rounded,
+                  onPressed: _start,
+                ),
+              ],
+            );
+
+            final Widget telemetryCard = Container(
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                color: p.heroBackground,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: EspectroElevation.cardShadows(p),
               ),
-              const SizedBox(height: 12),
-            ],
-            const SizedBox(height: 8),
-            Text(
-              'Pode pausar e continuar depois. Sem cronômetro.',
-              style: text.bodySmall,
-            ),
-            const SizedBox(height: 12),
-            AppButton(
-              label: 'Iniciar avaliação · $count perguntas',
-              icon: Icons.arrow_forward_rounded,
-              onPressed: _start,
-            ),
-          ],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SpectrumGradientRule(height: 3.5, radius: 0),
+                  Padding(
+                    padding: const EdgeInsets.all(22),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.suite.title.toUpperCase(),
+                          style: const TextStyle(
+                            fontFamily: 'IBMPlexMono',
+                            fontSize: 10.5,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 1.0,
+                            color: Color(0xFF9FB8E6),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          '$count afirmações',
+                          style: const TextStyle(
+                            fontFamily: 'IBMPlexMono',
+                            fontSize: 28,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          '${_depth.label} · ${_depth.estimatedDuration(count)} estimados',
+                          style: const TextStyle(
+                            fontSize: 13.5,
+                            color: Color(0xFFD2DBE8),
+                          ),
+                        ),
+                        const SizedBox(height: 18),
+                        Container(
+                          padding: const EdgeInsets.all(14),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: 0.06),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: Colors.white.withValues(alpha: 0.14),
+                            ),
+                          ),
+                          child: const Text(
+                            'Progresso adaptativo em blocos: você pode consultar o resultado preliminar após o marco inicial ou pausar a qualquer momento sem perder respostas.',
+                            style: TextStyle(
+                              fontSize: 12.5,
+                              color: Color(0xFFCBD5E1),
+                              height: 1.45,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 14),
+                        OutlinedButton.icon(
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            side: BorderSide(
+                              color: Colors.white.withValues(alpha: 0.25),
+                            ),
+                          ),
+                          onPressed: _showDimensionsSheet,
+                          icon: const Icon(Icons.list_alt_rounded, size: 17),
+                          label: const Text('Inspecionar dimensões'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+
+            return ListView(
+              padding: const EdgeInsets.fromLTRB(20, 14, 20, 32),
+              children: [
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 2),
+                  child: EditorialHeading(
+                    eyebrow: 'Etapa 02 / 02',
+                    title: 'Quanto quer\naprofundar?',
+                    description:
+                        'Escolha o número de perguntas. Quanto maior a cobertura, mais nuances são observadas.',
+                  ),
+                ),
+                const SizedBox(height: 28),
+                if (sideBySide)
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(flex: 7, child: depthList),
+                      const SizedBox(width: 22),
+                      Expanded(flex: 5, child: telemetryCard),
+                    ],
+                  )
+                else
+                  depthList,
+              ],
+            );
+          },
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../domain/models/political_models.dart';
 import '../../theme.dart';
+import '../../widgets/common.dart';
 import 'axis_colors.dart';
 
 /// Barra bipolar divergente centrada em 50%, com faixa de incerteza (`±1.96·SE`),
@@ -27,6 +28,14 @@ class DivergingAxisBar extends StatelessWidget {
     final colors =
         AxisColors.pairs[dimension.axisId] ?? (p.poleLeft, p.poleRight);
 
+    final String dominantPole = dimension.leansLeft
+        ? dimension.leftPole
+        : dimension.rightPole;
+    final int dominantPercent = dimension.leansLeft
+        ? dimension.leftPercent.round()
+        : dimension.rightPercent.round();
+    final Color dominantColor = dimension.leansLeft ? colors.$1 : colors.$2;
+
     final Widget content = Semantics(
       button: onTap != null,
       label:
@@ -46,7 +55,10 @@ class DivergingAxisBar extends StatelessWidget {
                     Flexible(
                       child: Text(
                         dimension.label,
-                        style: text.titleMedium,
+                        style: text.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -66,17 +78,48 @@ class DivergingAxisBar extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              Text(
-                dimension.summary,
-                style: text.labelLarge?.copyWith(
-                  fontSize: 12.5,
-                  color: dimension.isIndeterminate
-                      ? p.muted
-                      : (dimension.leansLeft ? colors.$1 : colors.$2),
+              if (dimension.isIndeterminate)
+                Text(
+                  dimension.summary,
+                  style: text.labelLarge?.copyWith(
+                    fontSize: 12,
+                    color: p.muted,
+                  ),
+                )
+              else
+                Flexible(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 3,
+                    ),
+                    decoration: BoxDecoration(
+                      color: dominantColor.withValues(
+                        alpha: p.isDark ? 0.18 : 0.10,
+                      ),
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(
+                        color: dominantColor.withValues(
+                          alpha: p.isDark ? 0.35 : 0.25,
+                        ),
+                        width: 1,
+                      ),
+                    ),
+                    child: Text(
+                      '$dominantPercent% $dominantPole',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontFamily: 'IBMPlexMono',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 11.5,
+                        color: dominantColor,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
               if (onTap != null) ...<Widget>[
-                const SizedBox(width: 4),
+                const SizedBox(width: 6),
                 Icon(Icons.chevron_right_rounded, size: 17, color: p.muted),
               ],
             ],
@@ -85,51 +128,52 @@ class DivergingAxisBar extends StatelessWidget {
           SizedBox(
             height: 22,
             width: double.infinity,
-            child: CustomPaint(
-              painter: _DivergingBarPainter(
-                score: dimension.score,
-                scoreLow: dimension.scoreLow,
-                scoreHigh: dimension.scoreHigh,
-                isIndeterminate: dimension.isIndeterminate,
-                baselineScore: baselineScore,
-                palette: p,
-                colors: colors,
-              ),
+            child: TweenAnimationBuilder<double>(
+              tween: Tween<double>(begin: 0.0, end: dimension.score),
+              duration: const Duration(milliseconds: 550),
+              curve: Curves.easeOutCubic,
+              builder: (context, animScore, _) {
+                return CustomPaint(
+                  painter: _DivergingBarPainter(
+                    score: animScore,
+                    scoreLow: dimension.scoreLow,
+                    scoreHigh: dimension.scoreHigh,
+                    isIndeterminate: dimension.isIndeterminate,
+                    baselineScore: baselineScore,
+                    palette: p,
+                    colors: colors,
+                  ),
+                );
+              },
             ),
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 6),
           Row(
             children: <Widget>[
-              Expanded(
-                child: Text(
-                  '${dimension.leftPole} · ${dimension.leftPercent.round()}%',
-                  style: text.bodySmall?.copyWith(
-                    fontSize: 11.5,
-                    fontWeight: dimension.leansLeft
-                        ? FontWeight.w700
-                        : FontWeight.w500,
-                    color: dimension.leansLeft ? colors.$1 : p.muted,
-                  ),
-                  overflow: TextOverflow.ellipsis,
+              Flexible(
+                child: PolePill(
+                  label: dimension.leftPole,
+                  color: colors.$1,
+                  isActive: dimension.leansLeft && !dimension.isIndeterminate,
+                  badge: '${dimension.leftPercent.round()}%',
                 ),
               ),
+              const SizedBox(width: 6),
               Text(
-                '±${(dimension.standardError * 98).round()} pp · '
-                '${(dimension.coverage * 100).round()}%',
-                style: text.bodySmall?.copyWith(fontSize: 10.5, color: p.muted),
+                '±${(dimension.standardError * 98).round()} pp',
+                style: text.bodySmall?.copyWith(
+                  fontSize: 10,
+                  fontFamily: 'IBMPlexMono',
+                  color: p.muted,
+                ),
               ),
-              Expanded(
-                child: Text(
-                  '${dimension.rightPercent.round()}% · ${dimension.rightPole}',
-                  textAlign: TextAlign.right,
-                  style: text.bodySmall?.copyWith(
-                    fontSize: 11.5,
-                    fontWeight: !dimension.leansLeft
-                        ? FontWeight.w700
-                        : FontWeight.w500,
-                    color: !dimension.leansLeft ? colors.$2 : p.muted,
-                  ),
-                  overflow: TextOverflow.ellipsis,
+              const SizedBox(width: 6),
+              Flexible(
+                child: PolePill(
+                  label: dimension.rightPole,
+                  color: colors.$2,
+                  isActive: !dimension.leansLeft && !dimension.isIndeterminate,
+                  badge: '${dimension.rightPercent.round()}%',
                 ),
               ),
             ],
@@ -176,56 +220,70 @@ class _DivergingBarPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (size.width <= 0 || size.height <= 0) return;
     final double midY = size.height / 2;
-    final double trackHeight = 8.0;
-    final RRect track = RRect.fromRectAndRadius(
-      Rect.fromCenter(
-        center: Offset(size.width / 2, midY),
-        width: size.width,
-        height: trackHeight,
-      ),
+    final double trackHeight = 7.0;
+    final double centerX = size.width / 2;
+    const double gap = 2.0;
+
+    // Dual-track arredondada no mesmo padrão da Teia e Perfil.
+    final double halfW = (size.width - gap) / 2;
+    final Color leftColor = colors.$1;
+    final Color rightColor = colors.$2;
+
+    // Trilho esquerdo.
+    final RRect leftTrack = RRect.fromRectAndRadius(
+      Rect.fromLTWH(0, midY - trackHeight / 2, halfW, trackHeight),
       const Radius.circular(99),
     );
-    canvas.drawRRect(track, Paint()..color = palette.surfaceMuted);
+    canvas.drawRRect(
+      leftTrack,
+      Paint()
+        ..color = isIndeterminate
+            ? palette.surfaceMuted
+            : leftColor.withValues(
+                alpha: score < 0
+                    ? (palette.isDark ? 0.85 : 0.80)
+                    : (palette.isDark ? 0.22 : 0.16),
+              ),
+    );
 
-    final double centerX = size.width / 2;
+    // Trilho direito.
+    final RRect rightTrack = RRect.fromRectAndRadius(
+      Rect.fromLTWH(centerX + gap / 2, midY - trackHeight / 2, halfW, trackHeight),
+      const Radius.circular(99),
+    );
+    canvas.drawRRect(
+      rightTrack,
+      Paint()
+        ..color = isIndeterminate
+            ? palette.surfaceMuted
+            : rightColor.withValues(
+                alpha: score > 0
+                    ? (palette.isDark ? 0.85 : 0.80)
+                    : (palette.isDark ? 0.22 : 0.16),
+              ),
+    );
 
     if (!isIndeterminate) {
       // Faixa translúcida de incerteza [scoreLow..scoreHigh].
       final double lowX = _xOf(scoreLow, size.width);
       final double highX = _xOf(scoreHigh, size.width);
-      final Color activeColor = score <= 0 ? colors.$1 : colors.$2;
+      final Color activeColor = score <= 0 ? leftColor : rightColor;
 
       canvas.drawRRect(
         RRect.fromRectAndRadius(
-          Rect.fromLTRB(lowX, midY - 7, highX, midY + 7),
+          Rect.fromLTRB(lowX, midY - 6.5, highX, midY + 6.5),
           const Radius.circular(6),
         ),
         Paint()
-          ..color = activeColor.withValues(alpha: palette.isDark ? 0.22 : 0.16),
-      );
-
-      // Barra divergente do centro (50%) até o escore atual.
-      final double scoreX = _xOf(score, size.width);
-      final double barLeft = scoreX < centerX ? scoreX : centerX;
-      final double barRight = scoreX < centerX ? centerX : scoreX;
-      if ((barRight - barLeft) >= 1.0) {
-        canvas.drawRRect(
-          RRect.fromRectAndRadius(
-            Rect.fromLTRB(
-              barLeft,
-              midY - trackHeight / 2,
-              barRight,
-              midY + trackHeight / 2,
-            ),
-            const Radius.circular(99),
+          ..color = activeColor.withValues(
+            alpha: palette.isDark ? 0.22 : 0.14,
           ),
-          Paint()..color = activeColor,
-        );
-      }
+      );
 
       // Marcador fantasma da avaliação anterior, se presente.
       if (baselineScore != null) {
         final double baseX = _xOf(baselineScore!, size.width);
+        final double scoreX = _xOf(score, size.width);
         canvas.drawLine(
           Offset(baseX, midY),
           Offset(scoreX, midY),
@@ -248,29 +306,37 @@ class _DivergingBarPainter extends CustomPainter {
         );
       }
 
-      // Ponto principal.
+      // Knob indicador do escore atual com anel e sombra.
+      final double scoreX = _xOf(score, size.width);
+      canvas.drawCircle(
+        Offset(scoreX, midY + 1),
+        6.5,
+        Paint()
+          ..color = Colors.black.withValues(alpha: 0.18)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2.5),
+      );
       canvas.drawCircle(
         Offset(scoreX, midY),
         6.0,
-        Paint()..color = activeColor,
+        Paint()..color = palette.surface,
       );
       canvas.drawCircle(
         Offset(scoreX, midY),
         6.0,
         Paint()
-          ..color = palette.surface
+          ..color = activeColor
           ..style = PaintingStyle.stroke
-          ..strokeWidth = 2.0,
+          ..strokeWidth = 2.5,
       );
     }
 
-    // Marca central (0.0 / 50%).
+    // Linha central neutra discreta.
     canvas.drawLine(
-      Offset(centerX, midY - 8),
-      Offset(centerX, midY + 8),
+      Offset(centerX, midY - 6),
+      Offset(centerX, midY + 6),
       Paint()
         ..color = palette.ink.withValues(alpha: 0.35)
-        ..strokeWidth = 1.4,
+        ..strokeWidth = 1.5,
     );
   }
 

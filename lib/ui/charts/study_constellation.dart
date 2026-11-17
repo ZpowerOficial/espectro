@@ -15,16 +15,62 @@ abstract final class StudyConstellationGeometry {
   static const Size canvasSize = Size(880, 880);
   static const Offset center = Offset(440, 440);
 
+  /// Unplaced entries occupy a separate tray outside the analytical square.
+  /// Tray positions are UI layout, never coordinates or proximity evidence.
+  static List<(StudySubject, Offset)> layout(
+    List<StudySubject> subjects, {
+    StudyMapProjection projection = const StudyMapProjection(),
+  }) {
+    final placed = <(StudySubject, Offset)>[];
+    final missing = <StudySubject>[];
+    for (final subject in subjects) {
+      final point = position(subject, projection: projection);
+      if (point == null) {
+        missing.add(subject);
+      } else {
+        placed.add((subject, point));
+      }
+    }
+    missing.sort((a, b) => a.key.compareTo(b.key));
+    final columns = math.max(1, (missing.length / 30).ceil());
+    for (var i = 0; i < missing.length; i++) {
+      placed.add((
+        missing[i],
+        Offset(
+          812 + (i % columns + .5) * 64 / columns,
+          150 + (i ~/ columns) * 20,
+        ),
+      ));
+    }
+    return placed;
+  }
+
+  static final Map<String, Offset?> _nolanPosCache = <String, Offset?>{};
+
   /// Missing economic or civil evidence is omitted rather than placed at 50%.
   static Offset? position(
     StudySubject subject, {
     StudyMapProjection projection = const StudyMapProjection(),
   }) {
+    if (projection.isTriad) {
+      final comp = subject.triangles[projection.triadId!];
+      if (comp == null || comp.length != 3) return null;
+      // Barycentric projection onto equilateral triangle
+      const v0 = Offset(140, 710);
+      const v1 = Offset(740, 710);
+      const v2 = Offset(440, 150);
+      final sum = comp[0] + comp[1] + comp[2];
+      if (sum <= 1e-9) return const Offset(440, 520);
+      return (v0 * comp[0] + v1 * comp[1] + v2 * comp[2]) / sum;
+    }
     if (!projection.isNolan) {
       final x = subject.axes[projection.xAxisId];
       final y = subject.axes[projection.yAxisId];
       if (x == null || y == null || !x.isFinite || !y.isFinite) return null;
       return center + Offset(x * 340, -y * 340);
+    }
+    if (subject.record == null && _nolanPosCache.containsKey(subject.key)) {
+      return _nolanPosCache[subject.key];
     }
     final hasEconomy =
         const [
@@ -44,15 +90,23 @@ abstract final class StudyConstellationGeometry {
           'estrutura',
         ].any(subject.axes.containsKey) ||
         const [1, 2, 4].any(subject.triangles.containsKey);
-    if (!hasEconomy || !hasCivil) return null;
+    if (!hasEconomy || !hasCivil) {
+      if (subject.record == null) _nolanPosCache[subject.key] = null;
+      return null;
+    }
     final coordinates = EspectroNolanEngine.fromRawMaps(
       axes: subject.axes,
       triangles: subject.triangles,
     );
-    if (coordinates == null) return null;
+    if (coordinates == null) {
+      if (subject.record == null) _nolanPosCache[subject.key] = null;
+      return null;
+    }
     final economic = coordinates.economicFreedom / 100;
     final civil = coordinates.personalFreedom / 100;
-    return center + Offset((economic * 2 - 1) * 340, -(civil * 2 - 1) * 340);
+    final pos = center + Offset((economic * 2 - 1) * 340, (civil * 2 - 1) * 340);
+    if (subject.record == null) _nolanPosCache[subject.key] = pos;
+    return pos;
   }
 
   static Color familyColor(String family, {required bool dark}) {
@@ -71,11 +125,15 @@ abstract final class StudyConstellationGeometry {
 }
 
 /// Nolan keeps its two composite dimensions. An alternate view projects any
-/// two of the twelve observed axes without imputing missing evidence.
+/// two of the twelve observed axes without imputing missing evidence, or
+/// projects barycentrically onto one of the six triangles (Tríades).
 class StudyMapProjection {
   const StudyMapProjection({
     this.xAxisId,
     this.yAxisId,
+    this.triadId,
+    this.triadLabel,
+    this.triadVertices = const [],
     this.xLabel = 'Liberdade econômica',
     this.yLabel = 'Liberdade civil',
     this.xLow = 'Menor',
@@ -94,9 +152,29 @@ class StudyMapProjection {
         yLow: y.leftPole,
         yHigh: y.rightPole,
       );
+  factory StudyMapProjection.triad({
+    required int triadId,
+    required String triadLabel,
+    required List<String> triadVertices,
+  }) =>
+      StudyMapProjection(
+        triadId: triadId,
+        triadLabel: triadLabel,
+        triadVertices: triadVertices,
+        xLabel: triadVertices.isNotEmpty ? triadVertices[0] : '',
+        yLabel: triadVertices.length > 1 ? triadVertices[1] : '',
+        xLow: triadVertices.isNotEmpty ? triadVertices[0] : '',
+        xHigh: triadVertices.length > 1 ? triadVertices[1] : '',
+        yLow: '',
+        yHigh: triadVertices.length > 2 ? triadVertices[2] : '',
+      );
   final String? xAxisId, yAxisId;
+  final int? triadId;
+  final String? triadLabel;
+  final List<String> triadVertices;
   final String xLabel, yLabel, xLow, xHigh, yLow, yHigh;
-  bool get isNolan => xAxisId == null && yAxisId == null;
+  bool get isTriad => triadId != null;
+  bool get isNolan => !isTriad && xAxisId == null && yAxisId == null;
 }
 
 List<(StudySubject, Offset)> _nearbyPoints(
@@ -104,14 +182,15 @@ List<(StudySubject, Offset)> _nearbyPoints(
   String? selectedKey,
 ) {
   final selected = points.where((p) => p.$1.key == selectedKey).firstOrNull;
-  if (selected == null) return [];
-  final neighbours = points.where((p) => p.$1.key != selectedKey).toList()
-    ..sort((a, b) {
-      final distance = (a.$2 - selected.$2).distance.compareTo(
-        (b.$2 - selected.$2).distance,
-      );
-      return distance == 0 ? a.$1.key.compareTo(b.$1.key) : distance;
-    });
+  if (selected == null || selected.$2.dx > 800) return [];
+  final neighbours =
+      points.where((p) => p.$1.key != selectedKey && p.$2.dx <= 800).toList()
+        ..sort((a, b) {
+          final distance = (a.$2 - selected.$2).distance.compareTo(
+            (b.$2 - selected.$2).distance,
+          );
+          return distance == 0 ? a.$1.key.compareTo(b.$1.key) : distance;
+        });
   return neighbours.take(6).toList();
 }
 
@@ -173,6 +252,7 @@ class _StudyConstellationState extends State<StudyConstellation>
   Size? _viewport;
   bool _motionPaused = false;
   bool _appVisible = true;
+  StudySubject? _hovered;
   final Map<int, Offset> _pointerStarts = {};
   bool _tapCandidate = false;
   double _gestureScale = 1;
@@ -246,15 +326,24 @@ class _StudyConstellationState extends State<StudyConstellation>
     });
   }
 
-  List<(StudySubject, Offset)> get _points => [
-    for (final subject in widget.subjects)
-      if (StudyConstellationGeometry.position(
-            subject,
-            projection: widget.projection,
-          )
-          case final Offset point)
-        (subject, point),
-  ];
+  late List<(StudySubject, Offset)> _points;
+  late List<(Offset, Offset)> _staticEdges;
+  late List<_NebulaClusterData> _nebulaClusters;
+  bool _geometryInitialized = false;
+  bool? _lastGeometryDark;
+
+  void _updateGeometry([bool? isDark]) {
+    _points = StudyConstellationGeometry.layout(
+      widget.subjects,
+      projection: widget.projection,
+    );
+    final placed = _points.where((p) => p.$2.dx <= 800).toList();
+    _staticEdges = _ConstellationPainter.computeStaticEdges(placed);
+    final dark = isDark ?? (mounted ? context.palette.isDark : false);
+    _nebulaClusters = _ConstellationPainter.computeNebulaClusters(placed, dark);
+    _geometryInitialized = true;
+    _lastGeometryDark = dark;
+  }
 
   @override
   void initState() {
@@ -265,6 +354,14 @@ class _StudyConstellationState extends State<StudyConstellation>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    final dark = context.palette.isDark;
+    if (!_geometryInitialized) {
+      _updateGeometry(dark);
+    } else if (_lastGeometryDark != dark) {
+      final placed = _points.where((p) => p.$2.dx <= 800).toList();
+      _nebulaClusters = _ConstellationPainter.computeNebulaClusters(placed, dark);
+      _lastGeometryDark = dark;
+    }
     final scroll = Scrollable.maybeOf(context)?.position;
     if (_scroll != scroll) {
       _scroll?.removeListener(_onScroll);
@@ -292,7 +389,9 @@ class _StudyConstellationState extends State<StudyConstellation>
       final rect = render.localToGlobal(Offset.zero) & render.size;
       visible = rect.overlaps(Offset.zero & MediaQuery.sizeOf(context));
     }
+    final hasActive = widget.selected != null || _hovered != null;
     final enabled =
+        hasActive &&
         !_motionPaused &&
         _appVisible &&
         visible &&
@@ -308,33 +407,38 @@ class _StudyConstellationState extends State<StudyConstellation>
   @override
   void didUpdateWidget(covariant StudyConstellation oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.projection.xAxisId != widget.projection.xAxisId ||
-        oldWidget.projection.yAxisId != widget.projection.yAxisId) {
+    if (oldWidget.subjects != widget.subjects ||
+        oldWidget.projection.xAxisId != widget.projection.xAxisId ||
+        oldWidget.projection.yAxisId != widget.projection.yAxisId ||
+        oldWidget.projection.triadId != widget.projection.triadId) {
+      _updateGeometry();
       _interruptFlight();
       if (_viewport case final Size viewport) _fit(viewport);
     }
-    if (oldWidget.selected?.key != widget.selected?.key &&
-        widget.selected != null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (!mounted || widget.selected == null || _viewport == null) return;
-        if (!_points.any((p) => p.$1.key == widget.selected!.key)) return;
-        final point = StudyConstellationGeometry.position(
-          widget.selected!,
-          projection: widget.projection,
-        );
-        if (point == null) return;
-        final scale = _camera.value.getMaxScaleOnAxis();
-        _flyTo(
-          Matrix4.identity()
-            ..translateByDouble(
-              _viewport!.width / 2 - point.dx * scale,
-              _viewport!.height / 2 - point.dy * scale,
-              0,
-              1,
-            )
-            ..scaleByDouble(scale, scale, scale, 1),
-        );
-      });
+    if (oldWidget.selected?.key != widget.selected?.key) {
+      _syncMotion();
+      if (widget.selected != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (!mounted || widget.selected == null || _viewport == null) return;
+          if (!_points.any((p) => p.$1.key == widget.selected!.key)) return;
+          final point = StudyConstellationGeometry.position(
+            widget.selected!,
+            projection: widget.projection,
+          );
+          if (point == null) return;
+          final scale = _camera.value.getMaxScaleOnAxis();
+          _flyTo(
+            Matrix4.identity()
+              ..translateByDouble(
+                _viewport!.width / 2 - point.dx * scale,
+                _viewport!.height / 2 - point.dy * scale,
+                0,
+                1,
+              )
+              ..scaleByDouble(scale, scale, scale, 1),
+          );
+        });
+      }
     }
   }
 
@@ -496,6 +600,43 @@ class _StudyConstellationState extends State<StudyConstellation>
     ],
   );
 
+  Widget _buildCardinalBadge(String label, Alignment alignment) {
+    return Align(
+      alignment: alignment,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          decoration: BoxDecoration(
+            color: context.palette.surface.withValues(alpha: 0.88),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: context.palette.line.withValues(alpha: 0.85),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(
+                  alpha: context.palette.isDark ? 0.35 : 0.06,
+                ),
+                blurRadius: 4,
+                offset: const Offset(0, 1),
+              ),
+            ],
+          ),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 10.5,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.8,
+              color: context.palette.inkSoft,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _canvas() => LayoutBuilder(
     builder: (context, constraints) {
       final viewport = constraints.biggest;
@@ -514,43 +655,124 @@ class _StudyConstellationState extends State<StudyConstellation>
         scaleEnabled: false,
         child: Semantics(
           image: true,
-          label: 'Teia de ideias. Use Escolher ponto para selecionar qualquer perfil, inclusive pontos sobrepostos.',
+          label:
+              'Teia de ideias. Use Buscar e filtrar para selecionar qualquer perfil, inclusive pontos sobrepostos. A área Sem posição não representa coordenadas políticas.',
           child: CustomPaint(
             size: StudyConstellationGeometry.canvasSize,
             painter: _ConstellationPainter(
               points: _points,
+              staticEdges: _staticEdges,
+              nebulaClusters: _nebulaClusters,
               selectedKey: widget.selected?.key,
+              hoveredKey: _hovered?.key,
               palette: context.palette,
               animation: _breathing,
               camera: _camera,
               projection: widget.projection,
+              viewportSize: viewport,
             ),
           ),
         ),
       );
-      return Listener(
-        behavior: HitTestBehavior.opaque,
-        onPointerDown: _pointerDown,
-        onPointerMove: _pointerMove,
-        onPointerUp: _pointerUp,
-        onPointerCancel: (event) {
-          _pointerStarts.remove(event.pointer);
-          _tapCandidate = false;
+      final gestures = MouseRegion(
+        cursor: _hovered != null ? SystemMouseCursors.click : SystemMouseCursors.grab,
+        onHover: (event) {
+          final local = _camera.toScene(event.localPosition);
+          final scale = _camera.value.getMaxScaleOnAxis();
+          final hit = _points
+              .where((p) => (p.$2 - local).distance < 20 / scale)
+              .firstOrNull
+              ?.$1;
+          if (hit?.key != _hovered?.key) {
+            setState(() => _hovered = hit);
+            _syncMotion();
+          }
         },
-        onPointerSignal: _pointerSignal,
-        child: RawGestureDetector(
+        onExit: (_) {
+          if (_hovered != null) {
+            setState(() => _hovered = null);
+            _syncMotion();
+          }
+        },
+        child: Listener(
           behavior: HitTestBehavior.opaque,
-          gestures: <Type, GestureRecognizerFactory>{
-            _MapScaleGestureRecognizer:
-                GestureRecognizerFactoryWithHandlers<
-                  _MapScaleGestureRecognizer
-                >(_MapScaleGestureRecognizer.new, (recognizer) {
-                  recognizer.onStart = _gestureStart;
-                  recognizer.onUpdate = _gestureUpdate;
-                }),
+          onPointerDown: _pointerDown,
+          onPointerMove: _pointerMove,
+          onPointerUp: _pointerUp,
+          onPointerCancel: (event) {
+            _pointerStarts.remove(event.pointer);
+            _tapCandidate = false;
           },
-          child: viewer,
+          onPointerSignal: _pointerSignal,
+          child: RawGestureDetector(
+            behavior: HitTestBehavior.opaque,
+            gestures: <Type, GestureRecognizerFactory>{
+              _MapScaleGestureRecognizer:
+                  GestureRecognizerFactoryWithHandlers<
+                    _MapScaleGestureRecognizer
+                  >(_MapScaleGestureRecognizer.new, (recognizer) {
+                    recognizer.onStart = _gestureStart;
+                    recognizer.onUpdate = _gestureUpdate;
+                  }),
+            },
+            child: viewer,
+          ),
         ),
+      );
+
+      return Stack(
+        clipBehavior: Clip.hardEdge,
+        children: [
+          Positioned.fill(child: gestures),
+          Positioned.fill(
+            child: IgnorePointer(
+              child: Stack(
+                children: [
+                  if (widget.projection.isTriad &&
+                      widget.projection.triadVertices.length == 3) ...[
+                    _buildCardinalBadge(
+                      '${widget.projection.triadVertices[2].toUpperCase()} ↑',
+                      Alignment.topCenter,
+                    ),
+                    _buildCardinalBadge(
+                      '← ${widget.projection.triadVertices[0].toUpperCase()}',
+                      Alignment.bottomLeft,
+                    ),
+                    _buildCardinalBadge(
+                      '${widget.projection.triadVertices[1].toUpperCase()} →',
+                      Alignment.bottomRight,
+                    ),
+                  ] else ...[
+                    _buildCardinalBadge(
+                      widget.projection.isNolan
+                          ? 'AUTORITARISMO ↑'
+                          : '${widget.projection.yHigh.toUpperCase()} ↑',
+                      Alignment.topCenter,
+                    ),
+                    _buildCardinalBadge(
+                      widget.projection.isNolan
+                          ? 'ANARQUISMO ↓'
+                          : '${widget.projection.yLow.toUpperCase()} ↓',
+                      Alignment.bottomCenter,
+                    ),
+                    _buildCardinalBadge(
+                      widget.projection.isNolan
+                          ? '← ESQUERDA'
+                          : '← ${widget.projection.xLow.toUpperCase()}',
+                      Alignment.centerLeft,
+                    ),
+                    _buildCardinalBadge(
+                      widget.projection.isNolan
+                          ? 'DIREITA →'
+                          : '${widget.projection.xHigh.toUpperCase()} →',
+                      Alignment.centerRight,
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ),
+        ],
       );
     },
   );
@@ -559,7 +781,7 @@ class _StudyConstellationState extends State<StudyConstellation>
   Widget build(BuildContext context) {
     final palette = context.palette;
     final points = _points;
-    final omitted = widget.subjects.length - points.length;
+    final omitted = points.where((p) => p.$2.dx > 800).length;
     final neighbours = _nearbyPoints(points, widget.selected?.key);
     final selectedSubject = points
         .where((p) => p.$1.key == widget.selected?.key)
@@ -580,41 +802,48 @@ class _StudyConstellationState extends State<StudyConstellation>
           Positioned(
             right: 10,
             top: 10,
-            child: Material(
-              color: palette.surface,
-              elevation: 2,
-              borderRadius: BorderRadius.circular(12),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    tooltip: 'Aumentar zoom',
-                    onPressed: () => _zoom(1.4),
-                    icon: const Icon(Icons.add),
-                  ),
-                  IconButton(
-                    tooltip: 'Diminuir zoom',
-                    onPressed: () => _zoom(1 / 1.4),
-                    icon: const Icon(Icons.remove),
-                  ),
-                  IconButton(
-                    tooltip: 'Reenquadrar teia',
-                    onPressed: () {
-                      if (_viewport case final Size v) _fit(v);
-                    },
-                    icon: const Icon(Icons.center_focus_strong),
-                  ),
-                  IconButton(
-                    tooltip: _motionPaused
-                        ? 'Ativar movimento sutil'
-                        : 'Pausar movimento',
-                    onPressed: () {
-                      setState(() => _motionPaused = !_motionPaused);
-                      _syncMotion();
-                    },
-                    icon: Icon(_motionPaused ? Icons.play_arrow : Icons.pause),
-                  ),
-                ],
+            child: Container(
+              decoration: BoxDecoration(
+                color: palette.surface.withValues(alpha: 0.96),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: palette.line),
+                boxShadow: EspectroElevation.cardShadows(palette),
+              ),
+              child: Material(
+                type: MaterialType.transparency,
+                borderRadius: BorderRadius.circular(12),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      tooltip: 'Aumentar zoom',
+                      onPressed: () => _zoom(1.4),
+                      icon: const Icon(Icons.add),
+                    ),
+                    IconButton(
+                      tooltip: 'Diminuir zoom',
+                      onPressed: () => _zoom(1 / 1.4),
+                      icon: const Icon(Icons.remove),
+                    ),
+                    IconButton(
+                      tooltip: 'Reenquadrar teia',
+                      onPressed: () {
+                        if (_viewport case final Size v) _fit(v);
+                      },
+                      icon: const Icon(Icons.center_focus_strong),
+                    ),
+                    IconButton(
+                      tooltip: _motionPaused
+                          ? 'Ativar movimento sutil'
+                          : 'Pausar movimento',
+                      onPressed: () {
+                        setState(() => _motionPaused = !_motionPaused);
+                        _syncMotion();
+                      },
+                      icon: Icon(_motionPaused ? Icons.play_arrow : Icons.pause),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -842,7 +1071,7 @@ class _StudyConstellationState extends State<StudyConstellation>
         Text(
           'Projeção quadrada: ${widget.projection.xLabel} e ${widget.projection.yLabel}. '
           'As linhas mostram vizinhança nesta projeção, não influência histórica.'
-          '${omitted == 0 ? '' : ' $omitted perfis sem base suficiente aparecem apenas na lista.'}',
+          '${omitted == 0 ? '' : ' $omitted perfis sem base suficiente aparecem na área Sem posição, fora do quadrado.'}',
           style: Theme.of(context).textTheme.bodySmall
               ?.copyWith(color: context.palette.inkSoft),
         ),
@@ -851,131 +1080,602 @@ class _StudyConstellationState extends State<StudyConstellation>
   }
 }
 
+class _NebulaClusterData {
+  const _NebulaClusterData({
+    required this.centroid,
+    required this.radius,
+    required this.specColor,
+    required this.textColor,
+    required this.name,
+  });
+
+  final Offset centroid;
+  final double radius;
+  final Color specColor;
+  final Color textColor;
+  final String name;
+}
+
 class _ConstellationPainter extends CustomPainter {
   _ConstellationPainter({
     required this.points,
     required this.selectedKey,
+    this.hoveredKey,
     required this.palette,
     required this.animation,
     required this.camera,
     required this.projection,
-  }) : super(repaint: Listenable.merge([animation, camera]));
+    this.viewportSize,
+    List<(Offset, Offset)>? staticEdges,
+    List<_NebulaClusterData>? nebulaClusters,
+  })  : staticEdges = staticEdges ??
+            computeStaticEdges(points.where((p) => p.$2.dx <= 800).toList()),
+        nebulaClusters = nebulaClusters ??
+            computeNebulaClusters(
+              points.where((p) => p.$2.dx <= 800).toList(),
+              palette.isDark,
+            ),
+        super(repaint: Listenable.merge([animation, camera]));
 
   final List<(StudySubject, Offset)> points;
+  final List<(Offset, Offset)> staticEdges;
+  final List<_NebulaClusterData> nebulaClusters;
   final String? selectedKey;
+  final String? hoveredKey;
   final EspectroPalette palette;
   final Animation<double> animation;
   final TransformationController camera;
   final StudyMapProjection projection;
+  final Size? viewportSize;
+
   double get _screenScale => camera.value.getMaxScaleOnAxis().clamp(.01, 4.0);
+
+  String? _lastActiveNeighbourKey;
+  List<(StudySubject, Offset)> _cachedActiveNeighbours = const [];
+
+  List<(StudySubject, Offset)> _getActiveNeighbours(
+    List<(StudySubject, Offset)> placedPoints,
+    String? activeKey,
+  ) {
+    if (activeKey == null) return const [];
+    if (activeKey == _lastActiveNeighbourKey) return _cachedActiveNeighbours;
+    _lastActiveNeighbourKey = activeKey;
+    _cachedActiveNeighbours = _nearbyPoints(placedPoints, activeKey);
+    return _cachedActiveNeighbours;
+  }
+
+  static const _tier1Anchors = {
+    'current:anarcocapitalismo',
+    'current:liberalismo-classico',
+    'current:social-democracia',
+    'current:marxismo-leninismo',
+    'current:fascismo',
+    'current:conservadorismo-tradicional',
+    'current:anarquismo-classico',
+    'current:democracia-crista',
+    'current:ecologismo-politico',
+    'current:socialismo-democratico',
+    'current:monarquismo-constitucional',
+    'current:neoliberalismo',
+    'current:nacional-bolchevismo',
+    'current:distributismo',
+    'current:minarquismo',
+    'current:comunismo-de-conselhos',
+    'current:nacional-conservadorismo',
+    'current:criptoanarquismo',
+    'current:transhumanismo-democratico',
+    'current:mutualismo',
+    'current:ordoliberalismo',
+    'current:socialismo-libertario',
+  };
+
+  static List<_NebulaClusterData> computeNebulaClusters(
+    List<(StudySubject, Offset)> placedPoints,
+    bool isDark,
+  ) {
+    final clusters = <_NebulaClusterData>[];
+    for (final spec in studySpectra) {
+      final cluster = placedPoints
+          .where((p) => spectrumOf(p.$1)?.id == spec.id)
+          .map((p) => p.$2)
+          .toList();
+      if (cluster.isEmpty) continue;
+      final avgX =
+          cluster.map((p) => p.dx).reduce((a, b) => a + b) / cluster.length;
+      final avgY =
+          cluster.map((p) => p.dy).reduce((a, b) => a + b) / cluster.length;
+      final centroid = Offset(avgX, avgY);
+      final radius = math.max(
+        110.0,
+        math.min(210.0, 45.0 + cluster.length * 3.8),
+      );
+      clusters.add(
+        _NebulaClusterData(
+          centroid: centroid,
+          radius: radius,
+          specColor: spec.color,
+          textColor: spec.ink(isDark),
+          name: spec.name,
+        ),
+      );
+    }
+    return clusters;
+  }
+
+  static List<(Offset, Offset)> computeStaticEdges(
+    List<(StudySubject, Offset)> placedPoints,
+  ) {
+    final edges = <(Offset, Offset)>[];
+    final corePoints = placedPoints
+        .where(
+          (p) =>
+              p.$1.kind == 'current' ||
+              _tier1Anchors.contains(p.$1.key),
+        )
+        .toList();
+    final sourcePoints = corePoints.length >= 10 ? corePoints : placedPoints;
+
+    final pointsBySpectrum = <String, List<(StudySubject, Offset)>>{};
+    for (final p in sourcePoints) {
+      final spec = spectrumOf(p.$1)?.id ?? 'other';
+      (pointsBySpectrum[spec] ??= []).add(p);
+    }
+
+    // Intra-spectrum connections: connect proximate nodes of same spectrum
+    for (final cluster in pointsBySpectrum.values) {
+      for (var i = 0; i < cluster.length; i++) {
+        final p1 = cluster[i];
+        var connections = 0;
+        for (var j = i + 1; j < cluster.length; j++) {
+          final p2 = cluster[j];
+          final dist = (p1.$2 - p2.$2).distance;
+          if (dist < 125) {
+            edges.add((p1.$2, p2.$2));
+            connections++;
+            if (connections >= 2) break;
+          }
+        }
+      }
+    }
+
+    // Adjacent-spectrum bridges (connect very close nodes across different spectra)
+    for (var i = 0; i < sourcePoints.length; i += 2) {
+      final p1 = sourcePoints[i];
+      final s1 = spectrumOf(p1.$1)?.id;
+      for (var j = i + 1; j < sourcePoints.length; j += 2) {
+        final p2 = sourcePoints[j];
+        final s2 = spectrumOf(p2.$1)?.id;
+        if (s1 != s2) {
+          final dist = (p1.$2 - p2.$2).distance;
+          if (dist < 65) {
+            edges.add((p1.$2, p2.$2));
+            break;
+          }
+        }
+      }
+    }
+    return edges;
+  }
+
   @override
   void paint(Canvas canvas, Size size) {
-    const c = StudyConstellationGeometry.center;
-    final grid = Paint()
-      ..color = palette.line
-      ..strokeWidth = 1 / _screenScale
-      ..style = PaintingStyle.stroke;
-    const plot = Rect.fromLTWH(100, 100, 680, 680);
-    canvas.drawRect(plot, grid);
-    for (var i = 1; i < 10; i++) {
-      final d = 100 + i * 68.0;
-      canvas.drawLine(Offset(d, 100), Offset(d, 780), grid);
-      canvas.drawLine(Offset(100, d), Offset(780, d), grid);
-    }
-    final axis = Paint()
-      ..color = palette.inkSoft.withValues(alpha: .45)
-      ..strokeWidth = 1.5 / _screenScale;
-    canvas.drawLine(const Offset(100, 440), const Offset(780, 440), axis);
-    canvas.drawLine(const Offset(440, 100), const Offset(440, 780), axis);
-    _text(
-      canvas,
-      '${projection.yLabel} ↑',
-      c - const Offset(0, 372),
-      palette.inkSoft,
-      12,
-    );
-    _text(
-      canvas,
-      '${projection.xLabel} →',
-      c + const Offset(0, 372),
-      palette.inkSoft,
-      12,
-    );
-    _text(canvas, projection.xLow, const Offset(180, 810), palette.inkSoft, 10);
-    _text(
-      canvas,
-      projection.xHigh,
-      const Offset(700, 810),
-      palette.inkSoft,
-      10,
-    );
-    _text(
-      canvas,
-      projection.yHigh,
-      const Offset(440, 100),
-      palette.inkSoft,
-      10,
-      background: palette.surface,
-    );
-    _text(
-      canvas,
-      projection.yLow,
-      const Offset(440, 780),
-      palette.inkSoft,
-      10,
-      background: palette.surface,
-    );
-    final selected = points.where((p) => p.$1.key == selectedKey).firstOrNull;
-    final neighbours = _nearbyPoints(points, selectedKey);
-    if (selected != null) {
-      for (final neighbour in neighbours) {
-        canvas.drawLine(
-          selected.$2,
-          neighbour.$2,
-          Paint()
-            ..color = palette.accent.withValues(alpha: .35)
-            ..strokeWidth = 1.4 / _screenScale,
+    // 1. Canvas background: transparent so the constellation blends seamlessly
+    final placedPoints = points.where((p) => p.$2.dx <= 800).toList();
+
+    // 2. Atmospheric Nebula Clouds per ideological spectrum (precomputed)
+    for (final nebula in nebulaClusters) {
+      final nebulaPaint = Paint()
+        ..shader = RadialGradient(
+          colors: [
+            nebula.specColor.withValues(alpha: palette.isDark ? 0.20 : 0.12),
+            nebula.specColor.withValues(alpha: palette.isDark ? 0.06 : 0.03),
+            Colors.transparent,
+          ],
+          stops: const [0.0, 0.55, 1.0],
+        ).createShader(
+          Rect.fromCircle(center: nebula.centroid, radius: nebula.radius),
         );
-      }
-      // A breathing halo is decorative only: no jitter in coordinates or hit areas.
-      canvas.drawCircle(
-        selected.$2,
-        (15 + 2 * math.sin(animation.value * math.pi * 2)) / _screenScale,
-        Paint()..color = palette.accent.withValues(alpha: .13),
+      canvas.drawCircle(nebula.centroid, nebula.radius, nebulaPaint);
+
+      // Subtle uppercase cluster name
+      _text(
+        canvas,
+        nebula.name.toUpperCase(),
+        nebula.centroid,
+        nebula.textColor.withValues(alpha: 0.45),
+        11.5,
       );
     }
-    for (final (subject, point) in points) {
-      final active = subject.key == selectedKey;
-      final related = neighbours.any((p) => p.$1.key == subject.key);
-      final color = spectrumOf(subject)?.color ?? palette.accent;
-      canvas.drawCircle(
-        point,
-        (active ? 7 : 3.5) / _screenScale,
+
+    // 3. Subtle guidelines (Crosshairs for Cartesian projections; Triangle outline for Tríades)
+    if (projection.isTriad) {
+      const v0 = Offset(140, 710);
+      const v1 = Offset(740, 710);
+      const v2 = Offset(440, 150);
+      final triPath = Path()
+        ..moveTo(v0.dx, v0.dy)
+        ..lineTo(v1.dx, v1.dy)
+        ..lineTo(v2.dx, v2.dy)
+        ..close();
+      canvas.drawPath(
+        triPath,
         Paint()
-          ..color = color.withValues(
-            alpha: selected == null || active || related ? .95 : .32,
-          ),
+          ..color = (palette.isDark
+                  ? const Color(0xFF334155)
+                  : const Color(0xFFCBD5E1))
+              .withValues(alpha: 0.38)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.5 / _screenScale,
       );
-      if (active) {
-        canvas.drawCircle(
-          point,
-          10 / _screenScale,
-          Paint()
-            ..color = color
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = 1.5 / _screenScale,
+      final triGrid = Paint()
+        ..color = (palette.isDark
+                ? const Color(0xFF334155)
+                : const Color(0xFFCBD5E1))
+            .withValues(alpha: 0.14)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1.0 / _screenScale;
+      for (var i = 1; i < 4; i++) {
+        final t = i / 4.0;
+        canvas.drawLine(
+          Offset.lerp(v0, v1, t)!,
+          Offset.lerp(v0, v2, t)!,
+          triGrid,
+        );
+        canvas.drawLine(
+          Offset.lerp(v1, v0, t)!,
+          Offset.lerp(v1, v2, t)!,
+          triGrid,
+        );
+        canvas.drawLine(
+          Offset.lerp(v2, v0, t)!,
+          Offset.lerp(v2, v1, t)!,
+          triGrid,
         );
       }
-      if (active ||
-          (related && _screenScale > .8) ||
-          (points.length < 30 && _screenScale > .9)) {
-        _text(
-          canvas,
-          subject.name,
-          point - Offset(0, 22 / _screenScale),
-          palette.ink,
-          13,
-          background: palette.surface,
+    } else {
+      final crossPaint = Paint()
+        ..color = (palette.isDark
+                ? const Color(0xFF334155)
+                : const Color(0xFFCBD5E1))
+            .withValues(alpha: 0.28)
+        ..strokeWidth = 1.0 / _screenScale;
+      canvas.drawLine(
+        const Offset(40, 440),
+        const Offset(840, 440),
+        crossPaint,
+      );
+      canvas.drawLine(
+        const Offset(440, 40),
+        const Offset(440, 840),
+        crossPaint,
+      );
+    }
+
+    // Unplaced / Sem posição tray
+    if (points.any((p) => p.$2.dx > 800)) {
+      final trayRect = const Rect.fromLTWH(806, 100, 72, 680);
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(trayRect, const Radius.circular(8)),
+        Paint()
+          ..color = (palette.isDark ? const Color(0xFF1E293B) : Colors.white)
+              .withValues(alpha: 0.75)
+          ..style = PaintingStyle.fill,
+      );
+      _text(
+        canvas,
+        'Sem posição',
+        const Offset(842, 117),
+        palette.inkSoft,
+        9,
+        background: palette.surface,
+      );
+    }
+
+    final activeKey = selectedKey ?? hoveredKey;
+    final activeSubject =
+        placedPoints.where((p) => p.$1.key == activeKey).firstOrNull;
+    final activeNeighbours = _getActiveNeighbours(placedPoints, activeKey);
+
+    // 4. Precomputed constellation network edges (zero O(N^2) calculations per frame)
+    final bgEdgePaint = Paint()
+      ..color = (palette.isDark
+              ? const Color(0xFF334155)
+              : const Color(0xFFCBD5E1))
+          .withValues(alpha: activeKey == null ? 0.32 : 0.12)
+      ..strokeWidth = 0.85 / _screenScale;
+
+    for (final edge in staticEdges) {
+      canvas.drawLine(edge.$1, edge.$2, bgEdgePaint);
+    }
+
+    // 5. Active dynamic connections for selected/hovered node
+    if (activeSubject != null) {
+      final activeColor =
+          spectrumOf(activeSubject.$1)?.color ?? palette.accent;
+      final pulsePhase = animation.value;
+
+      final glowPaint = Paint()
+        ..color = activeColor.withValues(alpha: 0.26)
+        ..strokeWidth =
+            (5.0 + 1.8 * math.sin(pulsePhase * math.pi * 2)) / _screenScale
+        ..strokeCap = StrokeCap.round;
+
+      final sharpPaint = Paint()
+        ..color = activeColor.withValues(alpha: 0.92)
+        ..strokeWidth = 2.0 / _screenScale
+        ..strokeCap = StrokeCap.round;
+
+      final pulseDotPaint = Paint()
+        ..color = Colors.white.withValues(alpha: 0.92);
+
+      for (final neighbour in activeNeighbours) {
+        canvas.drawLine(activeSubject.$2, neighbour.$2, glowPaint);
+        canvas.drawLine(activeSubject.$2, neighbour.$2, sharpPaint);
+
+        // Responsive traveling energy pulse dot along active connection
+        final t = (pulsePhase * 2.8) % 1.0;
+        final pulsePos = Offset.lerp(activeSubject.$2, neighbour.$2, t)!;
+        canvas.drawCircle(
+          pulsePos,
+          2.8 / _screenScale,
+          pulseDotPaint,
+        );
+      }
+
+      // Breathing halo on active star
+      final haloRadius =
+          (20.0 + 3.5 * math.sin(pulsePhase * math.pi * 2)) / _screenScale;
+      canvas.drawCircle(
+        activeSubject.$2,
+        haloRadius,
+        Paint()..color = activeColor.withValues(alpha: 0.18),
+      );
+    }
+
+    // Viewport visible bounds for culling offscreen elements
+    final vp = viewportSize ?? size;
+    final visibleBounds = Rect.fromPoints(
+      camera.toScene(Offset.zero),
+      camera.toScene(Offset(vp.width, vp.height)),
+    ).inflate(40.0);
+
+    // 6. Node stars / points (using reusable paints to eliminate GC thrashing)
+    final nodeFillPaint = Paint()..style = PaintingStyle.fill;
+    final nodeStrokePaint = Paint()..style = PaintingStyle.stroke;
+    final activeNeighbourKeys = activeNeighbours.map((p) => p.$1.key).toSet();
+
+    for (final (subject, point) in points) {
+      final isSelected = subject.key == selectedKey;
+      final isHovered = subject.key == hoveredKey;
+      final isActive = isSelected || isHovered;
+      final isNeighbour = activeNeighbourKeys.contains(subject.key);
+
+      // Viewport culling for distant offscreen stars
+      if (!isActive && !isNeighbour && !visibleBounds.contains(point)) {
+        continue;
+      }
+
+      final isAnchor = _tier1Anchors.contains(subject.key);
+      final color = spectrumOf(subject)?.color ?? palette.accent;
+
+      if (activeKey != null) {
+        if (isActive) {
+          // Double concentric ring
+          nodeStrokePaint
+            ..color = color
+            ..strokeWidth = 2.2 / _screenScale;
+          canvas.drawCircle(point, 13 / _screenScale, nodeStrokePaint);
+          nodeFillPaint.color = color;
+          canvas.drawCircle(point, 6.5 / _screenScale, nodeFillPaint);
+        } else if (isNeighbour) {
+          // Highlighted neighbour
+          nodeFillPaint.color = color.withValues(alpha: 0.24);
+          canvas.drawCircle(point, 9.0 / _screenScale, nodeFillPaint);
+          nodeFillPaint.color = color;
+          canvas.drawCircle(point, 5.2 / _screenScale, nodeFillPaint);
+        } else {
+          // Dimmed background node
+          nodeFillPaint.color = color.withValues(alpha: 0.22);
+          canvas.drawCircle(point, 3.0 / _screenScale, nodeFillPaint);
+        }
+      } else {
+        // Idle constellation state
+        if (isAnchor) {
+          nodeFillPaint.color = color.withValues(alpha: 0.20);
+          canvas.drawCircle(point, 8.0 / _screenScale, nodeFillPaint);
+          nodeFillPaint.color = color.withValues(alpha: 0.95);
+          canvas.drawCircle(point, 5.0 / _screenScale, nodeFillPaint);
+        } else {
+          nodeFillPaint.color = color.withValues(alpha: 0.15);
+          canvas.drawCircle(point, 6.5 / _screenScale, nodeFillPaint);
+          nodeFillPaint.color = color.withValues(alpha: 0.88);
+          canvas.drawCircle(point, 3.8 / _screenScale, nodeFillPaint);
+        }
+      }
+    }
+
+    // 7. Anti-collision label allocation with visual hierarchy
+    final allocatedBoxes = <Rect>[];
+
+    void tryDrawLabel({
+      required (StudySubject, Offset) entry,
+      required Color textColor,
+      required Color bgColor,
+      required double fontSize,
+      required bool isPriority,
+    }) {
+      final (subject, point) = entry;
+      // Skip if offscreen or if quota reached (unless priority)
+      if (!isPriority &&
+          (!visibleBounds.contains(point) || allocatedBoxes.length >= 32)) {
+        return;
+      }
+
+      final painter = TextPainter(
+        text: TextSpan(
+          text: subject.name,
+          style: TextStyle(
+            color: textColor,
+            fontFamily: 'IBMPlexSans',
+            fontSize: fontSize / _screenScale,
+            fontWeight: isPriority ? FontWeight.w700 : FontWeight.w600,
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+        maxLines: 1,
+        ellipsis: '…',
+      )..layout(maxWidth: math.min(260 / _screenScale, 864));
+
+      final w = painter.width;
+      final h = painter.height;
+
+      // 4 candidate placement offsets relative to node center
+      final candidates = [
+        Offset(-w / 2, 12 / _screenScale), // below
+        Offset(-w / 2, -(h + 12 / _screenScale)), // above
+        Offset(12 / _screenScale, -h / 2), // right
+        Offset(-(w + 12 / _screenScale), -h / 2), // left
+      ];
+
+      Rect? chosenBox;
+      Offset? chosenOffset;
+
+      for (final cand in candidates) {
+        final candTopLeft = point + cand;
+        final candOffset = Offset(
+          candTopLeft.dx.clamp(8.0, 872.0 - w),
+          candTopLeft.dy.clamp(8.0, 872.0 - h),
+        );
+        final box = candOffset & Size(w, h);
+        final collides = allocatedBoxes.any(
+          (existing) => existing.inflate(3.0 / _screenScale).overlaps(box),
+        );
+        if (!collides) {
+          chosenBox = box;
+          chosenOffset = candOffset;
+          break;
+        }
+      }
+
+      if (chosenBox == null && isPriority) {
+        // Force placement for priority (selected/hovered)
+        final candOffset = Offset(
+          (point.dx - w / 2).clamp(8.0, 872.0 - w),
+          (point.dy + 14 / _screenScale).clamp(8.0, 872.0 - h),
+        );
+        chosenBox = candOffset & Size(w, h);
+        chosenOffset = candOffset;
+      }
+
+      if (chosenBox != null && chosenOffset != null) {
+        allocatedBoxes.add(chosenBox);
+
+        // Frosted background pill
+        canvas.drawRRect(
+          RRect.fromRectAndRadius(
+            (chosenOffset - Offset(4 / _screenScale, 2 / _screenScale)) &
+                Size(w + 8 / _screenScale, h + 4 / _screenScale),
+            Radius.circular(4 / _screenScale),
+          ),
+          Paint()..color = bgColor,
+        );
+
+        if (isPriority) {
+          canvas.drawRRect(
+            RRect.fromRectAndRadius(
+              (chosenOffset - Offset(4 / _screenScale, 2 / _screenScale)) &
+                  Size(w + 8 / _screenScale, h + 4 / _screenScale),
+              Radius.circular(4 / _screenScale),
+            ),
+            Paint()
+              ..color = textColor.withValues(alpha: 0.35)
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = 1.0 / _screenScale,
+          );
+        }
+
+        painter.paint(canvas, chosenOffset);
+      }
+    }
+
+    // Draw in priority order:
+    // Priority 1: Selected and Hovered nodes
+    if (selectedKey != null) {
+      final selectedEntry = placedPoints
+          .where((p) => p.$1.key == selectedKey)
+          .firstOrNull;
+      if (selectedEntry != null) {
+        tryDrawLabel(
+          entry: selectedEntry,
+          textColor: palette.ink,
+          bgColor: palette.surface,
+          fontSize: 13.5,
+          isPriority: true,
+        );
+      }
+    }
+    if (hoveredKey != null && hoveredKey != selectedKey) {
+      final hoveredEntry = placedPoints
+          .where((p) => p.$1.key == hoveredKey)
+          .firstOrNull;
+      if (hoveredEntry != null) {
+        tryDrawLabel(
+          entry: hoveredEntry,
+          textColor: palette.ink,
+          bgColor: palette.surface.withValues(alpha: 0.95),
+          fontSize: 12.5,
+          isPriority: true,
+        );
+      }
+    }
+
+    // Priority 2: Direct neighbours of active node
+    for (final neighbour in activeNeighbours) {
+      if (neighbour.$1.key == selectedKey || neighbour.$1.key == hoveredKey) {
+        continue;
+      }
+      tryDrawLabel(
+        entry: neighbour,
+        textColor: palette.ink,
+        bgColor: palette.surface.withValues(alpha: 0.90),
+        fontSize: 11.5,
+        isPriority: false,
+      );
+    }
+
+    // Priority 3: Historical Tier-1 Anchors
+    for (final p in placedPoints) {
+      if (_tier1Anchors.contains(p.$1.key)) {
+        if (p.$1.key == selectedKey ||
+            p.$1.key == hoveredKey ||
+            activeNeighbours.any((n) => n.$1.key == p.$1.key)) {
+          continue;
+        }
+        tryDrawLabel(
+          entry: p,
+          textColor: palette.ink,
+          bgColor: palette.surface.withValues(alpha: 0.85),
+          fontSize: 11.0,
+          isPriority: false,
+        );
+      }
+    }
+
+    // Priority 4: Secondary currents (when zoom is >= 1.2 or list is small)
+    if (placedPoints.length < 35 || _screenScale >= 1.2) {
+      for (final p in placedPoints) {
+        if (_tier1Anchors.contains(p.$1.key) ||
+            p.$1.key == selectedKey ||
+            p.$1.key == hoveredKey ||
+            activeNeighbours.any((n) => n.$1.key == p.$1.key)) {
+          continue;
+        }
+        tryDrawLabel(
+          entry: p,
+          textColor: palette.inkSoft,
+          bgColor: palette.surface.withValues(alpha: 0.80),
+          fontSize: 10.0,
+          isPriority: false,
         );
       }
     }
@@ -1024,6 +1724,7 @@ class _ConstellationPainter extends CustomPainter {
   bool shouldRepaint(covariant _ConstellationPainter oldDelegate) =>
       oldDelegate.points != points ||
       oldDelegate.selectedKey != selectedKey ||
+      oldDelegate.hoveredKey != hoveredKey ||
       oldDelegate.palette != palette ||
       oldDelegate.projection != projection;
 }

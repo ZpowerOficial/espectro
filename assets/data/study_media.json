@@ -32,6 +32,21 @@
       "verifiedOn": "2026-11-04"
     },
     {
+      "key": "personality:alberto_torres",
+      "assetPath": "assets/portraits/alberto_torres.jpg",
+      "caption": "Alberto Torres",
+      "author": "Modesto Brocos Gómez",
+      "licenseName": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alberto_torres.jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q4712223",
+      "date": "1900 date QS:P571,+1900-00-00T00:00:00Z/9",
+      "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
+      "sha256": "1d81caffca4a86c1fea357b49a7a988fcf7b05a81675210e08a07bc3aa4fa859",
+      "bytes": 183873,
+      "verifiedOn": "2026-11-04"
+    },
+    {
       "key": "personality:alexander_berkman",
       "assetPath": "assets/portraits/alexander_berkman.png",
       "caption": "Alexander Berkman. Official photo taken prior to deportation, 1919.",
@@ -59,6 +74,21 @@
       "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
       "sha256": "da7ef897be3e32ef9d3911502fe21c1cacbb6c91b427beefc4ce1251c12a2a3c",
       "bytes": 72070,
+      "verifiedOn": "2026-11-04"
+    },
+    {
+      "key": "personality:amadeo_bordiga",
+      "assetPath": "assets/portraits/amadeo_bordiga.jpg",
+      "caption": "Soviet postcard depicting Italian communist leader Amadeo Bordiga, based on a drawing by Isaak Brodsky.",
+      "author": "Isaak Brodsky",
+      "licenseName": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amadeo_Bordiga.jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q314288",
+      "date": "1920-01-01",
+      "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
+      "sha256": "f64e982a7899c2faa624ac518bddcf26406e2ed48d7fe0659d0a0b9032f1abc3",
+      "bytes": 114526,
       "verifiedOn": "2026-11-04"
     },
     {
@@ -239,6 +269,21 @@
       "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
       "sha256": "5bf8cc143645ea0766a10de5fed8c19681203ab706405a013f87861bda91ef77",
       "bytes": 44471,
+      "verifiedOn": "2026-11-04"
+    },
+    {
+      "key": "personality:charles_de_gaulle",
+      "assetPath": "assets/portraits/charles_de_gaulle.jpg",
+      "caption": "Description: Signed photograph of General Charles de Gaulle, future president of the French Republic, extracted from a file on the Czech assault on Dunkirk. Date: 1945 Our Catalogue Reference: CN 4/19 This image is from the collections of The National Archives. Feel free to share it within the spirit of the Commons. For high quality reproductions of any item from our collection please contact our image library .",
+      "author": "The National Archives UK",
+      "licenseName": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:General_Charles_de_Gaulle_in_1945.jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q2042",
+      "date": "1945",
+      "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
+      "sha256": "3c44ff77f5b8ec37bea21822a0bd27c15ad306e8cc59fc378930230fccfd9891",
+      "bytes": 62109,
       "verifiedOn": "2026-11-04"
     },
     {
@@ -452,6 +497,21 @@
       "verifiedOn": "2026-11-04"
     },
     {
+      "key": "personality:errico_malatesta",
+      "assetPath": "assets/portraits/errico_malatesta.png",
+      "caption": "Errico Malatesta",
+      "author": "Unknown author Unknown author",
+      "licenseName": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Malatesta.png",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q215673",
+      "date": "circa 1890 date QS:P,+1890-00-00T00:00:00Z/9,P1480,Q5727902",
+      "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
+      "sha256": "7da48393a7c2bc675cc2fba8e7b708fcdb65f4e4beb88bdb82c2c47ba861060a",
+      "bytes": 251582,
+      "verifiedOn": "2026-11-04"
+    },
+    {
       "key": "personality:fhc",
       "assetPath": "assets/portraits/fhc.jpg",
       "caption": "Fernando Henrique Cardoso , presidente do Brasil.",
@@ -494,6 +554,21 @@
       "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
       "sha256": "e6244266c441f68fc28024c0f9f7cc8e12b76450442494709d2a90846f7c007c",
       "bytes": 67738,
+      "verifiedOn": "2026-11-04"
+    },
+    {
+      "key": "personality:frederick_douglass",
+      "assetPath": "assets/portraits/frederick_douglass.jpg",
+      "caption": "Portrait of Frederick Douglass as a younger man",
+      "author": "Engraved by J.C. Buttre from a daguerreotype.",
+      "licenseName": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Frederick_Douglass_as_a_younger_man.jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q215562",
+      "date": "1855",
+      "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
+      "sha256": "6d03181b0e9038590b558c7a9d52072cd15d4597f37539e9153e1e3ca281df40",
+      "bytes": 106412,
       "verifiedOn": "2026-11-04"
     },
     {
@@ -542,6 +617,21 @@
       "verifiedOn": "2026-11-04"
     },
     {
+      "key": "personality:georg_lukacs",
+      "assetPath": "assets/portraits/georg_lukacs.jpg",
+      "caption": "Lukács, György, Hungarian Marxist philosopher and literary critic.",
+      "author": "Horst Sturm",
+      "licenseName": "CC BY-SA 3.0 de",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Luk%C3%A1cs_Gy%C3%B6rgy.jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q151523",
+      "date": "1952-07-03",
+      "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
+      "sha256": "f64feeb7554c13ce3597d5a8c5fa8d8ac13d57d24822641650bdbeedab023b82",
+      "bytes": 42699,
+      "verifiedOn": "2026-11-04"
+    },
+    {
       "key": "personality:getulio_vargas",
       "assetPath": "assets/portraits/getulio_vargas.jpg",
       "caption": "Foto oficial de Getúlio Vargas , presidente do Brasil entre 1930 e 1945 e entre 1951 e 1954.",
@@ -555,6 +645,21 @@
       "sha256": "a522b512e5d925412e515342c95ed5317c6e3ab0037231bc7042d7e0225ace2e",
       "bytes": 71173,
       "verifiedOn": "2026-11-04"
+    },
+    {
+      "key": "personality:gilson_marques",
+      "assetPath": "assets/portraits/gilson_marques.jpg",
+      "caption": "Gilson Marques Vieira, advogado e deputado federal por Santa Catarina.",
+      "author": "Câmara dos Deputados",
+      "licenseName": "Domínio público governamental",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Retrato_oficial_deputado_Gilson_Marques_(NOVO-SC).jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q59283733",
+      "date": "2019",
+      "changes": "Arquivo oficial importado sem edição de pixels.",
+      "verifiedOn": "2026-11-07",
+      "sha256": "f7cf6df97a480a275ab68e1157abe6575667b225a8c981618a4e7a80a6005d5f",
+      "bytes": 39164
     },
     {
       "key": "personality:giorgia_meloni",
@@ -857,6 +962,21 @@
       "verifiedOn": "2026-11-04"
     },
     {
+      "key": "personality:jones_manoel",
+      "assetPath": "assets/portraits/jones_manoel.jpg",
+      "caption": "Jones Manoel, historiador, professor, comunicador e militante comunista brasileiro.",
+      "author": "Mídia NINJA",
+      "licenseName": "Creative Commons Attribution-ShareAlike 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jones_Manoel_em_2022.jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q98471131",
+      "date": "2022",
+      "changes": "Arquivo importado sem edição de pixels.",
+      "sha256": "b2427b90bc8b24f7cfac7c015619ebca4c79d4b5f8ee2193c4fddf2bfb78a6da",
+      "bytes": 25047,
+      "verifiedOn": "2026-11-07"
+    },
+    {
       "key": "personality:jose_bonifacio",
       "assetPath": "assets/portraits/jose_bonifacio.jpg",
       "caption": "José Bonifácio de Andrada e Silva",
@@ -902,6 +1022,21 @@
       "verifiedOn": "2026-11-04"
     },
     {
+      "key": "personality:juan_domingo_peron",
+      "assetPath": "assets/portraits/juan_domingo_peron.jpg",
+      "caption": "Official photo of President of Argentina, Juan Domingo Perón, using the presidential sash.",
+      "author": "Unknown author.",
+      "licenseName": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Juan_Domingo_Per%C3%B3n_(cropped_2).jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q93330",
+      "date": "1948-12-18",
+      "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
+      "sha256": "5ce9bdf29b67fac6024cd2feca829415dc90d6779d2e4a42c9fb278f16adfd2d",
+      "bytes": 110993,
+      "verifiedOn": "2026-11-04"
+    },
+    {
       "key": "personality:juscelino_kubitschek",
       "assetPath": "assets/portraits/juscelino_kubitschek.jpg",
       "caption": "Official photograph of Juscelino Kubitschek , president of Brazil between 1956 and 1961.",
@@ -929,6 +1064,21 @@
       "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
       "sha256": "6f032776dbc6ee021893e4be6f706efd7f07e02bca7f5f3036cbe75576db257a",
       "bytes": 36939,
+      "verifiedOn": "2026-11-04"
+    },
+    {
+      "key": "personality:karl_korsch",
+      "assetPath": "assets/portraits/karl_korsch.jpg",
+      "caption": "Original text: Source: marxist.org",
+      "author": "uploaded by Lodp ( talk )",
+      "licenseName": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korsch-karl.jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q60208",
+      "date": "25 January 2006 (original upload date)",
+      "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
+      "sha256": "f6c823c2ad66e74e3ca79cd9a897325db7d0d0da4781e816f2a13a04b41684b6",
+      "bytes": 16900,
       "verifiedOn": "2026-11-04"
     },
     {
@@ -1124,6 +1274,21 @@
       "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
       "sha256": "8e16583f4e30c00045bd71ba27762cfbd449e030bdf6055ed6cf515ade4a4ba6",
       "bytes": 109493,
+      "verifiedOn": "2026-11-04"
+    },
+    {
+      "key": "personality:margaret_thatcher",
+      "assetPath": "assets/portraits/margaret_thatcher.jpg",
+      "caption": "Portrait of Margaret Thatcher (1925–2013)",
+      "author": "derivative work by Begoon",
+      "licenseName": "Copyrighted free use",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Margaret_Thatcher_stock_portrait_(cropped).jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q7416",
+      "date": "between circa 1995 and circa 1996 date QS:P,+1995-00-00T00:00:00Z/8,P1319,+1995-00-00T00:00:00Z/9,P1326,+1996-00-00T00:00:00Z/9,P1480,Q5727902",
+      "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
+      "sha256": "69a736ed5881586713cdf4422f942967114adb33b24523f347994777511f2b65",
+      "bytes": 65853,
       "verifiedOn": "2026-11-04"
     },
     {
@@ -1382,6 +1547,21 @@
       "verifiedOn": "2026-11-04"
     },
     {
+      "key": "personality:peter_turguniev",
+      "assetPath": "assets/portraits/peter_turguniev.jpg",
+      "caption": "Peter Turguniev (Ricardo Albuquerque), criador do canal Ancapsu e do portal Visão Libertária.",
+      "author": "Canal Ancapsu",
+      "licenseName": "Uso institucional / promocional",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peter_Turguniev_Ancapsu.jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q108807212",
+      "date": "2024",
+      "changes": "Arquivo importado sem edição de pixels.",
+      "verifiedOn": "2026-11-07",
+      "sha256": "e81e861fce210966e0110b14cc1b9efc886b6768dfd0919d29bc89bb7cfd256d",
+      "bytes": 70857
+    },
+    {
       "key": "personality:pierre_joseph_proudhon",
       "assetPath": "assets/portraits/pierre_joseph_proudhon.jpg",
       "caption": "cropped version of larger painting",
@@ -1440,6 +1620,21 @@
       "sha256": "c04b702cc2d650acdf35634ed4ad1b1a5d12a037ad38a26e17564d7a53ccb5f9",
       "bytes": 41350,
       "verifiedOn": "2026-11-04"
+    },
+    {
+      "key": "personality:raphael_lima",
+      "assetPath": "assets/portraits/raphael_lima.jpg",
+      "caption": "Raphaël Lima, divulgador do libertarianismo e criador do canal Ideias Radicais.",
+      "author": "Divulgação pública",
+      "licenseName": "Uso institucional / promocional",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Raphael_Lima_Ideias_Radicais.jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q110826978",
+      "date": "2024",
+      "changes": "Arquivo importado sem edição de pixels.",
+      "verifiedOn": "2026-11-07",
+      "sha256": "4bb762f7c56df41b9a5b2dd976ecf2604dc6749f5c0028e549e72429a6d4e241",
+      "bytes": 18765
     },
     {
       "key": "personality:robert_nozick",
@@ -1529,6 +1724,21 @@
       "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
       "sha256": "c28ba32711b7846dc47ed99a65c916dde142d12a0c73a18f3158bcd01e675b14",
       "bytes": 72828,
+      "verifiedOn": "2026-11-04"
+    },
+    {
+      "key": "personality:rui_barbosa",
+      "assetPath": "assets/portraits/rui_barbosa.jpg",
+      "caption": "Rui Barbosa , jurista, diplomata, escritor e político brasileiro.",
+      "author": "F. Diaz",
+      "licenseName": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rui_Barbosa.jpg",
+      "wikidataUrl": "https://www.wikidata.org/wiki/Q916935",
+      "date": "before 1923 date QS:P,+1923-00-00T00:00:00Z/7,P1326,+1923-00-00T00:00:00Z/9",
+      "changes": "Arquivo importado sem edição de pixels; enquadramento de exibição pode recortar as bordas.",
+      "sha256": "778624a0abe97d96fac1a29fadcb7c3e6a03190c93ee47159ac9bb6e88d86ac4",
+      "bytes": 280343,
       "verifiedOn": "2026-11-04"
     },
     {

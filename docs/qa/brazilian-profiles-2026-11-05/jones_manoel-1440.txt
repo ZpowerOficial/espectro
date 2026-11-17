@@ -1,0 +1,37 @@
+- group:
+  - img "Símbolo do Espectro"
+  - text: ESPECTRO NAVEGAÇÃO
+  - button "Visão geral"
+  - button "Meus testes"
+  - button "Atlas político"
+  - button "Comparar"
+  - button "Histórico"
+  - button "Método aberto"
+  - text: SUA INVESTIGAÇÃO É PRIVADA Dados locais e exportação sob seu controle.
+- button "Back"
+- heading "Personalidade" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - text: POSIÇÕES DO PERFIL Doze eixos. Mais de uma leitura. −1 e +1 são os polos da escala. O centro não significa ausência de dados. 0/18 dimensões com leitura primária direta; 18/18 com reconstrução editorial documentada. Consulte as respostas e ressalvas em cada dimensão.
+    - 'group "Estrutura Federal Unitário Jones Manoel 0.00 Jones Manoel: 0.00 entre Federal e Unitário Combina coordenação nacional forte com participação local; autonomia territorial não é o princípio organizador central do programa. Concordância parcial em ambos os sentidos é posição institucional composta, não um campo ausente. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Estrutura"
+      - 'button "Respostas reconstruídas e fontes Programa: controle civil da defesa, políticas nacionais e participação popular, pp. 8–9 e 38–42"'
+      - group "Combina coordenação nacional forte com participação local; autonomia territorial não é o princípio organizador central do programa. Concordância parcial em ambos os sentidos é posição institucional composta, não um campo ausente. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. Programa de Mandato Parlamentar para 2027–2030. Jones Manoel e equipe de elaboração do programa · Campanha de 2026; versão consultada em 05/11/2026. Programa propositivo de mandato, 69 páginas. Distinguir propostas de políticas realizadas e opiniões sobre fatos de verificação independente desses fatos. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração literal do autor.. https://www.jonesmanoel2026.com.br/assets/files/Programa%20Jones%20Manoel.pdf":
+        - text: "Combina coordenação nacional forte com participação local; autonomia territorial não é o princípio organizador central do programa. Concordância parcial em ambos os sentidos é posição institucional composta, não um campo ausente. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. Simulação editorial: o autor não respondeu ao teste. As respostas abaixo traduzem a leitura das fontes para o banco do Espectro; as intensidades e a seleção dos itens podem ser questionadas. As leis sobre assuntos locais devem ser definidas pelos governos municipais ou estaduais. Resposta atribuída: Concordo Combina coordenação nacional forte com participação local; autonomia territorial não é o princípio organizador central do programa. Ressalva: Concordância parcial em ambos os sentidos é posição institucional composta, não um campo ausente. O país inteiro deve seguir as mesmas leis, mesmo contra as preferências de cada estado. Resposta atribuída: Concordo Combina coordenação nacional forte com participação local; autonomia territorial não é o princípio organizador central do programa. Ressalva: Concordância parcial em ambos os sentidos é posição institucional composta, não um campo ausente. Programa de Mandato Parlamentar para 2027–2030 Jones Manoel e equipe de elaboração do programa · Campanha de 2026; versão consultada em 05/11/2026. Programa propositivo de mandato, 69 páginas. Distinguir propostas de políticas realizadas e opiniões sobre fatos de verificação independente desses fatos. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração literal do autor."
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: O documento fundamenta a leitura qualitativa. As coordenadas e proporções são estimativas do Espectro, não percentuais publicados pelo autor.
+    - 'group "Representação Democracia Autocracia Jones Manoel -0.50 Jones Manoel: -0.50 entre Democracia e Autocracia Participação e organização dos trabalhadores são centrais; não se reconstrói a crítica à democracia burguesa como autorização automática a um líder sem controle. O modelo de democracia dos trabalhadores não equivale a todo parlamentarismo liberal. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Representação"
+      - button "Respostas reconstruídas e fontes Programa, princípios de atuação; entrevista, organização e uso do parlamento"
+    - 'group "Poder Segurança Liberdade Jones Manoel 0.50 Jones Manoel: 0.50 entre Segurança e Liberdade Rejeita operações letais e guerra contra os pobres, defendendo controle social das forças de segurança. Expressão não é ilimitada: propostas antirracistas e contra violência digital impõem limites. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Poder"
+      - button "Respostas reconstruídas e fontes Programa, segurança pública e controle popular da polícia, pp. 30–33"

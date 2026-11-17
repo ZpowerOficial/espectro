@@ -1,0 +1,513 @@
+{
+  "schemaVersion": 1,
+  "authority": "Câmara dos Deputados — Dados Abertos",
+  "requestUrl": "https://dadosabertos.camara.leg.br/api/v2/deputados?idLegislatura=56&itens=100&pagina=7&ordem=ASC&ordenarPor=id",
+  "requestedLegislature": 56,
+  "page": 7,
+  "fetchedAt": "2026-11-06T01:42:48.589287+00:00",
+  "responseSha256": "aa84452ea654b32417e4793197f54e3382cc9aac543f9e2d8bf40ffa4d7bfd5a",
+  "projection": "id, nome, uri only; not the complete API response",
+  "hasNextPage": true,
+  "identities": [
+    {
+      "id": 204385,
+      "name": "Valdevan Noventa",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204385"
+    },
+    {
+      "id": 204386,
+      "name": "Jose Mario Schreiner",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204386"
+    },
+    {
+      "id": 204386,
+      "name": "Jose Mario Schreiner",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204386"
+    },
+    {
+      "id": 204386,
+      "name": "Jose Mario Schreiner",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204386"
+    },
+    {
+      "id": 204387,
+      "name": "Sargento Fahur",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204387"
+    },
+    {
+      "id": 204388,
+      "name": "Bibo Nunes",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204388"
+    },
+    {
+      "id": 204388,
+      "name": "Bibo Nunes",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204388"
+    },
+    {
+      "id": 204388,
+      "name": "Bibo Nunes",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204388"
+    },
+    {
+      "id": 204389,
+      "name": "Elias Vaz",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204389"
+    },
+    {
+      "id": 204390,
+      "name": "Professor Alcides",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204390"
+    },
+    {
+      "id": 204390,
+      "name": "Professor Alcides",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204390"
+    },
+    {
+      "id": 204391,
+      "name": "José Nelto",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204391"
+    },
+    {
+      "id": 204391,
+      "name": "José Nelto",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204391"
+    },
+    {
+      "id": 204392,
+      "name": "Francisco Jr.",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204392"
+    },
+    {
+      "id": 204393,
+      "name": "Frei Anastacio Ribeiro",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204393"
+    },
+    {
+      "id": 204394,
+      "name": "Gervásio Maia",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204394"
+    },
+    {
+      "id": 204395,
+      "name": "Pedro Lupion",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204395"
+    },
+    {
+      "id": 204395,
+      "name": "Pedro Lupion",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204395"
+    },
+    {
+      "id": 204395,
+      "name": "Pedro Lupion",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204395"
+    },
+    {
+      "id": 204396,
+      "name": "VERMELHO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204396"
+    },
+    {
+      "id": 204396,
+      "name": "VERMELHO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204396"
+    },
+    {
+      "id": 204397,
+      "name": "Boca Aberta",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204397"
+    },
+    {
+      "id": 204398,
+      "name": "Felipe Francischini",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204398"
+    },
+    {
+      "id": 204398,
+      "name": "Felipe Francischini",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204398"
+    },
+    {
+      "id": 204399,
+      "name": "Schiavinato",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204399"
+    },
+    {
+      "id": 204400,
+      "name": "Aline Sleutjes",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204400"
+    },
+    {
+      "id": 204400,
+      "name": "Aline Sleutjes",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204400"
+    },
+    {
+      "id": 204400,
+      "name": "Aline Sleutjes",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204400"
+    },
+    {
+      "id": 204403,
+      "name": "Marlon Santos",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204403"
+    },
+    {
+      "id": 204403,
+      "name": "Marlon Santos",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204403"
+    },
+    {
+      "id": 204404,
+      "name": "Lucas Redecker",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204404"
+    },
+    {
+      "id": 204405,
+      "name": "Liziane Bayer",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204405"
+    },
+    {
+      "id": 204405,
+      "name": "Liziane Bayer",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204405"
+    },
+    {
+      "id": 204406,
+      "name": "Pedro Westphalen",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204406"
+    },
+    {
+      "id": 204407,
+      "name": "Fernanda Melchionna",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204407"
+    },
+    {
+      "id": 204408,
+      "name": "Gustinho Ribeiro",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204408"
+    },
+    {
+      "id": 204408,
+      "name": "Gustinho Ribeiro",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204408"
+    },
+    {
+      "id": 204409,
+      "name": "Daniel Trzeciak",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204409"
+    },
+    {
+      "id": 204410,
+      "name": "Luisa Canziani",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204410"
+    },
+    {
+      "id": 204410,
+      "name": "Luisa Canziani",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204410"
+    },
+    {
+      "id": 204411,
+      "name": "Filipe Barros",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204411"
+    },
+    {
+      "id": 204411,
+      "name": "Filipe Barros",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204411"
+    },
+    {
+      "id": 204411,
+      "name": "Filipe Barros",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204411"
+    },
+    {
+      "id": 204412,
+      "name": "Dr. Zacharias Calil",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204412"
+    },
+    {
+      "id": 204412,
+      "name": "Dr. Zacharias Calil",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204412"
+    },
+    {
+      "id": 204413,
+      "name": "Alcides Rodrigues",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204413"
+    },
+    {
+      "id": 204413,
+      "name": "Alcides Rodrigues",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204413"
+    },
+    {
+      "id": 204413,
+      "name": "Alcides Rodrigues",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204413"
+    },
+    {
+      "id": 204414,
+      "name": "Aroldo Martins",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204414"
+    },
+    {
+      "id": 204414,
+      "name": "Aroldo Martins",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204414"
+    },
+    {
+      "id": 204415,
+      "name": "Nereu Crispim",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204415"
+    },
+    {
+      "id": 204415,
+      "name": "Nereu Crispim",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204415"
+    },
+    {
+      "id": 204415,
+      "name": "Nereu Crispim",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204415"
+    },
+    {
+      "id": 204416,
+      "name": "SANDERSON",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204416"
+    },
+    {
+      "id": 204416,
+      "name": "UBIRATAN SANDERSON",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204416"
+    },
+    {
+      "id": 204416,
+      "name": "SANDERSON",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204416"
+    },
+    {
+      "id": 204416,
+      "name": "UBIRATAN SANDERSON",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204416"
+    },
+    {
+      "id": 204416,
+      "name": "UBIRATAN SANDERSON",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204416"
+    },
+    {
+      "id": 204416,
+      "name": "SANDERSON",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204416"
+    },
+    {
+      "id": 204418,
+      "name": "PROFESSOR LUIZÃO GOULART",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204418"
+    },
+    {
+      "id": 204418,
+      "name": "LUIZÃO GOULART",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204418"
+    },
+    {
+      "id": 204418,
+      "name": "PROFESSOR LUIZÃO GOULART",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204418"
+    },
+    {
+      "id": 204418,
+      "name": "LUIZÃO GOULART",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204418"
+    },
+    {
+      "id": 204418,
+      "name": "PROFESSOR LUIZÃO GOULART",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204418"
+    },
+    {
+      "id": 204418,
+      "name": "LUIZÃO GOULART",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204418"
+    },
+    {
+      "id": 204419,
+      "name": "Glaustin da Fokus",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204419"
+    },
+    {
+      "id": 204419,
+      "name": "Glaustin Fokus",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204419"
+    },
+    {
+      "id": 204420,
+      "name": "Julian Lemos",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204420"
+    },
+    {
+      "id": 204420,
+      "name": "Julian Lemos",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204420"
+    },
+    {
+      "id": 204421,
+      "name": "Edna Henrique",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204421"
+    },
+    {
+      "id": 204421,
+      "name": "Edna Henrique",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204421"
+    },
+    {
+      "id": 204422,
+      "name": "Ossesio Silva",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204422"
+    },
+    {
+      "id": 204422,
+      "name": "Ossesio Silva",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204422"
+    },
+    {
+      "id": 204423,
+      "name": "André Ferreira",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204423"
+    },
+    {
+      "id": 204423,
+      "name": "André Ferreira",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204423"
+    },
+    {
+      "id": 204425,
+      "name": "Silvio Costa Filho",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204425"
+    },
+    {
+      "id": 204425,
+      "name": "Silvio Costa Filho",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204425"
+    },
+    {
+      "id": 204426,
+      "name": "Carlos Veras",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204426"
+    },
+    {
+      "id": 204427,
+      "name": "Fernando Rodolfo",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204427"
+    },
+    {
+      "id": 204427,
+      "name": "Fernando Rodolfo",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204427"
+    },
+    {
+      "id": 204427,
+      "name": "Fernando Rodolfo",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204427"
+    },
+    {
+      "id": 204428,
+      "name": "Marília Arraes",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204428"
+    },
+    {
+      "id": 204428,
+      "name": "Marília Arraes",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204428"
+    },
+    {
+      "id": 204429,
+      "name": "João H. Campos",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204429"
+    },
+    {
+      "id": 204430,
+      "name": "Margarete Coelho",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204430"
+    },
+    {
+      "id": 204431,
+      "name": "Marcos Aurélio Sampaio",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204431"
+    },
+    {
+      "id": 204431,
+      "name": "Marcos Aurélio Sampaio",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204431"
+    },
+    {
+      "id": 204432,
+      "name": "Marina Santos",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204432"
+    },
+    {
+      "id": 204432,
+      "name": "Marina Santos",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204432"
+    },
+    {
+      "id": 204432,
+      "name": "Marina Santos",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204432"
+    },
+    {
+      "id": 204432,
+      "name": "Marina Santos",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204432"
+    },
+    {
+      "id": 204433,
+      "name": "Marcelo Calero",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204433"
+    },
+    {
+      "id": 204433,
+      "name": "Marcelo Calero",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204433"
+    },
+    {
+      "id": 204433,
+      "name": "Marcelo Calero",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204433"
+    },
+    {
+      "id": 204433,
+      "name": "Marcelo Calero",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204433"
+    },
+    {
+      "id": 204434,
+      "name": "Dra. Vanda Milani",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204434"
+    },
+    {
+      "id": 204434,
+      "name": "Dra. Vanda Milani",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204434"
+    },
+    {
+      "id": 204435,
+      "name": "Jesus Sérgio",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204435"
+    },
+    {
+      "id": 204436,
+      "name": "Isnaldo Bulhões Jr.",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204436"
+    },
+    {
+      "id": 204437,
+      "name": "Severino Pessoa",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204437"
+    }
+  ]
+}

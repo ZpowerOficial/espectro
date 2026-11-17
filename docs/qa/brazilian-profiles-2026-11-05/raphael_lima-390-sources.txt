@@ -1,0 +1,27 @@
+- button "Back"
+- heading "Personalidade" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - 'group "Estrutura Federal Unitário Raphaël Lima -1.00 Raphaël Lima: -1.00 entre Federal e Unitário A opção por jurisdições menores e concorrentes favorece autonomia e recusa uniformização compulsória. Federalismo aproxima um projeto de associação voluntária; não o descreve integralmente. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Estrutura"
+      - 'button "Respostas reconstruídas e fontes 2017: crítica do Estado; 2026: escolha e competição entre jurisdições"'
+      - group:
+        - text: "A opção por jurisdições menores e concorrentes favorece autonomia e recusa uniformização compulsória. Federalismo aproxima um projeto de associação voluntária; não o descreve integralmente. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. Simulação editorial: o autor não respondeu ao teste. As respostas abaixo traduzem a leitura das fontes para o banco do Espectro; as intensidades e a seleção dos itens podem ser questionadas. As leis sobre assuntos locais devem ser definidas pelos governos municipais ou estaduais. Resposta atribuída: Concordo totalmente A opção por jurisdições menores e concorrentes favorece autonomia e recusa uniformização compulsória. Ressalva: Federalismo aproxima um projeto de associação voluntária; não o descreve integralmente. O país inteiro deve seguir as mesmas leis, mesmo contra as preferências de cada estado. Resposta atribuída: Discordo totalmente A opção por jurisdições menores e concorrentes favorece autonomia e recusa uniformização compulsória. Ressalva: Federalismo aproxima um projeto de associação voluntária; não o descreve integralmente. Entrevista de Raphaël Lima ao Boletim da Liberdade Raphaël Lima, respostas em entrevista · 16/04/2017. Texto primário em edição ou transcrição digital. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração literal do autor."
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: Should You Fix Your Country or Leave It? — entrevista, episódio 203 Raphaël Lima e Timothy Allen · 09/10/2026. Transcrição automática editada pelo publicador; atribuições individuais podem conter erros. Falas políticas são posições do entrevistado, não fatos verificados sobre terceiros. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração literal do autor.
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: O documento fundamenta a leitura qualitativa. As coordenadas e proporções são estimativas do Espectro, não percentuais publicados pelo autor.
+- button "Início"
+- button "Testes"
+- button "Atlas"
+- button "Histórico"

@@ -1,0 +1,20 @@
+[
+  {
+    "width": 390,
+    "pan": true,
+    "wheel": true,
+    "allCurrents": 289,
+    "pageErrors": [],
+    "before": "e8170ea99509d4e3493d4044bc1fcbe21784ce478f6014026636515cab785b1d",
+    "after": "a8b392ad795a334047c4c92feaa03163728ce02091f19477252b4c3b3711111b"
+  },
+  {
+    "width": 1440,
+    "pan": true,
+    "wheel": true,
+    "allCurrents": 289,
+    "pageErrors": [],
+    "before": "93b6002aeb420b058c9317f0cc9c9f0b94d59879b7667443a4f4d7d46212caac",
+    "after": "8c8b58e6e26b68df6d4e61021237c6eb39b1e791ce9d3f66323a02b83f568a39"
+  }
+]

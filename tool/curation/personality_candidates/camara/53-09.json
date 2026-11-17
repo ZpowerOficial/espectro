@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "authority": "Câmara dos Deputados — Dados Abertos",
+  "requestUrl": "https://dadosabertos.camara.leg.br/api/v2/deputados?idLegislatura=53&itens=100&pagina=9&ordem=ASC&ordenarPor=id",
+  "requestedLegislature": 53,
+  "page": 9,
+  "fetchedAt": "2026-11-06T01:43:55.668250+00:00",
+  "responseSha256": "9dc6aebdb8e381ce180d77e73d7a9b6f9f85cd27c0b459928d162498b4dc41a5",
+  "projection": "id, nome, uri only; not the complete API response",
+  "hasNextPage": false,
+  "identities": [
+    {
+      "id": 151214,
+      "name": "RONALDO LEITE",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/151214"
+    },
+    {
+      "id": 151249,
+      "name": "JOSÉ EDMAR",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/151249"
+    },
+    {
+      "id": 151965,
+      "name": "MAINHA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/151965"
+    },
+    {
+      "id": 151965,
+      "name": "JOSÉ MAIA FILHO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/151965"
+    },
+    {
+      "id": 151965,
+      "name": "MAINHA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/151965"
+    },
+    {
+      "id": 151965,
+      "name": "JOSÉ MAIA FILHO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/151965"
+    },
+    {
+      "id": 152605,
+      "name": "GLAUBER BRAGA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152605"
+    },
+    {
+      "id": 152606,
+      "name": "CAPITÃO ASSUNÇÃO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152606"
+    },
+    {
+      "id": 152606,
+      "name": "CAPITÃO ASSUMÇÃO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152606"
+    },
+    {
+      "id": 152607,
+      "name": "JOSE VIEIRA LINS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152607"
+    },
+    {
+      "id": 152607,
+      "name": "ZÉ VIEIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152607"
+    },
+    {
+      "id": 152607,
+      "name": "ZÉ VIEIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152607"
+    },
+    {
+      "id": 152607,
+      "name": "JOSE VIEIRA LINS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152607"
+    },
+    {
+      "id": 152607,
+      "name": "ZÉ VIEIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152607"
+    },
+    {
+      "id": 152607,
+      "name": "JOSE VIEIRA LINS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152607"
+    },
+    {
+      "id": 152608,
+      "name": "FERNANDO NASCIMENTO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152608"
+    },
+    {
+      "id": 152609,
+      "name": "ELIZEU AGUIAR",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152609"
+    },
+    {
+      "id": 152610,
+      "name": "DR. ROBERTO ALVES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152610"
+    },
+    {
+      "id": 152610,
+      "name": "ROBERTO ALVES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152610"
+    },
+    {
+      "id": 152611,
+      "name": "ANTONIO CARLOS CHAMARIZ",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152611"
+    },
+    {
+      "id": 152865,
+      "name": "RODRIGO BETHLEM",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/152865"
+    },
+    {
+      "id": 153384,
+      "name": "EMILIA FERNANDES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/153384"
+    },
+    {
+      "id": 154178,
+      "name": "MILTON VIEIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/154178"
+    },
+    {
+      "id": 154178,
+      "name": "MILTON VIEIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/154178"
+    },
+    {
+      "id": 154417,
+      "name": "PAES DE LIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/154417"
+    },
+    {
+      "id": 154734,
+      "name": "FERNANDO CHIARELLI",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/154734"
+    },
+    {
+      "id": 154739,
+      "name": "JOSÉ C. STANGARLINI",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/154739"
+    },
+    {
+      "id": 154739,
+      "name": "JC STANGARLINI",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/154739"
+    },
+    {
+      "id": 154919,
+      "name": "ELEUSES PAIVA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/154919"
+    },
+    {
+      "id": 154919,
+      "name": "ELEUSES PAIVA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/154919"
+    },
+    {
+      "id": 154996,
+      "name": "WILSON PICLER",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/154996"
+    },
+    {
+      "id": 154997,
+      "name": "EMILIANO JOSÉ",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/154997"
+    },
+    {
+      "id": 155920,
+      "name": "GERALDINHO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/155920"
+    },
+    {
+      "id": 156634,
+      "name": "BENE CAMACHO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/156634"
+    },
+    {
+      "id": 157225,
+      "name": "CHARLES COZZOLINO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/157225"
+    },
+    {
+      "id": 157225,
+      "name": "CHARLES COZZOLINO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/157225"
+    },
+    {
+      "id": 158328,
+      "name": "CHICO DALTRO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/158328"
+    },
+    {
+      "id": 159058,
+      "name": "JUNIOR MARZOLA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/159058"
+    },
+    {
+      "id": 159058,
+      "name": "JUNIOR MARZOLA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/159058"
+    },
+    {
+      "id": 159257,
+      "name": "VIEGAS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/159257"
+    },
+    {
+      "id": 159258,
+      "name": "VICENTE SELISTRE",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/159258"
+    },
+    {
+      "id": 159259,
+      "name": "R. SÁ FILHO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/159259"
+    },
+    {
+      "id": 159260,
+      "name": "FLAVIO ANTUNES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/159260"
+    },
+    {
+      "id": 159261,
+      "name": "ANDRE MONTORO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/159261"
+    },
+    {
+      "id": 159262,
+      "name": "ANTONIO CARLOS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/159262"
+    },
+    {
+      "id": 159263,
+      "name": "DANIEL FONTANA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/159263"
+    },
+    {
+      "id": 159264,
+      "name": "ITAMAR ROCHA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/159264"
+    },
+    {
+      "id": 159265,
+      "name": "GISELA SEQUEIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/159265"
+    },
+    {
+      "id": 160317,
+      "name": "JOÃO BATISTA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/160317"
+    },
+    {
+      "id": 160318,
+      "name": "CARLOS ALBERTO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/160318"
+    },
+    {
+      "id": 160318,
+      "name": "CARLOS ALBERTO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/160318"
+    },
+    {
+      "id": 160365,
+      "name": "CHICO NETO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/160365"
+    },
+    {
+      "id": 160396,
+      "name": "JOSÉ HUMBERTO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/160396"
+    },
+    {
+      "id": 160426,
+      "name": "ROGÉRIO ROSSO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/160426"
+    },
+    {
+      "id": 160520,
+      "name": "SALLES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/160520"
+    },
+    {
+      "id": 160520,
+      "name": "SALLES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/160520"
+    }
+  ]
+}

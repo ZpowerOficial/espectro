@@ -1,0 +1,18 @@
+[
+  {
+    "width": 390,
+    "primaryCoverage": "8/18",
+    "triangleVisible": true,
+    "interactiveProbe": true,
+    "primarySourcePane": true,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "primaryCoverage": "8/18",
+    "triangleVisible": true,
+    "interactiveProbe": true,
+    "primarySourcePane": true,
+    "errors": []
+  }
+]

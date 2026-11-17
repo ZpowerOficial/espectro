@@ -1,0 +1,6 @@
+{
+  "provenance": "Scores arredondados transcritos do PDF original fornecido pelo usuário. Não contém respostas individuais, semente nem erros-padrão originais. Não permite reproduzir exatamente a pontuação inicial.",
+  "axes": {"estrutura": -1.0, "representacao": -1.0, "poder": 0.11, "imigracao": 0.5, "diplomacia": 0.11, "intervencao": -0.5, "economia": 1.0, "controle": 1.0, "comercio": 1.0, "religiao": -1.0, "moral": 0.0, "tecnologia": -0.25},
+  "triads": {"0": [0.0, 0.0, 1.0], "1": [1.0, 0.0, 0.0], "2": [0.083, 0.0, 0.917], "3": [0.383, 0.617, 0.0], "4": [0.5, 0.0, 0.5], "5": [0.265, 0.0, 0.735]},
+  "engagement": {"0": 0.33, "1": 0.33, "2": 0.36, "3": 0.48, "4": 0.67, "5": 0.45}
+}

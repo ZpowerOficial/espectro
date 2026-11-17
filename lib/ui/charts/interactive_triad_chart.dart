@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../domain/models/political_models.dart';
 import '../../theme.dart';
+import '../../widgets/common.dart';
 
 /// Pino opcional sobreposto no gráfico triangular (ex.: corrente ideológica).
 class TriadOverlayPin {
@@ -148,6 +149,11 @@ class _InteractiveTriadChartState extends State<InteractiveTriadChart> {
     final List<double> activeComp =
         _probedComposition ?? widget.triad.composition;
     final List<String> verts = widget.triad.vertices;
+    int dominantIndex = 0;
+    if (activeComp.length >= 3) {
+      if (activeComp[1] > activeComp[dominantIndex]) dominantIndex = 1;
+      if (activeComp[2] > activeComp[dominantIndex]) dominantIndex = 2;
+    }
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
@@ -170,6 +176,40 @@ class _InteractiveTriadChartState extends State<InteractiveTriadChart> {
               '${widget.triad.isIndeterminate ? ' Dimensão indeterminada: a posição é provisória.' : ''}',
           child: Column(
             children: <Widget>[
+              if (!widget.triad.isIndeterminate && verts.length >= 3)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 6),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
+                      decoration: BoxDecoration(
+                        color: accent.withValues(
+                          alpha: p.isDark ? 0.20 : 0.10,
+                        ),
+                        borderRadius: BorderRadius.circular(6),
+                        border: Border.all(
+                          color: accent.withValues(
+                            alpha: p.isDark ? 0.40 : 0.25,
+                          ),
+                          width: 1,
+                        ),
+                      ),
+                      child: Text(
+                        '${(activeComp[dominantIndex] * 100).round()}% ${verts[dominantIndex]}',
+                        style: TextStyle(
+                          fontFamily: 'IBMPlexMono',
+                          fontWeight: FontWeight.w700,
+                          fontSize: 11,
+                          color: accent,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               GestureDetector(
                 onTapDown: (TapDownDetails d) =>
                     _handleTouch(d.localPosition, canvasSize),
@@ -246,6 +286,24 @@ class _InteractiveTriadChartState extends State<InteractiveTriadChart> {
                   ],
                 ),
               ),
+              if (verts.length >= 3) ...<Widget>[
+                const SizedBox(height: 8),
+                Row(
+                  children: <Widget>[
+                    for (var i = 0; i < 3; i++) ...<Widget>[
+                      if (i > 0) const SizedBox(width: 6),
+                      Expanded(
+                        child: PolePill(
+                          label: verts[i],
+                          color: accent,
+                          isActive: dominantIndex == i && !widget.triad.isIndeterminate,
+                          badge: '${(activeComp[i] * 100).round()}%',
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ],
             ],
           ),
         );

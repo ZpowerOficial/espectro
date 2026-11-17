@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 1,
+  "authority": "Câmara dos Deputados — Dados Abertos",
+  "requestUrl": "https://dadosabertos.camara.leg.br/api/v2/deputados?idLegislatura=51&itens=100&pagina=5&ordem=ASC&ordenarPor=id",
+  "requestedLegislature": 51,
+  "page": 5,
+  "fetchedAt": "2026-11-06T01:46:51.871697+00:00",
+  "responseSha256": "732f841d2f0cd56447194ca0f45bb303ca1846b3f2643586acbca9c13d72ee52",
+  "projection": "id, nome, uri only; not the complete API response",
+  "hasNextPage": true,
+  "identities": [
+    {
+      "id": 74453,
+      "name": "CHIQUINHO FEITOSA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74453"
+    },
+    {
+      "id": 74454,
+      "name": "EUNÍCIO OLIVEIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74454"
+    },
+    {
+      "id": 74455,
+      "name": "LEO ALCÂNTARA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74455"
+    },
+    {
+      "id": 74456,
+      "name": "MANOEL SALVIANO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74456"
+    },
+    {
+      "id": 74457,
+      "name": "MORONI TORGAN",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74457"
+    },
+    {
+      "id": 74458,
+      "name": "SÉRGIO NOVAIS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74458"
+    },
+    {
+      "id": 74459,
+      "name": "ÁTILA LIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74459"
+    },
+    {
+      "id": 74460,
+      "name": "MARCELO CASTRO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74460"
+    },
+    {
+      "id": 74461,
+      "name": "THEMÍSTOCLES SAMPAIO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74461"
+    },
+    {
+      "id": 74462,
+      "name": "WELLINGTON DIAS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74462"
+    },
+    {
+      "id": 74463,
+      "name": "LAVOISIER MAIA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74463"
+    },
+    {
+      "id": 74464,
+      "name": "MÚCIO SÁ",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74464"
+    },
+    {
+      "id": 74465,
+      "name": "AVENZOAR ARRUDA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74465"
+    },
+    {
+      "id": 74466,
+      "name": "CARLOS DUNGA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74466"
+    },
+    {
+      "id": 74467,
+      "name": "DAMIÃO FELICIANO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74467"
+    },
+    {
+      "id": 74468,
+      "name": "DOMICIANO CABRAL",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74468"
+    },
+    {
+      "id": 74469,
+      "name": "INALDO LEITÃO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74469"
+    },
+    {
+      "id": 74470,
+      "name": "MARCONDES GADELHA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74470"
+    },
+    {
+      "id": 74471,
+      "name": "ANDRÉ DE PAULA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74471"
+    },
+    {
+      "id": 74472,
+      "name": "ARMANDO MONTEIRO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74472"
+    },
+    {
+      "id": 74473,
+      "name": "CARLOS BATATA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74473"
+    },
+    {
+      "id": 74474,
+      "name": "CARLOS EDUARDO CADOCA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74474"
+    },
+    {
+      "id": 74475,
+      "name": "CLEMENTINO COELHO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74475"
+    },
+    {
+      "id": 74476,
+      "name": "DJALMA PAES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74476"
+    },
+    {
+      "id": 74477,
+      "name": "JOAQUIM FRANCISCO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74477"
+    },
+    {
+      "id": 74478,
+      "name": "LUCIANO BIVAR",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74478"
+    },
+    {
+      "id": 74479,
+      "name": "MARCOS DE JESUS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74479"
+    },
+    {
+      "id": 74520,
+      "name": "JOSÉ THOMAZ NONÔ",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74520"
+    },
+    {
+      "id": 74521,
+      "name": "LUIZ DANTAS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74521"
+    },
+    {
+      "id": 74523,
+      "name": "TALVANE ALBUQUERQUE NETO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74523"
+    },
+    {
+      "id": 74524,
+      "name": "ADELSON RIBEIRO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74524"
+    },
+    {
+      "id": 74527,
+      "name": "CLEONÂNCIO FONSECA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74527"
+    },
+    {
+      "id": 74529,
+      "name": "JOSÉ TELES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74529"
+    },
+    {
+      "id": 74530,
+      "name": "MARCELO DÉDA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74530"
+    },
+    {
+      "id": 74534,
+      "name": "AROLDO CEDRAZ",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74534"
+    },
+    {
+      "id": 74535,
+      "name": "BENITO GAMA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74535"
+    },
+    {
+      "id": 74537,
+      "name": "CLAUDIO CAJADO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74537"
+    },
+    {
+      "id": 74538,
+      "name": "CORIOLANO SALES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74538"
+    },
+    {
+      "id": 74540,
+      "name": "ERALDO TINOCO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74540"
+    },
+    {
+      "id": 74541,
+      "name": "EUJÁCIO SIMÕES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74541"
+    },
+    {
+      "id": 74542,
+      "name": "FÉLIX MENDONÇA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74542"
+    },
+    {
+      "id": 74544,
+      "name": "GEDDEL VIEIRA LIMA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74544"
+    },
+    {
+      "id": 74545,
+      "name": "HAROLDO LIMA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74545"
+    },
+    {
+      "id": 74546,
+      "name": "JAIRO AZI",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74546"
+    },
+    {
+      "id": 74547,
+      "name": "JAIRO CARNEIRO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74547"
+    },
+    {
+      "id": 74548,
+      "name": "JAQUES WAGNER",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74548"
+    },
+    {
+      "id": 74549,
+      "name": "JOÃO ALMEIDA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74549"
+    },
+    {
+      "id": 74550,
+      "name": "JOÃO LEÃO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74550"
+    },
+    {
+      "id": 74552,
+      "name": "JORGE KHOURY",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74552"
+    },
+    {
+      "id": 74553,
+      "name": "JOSÉ CARLOS ALELUIA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74553"
+    },
+    {
+      "id": 74554,
+      "name": "JOSÉ ROCHA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74554"
+    },
+    {
+      "id": 74555,
+      "name": "LEUR LOMANTO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74555"
+    },
+    {
+      "id": 74556,
+      "name": "PEDRO EUGÊNIO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74556"
+    },
+    {
+      "id": 74557,
+      "name": "RICARDO FIUZA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74557"
+    },
+    {
+      "id": 74558,
+      "name": "GIVALDO CARIMBÃO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74558"
+    },
+    {
+      "id": 74559,
+      "name": "JOÃO CALDAS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74559"
+    },
+    {
+      "id": 74560,
+      "name": "REGIS CAVALCANTE",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74560"
+    },
+    {
+      "id": 74561,
+      "name": "AUGUSTO FRANCO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74561"
+    },
+    {
+      "id": 74562,
+      "name": "IVAN PAIXÃO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74562"
+    },
+    {
+      "id": 74563,
+      "name": "JORGE ALBERTO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74563"
+    },
+    {
+      "id": 74564,
+      "name": "SÉRGIO REIS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74564"
+    },
+    {
+      "id": 74565,
+      "name": "FRANCISTÔNIO PINTO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74565"
+    },
+    {
+      "id": 74566,
+      "name": "GERALDO SIMÕES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74566"
+    },
+    {
+      "id": 74567,
+      "name": "GERSON GABRIELLI",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74567"
+    },
+    {
+      "id": 74568,
+      "name": "JONIVAL LUCAS JUNIOR",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74568"
+    },
+    {
+      "id": 74569,
+      "name": "JOSÉ RONALDO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74569"
+    },
+    {
+      "id": 74570,
+      "name": "JUTAHY JUNIOR",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74570"
+    },
+    {
+      "id": 74571,
+      "name": "NELSON PELLEGRINO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74571"
+    },
+    {
+      "id": 74572,
+      "name": "NILO COELHO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74572"
+    },
+    {
+      "id": 74573,
+      "name": "PAULO BRAGA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74573"
+    },
+    {
+      "id": 74574,
+      "name": "PAULO MAGALHÃES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74574"
+    },
+    {
+      "id": 74575,
+      "name": "SAULO PEDROSA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74575"
+    },
+    {
+      "id": 74576,
+      "name": "WALDIR PIRES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74576"
+    },
+    {
+      "id": 74577,
+      "name": "CABO JÚLIO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74577"
+    },
+    {
+      "id": 74578,
+      "name": "CLEUBER CARNEIRO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74578"
+    },
+    {
+      "id": 74579,
+      "name": "CUSTÓDIO MATTOS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74579"
+    },
+    {
+      "id": 74580,
+      "name": "EDMAR MOREIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74580"
+    },
+    {
+      "id": 74581,
+      "name": "GILMAR MACHADO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74581"
+    },
+    {
+      "id": 74582,
+      "name": "GLYCON TERRA PINTO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74582"
+    },
+    {
+      "id": 74583,
+      "name": "HÉLIO COSTA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74583"
+    },
+    {
+      "id": 74584,
+      "name": "JOSÉ MILITÃO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74584"
+    },
+    {
+      "id": 74585,
+      "name": "LINCOLN PORTELA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74585"
+    },
+    {
+      "id": 74586,
+      "name": "MARIA DO CARMO LARA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74586"
+    },
+    {
+      "id": 74587,
+      "name": "MARIA LÚCIA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74587"
+    },
+    {
+      "id": 74588,
+      "name": "OLIMPIO PIRES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74588"
+    },
+    {
+      "id": 74589,
+      "name": "PIMENTA DA VEIGA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74589"
+    },
+    {
+      "id": 74590,
+      "name": "RAFAEL GUERRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74590"
+    },
+    {
+      "id": 74591,
+      "name": "ROMEU QUEIROZ",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74591"
+    },
+    {
+      "id": 74592,
+      "name": "RONALDO VASCONCELLOS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74592"
+    },
+    {
+      "id": 74593,
+      "name": "VIRGÍLIO GUIMARÃES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74593"
+    },
+    {
+      "id": 74632,
+      "name": "LUIZ MOREIRA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74632"
+    },
+    {
+      "id": 74633,
+      "name": "MANOEL CASTRO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74633"
+    },
+    {
+      "id": 74635,
+      "name": "MÁRIO NEGROMONTE",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74635"
+    },
+    {
+      "id": 74637,
+      "name": "PEDRO IRUJO",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74637"
+    },
+    {
+      "id": 74638,
+      "name": "PRISCO VIANA",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74638"
+    },
+    {
+      "id": 74640,
+      "name": "ROLAND LAVIGNE",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74640"
+    },
+    {
+      "id": 74644,
+      "name": "URSICINO QUEIROZ",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74644"
+    },
+    {
+      "id": 74645,
+      "name": "ADEMIR LUCAS",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74645"
+    },
+    {
+      "id": 74646,
+      "name": "AÉCIO NEVES",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74646"
+    },
+    {
+      "id": 74647,
+      "name": "ANTÔNIO DO VALLE",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/74647"
+    }
+  ],
+  "unresolvedIdentities": [],
+  "sourceRecordCount": 100
+}

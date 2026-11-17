@@ -1,0 +1,714 @@
+{
+  "ns_women": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos do texto primário via navegador de pesquisa",
+    "locators": [
+      "Passagens sobre emancipação e esferas atribuídas a homens e mulheres",
+      "Discurso de 1934: papéis de gênero e emancipação"
+    ],
+    "accessSha256": null,
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://germanhistorydocs.org/en/nazi-germany-1933-1945/ghdi:document-1557"
+  },
+  "hossbach": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos do texto primário via navegador de pesquisa",
+    "locators": [
+      "Trecho que propõe resolver a questão territorial pela força; cenários 1–3",
+      "Seções Autarky e Participation in World Economy",
+      "Registro de 1937: território, força e comércio"
+    ],
+    "accessSha256": null,
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://germanhistorydocs.org/en/nazi-germany-1933-1945/ghdi:document-1540"
+  },
+  "manifesto": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulo II: propriedade burguesa e medidas de transição",
+      "Capítulo II: centralização de crédito e transportes; plano comum da produção",
+      "Capítulo II: família burguesa, educação e posição das mulheres",
+      "Capítulo II: medidas de transição e associação futura"
+    ],
+    "accessSha256": "0ea2e3bc35288e83b22809e910dc4833b0f0b8afb9256161035d7a813614b40f",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.marxists.org/archive/marx/works/1848/communist-manifesto/ch02.htm"
+  },
+  "gotha": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Parte I: sociedade cooperativa e fases da sociedade comunista"
+    ],
+    "accessSha256": "5a5c4dfa66ea2461ead8e96b769b93d3cdfe78566911f74235dab34bb099d3f9",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.marxists.org/archive/marx/works/1875/gotha/ch01.htm"
+  },
+  "civil_war": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Seção III: conselheiros eleitos, responsabilidade e revogabilidade",
+      "Seção III: organização comunal e delegação nacional"
+    ],
+    "accessSha256": "037e32e71e911b9ca39351be270ac9bdeb4f9b9d39d7e955d874c9b2245b079c",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.marxists.org/archive/marx/works/1871/civil-war-france/ch05.htm"
+  },
+  "lenin_state": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulo V: fase inicial da sociedade comunista",
+      "Capítulo V: contabilidade e controle"
+    ],
+    "accessSha256": "bf71ebd5e31dee6ef2f2a6ffdcc470a463a21f6ffe9c03f9cac79bbdd2a3bb76",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.marxists.org/archive/lenin/works/1917/staterev/ch05.htm"
+  },
+  "lux_reform": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulo VIII: conquista do poder e transformação social"
+    ],
+    "accessSha256": "0d0aed80b0391c7e4f9775f6c58392389d99fc9eb209c1ec250f287cc6a7c5f1",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.marxists.org/archive/luxemburg/1900/reform-revolution/ch08.htm"
+  },
+  "mill_liberty": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulos I–IV: limites da autoridade e princípio de dano",
+      "Capítulo III: individualidade como elemento do bem-estar",
+      "Capítulos II–III: expressão, discussão e individualidade"
+    ],
+    "accessSha256": "b0724525c3fc36678fc31d219310b8112ede904c5f75b5fbc46fbe798dd1e5ed",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/34901"
+  },
+  "locke_treatise": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulo V: propriedade",
+      "Capítulos IX e XI: fins e limites do governo",
+      "Capítulos XI–XIII e XIX: legislativo e dissolução do governo"
+    ],
+    "accessSha256": "24dda46cad9e1b2f4be7dab37686c7eec99ff244afc1f3ca68177404dd4b363c",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/7370"
+  },
+  "hobbes": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulos XVII–XIX: instituição e direitos do soberano",
+      "Capítulos XVIII e XXI: soberania e liberdade dos súditos"
+    ],
+    "accessSha256": "07558519b4ea8981891404085b6e680e5eb4801e95686e68bfaa42785638d18d",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/3207"
+  },
+  "rousseau": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Livro II e Livro III, capítulo XV: soberania e representação",
+      "Livro IV, capítulo VIII: religião civil"
+    ],
+    "accessSha256": "87eebe37ae32e42acb34f21ef84eb87aaca0c0d79b69b1fa448ceface254a1de",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/46333"
+  },
+  "smith": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Livro IV, capítulo II: restrições às importações",
+      "Livro IV, capítulos II–III: comércio e restrições"
+    ],
+    "accessSha256": "e69f6fb0d03e97bbabd6b3fdda57c4e6c9b9a8e7ab52a2943a6b40edf51d15ea",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/3300"
+  },
+  "burke": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Passagens sobre herança, continuidade e reforma"
+    ],
+    "accessSha256": "5d043da95052f49af1e26c62c7de2639d5b32dc9f60bccd6014c2827f6f61d18",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/15679"
+  },
+  "bastiat": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Discussão da lei como defesa coletiva de direitos",
+      "Discussão da espoliação legal e propriedade"
+    ],
+    "accessSha256": "b019222c30bdb32ac0681e319eb6bb8d00be44e0e9d558d1a0486dee36e4370b",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/44800"
+  },
+  "rothbard": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulo 2: propriedade e intercâmbio",
+      "Capítulos 5–6: liberdades pessoais e coerção",
+      "Capítulos 10–12: setor público, ruas e polícia",
+      "Capítulo 14: guerra e política externa",
+      "Capítulos 10–12: provisão privada",
+      "Capítulo 3 e capítulo 12: Estado e provisão de justiça"
+    ],
+    "accessSha256": "2522756487c91a907137afe4b87b3d148324ce37a9f1af3526e3b8d6260d93ee",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://cdn.mises.org/For%20a%20New%20Liberty%20The%20Libertarian%20Manifesto_3.pdf"
+  },
+  "mises": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulo I: propriedade",
+      "Capítulo II: política econômica",
+      "Capítulo III: política externa e livre comércio",
+      "Capítulos I e III: paz e política externa"
+    ],
+    "accessSha256": "bf54a916ff3f7e2a748704b5fd8b5843134aa9a15548034d45eca1e087dbd51b",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://cdn.mises.org/Liberalism%20In%20the%20Classical%20Tradition_0.pdf"
+  },
+  "hayek_knowledge": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Seções I, IV–VI: conhecimento disperso e sistema de preços"
+    ],
+    "accessSha256": "89e6c1f85faa4e94368e666f40fc68cfdc2b776cd397de52bc9b67497969b008",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.econlib.org/library/Essays/hykKnw.html"
+  },
+  "kropotkin_bread": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulos I–IV: riqueza social e expropriação",
+      "Capítulo XI: livre acordo"
+    ],
+    "accessSha256": "0e7669573229e176e79430f4174880c03db8e538985c23c8eb47977fc6e11bd5",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/23428"
+  },
+  "goldman": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Ensaio Anarchism: What It Really Stands For",
+      "Crítica da propriedade e organização econômica voluntária"
+    ],
+    "accessSha256": "aaa630b48d3d555e22fcc83e846bff1bd6ee4df5887566061f8bb6e9366ffb62",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.marxists.org/reference/archive/goldman/works/1910s/anarchism.htm"
+  },
+  "malatesta": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Discussão de governo, autoridade e associação",
+      "Discussão de propriedade e emancipação"
+    ],
+    "accessSha256": "86884c454ed4b63f9ee27aec69d2f7d176ff237f26df149be026b86ba5e86ea0",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://theanarchistlibrary.org/library/errico-malatesta-anarchy"
+  },
+  "bakunin": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Crítica à autoridade divina e religiosa",
+      "Crítica à autoridade de Estado e à autoridade científica imposta"
+    ],
+    "accessSha256": "084c58e12a8e05411c836ea2beea041bddb526247ffb440839f1df8209dce658",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.marxists.org/reference/archive/bakunin/works/godstate/ch02.htm"
+  },
+  "barlow": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Passagens sobre soberania estatal, expressão e identidade",
+      "Passagens sobre governança e consenso"
+    ],
+    "accessSha256": "c1bf9bf5c0c9f1167a90471027eeef8456a9b3aa1068aef2645000af28640c35",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.eff.org/cyberspace-independence"
+  },
+  "cypherpunk": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Parágrafos sobre privacidade, anonimato e criptografia",
+      "Trecho sobre escrever e distribuir software"
+    ],
+    "accessSha256": "e63fe33f5de9f49b842d02d3d8e42c5f132edb480d6c2173b54084bcf090afe1",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.activism.net/cypherpunk/manifesto.html"
+  },
+  "rerum": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Parágrafos sobre propriedade privada e deveres de empregadores e trabalhadores",
+      "Passagens sobre a Igreja e a questão operária",
+      "Passagens sobre ação do Estado e associações operárias"
+    ],
+    "accessSha256": "56312d1af3d74621fff9315c70eb110f74a10880d52c5aeb426b712fba2b6b33",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_15051891_rerum-novarum.html"
+  },
+  "quadragesimo": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Parágrafos 79–80: subsidiariedade",
+      "Parágrafos sobre ordem econômica, concorrência e justiça social"
+    ],
+    "accessSha256": "783539672439355bb5668e50554af981e23b3d16a4b5592c97474a03e9ceffda",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.vatican.va/content/pius-xi/en/encyclicals/documents/hf_p-xi_enc_19310515_quadragesimo-anno.html"
+  },
+  "laudato": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulo III, especialmente 101–114: paradigma tecnocrático",
+      "Capítulo II: evangelho da criação"
+    ],
+    "accessSha256": "5825a03e9be28bdff953818f31d8ddc52c1274e77f839adfb9b31be5c1f7c4c7",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.vatican.va/content/francesco/en/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html"
+  },
+  "un_charter": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Artigos 2(3), 2(4), 33 e 51",
+      "Artigos 2(7) e 39–42"
+    ],
+    "accessSha256": "da49c1a6b5db4f571f4bfb7d95488acb2b5337a35c8c7ab9e96ee4bd2486ed21",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.un.org/en/about-us/un-charter/full-text"
+  },
+  "iww": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos do texto primário via navegador de pesquisa",
+    "locators": [
+      "Preâmbulo: classe trabalhadora, propriedade e sistema salarial"
+    ],
+    "accessSha256": null,
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://archive.iww.org/culture/official/preamble/"
+  },
+  "panthers": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Ponto 1: autodeterminação da comunidade",
+      "Pontos 7–9: violência policial, presos e julgamento",
+      "Pontos 2–4: emprego, exploração e moradia"
+    ],
+    "accessSha256": "463d43d57b5572e31c48a773f9c97207ee4bfbbdb5196474cd699a426679c356",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.marxists.org/history/usa/workers/black-panthers/1966/10/15.htm"
+  },
+  "plato": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Livros V–VI: filósofos governantes",
+      "Livro III: bens dos guardiões; Livro V: comunidade entre guardiões",
+      "Livro V: educação das mulheres e organização familiar dos guardiões"
+    ],
+    "accessSha256": "1aeed43e7e7e5000385fd7cab12f9a74930a17cf707fdb310497832b4b9d080e",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/1497"
+  },
+  "aristotle": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Livro II: crítica à comunidade de propriedade",
+      "Livros III–IV: formas de governo e constituição mista"
+    ],
+    "accessSha256": "bb36b9c60671b2dd795d465b71cf8dd7fd744eb27cad44a6fd7dca940a1ef1c7",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/6762"
+  },
+  "machiavelli": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulos XII–XIV: armas e organização militar",
+      "Capítulos IX e XV–XIX: principado civil e manutenção do poder"
+    ],
+    "accessSha256": "9a98ed7cfad6b85acd2a4a370d88808cb22180debb9618cf0696bbc99a2a0a6d",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/1232"
+  },
+  "federalist": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Artigos 39 e 45: federação e poderes delegados",
+      "Artigos 10 e 51: representação e freios ao poder"
+    ],
+    "accessSha256": "c9f9435defac7ed3fb6c110b7cbcc9934713d08e5b04c80f8ee95329dad2a3a6",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/1404"
+  },
+  "kant_peace": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Artigos preliminares e definitivos para a paz",
+      "Quinto artigo preliminar: intervenção em outro Estado"
+    ],
+    "accessSha256": "97848962647a11cf3c18ebaaf04288df397b55797053caa393178df401effb99",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/50922"
+  },
+  "paine": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Parte II: origem dos governos e representação"
+    ],
+    "accessSha256": "003ed3fa236419916b62fc44a867551b2637d0b471fab738bcacd5074d8dd69e",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/3742"
+  },
+  "wollstonecraft": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulos II–IV e XII: educação, razão e cidadania"
+    ],
+    "accessSha256": "cbcba147faa86fe8833156c1dd801202101d1b871adacee5a72c2d47ca0396ac",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/3420"
+  },
+  "mill_women": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulos I–III: igualdade jurídica e matrimônio"
+    ],
+    "accessSha256": "3ae4a0c398500f160b45eb1008b30cb79be5517b30366aa58183147457954520",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/27083"
+  },
+  "spooner": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Seções I–II: consentimento e obrigação",
+      "Discussão de representação e consentimento"
+    ],
+    "accessSha256": "339775da722fe8da1c2b306f170cba1acc7ba2ecfb36a7368883f061fe2488ea",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/36145"
+  },
+  "thoreau": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Passagens sobre consciência e obediência ao governo"
+    ],
+    "accessSha256": "849e84934761768b708bba1afc436c26d38a6f26392dad8d78d5df1150248491",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/71"
+  },
+  "gandhi": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Capítulo XVII: resistência passiva / força da alma",
+      "Capítulos IX e XIX: ferrovias e maquinaria"
+    ],
+    "accessSha256": "54430ce0fada02a3529f6a9f359986ab650ca5061a4566814a01972e17b5600e",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.mkgandhi.org/ebks/hind_swaraj.pdf"
+  },
+  "ocalan": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Seções sobre autoadministração e confederalismo",
+      "Seção sobre participação e decisão",
+      "Participação e autoadministração"
+    ],
+    "accessSha256": "9eafde7640c0dad20ac642e19788df2dcfc8c4ca4a9c17eb547b5fa23508eccb",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://ocalanbooks.com/downloads/EN-brochure_democratic-confederalism_2017.pdf"
+  },
+  "constitution_us": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Artigos I e IV: competências e relações federais",
+      "Artigos I–III: ramos e composição dos poderes"
+    ],
+    "accessSha256": "04d4ae4b19269eecc5d93415c62305bbb282b935b5788b14c5f92ec8e0880ef1",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.archives.gov/founding-docs/constitution-transcript"
+  },
+  "constitution_br88": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Artigos 1º, 18 e 30: federação e autonomia",
+      "Artigos 1º e 14: soberania e participação",
+      "Artigo 19, I, combinado com art. 5º, VI"
+    ],
+    "accessSha256": "ca619aada608edc4eb938e4312560a6d58a7d21af7b1d5b2e4f4e210d308fdfe",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+  },
+  "constitution_sa": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Seção 1: valores fundadores; seção 19: direitos políticos",
+      "Seção 9: igualdade e proibição de discriminação",
+      "Seções 9 e 26–29: igualdade e direitos sociais"
+    ],
+    "accessSha256": "935e05b833ab54e3d7036dc0b83c831980106a65d09efbf6c5500097a7d25d23",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.justice.gov.za/constitution/SAConstitution-web-eng.pdf"
+  },
+  "constitution_portugal": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Artigos 1º–3º e 10º: Estado democrático e sufrágio",
+      "Artigo 41º: liberdade de consciência e separação"
+    ],
+    "accessSha256": "78bd9df2a0a5c165147d4ddb4aae7f2a2f4831a1221d709823a075f3ff292d8a",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.parlamento.pt/Legislacao/Paginas/ConstituicaoRepublicaPortuguesa.aspx"
+  },
+  "constitution_japan": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "Artigo 9: renúncia à guerra",
+      "Preâmbulo e artigos 41–43: soberania e Dieta"
+    ],
+    "accessSha256": "898dd6222320de87d4f00ba536f8e8a5b481497f684d5c16f76a146979c7ee77",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://www.shugiin.go.jp/internet/itdb_english.nsf/html/statics/english/constitution_e.htm"
+  },
+  "constitution_france": {
+    "status": "pending_access",
+    "reviewedAt": null,
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [],
+    "accessSha256": null,
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": null
+  },
+  "constitution_weimar": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos do texto primário via navegador de pesquisa",
+    "locators": [
+      "Artigos 1, 22 e 41: soberania e eleições",
+      "Artigos 151–156: ordem econômica e propriedade"
+    ],
+    "accessSha256": null,
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://germanhistorydocs.org/en/weimar-germany-1918-1933/ghdi:document-3937"
+  },
+  "tucker": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos na edição integral HTML/PDF consultada diretamente; arquivo temporário não distribuído",
+    "locators": [
+      "State Socialism and Anarchism: indivíduo e autoridade",
+      "State Socialism and Anarchism: monopólios e concorrência"
+    ],
+    "accessSha256": "e44a754e9ad586a6a16aa87f03f3a00c35ef701a327081768e6dbf3a68b9859d",
+    "limitation": "Conferência dos trechos indicados; não validação integral da obra, da aplicação histórica ou dos valores numéricos.",
+    "reviewedUrl": "https://theanarchistlibrary.org/library/benjamin-tucker-instead-of-a-book"
+  },
+  "pannekoek": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos indicados no texto primário consultado diretamente.",
+    "locators": [
+      "Parte I, seção 7: Council Organization",
+      "Parte I: tarefa e organização da produção"
+    ],
+    "accessSha256": "8776c8e8d0ebab96115893a1f082b630f3fdf4ea7e5a7822a7bdaa8f9ecbc4a7",
+    "limitation": "Conferência de trechos; não validação integral da obra, de sua aplicação histórica nem de magnitudes numéricas.",
+    "reviewedUrl": "https://www.marxists.org/archive/pannekoe/1947/workers-councils.htm"
+  },
+  "bernstein": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos indicados no texto primário consultado diretamente.",
+    "locators": [
+      "Capítulo III: Democracy and Socialism"
+    ],
+    "accessSha256": "63ca9cbf7264d2e8df1605c48d4d8b244c8950ed0c0108cda7e69b788a12d74a",
+    "limitation": "Conferência de trechos; não validação integral da obra, de sua aplicação histórica nem de magnitudes numéricas.",
+    "reviewedUrl": "https://www.marxists.org/reference/archive/bernstein/works/1899/evsoc/ch03-2.htm"
+  },
+  "fabian": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos indicados no texto primário consultado diretamente.",
+    "locators": [
+      "The Transition to Social Democracy e The Basis of Socialism",
+      "Ensaios sobre organização e transição"
+    ],
+    "accessSha256": "cda54147aa9ade534b9325004abccaabbb7ec946d208f9347f1f3de57030918f",
+    "limitation": "Conferência de trechos; não validação integral da obra, de sua aplicação histórica nem de magnitudes numéricas.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/69088"
+  },
+  "proudhon": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos indicados no texto primário consultado diretamente.",
+    "locators": [
+      "Capítulos II–V: domínio, posse e propriedade"
+    ],
+    "accessSha256": "a45f3d49bb5bd5adee3065b60ddc47f8d3e3aadec29df3b429f032de5f26617b",
+    "limitation": "Conferência de trechos; não validação integral da obra, de sua aplicação histórica nem de magnitudes numéricas.",
+    "reviewedUrl": "https://www.gutenberg.org/ebooks/360"
+  },
+  "mao_new": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos indicados no texto primário consultado diretamente.",
+    "locators": [
+      "Seção V: política da Nova Democracia",
+      "Seção VI: economia da Nova Democracia",
+      "Seção VI: economia da Nova Democracia"
+    ],
+    "accessSha256": "ae645117091714266c50bc793bf1387a02164e610c8cc1024eec705c19486f7f",
+    "limitation": "Conferência de trechos; não validação integral da obra, de sua aplicação histórica nem de magnitudes numéricas.",
+    "reviewedUrl": "https://www.marxists.org/reference/archive/mao/selected-works/volume-2/mswv2_26.htm"
+  },
+  "trotsky": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos indicados no texto primário consultado diretamente.",
+    "locators": [
+      "Teses 8–12: caráter internacional da revolução",
+      "Teses sobre transição de tarefas democráticas a socialistas"
+    ],
+    "accessSha256": "86f0d1ee8e8cab905a0d85c731872dcf56b9df53273b347356811adff58adc3d",
+    "limitation": "Conferência de trechos; não validação integral da obra, de sua aplicação histórica nem de magnitudes numéricas.",
+    "reviewedUrl": "https://www.marxists.org/archive/trotsky/1931/tpr/pr10.htm"
+  },
+  "thatcher1979": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos do documento primário institucional ou transcrito.",
+    "locators": [
+      "Seção A more prosperous country: propriedade e indústria",
+      "Passagens sobre controle de preços, concorrência e incentivos"
+    ],
+    "accessSha256": "79437ba721771897d761d84ccfd5f0daa25db49def7eea38c51a78ea8705c3b7",
+    "limitation": "Discurso e programa não são comprovação de execução; estimativas numéricas editoriais.",
+    "reviewedUrl": "https://www.margaretthatcher.org/document/110858"
+  },
+  "fdr_four": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos do documento primário institucional ou transcrito.",
+    "locators": [
+      "Conclusão: expressão, culto, privação e medo",
+      "Trechos sobre defesa e ajuda aos países que resistem à agressão"
+    ],
+    "accessSha256": "7917942ea7e2b8cd45f7032132ef244f80187686bc8ee68877b13f42654e33f8",
+    "limitation": "Discurso e programa não são comprovação de execução; estimativas numéricas editoriais.",
+    "reviewedUrl": "https://www.archives.gov/milestone-documents/president-franklin-roosevelts-annual-message-to-congress"
+  },
+  "reagan1981": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos do documento primário institucional ou transcrito.",
+    "locators": [
+      "Passagens sobre poderes delegados e relação com os estados",
+      "Passagens sobre tamanho do governo, tributação e iniciativa"
+    ],
+    "accessSha256": "932f8cc838d21c397d2b743d7ffa26c57c6171638bddd36d8aa3cfa34d2ba3cb",
+    "limitation": "Discurso e programa não são comprovação de execução; estimativas numéricas editoriais.",
+    "reviewedUrl": "https://avalon.law.yale.edu/20th_century/reagan1.asp"
+  },
+  "allende_un": {
+    "status": "passage_reviewed",
+    "reviewedAt": "2026-11-05",
+    "method": "Leitura dos trechos do documento primário institucional ou transcrito.",
+    "locators": [
+      "Passagens sobre liberdades políticas e democracia econômica",
+      "Passagens sobre recursos naturais, cobre e empresas transnacionais"
+    ],
+    "accessSha256": "5b9fa527585c831d61a9131bb6bd0f65cde732c19b5f01013039705368d9b3b3",
+    "limitation": "Discurso e programa não são comprovação de execução; estimativas numéricas editoriais.",
+    "reviewedUrl": "https://www.marxists.org/archive/allende/1972/december/04.htm"
+  }
+}

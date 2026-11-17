@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-05",
+  "scope": "3 reconstruções editoriais, não conclusão da revisão do catálogo",
+  "profiles": [
+    "murray_rothbard",
+    "karl_marx",
+    "ludwig_von_mises"
+  ],
+  "answers": 180,
+  "reconstructedDimensions": 54,
+  "testSuite": {
+    "status": "PASS",
+    "passed": 214
+  },
+  "flutterAnalyze": "PASS: 0 issues",
+  "flutterBuildWeb": "PASS",
+  "pythonCompile": "PASS",
+  "integrationIdempotence": "PASS",
+  "browser": "PASS: 3 perfis em 390 e 1440 px; ver browser.json",
+  "reaEvidence": "ev_58020b956cd36038ea9c141af103b0c8541fef15bef553ba45744274e772532a",
+  "physicalDevice": "NOT_RUN",
+  "completeCatalogReview": "PENDING",
+  "numericMissingDimensions": 5707,
+  "limitations": [
+    "As intensidades são interpretações editoriais.",
+    "A equivalência psicométrica das seleções de itens não está validada.",
+    "Nenhuma resposta foi ajustada para forçar uma corrente em primeiro lugar.",
+    "As correntes antigas ainda precisam de revisão documental e dimensional."
+  ],
+  "finalNoticeAdjustment": "Aviso de inelegibilidade restrito a correntes; personalidades reconstruídas não são rotuladas como parciais.",
+  "afterNoticeAdjustmentTests": {
+    "status": "PASS",
+    "passed": 11
+  },
+  "browserBuildScope": "Seis cenários na compilação com perfis e filtro de afinidades. Ajuste posterior restringe apenas o aviso da aba Fontes; validado pelos 11 testes adicionais."
+}

@@ -63,10 +63,10 @@ void main() {
   Future<void> reveal(WidgetTester tester, Finder finder) async {
     for (
       var attempt = 0;
-      attempt < 60 && finder.evaluate().isEmpty;
+      attempt < 120 && finder.evaluate().isEmpty;
       attempt++
     ) {
-      await tester.drag(verticalScroll(), const Offset(0, -250));
+      await tester.drag(verticalScroll(), const Offset(0, -350));
       await tester.pumpAndSettle();
     }
     expect(finder, findsWidgets);
@@ -75,8 +75,10 @@ void main() {
   }
 
   Future<void> top(WidgetTester tester) async {
-    await tester.drag(verticalScroll(), const Offset(0, 3000));
-    await tester.pumpAndSettle();
+    for (var i = 0; i < 5; i++) {
+      await tester.drag(verticalScroll(), const Offset(0, 3000));
+      await tester.pumpAndSettle();
+    }
   }
 
   testWidgets(
@@ -120,13 +122,13 @@ void main() {
     (tester) async {
       await start(tester, width: 1440);
       await open(tester, '/atlas?v=1');
-      await reveal(tester, find.text('Liberalismos'));
-      await tester.tap(find.text('Liberalismos'));
+      await reveal(tester, find.text('Direita'));
+      await tester.tap(find.text('Direita'));
       await tester.pumpAndSettle();
       await reveal(tester, find.text('Ver todos os caminhos'));
       expect(
         find.text(
-          'Direitos individuais, constitucionalismo e diferentes economias de mercado.',
+          'Tradições liberais e conservadoras, propriedade privada e concepções de ordem.',
         ),
         findsOneWidget,
       );
@@ -134,7 +136,7 @@ void main() {
       final visible = tester.widgetList<StudySubjectTile>(
         find.byType(StudySubjectTile),
       );
-      final spectrum = studySpectra.firstWhere((s) => s.name == 'Liberalismos');
+      final spectrum = studySpectra.firstWhere((s) => s.name == 'Direita');
       expect(visible, isNotEmpty);
       expect(
         visible.every((tile) => spectrumOf(tile.subject)?.id == spectrum.id),

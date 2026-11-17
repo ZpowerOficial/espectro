@@ -1,0 +1,74 @@
+{
+  "catalogVersion": "4.2.0",
+  "date": "2026-11-05",
+  "scope": "Revisão de trechos em parte do acervo; auditoria integral pendente.",
+  "apk": {
+    "path": "build/app/outputs/flutter-apk/espectro-fontes-ampliadas-2026-11-05.apk",
+    "kind": "debug test build",
+    "bytes": 219632395,
+    "sha256": "b4bf4e45b902370ee4af91d7082a83bccd3733d77568aca29331c60b70f0e5a1"
+  },
+  "checks": {
+    "flutterTests": {
+      "status": "PASS",
+      "count": 204,
+      "log": "/tmp/espectro-sources-tests-final.log"
+    },
+    "staticAnalysis": {
+      "status": "PASS",
+      "log": "/tmp/espectro-sources-analyze-final.log"
+    },
+    "webRelease": {
+      "status": "PASS",
+      "log": "/tmp/espectro-sources-web.log"
+    },
+    "androidDebug": {
+      "status": "PASS",
+      "log": "/tmp/espectro-sources-apk.log"
+    },
+    "idempotentIntegration": {
+      "status": "PASS"
+    },
+    "browser": {
+      "status": "PASS",
+      "viewports": [
+        390,
+        1440
+      ],
+      "report": "browser.json",
+      "checks": [
+        "14/18 linked dimensions in Nazism",
+        "Moral and Diplomacy reference controls are independently accessible",
+        "Document dates and URLs visible after expansion",
+        "No browser page errors"
+      ]
+    },
+    "physicalAndroid": {
+      "status": "NOT_RUN"
+    },
+    "focusedAfterAccessibilityFix": {
+      "status": "PASS",
+      "count": 12,
+      "log": "/tmp/espectro-sources-accessibility-tests.log"
+    },
+    "catalogManifest": {
+      "status": "PASS",
+      "report": "catalog-sha256.json"
+    }
+  },
+  "corpus": {
+    "subjects": 862,
+    "withReferences": 524,
+    "withPrimaryPassages": 153,
+    "primaryLinkedDimensions": 371,
+    "unreviewed": 15120,
+    "primary_supported": 371,
+    "insufficient": 25
+  },
+  "limitations": [
+    "153 fichas com pelo menos um trecho por dimensão, não 153 fichas integralmente revistas.",
+    "524 fichas com referências incluem contexto e fontes ainda não conferidas.",
+    "Todas as 862 fichas ainda têm pendências por dimensão.",
+    "Coordenadas numéricas são estimativas editoriais sem validação empírica."
+  ]
+}

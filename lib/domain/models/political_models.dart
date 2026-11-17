@@ -10,7 +10,7 @@ import '../../data/strict_json.dart';
 /// Histórico:
 /// - `2.0.0`: eixos com cobertura por polo e tríades com distância elevada
 ///   (composição + apoio absoluto) e regra estrita de indeterminação.
-const String kEspectroEngineVersion = '2.1.0';
+const String kEspectroEngineVersion = '2.2.0';
 
 /// Versão atual do banco unificado de itens.
 const String kEspectroBankVersion = '2.0.0';
@@ -71,7 +71,7 @@ enum TestDepth {
     (TestSuite.espectroIntegrated, TestDepth.quick) => 2,
     (TestSuite.espectroIntegrated, TestDepth.standard) => 4,
     (TestSuite.espectroIntegrated, TestDepth.deep) => 8,
-    (TestSuite.espectroIntegrated, TestDepth.exhaustive) => 0,
+    (TestSuite.espectroIntegrated, TestDepth.exhaustive) => 20,
     (TestSuite.bipolarAxes, TestDepth.quick) => 3,
     (TestSuite.bipolarAxes, TestDepth.standard) => 6,
     (TestSuite.bipolarAxes, TestDepth.deep) => 20,
@@ -84,7 +84,7 @@ enum TestDepth {
     (TestSuite.espectroIntegrated, TestDepth.quick) => 2,
     (TestSuite.espectroIntegrated, TestDepth.standard) => 4,
     (TestSuite.espectroIntegrated, TestDepth.deep) => 8,
-    (TestSuite.espectroIntegrated, TestDepth.exhaustive) => 0,
+    (TestSuite.espectroIntegrated, TestDepth.exhaustive) => 16,
     (TestSuite.triads, TestDepth.quick) => 3,
     (TestSuite.triads, TestDepth.standard) => 6,
     (TestSuite.triads, TestDepth.deep) => 12,
@@ -108,7 +108,9 @@ enum TestDepth {
   }
 
   String estimatedDuration(int count) {
-    final int minutes = (count / 7.5).ceil().clamp(3, 180);
+    // Oito segundos por item é uma referência conservadora. O limite anterior
+    // de 40 min fazia a bateria de 528 itens parecer mais curta que a de 240.
+    final int minutes = (count / 8.0).ceil().clamp(3, 90);
     return '~$minutes min';
   }
 
@@ -157,33 +159,38 @@ enum LikertAnswer {
   }
 }
 
-enum UnifiedQuestionKind { bipolar, triad }
+enum UnifiedQuestionKind { bipolar, triad, integrated }
 
 /// Item unificado apresentado durante uma sessão do Espectro.
+///
+/// Pode ser puramente bipolar (avalia apenas um eixo), puramente triangular (avalia
+/// apenas uma tríade) ou integrado (avalia simultaneamente um eixo bipolar e um
+/// vértice de tríade com uma única resposta Likert do usuário).
 class UnifiedQuestion {
-  const UnifiedQuestion.bipolar(this.axisQuestion)
-    : kind = UnifiedQuestionKind.bipolar,
-      sixQuestion = null;
+  const UnifiedQuestion.bipolar(this.axisQuestion, {this.sixQuestion})
+    : kind = UnifiedQuestionKind.bipolar;
 
-  const UnifiedQuestion.triad(this.sixQuestion)
-    : kind = UnifiedQuestionKind.triad,
-      axisQuestion = null;
+  const UnifiedQuestion.triad(this.sixQuestion, {this.axisQuestion})
+    : kind = UnifiedQuestionKind.triad;
+
+  const UnifiedQuestion.integrated({
+    required this.axisQuestion,
+    required this.sixQuestion,
+  }) : kind = UnifiedQuestionKind.integrated;
 
   final UnifiedQuestionKind kind;
   final AxisQuestion? axisQuestion;
   final SixQuestion? sixQuestion;
 
-  String get uid => kind == UnifiedQuestionKind.bipolar
-      ? 'axis:${axisQuestion!.id}'
-      : 'tri:${sixQuestion!.id}';
+  String get uid => kind == UnifiedQuestionKind.triad
+      ? 'tri:${sixQuestion!.id}'
+      : 'axis:${axisQuestion!.id}';
 
-  String get text => kind == UnifiedQuestionKind.bipolar
-      ? axisQuestion!.text
-      : sixQuestion!.text;
+  String get text => axisQuestion?.text ?? sixQuestion!.text;
 
   /// Peso positivo do item na agregação da sua dimensão.
   double get weight {
-    if (kind == UnifiedQuestionKind.bipolar) {
+    if (axisQuestion != null) {
       return axisQuestion!.weight;
     }
     // Nos itens triangulares, a força (1..4) pondera suavemente de 1.0 a 1.75.
@@ -195,15 +202,20 @@ class UnifiedQuestion {
   ///   `+1` quando concordar aponta para `rightPole` (`S -> +1`).
   /// - Em tríade: `+1` quando concordar apoia o vértice, `-1` quando concordar o rejeita.
   int get polaritySign {
-    if (kind == UnifiedQuestionKind.bipolar) {
+    if (axisQuestion != null) {
       return axisQuestion!.agreeIsLeft ? -1 : 1;
     }
     return sixQuestion!.multiplier;
   }
 
-  String get dimensionKey => kind == UnifiedQuestionKind.bipolar
-      ? axisQuestion!.axisId
-      : 'tri_${sixQuestion!.category}';
+  String get dimensionKey {
+    if (axisQuestion != null && sixQuestion != null) {
+      return '${axisQuestion!.axisId}+tri_${sixQuestion!.category}';
+    }
+    return axisQuestion != null
+        ? axisQuestion!.axisId
+        : 'tri_${sixQuestion!.category}';
+  }
 }
 
 /// Contribuição auditável de uma pergunta respondida para o cálculo de uma dimensão.
@@ -379,9 +391,9 @@ class BipolarDimensionScore {
   String get summary {
     if (isIndeterminate) return 'Dados insuficientes';
     if (score.abs() < 0.15) {
-      return 'Equilibrado (${leftPercent.round()}/${rightPercent.round()})';
+      return 'Equilibrado (${leftPercent.toStringAsFixed(2)}% / ${rightPercent.toStringAsFixed(2)}%)';
     }
-    return '${dominantPercent.round()}% $dominantPole';
+    return '${dominantPercent.toStringAsFixed(2)}% $dominantPole';
   }
 
   Map<String, Object?> toJson() => <String, Object?>{
@@ -550,12 +562,16 @@ class TriadDimensionScore {
 
   ScoreConfidence get confidence {
     if (isIndeterminate) return ScoreConfidence.insufficient;
+    final minItems = vertexBreakdownAvailable
+        ? vertexAnsweredCount.reduce((a, b) => a < b ? a : b)
+        : answeredCount ~/ 3;
+    if (minItems < 3) return ScoreConfidence.low;
     if (coverage < 0.70 ||
         minimumVertexCoverage < 0.34 ||
         standardError > 0.30) {
       return ScoreConfidence.low;
     }
-    if (coverage < 0.90 || standardError > 0.18) {
+    if (minItems < 4 || coverage < 0.90 || standardError > 0.18) {
       return ScoreConfidence.moderate;
     }
     return ScoreConfidence.high;
@@ -751,6 +767,15 @@ class ResponseQualityReport {
 
   bool get hasLowCoverageWarning => coverage < 0.70;
 
+  /// Modalidades só de tríades não têm eixos para revelar tensão. Nesse caso,
+  /// marcar sempre o mesmo extremo não diferencia as três perspectivas e deve
+  /// ser sinalizado explicitamente, em vez de virar um perfil ideológico.
+  bool get hasUniformExtremeWarning =>
+      answeredAxisCount == 0 &&
+      totalAnswered >= 12 &&
+      extremeResponseRate >= 0.90 &&
+      acquiescenceIndex.abs() >= 0.90;
+
   /// Padrão de respostas integralmente neutras: o resultado reflete o centro
   /// do instrumento. Distinto do aviso de conflito, pois não há contradição —
   /// há ausência de diferenciação entre os polos.
@@ -772,6 +797,14 @@ class ResponseQualityReport {
         'ausência de diferenciação entre os polos, o que não é o mesmo que '
         'moderação convicta. Se essa não for sua intenção, revise os itens em '
         'que você tem preferência.',
+      );
+    }
+    if (hasUniformExtremeWarning) {
+      out.add(
+        'Você escolheu o mesmo extremo em ${(extremeResponseRate * 100).round()}% '
+        'dos itens. Nesta modalidade de tríades, isso não diferencia as três '
+        'perspectivas: o resultado deve ser lido como preferência fraca ou '
+        'padrão de resposta, não como posição ideológica firmada.',
       );
     }
     if (hasLowDiscriminationWarning) {
@@ -1047,6 +1080,7 @@ class EvaluationRecord {
     required this.triads,
     required this.quality,
     this.title,
+    this.isPreliminary = false,
   });
 
   static const int currentSchemaVersion = 1;
@@ -1065,6 +1099,7 @@ class EvaluationRecord {
   final List<TriadDimensionScore> triads;
   final ResponseQualityReport quality;
   final String? title;
+  final bool isPreliminary;
 
   String get displayTitle => (title != null && title!.trim().isNotEmpty)
       ? title!.trim()
@@ -1084,7 +1119,7 @@ class EvaluationRecord {
     return null;
   }
 
-  EvaluationRecord copyWith({String? title}) {
+  EvaluationRecord copyWith({String? title, bool? isPreliminary}) {
     return EvaluationRecord(
       id: id,
       createdAt: createdAt,
@@ -1098,6 +1133,7 @@ class EvaluationRecord {
       triads: triads,
       quality: quality,
       title: title ?? this.title,
+      isPreliminary: isPreliminary ?? this.isPreliminary,
     );
   }
 
@@ -1111,6 +1147,7 @@ class EvaluationRecord {
     'engineVersion': engineVersion,
     'bankVersion': bankVersion,
     'title': title,
+    'isPreliminary': isPreliminary,
     'rawAnswers': rawAnswers,
     'axes': <Object?>[for (final BipolarDimensionScore a in axes) a.toJson()],
     'triads': <Object?>[for (final TriadDimensionScore t in triads) t.toJson()],
@@ -1145,6 +1182,9 @@ class EvaluationRecord {
     if (parsedDate == null) {
       throw FormatException('$path.createdAt: data ISO-8601 inválida');
     }
+    final bool isPrelim = json['isPreliminary'] is bool
+        ? json['isPreliminary'] as bool
+        : false;
     return EvaluationRecord(
       id: readString(json['id'], '$path.id'),
       createdAt: parsedDate,
@@ -1154,6 +1194,7 @@ class EvaluationRecord {
       engineVersion: readString(json['engineVersion'], '$path.engineVersion'),
       bankVersion: readString(json['bankVersion'], '$path.bankVersion'),
       title: readStringOrNull(json['title'], '$path.title'),
+      isPreliminary: isPrelim,
       rawAnswers: rawAnswers,
       axes: <BipolarDimensionScore>[
         for (var i = 0; i < rawAxes.length; i++)

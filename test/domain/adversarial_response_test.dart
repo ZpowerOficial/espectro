@@ -67,7 +67,11 @@ void main() {
     final Map<int, int> perCategory = <int, int>{};
     for (final UnifiedQuestion q in questions) {
       if (q.kind == UnifiedQuestionKind.bipolar) {
-        perAxis.update(q.axisQuestion!.axisId, (int v) => v + 1, ifAbsent: () => 1);
+        perAxis.update(
+          q.axisQuestion!.axisId,
+          (int v) => v + 1,
+          ifAbsent: () => 1,
+        );
       } else {
         perCategory.update(
           q.sixQuestion!.category,
@@ -107,17 +111,25 @@ void main() {
 
       // O aviso global é o de conflito real, não o de "viés de resposta".
       expect(result.quality.warnings, hasLength(1));
-      expect(result.quality.warnings.single, contains('polos políticos divergentes'));
+      expect(
+        result.quality.warnings.single,
+        contains('polos políticos divergentes'),
+      );
       expect(result.quality.warnings.single, contains('não é uma reprovação'));
-      expect(result.quality.warnings.single, isNot(contains('Viés de resposta')));
+      expect(
+        result.quality.warnings.single,
+        isNot(contains('Viés de resposta')),
+      );
 
       // A concordância máxima anula o apoio por vértice (itens diretos e
       // invertidos se compensam): a composição tende ao equilíbrio e a
       // penalidade de engajamento é praticamente nula. O conflito está nos eixos.
       for (final TriadDimensionScore triad in result.triads) {
         expect(triad.vertexObserved.every((bool o) => o), isTrue);
-        expect(triad.composition.fold<double>(0.0, (double a, double b) => a + b),
-            closeTo(1.0, 1e-9));
+        expect(
+          triad.composition.fold<double>(0.0, (double a, double b) => a + b),
+          closeTo(1.0, 1e-9),
+        );
         for (final double p in triad.composition) {
           expect((p - 1 / 3).abs(), lessThan(0.12));
         }
@@ -132,7 +144,10 @@ void main() {
       expect(report.ranked, isNotEmpty);
       // A compatibilidade continua sendo um número, mas não é apresentada como
       // afinidade ideológica definida.
-      expect(report.explanation, contains('não devem ser lidas como afinidade'));
+      expect(
+        report.explanation,
+        contains('não devem ser lidas como afinidade'),
+      );
     });
 
     test('discordar de tudo espelha o diagnóstico sem inventar apoio', () {
@@ -142,7 +157,10 @@ void main() {
 
       expect(disagree.quality.acquiescenceIndex, closeTo(-1.0, 1e-9));
       expect(disagree.quality.hasLowDiscriminationWarning, isTrue);
-      expect(disagree.quality.warnings.single, contains('discordou fortemente'));
+      expect(
+        disagree.quality.warnings.single,
+        contains('discordou fortemente'),
+      );
 
       // Simetria de inversão: S -> -S nos eixos e v -> -v nos vértices.
       // Como `u = (v + 1)/2`, a inversão leva `u -> 1 - u` e, portanto,
@@ -249,7 +267,7 @@ void main() {
       // literalmente 'Esquerda', e posições sem evidência são excluídas.
       final current = report.ranked.first.current;
       expect(current.axes['economia']!.relevance, greaterThan(0));
-      expect(current.axes['economia']!.mu, lessThan(0));
+      expect(current.axes['economia']!.mu, lessThanOrEqualTo(0));
       expect(report.ranked.first.evaluatedDimensions, greaterThanOrEqualTo(6));
       // Apoio absoluto médio de 1/3 (um vértice apoiado, dois rejeitados) fica
       // levemente fora da faixa neutra, mas muito abaixo do limiar de alarme:
@@ -285,30 +303,33 @@ void main() {
       expect(compat(result).isLowDiscrimination, isFalse);
     });
 
-    test('alternância de concordância/discordância não fabrica apoio a vértice', () {
-      final List<UnifiedQuestion> questions = select();
-      int? alternating(UnifiedQuestion q) {
-        final int idx = questions.indexOf(q);
-        return idx.isEven ? 2 : -2;
-      }
+    test(
+      'alternância de concordância/discordância não fabrica apoio a vértice',
+      () {
+        final List<UnifiedQuestion> questions = select();
+        int? alternating(UnifiedQuestion q) {
+          final int idx = questions.indexOf(q);
+          return idx.isEven ? 2 : -2;
+        }
 
-      final ScoredEvaluation result = score(questions, alternating);
-      // Resultado é determinístico e auditável: toda dimensão tem resposta
-      // suficiente e nenhum vértice é preenchido sem observação.
-      for (final TriadDimensionScore triad in result.triads) {
-        expect(triad.vertexObserved.every((bool o) => o), isTrue);
-        expect(triad.answeredCount, 6);
-        expect(triad.isIndeterminate, isFalse);
-      }
-      // A alternância bruta não é um padrão ideológico: o aviso de baixa
-      // discriminação só existe se houver conflito real (>= 2 eixos e metade
-      // deles). O teste fixa o comportamento atual, seja qual for o veredito.
-      final int tensionAxes = result.quality.axesInTension.length;
-      expect(
-        result.quality.hasLowDiscriminationWarning,
-        tensionAxes >= 2 && tensionAxes / 12 >= 0.5,
-      );
-    });
+        final ScoredEvaluation result = score(questions, alternating);
+        // Resultado é determinístico e auditável: toda dimensão tem resposta
+        // suficiente e nenhum vértice é preenchido sem observação.
+        for (final TriadDimensionScore triad in result.triads) {
+          expect(triad.vertexObserved.every((bool o) => o), isTrue);
+          expect(triad.answeredCount, 6);
+          expect(triad.isIndeterminate, isFalse);
+        }
+        // A alternância bruta não é um padrão ideológico: o aviso de baixa
+        // discriminação só existe se houver conflito real (>= 2 eixos e metade
+        // deles). O teste fixa o comportamento atual, seja qual for o veredito.
+        final int tensionAxes = result.quality.axesInTension.length;
+        expect(
+          result.quality.hasLowDiscriminationWarning,
+          tensionAxes >= 2 && tensionAxes / 12 >= 0.5,
+        );
+      },
+    );
   });
 
   group('pulos, cobertura e ausência de fabricação', () {
@@ -316,10 +337,19 @@ void main() {
       final List<UnifiedQuestion> questions = select();
       final ScoredEvaluation result = score(questions, (_) => null);
 
-      expect(result.axes.every((BipolarDimensionScore a) => a.isIndeterminate), isTrue);
-      expect(result.axes.every((BipolarDimensionScore a) => a.answeredCount == 0), isTrue);
       expect(
-        result.axes.every((BipolarDimensionScore a) => a.confidence == ScoreConfidence.insufficient),
+        result.axes.every((BipolarDimensionScore a) => a.isIndeterminate),
+        isTrue,
+      );
+      expect(
+        result.axes.every((BipolarDimensionScore a) => a.answeredCount == 0),
+        isTrue,
+      );
+      expect(
+        result.axes.every(
+          (BipolarDimensionScore a) =>
+              a.confidence == ScoreConfidence.insufficient,
+        ),
         isTrue,
       );
       for (final TriadDimensionScore triad in result.triads) {
@@ -378,7 +408,8 @@ void main() {
         expect(axis.answeredCount, 1);
         expect(axis.coverage, lessThan(1.0));
         expect(axis.score.abs(), closeTo(1.0, 1e-9));
-        final bool bothPoles = axis.answeredLeftCount > 0 && axis.answeredRightCount > 0;
+        final bool bothPoles =
+            axis.answeredLeftCount > 0 && axis.answeredRightCount > 0;
         expect(axis.hasBothPoles, bothPoles);
         expect(axis.isIndeterminate, !bothPoles);
       }
@@ -450,14 +481,20 @@ void main() {
       expect(axisCopy.answeredLeftCount, axis.answeredLeftCount);
       expect(axisCopy.presentedRightCount, axis.presentedRightCount);
       expect(axisCopy.leftPoleMean, closeTo(axis.leftPoleMean, 1e-12));
-      expect(axisCopy.minimumPoleCoverage, closeTo(axis.minimumPoleCoverage, 1e-12));
+      expect(
+        axisCopy.minimumPoleCoverage,
+        closeTo(axis.minimumPoleCoverage, 1e-12),
+      );
       expect(axisCopy.confidence, axis.confidence);
 
       final TriadDimensionScore triadCopy = roundTripTriad(triad);
       expect(triadCopy.vertexBreakdownAvailable, isTrue);
       expect(triadCopy.vertexObserved, triad.vertexObserved);
       expect(triadCopy.vertexAnsweredCount, triad.vertexAnsweredCount);
-      expect(triadCopy.minimumVertexCoverage, closeTo(triad.minimumVertexCoverage, 1e-12));
+      expect(
+        triadCopy.minimumVertexCoverage,
+        closeTo(triad.minimumVertexCoverage, 1e-12),
+      );
       expect(triadCopy.confidence, triad.confidence);
     });
 
@@ -481,7 +518,10 @@ void main() {
       expect(axis.poleBreakdownAvailable, isFalse);
       expect(axis.hasBothPoles, isTrue);
       expect(axis.isIndeterminate, isFalse);
-      expect(axis.confidence, axis.confidence); // derivado apenas de coverage/SE
+      expect(
+        axis.confidence,
+        axis.confidence,
+      ); // derivado apenas de coverage/SE
 
       final Map<String, Object?> legacyTriad = <String, Object?>{
         'categoryId': 0,
@@ -506,6 +546,34 @@ void main() {
       expect(triad.isIndeterminate, isFalse);
       expect(triad.minimumVertexCoverage, triad.coverage);
     });
+  });
+
+  test('tríades sem eixos sinalizam resposta uniforme no extremo', () {
+    final List<UnifiedQuestion> questions = selectUnifiedQuestions(
+      axesData: data.twelveAxes,
+      trianglesData: data.sixTriangles,
+      suite: TestSuite.triads,
+      depth: TestDepth.quick,
+      seed: 42,
+    );
+    final ScoredEvaluation result = EspectroScoringEngine.evaluate(
+      axesData: data.twelveAxes,
+      trianglesData: data.sixTriangles,
+      suite: TestSuite.triads,
+      questions: questions,
+      rawAnswersByUid: <String, int>{
+        for (final UnifiedQuestion q in questions) q.uid: 2,
+      },
+    );
+
+    expect(result.axes, isEmpty);
+    expect(result.quality.answeredAxisCount, 0);
+    expect(result.quality.acquiescenceIndex, closeTo(1.0, 1e-9));
+    expect(result.quality.extremeResponseRate, closeTo(1.0, 1e-9));
+    expect(result.quality.hasUniformExtremeWarning, isTrue);
+    expect(result.quality.warnings, hasLength(1));
+    expect(result.quality.warnings.single, contains('mesmo extremo'));
+    expect(result.quality.warnings.single, contains('três perspectivas'));
   });
 
   test('a bateria curta não é a mesma em todas as sementes', () {

@@ -1,1 +1,1610 @@
-{"categories":[{"id":0,"label":"Economia","color":"#8dd3c7","subcategories":["Controle","Regulação","Mercados"]},{"id":1,"label":"Liberdade Individual","color":"#ffffb3","subcategories":["Liberdade","Segurança","Verdade"]},{"id":2,"label":"Cultura","color":"#bebada","subcategories":["Tradição","Progresso","Liberdade"]},{"id":3,"label":"Política Externa","color":"#fb8072","subcategories":["Imperialismo","Isolacionismo","Globalismo"]},{"id":4,"label":"Governo","color":"#80b1d3","subcategories":["Democracia","Autoridade","Minarquia"]},{"id":5,"label":"Igualdade","color":"#fdb462","subcategories":["Oportunidade","Resultado","Ônus"]}],"questions":[{"id":0,"category":0,"subcategory":0,"strength":4,"multiplier":1,"text":"A maior parte ou toda a economia deveria ser estatizada."},{"id":1,"category":0,"subcategory":0,"strength":4,"multiplier":1,"text":"O capitalismo deveria ser fundamentalmente substituído."},{"id":2,"category":0,"subcategory":0,"strength":3,"multiplier":1,"text":"Deveria existir um sistema nacional de saúde público."},{"id":3,"category":0,"subcategory":0,"strength":2,"multiplier":-1,"text":"A indústria estatal costuma ser uma má ideia."},{"id":4,"category":0,"subcategory":0,"strength":2,"multiplier":1,"text":"O governo deveria administrar o setor de planos de saúde."},{"id":5,"category":0,"subcategory":0,"strength":2,"multiplier":1,"text":"Serviços públicos como estradas e eletricidade deveriam ser todos estatais."},{"id":6,"category":0,"subcategory":0,"strength":1,"multiplier":1,"text":"O capitalismo tem problemas."},{"id":7,"category":0,"subcategory":0,"strength":1,"multiplier":1,"text":"Alguns setores, como o serviço postal, deveriam ser administrados pelo governo."},{"id":8,"category":0,"subcategory":1,"strength":1,"multiplier":-1,"text":"A regulação não consegue resolver todos os problemas da economia."},{"id":9,"category":0,"subcategory":1,"strength":4,"multiplier":1,"text":"O capitalismo estritamente regulado é a economia ideal."},{"id":10,"category":0,"subcategory":1,"strength":3,"multiplier":1,"text":"Para todo problema econômico existe uma regulação capaz de resolvê-lo."},{"id":11,"category":0,"subcategory":1,"strength":3,"multiplier":1,"text":"Empresas que burlam regras às escondidas e são pegas deveriam ser dissolvidas."},{"id":12,"category":0,"subcategory":1,"strength":2,"multiplier":1,"text":"O governo deve regular a economia para proteger o meio ambiente."},{"id":13,"category":0,"subcategory":1,"strength":2,"multiplier":1,"text":"O governo é necessário para desmontar monopólios e garantir concorrência justa."},{"id":14,"category":0,"subcategory":1,"strength":3,"multiplier":-1,"text":"Regulações governamentais raramente resolvem por completo o problema que pretendiam corrigir."},{"id":15,"category":0,"subcategory":1,"strength":1,"multiplier":1,"text":"A economia deveria ser feita de empresas privadas com algumas regras para garantir concorrência justa."},{"id":16,"category":0,"subcategory":1,"strength":1,"multiplier":1,"text":"Leis de proteção ao consumidor que garantam produtos seguros são importantes."},{"id":17,"category":0,"subcategory":2,"strength":4,"multiplier":1,"text":"O governo não deveria regular a economia de forma alguma."},{"id":18,"category":0,"subcategory":2,"strength":4,"multiplier":1,"text":"Tudo o que puder ser deixado para o mercado livre deveria ser."},{"id":19,"category":0,"subcategory":2,"strength":3,"multiplier":1,"text":"O governo nunca deveria dissolver uma empresa."},{"id":20,"category":0,"subcategory":2,"strength":3,"multiplier":1,"text":"A intervenção do governo na economia quase sempre piora a economia."},{"id":21,"category":0,"subcategory":2,"strength":3,"multiplier":1,"text":"O mercado sempre produz o melhor produto, a menos que o governo interfira."},{"id":22,"category":0,"subcategory":2,"strength":2,"multiplier":1,"text":"A intervenção excessiva do governo prejudica a economia."},{"id":23,"category":0,"subcategory":2,"strength":3,"multiplier":-1,"text":"A opressão das corporações é uma ameaça muito mais real do que a opressão do governo."},{"id":24,"category":0,"subcategory":2,"strength":1,"multiplier":1,"text":"A concorrência geralmente melhora a economia."},{"id":25,"category":0,"subcategory":2,"strength":1,"multiplier":1,"text":"O capitalismo é melhor do que qualquer alternativa existente."},{"id":26,"category":1,"subcategory":0,"strength":4,"multiplier":1,"text":"Deveria ser legal gritar “fogo” em um prédio lotado quando não há incêndio."},{"id":27,"category":1,"subcategory":0,"strength":4,"multiplier":1,"text":"Não deveria existir força policial."},{"id":28,"category":1,"subcategory":0,"strength":3,"multiplier":1,"text":"Não deveria haver consequências legais por usar linguagem extremamente ofensiva."},{"id":29,"category":1,"subcategory":0,"strength":3,"multiplier":1,"text":"Não deveria haver consequências legais por defender qualquer ideologia."},{"id":30,"category":1,"subcategory":0,"strength":2,"multiplier":1,"text":"Reprimir a fala costuma fazer com que o que se tentava censurar se espalhe mais."},{"id":31,"category":1,"subcategory":0,"strength":2,"multiplier":1,"text":"A liberdade de expressão é um conceito importante."},{"id":32,"category":1,"subcategory":0,"strength":2,"multiplier":1,"text":"Protestar é uma forma de demonstrar patriotismo."},{"id":33,"category":1,"subcategory":0,"strength":2,"multiplier":1,"text":"A polícia deveria ser mais regulada."},{"id":34,"category":1,"subcategory":0,"strength":2,"multiplier":1,"text":"Denunciantes deveriam ser fortemente protegidos."},{"id":35,"category":1,"subcategory":0,"strength":1,"multiplier":1,"text":"Defendo o direito de quem discorda de mim de expressar suas opiniões."},{"id":36,"category":1,"subcategory":0,"strength":1,"multiplier":1,"text":"O governo não tem nada a ver com a vida pessoal da maioria das pessoas."},{"id":37,"category":1,"subcategory":0,"strength":1,"multiplier":1,"text":"O governo não deveria processar pessoas por expressarem uma opinião."},{"id":38,"category":1,"subcategory":1,"strength":4,"multiplier":1,"text":"Quem discorda do governo deveria ser removido do país."},{"id":39,"category":1,"subcategory":1,"strength":4,"multiplier":1,"text":"Protestar contra o governo deveria ser ilegal."},{"id":40,"category":1,"subcategory":1,"strength":3,"multiplier":1,"text":"O governo deveria monitorar todos os cidadãos para combater o terrorismo."},{"id":41,"category":1,"subcategory":1,"strength":3,"multiplier":1,"text":"A polícia precisa de mais poder e proteção."},{"id":42,"category":1,"subcategory":1,"strength":3,"multiplier":1,"text":"Se você não tem nada a esconder, não deveria temer o monitoramento das suas comunicações pelo governo."},{"id":43,"category":1,"subcategory":1,"strength":2,"multiplier":1,"text":"Denunciantes que vazam informações classificadas e custam vidas deveriam ser processados."},{"id":44,"category":1,"subcategory":1,"strength":2,"multiplier":1,"text":"Precisamos sacrificar algumas liberdades para proteger o país do terrorismo."},{"id":45,"category":1,"subcategory":1,"strength":2,"multiplier":1,"text":"A vigilância governamental é necessária no mundo moderno."},{"id":46,"category":1,"subcategory":1,"strength":1,"multiplier":1,"text":"É importante para a segurança nacional que alguns materiais sejam classificados."},{"id":47,"category":1,"subcategory":1,"strength":1,"multiplier":1,"text":"O governo deveria ter acesso aos e-mails de suspeitos de terrorismo."},{"id":48,"category":1,"subcategory":1,"strength":1,"multiplier":1,"text":"O governo deveria poder acessar os celulares de criminosos condenados para encontrar outros criminosos."},{"id":49,"category":1,"subcategory":1,"strength":3,"multiplier":-1,"text":"O governo nunca deveria processar alguém por dizer a verdade, mesmo em nome da segurança nacional."},{"id":50,"category":1,"subcategory":2,"strength":4,"multiplier":1,"text":"Quem espalha desinformação deveria ser punido."},{"id":51,"category":1,"subcategory":2,"strength":4,"multiplier":1,"text":"Especulações e fatos que não podem ser confirmados com certeza nunca deveriam ser publicados."},{"id":52,"category":1,"subcategory":2,"strength":3,"multiplier":1,"text":"Redes sociais deveriam ser obrigadas a remover posts que promovem teorias da conspiração."},{"id":53,"category":1,"subcategory":2,"strength":3,"multiplier":1,"text":"Você não deveria ter o direito de fazer afirmações provavelmente falsas."},{"id":54,"category":1,"subcategory":2,"strength":2,"multiplier":1,"text":"A mídia deveria ser penalizada por publicar manchetes falsas."},{"id":55,"category":1,"subcategory":2,"strength":2,"multiplier":1,"text":"Autoridades que enganam a população intencionalmente deveriam ir para a prisão."},{"id":56,"category":1,"subcategory":2,"strength":2,"multiplier":1,"text":"As redes sociais deveriam ser responsáveis por checar anúncios que hospedam."},{"id":57,"category":1,"subcategory":2,"strength":1,"multiplier":1,"text":"A mídia deveria se esforçar mais para reportar fatos em vez de opiniões."},{"id":58,"category":1,"subcategory":2,"strength":1,"multiplier":1,"text":"A mídia deveria reportar fatos mesmo quando discorda das implicações deles."},{"id":59,"category":1,"subcategory":2,"strength":2,"multiplier":-1,"text":"A verdade é relativa."},{"id":60,"category":1,"subcategory":2,"strength":4,"multiplier":-1,"text":"Fatos não são reais; tudo tem vários lados."},{"id":61,"category":1,"subcategory":0,"strength":1,"multiplier":-1,"text":"Você não deveria ter liberdade de expressão total."},{"id":62,"category":2,"subcategory":0,"strength":4,"multiplier":1,"text":"O casamento entre pessoas do mesmo sexo deveria ser ilegal."},{"id":63,"category":2,"subcategory":0,"strength":4,"multiplier":1,"text":"Deveríamos ter uma religião nacional."},{"id":64,"category":2,"subcategory":0,"strength":3,"multiplier":1,"text":"Sexo antes do casamento deveria ser ilegal."},{"id":65,"category":2,"subcategory":0,"strength":3,"multiplier":1,"text":"Valores religiosos deveriam ser ensinados em todas as escolas."},{"id":66,"category":2,"subcategory":0,"strength":2,"multiplier":-1,"text":"Pessoas deveriam poder se oferecer para tratamentos experimentais quando não há tratamento e a morte é certa sem eles."},{"id":67,"category":2,"subcategory":0,"strength":2,"multiplier":1,"text":"É importante preservar os valores familiares."},{"id":68,"category":2,"subcategory":0,"strength":2,"multiplier":1,"text":"Deveríamos ter um idioma nacional e exigir que todos os imigrantes o falem."},{"id":69,"category":2,"subcategory":0,"strength":2,"multiplier":1,"text":"A mídia é enviesada contra os valores tradicionais."},{"id":70,"category":2,"subcategory":0,"strength":2,"multiplier":1,"text":"Existem apenas dois gêneros."},{"id":71,"category":2,"subcategory":0,"strength":1,"multiplier":1,"text":"Assassinato e roubo deveriam ser ilegais."},{"id":72,"category":2,"subcategory":0,"strength":4,"multiplier":-1,"text":"O aborto deveria ser sempre legal."},{"id":73,"category":2,"subcategory":0,"strength":2,"multiplier":-1,"text":"Deveria ser legal alterar o DNA do seu bebê para torná-lo mais forte, inteligente etc."},{"id":74,"category":2,"subcategory":1,"strength":4,"multiplier":1,"text":"Se a IA puder governar melhor que os humanos, ela deveria governar."},{"id":75,"category":2,"subcategory":1,"strength":4,"multiplier":1,"text":"Carros deveriam ser proibidos para proteger o meio ambiente."},{"id":76,"category":2,"subcategory":1,"strength":4,"multiplier":1,"text":"O governo deveria obrigar as pessoas a comer de forma saudável."},{"id":77,"category":2,"subcategory":1,"strength":3,"multiplier":1,"text":"A pesquisa de modificação genética deveria ser legal em humanos."},{"id":78,"category":2,"subcategory":1,"strength":3,"multiplier":1,"text":"Armas deveriam ser proibidas para a população em geral."},{"id":79,"category":2,"subcategory":1,"strength":3,"multiplier":1,"text":"Deveria haver um limite de filhos por pessoa para evitar a superpopulação da Terra."},{"id":80,"category":2,"subcategory":1,"strength":3,"multiplier":1,"text":"Jatos particulares deveriam ser proibidos."},{"id":81,"category":2,"subcategory":1,"strength":2,"multiplier":1,"text":"Canudos de plástico deveriam ser proibidos."},{"id":82,"category":2,"subcategory":1,"strength":2,"multiplier":1,"text":"Deveríamos investir na expansão da civilização para além da Terra."},{"id":83,"category":2,"subcategory":1,"strength":1,"multiplier":1,"text":"A mudança climática é uma ameaça real."},{"id":84,"category":2,"subcategory":1,"strength":1,"multiplier":1,"text":"O progresso tecnológico é sempre bom."},{"id":85,"category":2,"subcategory":1,"strength":1,"multiplier":1,"text":"A automação pode trazer benefícios significativos para a humanidade."},{"id":86,"category":2,"subcategory":1,"strength":1,"multiplier":1,"text":"A evolução deveria ser ensinada nas escolas."},{"id":87,"category":2,"subcategory":2,"strength":4,"multiplier":1,"text":"Todas as drogas deveriam ser legais para adultos."},{"id":88,"category":2,"subcategory":2,"strength":1,"multiplier":-1,"text":"Às vezes é necessário proibir algumas substâncias para a população em geral."},{"id":89,"category":2,"subcategory":2,"strength":3,"multiplier":1,"text":"A prostituição deveria ser legal."},{"id":90,"category":2,"subcategory":2,"strength":3,"multiplier":1,"text":"A maconha deveria ser legal para adultos."},{"id":91,"category":2,"subcategory":2,"strength":2,"multiplier":1,"text":"Materiais pornográficos deveriam ser legais para adultos."},{"id":92,"category":2,"subcategory":2,"strength":2,"multiplier":1,"text":"Fumar deveria ser legal."},{"id":93,"category":2,"subcategory":2,"strength":1,"multiplier":1,"text":"O governo não deveria apoiar oficialmente nenhuma religião (nem a ausência dela)."},{"id":94,"category":2,"subcategory":2,"strength":1,"multiplier":1,"text":"A liberdade religiosa é um conceito importante."},{"id":95,"category":3,"subcategory":0,"strength":4,"multiplier":1,"text":"A guerra constante é necessária para uma economia prosperar."},{"id":96,"category":3,"subcategory":0,"strength":4,"multiplier":1,"text":"Minha nação deveria conquistar outras nações."},{"id":97,"category":3,"subcategory":0,"strength":3,"multiplier":1,"text":"Não há nada de errado em tomar os recursos de nações mais fracas."},{"id":98,"category":3,"subcategory":0,"strength":3,"multiplier":1,"text":"Líderes estrangeiros que se opõem aos nossos interesses deveriam ser derrubados."},{"id":99,"category":3,"subcategory":0,"strength":3,"multiplier":1,"text":"O direito internacional não deveria vincular minha nação."},{"id":100,"category":3,"subcategory":0,"strength":2,"multiplier":1,"text":"Se uma nação produz materiais baratos para nós usando mão de obra barata, ainda assim deveríamos comprar."},{"id":101,"category":3,"subcategory":0,"strength":2,"multiplier":1,"text":"Minha nação só deveria ajudar outras quando isso convier aos nossos interesses."},{"id":102,"category":3,"subcategory":0,"strength":1,"multiplier":1,"text":"É importante que um governo mantenha um militar forte para ter influência global."},{"id":103,"category":3,"subcategory":0,"strength":1,"multiplier":1,"text":"Uma nação sem militar é uma nação fraca."},{"id":104,"category":3,"subcategory":0,"strength":1,"multiplier":-1,"text":"Opções diplomáticas deveriam ser sempre tentadas antes de sequer considerar a guerra."},{"id":105,"category":3,"subcategory":0,"strength":2,"multiplier":-1,"text":"Derrubar nossos inimigos costuma piorar a situação em vez de resolvê-la."},{"id":106,"category":3,"subcategory":0,"strength":3,"multiplier":-1,"text":"Gastos militares são desperdício de dinheiro."},{"id":107,"category":3,"subcategory":1,"strength":4,"multiplier":1,"text":"Qualquer acordo que outra nação queira deve ser ruim para nós."},{"id":108,"category":3,"subcategory":1,"strength":4,"multiplier":1,"text":"Nossa nação se sairia melhor se não se envolvesse com outras nações."},{"id":109,"category":3,"subcategory":1,"strength":3,"multiplier":1,"text":"Nossa nação nunca deveria iniciar uma guerra."},{"id":110,"category":3,"subcategory":1,"strength":3,"multiplier":1,"text":"Deveríamos produzir em nossa própria nação sempre que possível."},{"id":111,"category":3,"subcategory":1,"strength":2,"multiplier":1,"text":"É um desperdício de soldados e recursos derrubar outros governos, independentemente do que façam."},{"id":112,"category":3,"subcategory":1,"strength":2,"multiplier":1,"text":"Devemos respeitar a soberania de outras nações, mesmo as que contrariam nossos princípios."},{"id":113,"category":3,"subcategory":1,"strength":1,"multiplier":1,"text":"Minha nação deveria focar principalmente na política interna."},{"id":114,"category":3,"subcategory":1,"strength":1,"multiplier":1,"text":"A política externa tem pouca influência no dia a dia da maioria das pessoas."},{"id":115,"category":3,"subcategory":1,"strength":1,"multiplier":-1,"text":"É importante que nosso governo se relacione com os vizinhos."},{"id":116,"category":3,"subcategory":1,"strength":3,"multiplier":-1,"text":"Eu me importo que outras nações respeitem a minha."},{"id":117,"category":3,"subcategory":2,"strength":4,"multiplier":1,"text":"O mundo seria melhor se os países se unissem diplomaticamente em um único governo mundial."},{"id":118,"category":3,"subcategory":2,"strength":4,"multiplier":1,"text":"Para a humanidade sobreviver, precisamos superar a divisão em nações separadas."},{"id":119,"category":3,"subcategory":2,"strength":3,"multiplier":1,"text":"Somos, antes de tudo, cidadãos da Terra."},{"id":120,"category":3,"subcategory":2,"strength":3,"multiplier":1,"text":"É nosso dever cuidar dos cidadãos de outros países como cuidamos dos nossos."},{"id":121,"category":3,"subcategory":2,"strength":3,"multiplier":1,"text":"A ONU deveria ter mais poder."},{"id":122,"category":3,"subcategory":2,"strength":2,"multiplier":1,"text":"Apoio uniões regionais como a União Europeia."},{"id":123,"category":3,"subcategory":2,"strength":2,"multiplier":1,"text":"Todos os governos deveriam responder à comunidade internacional por coisas como crimes de guerra."},{"id":124,"category":3,"subcategory":2,"strength":2,"multiplier":1,"text":"É nosso dever derrubar regimes que violam direitos humanos."},{"id":125,"category":3,"subcategory":2,"strength":1,"multiplier":1,"text":"A cooperação internacional é geralmente benéfica."},{"id":126,"category":3,"subcategory":2,"strength":1,"multiplier":1,"text":"Alianças internacionais são importantes para proteger minha nação."},{"id":127,"category":3,"subcategory":2,"strength":1,"multiplier":1,"text":"Nações deveriam cooperar entre si, a menos que haja um motivo forte para não fazê-lo."},{"id":128,"category":3,"subcategory":2,"strength":2,"multiplier":-1,"text":"Ajuda externa é desperdício de dinheiro."},{"id":129,"category":3,"subcategory":2,"strength":2,"multiplier":-1,"text":"É importante proteger nossa identidade nacional de outras culturas."},{"id":130,"category":4,"subcategory":0,"strength":4,"multiplier":1,"text":"O governo seria melhor se o povo votasse diretamente na maioria das questões."},{"id":131,"category":4,"subcategory":0,"strength":4,"multiplier":1,"text":"Julgamentos seriam melhores se fossem submetidos a voto popular direto."},{"id":132,"category":4,"subcategory":0,"strength":3,"multiplier":1,"text":"O governo deveria quase sempre seguir a opinião da maioria."},{"id":133,"category":4,"subcategory":0,"strength":3,"multiplier":1,"text":"A população como um todo costuma tomar boas decisões."},{"id":134,"category":4,"subcategory":0,"strength":2,"multiplier":1,"text":"Um país sem eleições justas não pode ser um bom país."},{"id":135,"category":4,"subcategory":0,"strength":2,"multiplier":1,"text":"Cada pessoa deveria ter um voto de peso idêntico."},{"id":136,"category":4,"subcategory":0,"strength":1,"multiplier":1,"text":"O povo deveria ter o poder de escolher seus líderes."},{"id":137,"category":4,"subcategory":0,"strength":1,"multiplier":1,"text":"O governo deve ser do povo e para o povo."},{"id":138,"category":4,"subcategory":0,"strength":1,"multiplier":-1,"text":"A opinião popular nem sempre está certa."},{"id":139,"category":4,"subcategory":0,"strength":2,"multiplier":-1,"text":"A democracia muitas vezes permite que a maioria viole os direitos dos dissidentes."},{"id":140,"category":4,"subcategory":0,"strength":3,"multiplier":-1,"text":"A opinião popular deveria ter pouca influência nas políticas de governo."},{"id":141,"category":4,"subcategory":0,"strength":4,"multiplier":-1,"text":"Meu país não deveria ter eleições nem votações."},{"id":142,"category":4,"subcategory":1,"strength":1,"multiplier":1,"text":"Uma nação precisa de liderança forte para ter sucesso."},{"id":143,"category":4,"subcategory":1,"strength":1,"multiplier":1,"text":"O governo às vezes precisa fazer coisas impopulares pelo bem do povo."},{"id":144,"category":4,"subcategory":1,"strength":2,"multiplier":1,"text":"A sociedade não funcionaria sem líderes e seguidores."},{"id":145,"category":4,"subcategory":1,"strength":2,"multiplier":1,"text":"A sociedade exige que algumas pessoas tenham poder sobre outras para funcionar."},{"id":146,"category":4,"subcategory":1,"strength":3,"multiplier":1,"text":"Se tivesse a chance, implementaria minha ideologia no meu país mesmo que a maioria fosse contra."},{"id":147,"category":4,"subcategory":1,"strength":3,"multiplier":1,"text":"Quem chega ao poder deveria mantê-lo até ser forçado a largá-lo."},{"id":148,"category":4,"subcategory":1,"strength":4,"multiplier":1,"text":"Uma nação deveria obedecer sua liderança sem questionar."},{"id":149,"category":4,"subcategory":1,"strength":4,"multiplier":1,"text":"O governo não deveria tolerar opiniões divergentes."},{"id":150,"category":4,"subcategory":1,"strength":1,"multiplier":-1,"text":"As pessoas deveriam questionar as ações de quem está no poder."},{"id":151,"category":4,"subcategory":2,"strength":1,"multiplier":1,"text":"O governo é maior do que precisa ser."},{"id":152,"category":4,"subcategory":2,"strength":1,"multiplier":1,"text":"O governo tem poder demais."},{"id":153,"category":4,"subcategory":2,"strength":2,"multiplier":1,"text":"Não confio que o governo cuide dos meus interesses."},{"id":154,"category":4,"subcategory":2,"strength":2,"multiplier":1,"text":"Governo pequeno costuma ser melhor que governo grande."},{"id":155,"category":4,"subcategory":2,"strength":3,"multiplier":1,"text":"Nunca pode existir um governo sem corrupção."},{"id":156,"category":4,"subcategory":2,"strength":3,"multiplier":1,"text":"A população consegue se proteger melhor do que o governo consegue protegê-la."},{"id":157,"category":4,"subcategory":2,"strength":4,"multiplier":1,"text":"O governo não deveria ter voz em como as pessoas vivem suas vidas."},{"id":158,"category":4,"subcategory":2,"strength":4,"multiplier":1,"text":"As pessoas viveriam melhor sem governo."},{"id":159,"category":4,"subcategory":2,"strength":1,"multiplier":-1,"text":"Um governo oferece alguns serviços importantes para a população."},{"id":160,"category":5,"subcategory":0,"strength":4,"multiplier":1,"text":"Quem toma para si o crédito pelo trabalho dos outros deveria perder tudo."},{"id":161,"category":5,"subcategory":0,"strength":4,"multiplier":1,"text":"Filhos não deveriam poder herdar nada dos pais."},{"id":162,"category":5,"subcategory":0,"strength":3,"multiplier":1,"text":"Sua renda deveria estar diretamente ligada ao valor do que você produz."},{"id":163,"category":5,"subcategory":0,"strength":3,"multiplier":1,"text":"Filhos de ricos só deveriam enriquecer se tiverem uma ideia própria e independente."},{"id":164,"category":5,"subcategory":0,"strength":2,"multiplier":1,"text":"Não deveria importar quem você é, apenas o que você é capaz de fazer."},{"id":165,"category":5,"subcategory":0,"strength":2,"multiplier":1,"text":"Bancos deveriam correr mais risco com comunidades desfavorecidas para que elas também tenham chance de prosperar."},{"id":166,"category":5,"subcategory":0,"strength":2,"multiplier":1,"text":"Bolsas por necessidade são importantes para que estudantes talentosos de famílias pobres consigam vencer."},{"id":167,"category":5,"subcategory":0,"strength":1,"multiplier":1,"text":"Você deveria poder enriquecer se trabalhar mais que todos, independentemente da riqueza da sua família."},{"id":168,"category":5,"subcategory":0,"strength":1,"multiplier":1,"text":"Quem trabalha especialmente duro deveria ser recompensado com mais riqueza."},{"id":169,"category":5,"subcategory":1,"strength":4,"multiplier":1,"text":"O comunismo, se implementado corretamente, seria melhor que o capitalismo."},{"id":170,"category":5,"subcategory":1,"strength":4,"multiplier":1,"text":"De cada um conforme sua capacidade, a cada um conforme sua necessidade."},{"id":171,"category":5,"subcategory":1,"strength":4,"multiplier":1,"text":"Todas as pessoas deveriam receber as mesmas recompensas, independentemente do trabalho."},{"id":172,"category":5,"subcategory":1,"strength":3,"multiplier":1,"text":"Não deveria existir bilionários."},{"id":173,"category":5,"subcategory":1,"strength":3,"multiplier":1,"text":"Eu apoiaria um salário máximo."},{"id":174,"category":5,"subcategory":1,"strength":3,"multiplier":1,"text":"As pessoas deveriam ter garantido o suficiente para viver, trabalhem ou não."},{"id":175,"category":5,"subcategory":1,"strength":2,"multiplier":1,"text":"A saúde deveria ser um direito garantido a todas as pessoas."},{"id":176,"category":5,"subcategory":1,"strength":2,"multiplier":1,"text":"Os extremamente ricos ganham mais do que merecem."},{"id":177,"category":5,"subcategory":1,"strength":2,"multiplier":1,"text":"Todas as pessoas deveriam ter moradia garantida."},{"id":178,"category":5,"subcategory":1,"strength":1,"multiplier":1,"text":"O governo deveria tentar ajudar os mais pobres da sociedade."},{"id":179,"category":5,"subcategory":1,"strength":1,"multiplier":1,"text":"Os ricos têm muito mais do que precisam."},{"id":180,"category":5,"subcategory":1,"strength":1,"multiplier":-1,"text":"Eu não gostaria de viver em um país onde todos tivessem o mesmo salário."},{"id":181,"category":5,"subcategory":1,"strength":3,"multiplier":-1,"text":"Não deveria existir salário mínimo."},{"id":182,"category":5,"subcategory":2,"strength":1,"multiplier":-1,"text":"É importante oferecer educação gratuita a todas as crianças."},{"id":183,"category":5,"subcategory":2,"strength":4,"multiplier":1,"text":"Ninguém deveria pagar uma porcentagem de imposto de renda maior que outra pessoa."},{"id":184,"category":5,"subcategory":2,"strength":4,"multiplier":1,"text":"Não deveria existir assistência social."},{"id":185,"category":5,"subcategory":2,"strength":3,"multiplier":1,"text":"Pessoas pobres escolhem ser pobres."},{"id":186,"category":5,"subcategory":2,"strength":2,"multiplier":-1,"text":"É injusto que os ricos paguem reforço escolar para os filhos passarem em testes padronizados e assim continuarem a vencer."},{"id":187,"category":5,"subcategory":2,"strength":3,"multiplier":-1,"text":"Distritos ricos não deveriam poder investir dinheiro extra em suas escolas quando distritos mais pobres não têm como fazer o mesmo."},{"id":188,"category":5,"subcategory":2,"strength":3,"multiplier":-1,"text":"Escolas privadas deveriam ser proibidas."},{"id":189,"category":5,"subcategory":2,"strength":2,"multiplier":1,"text":"Deveria haver um limite para a riqueza que alguém pode herdar dos pais."},{"id":190,"category":5,"subcategory":2,"strength":2,"multiplier":1,"text":"Eu não deveria pagar por coisas das quais não tiro benefício."},{"id":191,"category":5,"subcategory":2,"strength":1,"multiplier":1,"text":"Deveríamos reduzir nosso programa de assistência social."},{"id":192,"category":5,"subcategory":2,"strength":1,"multiplier":1,"text":"Pais deveriam poder ajudar seus filhos a ter sucesso."}]}
+{
+  "categories": [
+    {
+      "id": 0,
+      "label": "Economia",
+      "color": "#8dd3c7",
+      "subcategories": [
+        "Controle",
+        "Regulação",
+        "Mercados"
+      ]
+    },
+    {
+      "id": 1,
+      "label": "Liberdade Individual",
+      "color": "#ffffb3",
+      "subcategories": [
+        "Liberdade",
+        "Segurança",
+        "Verdade"
+      ]
+    },
+    {
+      "id": 2,
+      "label": "Cultura",
+      "color": "#bebada",
+      "subcategories": [
+        "Tradição",
+        "Progresso",
+        "Liberdade"
+      ]
+    },
+    {
+      "id": 3,
+      "label": "Política Externa",
+      "color": "#fb8072",
+      "subcategories": [
+        "Imperialismo",
+        "Isolacionismo",
+        "Globalismo"
+      ]
+    },
+    {
+      "id": 4,
+      "label": "Governo",
+      "color": "#80b1d3",
+      "subcategories": [
+        "Democracia",
+        "Autoridade",
+        "Anarquismo"
+      ]
+    },
+    {
+      "id": 5,
+      "label": "Igualdade",
+      "color": "#fdb462",
+      "subcategories": [
+        "Oportunidade",
+        "Resultado",
+        "Responsabilidade Individual"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": 0,
+      "category": 0,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "A maior parte ou toda a economia deveria ser estatizada."
+    },
+    {
+      "id": 1,
+      "category": 0,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O capitalismo deveria ser fundamentalmente substituído."
+    },
+    {
+      "id": 2,
+      "category": 0,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Deveria existir um sistema nacional de saúde público."
+    },
+    {
+      "id": 3,
+      "category": 0,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "A indústria estatal costuma ser uma má ideia."
+    },
+    {
+      "id": 4,
+      "category": 0,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "O governo deveria administrar o setor de planos de saúde."
+    },
+    {
+      "id": 5,
+      "category": 0,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Serviços públicos como estradas e eletricidade deveriam ser todos estatais."
+    },
+    {
+      "id": 6,
+      "category": 0,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O capitalismo tem problemas."
+    },
+    {
+      "id": 7,
+      "category": 0,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Alguns setores, como o serviço postal, deveriam ser administrados pelo governo."
+    },
+    {
+      "id": 8,
+      "category": 0,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "A regulação não consegue resolver todos os problemas da economia."
+    },
+    {
+      "id": 9,
+      "category": 0,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O capitalismo estritamente regulado é a economia ideal."
+    },
+    {
+      "id": 10,
+      "category": 0,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Para todo problema econômico existe uma regulação capaz de resolvê-lo."
+    },
+    {
+      "id": 11,
+      "category": 0,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Empresas que burlam regras às escondidas e são pegas deveriam ser dissolvidas."
+    },
+    {
+      "id": 12,
+      "category": 0,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "O governo deve regular a economia para proteger o meio ambiente."
+    },
+    {
+      "id": 13,
+      "category": 0,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "O governo é necessário para desmontar monopólios e garantir concorrência justa."
+    },
+    {
+      "id": 14,
+      "category": 0,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Regulações governamentais raramente resolvem por completo o problema que pretendiam corrigir."
+    },
+    {
+      "id": 15,
+      "category": 0,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "A economia deveria ser feita de empresas privadas com algumas regras para garantir concorrência justa."
+    },
+    {
+      "id": 16,
+      "category": 0,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Leis de proteção ao consumidor que garantam produtos seguros são importantes."
+    },
+    {
+      "id": 17,
+      "category": 0,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O governo não deveria regular a economia de forma alguma."
+    },
+    {
+      "id": 18,
+      "category": 0,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Tudo o que puder ser deixado para o mercado livre deveria ser."
+    },
+    {
+      "id": 19,
+      "category": 0,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "O governo nunca deveria dissolver uma empresa."
+    },
+    {
+      "id": 20,
+      "category": 0,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "A intervenção do governo na economia quase sempre piora a economia."
+    },
+    {
+      "id": 21,
+      "category": 0,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "O mercado sempre produz o melhor produto, a menos que o governo interfira."
+    },
+    {
+      "id": 22,
+      "category": 0,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "A intervenção excessiva do governo prejudica a economia."
+    },
+    {
+      "id": 23,
+      "category": 0,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "A opressão das corporações é uma ameaça muito mais real do que a opressão do governo."
+    },
+    {
+      "id": 24,
+      "category": 0,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "A concorrência geralmente melhora a economia."
+    },
+    {
+      "id": 25,
+      "category": 0,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O capitalismo é melhor do que qualquer alternativa existente."
+    },
+    {
+      "id": 26,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Deveria ser legal gritar “fogo” em um prédio lotado quando não há incêndio."
+    },
+    {
+      "id": 27,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Não deveria existir força policial."
+    },
+    {
+      "id": 28,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Não deveria haver consequências legais por usar linguagem extremamente ofensiva."
+    },
+    {
+      "id": 29,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Não deveria haver consequências legais por defender qualquer ideologia."
+    },
+    {
+      "id": 30,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Reprimir a fala costuma fazer com que o que se tentava censurar se espalhe mais."
+    },
+    {
+      "id": 31,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "A liberdade de expressão é um conceito importante."
+    },
+    {
+      "id": 32,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Protestar é uma forma de demonstrar patriotismo."
+    },
+    {
+      "id": 33,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "A polícia deveria ser mais regulada."
+    },
+    {
+      "id": 34,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Denunciantes deveriam ser fortemente protegidos."
+    },
+    {
+      "id": 35,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Defendo o direito de quem discorda de mim de expressar suas opiniões."
+    },
+    {
+      "id": 36,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O governo não tem nada a ver com a vida pessoal da maioria das pessoas."
+    },
+    {
+      "id": 37,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O governo não deveria processar pessoas por expressarem uma opinião."
+    },
+    {
+      "id": 38,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Quem discorda do governo deveria ser removido do país."
+    },
+    {
+      "id": 39,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Protestar contra o governo deveria ser ilegal."
+    },
+    {
+      "id": 40,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "O governo deveria monitorar todos os cidadãos para combater o terrorismo."
+    },
+    {
+      "id": 41,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "A polícia precisa de mais poder e proteção."
+    },
+    {
+      "id": 42,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Se você não tem nada a esconder, não deveria temer o monitoramento das suas comunicações pelo governo."
+    },
+    {
+      "id": 43,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Denunciantes que vazam informações classificadas e custam vidas deveriam ser processados."
+    },
+    {
+      "id": 44,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Precisamos sacrificar algumas liberdades para proteger o país do terrorismo."
+    },
+    {
+      "id": 45,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "A vigilância governamental é necessária no mundo moderno."
+    },
+    {
+      "id": 46,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "É importante para a segurança nacional que alguns materiais sejam classificados."
+    },
+    {
+      "id": 47,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O governo deveria ter acesso aos e-mails de suspeitos de terrorismo."
+    },
+    {
+      "id": 48,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O governo deveria poder acessar os celulares de criminosos condenados para encontrar outros criminosos."
+    },
+    {
+      "id": 49,
+      "category": 1,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "O governo nunca deveria processar alguém por dizer a verdade, mesmo em nome da segurança nacional."
+    },
+    {
+      "id": 50,
+      "category": 1,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Quem espalha desinformação deveria ser punido."
+    },
+    {
+      "id": 51,
+      "category": 1,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Especulações e fatos que não podem ser confirmados com certeza nunca deveriam ser publicados."
+    },
+    {
+      "id": 52,
+      "category": 1,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Redes sociais deveriam ser obrigadas a remover posts que promovem teorias da conspiração."
+    },
+    {
+      "id": 53,
+      "category": 1,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Você não deveria ter o direito de fazer afirmações provavelmente falsas."
+    },
+    {
+      "id": 54,
+      "category": 1,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "A mídia deveria ser penalizada por publicar manchetes falsas."
+    },
+    {
+      "id": 55,
+      "category": 1,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Autoridades que enganam a população intencionalmente deveriam ir para a prisão."
+    },
+    {
+      "id": 56,
+      "category": 1,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "As redes sociais deveriam ser responsáveis por checar anúncios que hospedam."
+    },
+    {
+      "id": 57,
+      "category": 1,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "A mídia deveria se esforçar mais para reportar fatos em vez de opiniões."
+    },
+    {
+      "id": 58,
+      "category": 1,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "A mídia deveria reportar fatos mesmo quando discorda das implicações deles."
+    },
+    {
+      "id": 59,
+      "category": 1,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "A verdade é relativa."
+    },
+    {
+      "id": 60,
+      "category": 1,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Fatos não são reais; tudo tem vários lados."
+    },
+    {
+      "id": 61,
+      "category": 1,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Você não deveria ter liberdade de expressão total."
+    },
+    {
+      "id": 62,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O casamento entre pessoas do mesmo sexo deveria ser ilegal."
+    },
+    {
+      "id": 63,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Deveríamos ter uma religião nacional."
+    },
+    {
+      "id": 64,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Sexo antes do casamento deveria ser ilegal."
+    },
+    {
+      "id": 65,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Valores religiosos deveriam ser ensinados em todas as escolas."
+    },
+    {
+      "id": 66,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Pessoas deveriam poder se oferecer para tratamentos experimentais quando não há tratamento e a morte é certa sem eles."
+    },
+    {
+      "id": 67,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "É importante preservar os valores familiares."
+    },
+    {
+      "id": 68,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Deveríamos ter um idioma nacional e exigir que todos os imigrantes o falem."
+    },
+    {
+      "id": 69,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "A mídia é enviesada contra os valores tradicionais."
+    },
+    {
+      "id": 70,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Existem apenas dois gêneros."
+    },
+    {
+      "id": 71,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Assassinato e roubo deveriam ser ilegais."
+    },
+    {
+      "id": 72,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "O aborto deveria ser sempre legal."
+    },
+    {
+      "id": 73,
+      "category": 2,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Deveria ser legal alterar o DNA do seu bebê para torná-lo mais forte, inteligente etc."
+    },
+    {
+      "id": 74,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Se a IA puder governar melhor que os humanos, ela deveria governar."
+    },
+    {
+      "id": 75,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Carros deveriam ser proibidos para proteger o meio ambiente."
+    },
+    {
+      "id": 76,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O governo deveria obrigar as pessoas a comer de forma saudável."
+    },
+    {
+      "id": 77,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "A pesquisa de modificação genética deveria ser legal em humanos."
+    },
+    {
+      "id": 78,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Armas deveriam ser proibidas para a população em geral."
+    },
+    {
+      "id": 79,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Deveria haver um limite de filhos por pessoa para evitar a superpopulação da Terra."
+    },
+    {
+      "id": 80,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Jatos particulares deveriam ser proibidos."
+    },
+    {
+      "id": 81,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Canudos de plástico deveriam ser proibidos."
+    },
+    {
+      "id": 82,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Deveríamos investir na expansão da civilização para além da Terra."
+    },
+    {
+      "id": 83,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "A mudança climática é uma ameaça real."
+    },
+    {
+      "id": 84,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O progresso tecnológico é sempre bom."
+    },
+    {
+      "id": 85,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "A automação pode trazer benefícios significativos para a humanidade."
+    },
+    {
+      "id": 86,
+      "category": 2,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "A evolução deveria ser ensinada nas escolas."
+    },
+    {
+      "id": 87,
+      "category": 2,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Todas as drogas deveriam ser legais para adultos."
+    },
+    {
+      "id": 88,
+      "category": 2,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Às vezes é necessário proibir algumas substâncias para a população em geral."
+    },
+    {
+      "id": 89,
+      "category": 2,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "A prostituição deveria ser legal."
+    },
+    {
+      "id": 90,
+      "category": 2,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "A maconha deveria ser legal para adultos."
+    },
+    {
+      "id": 91,
+      "category": 2,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Materiais pornográficos deveriam ser legais para adultos."
+    },
+    {
+      "id": 92,
+      "category": 2,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Fumar deveria ser legal."
+    },
+    {
+      "id": 93,
+      "category": 2,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O governo não deveria apoiar oficialmente nenhuma religião (nem a ausência dela)."
+    },
+    {
+      "id": 94,
+      "category": 2,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "A liberdade religiosa é um conceito importante."
+    },
+    {
+      "id": 95,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "A guerra constante é necessária para uma economia prosperar."
+    },
+    {
+      "id": 96,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Minha nação deveria conquistar outras nações."
+    },
+    {
+      "id": 97,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Não há nada de errado em tomar os recursos de nações mais fracas."
+    },
+    {
+      "id": 98,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Líderes estrangeiros que se opõem aos nossos interesses deveriam ser derrubados."
+    },
+    {
+      "id": 99,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "O direito internacional não deveria vincular minha nação."
+    },
+    {
+      "id": 100,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Se uma nação produz materiais baratos para nós usando mão de obra barata, ainda assim deveríamos comprar."
+    },
+    {
+      "id": 101,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Minha nação só deveria ajudar outras quando isso convier aos nossos interesses."
+    },
+    {
+      "id": 102,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "É importante que um governo mantenha um militar forte para ter influência global."
+    },
+    {
+      "id": 103,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Uma nação sem militar é uma nação fraca."
+    },
+    {
+      "id": 104,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Opções diplomáticas deveriam ser sempre tentadas antes de sequer considerar a guerra."
+    },
+    {
+      "id": 105,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Derrubar nossos inimigos costuma piorar a situação em vez de resolvê-la."
+    },
+    {
+      "id": 106,
+      "category": 3,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Gastos militares são desperdício de dinheiro."
+    },
+    {
+      "id": 107,
+      "category": 3,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Qualquer acordo que outra nação queira deve ser ruim para nós."
+    },
+    {
+      "id": 108,
+      "category": 3,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Nossa nação se sairia melhor se não se envolvesse com outras nações."
+    },
+    {
+      "id": 109,
+      "category": 3,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Nossa nação nunca deveria iniciar uma guerra."
+    },
+    {
+      "id": 110,
+      "category": 3,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Deveríamos produzir em nossa própria nação sempre que possível."
+    },
+    {
+      "id": 111,
+      "category": 3,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "É um desperdício de soldados e recursos derrubar outros governos, independentemente do que façam."
+    },
+    {
+      "id": 112,
+      "category": 3,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Devemos respeitar a soberania de outras nações, mesmo as que contrariam nossos princípios."
+    },
+    {
+      "id": 113,
+      "category": 3,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Minha nação deveria focar principalmente na política interna."
+    },
+    {
+      "id": 114,
+      "category": 3,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "A política externa tem pouca influência no dia a dia da maioria das pessoas."
+    },
+    {
+      "id": 115,
+      "category": 3,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "É importante que nosso governo se relacione com os vizinhos."
+    },
+    {
+      "id": 116,
+      "category": 3,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Eu me importo que outras nações respeitem a minha."
+    },
+    {
+      "id": 117,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O mundo seria melhor se os países se unissem diplomaticamente em um único governo mundial."
+    },
+    {
+      "id": 118,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Para a humanidade sobreviver, precisamos superar a divisão em nações separadas."
+    },
+    {
+      "id": 119,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Somos, antes de tudo, cidadãos da Terra."
+    },
+    {
+      "id": 120,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "É nosso dever cuidar dos cidadãos de outros países como cuidamos dos nossos."
+    },
+    {
+      "id": 121,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "A ONU deveria ter mais poder."
+    },
+    {
+      "id": 122,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Apoio uniões regionais como a União Europeia."
+    },
+    {
+      "id": 123,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Todos os governos deveriam responder à comunidade internacional por coisas como crimes de guerra."
+    },
+    {
+      "id": 124,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "É nosso dever derrubar regimes que violam direitos humanos."
+    },
+    {
+      "id": 125,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "A cooperação internacional é geralmente benéfica."
+    },
+    {
+      "id": 126,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Alianças internacionais são importantes para proteger minha nação."
+    },
+    {
+      "id": 127,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Nações deveriam cooperar entre si, a menos que haja um motivo forte para não fazê-lo."
+    },
+    {
+      "id": 128,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "Ajuda externa é desperdício de dinheiro."
+    },
+    {
+      "id": 129,
+      "category": 3,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "É importante proteger nossa identidade nacional de outras culturas."
+    },
+    {
+      "id": 130,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O governo seria melhor se o povo votasse diretamente na maioria das questões."
+    },
+    {
+      "id": 131,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Julgamentos seriam melhores se fossem submetidos a voto popular direto."
+    },
+    {
+      "id": 132,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "O governo deveria quase sempre seguir a opinião da maioria."
+    },
+    {
+      "id": 133,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "A população como um todo costuma tomar boas decisões."
+    },
+    {
+      "id": 134,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Um país sem eleições justas não pode ser um bom país."
+    },
+    {
+      "id": 135,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Cada pessoa deveria ter um voto de peso idêntico."
+    },
+    {
+      "id": 136,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O povo deveria ter o poder de escolher seus líderes."
+    },
+    {
+      "id": 137,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O governo deve ser do povo e para o povo."
+    },
+    {
+      "id": 138,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "A opinião popular nem sempre está certa."
+    },
+    {
+      "id": 139,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "A democracia muitas vezes permite que a maioria viole os direitos dos dissidentes."
+    },
+    {
+      "id": 140,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "A opinião popular deveria ter pouca influência nas políticas de governo."
+    },
+    {
+      "id": 141,
+      "category": 4,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": -1,
+      "text": "Meu país não deveria ter eleições nem votações."
+    },
+    {
+      "id": 142,
+      "category": 4,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Uma nação precisa de liderança forte para ter sucesso."
+    },
+    {
+      "id": 143,
+      "category": 4,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O governo às vezes precisa fazer coisas impopulares pelo bem do povo."
+    },
+    {
+      "id": 144,
+      "category": 4,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "A sociedade não funcionaria sem líderes e seguidores."
+    },
+    {
+      "id": 145,
+      "category": 4,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "A sociedade exige que algumas pessoas tenham poder sobre outras para funcionar."
+    },
+    {
+      "id": 146,
+      "category": 4,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Se tivesse a chance, implementaria minha ideologia no meu país mesmo que a maioria fosse contra."
+    },
+    {
+      "id": 147,
+      "category": 4,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Quem chega ao poder deveria mantê-lo até ser forçado a largá-lo."
+    },
+    {
+      "id": 148,
+      "category": 4,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Uma nação deveria obedecer sua liderança sem questionar."
+    },
+    {
+      "id": 149,
+      "category": 4,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O governo não deveria tolerar opiniões divergentes."
+    },
+    {
+      "id": 150,
+      "category": 4,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "As pessoas deveriam questionar as ações de quem está no poder."
+    },
+    {
+      "id": 151,
+      "category": 4,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O governo é maior do que precisa ser."
+    },
+    {
+      "id": 152,
+      "category": 4,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O governo tem poder demais."
+    },
+    {
+      "id": 153,
+      "category": 4,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Não confio que o governo cuide dos meus interesses."
+    },
+    {
+      "id": 154,
+      "category": 4,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Governo pequeno costuma ser melhor que governo grande."
+    },
+    {
+      "id": 155,
+      "category": 4,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Nunca pode existir um governo sem corrupção."
+    },
+    {
+      "id": 156,
+      "category": 4,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "A população consegue se proteger melhor do que o governo consegue protegê-la."
+    },
+    {
+      "id": 157,
+      "category": 4,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O governo não deveria ter voz em como as pessoas vivem suas vidas."
+    },
+    {
+      "id": 158,
+      "category": 4,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "As pessoas viveriam melhor sem governo."
+    },
+    {
+      "id": 159,
+      "category": 4,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Um governo oferece alguns serviços importantes para a população."
+    },
+    {
+      "id": 160,
+      "category": 5,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Quem toma para si o crédito pelo trabalho dos outros deveria perder tudo."
+    },
+    {
+      "id": 161,
+      "category": 5,
+      "subcategory": 0,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Filhos não deveriam poder herdar nada dos pais."
+    },
+    {
+      "id": 162,
+      "category": 5,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Sua renda deveria estar diretamente ligada ao valor do que você produz."
+    },
+    {
+      "id": 163,
+      "category": 5,
+      "subcategory": 0,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Filhos de ricos só deveriam enriquecer se tiverem uma ideia própria e independente."
+    },
+    {
+      "id": 164,
+      "category": 5,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Não deveria importar quem você é, apenas o que você é capaz de fazer."
+    },
+    {
+      "id": 165,
+      "category": 5,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Bancos deveriam correr mais risco com comunidades desfavorecidas para que elas também tenham chance de prosperar."
+    },
+    {
+      "id": 166,
+      "category": 5,
+      "subcategory": 0,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Bolsas por necessidade são importantes para que estudantes talentosos de famílias pobres consigam vencer."
+    },
+    {
+      "id": 167,
+      "category": 5,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Você deveria poder enriquecer se trabalhar mais que todos, independentemente da riqueza da sua família."
+    },
+    {
+      "id": 168,
+      "category": 5,
+      "subcategory": 0,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Quem trabalha especialmente duro deveria ser recompensado com mais riqueza."
+    },
+    {
+      "id": 169,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "O comunismo, se implementado corretamente, seria melhor que o capitalismo."
+    },
+    {
+      "id": 170,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "De cada um conforme sua capacidade, a cada um conforme sua necessidade."
+    },
+    {
+      "id": 171,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Todas as pessoas deveriam receber as mesmas recompensas, independentemente do trabalho."
+    },
+    {
+      "id": 172,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Não deveria existir bilionários."
+    },
+    {
+      "id": 173,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Eu apoiaria um salário máximo."
+    },
+    {
+      "id": 174,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "As pessoas deveriam ter garantido o suficiente para viver, trabalhem ou não."
+    },
+    {
+      "id": 175,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "A saúde deveria ser um direito garantido a todas as pessoas."
+    },
+    {
+      "id": 176,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Os extremamente ricos ganham mais do que merecem."
+    },
+    {
+      "id": 177,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Todas as pessoas deveriam ter moradia garantida."
+    },
+    {
+      "id": 178,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "O governo deveria tentar ajudar os mais pobres da sociedade."
+    },
+    {
+      "id": 179,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Os ricos têm muito mais do que precisam."
+    },
+    {
+      "id": 180,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "Eu não gostaria de viver em um país onde todos tivessem o mesmo salário."
+    },
+    {
+      "id": 181,
+      "category": 5,
+      "subcategory": 1,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Não deveria existir salário mínimo."
+    },
+    {
+      "id": 182,
+      "category": 5,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": -1,
+      "text": "É importante oferecer educação gratuita a todas as crianças."
+    },
+    {
+      "id": 183,
+      "category": 5,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Ninguém deveria pagar uma porcentagem de imposto de renda maior que outra pessoa."
+    },
+    {
+      "id": 184,
+      "category": 5,
+      "subcategory": 2,
+      "strength": 4,
+      "multiplier": 1,
+      "text": "Não deveria existir assistência social."
+    },
+    {
+      "id": 185,
+      "category": 5,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": 1,
+      "text": "Pessoas pobres escolhem ser pobres."
+    },
+    {
+      "id": 186,
+      "category": 5,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": -1,
+      "text": "É injusto que os ricos paguem reforço escolar para os filhos passarem em testes padronizados e assim continuarem a vencer."
+    },
+    {
+      "id": 187,
+      "category": 5,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Distritos ricos não deveriam poder investir dinheiro extra em suas escolas quando distritos mais pobres não têm como fazer o mesmo."
+    },
+    {
+      "id": 188,
+      "category": 5,
+      "subcategory": 2,
+      "strength": 3,
+      "multiplier": -1,
+      "text": "Escolas privadas deveriam ser proibidas."
+    },
+    {
+      "id": 189,
+      "category": 5,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Deveria haver um limite para a riqueza que alguém pode herdar dos pais."
+    },
+    {
+      "id": 190,
+      "category": 5,
+      "subcategory": 2,
+      "strength": 2,
+      "multiplier": 1,
+      "text": "Eu não deveria pagar por coisas das quais não tiro benefício."
+    },
+    {
+      "id": 191,
+      "category": 5,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Deveríamos reduzir nosso programa de assistência social."
+    },
+    {
+      "id": 192,
+      "category": 5,
+      "subcategory": 2,
+      "strength": 1,
+      "multiplier": 1,
+      "text": "Pais deveriam poder ajudar seus filhos a ter sucesso."
+    }
+  ]
+}

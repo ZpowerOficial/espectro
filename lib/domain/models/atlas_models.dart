@@ -1,5 +1,8 @@
 import 'study_editorial_basis.dart';
+import 'study_media.dart';
+import 'twelve_axes_affinity.dart';
 import '../../data/strict_json.dart';
+import '../engine/compatibility_engine.dart';
 
 /// Categoria de acervo do Atlas Político do Espectro.
 enum AtlasKind {
@@ -26,6 +29,45 @@ enum AtlasKind {
   };
 }
 
+/// Vocação intelectual ou institucional de uma personalidade do Atlas.
+/// Permite separar pensadores, economistas, cientistas políticos e estadistas
+/// dos parlamentares de registro nominal (Bancada/Congresso) e divulgadores.
+enum PersonalityVocation {
+  philosopher('philosopher', 'Filósofos & Teóricos', 'Filósofo / Teórico'),
+  economist('economist', 'Economistas', 'Economista'),
+  scholar(
+    'scholar',
+    'Cientistas Políticos, Sociólogos & Juristas',
+    'Cientista Político / Jurista',
+  ),
+  statesman(
+    'statesman',
+    'Estadistas & Líderes Históricos',
+    'Estadista / Líder',
+  ),
+  communicator(
+    'communicator',
+    'Debate Público & Divulgadores',
+    'Debate Público',
+  ),
+  parliamentarian(
+    'parliamentarian',
+    'Bancada / Congresso',
+    'Parlamentar (Voto Nominal)',
+  );
+
+  const PersonalityVocation(this.id, this.label, this.shortLabel);
+  final String id;
+  final String label;
+  final String shortLabel;
+
+  bool get isCanonical =>
+      this == PersonalityVocation.philosopher ||
+      this == PersonalityVocation.economist ||
+      this == PersonalityVocation.scholar ||
+      this == PersonalityVocation.statesman;
+}
+
 /// Entrada padronizada do Atlas Político (personalidade, partido/movimento,
 /// regime/era histórica ou obra bibliográfica), calibrada simultaneamente nos
 /// 12 eixos bipolares e nas 6 tríades baricêntricas.
@@ -47,8 +89,10 @@ class AtlasEntry {
     this.editorialBasis,
     this.coordinateNotes = const {},
     this.compositionNotes = const {},
+    this.photoUrl,
   });
 
+  final String? photoUrl;
   final String? spectrumId;
   final StudyEditorialBasis? editorialBasis;
   final Map<String, String> coordinateNotes;
@@ -69,6 +113,125 @@ class AtlasEntry {
 
   /// Composições esperadas nas 6 tríades (`0..5`, cada uma com 3 frações somando `1.0`).
   final Map<int, List<double>> triangles;
+
+  static const Set<String> _communicatorIds = <String>{
+    'raphael_lima',
+    'peter_turguniev',
+    'jones_manoel',
+    'olavo_de_carvalho',
+  };
+
+  static const Set<String> _economistIds = <String>{
+    'adam_smith',
+    'henry_george',
+    'john_maynard_keynes',
+    'friedrich_hayek',
+    'ludwig_von_mises',
+    'milton_friedman',
+    'murray_rothbard',
+    'hans_hermann_hoppe',
+    'frederic_bastiat',
+    'celso_furtado',
+    'roberto_campos',
+    'ludwig_erhard',
+    'yanis_varoufakis',
+  };
+
+  static const Set<String> _scholarIds = <String>{
+    'max_weber',
+    'montesquieu',
+    'nicolau_maquiavel',
+    'rui_barbosa',
+    'alberto_torres',
+    'darcy_ribeiro',
+    'paulo_freire',
+    'joaquim_nabuco',
+  };
+
+  /// Classifica a vocação principal de uma personalidade para organização editorial.
+  PersonalityVocation get vocation {
+    final String cat = category.toLowerCase();
+    final String sub = subtitle.toLowerCase();
+    final String tier = editorialBasis?.evidenceTier ?? '';
+
+    if (tier == 'tier2_institutional_record' ||
+        cat.contains('parlamentar') ||
+        id == 'gilson_marques') {
+      return PersonalityVocation.parliamentarian;
+    }
+    if (_communicatorIds.contains(id) ||
+        cat.contains('debate público contemporâneo') ||
+        sub.contains('comunicador') ||
+        sub.contains('youtuber') ||
+        sub.contains('influenciador')) {
+      return PersonalityVocation.communicator;
+    }
+    if (cat.contains('economista') ||
+        _economistIds.contains(id) ||
+        sub.contains('economista')) {
+      return PersonalityVocation.economist;
+    }
+    if (cat.contains('cientistas políticos') ||
+        cat.contains('juristas') ||
+        _scholarIds.contains(id) ||
+        sub.contains('sociólogo') ||
+        sub.contains('socióloga') ||
+        sub.contains('cientista político') ||
+        sub.contains('cientista política') ||
+        sub.contains('jurista') ||
+        sub.contains('historiador') ||
+        sub.contains('historiadora') ||
+        sub.contains('antropólogo') ||
+        sub.contains('antropóloga') ||
+        sub.contains('geógrafo')) {
+      return PersonalityVocation.scholar;
+    }
+    if (cat.contains('filósofos') ||
+        sub.contains('filósofo') ||
+        sub.contains('filósofa') ||
+        sub.contains('teórico') ||
+        sub.contains('teórica') ||
+        sub.contains('pensador') ||
+        sub.contains('pensadora') ||
+        sub.contains('escritor') ||
+        sub.contains('escritora') ||
+        sub.contains('teólogo')) {
+      return PersonalityVocation.philosopher;
+    }
+    return PersonalityVocation.statesman;
+  }
+
+  /// Indica se a personalidade pertence ao cânone intelectual/histórico
+  /// (Filósofos, Economistas, Cientistas Políticos/Sociólogos/Juristas e Estadistas),
+  /// excluindo deputados/senadores de voto nominal avulso e divulgadores de nicho.
+  bool get isCanonicalPersonality =>
+      kind == AtlasKind.personality && vocation.isCanonical;
+
+  AtlasEntry copyWith({
+    String? photoUrl,
+    String? spectrumId,
+    StudyEditorialBasis? editorialBasis,
+    Map<String, String>? coordinateNotes,
+    Map<int, String>? compositionNotes,
+  }) => AtlasEntry(
+    id: id,
+    kind: kind,
+    name: name,
+    subtitle: subtitle,
+    category: category,
+    era: era,
+    origin: origin,
+    summary: summary,
+    highlights: highlights,
+    quote: quote,
+    axes: axes,
+    triangles: triangles,
+    spectrumId: spectrumId ?? this.spectrumId,
+    editorialBasis: editorialBasis ?? this.editorialBasis,
+    coordinateNotes: coordinateNotes ?? this.coordinateNotes,
+    compositionNotes: compositionNotes ?? this.compositionNotes,
+    photoUrl: photoUrl ?? this.photoUrl,
+  );
 
   factory AtlasEntry.fromJson(
     Map<String, Object?> json,
@@ -129,6 +292,7 @@ class AtlasEntry {
     }
 
     return AtlasEntry(
+      photoUrl: readStringOrNull(json['photoUrl'], '$path.photoUrl'),
       spectrumId: readStringOrNull(json['spectrumId'], '$path.spectrumId'),
       editorialBasis: StudyEditorialBasis.parse(
         json['editorialBasis'],
@@ -177,6 +341,23 @@ class PoliticalAtlas {
   final List<AtlasEntry> books;
   final List<AtlasEntry> countries;
 
+  /// Personalidades canônicas (Filósofos, Economistas, Cientistas Políticos,
+  /// Sociólogos, Juristas e Estadistas Históricos), sem poluição de parlamentares
+  /// avulsos nem comunicadores de bolha.
+  List<AtlasEntry> get canonicalPersonalities => personalities
+      .where((p) => p.isCanonicalPersonality)
+      .toList(growable: false);
+
+  /// Parlamentares com coordenadas derivadas de votações nominais (Bancada / Congresso).
+  List<AtlasEntry> get parliamentarians => personalities
+      .where((p) => p.vocation == PersonalityVocation.parliamentarian)
+      .toList(growable: false);
+
+  /// Comunicadores e participantes do debate público contemporâneo.
+  List<AtlasEntry> get communicators => personalities
+      .where((p) => p.vocation == PersonalityVocation.communicator)
+      .toList(growable: false);
+
   int get totalEntries =>
       personalities.length +
       partiesAndMovements.length +
@@ -198,6 +379,28 @@ class PoliticalAtlas {
       seen.add(e.category);
     }
     return seen.toList();
+  }
+
+  PoliticalAtlas withPortraits(Map<String, StudyPortrait> portraits) {
+    if (portraits.isEmpty) return this;
+    AtlasEntry enrich(AtlasEntry e) {
+      if (e.photoUrl != null && e.photoUrl!.isNotEmpty) return e;
+      final portrait = portraits['${e.kind.name}:${e.id}'];
+      if (portrait != null) {
+        return e.copyWith(photoUrl: portrait.assetPath);
+      }
+      return e;
+    }
+
+    return PoliticalAtlas(
+      personalities: List<AtlasEntry>.unmodifiable(personalities.map(enrich)),
+      partiesAndMovements: List<AtlasEntry>.unmodifiable(
+        partiesAndMovements.map(enrich),
+      ),
+      historicalEras: List<AtlasEntry>.unmodifiable(historicalEras.map(enrich)),
+      books: List<AtlasEntry>.unmodifiable(books.map(enrich)),
+      countries: List<AtlasEntry>.unmodifiable(countries.map(enrich)),
+    );
   }
 
   static List<AtlasEntry> parseEntriesJson(
@@ -287,6 +490,8 @@ class AtlasMatchResult {
     required this.rmsZ,
     required this.convergences,
     required this.divergences,
+    this.details = const <DimensionAlignmentDetail>[],
+    this.twelveAxesAffinity,
   });
 
   final AtlasEntry entry;
@@ -294,6 +499,11 @@ class AtlasMatchResult {
   final double rmsZ;
   final List<String> convergences;
   final List<String> divergences;
+  final List<DimensionAlignmentDetail> details;
+
+  /// Leitura complementar restrita aos 12 eixos bipolares. O ranking principal
+  /// continua usando as 18 dimensões e a incerteza do perfil avaliado.
+  final TwelveAxesAffinity? twelveAxesAffinity;
 }
 
 /// Recomendação bibliográfica dupla: obras afins para aprofundamento e
@@ -341,6 +551,7 @@ class EntityComparisonResult {
     required this.targetName,
     required this.targetSubtitle,
     required this.targetKindLabel,
+    this.photoUrl,
     required this.compatibilityPercent,
     required this.rmsd,
     required this.nolanUser,
@@ -350,20 +561,33 @@ class EntityComparisonResult {
     required this.convergentAxes,
     required this.divergentAxes,
     required this.summary,
+    this.userAxes = const {},
+    this.targetAxes = const {},
+    this.userTriads = const {},
+    this.targetTriads = const {},
+    this.alignmentDetails = const <DimensionAlignmentDetail>[],
   });
 
   final String targetId;
   final String targetName;
   final String targetSubtitle;
   final String targetKindLabel;
+  final String? photoUrl;
   final double? compatibilityPercent;
   final double? rmsd;
   final NolanCoordinates? nolanUser;
   final NolanCoordinates? nolanTarget;
   final Map<String, double> axisDeltas;
   final Map<int, double> triadDeltas;
+  final Map<String, double> userAxes;
+  final Map<String, double> targetAxes;
+  final Map<int, List<double>> userTriads;
+  final Map<int, List<double>> targetTriads;
   int get evaluatedDimensions => axisDeltas.length + triadDeltas.length;
   final List<String> convergentAxes;
   final List<String> divergentAxes;
   final String summary;
+
+  /// Decomposição analítica oficial das dimensões comparadas pelo motor.
+  final List<DimensionAlignmentDetail> alignmentDetails;
 }

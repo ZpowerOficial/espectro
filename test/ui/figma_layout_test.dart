@@ -78,6 +78,30 @@ void main() {
               tester.element(find.byType(MaterialApp)),
             ),
           );
+          // Os retratos do carrossel carregam em paralelo; sem pré-cache o
+          // golden da home podia capturar a primeira dobra antes das imagens.
+          for (final key in const <String>[
+            'personality:karl_marx',
+            'personality:friedrich_hayek',
+            'personality:hannah_arendt',
+            'personality:john_maynard_keynes',
+            'personality:max_weber',
+            'personality:murray_rothbard',
+            'personality:rosa_luxemburgo',
+            'personality:adam_smith',
+            'personality:john_locke',
+            'personality:mikhail_bakunin',
+          ]) {
+            final portrait = data.portraits[key];
+            if (portrait != null) {
+              await tester.runAsync(
+                () => precacheImage(
+                  AssetImage(portrait.assetPath),
+                  tester.element(find.byType(MaterialApp)),
+                ),
+              );
+            }
+          }
           await tester.pumpAndSettle();
           expect(tester.takeException(), isNull);
           await expectLater(

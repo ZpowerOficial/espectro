@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:politico/data/app_data.dart';
 import 'package:politico/domain/models/study_models.dart';
@@ -33,9 +36,9 @@ void main() {
 
   test('reading evidence never claims numerical calibration is justified', () {
     for (final source in studySources) {
-      expect(source.relation, 'Leitura primária');
+      expect(source.relation, isIn(['Leitura primária', 'Identificação dos canais']));
       expect(source.note, isNotEmpty);
-      expect(source.verifiedOn, matches(RegExp(r'^2026-11-0[34]$')));
+      expect(source.verifiedOn, matches(RegExp(r'^2026-11-0[3-9]$')));
       final url = Uri.parse(source.url);
       expect(url.scheme, 'https');
       expect(url.host, isNotEmpty);
@@ -61,4 +64,17 @@ void main() {
       expect(() => readings.clear(), throwsUnsupportedError);
     },
   );
+
+  test('all 129 core personalities have curated study sources', () {
+    final coreJson = jsonDecode(File('assets/data/personalities.json').readAsStringSync()) as Map;
+    final coreIds = ((coreJson['entries'] as List)).map((e) => (e as Map)['id'] as String).toList();
+    expect(coreIds, hasLength(129));
+    for (final id in coreIds) {
+      expect(
+        sourcesForStudy('personality:$id'),
+        isNotEmpty,
+        reason: 'Core personality personality:$id should have at least one primary source',
+      );
+    }
+  });
 }

@@ -1,0 +1,221 @@
+{
+  "reviewedAt": "2026-11-05",
+  "supplements": [
+    {
+      "key": "personality:platao",
+      "dimensions": [
+        "axis:moral"
+      ],
+      "answerCount": 2
+    },
+    {
+      "key": "personality:aristoteles",
+      "dimensions": [
+        "axis:representacao"
+      ],
+      "answerCount": 2
+    },
+    {
+      "key": "personality:pierre_joseph_proudhon",
+      "dimensions": [
+        "axis:economia"
+      ],
+      "answerCount": 2
+    },
+    {
+      "key": "personality:john_stuart_mill",
+      "dimensions": [
+        "triad:1"
+      ],
+      "answerCount": 6
+    },
+    {
+      "key": "personality:friedrich_engels",
+      "dimensions": [
+        "axis:imigracao",
+        "triad:0"
+      ],
+      "answerCount": 8
+    },
+    {
+      "key": "personality:emma_goldman",
+      "dimensions": [
+        "axis:comercio",
+        "axis:tecnologia"
+      ],
+      "answerCount": 4
+    },
+    {
+      "key": "personality:errico_malatesta",
+      "dimensions": [
+        "axis:representacao",
+        "axis:imigracao",
+        "axis:comercio",
+        "axis:tecnologia",
+        "triad:4"
+      ],
+      "answerCount": 14
+    },
+    {
+      "key": "personality:benjamin_tucker",
+      "dimensions": [
+        "axis:representacao",
+        "axis:imigracao",
+        "axis:tecnologia",
+        "triad:4"
+      ],
+      "answerCount": 12
+    },
+    {
+      "key": "personality:thomas_paine",
+      "dimensions": [
+        "axis:imigracao",
+        "axis:tecnologia"
+      ],
+      "answerCount": 4
+    },
+    {
+      "key": "personality:anton_pannekoek",
+      "dimensions": [
+        "axis:imigracao"
+      ],
+      "answerCount": 2
+    },
+    {
+      "key": "personality:james_connolly",
+      "dimensions": [
+        "axis:imigracao",
+        "axis:religiao"
+      ],
+      "answerCount": 4
+    },
+    {
+      "key": "personality:james_guillaume",
+      "dimensions": [
+        "axis:representacao",
+        "axis:imigracao",
+        "axis:comercio",
+        "axis:tecnologia",
+        "triad:4"
+      ],
+      "answerCount": 14
+    },
+    {
+      "key": "personality:alexander_berkman",
+      "dimensions": [
+        "axis:representacao",
+        "axis:imigracao",
+        "axis:comercio",
+        "axis:tecnologia",
+        "triad:4"
+      ],
+      "answerCount": 14
+    },
+    {
+      "key": "personality:benjamin_constant",
+      "dimensions": [
+        "axis:estrutura",
+        "axis:imigracao",
+        "axis:religiao",
+        "axis:tecnologia"
+      ],
+      "answerCount": 8
+    },
+    {
+      "key": "personality:jair_bolsonaro",
+      "dimensions": [
+        "axis:estrutura",
+        "axis:poder",
+        "axis:diplomacia",
+        "axis:comercio",
+        "axis:tecnologia",
+        "triad:4",
+        "triad:5"
+      ],
+      "answerCount": 22
+    },
+    {
+      "key": "personality:lysander_spooner",
+      "dimensions": [
+        "axis:representacao",
+        "axis:imigracao",
+        "axis:religiao",
+        "axis:tecnologia"
+      ],
+      "answerCount": 8
+    },
+    {
+      "key": "personality:hans_hermann_hoppe",
+      "dimensions": [
+        "axis:religiao",
+        "axis:tecnologia"
+      ],
+      "answerCount": 4
+    },
+    {
+      "key": "personality:milton_friedman",
+      "dimensions": [
+        "axis:imigracao",
+        "axis:religiao"
+      ],
+      "answerCount": 4
+    },
+    {
+      "key": "personality:herbert_spencer",
+      "dimensions": [
+        "axis:estrutura",
+        "axis:representacao",
+        "axis:imigracao",
+        "axis:religiao"
+      ],
+      "answerCount": 8
+    },
+    {
+      "key": "personality:karl_kautsky",
+      "dimensions": [
+        "axis:imigracao"
+      ],
+      "answerCount": 2
+    }
+  ],
+  "newDimensions": 56,
+  "newAnswers": 144,
+  "catalogTotals": {
+    "current": {
+      "subjects": 289,
+      "numericallyComplete": 83,
+      "missingNumericalDimensions": 2656,
+      "documentedComplete": 0
+    },
+    "personality": {
+      "subjects": 128,
+      "numericallyComplete": 102,
+      "missingNumericalDimensions": 113,
+      "documentedComplete": 7
+    },
+    "book": {
+      "subjects": 165,
+      "numericallyComplete": 71,
+      "missingNumericalDimensions": 1378,
+      "documentedComplete": 0
+    },
+    "party": {
+      "subjects": 110,
+      "numericallyComplete": 56,
+      "missingNumericalDimensions": 806,
+      "documentedComplete": 0
+    },
+    "history": {
+      "subjects": 94,
+      "numericallyComplete": 47,
+      "missingNumericalDimensions": 687,
+      "documentedComplete": 0
+    },
+    "country": {
+      "subjects": 80,
+      "numericallyComplete": 80,
+      "missingNumericalDimensions": 0,
+      "documentedComplete": 0
+    }
+  }
+}

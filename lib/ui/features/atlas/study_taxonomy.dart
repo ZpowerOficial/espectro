@@ -19,8 +19,8 @@ class StudySpectrum {
     if (dark && color.computeLuminance() < .3) {
       return hsl.withLightness(.72).toColor();
     }
-    if (!dark && color.computeLuminance() > .3) {
-      return hsl.withLightness(.32).toColor();
+    if (!dark && color.computeLuminance() > .16) {
+      return hsl.withLightness(.26).toColor();
     }
     return color;
   }
@@ -98,6 +98,8 @@ const studySpectra = <StudySpectrum>[
     "Tradições liberais e conservadoras, propriedade privada e concepções de ordem.",
     Color(0xFF2B79B7),
     {
+      "integralismo_lusitano",
+      "nacional_conservadorismo_populista",
       "liberalismo_classico",
       "ordoliberalismo",
       "escola_austriaca",
@@ -124,17 +126,9 @@ const studySpectra = <StudySpectrum>[
   StudySpectrum(
     "far_right",
     "Extrema-direita",
-    "Projetos ultranacionalistas, hierárquicos e antipluralistas, com diferenças históricas entre si.",
+    "Radicalizações de posições de direita, segundo critérios documentados de cada ficha. A categoria não é uma avaliação moral.",
     Color(0xFF81533E),
-    {
-      "nacional_conservadorismo_populista",
-      "integralismo_lusitano",
-      "falangismo_nacional_sindicalismo",
-      "fascismo_historico",
-      "fundamentalismo_teocratico",
-      "ecofascismo_nacionalismo_ecologico",
-      "aceleracionismo_de_direita",
-    },
+    {"fundamentalismo_teocratico", "aceleracionismo_de_direita"},
   ),
   StudySpectrum(
     "anarchist",
@@ -168,9 +162,16 @@ const studySpectra = <StudySpectrum>[
   StudySpectrum(
     "third_position",
     "Terceira posição",
-    "Projetos que se apresentam como alternativas ao capitalismo liberal e ao socialismo marxista. Não equivale ao centrismo nem à Terceira Via.",
+    "Agrupamento editorial de projetos que reivindicam uma alternativa ao liberalismo e ao marxismo, incluindo fascismos nesta taxonomia. Não equivale ao centro nem à Terceira Via; existem outras classificações historiográficas.",
     Color(0xFF8566A9),
-    {"peronismo_justicialismo", "baathismo_panarabismo", "castilhismo"},
+    {
+      "peronismo_justicialismo",
+      "baathismo_panarabismo",
+      "castilhismo",
+      "ecofascismo_nacionalismo_ecologico",
+      "falangismo_nacional_sindicalismo",
+      "fascismo_historico",
+    },
   ),
 ];
 const _personalitySpectra = <String, String>{
@@ -206,6 +207,7 @@ const _personalitySpectra = <String, String>{
   "hannah_arendt": "center",
   "john_rawls": "center",
   "abraham_lincoln": "center",
+  "frederick_douglass": "center",
   "franklin_d_roosevelt": "center",
   "mahatma_gandhi": "center",
   "konrad_adenauer": "center",
@@ -250,13 +252,18 @@ const _personalitySpectra = <String, String>{
   "jose_bonifacio": "right",
   "alberto_torres": "right",
   "getulio_vargas": "third_position",
-  "plinio_salgado": "far_right",
+  "plinio_salgado": "third_position",
   "eneas_carneiro": "right",
-  "jair_bolsonaro": "far_right",
+  "jair_bolsonaro": "right",
   "nayib_bukele": "right",
   "giorgia_meloni": "far_right",
   "viktor_orban": "far_right",
   "donald_trump": "far_right",
+  "francisco_franco": "far_right",
+  "antonio_de_oliveira_salazar": "far_right",
+  "marine_le_pen": "far_right",
+  "benito_mussolini": "third_position",
+  "gamal_abdel_nasser": "third_position",
   "xi_jinping": "radical_left",
 };
 const _bookSpectra = <String, String>{
@@ -364,16 +371,80 @@ String? normalizeSpectrumFilter(String? value) {
   return spectrumById(oldNames[value])?.name;
 }
 
+/// Prioridade de exibição contígua no Atlas ("Tudo" sem alternar categorias):
+/// 0: Correntes Ideológicas
+/// 1: Pensadores, Economistas & Cientistas Políticos/Sociólogos/Juristas
+/// 2: Estadistas & Líderes Históricos
+/// 3: Livros & Obras Clássicas
+/// 4: Países & Modelos de Estado
+/// 5: Eras & Regimes Históricos
+/// 6: Partidos & Movimentos
+/// 7: Debate Público & Divulgadores
+/// 8: Bancada / Congresso (Parlamentares)
+int studyCategoryPriority(StudySubject s) {
+  if (s.kind == 'personality') {
+    return switch (s.vocation?.id) {
+      'philosopher' || 'economist' || 'scholar' => 1,
+      'statesman' => 2,
+      'communicator' => 7,
+      'parliamentarian' => 8,
+      _ => 2,
+    };
+  }
+  return switch (s.kind) {
+    'current' => 0,
+    'book' => 3,
+    'country' => 4,
+    'history' => 5,
+    'party' => 6,
+    _ => 6,
+  };
+}
+
+String studyCategorySectionTitle(StudySubject s) =>
+    switch (studyCategoryPriority(s)) {
+      0 => 'Correntes Ideológicas',
+      1 => 'Pensadores, Economistas & Cientistas Políticos',
+      2 => 'Estadistas & Líderes Históricos',
+      3 => 'Livros & Obras Clássicas',
+      4 => 'Países & Modelos de Estado',
+      5 => 'Eras & Regimes Históricos',
+      6 => 'Partidos & Movimentos',
+      7 => 'Debate Público & Divulgadores',
+      8 => 'Bancada / Congresso',
+      _ => 'Outros verbetes',
+    };
+
 int compareStudySubjects(StudySubject a, StudySubject b) {
   int order(StudySubject s) {
     final index = studySpectra.indexWhere((g) => g.id == spectrumOf(s)?.id);
     return index < 0 ? studySpectra.length : index;
   }
 
+  int tierRank(StudySubject s) {
+    final basis = s.current?.editorialBasis ?? s.entry?.editorialBasis;
+    if (basis?.dossierShard == null) return 0;
+    return switch (basis?.evidenceTier) {
+      'tier1_editorial_reconstruction' => 0,
+      'tier3_preliminary_curation' => 1,
+      'tier2_institutional_record' => 2,
+      _ => 1,
+    };
+  }
+
+  // 1. Mantém blocos contíguos por categoria/vocação (sem alternar entre correntes, livros e pessoas)
+  final cat = studyCategoryPriority(a).compareTo(studyCategoryPriority(b));
+  if (cat != 0) return cat;
+
+  // 2. Dentro de cada categoria, prioriza fichas Nível 1 (com retrato local e reconstrução primária)
+  final tier = tierRank(a).compareTo(tierRank(b));
+  if (tier != 0) return tier;
+
+  // 3. Agrupa por espectro dentro da mesma categoria e nível
   final group = order(a).compareTo(order(b));
   if (group != 0) return group;
-  final name = StudyCatalog.normalize(a.name)
-      .compareTo(StudyCatalog.normalize(b.name));
+
+  final name = a.normalizedName.compareTo(b.normalizedName);
   return name == 0 ? a.key.compareTo(b.key) : name;
 }
 

@@ -66,7 +66,11 @@ void main() {
       );
 
       // Volta ao topo para tocar no ícone de Metodologia.
-      await tester.drag(find.byType(Scrollable).first, const Offset(0, 1200));
+      await tester.scrollUntilVisible(
+        find.byIcon(Icons.science_outlined),
+        -200,
+        scrollable: find.byType(Scrollable).first,
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.byIcon(Icons.science_outlined));
       await tester.pumpAndSettle();

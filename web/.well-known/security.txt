@@ -1,0 +1,4 @@
+Contact: https://espectro-politico.web.app/privacidade.html
+Expires: 2027-11-15T23:59:59.000Z
+Preferred-Languages: pt-BR, en
+Canonical: https://espectro-politico.web.app/.well-known/security.txt

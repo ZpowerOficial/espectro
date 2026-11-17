@@ -1,0 +1,106 @@
+{
+  "date": "2026-11-05",
+  "scope": "20 personality supplements; not full catalog acceptance",
+  "newDimensions": 56,
+  "newEditorialAnswers": 144,
+  "fullSuite": {
+    "status": "PASS",
+    "passed": 220,
+    "command": "rtk flutter test --reporter expanded",
+    "note": "Before the additional numeric audit test; old Bolsonaro expectation updated after first run failed."
+  },
+  "additionalFocusedTests": {
+    "status": "PASS",
+    "passed": 3,
+    "includesNewAuditOfSubjects": 866
+  },
+  "analyze": {
+    "status": "PASS",
+    "issues": 0
+  },
+  "webBuild": {
+    "status": "PASS",
+    "assetHashesMatchAllSixCatalogs": true
+  },
+  "integrationIdempotence": {
+    "status": "PASS",
+    "note": "Repeated runs after integration stabilized produced identical hashes."
+  },
+  "browser": {
+    "status": "PASS_AFTER_RETRY",
+    "cases": [
+      {
+        "id": "jair_bolsonaro",
+        "width": 390,
+        "reconstructedDimensions": 7,
+        "reconstructedAnswersVisible": true,
+        "sourceLink": true,
+        "errors": []
+      },
+      {
+        "id": "milton_friedman",
+        "width": 390,
+        "reconstructedDimensions": 2,
+        "reconstructedAnswersVisible": true,
+        "sourceLink": true,
+        "errors": []
+      },
+      {
+        "id": "hans_hermann_hoppe",
+        "width": 390,
+        "reconstructedDimensions": 2,
+        "reconstructedAnswersVisible": true,
+        "sourceLink": true,
+        "errors": []
+      },
+      {
+        "id": "alexander_berkman",
+        "width": 390,
+        "reconstructedDimensions": 5,
+        "reconstructedAnswersVisible": true,
+        "sourceLink": true,
+        "errors": []
+      },
+      {
+        "id": "jair_bolsonaro",
+        "width": 1440,
+        "reconstructedDimensions": 7,
+        "reconstructedAnswersVisible": true,
+        "sourceLink": true,
+        "errors": []
+      },
+      {
+        "id": "milton_friedman",
+        "width": 1440,
+        "reconstructedDimensions": 2,
+        "reconstructedAnswersVisible": true,
+        "sourceLink": true,
+        "errors": []
+      },
+      {
+        "id": "hans_hermann_hoppe",
+        "width": 1440,
+        "reconstructedDimensions": 2,
+        "reconstructedAnswersVisible": true,
+        "sourceLink": true,
+        "errors": []
+      },
+      {
+        "id": "alexander_berkman",
+        "width": 1440,
+        "reconstructedDimensions": 5,
+        "reconstructedAnswersVisible": true,
+        "sourceLink": true,
+        "semanticsRetries": 0,
+        "errors": []
+      }
+    ],
+    "initialFailures": [
+      "First run could not reach a reconstructed dimension below the initial viewport; QA scrolling added.",
+      "Next run passed 7 cases and timed out before the Dimensions tab during Berkman desktop initialization; isolated retry passed."
+    ]
+  },
+  "physicalDevice": "NOT_RUN",
+  "catalogCompletion": "PARTIAL",
+  "remainingNumericalDimensionsExcludingBooks": 4262
+}

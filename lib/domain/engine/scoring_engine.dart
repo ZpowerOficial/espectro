@@ -59,7 +59,8 @@ abstract final class EspectroScoringEngine {
     final Map<String, List<UnifiedQuestion>> byAxis =
         <String, List<UnifiedQuestion>>{};
     for (final UnifiedQuestion q in questions) {
-      if (q.kind == UnifiedQuestionKind.bipolar) {
+      if (q.kind == UnifiedQuestionKind.bipolar ||
+          (q.kind == UnifiedQuestionKind.integrated && q.axisQuestion != null)) {
         byAxis
             .putIfAbsent(q.axisQuestion!.axisId, () => <UnifiedQuestion>[])
             .add(q);
@@ -200,7 +201,8 @@ abstract final class EspectroScoringEngine {
     final Map<int, List<UnifiedQuestion>> byCat =
         <int, List<UnifiedQuestion>>{};
     for (final UnifiedQuestion q in questions) {
-      if (q.kind == UnifiedQuestionKind.triad) {
+      if (q.kind == UnifiedQuestionKind.triad ||
+          (q.kind == UnifiedQuestionKind.integrated && q.sixQuestion != null)) {
         byCat
             .putIfAbsent(q.sixQuestion!.category, () => <UnifiedQuestion>[])
             .add(q);

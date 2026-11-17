@@ -1,46 +1,206 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0C1C27">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
 
-  <!-- iOS meta tags & icons -->
+  <title>Espectro — Observatório Político, Teste de 12 Eixos &amp; Atlas de 289 Correntes</title>
+  <meta name="description" content="Espectro (espectro-politico.web.app) é uma plataforma brasileira de cartografia e análise política multidimensional em 12 eixos bipolares e 6 tríades de valores, com 289 correntes ideológicas, 760+ pensadores, economistas e estadistas e 165 obras clássicas.">
+  <meta name="keywords" content="teste político, espectro político, 12 eixos, 6 tríades, bússola política, filosofia política, 289 correntes ideológicas, Karl Marx no espectro, liberalismo, conservadorismo, social-democracia, libertarianismo, ciência política, atlas político">
+  <meta name="author" content="Espectro — Observatório Político">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://espectro-politico.web.app/">
+
+  <!-- Open Graph / WhatsApp / LinkedIn / Discord -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Espectro — Observatório Político">
+  <meta property="og:url" content="https://espectro-politico.web.app/">
+  <meta property="og:title" content="Espectro — Observatório Político &amp; Teste de 12 Eixos (289 Correntes)">
+  <meta property="og:description" content="Avaliação política multidimensional em 12 eixos e 6 tríades, com atlas enciclopédico de 289 correntes ideológicas, 760+ pensadores, livros clássicos e teia interativa.">
+  <meta property="og:image" content="https://espectro-politico.web.app/icons/Icon-512.png">
+  <meta property="og:image:alt" content="Logo do Espectro — Observatório Político">
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Espectro — Observatório Político &amp; Atlas de 289 Correntes">
+  <meta name="twitter:description" content="Mapeie suas ideias políticas em 18 dimensões e compare com pensadores como Karl Marx, John Locke, Keynes, Hayek, Celso Furtado e 289 correntes.">
+  <meta name="twitter:image" content="https://espectro-politico.web.app/icons/Icon-512.png">
+
+  <!-- iOS / PWA meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="politico">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Espectro">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png?v=2">
+  <link rel="icon" type="image/png" href="favicon.png?v=2">
+  <link rel="manifest" href="manifest.json?v=2">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <!-- Google Analytics 4 / Firebase Analytics (App: Espectro Web - G-XP4L3LL18B) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XP4L3LL18B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('set', 'cookie_domain', 'none');
+    gtag('js', new Date());
+    gtag('config', 'G-XP4L3LL18B', {
+      cookie_domain: 'none',
+      cookie_flags: 'SameSite=Lax;Secure',
+      send_page_view: true,
+      anonymize_ip: true
+    });
+    window.__espectroTrackPageView = function(title, path) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', 'page_view', {
+        page_title: title || document.title,
+        page_location: window.location.origin + (path || window.location.pathname + window.location.hash),
+        page_path: path || (window.location.pathname + window.location.hash)
+      });
+    };
+    window.__espectroTrackEvent = function(name, params) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', name, params || {});
+    };
+  </script>
 
-  <title>politico</title>
-  <link rel="manifest" href="manifest.json">
+  <!-- Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-1519935796466095">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1519935796466095"
+     crossorigin="anonymous"></script>
+
+  <!-- Schema.org Structured Data (WebApplication + Dataset + Organization + FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Espectro — Observatório Político",
+        "url": "https://espectro-politico.web.app/",
+        "logo": "https://espectro-politico.web.app/icons/Icon-512.png"
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Espectro — Observatório e Cartografia Política",
+        "alternateName": ["Espectro Teste Político", "Atlas Político Espectro"],
+        "url": "https://espectro-politico.web.app/",
+        "inLanguage": "pt-BR",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web, Android, Linux, Windows",
+        "description": "Plataforma brasileira de investigação e cartografia política multidimensional baseada em 12 eixos bipolares e 6 tríades de valores (18 dimensões), com Atlas enciclopédico de 289 correntes ideológicas, mais de 760 pensadores, economistas e estadistas, 165 obras clássicas, 81 países e 110 partidos.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        }
+      },
+      {
+        "@type": "Dataset",
+        "name": "Atlas Político Espectro — 289 Correntes Ideológicas e 1.502 Verbetes nos 12 Eixos",
+        "url": "https://espectro-politico.web.app/catalogo.html",
+        "description": "Conjunto de dados analítico com 289 correntes ideológicas, pensadores, livros clássicos, países, partidos e eras históricas mapeados em 12 eixos políticos bipolares e 6 tríades de valores.",
+        "inLanguage": "pt-BR",
+        "creator": {
+          "@type": "Organization",
+          "name": "Espectro — Observatório Político"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "O que é o Espectro (espectro-politico.web.app) e quantas correntes ideológicas existem nele?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O Espectro (https://espectro-politico.web.app) é um observatório político e teste ideológico multidimensional em português que avalia 18 dimensões (12 eixos bipolares e 6 tríades de valores) e reúne 289 correntes ideológicas, mais de 760 pensadores, economistas e estadistas, 165 livros clássicos, 81 países, 110 partidos e 94 eras históricas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como funciona o teste político de 12 eixos e 6 tríades do Espectro?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O Espectro combina 12 eixos bipolares (estrutura, representação, poder, imigração, diplomacia, intervenção, economia, controle, comércio, religião, moral e tecnologia) com 6 tríades de valores, gerando afinidades matemáticas com 289 correntes ideológicas e centenas de figuras históricas sem exigir cadastro."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Meus dados e respostas ficam salvos em algum servidor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não. Todo o cálculo do Espectro é executado 100% localmente no dispositivo do usuário. Nenhuma resposta individual ou perfil político é enviado a servidores externos."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    /* Conteúdo semântico acessível a indexadores de busca/AdSense/IAs antes do canvas montar */
+    #seo-semantic-shell {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
-
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
-  <script src="flutter_bootstrap.js" async></script>
+  <main id="seo-semantic-shell" aria-hidden="false">
+    <h1>Espectro (espectro-politico.web.app) — Observatório Político, Teste de 12 Eixos e Atlas de 289 Correntes</h1>
+    <p>O Espectro é uma enciclopédia política interativa e ferramenta de análise multidimensional em língua portuguesa disponível em https://espectro-politico.web.app. Em vez de reduzir o pensamento político a uma única linha, o Espectro mede 18 dimensões: 12 eixos bipolares e 6 tríades de valores, com 289 correntes ideológicas catalogadas e mais de 1.502 fichas analíticas.</p>
+    <h2>Catálogo Enciclopédico do Atlas Político</h2>
+    <ul>
+      <li><strong>289 Correntes Ideológicas</strong>: Social-Democracia, Liberalismo Clássico, Conservadorismo Burkeano, Socialismo Democrático, Marxismo-Leninismo, Libertarianismo, Anarcocapitalismo, Anarcossindicalismo, Ordoliberalismo, Democracia Cristã, Trabalhismo, Georgismo, Distributismo, Ecologismo Político e mais.</li>
+      <li><strong>Pensadores, Economistas e Cientistas Políticos</strong>: Karl Marx, Aristóteles, Platão, John Locke, Montesquieu, Adam Smith, Edmund Burke, Alexis de Tocqueville, Max Weber, John Maynard Keynes, Friedrich Hayek, Ludwig von Mises, Hannah Arendt, John Rawls, Milton Friedman, Amartya Sen, Celso Furtado, Raymundo Faoro, Joaquim Nabuco, Rui Barbosa e centenas de outros autores com fontes documentadas.</li>
+      <li><strong>165 Livros e Obras Clássicas</strong>: A República, O Espírito das Leis, A Riqueza das Nações, O Federalista, Da Democracia na América, O Capital, A Caminho da Servidão, Uma Teoria da Justiça, Os Donos do Poder e obras fundamentais da teoria política e econômica.</li>
+      <li><strong>Países, Eras Históricas e Partidos</strong>: 81 países e modelos de Estado, 94 eras históricas e 110 partidos comparáveis nas mesmas 18 dimensões.</li>
+    </ul>
+    <p><a href="/catalogo.html">Catálogo Completo de 289 Correntes Ideológicas, Pensadores, Livros, Países e Partidos</a> · <a href="/llms.txt">Índice para Inteligências Artificiais (llms.txt)</a> · <a href="/privacidade.html">Política de Privacidade, Segurança e Termos de Uso (LGPD)</a></p>
+  </main>
+  <noscript>
+    <article style="max-width:760px;margin:2rem auto;padding:1.5rem;font-family:sans-serif;line-height:1.6">
+      <h1>Espectro — Cartografia Política</h1>
+      <p>Para utilizar o aplicativo interativo do Espectro (Questionários de 12 Eixos, 6 Tríades, Teia de Ideias e Atlas Político com 289 correntes ideológicas), ative o JavaScript no seu navegador ou navegue pelo <a href="/catalogo.html">Catálogo Estático Completo</a>.</p>
+      <p><a href="/catalogo.html">Catálogo Completo</a> · <a href="/llms.txt">llms.txt</a> · <a href="/privacidade.html">Política de Privacidade e Segurança da Informação</a></p>
+    </article>
+  </noscript>
+  <script>
+    // O Flutter 3.47 deixou de gerar um worker offline funcional. O Espectro
+    // registra o próprio worker, que pré-cacheia o shell e os dados do app.
+    if ('serviceWorker' in navigator) {
+      const hadController = Boolean(navigator.serviceWorker.controller);
+      let reloading = false;
+      navigator.serviceWorker.addEventListener('controllerchange', function () {
+        if (!hadController || reloading) return;
+        reloading = true;
+        window.location.reload();
+      });
+      window.addEventListener('load', function () {
+        navigator.serviceWorker
+          .register('espectro_sw.js', { updateViaCache: 'none' })
+          .then(function (reg) {
+            return reg.update();
+          })
+          .catch(function () {
+            // Em `flutter run` o arquivo pode não existir; o app continua normal.
+          });
+      });
+    }
+    const s = document.createElement('script');
+    s.src = 'flutter_bootstrap.js';
+    s.async = true;
+    document.body.appendChild(s);
+  </script>
 </body>
 </html>

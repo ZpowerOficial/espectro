@@ -1,0 +1,38 @@
+- group:
+  - img "Símbolo do Espectro"
+  - text: ESPECTRO NAVEGAÇÃO
+  - button "Visão geral"
+  - button "Meus testes"
+  - button "Atlas político"
+  - button "Comparar"
+  - button "Histórico"
+  - button "Método aberto"
+  - text: SUA INVESTIGAÇÃO É PRIVADA Dados locais e exportação sob seu controle.
+- button "Back"
+- heading "Personalidade" [level=2]
+- button "Salvar verbete"
+- button "Copiar link do verbete"
+- group:
+  - tablist:
+    - tab "Visão geral"
+    - tab "Dimensões" [selected]
+    - tab "Conexões"
+    - tab "Fontes e limites"
+- tabpanel:
+  - group:
+    - 'group "Representação Democracia Autocracia Milton Friedman -0.75 Milton Friedman: -0.75 entre Democracia e Autocracia Inferência editorial de tendência a participação popular, controle dos mandatários ou direitos políticos. A posição -0.75 é uma aproximação ordinal não validada, não percentual de apoio nem fato medido. Recorte: Posições interpretadas a partir de Milton Friedman — Capitalism and Freedom, ensaio. Não cobre uniformemente toda a vida do autor; temas não sustentados são omitidos. Leitura contextual: Milton Friedman — Capitalism and Freedom, ensaio."':
+      - button "Entender Representação"
+      - button "Base documental desta dimensão Revisão por dimensão pendente"
+    - 'group "Poder Segurança Liberdade Milton Friedman 0.84 Milton Friedman: 0.84 entre Segurança e Liberdade Inferência editorial de tendência a autonomia civil e limitação da coerção. A posição 0.84 é uma aproximação ordinal não validada, não percentual de apoio nem fato medido. Recorte: Posições interpretadas a partir de Milton Friedman — Capitalism and Freedom, ensaio. Não cobre uniformemente toda a vida do autor; temas não sustentados são omitidos. Leitura contextual: Milton Friedman — Capitalism and Freedom, ensaio."':
+      - button "Entender Poder"
+      - button "Base documental desta dimensão Revisão por dimensão pendente"
+    - 'group "Imigração Assimilação Multicultura Milton Friedman 0.50 Milton Friedman: 0.50 entre Assimilação e Multicultura Contesta a ideia de que preservar identidades italianas ou judaicas seja uma novidade problemática. A preferência cultural é inferida da resposta; a mesma entrevista condiciona imigração irrestrita à redução do welfare state. A crítica mais forte à não assimilação é de Rose. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência."':
+      - button "Entender Imigração"
+      - 'button "Respostas reconstruídas e fontes Seção The Melting Pot: falas identificadas de Milton, após a pergunta sobre pressão por integração"'
+      - group "Contesta a ideia de que preservar identidades italianas ou judaicas seja uma novidade problemática. A preferência cultural é inferida da resposta; a mesma entrevista condiciona imigração irrestrita à redução do welfare state. A crítica mais forte à não assimilação é de Rose. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. The Romance of Economics — entrevista de Milton e Rose Friedman. Milton Friedman e Rose Friedman, entrevistados por Tunku Varadarajan · 2006; republicação pela Hoover Institution. Texto primário em edição ou transcrição digital. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração literal do autor.. https://www.hoover.org/research/romance-economics":
+        - text: "Contesta a ideia de que preservar identidades italianas ou judaicas seja uma novidade problemática. A preferência cultural é inferida da resposta; a mesma entrevista condiciona imigração irrestrita à redução do welfare state. A crítica mais forte à não assimilação é de Rose. Coordenada derivada de respostas reconstruídas pelo motor; não mede a precisão histórica da inferência. Simulação editorial: o autor não respondeu ao teste. As respostas abaixo traduzem a leitura das fontes para o banco do Espectro; as intensidades e a seleção dos itens podem ser questionadas. Quem imigra para um país deve aprender o idioma e adotar os costumes locais. Resposta atribuída: Discordo Contesta a ideia de que preservar identidades italianas ou judaicas seja uma novidade problemática. Ressalva: A preferência cultural é inferida da resposta; a mesma entrevista condiciona imigração irrestrita à redução do welfare state. A crítica mais forte à não assimilação é de Rose. O país deve permitir que imigrantes preservem seus costumes e tradições, mesmo que sejam diferentes. Resposta atribuída: Concordo Contesta a ideia de que preservar identidades italianas ou judaicas seja uma novidade problemática. Ressalva: A preferência cultural é inferida da resposta; a mesma entrevista condiciona imigração irrestrita à redução do welfare state. A crítica mais forte à não assimilação é de Rose. The Romance of Economics — entrevista de Milton e Rose Friedman Milton Friedman e Rose Friedman, entrevistados por Tunku Varadarajan · 2006; republicação pela Hoover Institution. Texto primário em edição ou transcrição digital. Trecho indicado consultado; a intensidade da resposta é reconstrução editorial, não declaração literal do autor."
+        - textbox [disabled]
+        - button "Abrir documento"
+        - text: O documento fundamenta a leitura qualitativa. As coordenadas e proporções são estimativas do Espectro, não percentuais publicados pelo autor.
+    - 'group "Diplomacia Militarista Pacifista Milton Friedman 0.65 Milton Friedman: 0.65 entre Militarista e Pacifista Inferência editorial de tendência a pacificação, cooperação e recusa da guerra. A posição 0.65 é uma aproximação ordinal não validada, não percentual de apoio nem fato medido. Recorte: Posições interpretadas a partir de Milton Friedman — Capitalism and Freedom, ensaio. Não cobre uniformemente toda a vida do autor; temas não sustentados são omitidos. Leitura contextual: Milton Friedman — Capitalism and Freedom, ensaio."':
+      - button "Entender Diplomacia"
