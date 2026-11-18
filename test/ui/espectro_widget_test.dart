@@ -41,7 +41,10 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('ESPECTRO'), findsOneWidget);
-      expect(find.text('Começar minha avaliação'), findsOneWidget);
+      expect(
+        find.text('Fazer Avaliação Rápida (3 min) →'),
+        findsOneWidget,
+      );
 
       await tester.scrollUntilVisible(
         find.text('12 EIXOS'),
@@ -96,6 +99,8 @@ void main() {
         200,
         scrollable: find.byType(Scrollable).first,
       );
+      await tester.ensureVisible(find.text('12 EIXOS'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('12 EIXOS'));
       await tester.pumpAndSettle();
 

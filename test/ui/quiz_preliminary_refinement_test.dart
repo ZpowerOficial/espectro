@@ -53,9 +53,13 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      // Antes de 4 respostas, canPreview é falso.
+      // Antes de 4 respostas, canPreview é falso e a opção não aparece no menu.
       expect(quizVm.canPreview, isFalse);
-      expect(find.textContaining('Prévia'), findsNothing);
+      await tester.tap(find.byTooltip('Opções da avaliação'));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Ver prévia'), findsNothing);
+      await tester.tapAt(const Offset(10, 10));
+      await tester.pumpAndSettle();
 
       // Responde 5 afirmações
       for (var i = 0; i < 5; i++) {
@@ -63,13 +67,15 @@ void main() {
         await tester.pumpAndSettle(const Duration(milliseconds: 300));
       }
 
-      // Agora canPreview é verdadeiro e o botão de prévia está visível.
+      // Agora canPreview é verdadeiro e a opção aparece no menu discreto.
       expect(quizVm.canPreview, isTrue);
       expect(quizVm.answeredCount, equals(5));
-      expect(find.textContaining('Prévia (5/'), findsWidgets);
+      await tester.tap(find.byTooltip('Opções da avaliação'));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Ver prévia (5/'), findsOneWidget);
 
       // Clica para ver o resultado preliminar
-      await tester.tap(find.textContaining('Prévia (5/').first);
+      await tester.tap(find.textContaining('Ver prévia (5/'));
       await tester.pumpAndSettle();
 
       // Estamos agora na tela de resultados com o banner preliminar
@@ -94,8 +100,10 @@ void main() {
       await tester.pumpAndSettle(const Duration(milliseconds: 300));
       expect(quizVm.answeredCount, equals(6));
 
-      // Abre a prévia novamente, agora com 6 respondidas
-      await tester.tap(find.textContaining('Prévia (6/').first);
+      // Abre a prévia novamente pelo menu discreto, agora com 6 respondidas
+      await tester.tap(find.byTooltip('Opções da avaliação'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.textContaining('Ver prévia (6/'));
       await tester.pumpAndSettle();
 
       expect(find.byType(EspectroResultScreen), findsOneWidget);

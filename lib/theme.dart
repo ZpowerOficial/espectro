@@ -59,12 +59,15 @@ abstract final class EspectroElevation {
     Color? color,
     Color? borderColor,
     Color? tint,
-    double radius = 17,
+    double radius = 16,
     bool elevated = true,
     double borderWidth = 1,
   }) {
     final Color resolvedBorder =
-        borderColor ?? p.line.withValues(alpha: p.isDark ? 0.88 : 0.82);
+        borderColor ??
+        (p.isDark
+            ? Colors.white.withValues(alpha: 0.08)
+            : p.line.withValues(alpha: 0.60));
     return BoxDecoration(
       color: color ?? p.surface,
       borderRadius: BorderRadius.circular(radius),
@@ -132,14 +135,14 @@ class EspectroPalette extends ThemeExtension<EspectroPalette> {
 
   static const EspectroPalette light = EspectroPalette(
     isDark: false,
-    canvas: Color(0xFFF6F4EE),
+    canvas: Color(0xFFF8F9FA),
     surface: Color(0xFFFFFFFF),
-    surfaceMuted: Color(0xFFEDEAE0),
+    surfaceMuted: Color(0xFFEEF1F5),
     ink: Color(0xFF0E1117),
     inkSoft: Color(0xFF3E4554),
-    // AA para texto normal também sobre surfaceMuted (#EDEAE0).
-    muted: Color(0xFF5D6575),
-    line: Color(0xFFDFDBD0),
+    // AA para texto normal também sobre surfaceMuted (#EEF1F5).
+    muted: Color(0xFF565E6E),
+    line: Color(0xFFDCE1EA),
     accent: Color(0xFF1A4FD6),
     accentSoft: Color(0xFFE8EEFC),
     poleLeft: Color(0xFF1A4FD6),
@@ -161,14 +164,14 @@ class EspectroPalette extends ThemeExtension<EspectroPalette> {
 
   static const EspectroPalette dark = EspectroPalette(
     isDark: true,
-    canvas: Color(0xFF090C12),
-    surface: Color(0xFF121722),
-    surfaceMuted: Color(0xFF1B2231),
+    canvas: Color(0xFF0B0E14),
+    surface: Color(0xFF131822),
+    surfaceMuted: Color(0xFF1B2230),
     ink: Color(0xFFF5F7FB),
     inkSoft: Color(0xFFBFC8D8),
     // AA para texto normal sobre superfícies elevadas no tema escuro.
     muted: Color(0xFF8C96AA),
-    line: Color(0xFF232C3E),
+    line: Color(0xFF242D3F),
     accent: Color(0xFF63A4FF),
     accentSoft: Color(0xFF172642),
     poleLeft: Color(0xFF63A4FF),

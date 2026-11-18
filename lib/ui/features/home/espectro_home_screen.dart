@@ -297,63 +297,72 @@ class EspectroHomeScreen extends StatelessWidget {
                 final Widget toolsBentoCard = _ObservatoryToolsCard(
                   onOpenTeia: () => _openAtlas(context, initialMap: true),
                   onOpenCompare: () => _openComparison(context),
+                  onOpenHistory: () => _openHistory(context),
                   onQuickCompare: (List<String> keys) =>
                       _openComparison(context, initialKeys: keys),
                 );
 
-                final Widget shortcutsGroup = Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 2),
-                      child: Eyebrow('Acesso direto', color: p.accent),
-                    ),
-                    const SizedBox(height: 12),
-                    SectionCard(
-                      padding: EdgeInsets.zero,
-                      child: Column(
-                        children: [
-                          _FigmaShortcutRow(
-                            icon: Icons.tune_rounded,
-                            iconBg: p.accentSoft,
-                            iconColor: p.accent,
-                            title: '12 EIXOS',
-                            subtitle: 'Federalismo, economia, cultura e poder',
-                            topRadius: 17,
-                            onTap: () =>
-                                _openSuite(context, TestSuite.bipolarAxes),
-                          ),
-                          Divider(
-                            height: 1,
-                            color: p.line.withValues(alpha: 0.7),
-                          ),
-                          _FigmaShortcutRow(
-                            icon: Icons.change_history_rounded,
-                            iconBg: p.isDark
-                                ? p.surfaceMuted
-                                : const Color(0xFFFFF0D7),
-                            iconColor: p.warning,
-                            title: '6 TRÍADES',
-                            subtitle: 'Arenas baricêntricas com 3 vértices',
-                            onTap: () => _openSuite(context, TestSuite.triads),
-                          ),
-                          Divider(
-                            height: 1,
-                            color: p.line.withValues(alpha: 0.7),
-                          ),
-                          _FigmaShortcutRow(
-                            icon: Icons.history_rounded,
-                            iconBg: p.accentSoft,
-                            iconColor: p.accent,
-                            title: 'HISTÓRICO',
-                            subtitle: 'Compare avaliações ao longo do tempo',
-                            bottomRadius: 17,
-                            onTap: () => _openHistory(context),
-                          ),
-                        ],
+                final Widget exploreBentoCard = SectionCard(
+                  radius: 16,
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Explorar por conta própria',
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(
+                              fontWeight: FontWeight.w800,
+                              color: p.ink,
+                            ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 4),
+                      Text(
+                        'Escolha uma bateria específica ou consulte as fichas do Atlas.',
+                        style: TextStyle(
+                          fontSize: 13,
+                          height: 1.4,
+                          color: p.inkSoft,
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+                      _FigmaShortcutRow(
+                        icon: Icons.tune_rounded,
+                        iconBg: p.accentSoft,
+                        iconColor: p.accent,
+                        title: '12 EIXOS',
+                        subtitle: 'Federalismo, economia, cultura e poder',
+                        topRadius: 12,
+                        onTap: () => _openSuite(context, TestSuite.bipolarAxes),
+                      ),
+                      Divider(
+                        height: 1,
+                        color: p.line.withValues(alpha: 0.5),
+                      ),
+                      _FigmaShortcutRow(
+                        icon: Icons.change_history_rounded,
+                        iconBg: p.accentSoft,
+                        iconColor: p.accent,
+                        title: '6 TRÍADES',
+                        subtitle: 'Arenas baricêntricas com 3 vértices',
+                        onTap: () => _openSuite(context, TestSuite.triads),
+                      ),
+                      Divider(
+                        height: 1,
+                        color: p.line.withValues(alpha: 0.5),
+                      ),
+                      _FigmaShortcutRow(
+                        icon: Icons.menu_book_rounded,
+                        iconBg: p.accentSoft,
+                        iconColor: p.accent,
+                        title: 'ATLAS DE CORRENTES',
+                        subtitle:
+                            '${appViewModel.data.catalog.currents.length} correntes, pensadores e obras',
+                        bottomRadius: 12,
+                        onTap: () => _openAtlas(context),
+                      ),
+                    ],
+                  ),
                 );
 
                 final EvaluationRecord? latestRecord =
@@ -362,10 +371,10 @@ class EspectroHomeScreen extends StatelessWidget {
                     : null;
 
                 return ListView(
-                  padding: const EdgeInsets.fromLTRB(18, 20, 18, 36),
+                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 40),
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 2),
                       child: Row(
                         children: [
                           if (!wide) ...<Widget>[
@@ -378,16 +387,16 @@ class EspectroHomeScreen extends StatelessWidget {
                                   Text(
                                     'ESPECTRO',
                                     style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 19,
                                       fontWeight: FontWeight.w800,
-                                      letterSpacing: 0.8,
+                                      letterSpacing: 0.6,
                                       color: p.ink,
                                     ),
                                   ),
                                   Text(
                                     'Observatório político',
                                     style: TextStyle(
-                                      fontSize: 11,
+                                      fontSize: 11.5,
                                       color: p.inkSoft,
                                     ),
                                   ),
@@ -396,37 +405,15 @@ class EspectroHomeScreen extends StatelessWidget {
                             ),
                           ] else ...<Widget>[
                             Expanded(
-                              child: Wrap(
-                                spacing: 10,
-                                runSpacing: 6,
-                                crossAxisAlignment: WrapCrossAlignment.center,
-                                children: [
-                                  Eyebrow(
-                                    'OBSERVATÓRIO POLÍTICO · OFFLINE',
-                                    color: p.accent,
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: 3,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: p.surfaceMuted.withValues(
-                                        alpha: 0.7,
-                                      ),
-                                      borderRadius: BorderRadius.circular(999),
-                                      border: Border.all(color: p.line),
-                                    ),
-                                    child: Text(
-                                      '${appViewModel.data.catalog.currents.length} correntes · ${catalog.subjects.where((s) => s.kind != 'evaluation').length} perfis',
-                                      style: TextStyle(
-                                        fontFamily: 'IBMPlexMono',
-                                        fontSize: 10,
-                                        color: p.muted,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              child: Text(
+                                'ESPECTRO · OBSERVATÓRIO POLÍTICO',
+                                style: TextStyle(
+                                  fontFamily: 'IBMPlexSans',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 1.0,
+                                  color: p.muted,
+                                ),
                               ),
                             ),
                           ],
@@ -452,7 +439,7 @@ class EspectroHomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 20),
                     if (draft != null) ...[
                       _DraftResumeCard(
                         draft: draft,
@@ -462,28 +449,16 @@ class EspectroHomeScreen extends StatelessWidget {
                             ? () => _openDraftPreview(context, draft)
                             : null,
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 24),
                     ],
+                    // Beat 1: Hero Editorial Limpo (sem radar espremido dentro)
                     _ObservatoryCoverHero(
-                      totalProfiles: catalog.subjects
-                          .where((s) => s.kind != 'evaluation')
-                          .length,
-                      totalCurrents: appViewModel.data.catalog.currents.length,
                       twoColumn: twoColBento,
                       onStartQuiz: () => _openSuites(context),
                       onOpenAtlas: () => _openAtlas(context),
-                      showcase: _HeroLiveSpectrumShowcase(
-                        catalog: catalog,
-                        portraits: appViewModel.data.portraits,
-                        axesMeta: appViewModel.data.twelveAxes.axes,
-                        compact: !twoColBento,
-                        onStartQuiz: () => _openSuites(context),
-                        onOpenSubject: (String key) =>
-                            _openSubject(context, key),
-                      ),
                     ),
                     if (latestRecord != null) ...[
-                      const SizedBox(height: 18),
+                      const SizedBox(height: 28),
                       _LatestEvaluationBentoCard(
                         appViewModel: appViewModel,
                         record: latestRecord,
@@ -499,38 +474,75 @@ class EspectroHomeScreen extends StatelessWidget {
                         onOpenHistory: () => _openHistory(context),
                       ),
                     ],
-                    const SizedBox(height: 24),
+                    // Beat 2: Seção Interativa do Radar com respiro próprio
+                    const SizedBox(height: 32),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 2),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Como o Espectro mapeia o pensamento',
+                            style: Theme.of(context).textTheme.titleLarge
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: -0.3,
+                                  color: p.ink,
+                                ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            'Veja como diferentes visões de mundo se organizam no radar multidimensional.',
+                            style: TextStyle(
+                              fontSize: 13.5,
+                              height: 1.45,
+                              color: p.inkSoft,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+                    _HeroLiveSpectrumShowcase(
+                      catalog: catalog,
+                      portraits: appViewModel.data.portraits,
+                      axesMeta: appViewModel.data.twelveAxes.axes,
+                      compact: !twoColBento,
+                      onStartQuiz: () => _openSuites(context),
+                      onOpenSubject: (String key) => _openSubject(context, key),
+                    ),
+                    // Beat 3: Bento Grid com hierarquia clara
+                    const SizedBox(height: 32),
+                    if (twoColBento)
+                      IntrinsicHeight(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Expanded(flex: 5, child: exploreBentoCard),
+                            const SizedBox(width: 20),
+                            Expanded(flex: 6, child: toolsBentoCard),
+                          ],
+                        ),
+                      )
+                    else ...[
+                      exploreBentoCard,
+                      const SizedBox(height: 24),
+                      toolsBentoCard,
+                    ],
+                    const SizedBox(height: 32),
                     _HomeFeaturedSpotlight(
                       appViewModel: appViewModel,
                       catalog: catalog,
                       axesMeta: appViewModel.data.twelveAxes.axes,
                     ),
-                    if (twoColBento) ...[
-                      const SizedBox(height: 22),
-                      IntrinsicHeight(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Expanded(flex: 6, child: toolsBentoCard),
-                            const SizedBox(width: 18),
-                            Expanded(flex: 5, child: shortcutsGroup),
-                          ],
-                        ),
-                      ),
-                    ] else ...[
-                      const SizedBox(height: 20),
-                      toolsBentoCard,
-                      const SizedBox(height: 22),
-                      shortcutsGroup,
-                    ],
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 32),
                     _HomeTwelveAxesShowcase(
                       axesMeta: appViewModel.data.twelveAxes.axes,
                       onTapAxis: () =>
                           _openSuite(context, TestSuite.bipolarAxes),
                     ),
                     if (recent.isNotEmpty || saved.isNotEmpty) ...[
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 32),
                       Eyebrow('SUA BIBLIOTECA', color: p.accent),
                       const SizedBox(height: 12),
                       for (final subject in {
@@ -553,7 +565,7 @@ class EspectroHomeScreen extends StatelessWidget {
                       ),
                     EspectroBannerAdWidget(
                       adUnitId: EspectroAdUnits.atlasBannerId,
-                      padding: const EdgeInsets.only(top: 18),
+                      padding: const EdgeInsets.only(top: 24),
                     ),
                   ],
                 );
@@ -838,265 +850,119 @@ class _SafeButtonContent extends StatelessWidget {
 
 class _ObservatoryCoverHero extends StatelessWidget {
   const _ObservatoryCoverHero({
-    required this.totalProfiles,
-    required this.totalCurrents,
     required this.twoColumn,
     required this.onStartQuiz,
     required this.onOpenAtlas,
-    required this.showcase,
   });
 
-  final int totalProfiles;
-  final int totalCurrents;
   final bool twoColumn;
   final VoidCallback onStartQuiz;
   final VoidCallback onOpenAtlas;
-  final Widget showcase;
 
   @override
   Widget build(BuildContext context) {
     final p = context.palette;
-    final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
-    final Color surfaceBase = p.isDark ? p.heroBackground : p.surface;
-    final Color borderColor = p.isDark
-        ? Colors.white.withValues(alpha: 0.13)
-        : p.line;
-
-    final Widget thesisColumn = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          decoration: BoxDecoration(
-            color: p.accent.withValues(alpha: p.isDark ? 0.16 : 0.08),
-            borderRadius: BorderRadius.circular(999),
-            border: Border.all(
-              color: p.accent.withValues(alpha: p.isDark ? 0.36 : 0.22),
-            ),
-          ),
-          child: Wrap(
-            spacing: 7,
-            runSpacing: 4,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              Container(
-                width: 7,
-                height: 7,
-                decoration: BoxDecoration(
-                  color: p.accent,
-                  shape: BoxShape.circle,
-                ),
-              ),
-              Text(
-                'OBSERVATÓRIO POLÍTICO MULTIDIMENSIONAL',
-                style: TextStyle(
-                  fontFamily: 'IBMPlexMono',
-                  fontSize: 10,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.45,
-                  color: p.accent,
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: twoColumn ? 16 : 12),
-        Text.rich(
-          TextSpan(
-            style: TextStyle(
-              fontFamily: 'IBMPlexSans',
-              fontSize: twoColumn ? 32 : 24,
-              fontWeight: FontWeight.w800,
-              letterSpacing: -0.75,
-              height: 1.12,
-              color: p.ink,
-            ),
-            children: [
-              const TextSpan(text: 'Onde você realmente se situa '),
-              TextSpan(
-                text: 'além dos rótulos?',
-                style: TextStyle(color: p.accent),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 10),
-        Text(
-          'Mapeie suas posições em 12 eixos independentes e 6 tríades históricas '
-          'e descubra afinidades reais com correntes, pensadores e figuras públicas.',
-          style: TextStyle(
-            fontSize: twoColumn ? 14.5 : 13.5,
-            height: 1.46,
-            color: p.inkSoft,
-          ),
-        ),
-        SizedBox(height: twoColumn ? 20 : 14),
-        Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            FilledButton(
-              onPressed: onStartQuiz,
-              style: FilledButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 14,
-                ),
-                textStyle: const TextStyle(
-                  fontFamily: 'IBMPlexSans',
-                  fontSize: 14.5,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              child: const _SafeButtonContent(
-                icon: Icons.arrow_forward_rounded,
-                label: 'Começar minha avaliação',
-              ),
-            ),
-            OutlinedButton(
-              onPressed: onOpenAtlas,
-              style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 14,
-                ),
-                side: BorderSide(color: p.line),
-                foregroundColor: p.ink,
-                textStyle: const TextStyle(
-                  fontFamily: 'IBMPlexSans',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              child: const _SafeButtonContent(
-                icon: Icons.hub_outlined,
-                label: 'Explorar o Atlas',
-              ),
-            ),
-          ],
-        ),
-        SizedBox(height: twoColumn ? 20 : 14),
-        Divider(height: 1, color: p.line.withValues(alpha: 0.75)),
-        SizedBox(height: twoColumn ? 14 : 12),
-        Wrap(
-          spacing: scale > 1.35 ? 16 : (twoColumn ? 26 : 18),
-          runSpacing: 10,
-          children: [
-            const _HeroMetricTile(value: '12 + 6', label: 'Eixos & tríades'),
-            _HeroMetricTile(
-              value: '$totalCurrents',
-              label: 'Correntes',
-            ),
-            _HeroMetricTile(
-              value: '$totalProfiles',
-              label: 'Perfis no Atlas',
-            ),
-          ],
-        ),
-      ],
-    );
 
     return Container(
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        color: surfaceBase,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: borderColor, width: 1.0),
-        boxShadow: EspectroElevation.cardShadows(p, elevated: true),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: p.isDark
-              ? [
-                  Color.alphaBlend(
-                    p.accent.withValues(alpha: 0.11),
-                    p.heroBackground,
+      decoration: EspectroElevation.cardDecoration(
+        p,
+        radius: 16,
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: twoColumn ? 36 : 22,
+        vertical: twoColumn ? 34 : 24,
+      ),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 740),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'OBSERVATÓRIO POLÍTICO INDEPENDENTE',
+              style: TextStyle(
+                fontFamily: 'IBMPlexSans',
+                fontSize: 11.5,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 1.2,
+                color: p.accent,
+              ),
+            ),
+            SizedBox(height: twoColumn ? 14 : 12),
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 680),
+              child: Text(
+                'Onde você realmente se situa além dos rótulos?',
+                style: TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: twoColumn ? 34 : 26,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -0.75,
+                  height: 1.15,
+                  color: p.ink,
+                ),
+              ),
+            ),
+            const SizedBox(height: 12),
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 620),
+              child: Text(
+                'Mapeie sua visão de mundo em 12 eixos e 6 tríades históricas. '
+                'Sem viés partidário, 100% no seu dispositivo.',
+                style: TextStyle(
+                  fontSize: twoColumn ? 15.5 : 14,
+                  height: 1.5,
+                  color: p.inkSoft,
+                ),
+              ),
+            ),
+            SizedBox(height: twoColumn ? 24 : 18),
+            Wrap(
+              spacing: 12,
+              runSpacing: 10,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                FilledButton(
+                  onPressed: onStartQuiz,
+                  style: FilledButton.styleFrom(
+                    minimumSize: const Size(0, 52),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 14,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(13),
+                    ),
+                    textStyle: const TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                  p.heroBackground,
-                  Color.alphaBlend(
-                    p.poleRight.withValues(alpha: 0.08),
-                    p.heroBackground,
+                  child: const Text('Fazer Avaliação Rápida (3 min) →'),
+                ),
+                TextButton(
+                  onPressed: onOpenAtlas,
+                  style: TextButton.styleFrom(
+                    minimumSize: const Size(0, 48),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 12,
+                    ),
+                    foregroundColor: p.inkSoft,
+                    textStyle: const TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ]
-              : [
-                  Color.alphaBlend(
-                    p.accent.withValues(alpha: 0.045),
-                    p.surface,
-                  ),
-                  p.surface,
-                  Color.alphaBlend(
-                    p.poleRight.withValues(alpha: 0.035),
-                    p.surface,
-                  ),
-                ],
-          stops: const [0.0, 0.55, 1.0],
+                  child: const Text('Ou explore o Atlas de Correntes'),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SpectrumGradientRule(height: 3.0, radius: 0),
-          Padding(
-            padding: EdgeInsets.all(twoColumn ? 26 : 16),
-            child: twoColumn
-                ? Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(flex: 7, child: thesisColumn),
-                      const SizedBox(width: 24),
-                      Expanded(flex: 6, child: showcase),
-                    ],
-                  )
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      thesisColumn,
-                      const SizedBox(height: 20),
-                      showcase,
-                    ],
-                  ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _HeroMetricTile extends StatelessWidget {
-  const _HeroMetricTile({required this.value, required this.label});
-
-  final String value;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    final p = context.palette;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          value,
-          style: TextStyle(
-            fontFamily: 'IBMPlexMono',
-            fontSize: 17,
-            fontWeight: FontWeight.w800,
-            color: p.ink,
-          ),
-        ),
-        const SizedBox(height: 2),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 11.5,
-            color: p.muted,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ],
     );
   }
 }
@@ -1354,157 +1220,109 @@ class _ObservatoryToolsCard extends StatelessWidget {
   const _ObservatoryToolsCard({
     required this.onOpenTeia,
     required this.onOpenCompare,
+    required this.onOpenHistory,
     required this.onQuickCompare,
   });
 
   final VoidCallback onOpenTeia;
   final VoidCallback onOpenCompare;
+  final VoidCallback onOpenHistory;
   final ValueChanged<List<String>> onQuickCompare;
 
   @override
   Widget build(BuildContext context) {
     final p = context.palette;
     return SectionCard(
-      padding: EdgeInsets.zero,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(17),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 104,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: p.isDark
-                    ? Color.alphaBlend(
-                        p.accent.withValues(alpha: 0.12),
-                        p.heroBackground,
-                      )
-                    : Color.alphaBlend(
-                        p.accent.withValues(alpha: 0.06),
-                        p.surfaceMuted,
-                      ),
-                border: Border(
-                  bottom: BorderSide(color: p.line.withValues(alpha: 0.8)),
+      radius: 16,
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Comparador de Perfis e Histórico',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  color: p.ink,
                 ),
               ),
-              child: Stack(
-                fit: StackFit.expand,
+              const SizedBox(height: 6),
+              Text(
+                'Coloque correntes ou pensadores lado a lado com Raio-X matemático, explore a Teia 2D ou acompanhe sua evolução.',
+                style: TextStyle(
+                  fontSize: 13,
+                  height: 1.45,
+                  color: p.inkSoft,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Confrontos sugeridos',
+                style: TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 11.5,
+                  fontWeight: FontWeight.w700,
+                  color: p.muted,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
                 children: [
-                  CustomPaint(
-                    painter: _MiniConstellationPreviewPainter(
-                      isDark: p.isDark,
-                      accent: p.accent,
-                      lineColor: p.line,
-                    ),
+                  _QuickCompareChip(
+                    label: 'Karl Marx × Rothbard',
+                    onTap: () => onQuickCompare(const [
+                      'personality:karl_marx',
+                      'personality:murray_rothbard',
+                    ]),
                   ),
-                  Positioned(
-                    top: 12,
-                    left: 14,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: p.surface.withValues(alpha: 0.9),
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(color: p.line),
-                      ),
-                      child: Text(
-                        'TEIA & CONFRONTO',
-                        style: TextStyle(
-                          fontFamily: 'IBMPlexMono',
-                          fontSize: 9.5,
-                          fontWeight: FontWeight.w700,
-                          color: p.accent,
-                        ),
-                      ),
-                    ),
+                  _QuickCompareChip(
+                    label: 'Liberalismo × Social-democracia',
+                    onTap: () => onQuickCompare(const [
+                      'current:liberalismo_classico',
+                      'current:social_democracia',
+                    ]),
                   ),
                 ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(18),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Navegue pela Teia ou confronte perfis',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w800,
-                      color: p.ink,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    'Visualize proximidades entre 8 famílias políticas ou coloque dois perfis lado a lado com Raio-X matemático.',
-                    style: TextStyle(
-                      fontSize: 12.5,
-                      height: 1.42,
-                      color: p.inkSoft,
-                    ),
-                  ),
-                  const SizedBox(height: 14),
-                  Text(
-                    'Duelos prontos',
-                    style: TextStyle(
-                      fontFamily: 'IBMPlexMono',
-                      fontSize: 10.5,
-                      fontWeight: FontWeight.w700,
-                      color: p.muted,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      _QuickCompareChip(
-                        label: 'Karl Marx × Rothbard',
-                        onTap: () => onQuickCompare(const [
-                          'personality:karl_marx',
-                          'personality:murray_rothbard',
-                        ]),
-                      ),
-                      _QuickCompareChip(
-                        label: 'Liberalismo × Social-democracia',
-                        onTap: () => onQuickCompare(const [
-                          'current:liberalismo_classico',
-                          'current:social_democracia',
-                        ]),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Wrap(
-                    spacing: 10,
-                    runSpacing: 8,
-                    children: [
-                      FilledButton.tonal(
-                        onPressed: onOpenTeia,
-                        child: const _SafeButtonContent(
-                          icon: Icons.hub_outlined,
-                          iconSize: 17,
-                          label: 'Abrir Teia Política',
-                        ),
-                      ),
-                      OutlinedButton(
-                        onPressed: onOpenCompare,
-                        child: const _SafeButtonContent(
-                          icon: Icons.compare_arrows_rounded,
-                          iconSize: 17,
-                          label: 'Comparador',
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+            ],
+          ),
+          const SizedBox(height: 18),
+          Wrap(
+            spacing: 10,
+            runSpacing: 8,
+            children: [
+              FilledButton.tonal(
+                onPressed: onOpenCompare,
+                child: const _SafeButtonContent(
+                  icon: Icons.compare_arrows_rounded,
+                  iconSize: 17,
+                  label: 'Comparador',
+                ),
               ),
-            ),
-          ],
-        ),
+              OutlinedButton(
+                onPressed: onOpenTeia,
+                child: const _SafeButtonContent(
+                  icon: Icons.hub_outlined,
+                  iconSize: 17,
+                  label: 'Teia Política',
+                ),
+              ),
+              TextButton(
+                onPressed: onOpenHistory,
+                child: const _SafeButtonContent(
+                  icon: Icons.history_rounded,
+                  iconSize: 17,
+                  label: 'Histórico',
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -1520,28 +1338,24 @@ class _QuickCompareChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final p = context.palette;
     return Material(
-      color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.85 : 0.72),
+      color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.85 : 0.75),
       borderRadius: BorderRadius.circular(10),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(10),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: p.line),
-          ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 7),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.bolt_rounded, size: 14, color: p.accent),
-              const SizedBox(width: 5),
+              Icon(Icons.compare_arrows_rounded, size: 14, color: p.accent),
+              const SizedBox(width: 6),
               Flexible(
                 child: Text(
                   label,
                   style: TextStyle(
                     fontFamily: 'IBMPlexSans',
-                    fontSize: 11.5,
+                    fontSize: 12,
                     fontWeight: FontWeight.w600,
                     color: p.ink,
                   ),
@@ -1553,94 +1367,6 @@ class _QuickCompareChip extends StatelessWidget {
       ),
     );
   }
-}
-
-class _MiniConstellationPreviewPainter extends CustomPainter {
-  const _MiniConstellationPreviewPainter({
-    required this.isDark,
-    required this.accent,
-    required this.lineColor,
-  });
-
-  final bool isDark;
-  final Color accent;
-  final Color lineColor;
-
-  static const List<(double x, double y, Color color)> _nodes = [
-    (0.18, 0.34, Color(0xFFD6373E)),
-    (0.28, 0.62, Color(0xFFC75D70)),
-    (0.42, 0.28, Color(0xFF30343A)),
-    (0.50, 0.54, Color(0xFF718096)),
-    (0.64, 0.36, Color(0xFF2B79B7)),
-    (0.76, 0.66, Color(0xFFF2C534)),
-    (0.86, 0.30, Color(0xFF81533E)),
-    (0.36, 0.78, Color(0xFF0E7C58)),
-    (0.62, 0.78, Color(0xFF1A4FD6)),
-    (0.10, 0.74, Color(0xFFC75D70)),
-  ];
-
-  static const List<(int a, int b)> _edges = [
-    (0, 1),
-    (0, 2),
-    (1, 3),
-    (1, 7),
-    (1, 9),
-    (2, 3),
-    (3, 4),
-    (3, 8),
-    (4, 5),
-    (4, 6),
-    (5, 8),
-    (7, 8),
-  ];
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Paint gridPaint = Paint()
-      ..color = lineColor.withValues(alpha: isDark ? 0.35 : 0.65)
-      ..strokeWidth = 1;
-    canvas.drawLine(
-      Offset(0, size.height * 0.52),
-      Offset(size.width, size.height * 0.52),
-      gridPaint,
-    );
-    canvas.drawLine(
-      Offset(size.width * 0.50, 0),
-      Offset(size.width * 0.50, size.height),
-      gridPaint,
-    );
-
-    final Paint edgePaint = Paint()
-      ..color = accent.withValues(alpha: isDark ? 0.28 : 0.22)
-      ..strokeWidth = 1.25;
-    for (final (int a, int b) in _edges) {
-      final pA = Offset(_nodes[a].$1 * size.width, _nodes[a].$2 * size.height);
-      final pB = Offset(_nodes[b].$1 * size.width, _nodes[b].$2 * size.height);
-      canvas.drawLine(pA, pB, edgePaint);
-    }
-
-    for (var i = 0; i < _nodes.length; i++) {
-      final (double nx, double ny, Color col) = _nodes[i];
-      final Offset center = Offset(nx * size.width, ny * size.height);
-      final double r = i == 3 || i == 4 || i == 1 ? 6.5 : 4.8;
-      canvas.drawCircle(center, r + 4, Paint()..color = col.withValues(alpha: 0.16));
-      canvas.drawCircle(center, r, Paint()..color = col);
-      canvas.drawCircle(
-        center,
-        r,
-        Paint()
-          ..color = isDark ? Colors.white.withValues(alpha: 0.65) : Colors.white
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 1.3,
-      );
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant _MiniConstellationPreviewPainter oldDelegate) =>
-      oldDelegate.isDark != isDark ||
-      oldDelegate.accent != accent ||
-      oldDelegate.lineColor != lineColor;
 }
 
 class _DraftResumeCard extends StatelessWidget {
@@ -2348,16 +2074,16 @@ class _AxisInstrumentTileState extends State<_AxisInstrumentTile> {
             decoration: BoxDecoration(
               color: _hovered
                   ? Color.alphaBlend(
-                      info.leftColor.withValues(alpha: p.isDark ? 0.14 : 0.06),
+                      p.accent.withValues(alpha: p.isDark ? 0.10 : 0.05),
                       p.surface,
                     )
-                  : p.surfaceMuted.withValues(alpha: p.isDark ? 0.65 : 0.55),
+                  : p.surfaceMuted.withValues(alpha: p.isDark ? 0.55 : 0.65),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: _hovered
-                    ? info.leftColor.withValues(alpha: 0.55)
-                    : p.line,
-                width: _hovered ? 1.2 : 1.0,
+                    ? p.accent.withValues(alpha: 0.45)
+                    : p.line.withValues(alpha: 0.55),
+                width: 1.0,
               ),
             ),
             child: Material(
@@ -2442,20 +2168,28 @@ class _AxisInstrumentTileState extends State<_AxisInstrumentTile> {
                       ),
                       const SizedBox(height: 5),
                       SizedBox(
-                        height: 4,
+                        height: 3,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(999),
                           child: Row(
                             children: [
                               Expanded(
-                                child: ColoredBox(color: info.leftColor),
+                                child: ColoredBox(
+                                  color: p.accent.withValues(
+                                    alpha: p.isDark ? 0.45 : 0.35,
+                                  ),
+                                ),
                               ),
                               Container(
                                 width: 2,
                                 color: p.surface,
                               ),
                               Expanded(
-                                child: ColoredBox(color: info.rightColor),
+                                child: ColoredBox(
+                                  color: p.muted.withValues(
+                                    alpha: p.isDark ? 0.35 : 0.25,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -2548,18 +2282,9 @@ class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
         ((subject.axes[id] ?? 0.0).clamp(-1.0, 1.0) + 1.0) / 2.0,
     ];
 
-    final Color panelBg = p.isDark
-        ? Color.alphaBlend(
-            accent.withValues(alpha: 0.08),
-            const Color(0xFF0A0F1A),
-          )
-        : Color.alphaBlend(
-            accent.withValues(alpha: 0.03),
-            const Color(0xFFF7F4EC),
-          );
     final Color panelBorder = p.isDark
-        ? Colors.white.withValues(alpha: 0.14)
-        : p.line;
+        ? Colors.white.withValues(alpha: 0.10)
+        : p.line.withValues(alpha: 0.65);
 
     final Widget switcherPills = Wrap(
       spacing: 6,
@@ -2626,7 +2351,7 @@ class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
       ],
     );
 
-    final double radarSize = compactView ? 128 : 154;
+    final double radarSize = compactView ? 140 : 176;
     final Widget radarWidget = SizedBox(
       width: radarSize,
       height: radarSize,
@@ -2736,11 +2461,10 @@ class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
     );
 
     return Container(
-      padding: EdgeInsets.all(compactView ? 14 : 18),
-      decoration: BoxDecoration(
-        color: panelBg,
-        borderRadius: BorderRadius.circular(17),
-        border: Border.all(color: panelBorder),
+      padding: EdgeInsets.all(compactView ? 18 : 24),
+      decoration: EspectroElevation.cardDecoration(
+        p,
+        radius: 16,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

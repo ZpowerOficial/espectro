@@ -330,6 +330,9 @@ class _AnswerTileState extends State<AnswerTile> {
     final Color resolvedAccent = widget.accent ?? p.accent;
     final Color onAccent = p.isDark ? const Color(0xFF061318) : Colors.white;
 
+    final bool isNeutralRest =
+        !widget.tintedUnselected && !widget.selected && !_isHovered;
+
     final Widget marker;
     if (widget.icon != null) {
       marker = AnimatedContainer(
@@ -339,12 +342,18 @@ class _AnswerTileState extends State<AnswerTile> {
         height: 30,
         decoration: BoxDecoration(
           color: widget.selected
-              ? resolvedAccent.withValues(alpha: p.isDark ? 0.28 : 0.16)
-              : resolvedAccent.withValues(alpha: p.isDark ? 0.14 : 0.08),
+              ? resolvedAccent.withValues(alpha: p.isDark ? 0.24 : 0.14)
+              : (isNeutralRest
+                    ? p.surfaceMuted.withValues(alpha: p.isDark ? 0.70 : 0.80)
+                    : resolvedAccent.withValues(alpha: p.isDark ? 0.14 : 0.08)),
           borderRadius: BorderRadius.circular(9),
         ),
         alignment: Alignment.center,
-        child: Icon(widget.icon, size: 17, color: resolvedAccent),
+        child: Icon(
+          widget.icon,
+          size: 17,
+          color: isNeutralRest ? p.muted : resolvedAccent,
+        ),
       );
     } else {
       marker = AnimatedContainer(
@@ -355,12 +364,18 @@ class _AnswerTileState extends State<AnswerTile> {
         decoration: BoxDecoration(
           color: widget.selected
               ? resolvedAccent
-              : resolvedAccent.withValues(alpha: p.isDark ? 0.16 : 0.08),
+              : (isNeutralRest
+                    ? p.surfaceMuted.withValues(alpha: p.isDark ? 0.70 : 0.80)
+                    : resolvedAccent.withValues(alpha: p.isDark ? 0.16 : 0.08)),
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             color: widget.selected
                 ? resolvedAccent
-                : resolvedAccent.withValues(alpha: _isHovered ? 0.60 : 0.25),
+                : (isNeutralRest
+                      ? p.line
+                      : resolvedAccent.withValues(
+                          alpha: _isHovered ? 0.60 : 0.25,
+                        )),
             width: widget.selected ? 1.5 : 1.0,
           ),
         ),
@@ -371,7 +386,9 @@ class _AnswerTileState extends State<AnswerTile> {
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.w700,
-                  color: widget.selected ? onAccent : resolvedAccent,
+                  color: widget.selected
+                      ? onAccent
+                      : (isNeutralRest ? p.inkSoft : resolvedAccent),
                   fontFamily: 'IBMPlexMono',
                 ),
               )
@@ -398,13 +415,15 @@ class _AnswerTileState extends State<AnswerTile> {
               decoration: BoxDecoration(
                 color: widget.selected
                     ? Color.alphaBlend(
-                        resolvedAccent.withValues(alpha: p.isDark ? 0.20 : 0.10),
+                        resolvedAccent.withValues(
+                          alpha: p.isDark ? 0.16 : 0.10,
+                        ),
                         p.surface,
                       )
                     : (_isHovered
                           ? Color.alphaBlend(
                               resolvedAccent.withValues(
-                                alpha: p.isDark ? 0.11 : 0.05,
+                                alpha: p.isDark ? 0.08 : 0.04,
                               ),
                               p.surface,
                             )
@@ -419,15 +438,17 @@ class _AnswerTileState extends State<AnswerTile> {
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(
                   color: widget.selected
-                      ? resolvedAccent
+                      ? resolvedAccent.withValues(alpha: p.isDark ? 0.85 : 0.75)
                       : (_isHovered
-                            ? resolvedAccent.withValues(alpha: 0.55)
+                            ? resolvedAccent.withValues(alpha: 0.45)
                             : (widget.tintedUnselected
                                   ? resolvedAccent.withValues(
                                       alpha: p.isDark ? 0.28 : 0.20,
                                     )
-                                  : p.line)),
-                  width: widget.selected ? 1.8 : 1.0,
+                                  : p.line.withValues(
+                                      alpha: p.isDark ? 0.70 : 0.65,
+                                    ))),
+                  width: widget.selected ? 1.5 : 1.0,
                 ),
                 boxShadow: [
                   if (widget.selected)

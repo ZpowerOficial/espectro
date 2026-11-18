@@ -7,26 +7,10 @@ import '../../../data/models.dart';
 import '../../../domain/models/political_models.dart';
 import '../../../theme.dart';
 import '../../../widgets/common.dart';
-import '../../../widgets/espectro_brand_mark.dart';
 import '../../ads/espectro_banner_ad.dart';
 import '../../view_models/app_view_model.dart';
 import '../../view_models/quiz_view_model.dart';
 import '../results/espectro_result_screen.dart';
-
-/// Cores de categoria são pastéis editoriais. Em texto sobre superfície clara,
-/// elas podem ficar ilegíveis (por exemplo, amarelo claro sobre branco), então
-/// escurecemos apenas a tinta, preservando o matiz de identificação.
-Color _readablePoleColor(Color color, bool dark) {
-  final HSLColor hsl = HSLColor.fromColor(color);
-  if (dark) {
-    return color.computeLuminance() < 0.30
-        ? hsl.withLightness(0.72).toColor()
-        : color;
-  }
-  return color.computeLuminance() > 0.22
-      ? hsl.withLightness(0.26).toColor()
-      : color;
-}
 
 /// Tela unificada de aplicação do questionário Espectro (Eixos + Tríades).
 class EspectroQuizScreen extends StatefulWidget {
@@ -204,6 +188,52 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          if (_vm.milestoneSteps.length > 1) ...<Widget>[
+            Wrap(
+              spacing: 6,
+              runSpacing: 6,
+              children: <Widget>[
+                for (var i = 0; i < _vm.milestoneSteps.length; i++)
+                  () {
+                    final int target = _vm.milestoneSteps[i];
+                    final bool isCompleted = _vm.answeredCount >= target;
+                    final bool isCurrent = i == _vm.currentMilestoneStepIndex;
+                    final String name = switch (i) {
+                      0 => 'Base',
+                      1 => 'Fina',
+                      2 => 'Alta',
+                      _ => 'Total',
+                    };
+                    return Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
+                      decoration: BoxDecoration(
+                        color: isCompleted
+                            ? p.success.withValues(alpha: 0.12)
+                            : (isCurrent ? p.accentSoft : p.surfaceMuted),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Text(
+                        '$target $name',
+                        style: TextStyle(
+                          fontFamily: 'IBMPlexMono',
+                          fontSize: 10.5,
+                          fontWeight: (isCompleted || isCurrent)
+                              ? FontWeight.w700
+                              : FontWeight.w500,
+                          color: isCompleted
+                              ? p.success
+                              : (isCurrent ? p.accent : p.inkSoft),
+                        ),
+                      ),
+                    );
+                  }(),
+              ],
+            ),
+            const SizedBox(height: 14),
+          ],
           Wrap(
             spacing: 12,
             runSpacing: 6,
@@ -463,15 +493,13 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
   Color _likertColor(LikertAnswer option, EspectroPalette p) {
     switch (option) {
       case LikertAnswer.stronglyAgree:
-        return p.isDark ? const Color(0xFF10B981) : const Color(0xFF059669);
       case LikertAnswer.agree:
-        return p.isDark ? const Color(0xFF14B8A6) : const Color(0xFF0D9488);
+        return p.isDark ? const Color(0xFF34D399) : const Color(0xFF0E7C58);
       case LikertAnswer.neutral:
-        return p.isDark ? const Color(0xFF818CF8) : const Color(0xFF4F46E5);
+        return p.accent;
       case LikertAnswer.disagree:
-        return p.isDark ? const Color(0xFFFB923C) : const Color(0xFFEA580C);
       case LikertAnswer.stronglyDisagree:
-        return p.isDark ? const Color(0xFFF43F5E) : const Color(0xFFE11D48);
+        return p.isDark ? const Color(0xFFF58D62) : const Color(0xFFC94B14);
     }
   }
 
@@ -524,33 +552,21 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                 ]
               : <({int start, int end, String term, String definition})>[];
 
-          String? targetPoleLabel;
-          Color? targetPoleColor;
-          String? secondaryPoleLabel;
-          Color? secondaryPoleColor;
-
-          if (q.axisQuestion != null && _vm.currentAxis != null) {
-            final Axis axis = _vm.currentAxis!;
-            final bool agreeLeft = q.axisQuestion!.agreeIsLeft;
-            final String pole = agreeLeft ? axis.leftPole : axis.rightPole;
-            targetPoleLabel = pole.toUpperCase();
-            targetPoleColor = _readablePoleColor(
-              agreeLeft ? axis.leftColor : axis.rightColor,
-              p.isDark,
-            );
-          }
-
-          if (q.sixQuestion != null && _vm.currentTriadCategory != null) {
-            final SixCategory cat = _vm.currentTriadCategory!;
-            final String vertex = cat.subcategories[q.sixQuestion!.subcategory];
-            if (targetPoleLabel == null) {
-              targetPoleLabel = vertex.toUpperCase();
-              targetPoleColor = _readablePoleColor(cat.color, p.isDark);
-            } else {
-              secondaryPoleLabel = vertex.toUpperCase();
-              secondaryPoleColor = _readablePoleColor(cat.color, p.isDark);
+          final String dimensionContext = _vm.currentAxis != null
+              ? '12 Eixos'
+              : '6 Tríades';
+          final String categoryOverline = () {
+            if (_vm.currentAxis != null && _vm.currentTriadCategory != null) {
+              return '${_vm.currentAxis!.label} · ${_vm.currentTriadCategory!.label}';
             }
-          }
+            if (_vm.currentAxis != null) {
+              return _vm.currentAxis!.label;
+            }
+            if (_vm.currentTriadCategory != null) {
+              return _vm.currentTriadCategory!.label;
+            }
+            return dimensionContext;
+          }();
 
           final String itemNumber = (_vm.currentIndex + 1).toString().padLeft(
             2,
@@ -596,648 +612,269 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
               autofocus: true,
               child: Scaffold(
                 backgroundColor: p.canvas,
-            body: Container(
-              decoration: BoxDecoration(
-                color: p.canvas,
-                gradient: RadialGradient(
-                  center: const Alignment(0.85, -0.9),
-                  radius: 1.35,
-                  colors: [
-                    p.accent.withValues(alpha: p.isDark ? 0.08 : 0.025),
-                    p.canvas.withValues(alpha: 0.0),
-                  ],
-                ),
-              ),
-              child: SafeArea(
-                child: ResponsiveContentFrame(
-                  maxWidth: 720,
-                  child: Column(
-                    children: [
-                      // Top App Header
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 10, 16, 4),
-                        child: LayoutBuilder(
-                          builder: (context, constraints) {
-                            final bool showBadge = constraints.maxWidth > 580;
-                            final bool isCompact = constraints.maxWidth < 420;
-                            return Row(
-                              children: [
-                                IconButton(
-                                  tooltip: 'Pausar e salvar',
-                                  icon: const Icon(
-                                    Icons.arrow_back_rounded,
-                                    size: 20,
-                                  ),
-                                  visualDensity: VisualDensity.compact,
-                                  onPressed: _exitSavingDraft,
+                body: SafeArea(
+                  child: ResponsiveContentFrame(
+                    maxWidth: 680,
+                    child: Column(
+                      children: [
+                        // Header minimalista (Zen)
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(12, 10, 12, 6),
+                          child: Row(
+                            children: [
+                              IconButton(
+                                tooltip: 'Pausar',
+                                icon: Icon(
+                                  Icons.arrow_back_rounded,
+                                  size: 20,
+                                  color: p.inkSoft,
                                 ),
-                                const SizedBox(width: 4),
-                                const EspectroBrandMark(size: 24),
-                                const SizedBox(width: 8),
-                                Text(
-                                  'Espectro',
-                                  style: TextStyle(
-                                    fontFamily: 'IBMPlexSans',
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700,
-                                    letterSpacing: -0.3,
-                                    color: p.ink,
-                                  ),
-                                ),
-                                if (showBadge) ...[
-                                  const SizedBox(width: 8),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 6,
-                                      vertical: 2,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: p.accentSoft,
-                                      borderRadius: BorderRadius.circular(4),
-                                      border: Border.all(
-                                        color: p.accent.withValues(alpha: 0.25),
-                                      ),
-                                    ),
-                                    child: Text(
-                                      widget.quizViewModel.suite ==
-                                              TestSuite.espectroIntegrated
-                                          ? 'AVALIAÇÃO INTEGRADA'
-                                          : (q.kind ==
-                                                    UnifiedQuestionKind.bipolar
-                                                ? '12 EIXOS'
-                                                : '6 TRÍADES'),
-                                      style: TextStyle(
-                                        fontFamily: 'IBMPlexMono',
-                                        fontSize: 9.5,
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: 0.5,
-                                        color: p.accent,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                                const Spacer(),
-                                IconButton(
-                                  tooltip: 'Alternar tema (claro/escuro)',
-                                  icon: Icon(
-                                    p.isDark
-                                        ? Icons.light_mode_rounded
-                                        : Icons.dark_mode_outlined,
-                                    size: 19,
-                                    color: p.ink,
-                                  ),
-                                  visualDensity: VisualDensity.compact,
-                                  onPressed: () {
-                                    final isDark =
-                                        Theme.of(context).brightness ==
-                                        Brightness.dark;
-                                    widget.appViewModel.setThemeMode(
-                                      isDark ? ThemeMode.light : ThemeMode.dark,
-                                    );
-                                  },
-                                ),
-                                if (_vm.canPreview) ...[
-                                  const SizedBox(width: 2),
-                                  Tooltip(
-                                    message: 'Ver coordenadas e tendências parciais com as afirmações respondidas',
-                                    child: InkWell(
-                                      onTap: _viewPreliminaryResult,
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 8,
-                                          vertical: 4,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: p.accentSoft,
-                                          borderRadius: BorderRadius.circular(
-                                            20,
-                                          ),
-                                          border: Border.all(
-                                            color: p.accent.withValues(
-                                              alpha: 0.40,
-                                            ),
-                                          ),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Icon(
-                                              Icons.auto_graph_rounded,
-                                              size: 12,
-                                              color: p.accent,
-                                            ),
-                                            const SizedBox(width: 4),
-                                            Text(
-                                              isCompact
-                                                  ? '${_vm.answeredCount}/${_vm.totalCount}'
-                                                  : 'Prévia (${_vm.answeredCount}/${_vm.totalCount})',
-                                              style: TextStyle(
-                                                fontFamily: 'IBMPlexMono',
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.w700,
-                                                color: p.accent,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                                const SizedBox(width: 2),
-                                PopupMenuButton<String>(
-                                  tooltip: 'Opções da avaliação',
-                                  icon: const Icon(
-                                    Icons.more_vert_rounded,
-                                    size: 20,
-                                  ),
-                                  onSelected: (value) {
-                                    switch (value) {
-                                      case 'preview':
-                                        _viewPreliminaryResult();
-                                      case 'pause':
-                                        _exitSavingDraft();
-                                      case 'map':
-                                        _showQuestionMap();
-                                      case 'swap':
-                                        _onSwap();
-                                    }
-                                  },
-                                  itemBuilder: (_) => [
-                                    if (_vm.canPreview)
-                                      PopupMenuItem(
-                                        value: 'preview',
-                                        child: Text(
-                                          'Ver resultado preliminar (${_vm.answeredCount}/${_vm.totalCount})',
-                                        ),
-                                      ),
-                                    const PopupMenuItem(
-                                      value: 'pause',
-                                      child: Text('Pausar e salvar progresso'),
-                                    ),
-                                    const PopupMenuItem(
-                                      value: 'map',
-                                      child: Text('Mapa de perguntas'),
-                                    ),
-                                    const PopupMenuItem(
-                                      value: 'swap',
-                                      child: Text('Trocar afirmação'),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            );
-                          },
-                        ),
-                      ),
-
-                      // Progress & Milestone Section
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 6, 20, 8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      'ITEM ${_vm.currentIndex + 1} DE ${_vm.totalCount}',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: 'IBMPlexMono',
-                                        letterSpacing: 0.4,
-                                        color: p.ink,
-                                      ),
-                                    ),
-                                    const SizedBox(width: 6),
-                                    Text(
-                                      '· ${_vm.currentStageTitle}',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                        color: p.inkSoft,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  '${(_vm.progress * 100).round()}%',
-                                  style: TextStyle(
-                                    fontSize: 12.5,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: 'IBMPlexMono',
-                                    color: p.accent,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 6),
-                            Container(
-                              width: double.infinity,
-                              height: 6,
-                              decoration: BoxDecoration(
-                                color: p.line.withValues(
-                                  alpha: p.isDark ? 0.55 : 0.7,
-                                ),
-                                borderRadius: BorderRadius.circular(999),
+                                visualDensity: VisualDensity.compact,
+                                onPressed: _exitSavingDraft,
                               ),
-                              clipBehavior: Clip.antiAlias,
-                              child: _vm.progress <= 0
-                                  ? const SizedBox.shrink()
-                                  : FractionallySizedBox(
-                                      alignment: Alignment.centerLeft,
-                                      widthFactor: _vm.progress.clamp(
-                                        0.015,
-                                        1.0,
-                                      ),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          gradient: LinearGradient(
-                                            colors: [
-                                              p.accent,
-                                              p.poleRight,
-                                            ],
-                                          ),
+                              const SizedBox(width: 4),
+                              Expanded(
+                                child: Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: 'Espectro',
+                                        style: TextStyle(
+                                          fontFamily: 'IBMPlexSans',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700,
+                                          letterSpacing: -0.2,
+                                          color: p.ink,
                                         ),
+                                      ),
+                                      TextSpan(
+                                        text:
+                                            '  ·  $dimensionContext · Item $itemNumber/${_vm.totalCount}',
+                                        style: TextStyle(
+                                          fontFamily: 'IBMPlexSans',
+                                          fontSize: 12.5,
+                                          fontWeight: FontWeight.w500,
+                                          color: p.muted,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              IconButton(
+                                tooltip: 'Alternar tema (claro/escuro)',
+                                icon: Icon(
+                                  p.isDark
+                                      ? Icons.light_mode_rounded
+                                      : Icons.dark_mode_outlined,
+                                  size: 19,
+                                  color: p.inkSoft,
+                                ),
+                                visualDensity: VisualDensity.compact,
+                                onPressed: () {
+                                  final isDark =
+                                      Theme.of(context).brightness ==
+                                      Brightness.dark;
+                                  widget.appViewModel.setThemeMode(
+                                    isDark ? ThemeMode.light : ThemeMode.dark,
+                                  );
+                                },
+                              ),
+                              PopupMenuButton<String>(
+                                tooltip: 'Opções da avaliação',
+                                icon: Icon(
+                                  Icons.more_horiz_rounded,
+                                  size: 21,
+                                  color: p.inkSoft,
+                                ),
+                                onSelected: (value) {
+                                  switch (value) {
+                                    case 'preview':
+                                      _viewPreliminaryResult();
+                                    case 'pause':
+                                      _exitSavingDraft();
+                                    case 'map':
+                                      _showQuestionMap();
+                                    case 'swap':
+                                      _onSwap();
+                                    case 'help':
+                                      _showStatementHelp();
+                                    case 'auto':
+                                      widget.appViewModel.setAutoAdvance(
+                                        !widget.appViewModel.autoAdvance,
+                                      );
+                                      setState(() {});
+                                  }
+                                },
+                                itemBuilder: (_) => [
+                                  const PopupMenuItem(
+                                    value: 'map',
+                                    child: Text('Mapa de perguntas'),
+                                  ),
+                                  if (_vm.canPreview)
+                                    PopupMenuItem(
+                                      value: 'preview',
+                                      child: Text(
+                                        'Ver prévia (${_vm.answeredCount}/${_vm.totalCount})',
                                       ),
                                     ),
-                            ),
-                            if (_vm.milestoneSteps.isNotEmpty) ...[
-                              const SizedBox(height: 8),
-                              Wrap(
-                                spacing: 6,
-                                runSpacing: 6,
-                                children: [
-                                  for (
-                                    var i = 0;
-                                    i < _vm.milestoneSteps.length;
-                                    i++
-                                  ) ...[
-                                    () {
-                                      final int target = _vm.milestoneSteps[i];
-                                      final bool isCompleted =
-                                          _vm.answeredCount >= target;
-                                      final bool isCurrent =
-                                          i == _vm.currentMilestoneStepIndex;
-                                      final String name = switch (i) {
-                                        0 => 'Base',
-                                        1 => 'Fina',
-                                        2 => 'Alta',
-                                        _ => 'Total',
-                                      };
-
-                                      return Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 7,
-                                          vertical: 2.5,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: isCompleted
-                                              ? const Color(0xFF10B981)
-                                                    .withValues(alpha: 0.12)
-                                              : (isCurrent
-                                                    ? p.accentSoft
-                                                    : p.surfaceMuted.withValues(
-                                                        alpha: 0.4,
-                                                      )),
-                                          borderRadius: BorderRadius.circular(
-                                            6,
-                                          ),
-                                          border: Border.all(
-                                            color: isCompleted
-                                                ? const Color(0xFF10B981)
-                                                      .withValues(alpha: 0.4)
-                                                : (isCurrent
-                                                      ? p.accent.withValues(
-                                                          alpha: 0.4,
-                                                        )
-                                                      : p.line.withValues(
-                                                          alpha: 0.4,
-                                                        )),
-                                            width: 1,
-                                          ),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            if (isCompleted) ...[
-                                              const Icon(
-                                                Icons.check_rounded,
-                                                size: 11,
-                                                color: Color(0xFF10B981),
-                                              ),
-                                              const SizedBox(width: 3),
-                                            ] else if (isCurrent) ...[
-                                              Container(
-                                                width: 5,
-                                                height: 5,
-                                                decoration: BoxDecoration(
-                                                  color: p.accent,
-                                                  shape: BoxShape.circle,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 4),
-                                            ],
-                                            Text(
-                                              '$target $name',
-                                              style: TextStyle(
-                                                fontFamily: 'IBMPlexMono',
-                                                fontSize: 10,
-                                                fontWeight:
-                                                    (isCompleted || isCurrent)
-                                                    ? FontWeight.w700
-                                                    : FontWeight.w500,
-                                                color: isCompleted
-                                                    ? const Color(0xFF10B981)
-                                                    : (isCurrent
-                                                          ? p.accent
-                                                          : p.inkSoft),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }(),
-                                  ],
+                                  const PopupMenuItem(
+                                    value: 'help',
+                                    child: Text('Como pontua esta afirmação?'),
+                                  ),
+                                  const PopupMenuItem(
+                                    value: 'swap',
+                                    child: Text('Trocar afirmação'),
+                                  ),
+                                  PopupMenuItem(
+                                    value: 'auto',
+                                    child: Text(
+                                      widget.appViewModel.autoAdvance
+                                          ? 'Desativar avanço automático'
+                                          : 'Ativar avanço automático',
+                                    ),
+                                  ),
+                                  const PopupMenuItem(
+                                    value: 'pause',
+                                    child: Text('Pausar e salvar progresso'),
+                                  ),
                                 ],
                               ),
                             ],
-                          ],
+                          ),
                         ),
-                      ),
 
-                      // Scrollable Area: Central Espectro Card + Controls
-                      Expanded(
-                        child: AnimatedSwitcher(
-                          duration: EspectroMotion.medium,
-                          transitionBuilder: (child, animation) {
-                            final inAnimation =
-                                Tween<Offset>(
-                                  begin: const Offset(0.035, 0.0),
-                                  end: Offset.zero,
-                                ).animate(
-                                  CurvedAnimation(
-                                    parent: animation,
-                                    curve: EspectroMotion.easeOut,
-                                  ),
-                                );
-                            return FadeTransition(
-                              opacity: animation,
-                              child: SlideTransition(
-                                position: inAnimation,
-                                child: child,
+                        // Barra de progresso discreta e contínua (sem chips de telemetria)
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 2, 20, 14),
+                          child: Container(
+                            width: double.infinity,
+                            height: 3.5,
+                            decoration: BoxDecoration(
+                              color: p.line.withValues(
+                                alpha: p.isDark ? 0.45 : 0.60,
                               ),
-                            );
-                          },
-                          child: SingleChildScrollView(
-                            key: ValueKey(q.uid),
-                            padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                // The Single Unified Espectro Card
-                                Container(
-                                  decoration: EspectroElevation.cardDecoration(
-                                    p,
-                                    radius: 17,
-                                    borderWidth: 1.1,
+                              borderRadius: BorderRadius.circular(999),
+                            ),
+                            clipBehavior: Clip.antiAlias,
+                            child: _vm.progress <= 0
+                                ? const SizedBox.shrink()
+                                : FractionallySizedBox(
+                                    alignment: Alignment.centerLeft,
+                                    widthFactor: _vm.progress.clamp(0.02, 1.0),
+                                    child: ColoredBox(color: p.accent),
                                   ),
-                                  clipBehavior: Clip.antiAlias,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      Container(
-                                        height: 3.5,
-                                        color: targetPoleColor ?? p.accent,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                          18,
-                                          16,
-                                          18,
-                                          18,
+                          ),
+                        ),
+
+                        // Card Central Zen + Rodapé Simplificado
+                        Expanded(
+                          child: AnimatedSwitcher(
+                            duration: EspectroMotion.medium,
+                            transitionBuilder: (child, animation) {
+                              final inAnimation =
+                                  Tween<Offset>(
+                                    begin: const Offset(0.03, 0.0),
+                                    end: Offset.zero,
+                                  ).animate(
+                                    CurvedAnimation(
+                                      parent: animation,
+                                      curve: EspectroMotion.easeOut,
+                                    ),
+                                  );
+                              return FadeTransition(
+                                opacity: animation,
+                                child: SlideTransition(
+                                  position: inAnimation,
+                                  child: child,
+                                ),
+                              );
+                            },
+                            child: SingleChildScrollView(
+                              key: ValueKey(q.uid),
+                              padding: const EdgeInsets.fromLTRB(20, 4, 20, 28),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Container(
+                                    decoration:
+                                        EspectroElevation.cardDecoration(
+                                          p,
+                                          radius: 16,
                                         ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.stretch,
-                                          children: [
-                                        // Top row inside card: Badges on left, Technical Index on right
+                                    padding: const EdgeInsets.fromLTRB(
+                                      22,
+                                      20,
+                                      22,
+                                      22,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
+                                      children: [
                                         Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
                                           children: [
                                             Expanded(
-                                              child: Wrap(
-                                                spacing: 8,
-                                                runSpacing: 6,
-                                                crossAxisAlignment:
-                                                    WrapCrossAlignment.center,
-                                                children: [
-                                                  if (targetPoleLabel != null)
-                                                    Container(
-                                                      padding:
-                                                          const EdgeInsets.symmetric(
-                                                            horizontal: 9,
-                                                            vertical: 4.5,
-                                                          ),
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            (targetPoleColor ??
-                                                                    p.accent)
-                                                                .withValues(
-                                                                  alpha:
-                                                                      p.isDark
-                                                                      ? 0.22
-                                                                      : 0.12,
-                                                                ),
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                              6,
-                                                            ),
-                                                        border: Border.all(
-                                                          color:
-                                                              (targetPoleColor ??
-                                                                      p.accent)
-                                                                  .withValues(
-                                                                    alpha: 0.35,
-                                                                  ),
-                                                        ),
-                                                      ),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: [
-                                                          Container(
-                                                            width: 8,
-                                                            height: 8,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                                  color:
-                                                                      targetPoleColor ??
-                                                                      p.accent,
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                ),
-                                                          ),
-                                                          const SizedBox(
-                                                            width: 6,
-                                                          ),
-                                                          Flexible(
-                                                            child: Text(
-                                                              targetPoleLabel,
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              style: TextStyle(
-                                                                fontFamily: 'IBMPlexMono',
-                                                                fontSize: 10.5,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                                color:
-                                                                    targetPoleColor ??
-                                                                    p.accent,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  if (secondaryPoleLabel !=
-                                                      null)
-                                                    Container(
-                                                      padding:
-                                                          const EdgeInsets.symmetric(
-                                                            horizontal: 9,
-                                                            vertical: 4.5,
-                                                          ),
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            (secondaryPoleColor ??
-                                                                    p.accent)
-                                                                .withValues(
-                                                                  alpha:
-                                                                      p.isDark
-                                                                      ? 0.22
-                                                                      : 0.12,
-                                                                ),
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                              6,
-                                                            ),
-                                                        border: Border.all(
-                                                          color:
-                                                              (secondaryPoleColor ??
-                                                                      p.accent)
-                                                                  .withValues(
-                                                                    alpha: 0.35,
-                                                                  ),
-                                                        ),
-                                                      ),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: [
-                                                          Icon(
-                                                            Icons
-                                                                .change_history_rounded,
-                                                            size: 11,
-                                                            color:
-                                                                secondaryPoleColor ??
-                                                                p.accent,
-                                                          ),
-                                                          const SizedBox(
-                                                            width: 5,
-                                                          ),
-                                                          Flexible(
-                                                            child: Text(
-                                                              secondaryPoleLabel,
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              style: TextStyle(
-                                                                fontFamily: 'IBMPlexMono',
-                                                                fontSize: 10.5,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                                color:
-                                                                    secondaryPoleColor ??
-                                                                    p.accent,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                ],
+                                              child: Text(
+                                                categoryOverline.toUpperCase(),
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                  fontFamily: 'IBMPlexSans',
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w700,
+                                                  letterSpacing: 1.1,
+                                                  color: p.accent,
+                                                ),
                                               ),
                                             ),
-                                            const SizedBox(width: 8),
-                                            Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    horizontal: 8,
-                                                    vertical: 4,
-                                                  ),
-                                              decoration: BoxDecoration(
-                                                color: p.surfaceMuted,
-                                                borderRadius:
-                                                    BorderRadius.circular(6),
-                                                border: Border.all(
-                                                  color: p.line.withValues(
-                                                    alpha: 0.6,
-                                                  ),
-                                                ),
+                                            IconButton(
+                                              tooltip: 'Como pontua?',
+                                              onPressed: _showStatementHelp,
+                                              visualDensity:
+                                                  VisualDensity.compact,
+                                              constraints: const BoxConstraints(
+                                                minWidth: 32,
+                                                minHeight: 32,
                                               ),
-                                              child: Text(
-                                                '#$itemNumber // ${_vm.totalCount}',
-                                                style: TextStyle(
-                                                  fontFamily: 'IBMPlexMono',
-                                                  fontSize: 11,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: p.inkSoft,
-                                                  letterSpacing: 0.5,
-                                                ),
+                                              padding: EdgeInsets.zero,
+                                              icon: Icon(
+                                                Icons.help_outline_rounded,
+                                                size: 17,
+                                                color: p.muted,
                                               ),
                                             ),
                                           ],
                                         ),
-                                        const SizedBox(height: 16),
-                                        // Statement text
+                                        const SizedBox(height: 14),
                                         TermText(
                                           text: q.text,
                                           terms: terms,
                                           onTermTap: _showTerm,
                                           style: text.headlineSmall?.copyWith(
                                             fontFamily: 'IBMPlexSans',
-                                            fontSize: 20,
-                                            height: 1.35,
-                                            fontWeight: FontWeight.w700,
+                                            fontSize: 21,
+                                            height: 1.42,
+                                            fontWeight: FontWeight.w600,
                                             color: p.ink,
-                                            letterSpacing: -0.25,
+                                            letterSpacing: -0.2,
                                           ),
                                         ),
                                         if (_vm.isCurrentSkipped) ...[
-                                          const SizedBox(height: 10),
+                                          const SizedBox(height: 12),
                                           Container(
                                             padding: const EdgeInsets.symmetric(
-                                              horizontal: 8,
-                                              vertical: 4,
+                                              horizontal: 10,
+                                              vertical: 5,
                                             ),
                                             decoration: BoxDecoration(
                                               color: p.warning.withValues(
-                                                alpha: 0.12,
+                                                alpha: 0.10,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(6),
+                                                  BorderRadius.circular(8),
                                             ),
                                             child: Text(
                                               'Esta afirmação foi pulada e não pontuará a avaliação.',
@@ -1247,251 +884,156 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                                             ),
                                           ),
                                         ],
-                                        const SizedBox(height: 14),
-                                        // 5 Likert options inside the card (sem pontuação numérica visual)
-                                        for (final option
-                                            in LikertAnswer.values) ...[
-                                          AnswerTile(
-                                            label: switch (option) {
-                                              LikertAnswer.stronglyAgree =>
-                                                'Concordo totalmente',
-                                              LikertAnswer.agree => 'Concordo',
-                                              LikertAnswer.neutral =>
-                                                'Neutro ou Depende',
-                                              LikertAnswer.disagree =>
-                                                'Discordo',
-                                              LikertAnswer.stronglyDisagree =>
-                                                'Discordo totalmente',
-                                            },
-                                            icon: _likertIcon(option),
-                                            accent: _likertColor(option, p),
-                                            showRadio: true,
-                                            selected: selected == option,
-                                            onTap: () =>
-                                                _onSelectAnswer(option),
-                                          ),
-                                          const SizedBox(height: 6),
+                                        const SizedBox(height: 22),
+                                        for (var idx = 0;
+                                            idx < LikertAnswer.values.length;
+                                            idx++) ...[
+                                          () {
+                                            final option =
+                                                LikertAnswer.values[idx];
+                                            return AnswerTile(
+                                              label: switch (option) {
+                                                LikertAnswer.stronglyAgree =>
+                                                  'Concordo totalmente',
+                                                LikertAnswer.agree =>
+                                                  'Concordo',
+                                                LikertAnswer.neutral =>
+                                                  'Neutro ou Depende',
+                                                LikertAnswer.disagree =>
+                                                  'Discordo',
+                                                LikertAnswer.stronglyDisagree =>
+                                                  'Discordo totalmente',
+                                              },
+                                              icon: _likertIcon(option),
+                                              accent: _likertColor(option, p),
+                                              tintedUnselected: false,
+                                              showRadio: true,
+                                              selected: selected == option,
+                                              onTap: () =>
+                                                  _onSelectAnswer(option),
+                                            );
+                                          }(),
+                                          if (idx <
+                                              LikertAnswer.values.length - 1)
+                                            const SizedBox(height: 8),
                                         ],
-
-                                        // Rodapé do card: Ações contextuais da afirmação (Entender / Trocar / Pular)
-                                        const SizedBox(height: 6),
-                                        Divider(
-                                          height: 1,
-                                          thickness: 1,
-                                          color: p.line.withValues(alpha: 0.5),
-                                        ),
-                                        const SizedBox(height: 6),
-                                        Wrap(
-                                          alignment: WrapAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              WrapCrossAlignment.center,
-                                          runSpacing: 4,
-                                          children: [
-                                            TextButton.icon(
-                                              onPressed: _showStatementHelp,
-                                              icon: Icon(
-                                                Icons.help_outline_rounded,
-                                                size: 15,
-                                                color: p.accent,
-                                              ),
-                                              label: Text(
-                                                'Entender afirmação',
-                                                style: TextStyle(
-                                                  fontSize: 12.5,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: p.accent,
-                                                ),
-                                              ),
-                                              style: TextButton.styleFrom(
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                      horizontal: 6,
-                                                      vertical: 4,
-                                                    ),
-                                              ),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                TextButton.icon(
-                                                  onPressed: _onSwap,
-                                                  icon: Icon(
-                                                    Icons.swap_horiz_rounded,
-                                                    size: 15,
-                                                    color: p.inkSoft,
-                                                  ),
-                                                  label: Text(
-                                                    'Trocar',
-                                                    style: TextStyle(
-                                                      fontSize: 12.5,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: p.inkSoft,
-                                                    ),
-                                                  ),
-                                                  style: TextButton.styleFrom(
-                                                    visualDensity:
-                                                        VisualDensity.compact,
-                                                    padding:
-                                                        const EdgeInsets.symmetric(
-                                                          horizontal: 6,
-                                                          vertical: 4,
-                                                        ),
-                                                  ),
-                                                ),
-                                                const SizedBox(width: 2),
-                                                TextButton(
-                                                  onPressed: _onSkip,
-                                                  style: TextButton.styleFrom(
-                                                    visualDensity:
-                                                        VisualDensity.compact,
-                                                    padding:
-                                                        const EdgeInsets.symmetric(
-                                                          horizontal: 6,
-                                                          vertical: 4,
-                                                        ),
-                                                  ),
-                                                  child: Text(
-                                                    'Pular',
-                                                    style: TextStyle(
-                                                      fontSize: 12.5,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: p.inkSoft,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
                                       ],
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-
-                                const SizedBox(height: 16),
-
-                                // Navegação primária com AppButton oficial do Espectro
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      flex: 2,
-                                      child: AppButton(
-                                        label: 'Anterior',
-                                        icon: Icons.arrow_back_rounded,
-                                        kind: AppButtonKind.outline,
-                                        onPressed: _vm.isFirst
-                                            ? null
-                                            : _vm.previous,
+                                  const SizedBox(height: 16),
+                                  // Rodapé Simplificado
+                                  Wrap(
+                                    alignment: WrapAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.center,
+                                    spacing: 12,
+                                    runSpacing: 10,
+                                    children: [
+                                      TextButton.icon(
+                                        onPressed: _onSkip,
+                                        icon: Icon(
+                                          Icons.skip_next_rounded,
+                                          size: 17,
+                                          color: p.muted,
+                                        ),
+                                        label: Text(
+                                          'Pular afirmação',
+                                          style: TextStyle(
+                                            fontFamily: 'IBMPlexSans',
+                                            fontSize: 13.5,
+                                            fontWeight: FontWeight.w600,
+                                            color: p.inkSoft,
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(width: 12),
-                                    Expanded(
-                                      flex: 3,
-                                      child: AppButton(
-                                        label: _vm.isLast
-                                            ? 'Concluir'
-                                            : 'Próxima',
-                                        icon: _vm.isLast
-                                            ? Icons.check_circle_rounded
-                                            : Icons.arrow_forward_rounded,
-                                        kind: AppButtonKind.filled,
-                                        onPressed: _vm.isLast
-                                            ? _tryFinish
-                                            : ((selected != null ||
-                                                      _vm.isCurrentSkipped)
-                                                  ? _vm.next
-                                                  : null),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-
-                                const SizedBox(height: 12),
-
-                                // Controle sutil de auto-avanço centralizado
-                                Center(
-                                  child: InkWell(
-                                    onTap: () {
-                                      widget.appViewModel.setAutoAdvance(
-                                        !widget.appViewModel.autoAdvance,
-                                      );
-                                      setState(() {});
-                                    },
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 8,
-                                        vertical: 4,
-                                      ),
-                                      child: Row(
+                                      Row(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          SizedBox(
-                                            height: 24,
-                                            child: Switch.adaptive(
-                                              value: widget
-                                                  .appViewModel
-                                                  .autoAdvance,
-                                              onChanged: (val) {
-                                                widget.appViewModel
-                                                    .setAutoAdvance(val);
-                                                setState(() {});
-                                              },
-                                              activeThumbColor: p.accent,
-                                              activeTrackColor: p.accent
-                                                  .withValues(alpha: 0.5),
-                                            ),
-                                          ),
-                                          const SizedBox(width: 8),
-                                          Flexible(
-                                            child: Text(
-                                              'Avançar ao responder',
-                                              style: TextStyle(
-                                                fontFamily: 'IBMPlexSans',
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w500,
-                                                color: p.inkSoft,
+                                          OutlinedButton(
+                                            onPressed: _vm.isFirst
+                                                ? null
+                                                : _vm.previous,
+                                            style: OutlinedButton.styleFrom(
+                                              minimumSize: const Size(0, 44),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 16,
+                                                  ),
+                                              side: BorderSide(
+                                                color: _vm.isFirst
+                                                    ? p.line.withValues(
+                                                        alpha: 0.5,
+                                                      )
+                                                    : p.line,
                                               ),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                              ),
+                                            ),
+                                            child: const Text('Anterior'),
+                                          ),
+                                          const SizedBox(width: 10),
+                                          FilledButton.icon(
+                                            onPressed: _vm.isLast
+                                                ? _tryFinish
+                                                : ((selected != null ||
+                                                          _vm.isCurrentSkipped)
+                                                      ? _vm.next
+                                                      : null),
+                                            style: FilledButton.styleFrom(
+                                              minimumSize: const Size(0, 44),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 18,
+                                                  ),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                              ),
+                                            ),
+                                            icon: Icon(
+                                              _vm.isLast
+                                                  ? Icons.check_rounded
+                                                  : Icons.arrow_forward_rounded,
+                                              size: 17,
+                                            ),
+                                            label: Text(
+                                              _vm.isLast
+                                                  ? 'Concluir'
+                                                  : 'Próxima',
                                             ),
                                           ),
                                         ],
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ),
-                                if (MediaQuery.sizeOf(context).width >= 820) ...[
-                                  const SizedBox(height: 8),
-                                  Center(
-                                    child: Text(
-                                      'Atalhos: teclas 1–5 respondem · ←/→ navegam · Esc pausa',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontFamily: 'IBMPlexMono',
-                                        fontSize: 10.5,
-                                        color: p.muted,
+                                  if (MediaQuery.sizeOf(context).width >=
+                                      820) ...[
+                                    const SizedBox(height: 16),
+                                    Center(
+                                      child: Text(
+                                        'Atalhos: teclas 1–5 respondem · ←/→ navegam · Esc pausa',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontFamily: 'IBMPlexSans',
+                                          fontSize: 11.5,
+                                          color: p.muted,
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                  ],
                                 ],
-                                const SizedBox(height: 16),
-                              ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      const EspectroFloatingAdBar(),
-                    ],
+                        const EspectroFloatingAdBar(),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
             ),
           );
         },
