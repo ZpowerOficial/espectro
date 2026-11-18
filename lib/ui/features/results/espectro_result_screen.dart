@@ -141,7 +141,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
 
   int _countryFilterIndex = 0; // 0: Todos, 1: Atuais, 2: Históricos
   int _partyFilterIndex = 0; // 0: Todos, 1: Atuais, 2: Históricos
-  int _heroAffinitiesTab = 0; // 0: 12 Eixos, 1: 6 Tríades
+  bool _showDeepDive = false;
 
   AtlasMatchResult? _findBestPersonalityForAxis(
     PoliticalAtlas atlas,
@@ -223,41 +223,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     ).firstOrNull;
   }
 
-  int _activeTocIndex = 0;
   final ScrollController _scrollController = ScrollController();
-
-  final GlobalKey _keyEixos = GlobalKey();
-  final GlobalKey _keyDistincao = GlobalKey();
-  final GlobalKey _keyPaises = GlobalKey();
-  final GlobalKey _keyPersonalidades = GlobalKey();
-  final GlobalKey _keyLivros = GlobalKey();
-  final GlobalKey _keyPartidos = GlobalKey();
-  final GlobalKey _keyBussola = GlobalKey();
-  final GlobalKey _keyIdeologias = GlobalKey();
-
-  List<GlobalKey> get _tocKeys => <GlobalKey>[
-    _keyEixos,
-    _keyDistincao,
-    _keyPaises,
-    _keyPersonalidades,
-    _keyLivros,
-    _keyPartidos,
-    _keyBussola,
-    _keyIdeologias,
-  ];
-
-  void _scrollToSection(GlobalKey key, int index) {
-    setState(() => _activeTocIndex = index);
-    final BuildContext? targetContext = key.currentContext;
-    if (targetContext != null) {
-      Scrollable.ensureVisible(
-        targetContext,
-        duration: const Duration(milliseconds: 350),
-        curve: Curves.easeOutCubic,
-        alignment: 0.05,
-      );
-    }
-  }
 
   @override
   void dispose() {
@@ -1418,102 +1384,130 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                     _record.quality.totalPresented),
             onContinue: _resumeQuiz,
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: 20),
         ],
 
         if (_record.quality.warnings.isNotEmpty) ...<Widget>[
           _ResponseQualityBanner(warnings: _record.quality.warnings),
-          const SizedBox(height: 18),
+          const SizedBox(height: 20),
         ],
 
-        // Hero Ideology Match Card
+        // Beat 1: Troféu Visual (Arquétipo + Frase Síntese + Pensador Mais Próximo)
         if (primaryMatch != null) ...<Widget>[
           _buildHeroIdeologyCard(
             context,
             primaryMatch,
-            compat,
-            countryMatches,
-            persMatches,
-            bestPersByAxis,
-            bestPersByTriad,
+            effectiveCompat,
+            topPers,
             spectrumColor,
+            isDesktop,
             p,
             text,
           ),
           if (_canCompleteWithTriads) ...<Widget>[
-            const SizedBox(height: 18),
+            const SizedBox(height: 20),
             _CompleteTriadsBanner(
               isExpress: _record.depth == TestDepth.express,
               onComplete: _completeWithTriads,
             ),
           ],
-          const SizedBox(height: 18),
-          RaioXDiagnosticCard(
-            diagnostic: RaioXEngine.fromCurrentCompatibility(
-              compatibility: primaryMatch,
-              twelveAxes: widget.appViewModel.data.twelveAxes,
-              sixTriangles: widget.appViewModel.data.sixTriangles,
+          const SizedBox(height: 24),
+          _buildVisualOverviewCard(
+            context,
+            effectiveCompat,
+            spectrumColor,
+            p,
+            text,
+          ),
+        ],
+
+        const SizedBox(height: 36),
+
+        // Beat 2: Gráficos Essenciais (12 Eixos + Bússola & Tríades)
+        _buildSection12Axes(context, bestPersByAxis, p, text),
+
+        const SizedBox(height: 36),
+
+        _buildSectionCompassAndTriads(
+          context,
+          nolan,
+          syntheses,
+          tensions,
+          effectiveCompat,
+          bestPersByTriad,
+          p,
+          text,
+        ),
+
+        const SizedBox(height: 36),
+
+        // Beat 3: Exploração Voluntária do Dossiê Aprofundado
+        Container(
+          padding: EdgeInsets.all(isDesktop ? 24 : 18),
+          decoration: EspectroElevation.cardDecoration(p, radius: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'ANÁLISE APROFUNDADA',
+                style: TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 11.5,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.1,
+                  color: p.accent,
+                ),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                'Quer ir além do resumo?',
+                style: text.titleLarge?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  color: p.ink,
+                ),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                'Explore o Raio-X matemático de convergências e divergências, '
+                'outros pensadores próximos, modelos de países, obras clássicas recomendadas e partidos.',
+                style: TextStyle(
+                  fontSize: 13.5,
+                  height: 1.45,
+                  color: p.inkSoft,
+                ),
+              ),
+              const SizedBox(height: 16),
+              FilledButton.tonalIcon(
+                onPressed: () => setState(() => _showDeepDive = !_showDeepDive),
+                icon: Icon(
+                  _showDeepDive
+                      ? Icons.expand_less_rounded
+                      : Icons.expand_more_rounded,
+                  size: 19,
+                ),
+                label: Text(
+                  _showDeepDive
+                      ? 'Recolher dossiê aprofundado'
+                      : 'Explorar dossiê completo',
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        if (_showDeepDive) ...<Widget>[
+          if (primaryMatch != null) ...<Widget>[
+            const SizedBox(height: 28),
+            RaioXDiagnosticCard(
+              diagnostic: RaioXEngine.fromCurrentCompatibility(
+                compatibility: primaryMatch,
+                twelveAxes: widget.appViewModel.data.twelveAxes,
+                sixTriangles: widget.appViewModel.data.sixTriangles,
+              ),
             ),
-          ),
-        ],
-
-        if (!isDesktop) ...<Widget>[
-          const SizedBox(height: 16),
-          _MobileQuickNav(
-            activeTocIndex: _activeTocIndex,
-            onSelect: (int idx) {
-              final GlobalKey targetKey = _tocKeys[idx];
-              _scrollToSection(targetKey, idx);
-            },
-          ),
-        ],
-
-        const SizedBox(height: 32),
-
-        // 01 Seus 12 Eixos
-        Container(
-          key: _keyEixos,
-          child: _buildSection12Axes(context, bestPersByAxis, p, text),
-        ),
-
-        const SizedBox(height: 36),
-
-        // 02 Distinção
-        Container(
-          key: _keyDistincao,
-          child: _buildSectionDistinction(
-            context,
-            mostUncommon,
-            mostCommon,
-            uncommonPercentLower,
-            p,
-            text,
-          ),
-        ),
-
-        const SizedBox(height: 36),
-
-        // 03 Países mais próximos
-        Container(
-          key: _keyPaises,
-          child: _buildSectionCountries(
-            context,
-            topCountry,
-            countryMatches,
-            polCountry,
-            socCountry,
-            ecoCountry,
-            p,
-            text,
-          ),
-        ),
-
-        const SizedBox(height: 36),
-
-        // 04 Personalidades mais próximas
-        Container(
-          key: _keyPersonalidades,
-          child: _buildSectionPersonalities(
+          ],
+          const SizedBox(height: 36),
+          _buildSectionPersonalities(
             context,
             topPers,
             persMatches,
@@ -1523,14 +1517,19 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
             p,
             text,
           ),
-        ),
-
-        const SizedBox(height: 36),
-
-        // 05 Livros recomendados
-        Container(
-          key: _keyLivros,
-          child: _buildSectionBooks(
+          const SizedBox(height: 36),
+          _buildSectionCountries(
+            context,
+            topCountry,
+            countryMatches,
+            polCountry,
+            socCountry,
+            ecoCountry,
+            p,
+            text,
+          ),
+          const SizedBox(height: 36),
+          _buildSectionBooks(
             context,
             topBook,
             secondBook,
@@ -1539,87 +1538,36 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
             p,
             text,
           ),
-        ),
-
-        const SizedBox(height: 36),
-
-        // 06 Partidos e movimentos
-        Container(
-          key: _keyPartidos,
-          child: _buildSectionParties(context, topParty, partyMatches, p, text),
-        ),
-
-        const SizedBox(height: 36),
-
-        // 07 Bússola & Tríades
-        Container(
-          key: _keyBussola,
-          child: _buildSectionCompassAndTriads(
+          const SizedBox(height: 36),
+          _buildSectionParties(context, topParty, partyMatches, p, text),
+          const SizedBox(height: 36),
+          _buildSectionDistinction(
             context,
-            nolan,
-            syntheses,
-            tensions,
-            compat,
-            bestPersByTriad,
+            mostUncommon,
+            mostCommon,
+            uncommonPercentLower,
             p,
             text,
           ),
-        ),
+          const SizedBox(height: 36),
+          _buildSectionOtherIdeologies(context, effectiveCompat, p, text),
+        ],
 
         const SizedBox(height: 36),
 
-        // 08 Outras ideologias
-        Container(
-          key: _keyIdeologias,
-          child: _buildSectionOtherIdeologies(context, compat, p, text),
-        ),
-
-        const SizedBox(height: 36),
-
-        // 09 Ações finais
-        _buildFinalActions(context, compat, p, text),
+        _buildFinalActions(context, effectiveCompat, p, text),
       ],
     );
 
-    if (isDesktop) {
-      return Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1220),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  child: SingleChildScrollView(
-                    controller: _scrollController,
-                    padding: const EdgeInsets.only(right: 28),
-                    child: mainNarrative,
-                  ),
-                ),
-                SizedBox(
-                  width: 230,
-                  child: _StickyTocPanel(
-                    activeIndex: _activeTocIndex,
-                    onSelect: (int idx) {
-                      final GlobalKey targetKey = _tocKeys[idx];
-                      _scrollToSection(targetKey, idx);
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    }
-
     return SingleChildScrollView(
       controller: _scrollController,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+      padding: EdgeInsets.symmetric(
+        horizontal: isDesktop ? 32 : 18,
+        vertical: isDesktop ? 28 : 20,
+      ),
       child: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1220),
+          constraints: const BoxConstraints(maxWidth: 920),
           child: mainNarrative,
         ),
       ),
@@ -1630,1431 +1578,407 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     BuildContext context,
     CurrentCompatibility primaryMatch,
     CompatibilityReport compat,
-    List<AtlasMatchResult> countryMatches,
-    List<AtlasMatchResult> persMatches,
-    Map<String, AtlasMatchResult> bestPersByAxis,
-    Map<int, AtlasMatchResult> bestPersByTriad,
+    AtlasMatchResult? topPers,
     Color spectrumColor,
+    bool isDesktop,
     EspectroPalette p,
     TextTheme text,
   ) {
     final spectrum = spectrumOf(StudySubject.fromCurrent(primaryMatch.current));
+    final Color spectrumInk = spectrum?.ink(p.isDark) ?? spectrumColor;
     final bool lowInformation =
         compat.isLowDiscrimination || _hasCautiousReading;
-
-    final bool showMiniRadar = _activeAxes.length >= 3;
+    final String pct = _formatScore(primaryMatch.compatibilityPercent);
 
     return Container(
-      clipBehavior: Clip.antiAlias,
       decoration: EspectroElevation.cardDecoration(
         p,
-        color: p.surface,
-        borderColor: p.line,
         tint: spectrumColor,
         radius: 20,
       ),
+      padding: EdgeInsets.all(isDesktop ? 34 : 22),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SpectrumGradientRule(height: 3.5, radius: 0),
-          Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                // Colored bar/pill for spectrum - STRICTLY NO ICONS
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 6,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: spectrumColor.withValues(
-                          alpha: p.isDark ? 0.18 : 0.12,
-                        ),
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(
-                          color: spectrumColor.withValues(alpha: 0.4),
-                        ),
-                      ),
-                      child: Text(
-                        lowInformation
-                            ? 'LEITURA CAUTELOSA'
-                            : 'SEU ESPECTRO: ${spectrum?.name.toUpperCase() ?? primaryMatch.current.family.toUpperCase()}',
-                        style: TextStyle(
-                          fontFamily: 'IBMPlexMono',
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          color: spectrumColor,
-                          letterSpacing: 0.8,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      lowInformation
-                          ? 'PROXIMIDADE GEOMÉTRICA · LEITURA CAUTELOSA'
-                          : 'MAIOR AFINIDADE ESTIMADA',
-                      style: TextStyle(
-                        fontFamily: 'IBMPlexMono',
-                        fontSize: 11,
-                        color: lowInformation ? p.warning : p.muted,
-                        letterSpacing: 0.6,
-                      ),
-                    ),
-                  ],
+          // Overline + Convergência discreta
+          Wrap(
+            spacing: 10,
+            runSpacing: 8,
+            alignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: <Widget>[
+              Text(
+                lowInformation
+                    ? 'LEITURA CAUTELOSA'
+                    : 'SEU ARQUÉTIPO · ${(spectrum?.name ?? primaryMatch.current.family).toUpperCase()}',
+                style: TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.1,
+                  color: lowInformation ? p.warning : spectrumInk,
                 ),
-                if (spectrum?.description != null) ...[
-                  const SizedBox(height: 8),
-                  Text(
-                    spectrum!.description,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: p.inkSoft,
-                      fontStyle: FontStyle.italic,
-                    ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
+                decoration: BoxDecoration(
+                  color: spectrumColor.withValues(
+                    alpha: p.isDark ? 0.16 : 0.10,
                   ),
-                ],
-                const SizedBox(height: 18),
-                LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                    final bool isExtraNarrow =
-                        constraints.maxWidth < 460 ||
-                        MediaQuery.textScalerOf(context).scale(16) > 20;
-                    final bool narrow = constraints.maxWidth < 560;
-                    final bool showRadarAside =
-                        showMiniRadar && constraints.maxWidth >= 600;
+                  borderRadius: BorderRadius.circular(999),
+                ),
+                child: Text(
+                  lowInformation
+                      ? '$pct% de proximidade geométrica'
+                      : '$pct% de convergência',
+                  style: TextStyle(
+                    fontFamily: 'IBMPlexSans',
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: spectrumInk,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: isDesktop ? 16 : 12),
 
-                    final Widget titleCol = Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          primaryMatch.current.name,
-                          style: text.headlineMedium?.copyWith(
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: -0.5,
-                            color: p.ink,
-                            height: 1.15,
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        Text(
-                          lowInformation
-                              ? 'Proximidade geométrica no espaço medido, não afinidade ideológica definida'
-                              : compat.isTechnicalTie
-                              ? 'Empate técnico de convergência com outras correntes'
-                              : 'Perfil editorial com máxima convergência aos seus valores',
-                          style: text.bodySmall?.copyWith(
-                            color: lowInformation ? p.warning : p.inkSoft,
-                          ),
-                        ),
-                      ],
-                    );
+          // Título Troféu em Grande Destaque
+          Text(
+            primaryMatch.current.name,
+            style: TextStyle(
+              fontFamily: 'IBMPlexSans',
+              fontSize: isDesktop ? 36 : 28,
+              fontWeight: FontWeight.w800,
+              letterSpacing: -0.75,
+              height: 1.12,
+              color: p.ink,
+            ),
+          ),
+          if (compat.isTechnicalTie && !lowInformation) ...<Widget>[
+            const SizedBox(height: 6),
+            Text(
+              'Perfil híbrido em convergência próxima com outras correntes do mesmo campo.',
+              style: TextStyle(fontSize: 13, color: p.muted),
+            ),
+          ],
+          SizedBox(height: isDesktop ? 20 : 16),
 
-                    final Widget gauge = _AnimatedMatchGauge(
-                      percent: primaryMatch.compatibilityPercent,
-                      size: narrow ? 72 : 84,
-                      accentColor: spectrumColor,
-                      label: lowInformation ? 'PROX.' : 'MATCH',
-                    );
+          // Frase Síntese Marcante (Editorial, sem ruído técnico)
+          Container(
+            padding: const EdgeInsets.only(left: 16),
+            decoration: BoxDecoration(
+              border: Border(
+                left: BorderSide(color: spectrumColor, width: 3),
+              ),
+            ),
+            child: Text(
+              primaryMatch.current.summary,
+              style: TextStyle(
+                fontFamily: 'IBMPlexSans',
+                fontSize: isDesktop ? 16.5 : 15,
+                height: 1.52,
+                fontWeight: FontWeight.w400,
+                color: p.inkSoft,
+              ),
+            ),
+          ),
 
-                    final Widget visualCluster = showRadarAside
-                        ? Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(6),
-                                decoration: BoxDecoration(
-                                  color: p.surfaceMuted.withValues(alpha: 0.55),
-                                  borderRadius: BorderRadius.circular(14),
-                                  border: Border.all(
-                                    color: p.line.withValues(alpha: 0.75),
-                                  ),
-                                ),
-                                child: MultidimensionalRadarChart(
-                                  axes: _activeAxes,
-                                  size: 132,
+          // Pensador Mais Próximo em Grande Destaque
+          if (topPers != null) ...<Widget>[
+            SizedBox(height: isDesktop ? 26 : 20),
+            Material(
+              color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.65 : 0.75),
+              borderRadius: BorderRadius.circular(16),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(16),
+                onTap: () => EntityComparisonScreen.showAtlasEntry(
+                  context,
+                  record: _record,
+                  entry: topPers.entry,
+                  appViewModel: widget.appViewModel,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(isDesktop ? 18 : 14),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      _buildAvatarImage(
+                        photoUrl: topPers.entry.photoUrl,
+                        name: topPers.entry.name,
+                        color: spectrumColor,
+                        size: isDesktop ? 62 : 52,
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'PENSADOR MAIS PRÓXIMO',
+                              style: TextStyle(
+                                fontFamily: 'IBMPlexSans',
+                                fontSize: 10.5,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 1.0,
+                                color: p.accent,
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Text(
+                              topPers.entry.name,
+                              style: TextStyle(
+                                fontFamily: 'IBMPlexSans',
+                                fontSize: isDesktop ? 19 : 17,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: -0.3,
+                                color: p.ink,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              '${topPers.entry.origin} · ${topPers.entry.era} · ${_formatScore(topPers.compatibilityPercent)}% afim',
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 12.5,
+                                color: p.inkSoft,
+                              ),
+                            ),
+                            if (topPers.entry.quote != null &&
+                                topPers.entry.quote!.trim().isNotEmpty) ...[
+                              const SizedBox(height: 6),
+                              Text(
+                                '“${topPers.entry.quote}”',
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 12.5,
+                                  fontStyle: FontStyle.italic,
+                                  height: 1.38,
+                                  color: p.muted,
                                 ),
                               ),
-                              const SizedBox(width: 14),
-                              gauge,
                             ],
-                          )
-                        : gauge;
-
-                    if (isExtraNarrow) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          titleCol,
-                          const SizedBox(height: 14),
-                          Wrap(
-                            spacing: 14,
-                            runSpacing: 12,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: <Widget>[
-                              gauge,
-                              if (showMiniRadar)
-                                Container(
-                                  padding: const EdgeInsets.all(6),
-                                  decoration: BoxDecoration(
-                                    color: p.surfaceMuted.withValues(
-                                      alpha: 0.55,
-                                    ),
-                                    borderRadius: BorderRadius.circular(14),
-                                    border: Border.all(
-                                      color: p.line.withValues(alpha: 0.75),
-                                    ),
-                                  ),
-                                  child: MultidimensionalRadarChart(
-                                    axes: _activeAxes,
-                                    size: 118,
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ],
-                      );
-                    }
-
-                    return Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Expanded(child: titleCol),
-                        const SizedBox(width: 16),
-                        visualCluster,
-                      ],
-                    );
-                  },
-                ),
-                const SizedBox(height: 20),
-                // Quote box: UMA FRASE QUE TE DESCREVE
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: p.surfaceMuted,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border(
-                      left: BorderSide(color: spectrumColor, width: 3.5),
-                    ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        lowInformation
-                            ? '— FRASE DO PERFIL MAIS PRÓXIMO'
-                            : '— UMA FRASE QUE TE DESCREVE',
-                        style: TextStyle(
-                          fontFamily: 'IBMPlexMono',
-                          fontSize: 10.5,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 0.9,
-                          color: p.muted,
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      Text(
-                        '“${primaryMatch.current.summary}”',
-                        style: text.bodyMedium?.copyWith(
-                          fontStyle: FontStyle.italic,
-                          height: 1.4,
-                          color: p.ink,
-                        ),
+                      const SizedBox(width: 8),
+                      Icon(
+                        Icons.chevron_right_rounded,
+                        size: 22,
+                        color: p.muted,
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 18),
-                LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints box) {
-                    final bool stackButtons = box.maxWidth < 520;
-                    final Widget shareBtn = AppButton(
-                      label: 'Compartilhar card',
-                      icon: Icons.share_rounded,
-                      kind: AppButtonKind.filled,
-                      expand: stackButtons,
-                      onPressed: _openShareCard,
-                    );
-                    final Widget compareBtn = AppButton(
-                      label: 'Comparar comigo em detalhes',
-                      icon: Icons.compare_arrows_rounded,
-                      kind: AppButtonKind.outline,
-                      expand: stackButtons,
-                      onPressed: () => EntityComparisonScreen.showCurrent(
-                        context,
-                        record: _record,
-                        current: primaryMatch.current,
-                        appViewModel: widget.appViewModel,
-                      ),
-                    );
-                    final Widget detailsBtn = AppButton(
-                      label: 'Ver detalhes da ideologia',
-                      icon: Icons.info_outline_rounded,
-                      kind: AppButtonKind.outline,
-                      expand: stackButtons,
-                      onPressed: () => _showCurrentMatchSheet(primaryMatch),
-                    );
-                    if (stackButtons) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          shareBtn,
-                          const SizedBox(height: 10),
-                          compareBtn,
-                          const SizedBox(height: 10),
-                          detailsBtn,
-                        ],
-                      );
-                    }
-                    return Wrap(
-                      spacing: 12,
-                      runSpacing: 10,
-                      children: <Widget>[shareBtn, compareBtn, detailsBtn],
-                    );
-                  },
-                ),
-
-                // 1. CORRENTES MAIS PRÓXIMAS
-                _buildNearestCurrentsHero(context, compat, p, text),
-
-                // 2. AFINIDADES POR EIXO E TRÍADE: PERSONALIDADES MAIS PRÓXIMAS
-                _buildAxesAffinitiesHero(
-                  context,
-                  _activeAxes,
-                  _record.triads,
-                  bestPersByAxis,
-                  bestPersByTriad,
-                  p,
-                  text,
-                ),
-
-                // 3. PERSONALIDADES QUE COMBINAM COM VOCÊ
-                _buildPersonalitiesHero(context, persMatches, p, text),
-
-                // 4. MODELOS ESTATAIS & RECORTES HISTÓRICOS
-                _buildCountriesHero(context, countryMatches, p, text),
-              ],
+              ),
             ),
+          ],
+
+          SizedBox(height: isDesktop ? 26 : 20),
+
+          // Ações Limpas do Troféu
+          Wrap(
+            spacing: 12,
+            runSpacing: 10,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: <Widget>[
+              FilledButton.icon(
+                onPressed: _openShareCard,
+                style: FilledButton.styleFrom(
+                  minimumSize: const Size(0, 48),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 12,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                icon: const Icon(Icons.share_rounded, size: 17),
+                label: const Text('Compartilhar resultado'),
+              ),
+              OutlinedButton(
+                onPressed: () => _showCurrentMatchSheet(primaryMatch),
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size(0, 48),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
+                  side: BorderSide(color: p.line),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: const Text('Sobre este arquétipo'),
+              ),
+              TextButton(
+                onPressed: () => EntityComparisonScreen.showCurrent(
+                  context,
+                  record: _record,
+                  current: primaryMatch.current,
+                  appViewModel: widget.appViewModel,
+                ),
+                style: TextButton.styleFrom(
+                  minimumSize: const Size(0, 44),
+                  foregroundColor: p.inkSoft,
+                ),
+                child: const Text('Comparar lado a lado →'),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
 
-  Widget _buildNearestCurrentsHero(
+  Widget _buildVisualOverviewCard(
     BuildContext context,
     CompatibilityReport compat,
+    Color spectrumColor,
     EspectroPalette p,
     TextTheme text,
   ) {
-    final topMatches = compat.topMatches.take(3).toList();
-    if (topMatches.isEmpty) return const SizedBox.shrink();
+    final bool showRadar = _activeAxes.length >= 3;
+    final List<CurrentCompatibility> runnerUps = compat.topMatches
+        .skip(1)
+        .take(3)
+        .toList();
+    if (!showRadar && runnerUps.isEmpty) return const SizedBox.shrink();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 22),
-        Divider(height: 1, color: p.line.withValues(alpha: 0.6)),
-        const SizedBox(height: 18),
-        Wrap(
-          alignment: WrapAlignment.spaceBetween,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          spacing: 8,
-          runSpacing: 4,
-          children: [
-            Text(
-              'CORRENTES MAIS PRÓXIMAS',
-              style: TextStyle(
-                fontFamily: 'IBMPlexMono',
-                fontSize: 11,
-                fontWeight: FontWeight.w700,
-                color: p.muted,
-                letterSpacing: 0.8,
+    return Container(
+      padding: const EdgeInsets.all(22),
+      decoration: EspectroElevation.cardDecoration(p, radius: 16),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final double scale = MediaQuery.textScalerOf(context).scale(16) / 16;
+          final bool sideBySide =
+              showRadar &&
+              runnerUps.isNotEmpty &&
+              constraints.maxWidth >= 600 &&
+              scale <= 1.35;
+
+          final Widget radarPart = Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(
+                'GEOMETRIA DOS 12 EIXOS',
+                style: TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.0,
+                  color: p.muted,
+                ),
               ),
-            ),
-            Text(
-              '${topMatches.length} em maior convergência',
-              style: TextStyle(fontSize: 11, color: p.inkSoft),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        LayoutBuilder(
-          builder: (context, constraints) {
-            final isNarrow = constraints.maxWidth < 640;
-            return Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: [
-                for (var idx = 0; idx < topMatches.length; idx++)
-                  () {
-                    final match = topMatches[idx];
-                    final curSpectrum = spectrumOf(
-                      StudySubject.fromCurrent(match.current),
-                    );
-                    final curColor = curSpectrum?.color ?? p.accent;
-                    final curInk = curSpectrum?.ink(p.isDark) ?? curColor;
-                    final pct = _formatScore(match.compatibilityPercent);
-                    final width = isNarrow
-                        ? constraints.maxWidth
-                        : (constraints.maxWidth - 20) / 3;
-
-                    return InkWell(
-                      onTap: () => _showCurrentMatchSheet(match),
-                      borderRadius: BorderRadius.circular(14),
-                      child: Container(
-                        width: width,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
-                          color: p.surfaceMuted,
-                          borderRadius: BorderRadius.circular(14),
-                          border: Border.all(
-                            color: curColor.withValues(alpha: 0.38),
-                          ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Container(height: 3.5, color: curColor),
-                            Padding(
-                              padding: const EdgeInsets.all(12),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 6,
-                                          vertical: 2,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: p.surface,
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                          border: Border.all(color: p.line),
-                                        ),
-                                        child: Text(
-                                          '#${idx + 1}',
-                                          style: TextStyle(
-                                            fontFamily: 'IBMPlexMono',
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w700,
-                                            color: p.inkSoft,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 6),
-                                      Expanded(
-                                        child: Text(
-                                          curSpectrum?.name.toUpperCase() ?? '',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            fontFamily: 'IBMPlexMono',
-                                            fontSize: 9.5,
-                                            fontWeight: FontWeight.w700,
-                                            color: curInk,
-                                            letterSpacing: 0.4,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 7,
-                                          vertical: 2,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: curColor.withValues(
-                                            alpha: 0.16,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                        ),
-                                        child: Text(
-                                          '$pct%',
-                                          style: TextStyle(
-                                            fontSize: 11.5,
-                                            fontWeight: FontWeight.w800,
-                                            color: curInk,
-                                            fontFamily: 'IBMPlexMono',
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    match.current.name,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
-                                      fontSize: 13.5,
-                                      fontWeight: FontWeight.w700,
-                                      height: 1.2,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(3),
-                                    child: LinearProgressIndicator(
-                                      value: match.compatibilityPercent / 100.0,
-                                      minHeight: 5,
-                                      backgroundColor: p.line.withValues(
-                                        alpha: 0.45,
-                                      ),
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        curColor,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 6),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          match.current.family,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            fontSize: 10.5,
-                                            color: p.inkSoft,
-                                          ),
-                                        ),
-                                      ),
-                                      Icon(
-                                        Icons.chevron_right_rounded,
-                                        size: 14,
-                                        color: curInk,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }(),
-              ],
-            );
-          },
-        ),
-      ],
-    );
-  }
-
-  Widget _buildAxesAffinitiesHero(
-    BuildContext context,
-    List<BipolarDimensionScore> activeAxes,
-    List<TriadDimensionScore> triads,
-    Map<String, AtlasMatchResult> bestPersByAxis,
-    Map<int, AtlasMatchResult> bestPersByTriad,
-    EspectroPalette p,
-    TextTheme text,
-  ) {
-    if (activeAxes.isEmpty && triads.isEmpty) return const SizedBox.shrink();
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 22),
-        Divider(height: 1, color: p.line.withValues(alpha: 0.6)),
-        const SizedBox(height: 18),
-        Wrap(
-          alignment: WrapAlignment.spaceBetween,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          spacing: 8,
-          runSpacing: 4,
-          children: [
-            Text(
-              'AFINIDADES POR EIXO E TRÍADE: PERSONALIDADES MAIS PRÓXIMAS',
-              style: TextStyle(
-                fontFamily: 'IBMPlexMono',
-                fontSize: 11,
-                fontWeight: FontWeight.w700,
-                color: p.muted,
-                letterSpacing: 0.8,
+              const SizedBox(height: 12),
+              MultidimensionalRadarChart(
+                axes: _activeAxes,
+                size: sideBySide ? 186 : 168,
               ),
-            ),
-            Text(
-              _heroAffinitiesTab == 0
-                  ? '${activeAxes.length} figuras históricas por eixo'
-                  : '${triads.length} figuras históricas por tríade',
-              style: TextStyle(fontSize: 11, color: p.inkSoft),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        SegmentedButton<int>(
-          segments: const <ButtonSegment<int>>[
-            ButtonSegment<int>(value: 0, label: Text('12 Eixos (Bipolar)')),
-            ButtonSegment<int>(value: 1, label: Text('6 Tríades (Ternário)')),
-          ],
-          selected: <int>{_heroAffinitiesTab},
-          onSelectionChanged: (Set<int> newSelection) {
-            setState(() {
-              _heroAffinitiesTab = newSelection.first;
-            });
-          },
-        ),
-        const SizedBox(height: 14),
-        if (_heroAffinitiesTab == 0)
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final isNarrow = constraints.maxWidth < 640;
-              final double itemWidth = isNarrow
-                  ? constraints.maxWidth
-                  : (constraints.maxWidth - 12) / 2;
+            ],
+          );
 
-              return Wrap(
-                spacing: 12,
-                runSpacing: 10,
-                children: [
-                  for (final axis in activeAxes)
-                    () {
-                      final axisDef = widget.appViewModel.data.twelveAxes.axes
-                          .where((a) => a.id == axis.axisId)
-                          .firstOrNull;
-                      final axisColor =
-                          (axis.leansLeft
-                              ? axisDef?.leftColor
-                              : axisDef?.rightColor) ??
-                          p.accent;
-                      final bestMatch = bestPersByAxis[axis.axisId];
-                      final entry = bestMatch?.entry;
-                      final pct = _formatScore(bestMatch?.compatibilityPercent);
-                      final spec = entry != null
-                          ? spectrumOf(StudySubject.fromEntry(entry))
-                          : null;
-                      final col = spec?.color ?? axisColor;
-
-                      return Container(
-                        width: itemWidth,
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: p.surfaceMuted,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: p.line.withValues(alpha: 0.5),
-                          ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  flex: 3,
-                                  child: Text(
-                                    axis.label,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w700,
-                                      color: p.ink,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 6),
-                                Flexible(
-                                  flex: 4,
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 6,
-                                      vertical: 2,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: axisColor.withValues(alpha: 0.15),
-                                      borderRadius: BorderRadius.circular(6),
-                                    ),
-                                    child: Text(
-                                      '${axis.dominantPole} ${_formatPercent(axis.dominantPercent)}',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        fontSize: 10.5,
-                                        fontWeight: FontWeight.w700,
-                                        color: axisColor,
-                                        fontFamily: 'IBMPlexMono',
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            if (entry != null) ...[
-                              const SizedBox(height: 10),
-                              InkWell(
-                                onTap: () =>
-                                    EntityComparisonScreen.showAtlasEntry(
-                                      context,
-                                      record: _record,
-                                      entry: entry,
-                                      appViewModel: widget.appViewModel,
-                                    ),
-                                borderRadius: BorderRadius.circular(8),
-                                child: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: p.surface,
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: col.withValues(alpha: 0.3),
-                                    ),
-                                  ),
-                                  child: LayoutBuilder(
-                                    builder: (context, c) {
-                                      final isNarrow = c.maxWidth < 290;
-                                      return Row(
-                                        children: [
-                                          _buildAvatarImage(
-                                            photoUrl: entry.photoUrl,
-                                            name: entry.name,
-                                            color: col,
-                                            size: isNarrow ? 28 : 34,
-                                          ),
-                                          const SizedBox(width: 8),
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  entry.name,
-                                                  maxLines: 1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: const TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 1),
-                                                Text(
-                                                  '${entry.origin} · ${entry.era}',
-                                                  maxLines: 1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: TextStyle(
-                                                    fontSize: 10,
-                                                    color: p.inkSoft,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          const SizedBox(width: 6),
-                                          Flexible(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.end,
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Container(
-                                                  padding:
-                                                      const EdgeInsets.symmetric(
-                                                        horizontal: 5,
-                                                        vertical: 2,
-                                                      ),
-                                                  decoration: BoxDecoration(
-                                                    color: col.withValues(
-                                                      alpha: 0.15,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                          6,
-                                                        ),
-                                                  ),
-                                                  child: Text(
-                                                    '$pct% afim',
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: TextStyle(
-                                                      fontSize: 10.5,
-                                                      fontWeight:
-                                                          FontWeight.w800,
-                                                      color: col,
-                                                      fontFamily: 'IBMPlexMono',
-                                                    ),
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 2),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Icon(
-                                                      Icons
-                                                          .compare_arrows_rounded,
-                                                      size: 12,
-                                                      color: p.muted,
-                                                    ),
-                                                    const SizedBox(width: 2),
-                                                    Text(
-                                                      'comparar',
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                        fontSize: 9.5,
-                                                        color: p.muted,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ],
-                        ),
-                      );
-                    }(),
-                ],
-              );
-            },
-          )
-        else
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final isNarrow = constraints.maxWidth < 640;
-              final double itemWidth = isNarrow
-                  ? constraints.maxWidth
-                  : (constraints.maxWidth - 12) / 2;
-
-              return Wrap(
-                spacing: 12,
-                runSpacing: 10,
-                children: [
-                  for (final triad in triads)
-                    () {
-                      final bestMatch = bestPersByTriad[triad.categoryId];
-                      final entry = bestMatch?.entry;
-                      final pct = _formatScore(bestMatch?.compatibilityPercent);
-                      final spec = entry != null
-                          ? spectrumOf(StudySubject.fromEntry(entry))
-                          : null;
-                      final col = spec?.color ?? p.triadColor(triad.categoryId);
-
-                      return Container(
-                        width: itemWidth,
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: p.surfaceMuted,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: p.line.withValues(alpha: 0.5),
-                          ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    triad.label,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w700,
-                                      color: p.ink,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 6),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 2,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: p
-                                        .triadColor(triad.categoryId)
-                                        .withValues(alpha: 0.15),
-                                    borderRadius: BorderRadius.circular(6),
-                                  ),
-                                  child: Text(
-                                    triad.classification,
-                                    style: TextStyle(
-                                      fontSize: 10.5,
-                                      fontWeight: FontWeight.w700,
-                                      color: p.triadColor(triad.categoryId),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 3),
-                            Text(
-                              '${triad.vertices[0]} ${_formatPercent(triad.composition[0] * 100)} · '
-                              '${triad.vertices[1]} ${_formatPercent(triad.composition[1] * 100)} · '
-                              '${triad.vertices[2]} ${_formatPercent(triad.composition[2] * 100)}',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 10.5,
-                                color: p.inkSoft,
-                              ),
-                            ),
-                            if (entry != null) ...[
-                              const SizedBox(height: 10),
-                              InkWell(
-                                onTap: () =>
-                                    EntityComparisonScreen.showAtlasEntry(
-                                      context,
-                                      record: _record,
-                                      entry: entry,
-                                      appViewModel: widget.appViewModel,
-                                    ),
-                                borderRadius: BorderRadius.circular(8),
-                                child: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: p.surface,
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: col.withValues(alpha: 0.3),
-                                    ),
-                                  ),
-                                  child: LayoutBuilder(
-                                    builder: (context, c) {
-                                      final isNarrow = c.maxWidth < 290;
-                                      return Row(
-                                        children: [
-                                          _buildAvatarImage(
-                                            photoUrl: entry.photoUrl,
-                                            name: entry.name,
-                                            color: col,
-                                            size: isNarrow ? 28 : 34,
-                                          ),
-                                          const SizedBox(width: 8),
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  entry.name,
-                                                  maxLines: 1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: const TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 1),
-                                                Text(
-                                                  '${entry.origin} · ${entry.era}',
-                                                  maxLines: 1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: TextStyle(
-                                                    fontSize: 10,
-                                                    color: p.inkSoft,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          const SizedBox(width: 6),
-                                          Flexible(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.end,
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Container(
-                                                  padding:
-                                                      const EdgeInsets.symmetric(
-                                                        horizontal: 5,
-                                                        vertical: 2,
-                                                      ),
-                                                  decoration: BoxDecoration(
-                                                    color: col.withValues(
-                                                      alpha: 0.15,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                          6,
-                                                        ),
-                                                  ),
-                                                  child: Text(
-                                                    '$pct% afim',
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: TextStyle(
-                                                      fontSize: 10.5,
-                                                      fontWeight:
-                                                          FontWeight.w800,
-                                                      color: col,
-                                                      fontFamily: 'IBMPlexMono',
-                                                    ),
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 2),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Icon(
-                                                      Icons
-                                                          .compare_arrows_rounded,
-                                                      size: 12,
-                                                      color: p.muted,
-                                                    ),
-                                                    const SizedBox(width: 2),
-                                                    Text(
-                                                      'comparar',
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                        fontSize: 9.5,
-                                                        color: p.muted,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ],
-                        ),
-                      );
-                    }(),
-                ],
-              );
-            },
-          ),
-      ],
-    );
-  }
-
-  Widget _buildPersonalitiesHero(
-    BuildContext context,
-    List<AtlasMatchResult> persMatches,
-    EspectroPalette p,
-    TextTheme text,
-  ) {
-    final topPers = persMatches.take(3).toList();
-    if (topPers.isEmpty) return const SizedBox.shrink();
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 22),
-        Divider(height: 1, color: p.line.withValues(alpha: 0.6)),
-        const SizedBox(height: 18),
-        Wrap(
-          alignment: WrapAlignment.spaceBetween,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          spacing: 8,
-          runSpacing: 4,
-          children: [
-            Text(
-              'PERSONALIDADES QUE COMBINAM COM VOCÊ',
-              style: TextStyle(
-                fontFamily: 'IBMPlexMono',
-                fontSize: 11,
-                fontWeight: FontWeight.w700,
-                color: p.muted,
-                letterSpacing: 0.8,
+          final Widget runnerUpsPart = Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(
+                'OUTRAS CORRENTES PRÓXIMAS',
+                style: TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.0,
+                  color: p.muted,
+                ),
               ),
-            ),
-            Text(
-              'Figuras históricas',
-              style: TextStyle(fontSize: 11, color: p.inkSoft),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        LayoutBuilder(
-          builder: (context, constraints) {
-            final isNarrow = constraints.maxWidth < 640;
-            final double itemWidth = isNarrow
-                ? constraints.maxWidth
-                : (constraints.maxWidth - 20) / 3;
-
-            return Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: [
-                for (final match in topPers)
-                  () {
-                    final entry = match.entry;
-                    final subject = StudySubject.fromEntry(entry);
-                    final spec = spectrumOf(subject);
-                    final col = spec?.color ?? p.accent;
-                    final pct = _formatScore(match.compatibilityPercent);
-                    final photo = entry.photoUrl;
-
-                    return Container(
-                      width: itemWidth,
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: p.surfaceMuted,
-                        borderRadius: BorderRadius.circular(14),
-                        border: Border.all(
-                          color: p.line.withValues(alpha: 0.5),
-                        ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              _buildAvatarImage(
-                                photoUrl: photo,
-                                name: entry.name,
-                                color: col,
-                                size: 44,
-                              ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      entry.name,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 2),
-                                    Text(
-                                      '${entry.origin} • ${entry.era}',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        fontSize: 10.5,
-                                        color: p.inkSoft,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 6),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 7,
-                                  vertical: 3,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: col.withValues(alpha: 0.15),
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(
-                                    color: col.withValues(alpha: 0.35),
-                                  ),
-                                ),
-                                child: Text(
-                                  '$pct%',
-                                  style: TextStyle(
-                                    fontFamily: 'IBMPlexMono',
-                                    fontSize: 11.5,
-                                    fontWeight: FontWeight.w800,
-                                    color: col,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          if (entry.quote != null &&
-                              entry.quote!.isNotEmpty) ...[
-                            const SizedBox(height: 8),
-                            Text(
-                              '“${entry.quote}”',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontStyle: FontStyle.italic,
-                                color: p.inkSoft,
-                              ),
-                            ),
-                          ],
-                          const SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: OutlinedButton.icon(
-                              icon: const Icon(
-                                Icons.compare_arrows_rounded,
-                                size: 14,
-                              ),
-                              label: const Text(
-                                'Comparar comigo',
-                                style: TextStyle(fontSize: 11.5),
-                              ),
-                              style: OutlinedButton.styleFrom(
-                                visualDensity: VisualDensity.compact,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                  vertical: 4,
-                                ),
-                              ),
-                              onPressed: () =>
-                                  EntityComparisonScreen.showAtlasEntry(
-                                    context,
-                                    record: _record,
-                                    entry: entry,
-                                    appViewModel: widget.appViewModel,
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }(),
-              ],
-            );
-          },
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCountriesHero(
-    BuildContext context,
-    List<AtlasMatchResult> countryMatches,
-    EspectroPalette p,
-    TextTheme text,
-  ) {
-    final topCountries = countryMatches.take(3).toList();
-    if (topCountries.isEmpty) return const SizedBox.shrink();
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 22),
-        Divider(height: 1, color: p.line.withValues(alpha: 0.6)),
-        const SizedBox(height: 18),
-        Wrap(
-          alignment: WrapAlignment.spaceBetween,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          spacing: 8,
-          runSpacing: 4,
-          children: [
-            Text(
-              'MODELOS ESTATAIS & RECORTES HISTÓRICOS',
-              style: TextStyle(
-                fontFamily: 'IBMPlexMono',
-                fontSize: 11,
-                fontWeight: FontWeight.w700,
-                color: p.muted,
-                letterSpacing: 0.8,
-              ),
-            ),
-            Text(
-              'Países e regimes',
-              style: TextStyle(fontSize: 11, color: p.inkSoft),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        LayoutBuilder(
-          builder: (context, constraints) {
-            final isNarrow = constraints.maxWidth < 640;
-            final double itemWidth = isNarrow
-                ? constraints.maxWidth
-                : (constraints.maxWidth - 20) / 3;
-
-            return Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: [
-                for (final match in topCountries)
-                  () {
-                    final entry = match.entry;
-                    final pct = _formatScore(match.compatibilityPercent);
-                    final photo = entry.photoUrl;
-
-                    return Container(
-                      width: itemWidth,
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: p.surfaceMuted,
-                        borderRadius: BorderRadius.circular(14),
-                        border: Border.all(
-                          color: p.line.withValues(alpha: 0.5),
-                        ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
+              const SizedBox(height: 12),
+              for (var i = 0; i < runnerUps.length; i++) ...<Widget>[
+                if (i > 0)
+                  Divider(height: 16, color: p.line.withValues(alpha: 0.5)),
+                InkWell(
+                  borderRadius: BorderRadius.circular(10),
+                  onTap: () => _showCurrentMatchSheet(runnerUps[i]),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 4,
+                      horizontal: 2,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 44,
-                                height: 32,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6),
-                                  border: Border.all(color: p.line),
-                                ),
-                                clipBehavior: Clip.antiAlias,
-                                child: photo != null && photo.isNotEmpty
-                                    ? (photo.startsWith('http://') ||
-                                              photo.startsWith('https://')
-                                          ? Image.network(
-                                              photo,
-                                              fit: BoxFit.cover,
-                                              errorBuilder: (_, _, _) =>
-                                                  _fallbackFlag(entry.name, p),
-                                            )
-                                          : Image.asset(
-                                              photo,
-                                              fit: BoxFit.cover,
-                                              errorBuilder: (_, _, _) =>
-                                                  _fallbackFlag(entry.name, p),
-                                            ))
-                                    : _fallbackFlag(entry.name, p),
-                              ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      entry.name,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontSize: 12.5,
-                                        fontWeight: FontWeight.w700,
-                                        height: 1.2,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    // PROMINENT RECORTE HISTÓRICO BADGE
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 6,
-                                        vertical: 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: p.accent.withValues(alpha: 0.12),
-                                        borderRadius: BorderRadius.circular(4),
-                                        border: Border.all(
-                                          color: p.accent.withValues(
-                                            alpha: 0.35,
-                                          ),
-                                        ),
-                                      ),
-                                      child: Text(
-                                        entry.era,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontFamily: 'IBMPlexMono',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w700,
-                                          color: p.accent,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                            children: <Widget>[
+                              Text(
+                                runnerUps[i].current.name,
+                                style: const TextStyle(
+                                  fontSize: 14.5,
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
-                              const SizedBox(width: 6),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 7,
-                                  vertical: 3,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: p.accent.withValues(alpha: 0.15),
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(
-                                    color: p.accent.withValues(alpha: 0.35),
-                                  ),
-                                ),
-                                child: Text(
-                                  '$pct%',
-                                  style: TextStyle(
-                                    fontFamily: 'IBMPlexMono',
-                                    fontSize: 11.5,
-                                    fontWeight: FontWeight.w800,
-                                    color: p.accent,
-                                  ),
+                              const SizedBox(height: 2),
+                              Text(
+                                runnerUps[i].current.family,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: p.inkSoft,
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 8),
-                          Text(
-                            entry.subtitle,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 11, color: p.inkSoft),
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          '${_formatScore(runnerUps[i].compatibilityPercent)}%',
+                          style: TextStyle(
+                            fontFamily: 'IBMPlexSans',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: p.accent,
                           ),
-                          const SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: OutlinedButton.icon(
-                              icon: const Icon(
-                                Icons.compare_arrows_rounded,
-                                size: 14,
-                              ),
-                              label: const Text(
-                                'Comparar comigo',
-                                style: TextStyle(fontSize: 11.5),
-                              ),
-                              style: OutlinedButton.styleFrom(
-                                visualDensity: VisualDensity.compact,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                  vertical: 4,
-                                ),
-                              ),
-                              onPressed: () =>
-                                  EntityComparisonScreen.showAtlasEntry(
-                                    context,
-                                    record: _record,
-                                    entry: entry,
-                                    appViewModel: widget.appViewModel,
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }(),
+                        ),
+                        const SizedBox(width: 4),
+                        Icon(
+                          Icons.chevron_right_rounded,
+                          size: 18,
+                          color: p.muted,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          );
+
+          if (sideBySide) {
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                radarPart,
+                const SizedBox(width: 28),
+                Expanded(child: runnerUpsPart),
               ],
             );
-          },
-        ),
-      ],
+          }
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              if (showRadar) Center(child: radarPart),
+              if (showRadar && runnerUps.isNotEmpty) const SizedBox(height: 20),
+              if (runnerUps.isNotEmpty) runnerUpsPart,
+            ],
+          );
+        },
+      ),
     );
   }
 
@@ -3106,14 +2030,6 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
           color: color,
         ),
       ),
-    );
-  }
-
-  static Widget _fallbackFlag(String name, EspectroPalette p) {
-    return Container(
-      color: p.surfaceMuted,
-      alignment: Alignment.center,
-      child: Icon(Icons.flag_outlined, size: 16, color: p.muted),
     );
   }
 
@@ -6073,19 +4989,15 @@ class _AnimatedMatchGauge extends StatelessWidget {
   const _AnimatedMatchGauge({
     required this.percent,
     this.size = 80,
-    this.accentColor,
-    this.label = 'MATCH',
   });
 
   final double percent;
   final double size;
-  final Color? accentColor;
-  final String label;
 
   @override
   Widget build(BuildContext context) {
     final EspectroPalette p = context.palette;
-    final Color color = accentColor ?? p.accent;
+    final Color color = p.accent;
 
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0.0, end: percent.clamp(0.0, 100.0)),
@@ -6129,7 +5041,7 @@ class _AnimatedMatchGauge extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        label,
+                        'MATCH',
                         textScaler: TextScaler.noScaling,
                         style: TextStyle(
                           fontFamily: 'IBMPlexMono',
@@ -6248,186 +5160,6 @@ class _TwelveAxesSectionHeading extends StatelessWidget {
           style: text.bodySmall?.copyWith(color: p.inkSoft, height: 1.35),
         ),
       ],
-    );
-  }
-}
-
-class _StickyTocPanel extends StatelessWidget {
-  const _StickyTocPanel({required this.activeIndex, required this.onSelect});
-
-  final int activeIndex;
-  final ValueChanged<int> onSelect;
-
-  static const List<String> _items = <String>[
-    '12 eixos',
-    'Distinção',
-    'Países',
-    'Personalidades',
-    'Livros',
-    'Partidos',
-    'Bússola & Tríades',
-    'Outras ideologias',
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    final EspectroPalette p = context.palette;
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
-      decoration: BoxDecoration(
-        color: p.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: p.line),
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.black.withValues(alpha: p.isDark ? 0.2 : 0.04),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: Text(
-              'NESTA PÁGINA',
-              style: TextStyle(
-                fontFamily: 'IBMPlexMono',
-                fontSize: 10.5,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.9,
-                color: p.muted,
-              ),
-            ),
-          ),
-          const SizedBox(height: 6),
-          for (int i = 0; i < _items.length; i++)
-            _TocItemButton(
-              index: i,
-              label: _items[i],
-              isSelected: activeIndex == i,
-              onTap: () => onSelect(i),
-            ),
-        ],
-      ),
-    );
-  }
-}
-
-class _TocItemButton extends StatelessWidget {
-  const _TocItemButton({
-    required this.index,
-    required this.label,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  final int index;
-  final String label;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final EspectroPalette p = context.palette;
-    final String numStr = (index + 1).toString().padLeft(2, '0');
-
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeOutCubic,
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
-        decoration: BoxDecoration(
-          color: isSelected ? p.accentSoft : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Row(
-          children: <Widget>[
-            Text(
-              numStr,
-              style: TextStyle(
-                fontFamily: 'IBMPlexMono',
-                fontSize: 11,
-                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
-                color: isSelected ? p.accent : p.muted,
-              ),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: Text(
-                label,
-                style: TextStyle(
-                  fontFamily: 'IBMPlexSans',
-                  fontSize: 12.5,
-                  fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
-                  color: isSelected ? p.accent : p.ink,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _MobileQuickNav extends StatelessWidget {
-  const _MobileQuickNav({required this.activeTocIndex, required this.onSelect});
-
-  final int activeTocIndex;
-  final ValueChanged<int> onSelect;
-
-  static const List<String> _chips = <String>[
-    '12 Eixos',
-    'Distinção',
-    'Países',
-    'Personalidades',
-    'Livros',
-    'Partidos',
-    'Bússola & Tríades',
-    'Outras ideologias',
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    final EspectroPalette p = context.palette;
-
-    return HorizontalAffordanceStrip(
-      fadeColor: p.canvas,
-      showArrows: false,
-      builder: (context, controller) => SingleChildScrollView(
-        controller: controller,
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: <Widget>[
-            for (int i = 0; i < _chips.length; i++)
-              Padding(
-                padding: const EdgeInsets.only(right: 8),
-                child: ChoiceChip(
-                  label: Text(_chips[i]),
-                  selected: activeTocIndex == i,
-                  onSelected: (_) => onSelect(i),
-                  selectedColor: p.accentSoft,
-                  labelStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: activeTocIndex == i
-                        ? FontWeight.w700
-                        : FontWeight.w500,
-                    color: activeTocIndex == i ? p.accent : p.inkSoft,
-                  ),
-                ),
-              ),
-          ],
-        ),
-      ),
     );
   }
 }

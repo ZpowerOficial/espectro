@@ -251,13 +251,19 @@ class StudyIdentityAvatar extends StatelessWidget {
                   size: size * 0.34,
                   color: color,
                 ),
-                Text(
-                  initials.isEmpty ? 'OB' : initials,
-                  style: TextStyle(
-                    fontFamily: 'IBMPlexMono',
-                    fontSize: size * 0.22,
-                    fontWeight: FontWeight.w800,
-                    color: color,
+                Flexible(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      initials.isEmpty ? 'OB' : initials,
+                      textScaler: TextScaler.noScaling,
+                      style: TextStyle(
+                        fontFamily: 'IBMPlexMono',
+                        fontSize: size * 0.22,
+                        fontWeight: FontWeight.w800,
+                        color: color,
+                      ),
+                    ),
                   ),
                 ),
               ],
