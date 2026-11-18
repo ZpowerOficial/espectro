@@ -83,17 +83,7 @@ class EspectroScaffold extends StatelessWidget {
         final content = Scaffold(
           backgroundColor: p.canvas,
           appBar: appBar,
-          body: DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: RadialGradient(
-                center: const Alignment(0.85, -0.92),
-                radius: 1.35,
-                colors: [
-                  p.accent.withValues(alpha: p.isDark ? 0.09 : 0.03),
-                  p.canvas.withValues(alpha: 0.0),
-                ],
-              ),
-            ),
+          body: ObservatoryGridBackdrop(
             child: Column(
               children: [
                 Expanded(child: SizedBox.expand(child: body)),
@@ -168,8 +158,8 @@ class EspectroScaffold extends StatelessWidget {
         );
         if (!wide) return content;
         final Color sidebarBg = p.isDark
-            ? const Color(0xFF0C1018)
-            : const Color(0xFFF1EDE3);
+            ? const Color(0xFF070A10)
+            : const Color(0xFFE9EEF5);
         final Color sidebarLine = p.isDark
             ? const Color(0xFF1D2638)
             : p.line;

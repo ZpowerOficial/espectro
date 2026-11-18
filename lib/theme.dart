@@ -20,40 +20,44 @@ abstract final class EspectroElevation {
   }) {
     if (!elevated) return const <BoxShadow>[];
     if (p.isDark) {
-      // No tema escuro, usar sombra profunda (nunca p.ink que é claro/branco).
       final Color darkShadow = tint != null
-          ? Color.alphaBlend(tint.withValues(alpha: 0.28), const Color(0xFF020408))
+          ? Color.alphaBlend(
+              tint.withValues(alpha: 0.22),
+              const Color(0xFF020408),
+            )
           : const Color(0xFF020408);
       return <BoxShadow>[
         BoxShadow(
-          color: darkShadow.withValues(alpha: 0.42),
-          blurRadius: 6,
-          offset: const Offset(0, 2),
+          color: darkShadow.withValues(alpha: 0.50),
+          blurRadius: 4,
+          offset: const Offset(0, 1.5),
         ),
         BoxShadow(
-          color: darkShadow.withValues(alpha: 0.34),
-          blurRadius: 18,
-          spreadRadius: -3,
-          offset: const Offset(0, 8),
+          color: darkShadow.withValues(alpha: 0.36),
+          blurRadius: 22,
+          spreadRadius: -4,
+          offset: const Offset(0, 9),
         ),
       ];
     }
-    final Color baseTint = tint ?? p.ink;
+    final Color baseTint = tint ?? const Color(0xFF1E293B);
     return <BoxShadow>[
       BoxShadow(
-        color: baseTint.withValues(alpha: 0.035),
-        blurRadius: 3,
+        color: baseTint.withValues(alpha: 0.045),
+        blurRadius: 2.5,
         offset: const Offset(0, 1),
       ),
       BoxShadow(
-        color: baseTint.withValues(alpha: 0.055),
-        blurRadius: 16,
-        spreadRadius: -2,
-        offset: const Offset(0, 6),
+        color: baseTint.withValues(alpha: 0.065),
+        blurRadius: 20,
+        spreadRadius: -3,
+        offset: const Offset(0, 8),
       ),
     ];
   }
 
+  /// Decoração padrão de cartões: preserva [BoxDecoration.color] e aplica
+  /// micro-gradiente zenital quando nenhum [color] explícito é fornecido.
   static BoxDecoration cardDecoration(
     EspectroPalette p, {
     Color? color,
@@ -62,17 +66,73 @@ abstract final class EspectroElevation {
     double radius = 16,
     bool elevated = true,
     double borderWidth = 1,
+    Gradient? customGradient,
   }) {
     final Color resolvedBorder =
         borderColor ??
         (p.isDark
-            ? Colors.white.withValues(alpha: 0.08)
-            : p.line.withValues(alpha: 0.60));
+            ? Colors.white.withValues(alpha: 0.09)
+            : p.line.withValues(alpha: 0.78));
+    final Gradient? surfaceGradient =
+        customGradient ??
+        (color != null
+            ? null
+            : (p.isDark
+                  ? const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: <Color>[Color(0xFF151C2B), Color(0xFF101622)],
+                    )
+                  : const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: <Color>[Color(0xFFFFFFFF), Color(0xFFF9FAFD)],
+                    )));
     return BoxDecoration(
       color: color ?? p.surface,
+      gradient: surfaceGradient,
       borderRadius: BorderRadius.circular(radius),
       border: Border.all(color: resolvedBorder, width: borderWidth),
       boxShadow: cardShadows(p, tint: tint, elevated: elevated),
+    );
+  }
+
+  /// Decoração editorial para cartões protagonistas (Hero da Home e Troféu do Resultado),
+  /// combinando relevo sutil, halo cromático controlado e borda lapidada.
+  static BoxDecoration trophyDecoration(
+    EspectroPalette p, {
+    required Color accentColor,
+    double radius = 20,
+  }) {
+    final Color topTint = Color.alphaBlend(
+      accentColor.withValues(alpha: p.isDark ? 0.09 : 0.035),
+      p.isDark ? const Color(0xFF161E2F) : const Color(0xFFFFFFFF),
+    );
+    final Color bottomBase = p.isDark
+        ? const Color(0xFF101521)
+        : const Color(0xFFF8FAFE);
+    return BoxDecoration(
+      color: p.surface,
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: <Color>[topTint, p.surface, bottomBase],
+        stops: const <double>[0.0, 0.55, 1.0],
+      ),
+      borderRadius: BorderRadius.circular(radius),
+      border: Border.all(
+        color: accentColor.withValues(alpha: p.isDark ? 0.30 : 0.22),
+        width: 1.15,
+      ),
+      boxShadow: <BoxShadow>[
+        BoxShadow(
+          color: accentColor.withValues(alpha: p.isDark ? 0.11 : 0.055),
+          blurRadius: 30,
+          spreadRadius: 1,
+          offset: const Offset(0, 8),
+        ),
+        ...cardShadows(p, tint: accentColor, elevated: true),
+      ],
     );
   }
 }
@@ -135,14 +195,14 @@ class EspectroPalette extends ThemeExtension<EspectroPalette> {
 
   static const EspectroPalette light = EspectroPalette(
     isDark: false,
-    canvas: Color(0xFFF8F9FA),
+    canvas: Color(0xFFF1F4F8),
     surface: Color(0xFFFFFFFF),
-    surfaceMuted: Color(0xFFEEF1F5),
+    surfaceMuted: Color(0xFFE7ECF3),
     ink: Color(0xFF0E1117),
-    inkSoft: Color(0xFF3E4554),
-    // AA para texto normal também sobre surfaceMuted (#EEF1F5).
-    muted: Color(0xFF565E6E),
-    line: Color(0xFFDCE1EA),
+    inkSoft: Color(0xFF3B4352),
+    // AA para texto normal também sobre surfaceMuted (#E7ECF3).
+    muted: Color(0xFF4E5668),
+    line: Color(0xFFD5DCE6),
     accent: Color(0xFF1A4FD6),
     accentSoft: Color(0xFFE8EEFC),
     poleLeft: Color(0xFF1A4FD6),
@@ -164,14 +224,14 @@ class EspectroPalette extends ThemeExtension<EspectroPalette> {
 
   static const EspectroPalette dark = EspectroPalette(
     isDark: true,
-    canvas: Color(0xFF0B0E14),
-    surface: Color(0xFF131822),
-    surfaceMuted: Color(0xFF1B2230),
+    canvas: Color(0xFF090D14),
+    surface: Color(0xFF121824),
+    surfaceMuted: Color(0xFF192131),
     ink: Color(0xFFF5F7FB),
     inkSoft: Color(0xFFBFC8D8),
     // AA para texto normal sobre superfícies elevadas no tema escuro.
     muted: Color(0xFF8C96AA),
-    line: Color(0xFF242D3F),
+    line: Color(0xFF222C40),
     accent: Color(0xFF63A4FF),
     accentSoft: Color(0xFF172642),
     poleLeft: Color(0xFF63A4FF),

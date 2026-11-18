@@ -612,8 +612,9 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
               autofocus: true,
               child: Scaffold(
                 backgroundColor: p.canvas,
-                body: SafeArea(
-                  child: ResponsiveContentFrame(
+                body: ObservatoryGridBackdrop(
+                  child: SafeArea(
+                    child: ResponsiveContentFrame(
                     maxWidth: 680,
                     child: Column(
                       children: [
@@ -1035,11 +1036,12 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                 ),
               ),
             ),
-          );
-        },
-      ),
-    );
-  }
+          ),
+        );
+      },
+    ),
+  );
+}
 }
 
 class _HelpSection extends StatelessWidget {

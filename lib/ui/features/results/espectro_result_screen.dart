@@ -1591,13 +1591,38 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     final String pct = _formatScore(primaryMatch.compatibilityPercent);
 
     return Container(
-      decoration: EspectroElevation.cardDecoration(
+      decoration: EspectroElevation.trophyDecoration(
         p,
-        tint: spectrumColor,
+        accentColor: spectrumColor,
         radius: 20,
       ),
-      padding: EdgeInsets.all(isDesktop ? 34 : 22),
-      child: Column(
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            top: -58,
+            right: -58,
+            child: ObservatoryOrbWatermark(color: spectrumColor, size: 270),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 2.5,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    spectrumColor.withValues(alpha: p.isDark ? 0.75 : 0.65),
+                    spectrumColor.withValues(alpha: 0.08),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(isDesktop ? 34 : 22),
+            child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           // Overline + Convergência discreta
@@ -1831,6 +1856,9 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                 child: const Text('Comparar lado a lado →'),
               ),
             ],
+          ),
+        ],
+      ),
           ),
         ],
       ),

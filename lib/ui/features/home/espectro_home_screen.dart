@@ -864,20 +864,46 @@ class _ObservatoryCoverHero extends StatelessWidget {
     final p = context.palette;
 
     return Container(
-      decoration: EspectroElevation.cardDecoration(
+      decoration: EspectroElevation.trophyDecoration(
         p,
-        radius: 16,
+        accentColor: p.accent,
+        radius: 20,
       ),
-      padding: EdgeInsets.symmetric(
-        horizontal: twoColumn ? 36 : 22,
-        vertical: twoColumn ? 34 : 24,
-      ),
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 740),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
+        children: [
+          Positioned(
+            top: -54,
+            right: -54,
+            child: ObservatoryOrbWatermark(color: p.accent, size: 250),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 2,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    p.accent.withValues(alpha: p.isDark ? 0.65 : 0.55),
+                    p.accent.withValues(alpha: 0.0),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: twoColumn ? 36 : 22,
+              vertical: twoColumn ? 34 : 24,
+            ),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 740),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
             Text(
               'OBSERVATÓRIO POLÍTICO INDEPENDENTE',
               style: TextStyle(
@@ -962,6 +988,9 @@ class _ObservatoryCoverHero extends StatelessWidget {
             ),
           ],
         ),
+      ),
+          ),
+        ],
       ),
     );
   }
