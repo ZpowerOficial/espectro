@@ -293,7 +293,7 @@ class _EspectroSuitesScreenState extends State<EspectroSuitesScreen> {
                             fontSize: 10.5,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 1.0,
-                            color: Color(0xFF9FB8E6),
+                            color: Color(0xFF8CD9C3),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -360,7 +360,7 @@ class _EspectroSuitesScreenState extends State<EspectroSuitesScreen> {
                               Icon(
                                 Icons.verified_user_outlined,
                                 size: 18,
-                                color: Color(0xFF9FB8E6),
+                                color: Color(0xFF8CD9C3),
                               ),
                               SizedBox(width: 10),
                               Expanded(

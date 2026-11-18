@@ -67,7 +67,7 @@ class EditorialHero extends StatelessWidget {
     final EspectroPalette p = context.palette;
     final Color heroStart = p.heroBackground;
     final Color heroEnd = Color.alphaBlend(
-      const Color(0xFF2563EB).withValues(alpha: p.isDark ? 0.16 : 0.14),
+      const Color(0xFF0F3D30).withValues(alpha: p.isDark ? 0.28 : 0.24),
       p.heroBackground,
     );
 
@@ -82,12 +82,12 @@ class EditorialHero extends StatelessWidget {
               height: 7,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color(0xFF63A4FF),
+                color: Color(0xFF38B293),
               ),
             ),
             const SizedBox(width: 8),
             Flexible(
-              child: Eyebrow(eyebrow, color: const Color(0xFF8DBBFF)),
+              child: Eyebrow(eyebrow, color: const Color(0xFF8CD9C3)),
             ),
           ],
         ),
@@ -159,21 +159,15 @@ class EditorialHero extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(22),
         border: Border.all(
-          color: const Color(0xFF63A4FF).withValues(alpha: 0.24),
+          color: const Color(0xFF38B293).withValues(alpha: 0.24),
         ),
         boxShadow: EspectroElevation.cardShadows(
           p,
-          tint: const Color(0xFF1A4FD6),
+          tint: const Color(0xFF0F3D30),
         ),
       ),
       child: Stack(
         children: <Widget>[
-          const Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: SpectrumGradientRule(height: 3.5, radius: 0),
-          ),
           Positioned(
             top: -120,
             right: -85,
@@ -184,8 +178,8 @@ class EditorialHero extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: <Color>[
-                    const Color(0xFF2563EB).withValues(alpha: 0.22),
-                    const Color(0xFF7C4DFF).withValues(alpha: 0.08),
+                    const Color(0xFF38B293).withValues(alpha: 0.16),
+                    const Color(0xFF0F3D30).withValues(alpha: 0.08),
                     Colors.transparent,
                   ],
                 ),

@@ -22,42 +22,32 @@ abstract final class EspectroElevation {
     if (p.isDark) {
       final Color darkShadow = tint != null
           ? Color.alphaBlend(
-              tint.withValues(alpha: 0.22),
-              const Color(0xFF020408),
+              tint.withValues(alpha: 0.18),
+              const Color(0xFF020506),
             )
-          : const Color(0xFF020408);
+          : const Color(0xFF020506);
       return <BoxShadow>[
         BoxShadow(
-          color: darkShadow.withValues(alpha: 0.50),
-          blurRadius: 4,
-          offset: const Offset(0, 1.5),
-        ),
-        BoxShadow(
-          color: darkShadow.withValues(alpha: 0.36),
-          blurRadius: 22,
-          spreadRadius: -4,
-          offset: const Offset(0, 9),
+          color: darkShadow.withValues(alpha: 0.42),
+          blurRadius: 14,
+          spreadRadius: -2,
+          offset: const Offset(0, 6),
         ),
       ];
     }
-    final Color baseTint = tint ?? const Color(0xFF1E293B);
+    final Color baseTint = tint ?? const Color(0xFF26231D);
     return <BoxShadow>[
       BoxShadow(
-        color: baseTint.withValues(alpha: 0.045),
-        blurRadius: 2.5,
-        offset: const Offset(0, 1),
-      ),
-      BoxShadow(
-        color: baseTint.withValues(alpha: 0.065),
-        blurRadius: 20,
-        spreadRadius: -3,
-        offset: const Offset(0, 8),
+        color: baseTint.withValues(alpha: 0.055),
+        blurRadius: 14,
+        spreadRadius: -2,
+        offset: const Offset(0, 5),
       ),
     ];
   }
 
   /// Decoração padrão de cartões: preserva [BoxDecoration.color] e aplica
-  /// micro-gradiente zenital quando nenhum [color] explícito é fornecido.
+  /// superfície de papel velino aquecido (light) ou ardósia aveludada (dark).
   static BoxDecoration cardDecoration(
     EspectroPalette p, {
     Color? color,
@@ -71,8 +61,8 @@ abstract final class EspectroElevation {
     final Color resolvedBorder =
         borderColor ??
         (p.isDark
-            ? Colors.white.withValues(alpha: 0.09)
-            : p.line.withValues(alpha: 0.78));
+            ? Colors.white.withValues(alpha: 0.08)
+            : p.line.withValues(alpha: 0.80));
     final Gradient? surfaceGradient =
         customGradient ??
         (color != null
@@ -81,12 +71,12 @@ abstract final class EspectroElevation {
                   ? const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: <Color>[Color(0xFF151C2B), Color(0xFF101622)],
+                      colors: <Color>[Color(0xFF141C22), Color(0xFF10171C)],
                     )
                   : const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: <Color>[Color(0xFFFFFFFF), Color(0xFFF9FAFD)],
+                      colors: <Color>[Color(0xFFFDFCF9), Color(0xFFF9F6EF)],
                     )));
     return BoxDecoration(
       color: color ?? p.surface,
@@ -97,20 +87,19 @@ abstract final class EspectroElevation {
     );
   }
 
-  /// Decoração editorial para cartões protagonistas (Hero da Home e Troféu do Resultado),
-  /// combinando relevo sutil, halo cromático controlado e borda lapidada.
+  /// Decoração editorial para o Troféu do Resultado.
   static BoxDecoration trophyDecoration(
     EspectroPalette p, {
     required Color accentColor,
     double radius = 20,
   }) {
     final Color topTint = Color.alphaBlend(
-      accentColor.withValues(alpha: p.isDark ? 0.09 : 0.035),
-      p.isDark ? const Color(0xFF161E2F) : const Color(0xFFFFFFFF),
+      accentColor.withValues(alpha: p.isDark ? 0.09 : 0.045),
+      p.isDark ? const Color(0xFF151E24) : const Color(0xFFFDFCF9),
     );
     final Color bottomBase = p.isDark
-        ? const Color(0xFF101521)
-        : const Color(0xFFF8FAFE);
+        ? const Color(0xFF10171C)
+        : const Color(0xFFF7F3EA);
     return BoxDecoration(
       color: p.surface,
       gradient: LinearGradient(
@@ -121,18 +110,10 @@ abstract final class EspectroElevation {
       ),
       borderRadius: BorderRadius.circular(radius),
       border: Border.all(
-        color: accentColor.withValues(alpha: p.isDark ? 0.30 : 0.22),
-        width: 1.15,
+        color: accentColor.withValues(alpha: p.isDark ? 0.30 : 0.24),
+        width: 1.1,
       ),
-      boxShadow: <BoxShadow>[
-        BoxShadow(
-          color: accentColor.withValues(alpha: p.isDark ? 0.11 : 0.055),
-          blurRadius: 30,
-          spreadRadius: 1,
-          offset: const Offset(0, 8),
-        ),
-        ...cardShadows(p, tint: accentColor, elevated: true),
-      ],
+      boxShadow: cardShadows(p, tint: accentColor, elevated: true),
     );
   }
 }
@@ -195,59 +176,63 @@ class EspectroPalette extends ThemeExtension<EspectroPalette> {
 
   static const EspectroPalette light = EspectroPalette(
     isDark: false,
-    canvas: Color(0xFFF1F4F8),
-    surface: Color(0xFFFFFFFF),
-    surfaceMuted: Color(0xFFE7ECF3),
-    ink: Color(0xFF0E1117),
-    inkSoft: Color(0xFF3B4352),
-    // AA para texto normal também sobre surfaceMuted (#E7ECF3).
-    muted: Color(0xFF4E5668),
-    line: Color(0xFFD5DCE6),
-    accent: Color(0xFF1A4FD6),
-    accentSoft: Color(0xFFE8EEFC),
-    poleLeft: Color(0xFF1A4FD6),
-    poleRight: Color(0xFFC94B14),
-    warning: Color(0xFFB45309),
-    success: Color(0xFF0E7C58),
-    heroBackground: Color(0xFF0C1018),
-    heroForeground: Color(0xFFF8FAFC),
-    heroMuted: Color(0xFFB5C0D4),
+    // Papel linho / pergaminho editorial aquecido (zero branco hospitalar)
+    canvas: Color(0xFFF4F0E6),
+    surface: Color(0xFFFCFBF7),
+    surfaceMuted: Color(0xFFEAE4D7),
+    ink: Color(0xFF141917),
+    inkSoft: Color(0xFF3D4642),
+    // AA inclusive sobre surfaceMuted (#EAE4D7).
+    muted: Color(0xFF56605B),
+    line: Color(0xFFDAD2C3),
+    // Verde-pinho profundo de imprensa e cartografia (adeus azul SaaS)
+    accent: Color(0xFF0F3D30),
+    accentSoft: Color(0xFFDDE9E3),
+    poleLeft: Color(0xFF1E556E),
+    poleRight: Color(0xFFB5481F),
+    warning: Color(0xFFA84D08),
+    success: Color(0xFF0E7453),
+    heroBackground: Color(0xFF0D1512),
+    heroForeground: Color(0xFFF6F8F6),
+    heroMuted: Color(0xFFB4C2BC),
     triadPalette: <Color>[
-      Color(0xFF1A4FD6),
-      Color(0xFFC94B14),
-      Color(0xFF776ABD),
-      Color(0xFF0E7C58),
-      Color(0xFFB53B66),
-      Color(0xFF3A6EA5),
+      Color(0xFF0F3D30),
+      Color(0xFFB5481F),
+      Color(0xFF68589E),
+      Color(0xFF0E7453),
+      Color(0xFFA83B60),
+      Color(0xFF285C78),
     ],
   );
 
   static const EspectroPalette dark = EspectroPalette(
     isDark: true,
-    canvas: Color(0xFF090D14),
-    surface: Color(0xFF121824),
-    surfaceMuted: Color(0xFF192131),
-    ink: Color(0xFFF5F7FB),
-    inkSoft: Color(0xFFBFC8D8),
-    // AA para texto normal sobre superfícies elevadas no tema escuro.
-    muted: Color(0xFF8C96AA),
-    line: Color(0xFF222C40),
-    accent: Color(0xFF63A4FF),
-    accentSoft: Color(0xFF172642),
-    poleLeft: Color(0xFF63A4FF),
-    poleRight: Color(0xFFF59E42),
+    // Obsidiana botânica profunda e aveludada
+    canvas: Color(0xFF0A0F12),
+    surface: Color(0xFF12191E),
+    surfaceMuted: Color(0xFF192329),
+    ink: Color(0xFFF3F6F4),
+    inkSoft: Color(0xFFB7C3BE),
+    // AA sobre superfícies elevadas no tema escuro.
+    muted: Color(0xFF85948E),
+    line: Color(0xFF223038),
+    // Jade luminoso editorial
+    accent: Color(0xFF38B293),
+    accentSoft: Color(0xFF132B24),
+    poleLeft: Color(0xFF5698B8),
+    poleRight: Color(0xFFF08A4B),
     warning: Color(0xFFF59E0B),
     success: Color(0xFF34D399),
-    heroBackground: Color(0xFF101624),
+    heroBackground: Color(0xFF0D1519),
     heroForeground: Color(0xFFFFFFFF),
-    heroMuted: Color(0xFF9EABC2),
+    heroMuted: Color(0xFF9EB0AA),
     triadPalette: <Color>[
-      Color(0xFF63A4FF),
-      Color(0xFFF59E42),
+      Color(0xFF38B293),
+      Color(0xFFF08A4B),
       Color(0xFFA79DF5),
       Color(0xFF42C99E),
       Color(0xFFE6779E),
-      Color(0xFF6DA6E4),
+      Color(0xFF5698B8),
     ],
   );
 
@@ -362,7 +347,7 @@ ThemeData buildAppTheme({Brightness brightness = Brightness.light}) {
         brightness: brightness,
       ).copyWith(
         primary: p.accent,
-        onPrimary: isDark ? const Color(0xFF071020) : Colors.white,
+        onPrimary: isDark ? const Color(0xFF061510) : const Color(0xFFFAF8F3),
         secondary: p.poleRight,
         onSecondary: isDark ? const Color(0xFF1A1002) : Colors.white,
         surface: p.surface,
@@ -371,11 +356,37 @@ ThemeData buildAppTheme({Brightness brightness = Brightness.light}) {
         outlineVariant: p.line,
       );
 
+  const PageTransitionsBuilder smoothTransition =
+      _EspectroSmoothPageTransitionsBuilder();
+
   return base.copyWith(
     colorScheme: scheme,
     scaffoldBackgroundColor: p.canvas,
     splashFactory: InkSparkle.splashFactory,
     extensions: <ThemeExtension<dynamic>>[p],
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: <TargetPlatform, PageTransitionsBuilder>{
+        for (final TargetPlatform platform in TargetPlatform.values)
+          platform: smoothTransition,
+      },
+    ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+        backgroundColor: p.accent,
+        foregroundColor: isDark
+            ? const Color(0xFF061510)
+            : const Color(0xFFFAF8F3),
+        elevation: 0,
+        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
+        textStyle: const TextStyle(
+          fontFamily: 'IBMPlexSans',
+          fontSize: 15,
+          fontWeight: FontWeight.w700,
+          letterSpacing: -0.15,
+        ),
+      ),
+    ),
     appBarTheme: AppBarTheme(
       backgroundColor: p.canvas,
       foregroundColor: p.ink,
@@ -477,17 +488,6 @@ ThemeData buildAppTheme({Brightness brightness = Brightness.light}) {
         color: p.ink,
       ),
     ),
-    filledButtonTheme: FilledButtonThemeData(
-      style: FilledButton.styleFrom(
-        minimumSize: const Size(48, 52),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
-        textStyle: const TextStyle(
-          fontFamily: 'IBMPlexSans',
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-    ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         minimumSize: const Size(48, 52),
@@ -582,4 +582,43 @@ TextTheme darkTextTheme(TextTheme base) {
         headlineSmall: base.headlineSmall?.copyWith(color: AppColors.surface),
         titleLarge: base.titleLarge?.copyWith(color: AppColors.surface),
       );
+}
+
+/// Transição de página ultraleve (GPU composited): elimina o `ZoomPageTransitionsBuilder`
+/// padrão do Material 3 (que escala duas árvores simultâneas e engasga no Web/CanvasKit),
+/// usando fade + micro-deslocamento horizontal com curva rápida e desencapsulando ao concluir.
+class _EspectroSmoothPageTransitionsBuilder extends PageTransitionsBuilder {
+  const _EspectroSmoothPageTransitionsBuilder();
+
+  @override
+  Widget buildTransitions<T>(
+    PageRoute<T> route,
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    if (route.settings.name == '/' ||
+        animation.status == AnimationStatus.completed) {
+      return child;
+    }
+    if (MediaQuery.disableAnimationsOf(context)) {
+      return child;
+    }
+    final CurvedAnimation curved = CurvedAnimation(
+      parent: animation,
+      curve: EspectroMotion.easeOut,
+      reverseCurve: Curves.easeInQuad,
+    );
+    return FadeTransition(
+      opacity: curved,
+      child: SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(0.015, 0.0),
+          end: Offset.zero,
+        ).animate(curved),
+        child: child,
+      ),
+    );
+  }
 }

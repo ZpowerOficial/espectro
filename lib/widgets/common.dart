@@ -1241,85 +1241,8 @@ class FadeEdgeTabBar extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
-/// Fundo mineral / astronômico com luz zenital difusa e retícula cartográfica
-/// ultrassutil para eliminar o aspecto de tela branca/preta chapada sem poluir.
-class ObservatoryGridBackdrop extends StatelessWidget {
-  const ObservatoryGridBackdrop({required this.child, super.key});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    final EspectroPalette p = context.palette;
-    return Stack(
-      fit: StackFit.expand,
-      children: <Widget>[
-        IgnorePointer(
-          child: RepaintBoundary(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: p.canvas,
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: <Color>[
-                    Color.alphaBlend(
-                      p.accent.withValues(alpha: p.isDark ? 0.055 : 0.026),
-                      p.canvas,
-                    ),
-                    p.canvas,
-                  ],
-                  stops: const <double>[0.0, 0.42],
-                ),
-              ),
-              child: CustomPaint(
-                painter: _ObservatoryCoordinateGridPainter(
-                  lineColor: p.isDark
-                      ? Colors.white.withValues(alpha: 0.026)
-                      : const Color(0xFF1E293B).withValues(alpha: 0.028),
-                ),
-              ),
-            ),
-          ),
-        ),
-        child,
-      ],
-    );
-  }
-}
-
-class _ObservatoryCoordinateGridPainter extends CustomPainter {
-  const _ObservatoryCoordinateGridPainter({required this.lineColor});
-
-  final Color lineColor;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    const double step = 44.0;
-    final double maxFadeHeight = math.min(size.height, 560.0);
-    final Paint paint = Paint()
-      ..strokeWidth = 1.0
-      ..shader = LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: <Color>[lineColor, lineColor.withValues(alpha: 0.0)],
-      ).createShader(Rect.fromLTWH(0, 0, size.width, maxFadeHeight));
-
-    for (double x = step; x < size.width; x += step) {
-      canvas.drawLine(Offset(x, 0), Offset(x, maxFadeHeight), paint);
-    }
-    for (double y = step; y < maxFadeHeight; y += step) {
-      canvas.drawLine(Offset(0, y), Offset(size.width, y), paint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant _ObservatoryCoordinateGridPainter oldDelegate) =>
-      oldDelegate.lineColor != lineColor;
-}
-
 /// Marca-d'água geométrica de 12 meridianos e anéis concêntricos usada nos
-/// cartões protagonistas (Hero da Home e Troféu do Resultado).
+/// cartões protagonistas (Troféu do Resultado).
 class ObservatoryOrbWatermark extends StatelessWidget {
   const ObservatoryOrbWatermark({
     required this.color,

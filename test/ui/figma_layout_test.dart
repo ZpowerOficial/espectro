@@ -235,7 +235,7 @@ void main() {
     await vm.setAutoAdvance(false);
     await tester.pumpWidget(EspectroApp(appViewModel: vm));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Fazer Avaliação Rápida (3 min) →'));
+    await tester.tap(find.text('Fazer Avaliação Rápida (3 min)'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('6 tríades políticas'));
     await tester.pumpAndSettle();

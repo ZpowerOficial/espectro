@@ -42,7 +42,7 @@ void main() {
 
       expect(find.text('ESPECTRO'), findsOneWidget);
       expect(
-        find.text('Fazer Avaliação Rápida (3 min) →'),
+        find.text('Fazer Avaliação Rápida (3 min)'),
         findsOneWidget,
       );
 

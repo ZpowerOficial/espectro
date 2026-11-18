@@ -371,13 +371,13 @@ class EspectroHomeScreen extends StatelessWidget {
                     : null;
 
                 return ListView(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 40),
+                  padding: EdgeInsets.fromLTRB(20, wide ? 12 : 20, 20, 40),
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 2),
-                      child: Row(
-                        children: [
-                          if (!wide) ...<Widget>[
+                    if (!wide) ...[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 2),
+                        child: Row(
+                          children: [
                             const EspectroBrandMark(),
                             const SizedBox(width: 12),
                             Expanded(
@@ -403,43 +403,24 @@ class EspectroHomeScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                          ] else ...<Widget>[
-                            Expanded(
-                              child: Text(
-                                'ESPECTRO · OBSERVATÓRIO POLÍTICO',
-                                style: TextStyle(
-                                  fontFamily: 'IBMPlexSans',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 1.0,
-                                  color: p.muted,
-                                ),
+                            IconButton(
+                              icon: const Icon(
+                                Icons.science_outlined,
+                                size: 20,
                               ),
+                              tooltip: 'Metodologia e fórmulas',
+                              onPressed: () => _openMethodology(context),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.tune_rounded, size: 20),
+                              tooltip: 'Tema e preferências',
+                              onPressed: () => _showSettingsSheet(context),
                             ),
                           ],
-                          if (wide) ...[
-                            TextButton.icon(
-                              onPressed: () =>
-                                  _openAtlas(context, initialMap: true),
-                              icon: const Icon(Icons.hub_outlined, size: 17),
-                              label: const Text('Abrir Teia'),
-                            ),
-                            const SizedBox(width: 4),
-                          ],
-                          IconButton(
-                            icon: const Icon(Icons.science_outlined, size: 20),
-                            tooltip: 'Metodologia e fórmulas',
-                            onPressed: () => _openMethodology(context),
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.tune_rounded, size: 20),
-                            tooltip: 'Tema e preferências',
-                            onPressed: () => _showSettingsSheet(context),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
+                      const SizedBox(height: 16),
+                    ],
                     if (draft != null) ...[
                       _DraftResumeCard(
                         draft: draft,
@@ -863,134 +844,130 @@ class _ObservatoryCoverHero extends StatelessWidget {
   Widget build(BuildContext context) {
     final p = context.palette;
 
-    return Container(
-      decoration: EspectroElevation.trophyDecoration(
-        p,
-        accentColor: p.accent,
-        radius: 20,
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: twoColumn ? 36 : 18,
+        horizontal: twoColumn ? 6 : 2,
       ),
-      clipBehavior: Clip.antiAlias,
-      child: Stack(
-        children: [
-          Positioned(
-            top: -54,
-            right: -54,
-            child: ObservatoryOrbWatermark(color: p.accent, size: 250),
-          ),
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 2,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: <Color>[
-                    p.accent.withValues(alpha: p.isDark ? 0.65 : 0.55),
-                    p.accent.withValues(alpha: 0.0),
-                  ],
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 780),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 6,
+                  height: 6,
+                  decoration: BoxDecoration(
+                    color: p.accent,
+                    shape: BoxShape.circle,
+                  ),
                 ),
-              ),
+                const SizedBox(width: 8),
+                Flexible(
+                  child: Text(
+                    'OBSERVATÓRIO POLÍTICO INDEPENDENTE',
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexMono',
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 1.3,
+                      color: p.accent,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: twoColumn ? 36 : 22,
-              vertical: twoColumn ? 34 : 24,
-            ),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 740),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
+            SizedBox(height: twoColumn ? 16 : 12),
             Text(
-              'OBSERVATÓRIO POLÍTICO INDEPENDENTE',
+              'Onde você realmente se situa além dos rótulos?',
               style: TextStyle(
                 fontFamily: 'IBMPlexSans',
-                fontSize: 11.5,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 1.2,
-                color: p.accent,
+                fontSize: twoColumn ? 42 : 29,
+                fontWeight: FontWeight.w800,
+                letterSpacing: -1.1,
+                height: 1.12,
+                color: p.ink,
               ),
             ),
-            SizedBox(height: twoColumn ? 14 : 12),
+            SizedBox(height: twoColumn ? 14 : 10),
             ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 680),
-              child: Text(
-                'Onde você realmente se situa além dos rótulos?',
-                style: TextStyle(
-                  fontFamily: 'IBMPlexSans',
-                  fontSize: twoColumn ? 34 : 26,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: -0.75,
-                  height: 1.15,
-                  color: p.ink,
-                ),
-              ),
-            ),
-            const SizedBox(height: 12),
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 620),
+              constraints: const BoxConstraints(maxWidth: 640),
               child: Text(
                 'Mapeie sua visão de mundo em 12 eixos e 6 tríades históricas. '
-                'Sem viés partidário, 100% no seu dispositivo.',
+                'Sem viés partidário, sem cadastro e 100% processado no seu dispositivo.',
                 style: TextStyle(
-                  fontSize: twoColumn ? 15.5 : 14,
-                  height: 1.5,
+                  fontSize: twoColumn ? 16.5 : 14.5,
+                  height: 1.55,
                   color: p.inkSoft,
                 ),
               ),
             ),
-            SizedBox(height: twoColumn ? 24 : 18),
+            SizedBox(height: twoColumn ? 28 : 20),
             Wrap(
-              spacing: 12,
+              spacing: 14,
               runSpacing: 10,
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                FilledButton(
-                  onPressed: onStartQuiz,
-                  style: FilledButton.styleFrom(
-                    minimumSize: const Size(0, 52),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 14,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(13),
-                    ),
-                    textStyle: const TextStyle(
-                      fontFamily: 'IBMPlexSans',
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                    ),
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: p.accent.withValues(
+                          alpha: p.isDark ? 0.28 : 0.18,
+                        ),
+                        blurRadius: 16,
+                        offset: const Offset(0, 6),
+                      ),
+                    ],
                   ),
-                  child: const Text('Fazer Avaliação Rápida (3 min) →'),
+                  child: FilledButton.icon(
+                    onPressed: onStartQuiz,
+                    style: FilledButton.styleFrom(
+                      minimumSize: const Size(0, 52),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 14,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    icon: const Icon(Icons.arrow_forward_rounded, size: 17),
+                    label: const Text('Fazer Avaliação Rápida (3 min)'),
+                  ),
                 ),
                 TextButton(
                   onPressed: onOpenAtlas,
                   style: TextButton.styleFrom(
                     minimumSize: const Size(0, 48),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 12,
-                    ),
                     foregroundColor: p.inkSoft,
                     textStyle: const TextStyle(
                       fontFamily: 'IBMPlexSans',
-                      fontSize: 14,
+                      fontSize: 14.5,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  child: const Text('Ou explore o Atlas de Correntes'),
+                  child: const Text('Ou explore o Atlas de Correntes →'),
                 ),
               ],
             ),
+            const SizedBox(height: 18),
+            Text(
+              '24 afirmações no modo expresso · 289 correntes mapeadas · Cálculo 100% offline',
+              style: TextStyle(
+                fontFamily: 'IBMPlexMono',
+                fontSize: 11,
+                color: p.muted,
+                letterSpacing: 0.2,
+              ),
+            ),
           ],
         ),
-      ),
-          ),
-        ],
       ),
     );
   }

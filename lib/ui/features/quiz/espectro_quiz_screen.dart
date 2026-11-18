@@ -612,9 +612,8 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
               autofocus: true,
               child: Scaffold(
                 backgroundColor: p.canvas,
-                body: ObservatoryGridBackdrop(
-                  child: SafeArea(
-                    child: ResponsiveContentFrame(
+                body: SafeArea(
+                  child: ResponsiveContentFrame(
                     maxWidth: 680,
                     child: Column(
                       children: [
@@ -773,11 +772,11 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                         // Card Central Zen + Rodapé Simplificado
                         Expanded(
                           child: AnimatedSwitcher(
-                            duration: EspectroMotion.medium,
+                            duration: EspectroMotion.fast,
                             transitionBuilder: (child, animation) {
                               final inAnimation =
                                   Tween<Offset>(
-                                    begin: const Offset(0.03, 0.0),
+                                    begin: const Offset(0.02, 0.0),
                                     end: Offset.zero,
                                   ).animate(
                                     CurvedAnimation(
@@ -1036,12 +1035,11 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                 ),
               ),
             ),
-          ),
-        );
-      },
-    ),
-  );
-}
+          );
+        },
+      ),
+    );
+  }
 }
 
 class _HelpSection extends StatelessWidget {
