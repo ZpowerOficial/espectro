@@ -7,6 +7,8 @@ import '../../../domain/engine/atlas_and_nolan_engine.dart';
 import '../../../domain/engine/compatibility_engine.dart';
 import '../../../domain/models/atlas_models.dart';
 import '../../../domain/models/political_models.dart';
+import '../../../domain/models/study_link_uri.dart';
+import '../../../domain/models/study_result_link.dart';
 import '../../../theme.dart';
 import '../../../widgets/common.dart';
 import '../../../widgets/editorial.dart';
@@ -321,6 +323,43 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
       record: _record,
       appViewModel: widget.appViewModel,
     );
+  }
+
+  Future<void> _copyChallengeInvite(
+    CurrentCompatibility primaryMatch,
+    AtlasMatchResult? topPers,
+  ) async {
+    final String token = encodeCompactProfile(_record);
+    final String route = Uri(
+      path: '/shared',
+      queryParameters: <String, String>{'v': '2', 'c': token},
+    ).toString();
+    final String link = buildPublicStudyLink(route);
+    final String pct = primaryMatch.compatibilityPercent.round().toString();
+    final String thinkerPart = topPers != null
+        ? ' e meu pensador mais próximo foi ${topPers.entry.name}'
+        : '';
+    final String invite =
+        'Meu arquétipo no Espectro deu "${primaryMatch.current.name}" ($pct%$thinkerPart). '
+        'Compare seus 12 eixos com os meus e faça o teste expresso (3 min): $link';
+    try {
+      await Clipboard.setData(ClipboardData(text: invite));
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Desafio com link curto copiado! Envie para um amigo comparar com você.',
+          ),
+        ),
+      );
+    } on Object {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Não foi possível copiar o convite. Tente novamente.'),
+        ),
+      );
+    }
   }
 
   String _formatDate(DateTime dt) {
@@ -1392,13 +1431,16 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
           const SizedBox(height: 20),
         ],
 
-        // Beat 1: Troféu Visual (Arquétipo + Frase Síntese + Pensador Mais Próximo)
+        // Beat 1: Troféu Visual (Arquétipo + Frase Síntese + Gêmeo vs. Antagonista)
         if (primaryMatch != null) ...<Widget>[
           _buildHeroIdeologyCard(
             context,
             primaryMatch,
             effectiveCompat,
             topPers,
+            persMatches.length > 1 ? persMatches.last : null,
+            mostUncommon,
+            uncommonPercentLower,
             spectrumColor,
             isDesktop,
             p,
@@ -1579,6 +1621,9 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     CurrentCompatibility primaryMatch,
     CompatibilityReport compat,
     AtlasMatchResult? topPers,
+    AtlasMatchResult? nemesisPers,
+    BipolarDimensionScore? mostUncommon,
+    int uncommonPercentLower,
     Color spectrumColor,
     bool isDesktop,
     EspectroPalette p,
@@ -1589,6 +1634,113 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     final bool lowInformation =
         compat.isLowDiscrimination || _hasCautiousReading;
     final String pct = _formatScore(primaryMatch.compatibilityPercent);
+    final int catalogTotal = widget.appViewModel.data.catalog.currents.length;
+    final bool hasDualThinkers =
+        topPers != null &&
+        nemesisPers != null &&
+        nemesisPers.entry.id != topPers.entry.id;
+
+    Widget buildThinkerSpotlightCard({
+      required AtlasMatchResult result,
+      required String kicker,
+      required Color borderTint,
+      required Color kickerColor,
+      required Color avatarBorder,
+    }) {
+      return Material(
+        color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.65 : 0.78),
+        borderRadius: BorderRadius.circular(16),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () => EntityComparisonScreen.showAtlasEntry(
+            context,
+            record: _record,
+            entry: result.entry,
+            appViewModel: widget.appViewModel,
+          ),
+          child: Container(
+            padding: EdgeInsets.all(isDesktop ? 16 : 14),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: borderTint.withValues(alpha: 0.28)),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                _buildAvatarImage(
+                  photoUrl: result.entry.photoUrl,
+                  name: result.entry.name,
+                  color: avatarBorder,
+                  size: isDesktop ? 54 : 46,
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(
+                        kicker,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontFamily: 'IBMPlexSans',
+                          fontSize: 10,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.9,
+                          color: kickerColor,
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      Text(
+                        result.entry.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontFamily: 'IBMPlexSans',
+                          fontSize: isDesktop ? 17 : 15.5,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: -0.25,
+                          color: p.ink,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        '${result.entry.origin} · ${_formatScore(result.compatibilityPercent)}% afim',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: p.inkSoft,
+                        ),
+                      ),
+                      if (result.entry.quote != null &&
+                          result.entry.quote!.trim().isNotEmpty &&
+                          kicker.startsWith('PENSADOR')) ...[
+                        const SizedBox(height: 5),
+                        Text(
+                          '“${result.entry.quote}”',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontStyle: FontStyle.italic,
+                            height: 1.35,
+                            color: p.muted,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 6),
+                Icon(Icons.chevron_right_rounded, size: 20, color: p.muted),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
 
     return Container(
       decoration: EspectroElevation.trophyDecoration(
@@ -1623,242 +1775,264 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
           Padding(
             padding: EdgeInsets.all(isDesktop ? 34 : 22),
             child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          // Overline + Convergência discreta
-          Wrap(
-            spacing: 10,
-            runSpacing: 8,
-            alignment: WrapAlignment.spaceBetween,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: <Widget>[
-              Text(
-                lowInformation
-                    ? 'LEITURA CAUTELOSA'
-                    : 'SEU ARQUÉTIPO · ${(spectrum?.name ?? primaryMatch.current.family).toUpperCase()}',
-                style: TextStyle(
-                  fontFamily: 'IBMPlexSans',
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 1.1,
-                  color: lowInformation ? p.warning : spectrumInk,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 4,
-                ),
-                decoration: BoxDecoration(
-                  color: spectrumColor.withValues(
-                    alpha: p.isDark ? 0.16 : 0.10,
-                  ),
-                  borderRadius: BorderRadius.circular(999),
-                ),
-                child: Text(
-                  lowInformation
-                      ? '$pct% de proximidade geométrica'
-                      : '$pct% de convergência',
-                  style: TextStyle(
-                    fontFamily: 'IBMPlexSans',
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: spectrumInk,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: isDesktop ? 16 : 12),
-
-          // Título Troféu em Grande Destaque
-          Text(
-            primaryMatch.current.name,
-            style: TextStyle(
-              fontFamily: 'IBMPlexSans',
-              fontSize: isDesktop ? 36 : 28,
-              fontWeight: FontWeight.w800,
-              letterSpacing: -0.75,
-              height: 1.12,
-              color: p.ink,
-            ),
-          ),
-          if (compat.isTechnicalTie && !lowInformation) ...<Widget>[
-            const SizedBox(height: 6),
-            Text(
-              'Perfil híbrido em convergência próxima com outras correntes do mesmo campo.',
-              style: TextStyle(fontSize: 13, color: p.muted),
-            ),
-          ],
-          SizedBox(height: isDesktop ? 20 : 16),
-
-          // Frase Síntese Marcante (Editorial, sem ruído técnico)
-          Container(
-            padding: const EdgeInsets.only(left: 16),
-            decoration: BoxDecoration(
-              border: Border(
-                left: BorderSide(color: spectrumColor, width: 3),
-              ),
-            ),
-            child: Text(
-              primaryMatch.current.summary,
-              style: TextStyle(
-                fontFamily: 'IBMPlexSans',
-                fontSize: isDesktop ? 16.5 : 15,
-                height: 1.52,
-                fontWeight: FontWeight.w400,
-                color: p.inkSoft,
-              ),
-            ),
-          ),
-
-          // Pensador Mais Próximo em Grande Destaque
-          if (topPers != null) ...<Widget>[
-            SizedBox(height: isDesktop ? 26 : 20),
-            Material(
-              color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.65 : 0.75),
-              borderRadius: BorderRadius.circular(16),
-              child: InkWell(
-                borderRadius: BorderRadius.circular(16),
-                onTap: () => EntityComparisonScreen.showAtlasEntry(
-                  context,
-                  record: _record,
-                  entry: topPers.entry,
-                  appViewModel: widget.appViewModel,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(isDesktop ? 18 : 14),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      _buildAvatarImage(
-                        photoUrl: topPers.entry.photoUrl,
-                        name: topPers.entry.name,
-                        color: spectrumColor,
-                        size: isDesktop ? 62 : 52,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                // Overline + Convergência discreta
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 8,
+                  alignment: WrapAlignment.spaceBetween,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      lowInformation
+                          ? 'LEITURA CAUTELOSA'
+                          : 'SEU ARQUÉTIPO · ${(spectrum?.name ?? primaryMatch.current.family).toUpperCase()}',
+                      style: TextStyle(
+                        fontFamily: 'IBMPlexSans',
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1.1,
+                        color: lowInformation ? p.warning : spectrumInk,
                       ),
-                      const SizedBox(width: 14),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'PENSADOR MAIS PRÓXIMO',
-                              style: TextStyle(
-                                fontFamily: 'IBMPlexSans',
-                                fontSize: 10.5,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 1.0,
-                                color: p.accent,
-                              ),
-                            ),
-                            const SizedBox(height: 3),
-                            Text(
-                              topPers.entry.name,
-                              style: TextStyle(
-                                fontFamily: 'IBMPlexSans',
-                                fontSize: isDesktop ? 19 : 17,
-                                fontWeight: FontWeight.w800,
-                                letterSpacing: -0.3,
-                                color: p.ink,
-                              ),
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              '${topPers.entry.origin} · ${topPers.entry.era} · ${_formatScore(topPers.compatibilityPercent)}% afim',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 12.5,
-                                color: p.inkSoft,
-                              ),
-                            ),
-                            if (topPers.entry.quote != null &&
-                                topPers.entry.quote!.trim().isNotEmpty) ...[
-                              const SizedBox(height: 6),
-                              Text(
-                                '“${topPers.entry.quote}”',
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 12.5,
-                                  fontStyle: FontStyle.italic,
-                                  height: 1.38,
-                                  color: p.muted,
-                                ),
-                              ),
-                            ],
-                          ],
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: spectrumColor.withValues(
+                          alpha: p.isDark ? 0.16 : 0.10,
+                        ),
+                        borderRadius: BorderRadius.circular(999),
+                      ),
+                      child: Text(
+                        lowInformation
+                            ? '$pct% de proximidade geométrica'
+                            : '$pct% de convergência',
+                        style: TextStyle(
+                          fontFamily: 'IBMPlexSans',
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          color: spectrumInk,
                         ),
                       ),
-                      const SizedBox(width: 8),
-                      Icon(
-                        Icons.chevron_right_rounded,
-                        size: 22,
-                        color: p.muted,
+                    ),
+                  ],
+                ),
+                SizedBox(height: isDesktop ? 16 : 12),
+
+                // Título Troféu em Grande Destaque
+                Text(
+                  primaryMatch.current.name,
+                  style: TextStyle(
+                    fontFamily: 'IBMPlexSans',
+                    fontSize: isDesktop ? 36 : 28,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: -0.75,
+                    height: 1.12,
+                    color: p.ink,
+                  ),
+                ),
+                if (compat.isTechnicalTie && !lowInformation) ...<Widget>[
+                  const SizedBox(height: 6),
+                  Text(
+                    'Perfil híbrido em convergência próxima com outras correntes do mesmo campo.',
+                    style: TextStyle(fontSize: 13, color: p.muted),
+                  ),
+                ],
+                SizedBox(height: isDesktop ? 20 : 16),
+
+                // Frase Síntese Marcante
+                Container(
+                  padding: const EdgeInsets.only(left: 16),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      left: BorderSide(color: spectrumColor, width: 3),
+                    ),
+                  ),
+                  child: Text(
+                    primaryMatch.current.summary,
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: isDesktop ? 16.5 : 15,
+                      height: 1.52,
+                      fontWeight: FontWeight.w400,
+                      color: p.inkSoft,
+                    ),
+                  ),
+                ),
+
+                // Chip de Raridade Psicológica
+                if (mostUncommon != null) ...<Widget>[
+                  const SizedBox(height: 16),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: p.accentSoft.withValues(
+                        alpha: p.isDark ? 0.65 : 0.72,
                       ),
-                    ],
+                      borderRadius: BorderRadius.circular(11),
+                      border: Border.all(
+                        color: p.accent.withValues(alpha: 0.28),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(
+                          Icons.diamond_outlined,
+                          size: 16,
+                          color: p.accent,
+                        ),
+                        const SizedBox(width: 8),
+                        Flexible(
+                          child: Text(
+                            'Traço raro: seu posicionamento em ${mostUncommon.label} (${mostUncommon.dominantPole}) é mais intenso que $uncommonPercentLower% das $catalogTotal correntes.',
+                            style: TextStyle(
+                              fontFamily: 'IBMPlexSans',
+                              fontSize: 12.5,
+                              fontWeight: FontWeight.w600,
+                              height: 1.35,
+                              color: p.ink,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
+                ],
+
+                // Dualidade: Pensador Mais Próximo vs. Antagonista Histórico
+                if (topPers != null) ...<Widget>[
+                  SizedBox(height: isDesktop ? 24 : 18),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      final double scale =
+                          MediaQuery.textScalerOf(context).scale(16) / 16.0;
+                      final bool sideBySide =
+                          hasDualThinkers &&
+                          constraints.maxWidth >= 600 &&
+                          scale <= 1.35;
+
+                      final Widget alliedCard = buildThinkerSpotlightCard(
+                        result: topPers,
+                        kicker: 'PENSADOR MAIS PRÓXIMO',
+                        borderTint: spectrumColor,
+                        kickerColor: p.accent,
+                        avatarBorder: spectrumColor,
+                      );
+
+                      if (!hasDualThinkers) return alliedCard;
+
+                      final Widget nemesisCard = buildThinkerSpotlightCard(
+                        result: nemesisPers,
+                        kicker: 'SEU ANTAGONISTA HISTÓRICO',
+                        borderTint: p.poleRight,
+                        kickerColor: p.poleRight,
+                        avatarBorder: p.poleRight,
+                      );
+
+                      if (sideBySide) {
+                        return IntrinsicHeight(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: <Widget>[
+                              Expanded(child: alliedCard),
+                              const SizedBox(width: 12),
+                              Expanded(child: nemesisCard),
+                            ],
+                          ),
+                        );
+                      }
+
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          alliedCard,
+                          const SizedBox(height: 10),
+                          nemesisCard,
+                        ],
+                      );
+                    },
+                  ),
+                ],
+
+                SizedBox(height: isDesktop ? 24 : 20),
+
+                // Ações do Troféu + Desafio Viral
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: <Widget>[
+                    FilledButton.icon(
+                      onPressed: _openShareCard,
+                      style: FilledButton.styleFrom(
+                        minimumSize: const Size(0, 48),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 12,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      icon: const Icon(Icons.share_rounded, size: 17),
+                      label: const Text('Compartilhar resultado'),
+                    ),
+                    FilledButton.tonalIcon(
+                      onPressed: () =>
+                          _copyChallengeInvite(primaryMatch, topPers),
+                      style: FilledButton.styleFrom(
+                        minimumSize: const Size(0, 48),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      icon: const Icon(Icons.bolt_rounded, size: 17),
+                      label: const Text('Desafiar amigo'),
+                    ),
+                    OutlinedButton(
+                      onPressed: () => _showCurrentMatchSheet(primaryMatch),
+                      style: OutlinedButton.styleFrom(
+                        minimumSize: const Size(0, 48),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                        side: BorderSide(color: p.line),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text('Sobre este arquétipo'),
+                    ),
+                    TextButton(
+                      onPressed: () => EntityComparisonScreen.showCurrent(
+                        context,
+                        record: _record,
+                        current: primaryMatch.current,
+                        appViewModel: widget.appViewModel,
+                      ),
+                      style: TextButton.styleFrom(
+                        minimumSize: const Size(0, 44),
+                        foregroundColor: p.inkSoft,
+                      ),
+                      child: const Text('Comparar lado a lado →'),
+                    ),
+                  ],
                 ),
-              ),
+              ],
             ),
-          ],
-
-          SizedBox(height: isDesktop ? 26 : 20),
-
-          // Ações Limpas do Troféu
-          Wrap(
-            spacing: 12,
-            runSpacing: 10,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: <Widget>[
-              FilledButton.icon(
-                onPressed: _openShareCard,
-                style: FilledButton.styleFrom(
-                  minimumSize: const Size(0, 48),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 12,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                icon: const Icon(Icons.share_rounded, size: 17),
-                label: const Text('Compartilhar resultado'),
-              ),
-              OutlinedButton(
-                onPressed: () => _showCurrentMatchSheet(primaryMatch),
-                style: OutlinedButton.styleFrom(
-                  minimumSize: const Size(0, 48),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 12,
-                  ),
-                  side: BorderSide(color: p.line),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: const Text('Sobre este arquétipo'),
-              ),
-              TextButton(
-                onPressed: () => EntityComparisonScreen.showCurrent(
-                  context,
-                  record: _record,
-                  current: primaryMatch.current,
-                  appViewModel: widget.appViewModel,
-                ),
-                style: TextButton.styleFrom(
-                  minimumSize: const Size(0, 44),
-                  foregroundColor: p.inkSoft,
-                ),
-                child: const Text('Comparar lado a lado →'),
-              ),
-            ],
-          ),
-        ],
-      ),
           ),
         ],
       ),

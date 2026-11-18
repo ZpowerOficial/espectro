@@ -748,7 +748,7 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
 
                         // Barra de progresso discreta e contínua (sem chips de telemetria)
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 2, 20, 14),
+                          padding: const EdgeInsets.fromLTRB(20, 2, 20, 8),
                           child: Container(
                             width: double.infinity,
                             height: 3.5,
@@ -768,6 +768,86 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                                   ),
                           ),
                         ),
+
+                        // Gatilho Zeigarnik: indica quantas faltam ou libera espiar o Arquétipo
+                        if (!widget.returnCompletedRecord &&
+                            _vm.totalCount >= 6)
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+                            child: _vm.canPreview
+                                ? Center(
+                                    child: InkWell(
+                                      onTap: _viewPreliminaryResult,
+                                      borderRadius: BorderRadius.circular(999),
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 12,
+                                          vertical: 6,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: p.accentSoft,
+                                          borderRadius:
+                                              BorderRadius.circular(999),
+                                          border: Border.all(
+                                            color: p.accent.withValues(
+                                              alpha: 0.42,
+                                            ),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Icon(
+                                              Icons.auto_awesome_rounded,
+                                              size: 14,
+                                              color: p.accent,
+                                            ),
+                                            const SizedBox(width: 6),
+                                            Flexible(
+                                              child: Text(
+                                                'Prévia liberada (${_vm.answeredCount}/${_vm.totalCount}) · Espiar meu Arquétipo agora →',
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                  fontFamily: 'IBMPlexSans',
+                                                  fontSize: 11.5,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: p.accent,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : Center(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(
+                                          Icons.lock_clock_outlined,
+                                          size: 13,
+                                          color: p.muted,
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Flexible(
+                                          child: Text(
+                                            'Responda mais ${4 - _vm.answeredCount} para destravar a prévia ao vivo do seu Arquétipo',
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontFamily: 'IBMPlexSans',
+                                              fontSize: 11.5,
+                                              fontWeight: FontWeight.w500,
+                                              color: p.muted,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                          ),
 
                         // Card Central Zen + Rodapé Simplificado
                         Expanded(

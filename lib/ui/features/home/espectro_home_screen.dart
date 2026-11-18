@@ -3,7 +3,9 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../../../data/models.dart' as data;
+import '../../../domain/engine/atlas_and_nolan_engine.dart';
 import '../../../domain/engine/compatibility_engine.dart';
+import '../../../domain/models/atlas_models.dart';
 import '../../../domain/models/political_models.dart';
 import '../../../domain/models/study_models.dart';
 import '../../../domain/models/study_media.dart';
@@ -265,6 +267,29 @@ class EspectroHomeScreen extends StatelessWidget {
     ),
   );
 
+  void _startExpressQuiz(BuildContext context, {LikertAnswer? firstAnswer}) {
+    final QuizViewModel quizVm = QuizViewModel.startNew(
+      data: appViewModel.data,
+      repository: appViewModel.repository,
+      suite: TestSuite.espectroIntegrated,
+      depth: TestDepth.express,
+    );
+    if (firstAnswer != null && quizVm.totalCount > 0) {
+      quizVm.selectAnswer(firstAnswer);
+      if (!quizVm.isLast) {
+        quizVm.next();
+      }
+    }
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => EspectroQuizScreen(
+          appViewModel: appViewModel,
+          quizViewModel: quizVm,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) => ListenableBuilder(
     listenable: appViewModel,
@@ -430,14 +455,16 @@ class EspectroHomeScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 24),
                     ],
-                    // Beat 1: Hero Editorial Limpo (sem radar espremido dentro)
+                    // Beat 1: Palco Interativo do Observatório + Dilema Relâmpago
                     _ObservatoryCoverHero(
                       twoColumn: twoColBento,
                       onStartQuiz: () => _openSuites(context),
+                      onStartWithAnswer: (LikertAnswer ans) =>
+                          _startExpressQuiz(context, firstAnswer: ans),
                       onOpenAtlas: () => _openAtlas(context),
                     ),
                     if (latestRecord != null) ...[
-                      const SizedBox(height: 28),
+                      const SizedBox(height: 24),
                       _LatestEvaluationBentoCard(
                         appViewModel: appViewModel,
                         record: latestRecord,
@@ -453,8 +480,8 @@ class EspectroHomeScreen extends StatelessWidget {
                         onOpenHistory: () => _openHistory(context),
                       ),
                     ],
-                    // Beat 2: Seção Interativa do Radar com respiro próprio
-                    const SizedBox(height: 32),
+                    // Beat 2: Radar Interativo "Gêmeo ou Antagonista?"
+                    const SizedBox(height: 24),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 2),
                       child: Column(
@@ -471,7 +498,7 @@ class EspectroHomeScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            'Veja como diferentes visões de mundo se organizam no radar multidimensional.',
+                            'Alterne entre pensadores clássicos, compare vetores nos 12 eixos e descubra com quem você converge.',
                             style: TextStyle(
                               fontSize: 13.5,
                               height: 1.45,
@@ -481,17 +508,34 @@ class EspectroHomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 14),
+                    const SizedBox(height: 12),
                     _HeroLiveSpectrumShowcase(
                       catalog: catalog,
                       portraits: appViewModel.data.portraits,
                       axesMeta: appViewModel.data.twelveAxes.axes,
                       compact: !twoColBento,
+                      latestRecord: latestRecord,
                       onStartQuiz: () => _openSuites(context),
                       onOpenSubject: (String key) => _openSubject(context, key),
+                      onCompareWithRecord: latestRecord == null
+                          ? null
+                          : (String key) => _openComparison(
+                              context,
+                              initialKeys: <String>[
+                                'evaluation:${latestRecord.id}',
+                                key,
+                              ],
+                            ),
                     ),
-                    // Beat 3: Bento Grid com hierarquia clara
-                    const SizedBox(height: 32),
+                    // Beat 3: Jogo de Intuição Política ("Quem Pensa Assim?")
+                    const SizedBox(height: 24),
+                    _IdeologicalRiddleGameCard(
+                      catalog: catalog,
+                      onOpenSubject: (String key) => _openSubject(context, key),
+                      onStartExpress: () => _startExpressQuiz(context),
+                    ),
+                    // Beat 4: Bento Grid com hierarquia clara
+                    const SizedBox(height: 28),
                     if (twoColBento)
                       IntrinsicHeight(
                         child: Row(
@@ -508,7 +552,17 @@ class EspectroHomeScreen extends StatelessWidget {
                       const SizedBox(height: 24),
                       toolsBentoCard,
                     ],
-                    const SizedBox(height: 32),
+                    // Beat 5: Passaporte do Cartógrafo (Progresso Dotado)
+                    const SizedBox(height: 28),
+                    _ObservatoryPassportCard(
+                      appViewModel: appViewModel,
+                      onStartExpress: () => _startExpressQuiz(context),
+                      onStartTriads: () =>
+                          _openSuite(context, TestSuite.triads),
+                      onOpenAtlas: () => _openAtlas(context),
+                      onOpenCompare: () => _openComparison(context),
+                    ),
+                    const SizedBox(height: 28),
                     _HomeFeaturedSpotlight(
                       appViewModel: appViewModel,
                       catalog: catalog,
@@ -827,141 +881,1207 @@ class _ObservatoryCoverHero extends StatelessWidget {
   const _ObservatoryCoverHero({
     required this.twoColumn,
     required this.onStartQuiz,
+    required this.onStartWithAnswer,
     required this.onOpenAtlas,
   });
 
   final bool twoColumn;
   final VoidCallback onStartQuiz;
+  final ValueChanged<LikertAnswer> onStartWithAnswer;
   final VoidCallback onOpenAtlas;
 
   @override
   Widget build(BuildContext context) {
     final p = context.palette;
+    final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
+    final bool split = twoColumn && scale <= 1.35;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: twoColumn ? 36 : 18,
-        horizontal: twoColumn ? 6 : 2,
-      ),
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 780),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    final Widget pitchColumn = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: 6,
-                  height: 6,
-                  decoration: BoxDecoration(
-                    color: p.accent,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Flexible(
-                  child: Text(
-                    'OBSERVATÓRIO POLÍTICO INDEPENDENTE',
-                    style: TextStyle(
-                      fontFamily: 'IBMPlexMono',
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 1.3,
-                      color: p.accent,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: twoColumn ? 16 : 12),
-            Text(
-              'Onde você realmente se situa além dos rótulos?',
-              style: TextStyle(
-                fontFamily: 'IBMPlexSans',
-                fontSize: twoColumn ? 42 : 29,
-                fontWeight: FontWeight.w800,
-                letterSpacing: -1.1,
-                height: 1.12,
-                color: p.ink,
+            Container(
+              width: 7,
+              height: 7,
+              decoration: const BoxDecoration(
+                color: Color(0xFFE5A64B),
+                shape: BoxShape.circle,
               ),
             ),
-            SizedBox(height: twoColumn ? 14 : 10),
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 640),
+            const SizedBox(width: 8),
+            const Flexible(
               child: Text(
-                'Mapeie sua visão de mundo em 12 eixos e 6 tríades históricas. '
-                'Sem viés partidário, sem cadastro e 100% processado no seu dispositivo.',
+                'OBSERVATÓRIO POLÍTICO · 18 DIMENSÕES',
                 style: TextStyle(
-                  fontSize: twoColumn ? 16.5 : 14.5,
-                  height: 1.55,
-                  color: p.inkSoft,
+                  fontFamily: 'IBMPlexMono',
+                  fontSize: 10.5,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.2,
+                  color: Color(0xFFEBC07A),
                 ),
-              ),
-            ),
-            SizedBox(height: twoColumn ? 28 : 20),
-            Wrap(
-              spacing: 14,
-              runSpacing: 10,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(14),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        color: p.accent.withValues(
-                          alpha: p.isDark ? 0.28 : 0.18,
-                        ),
-                        blurRadius: 16,
-                        offset: const Offset(0, 6),
-                      ),
-                    ],
-                  ),
-                  child: FilledButton.icon(
-                    onPressed: onStartQuiz,
-                    style: FilledButton.styleFrom(
-                      minimumSize: const Size(0, 52),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 14,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                    ),
-                    icon: const Icon(Icons.arrow_forward_rounded, size: 17),
-                    label: const Text('Fazer Avaliação Rápida (3 min)'),
-                  ),
-                ),
-                TextButton(
-                  onPressed: onOpenAtlas,
-                  style: TextButton.styleFrom(
-                    minimumSize: const Size(0, 48),
-                    foregroundColor: p.inkSoft,
-                    textStyle: const TextStyle(
-                      fontFamily: 'IBMPlexSans',
-                      fontSize: 14.5,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  child: const Text('Ou explore o Atlas de Correntes →'),
-                ),
-              ],
-            ),
-            const SizedBox(height: 18),
-            Text(
-              '24 afirmações no modo expresso · 289 correntes mapeadas · Cálculo 100% offline',
-              style: TextStyle(
-                fontFamily: 'IBMPlexMono',
-                fontSize: 11,
-                color: p.muted,
-                letterSpacing: 0.2,
               ),
             ),
           ],
         ),
+        SizedBox(height: split ? 14 : 10),
+        Text(
+          'Onde você realmente se situa além dos rótulos?',
+          style: TextStyle(
+            fontFamily: 'IBMPlexSans',
+            fontSize: split ? 36 : 26,
+            fontWeight: FontWeight.w800,
+            letterSpacing: -0.9,
+            height: 1.13,
+            color: p.heroForeground,
+          ),
+        ),
+        SizedBox(height: split ? 12 : 8),
+        Text(
+          'Responda ao dilema ao lado em 1 toque ou faça a avaliação completa em 12 eixos e 6 tríades — 100% offline.',
+          style: TextStyle(
+            fontSize: split ? 15 : 13.5,
+            height: 1.48,
+            color: p.heroMuted,
+          ),
+        ),
+        SizedBox(height: split ? 22 : 16),
+        Wrap(
+          spacing: 12,
+          runSpacing: 10,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: const Color(0xFFE5A64B).withValues(alpha: 0.24),
+                    blurRadius: 18,
+                    offset: const Offset(0, 6),
+                  ),
+                ],
+              ),
+              child: FilledButton.icon(
+                onPressed: onStartQuiz,
+                style: FilledButton.styleFrom(
+                  backgroundColor: const Color(0xFFE5A64B),
+                  foregroundColor: const Color(0xFF140D03),
+                  minimumSize: const Size(0, 48),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 12,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(13),
+                  ),
+                ),
+                icon: const Icon(Icons.arrow_forward_rounded, size: 17),
+                label: const Text('Fazer Avaliação Rápida (3 min)'),
+              ),
+            ),
+            TextButton(
+              onPressed: onOpenAtlas,
+              style: TextButton.styleFrom(
+                minimumSize: const Size(0, 44),
+                foregroundColor: p.heroForeground.withValues(alpha: 0.90),
+                textStyle: const TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 13.5,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              child: const Text('Ou explore o Atlas de Correntes →'),
+            ),
+          ],
+        ),
+        const SizedBox(height: 14),
+        Text(
+          '24 afirmações no Expresso · 289 correntes · 757 pensadores',
+          style: TextStyle(
+            fontFamily: 'IBMPlexMono',
+            fontSize: 10.5,
+            color: p.heroMuted.withValues(alpha: 0.82),
+          ),
+        ),
+      ],
+    );
+
+    final Widget interactiveDilemma = _HeroInstantDilemmaGame(
+      onStartWithAnswer: onStartWithAnswer,
+    );
+
+    return Container(
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: <Color>[
+            p.heroBackground,
+            Color.alphaBlend(
+              const Color(0xFF4E3FA5).withValues(alpha: 0.22),
+              p.heroBackground,
+            ),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(
+          color: const Color(0xFF7B6CE0).withValues(alpha: 0.28),
+        ),
+        boxShadow: EspectroElevation.cardShadows(
+          p,
+          tint: const Color(0xFF4E3FA5),
+        ),
+      ),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            top: -120,
+            right: -75,
+            child: Container(
+              width: 300,
+              height: 300,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: <Color>[
+                    const Color(0xFF7B6CE0).withValues(alpha: 0.18),
+                    const Color(0xFF4E3FA5).withValues(alpha: 0.06),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -90,
+            left: -50,
+            child: Container(
+              width: 220,
+              height: 220,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: <Color>[
+                    const Color(0xFFE5A64B).withValues(alpha: 0.12),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SpectrumGradientRule(height: 3.5, radius: 0),
+              Padding(
+                padding: EdgeInsets.all(split ? 24 : 18),
+                child: split
+                    ? Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(flex: 6, child: pitchColumn),
+                          const SizedBox(width: 24),
+                          Expanded(flex: 5, child: interactiveDilemma),
+                        ],
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          pitchColumn,
+                          const SizedBox(height: 18),
+                          interactiveDilemma,
+                        ],
+                      ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _InstantDilemmaSpec {
+  const _InstantDilemmaSpec({
+    required this.axisTag,
+    required this.statement,
+    required this.agreeInsight,
+    required this.neutralInsight,
+    required this.disagreeInsight,
+  });
+
+  final String axisTag;
+  final String statement;
+  final String agreeInsight;
+  final String neutralInsight;
+  final String disagreeInsight;
+}
+
+class _HeroInstantDilemmaGame extends StatefulWidget {
+  const _HeroInstantDilemmaGame({required this.onStartWithAnswer});
+
+  final ValueChanged<LikertAnswer> onStartWithAnswer;
+
+  @override
+  State<_HeroInstantDilemmaGame> createState() =>
+      _HeroInstantDilemmaGameState();
+}
+
+class _HeroInstantDilemmaGameState extends State<_HeroInstantDilemmaGame>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  static const List<_InstantDilemmaSpec> _dilemmas = <_InstantDilemmaSpec>[
+    _InstantDilemmaSpec(
+      axisTag: 'PODER · LIBERDADE VS. SEGURANÇA',
+      statement:
+          'Em crises graves, o Estado deve monitorar comunicações privadas para conter ameaças?',
+      agreeInsight:
+          'Alinha-se ao Realismo Estatal de Thomas Hobbes; distancia-se fortemente de Hannah Arendt.',
+      neutralInsight:
+          'Equilíbrio constitucional próximo a John Locke e Montesquieu.',
+      disagreeInsight:
+          'Converge com Hannah Arendt e o Libertarianismo Civil, colidindo com Hobbes.',
+    ),
+    _InstantDilemmaSpec(
+      axisTag: 'ECONOMIA · PÚBLICO VS. PRIVADO',
+      statement:
+          'Energia, água e ferrovias devem ser estatais mesmo que o setor privado opere com menor custo?',
+      agreeInsight:
+          'Converge com Celso Furtado e o Trabalhismo; diverge em polo econômico de Milton Friedman.',
+      neutralInsight:
+          'Postura regulatória mista próxima a John Maynard Keynes e ao Ordoliberalismo.',
+      disagreeInsight:
+          'Alinha-se a Friedrich Hayek e ao Liberalismo Clássico; polo oposto ao de Karl Marx.',
+    ),
+    _InstantDilemmaSpec(
+      axisTag: 'COMÉRCIO · PROTECIONISMO VS. GLOBALISMO',
+      statement:
+          'Vale sobretaxar importados para proteger a indústria nacional, mesmo encarecendo bens?',
+      agreeInsight:
+          'Converge com Alexander Hamilton e o Desenvolvimentismo Nacional.',
+      neutralInsight:
+          'Pragmatismo estratégico próximo à Social-Democracia contemporânea.',
+      disagreeInsight:
+          'Converge com Adam Smith e o Livre-Cambismo Cosmopolita.',
+    ),
+    _InstantDilemmaSpec(
+      axisTag: 'CULTURA · TRADIÇÃO VS. PROGRESSO',
+      statement:
+          'Instituições testadas por gerações devem pesar mais que experimentos sociais acelerados?',
+      agreeInsight:
+          'Converge com Edmund Burke (Conservadorismo), colidindo com Rosa Luxemburgo.',
+      neutralInsight:
+          'Prudência institucional próxima a Alexis de Tocqueville.',
+      disagreeInsight:
+          'Converge com John Stuart Mill e o Progressismo Reformista.',
+    ),
+  ];
+
+  int _index = 0;
+  LikertAnswer? _picked;
+
+  void _rotateDilemma() {
+    setState(() {
+      _index = (_index + 1) % _dilemmas.length;
+      _picked = null;
+    });
+  }
+
+  String _insightFor(_InstantDilemmaSpec d, LikertAnswer a) => switch (a) {
+    LikertAnswer.agree || LikertAnswer.stronglyAgree => d.agreeInsight,
+    LikertAnswer.neutral => d.neutralInsight,
+    LikertAnswer.disagree || LikertAnswer.stronglyDisagree => d.disagreeInsight,
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    final _InstantDilemmaSpec spec = _dilemmas[_index];
+    final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
+
+    final List<(LikertAnswer answer, String label, Color accent)> choices = [
+      (LikertAnswer.agree, 'Concordo', const Color(0xFF4CC4BE)),
+      (LikertAnswer.neutral, 'Depende', const Color(0xFFE5A64B)),
+      (LikertAnswer.disagree, 'Discordo', const Color(0xFF9E8FFF)),
+    ];
+
+    Widget buildChoiceChip(
+      LikertAnswer answer,
+      String label,
+      Color accent, {
+      bool expand = false,
+    }) {
+      final bool isSelected = _picked == answer;
+      final Widget button = TactilePress(
+        scale: 0.96,
+        child: Material(
+          color: isSelected
+              ? accent.withValues(alpha: 0.22)
+              : Colors.white.withValues(alpha: 0.05),
+          borderRadius: BorderRadius.circular(10),
+          child: InkWell(
+            onTap: () => setState(() => _picked = answer),
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: isSelected
+                      ? accent
+                      : Colors.white.withValues(alpha: 0.16),
+                  width: isSelected ? 1.4 : 1.0,
+                ),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 12.5,
+                  fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
+                  color: isSelected ? Colors.white : const Color(0xFFD2DCEB),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+      return expand ? Expanded(child: button) : button;
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.045),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.14)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 8,
+            runSpacing: 6,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(
+                    Icons.bolt_rounded,
+                    size: 14,
+                    color: Color(0xFFE5A64B),
+                  ),
+                  const SizedBox(width: 5),
+                  const Flexible(
+                    child: Text(
+                      'DILEMA RELÂMPAGO · 1/24',
+                      style: TextStyle(
+                        fontFamily: 'IBMPlexMono',
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.6,
+                        color: Color(0xFFEBC07A),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              InkWell(
+                onTap: _rotateDilemma,
+                borderRadius: BorderRadius.circular(8),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.refresh_rounded,
+                        size: 13,
+                        color: Color(0xFFA3B1C8),
+                      ),
+                      SizedBox(width: 4),
+                      Flexible(
+                        child: Text(
+                          'Outro dilema',
+                          style: TextStyle(
+                            fontFamily: 'IBMPlexMono',
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFFA3B1C8),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Text(
+            spec.axisTag,
+            style: const TextStyle(
+              fontFamily: 'IBMPlexMono',
+              fontSize: 9.5,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.8,
+              color: Color(0xFFB5A8FF),
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            spec.statement,
+            style: const TextStyle(
+              fontFamily: 'IBMPlexSans',
+              fontSize: 14.5,
+              fontWeight: FontWeight.w600,
+              height: 1.4,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 14),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth < 300 || scale > 1.35) {
+                return Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    for (final c in choices) buildChoiceChip(c.$1, c.$2, c.$3),
+                  ],
+                );
+              }
+              return Row(
+                children: [
+                  for (var i = 0; i < choices.length; i++) ...[
+                    if (i > 0) const SizedBox(width: 8),
+                    buildChoiceChip(
+                      choices[i].$1,
+                      choices[i].$2,
+                      choices[i].$3,
+                      expand: true,
+                    ),
+                  ],
+                ],
+              );
+            },
+          ),
+          AnimatedSize(
+            duration: EspectroMotion.medium,
+            curve: EspectroMotion.easeOut,
+            child: _picked == null
+                ? const SizedBox.shrink()
+                : Padding(
+                    padding: const EdgeInsets.only(top: 14),
+                    child: Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF9E8FFF).withValues(alpha: 0.14),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: const Color(0xFF9E8FFF).withValues(alpha: 0.38),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            _insightFor(spec, _picked!),
+                            style: const TextStyle(
+                              fontSize: 12.5,
+                              height: 1.4,
+                              color: Color(0xFFF2F5FA),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          const Text(
+                            '4% concluído (1/24) · Seu Arquétipo começou a emergir',
+                            style: TextStyle(
+                              fontFamily: 'IBMPlexMono',
+                              fontSize: 9.5,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFFEBC07A),
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(999),
+                            child: Container(
+                              height: 4,
+                              color: Colors.white.withValues(alpha: 0.14),
+                              alignment: Alignment.centerLeft,
+                              child: FractionallySizedBox(
+                                widthFactor: 0.08,
+                                child: Container(
+                                  color: const Color(0xFFE5A64B),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          FilledButton.icon(
+                            onPressed: () =>
+                                widget.onStartWithAnswer(_picked!),
+                            style: FilledButton.styleFrom(
+                              backgroundColor: const Color(0xFF9E8FFF),
+                              foregroundColor: const Color(0xFF0E0A24),
+                              minimumSize: const Size(0, 40),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 14,
+                                vertical: 9,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              textStyle: const TextStyle(
+                                fontFamily: 'IBMPlexSans',
+                                fontSize: 12.5,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            icon: const Icon(
+                              Icons.play_arrow_rounded,
+                              size: 16,
+                            ),
+                            label: const Text('Continuar da pergunta 2/24 →'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _IdeologicalRiddleSpec {
+  const _IdeologicalRiddleSpec({
+    required this.subjectKey,
+    required this.answerName,
+    required this.options,
+    required this.clue,
+    required this.paradoxExplanation,
+  });
+
+  final String subjectKey;
+  final String answerName;
+  final List<String> options;
+  final String clue;
+  final String paradoxExplanation;
+}
+
+/// Jogo psicológico interativo "Quem Pensa Assim?" direto na Home, usando perfis
+/// reais e a fita DNA de 12 eixos do Atlas para gerar descoberta ativa.
+class _IdeologicalRiddleGameCard extends StatefulWidget {
+  const _IdeologicalRiddleGameCard({
+    required this.catalog,
+    required this.onOpenSubject,
+    required this.onStartExpress,
+  });
+
+  final StudyCatalog catalog;
+  final ValueChanged<String> onOpenSubject;
+  final VoidCallback onStartExpress;
+
+  @override
+  State<_IdeologicalRiddleGameCard> createState() =>
+      _IdeologicalRiddleGameCardState();
+}
+
+class _IdeologicalRiddleGameCardState
+    extends State<_IdeologicalRiddleGameCard>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  static const List<_IdeologicalRiddleSpec> _riddles =
+      <_IdeologicalRiddleSpec>[
+        _IdeologicalRiddleSpec(
+          subjectKey: 'personality:hannah_arendt',
+          answerName: 'Hannah Arendt',
+          options: <String>[
+            'Hannah Arendt',
+            'Thomas Hobbes',
+            'Carl Schmitt',
+          ],
+          clue:
+              'Defende a democracia participativa, a liberdade pública e o laicismo, mas desconfia de tecnocracias e rejeita tanto o autoritarismo quanto o mercado irrestrito.',
+          paradoxExplanation:
+              'Arendt combina defesa vigorosa da liberdade civil republicana com crítica firme aos totalitarismos do século XX e ao reducionismo economicista.',
+        ),
+        _IdeologicalRiddleSpec(
+          subjectKey: 'personality:friedrich_hayek',
+          answerName: 'Friedrich Hayek',
+          options: <String>[
+            'Karl Polanyi',
+            'Friedrich Hayek',
+            'Celso Furtado',
+          ],
+          clue:
+              'Vê o mercado como coordenação descentralizada de conhecimento disperso, ao mesmo tempo em que defende Estado de Direito constitucional e instituições herdadas.',
+          paradoxExplanation:
+              'Diferente de anarcocapitalistas, Hayek aceita regras jurídicas gerais e uma rede mínima contra a miséria, preservando a ordem espontânea de preços.',
+        ),
+        _IdeologicalRiddleSpec(
+          subjectKey: 'personality:celso_furtado',
+          answerName: 'Celso Furtado',
+          options: <String>[
+            'Milton Friedman',
+            'Celso Furtado',
+            'Murray Rothbard',
+          ],
+          clue:
+              'Articula democracia política com planejamento econômico estratégico, industrialização e fortalecimento do mercado interno para superar o subdesenvolvimento.',
+          paradoxExplanation:
+              'Economista brasileiro da CEPAL, Furtado enxerga o Estado planejador democrático como motor para romper a dependência estrutural periférica.',
+        ),
+        _IdeologicalRiddleSpec(
+          subjectKey: 'personality:murray_rothbard',
+          answerName: 'Murray Rothbard',
+          options: <String>[
+            'Murray Rothbard',
+            'John Locke',
+            'John Rawls',
+          ],
+          clue:
+              'Leva autopropriedade e mercado ao limite máximo: propõe substituir polícia, tribunais e defesa estatal por associações voluntárias e contratos privados.',
+          paradoxExplanation:
+              'Rothbard rompeu com o liberalismo clássico de Locke ao rejeitar qualquer monopólio estatal legítimo da força, fundindo Escola Austríaca e anarcoindividualismo.',
+        ),
+        _IdeologicalRiddleSpec(
+          subjectKey: 'personality:rosa_luxemburgo',
+          answerName: 'Rosa Luxemburgo',
+          options: <String>[
+            'Edmund Burke',
+            'Rosa Luxemburgo',
+            'Max Weber',
+          ],
+          clue:
+              'Propõe socialização radical da economia e internacionalismo operário, ao mesmo tempo em que critica severamente a burocracia autoritária de partido único.',
+          paradoxExplanation:
+              'Luxemburgo une transformação socialista profunda com defesa explícita da liberdade de imprensa, assembleia e pluralismo nos conselhos.',
+        ),
+      ];
+
+  int _riddleIndex = 0;
+  int _score = 0;
+  int _streak = 0;
+  int _answeredCount = 0;
+  String? _selectedOption;
+
+  void _pick(String option) {
+    if (_selectedOption != null) return;
+    final _IdeologicalRiddleSpec spec = _riddles[_riddleIndex];
+    final bool correct = option == spec.answerName;
+    setState(() {
+      _selectedOption = option;
+      _answeredCount++;
+      if (correct) {
+        _score++;
+        _streak++;
+      } else {
+        _streak = 0;
+      }
+    });
+  }
+
+  void _nextRiddle() {
+    setState(() {
+      _riddleIndex = (_riddleIndex + 1) % _riddles.length;
+      _selectedOption = null;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    final EspectroPalette p = context.palette;
+    final _IdeologicalRiddleSpec spec = _riddles[_riddleIndex];
+    final StudySubject? subject = widget.catalog.find(spec.subjectKey);
+    final bool answered = _selectedOption != null;
+    final bool isCorrect = _selectedOption == spec.answerName;
+
+    final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
+    final Widget titleBlock = Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(7),
+          decoration: BoxDecoration(
+            color: p.accentSoft,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(Icons.psychology_alt_rounded, size: 18, color: p.accent),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Eyebrow('DESAFIO DO OBSERVATÓRIO', color: p.accent),
+              const SizedBox(height: 2),
+              Text(
+                'Quem pensa assim?',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  color: p.ink,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+    final Widget scoreBadges = Wrap(
+      spacing: 8,
+      runSpacing: 6,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(
+            color: p.poleRight.withValues(alpha: p.isDark ? 0.18 : 0.10),
+            borderRadius: BorderRadius.circular(999),
+            border: Border.all(color: p.poleRight.withValues(alpha: 0.45)),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.local_fire_department_rounded,
+                size: 14,
+                color: p.poleRight,
+              ),
+              const SizedBox(width: 4),
+              Flexible(
+                child: Text(
+                  'Sequência: $_streak',
+                  style: TextStyle(
+                    fontFamily: 'IBMPlexMono',
+                    fontSize: 10.5,
+                    fontWeight: FontWeight.w700,
+                    color: p.ink,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(
+            color: p.surfaceMuted,
+            borderRadius: BorderRadius.circular(999),
+            border: Border.all(color: p.line),
+          ),
+          child: Text(
+            'Acertos: $_score/$_answeredCount',
+            style: TextStyle(
+              fontFamily: 'IBMPlexMono',
+              fontSize: 10.5,
+              fontWeight: FontWeight.w700,
+              color: p.inkSoft,
+            ),
+          ),
+        ),
+      ],
+    );
+
+    return SectionCard(
+      radius: 18,
+      padding: const EdgeInsets.all(20),
+      borderColor: p.accent.withValues(alpha: p.isDark ? 0.34 : 0.25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth >= 520 && scale <= 1.35) {
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(child: titleBlock),
+                    const SizedBox(width: 12),
+                    scoreBadges,
+                  ],
+                );
+              }
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  titleBlock,
+                  const SizedBox(height: 10),
+                  scoreBadges,
+                ],
+              );
+            },
+          ),
+          const SizedBox(height: 14),
+          Container(
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.65 : 0.72),
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: p.line.withValues(alpha: 0.7)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Enigma ${_riddleIndex + 1} de ${_riddles.length}',
+                  style: TextStyle(
+                    fontFamily: 'IBMPlexMono',
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                    color: p.muted,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  '“${spec.clue}”',
+                  style: TextStyle(
+                    fontFamily: 'IBMPlexSans',
+                    fontSize: 14.5,
+                    fontWeight: FontWeight.w600,
+                    height: 1.45,
+                    color: p.ink,
+                  ),
+                ),
+                if (subject != null && subject.axes.isNotEmpty) ...[
+                  const SizedBox(height: 12),
+                  Text(
+                    'ASSINATURA REAL NOS 12 EIXOS',
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexMono',
+                      fontSize: 9,
+                      fontWeight: FontWeight.w700,
+                      color: p.muted,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  TwelveAxisDnaStrip(axes: subject.axes),
+                ],
+              ],
+            ),
+          ),
+          const SizedBox(height: 14),
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: [
+              for (final String option in spec.options)
+                () {
+                  final bool isPicked = _selectedOption == option;
+                  final bool isAnswer = option == spec.answerName;
+                  Color bg = p.surface;
+                  Color border = p.line;
+                  Color fg = p.ink;
+                  if (answered) {
+                    if (isAnswer) {
+                      bg = p.success.withValues(alpha: p.isDark ? 0.20 : 0.12);
+                      border = p.success;
+                    } else if (isPicked) {
+                      bg = p.warning.withValues(alpha: p.isDark ? 0.20 : 0.12);
+                      border = p.warning;
+                    } else {
+                      fg = p.muted;
+                    }
+                  }
+                  return TactilePress(
+                    scale: 0.97,
+                    enabled: !answered,
+                    child: Material(
+                      color: bg,
+                      borderRadius: BorderRadius.circular(12),
+                      child: InkWell(
+                        onTap: answered ? null : () => _pick(option),
+                        borderRadius: BorderRadius.circular(12),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 14,
+                            vertical: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: border,
+                              width: (answered && (isAnswer || isPicked))
+                                  ? 1.5
+                                  : 1.0,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              if (answered && isAnswer) ...[
+                                Icon(
+                                  Icons.check_circle_rounded,
+                                  size: 16,
+                                  color: p.success,
+                                ),
+                                const SizedBox(width: 6),
+                              ] else if (answered && isPicked) ...[
+                                Icon(
+                                  Icons.cancel_rounded,
+                                  size: 16,
+                                  color: p.warning,
+                                ),
+                                const SizedBox(width: 6),
+                              ],
+                              Flexible(
+                                child: Text(
+                                  option,
+                                  style: TextStyle(
+                                    fontFamily: 'IBMPlexSans',
+                                    fontSize: 13.5,
+                                    fontWeight: FontWeight.w700,
+                                    color: fg,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }(),
+            ],
+          ),
+          if (answered) ...[
+            const SizedBox(height: 14),
+            Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: (isCorrect ? p.success : p.accent).withValues(
+                  alpha: p.isDark ? 0.13 : 0.08,
+                ),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: (isCorrect ? p.success : p.accent).withValues(
+                    alpha: 0.35,
+                  ),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    isCorrect
+                        ? 'Leitura certeira! É ${spec.answerName}.'
+                        : 'Quase! Na verdade é ${spec.answerName}.',
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 13.5,
+                      fontWeight: FontWeight.w800,
+                      color: isCorrect ? p.success : p.accent,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    spec.paradoxExplanation,
+                    style: TextStyle(
+                      fontSize: 13,
+                      height: 1.42,
+                      color: p.inkSoft,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Wrap(
+                    spacing: 10,
+                    runSpacing: 8,
+                    children: [
+                      FilledButton.icon(
+                        onPressed: _nextRiddle,
+                        icon: const Icon(Icons.arrow_forward_rounded, size: 16),
+                        label: const Text('Próximo enigma →'),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: () => widget.onOpenSubject(spec.subjectKey),
+                        icon: const Icon(Icons.person_search_rounded, size: 16),
+                        label: const Text('Ver ficha no Atlas'),
+                      ),
+                      TextButton(
+                        onPressed: widget.onStartExpress,
+                        child: const Text('Qual é a sua assinatura? →'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// Passaporte do Cartógrafo (Progresso Dotado): converte a exploração pelo app
+/// em 4 missões clicáveis que aumentam a retenção e incentivam descobertas novas.
+class _ObservatoryPassportCard extends StatelessWidget {
+  const _ObservatoryPassportCard({
+    required this.appViewModel,
+    required this.onStartExpress,
+    required this.onStartTriads,
+    required this.onOpenAtlas,
+    required this.onOpenCompare,
+  });
+
+  final AppViewModel appViewModel;
+  final VoidCallback onStartExpress;
+  final VoidCallback onStartTriads;
+  final VoidCallback onOpenAtlas;
+  final VoidCallback onOpenCompare;
+
+  @override
+  Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
+    final bool hasAnyTest = appViewModel.history.isNotEmpty;
+    final bool hasTriads = appViewModel.history.any(
+      (EvaluationRecord r) => r.triads.isNotEmpty,
+    );
+    final bool hasAtlasExploration =
+        appViewModel.studyRecent.length >= 3 ||
+        appViewModel.studyFavorites.isNotEmpty;
+    final bool hasCompare = appViewModel.studyComparison.length >= 2;
+
+    final List<(String label, bool done, VoidCallback onTap)> missions = [
+      ('Mapear 12 Eixos / Expresso', hasAnyTest, onStartExpress),
+      ('Dominar as 6 Tríades', hasTriads, onStartTriads),
+      ('Investigar o Atlas (3+ fichas)', hasAtlasExploration, onOpenAtlas),
+      ('Duelo no Comparador', hasCompare, onOpenCompare),
+    ];
+
+    final int completedCount = missions.where((m) => m.$2).length;
+    final String levelTitle = switch (completedCount) {
+      0 => 'Nível 1 · Visitante Curioso',
+      1 => 'Nível 2 · Analista de Campo',
+      2 || 3 => 'Nível 3 · Cartógrafo Político',
+      _ => 'Nível 4 · Mestre do Observatório',
+    };
+    // Efeito Progresso Dotado: começa visualmente em 15% para convidar à próxima conquista.
+    final double progress = ((completedCount + 0.6) / 4.6).clamp(0.13, 1.0);
+
+    return SectionCard(
+      radius: 18,
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 10,
+            runSpacing: 6,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Eyebrow('PASSAPORTE DO CARTÓGRAFO', color: p.accent),
+                  const SizedBox(height: 3),
+                  Text(
+                    levelTitle,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w800,
+                      color: p.ink,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
+                decoration: BoxDecoration(
+                  color: p.accentSoft,
+                  borderRadius: BorderRadius.circular(999),
+                ),
+                child: Text(
+                  '$completedCount/4 marcos',
+                  style: TextStyle(
+                    fontFamily: 'IBMPlexMono',
+                    fontSize: 10.5,
+                    fontWeight: FontWeight.w700,
+                    color: p.accent,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          ProgressRail(value: progress, color: p.accent),
+          const SizedBox(height: 14),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              for (final m in missions)
+                Material(
+                  color: m.$2
+                      ? p.success.withValues(alpha: p.isDark ? 0.16 : 0.10)
+                      : p.surfaceMuted.withValues(alpha: p.isDark ? 0.7 : 0.8),
+                  borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    onTap: m.$3,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 11,
+                        vertical: 8,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: m.$2
+                              ? p.success.withValues(alpha: 0.45)
+                              : p.line,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            m.$2
+                                ? Icons.check_circle_rounded
+                                : Icons.radio_button_unchecked_rounded,
+                            size: 15,
+                            color: m.$2 ? p.success : p.accent,
+                          ),
+                          const SizedBox(width: 6),
+                          Flexible(
+                            child: Text(
+                              m.$1,
+                              style: TextStyle(
+                                fontFamily: 'IBMPlexSans',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: p.ink,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -2217,6 +3337,8 @@ class _HeroLiveSpectrumShowcase extends StatefulWidget {
     required this.compact,
     required this.onStartQuiz,
     required this.onOpenSubject,
+    this.latestRecord,
+    this.onCompareWithRecord,
   });
 
   final StudyCatalog catalog;
@@ -2225,6 +3347,8 @@ class _HeroLiveSpectrumShowcase extends StatefulWidget {
   final bool compact;
   final VoidCallback onStartQuiz;
   final void Function(String key) onOpenSubject;
+  final EvaluationRecord? latestRecord;
+  final ValueChanged<String>? onCompareWithRecord;
 
   @override
   State<_HeroLiveSpectrumShowcase> createState() =>
@@ -2236,6 +3360,8 @@ class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
     ('personality:hannah_arendt', 'Arendt'),
     ('personality:karl_marx', 'Marx'),
     ('personality:murray_rothbard', 'Rothbard'),
+    ('personality:john_maynard_keynes', 'Keynes'),
+    ('personality:friedrich_hayek', 'Hayek'),
   ];
 
   static const List<(String id, String label)> _radarAxes = [
@@ -2370,6 +3496,65 @@ class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
       ),
     );
 
+    final double? realAffinityPct;
+    if (widget.latestRecord != null && subject.entry != null) {
+      final List<AtlasMatchResult> ranked = EspectroAtlasEngine.rankEntries(
+        entries: <AtlasEntry>[subject.entry!],
+        axes: widget.latestRecord!.axes,
+        triads: widget.latestRecord!.triads,
+      );
+      realAffinityPct = ranked.firstOrNull?.compatibilityPercent;
+    } else {
+      realAffinityPct = null;
+    }
+
+    final Widget curiosityTrigger = InkWell(
+      onTap: realAffinityPct != null && widget.onCompareWithRecord != null
+          ? () => widget.onCompareWithRecord!(subject.key)
+          : widget.onStartQuiz,
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 8),
+        decoration: BoxDecoration(
+          color: realAffinityPct != null
+              ? p.accentSoft
+              : p.surfaceMuted.withValues(alpha: p.isDark ? 0.75 : 0.85),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: realAffinityPct != null
+                ? p.accent.withValues(alpha: 0.45)
+                : p.line,
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              realAffinityPct != null
+                  ? Icons.compare_arrows_rounded
+                  : Icons.lock_outline_rounded,
+              size: 14,
+              color: realAffinityPct != null ? p.accent : p.poleRight,
+            ),
+            const SizedBox(width: 7),
+            Flexible(
+              child: Text(
+                realAffinityPct != null
+                    ? 'Sua afinidade real: ${realAffinityPct.round()}% · Comparar Raio-X →'
+                    : 'Sua afinidade com ${_presets[safeIndex].$2}: ??% · Revelar em 3 min →',
+                style: TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: realAffinityPct != null ? p.accent : p.ink,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
     final Widget subjectDetails = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -2412,6 +3597,8 @@ class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
           ],
         ],
         const SizedBox(height: 12),
+        curiosityTrigger,
+        const SizedBox(height: 10),
         Wrap(
           spacing: 12,
           runSpacing: 6,
@@ -2420,7 +3607,7 @@ class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
               onTap: () => widget.onOpenSubject(subject.key),
               borderRadius: BorderRadius.circular(6),
               child: Text(
-                'Ver ficha',
+                'Ver ficha completa',
                 style: TextStyle(
                   fontFamily: 'IBMPlexMono',
                   fontSize: 11,
@@ -2496,7 +3683,7 @@ class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
                   border: Border.all(color: accent.withValues(alpha: 0.55)),
                 ),
                 child: Text(
-                  spectrum?.name.toUpperCase() ?? 'ESPECTRO',
+                  spectrum?.name.toUpperCase() ?? 'PERFIL',
                   style: TextStyle(
                     fontFamily: 'IBMPlexMono',
                     fontSize: 9,

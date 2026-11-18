@@ -7,9 +7,11 @@ import 'package:politico/data/local_storage_service.dart';
 import 'package:politico/domain/models/political_models.dart';
 import 'package:politico/theme.dart';
 import 'package:politico/ui/charts/interactive_triad_chart.dart';
+import 'package:politico/ui/features/quiz/espectro_quiz_screen.dart';
 import 'package:politico/ui/features/results/espectro_result_screen.dart';
 import 'package:politico/ui/view_models/app_view_model.dart';
 import 'package:politico/ui/view_models/quiz_view_model.dart';
+import 'package:politico/widgets/common.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -282,4 +284,102 @@ void main() {
       expect(find.byType(InteractiveTriadChart), findsWidgets);
     },
   );
+
+  for (final double width in const <double>[390.0, 1440.0]) {
+    testWidgets(
+      'Home executa Dilema Relâmpago e Desafio de Intuição Política sem erros em $width',
+      (WidgetTester tester) async {
+        tester.view.physicalSize = Size(width, width < 1100 ? 844 : 1000);
+        tester.view.devicePixelRatio = 1.0;
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+
+        await tester.pumpWidget(EspectroApp(appViewModel: appVm));
+        await tester.pumpAndSettle();
+
+        expect(find.text('DILEMA RELÂMPAGO · 1/24'), findsOneWidget);
+        await tester.ensureVisible(find.text('Outro dilema'));
+        await tester.tap(find.text('Outro dilema'));
+        await tester.pumpAndSettle();
+        expect(find.text('ECONOMIA · PÚBLICO VS. PRIVADO'), findsOneWidget);
+
+        await tester.ensureVisible(find.text('Discordo'));
+        await tester.tap(find.text('Discordo'));
+        await tester.pumpAndSettle();
+        expect(
+          find.text('4% concluído (1/24) · Seu Arquétipo começou a emergir'),
+          findsOneWidget,
+        );
+
+        final Finder homeScrollable = find
+            .descendant(
+              of: find.byType(ListView),
+              matching: find.byType(Scrollable),
+            )
+            .first;
+
+        await tester.scrollUntilVisible(
+          find.text('Quem pensa assim?'),
+          220,
+          scrollable: homeScrollable,
+        );
+        await tester.pumpAndSettle();
+
+        final Finder riddleCard = find
+            .ancestor(
+              of: find.text('Quem pensa assim?'),
+              matching: find.byType(SectionCard),
+            )
+            .first;
+        final Finder arendtOption = find.descendant(
+          of: riddleCard,
+          matching: find.text('Hannah Arendt'),
+        );
+        await Scrollable.ensureVisible(
+          tester.element(arendtOption),
+          alignment: 0.5,
+        );
+        await tester.pumpAndSettle();
+        await tester.tap(arendtOption);
+        await tester.pumpAndSettle();
+
+        expect(find.text('Sequência: 1'), findsOneWidget);
+        expect(find.text('Acertos: 1/1'), findsOneWidget);
+        expect(find.text('Leitura certeira! É Hannah Arendt.'), findsOneWidget);
+
+        final Finder nextEnigma = find.text('Próximo enigma →');
+        await Scrollable.ensureVisible(
+          tester.element(nextEnigma),
+          alignment: 0.5,
+        );
+        await tester.pumpAndSettle();
+        await tester.tap(nextEnigma);
+        await tester.pumpAndSettle();
+        expect(find.text('Enigma 2 de 5'), findsOneWidget);
+
+        // Retoma ao topo e confirma que o CTA do Dilema inicia o Expresso em 2/24.
+        await tester.scrollUntilVisible(
+          find.text('Continuar da pergunta 2/24 →'),
+          -250,
+          scrollable: homeScrollable,
+        );
+        await Scrollable.ensureVisible(
+          tester.element(find.text('Continuar da pergunta 2/24 →')),
+          alignment: 0.5,
+        );
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Continuar da pergunta 2/24 →'));
+        await tester.pumpAndSettle();
+
+        expect(find.byType(EspectroQuizScreen), findsOneWidget);
+        final EspectroQuizScreen quizWidget = tester.widget<EspectroQuizScreen>(
+          find.byType(EspectroQuizScreen),
+        );
+        expect(quizWidget.quizViewModel.depth, TestDepth.express);
+        expect(quizWidget.quizViewModel.answeredCount, 1);
+        expect(quizWidget.quizViewModel.currentIndex, 1);
+        expect(tester.takeException(), isNull);
+      },
+    );
+  }
 }
