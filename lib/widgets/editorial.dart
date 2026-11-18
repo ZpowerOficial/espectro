@@ -74,23 +74,7 @@ class EditorialHero extends StatelessWidget {
     Widget buildMainColumn(BuildContext context) => Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 7,
-              height: 7,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Color(0xFFE5A64B),
-              ),
-            ),
-            const SizedBox(width: 8),
-            Flexible(
-              child: Eyebrow(eyebrow, color: const Color(0xFFEBC07A)),
-            ),
-          ],
-        ),
+        Eyebrow(eyebrow, color: const Color(0xFFEBC07A)),
         const SizedBox(height: 16),
         Text(
           title,
@@ -166,76 +150,37 @@ class EditorialHero extends StatelessWidget {
           tint: const Color(0xFF4E3FA5),
         ),
       ),
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-            top: -120,
-            right: -85,
-            child: Container(
-              width: 300,
-              height: 300,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: <Color>[
-                    const Color(0xFF7B6CE0).withValues(alpha: 0.18),
-                    const Color(0xFF4E3FA5).withValues(alpha: 0.08),
-                    Colors.transparent,
-                  ],
-                ),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final bool splitHero =
+              showcase != null && constraints.maxWidth >= 740;
+          if (splitHero) {
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(28, 28, 26, 26),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(flex: 6, child: buildMainColumn(context)),
+                  const SizedBox(width: 24),
+                  Expanded(flex: 5, child: showcase!),
+                ],
               ),
+            );
+          }
+          return Padding(
+            padding: const EdgeInsets.fromLTRB(22, 24, 22, 22),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildMainColumn(context),
+                if (showcase != null) ...[
+                  const SizedBox(height: 20),
+                  showcase!,
+                ],
+              ],
             ),
-          ),
-          Positioned(
-            bottom: -95,
-            left: -60,
-            child: Container(
-              width: 220,
-              height: 220,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: <Color>[
-                    const Color(0xFFE5A64B).withValues(alpha: 0.14),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
-            ),
-          ),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final bool splitHero =
-                  showcase != null && constraints.maxWidth >= 740;
-              if (splitHero) {
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(28, 28, 26, 26),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(flex: 6, child: buildMainColumn(context)),
-                      const SizedBox(width: 24),
-                      Expanded(flex: 5, child: showcase!),
-                    ],
-                  ),
-                );
-              }
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(22, 24, 22, 22),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    buildMainColumn(context),
-                    if (showcase != null) ...[
-                      const SizedBox(height: 20),
-                      showcase!,
-                    ],
-                  ],
-                ),
-              );
-            },
-          ),
-        ],
+          );
+        },
       ),
     );
   }

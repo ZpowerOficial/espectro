@@ -19,6 +19,7 @@ from __future__ import annotations
 import html
 import json
 import os
+import re
 from pathlib import Path
 from urllib.parse import quote
 
@@ -63,12 +64,33 @@ KIND_LABELS = {
 }
 
 
+def _typographic_quotes(text: str) -> str:
+    """Converte aspas retas duplas e travessões em pontuação tipográfica limpa."""
+    s = text.replace(" — ", ": ").replace("—", ", ")
+    s = re.sub(r"(\d)\s*[–]\s*(\d)", r"\1-\2", s)
+    s = s.replace(" – ", ", ").replace("–", ", ")
+    out = []
+    open_q = True
+    for ch in s:
+        if ch == '"':
+            out.append("“" if open_q else "”")
+            open_q = not open_q
+        else:
+            out.append(ch)
+    return "".join(out)
+
+
 def esc(text: str | None) -> str:
-    return html.escape(str(text or ""), quote=True)
+    cleaned = _typographic_quotes(str(text or ""))
+    return html.escape(cleaned, quote=True)
+
+
+def clean_text(text: str | None) -> str:
+    return _typographic_quotes(str(text or ""))
 
 
 def excerpt(text: str | None, max_len: int = 145) -> str:
-    clean = " ".join(str(text or "").split())
+    clean = " ".join(clean_text(text).split())
     if len(clean) <= max_len:
         return clean
     cut = clean[:max_len].rsplit(" ", 1)[0].rstrip(" ,;:-")
@@ -134,7 +156,7 @@ def load_all_items(root: Path):
                     "slug": f"personality-{e['id']}",
                     "key": f"personality:{e['id']}",
                     "name": e["name"],
-                    "subtitle": f"{e.get('subtitle', '')} · {e.get('era', '')} ({e.get('origin', '')})".strip(" ·()"),
+                    "subtitle": f"{e.get('subtitle', '')}, {e.get('era', '')} ({e.get('origin', '')})".strip(" ,()"),
                     "summary": e.get("summary") or "",
                     "spectrumId": e.get("spectrumId") or "center",
                     "ideas": e.get("highlights") or [],
@@ -159,7 +181,7 @@ def load_all_items(root: Path):
                     "slug": f"{kind}-{e['id']}",
                     "key": f"{kind}:{e['id']}",
                     "name": e["name"],
-                    "subtitle": f"{e.get('subtitle', '')} · {e.get('era', '')}".strip(" ·"),
+                    "subtitle": f"{e.get('subtitle', '')}, {e.get('era', '')}".strip(" ,"),
                     "summary": e.get("summary") or "",
                     "spectrumId": e.get("spectrumId") or "center",
                     "ideas": e.get("highlights") or [],
@@ -171,29 +193,50 @@ def load_all_items(root: Path):
     return items, axes_meta, triads_meta
 
 
-CSS_STYLE = """
+CSS_STYLE = """/* Hallmark · genre: editorial · shape: long document · posture: dark · nav: inline · footer: rule */
 :root {
   --bg: #0B0E14;
   --surface: #141924;
   --surface-muted: #1B2230;
+  --topbar-bg: rgba(11, 14, 20, 0.94);
   --line: #303949;
+  --line-soft: rgba(48, 57, 73, 0.55);
+  --ad-bg: rgba(20, 25, 36, 0.78);
   --ink: #F0F3F7;
   --muted: #AAB5C5;
   --accent: #A48BFA;
   --amber: #E9BF75;
+  --amber-ink: #140D03;
   --teal: #71C7C5;
+  --font-body: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Segoe UI", Roboto, sans-serif;
 }
 * { box-sizing: border-box; }
-body {
+html, body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Segoe UI", Roboto, sans-serif;
+  overflow-x: clip;
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--ink);
   line-height: 1.65;
 }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+a:active,
+button:active {
+  opacity: 0.85;
+}
+h1, h2, h3 {
+  overflow-wrap: break-word;
+  min-width: 0;
+  text-wrap: balance;
+  color: var(--ink);
+}
 header.topbar {
   border-bottom: 1px solid var(--line);
-  background: rgba(11, 14, 20, 0.94);
+  background: var(--topbar-bg);
   padding: 0.9rem 1.25rem;
   position: sticky;
   top: 0;
@@ -212,10 +255,21 @@ header.topbar {
   color: var(--ink);
   text-decoration: none;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.01em;
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+.brand-tag {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.nav-actions,
+.btn-row {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
 }
 .cta-btn {
   display: inline-flex;
@@ -223,13 +277,14 @@ header.topbar {
   justify-content: center;
   gap: 0.4rem;
   background: var(--amber);
-  color: #140D03;
+  color: var(--amber-ink);
   font-weight: 700;
   text-decoration: none;
   padding: 0.62rem 1.15rem;
   border-radius: 10px;
   font-size: 0.92rem;
   line-height: 1.35;
+  white-space: nowrap;
   text-align: center;
   max-width: 100%;
 }
@@ -243,38 +298,81 @@ main.container {
   margin: 0 auto;
   padding: 2rem 1.25rem 4rem;
 }
-.eyebrow {
-  color: var(--amber);
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+}
+.breadcrumb a {
+  color: var(--accent);
+  text-decoration: none;
 }
 h1 {
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  margin: 0.35rem 0 0.5rem;
-  line-height: 1.2;
+  margin: 0 0 0.45rem;
+  line-height: 1.18;
+}
+.kicker {
+  color: var(--amber);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
 }
 .subtitle {
   color: var(--muted);
   font-size: 1.05rem;
+  max-width: 65ch;
   margin-bottom: 1.25rem;
 }
 .card {
   background: var(--surface);
+  color: var(--ink);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 1.4rem;
   margin-bottom: 1.25rem;
 }
+.card h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+.card-summary {
+  margin-bottom: 1.2rem;
+  max-width: 65ch;
+  color: var(--ink);
+}
+.muted-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 0;
+  max-width: 65ch;
+}
+.source-link {
+  color: var(--accent);
+  text-decoration: none;
+}
 .axis-row {
   padding: 0.65rem 0;
-  border-bottom: 1px solid rgba(48, 57, 73, 0.55);
+  border-bottom: 1px solid var(--line-soft);
 }
 .axis-row:last-child { border-bottom: none; }
+.axis-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.axis-val {
+  color: var(--accent);
+}
 .axis-poles {
   display: flex;
   justify-content: space-between;
+  gap: 0.5rem;
   font-size: 0.85rem;
   color: var(--muted);
 }
@@ -290,6 +388,17 @@ h1 {
   height: 100%;
   background: var(--accent);
   border-radius: 999px;
+}
+.triad-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.triad-parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 .grid {
   display: grid;
@@ -310,11 +419,12 @@ h1 {
   display: block;
   color: var(--muted);
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
 }
 .ad-box {
   display: none;
-  background: rgba(20, 25, 36, 0.78);
+  background: var(--ad-bg);
+  color: var(--ink);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 0.5rem;
@@ -325,11 +435,9 @@ h1 {
   display: block;
 }
 .ad-label {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
 }
 footer {
   border-top: 1px solid var(--line);
@@ -338,7 +446,19 @@ footer {
   color: var(--muted);
   font-size: 0.88rem;
 }
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
 footer a { color: var(--teal); text-decoration: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 """
 
 ADSENSE_HEAD_LOADER = f"""  <meta name="google-adsense-account" content="{ADSENSE_CLIENT}">
@@ -389,9 +509,9 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
     app_deep_link = f"/#/atlas?v=1&subject={quote(item['key'])}"
     teia_deep_link = f"/#/atlas?v=1&view=map&select={quote(item['key'])}"
 
-    title = f"{item['name']} no Espectro Político — 12 Eixos, {kind_singular} & Análise | Espectro"
-    desc = f"{item['name']} ({item['subtitle']}) no Espectro: {excerpt(item['summary'], 145)} Veja as posições exatas nos 12 eixos políticos, 6 tríades de valores e fontes primárias."
-    keywords = f"{item['name']}, {item['name']} espectro, {item['name']} espectro político, {item['name']} posicionamento político, {kind_singular}, {spec_name}, 12 eixos, Espectro observatório político"
+    title = f"{clean_text(item['name'])} no Espectro Político: 12 Eixos e {kind_singular} | Espectro"
+    desc = f"{clean_text(item['name'])} ({clean_text(item['subtitle'])}) no Espectro: {excerpt(item['summary'], 145)} Veja as posições exatas nos 12 eixos políticos, 6 tríades de valores e fontes primárias."
+    keywords = f"{clean_text(item['name'])}, {clean_text(item['name'])} espectro, {clean_text(item['name'])} espectro político, {clean_text(item['name'])} posicionamento político, {kind_singular}, {spec_name}, 12 eixos, Espectro observatório político"
 
     schema_entity_type = {
         "personality": "Person",
@@ -416,14 +536,14 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
             top_poles.append(f"{meta['label']}: {dominant}")
         axes_html.append(f"""
         <div class="axis-row">
-          <div style="display:flex;justify-content:space-between;font-weight:600;font-size:0.95rem">
+          <div class="axis-head">
             <span>{esc(meta['label'])}</span>
-            <span style="color:var(--accent)">{esc(dominant)}</span>
+            <span class="axis-val">{esc(dominant)}</span>
           </div>
           <div class="axis-bar"><div class="axis-fill" style="width:{pct_right}%"></div></div>
           <div class="axis-poles">
-            <span>← {esc(meta['leftPole'])} ({pct_left}%)</span>
-            <span>{esc(meta['rightPole'])} ({pct_right}%) →</span>
+            <span>{esc(meta['leftPole'])} ({pct_left}%)</span>
+            <span>{esc(meta['rightPole'])} ({pct_right}%)</span>
           </div>
         </div>
         """)
@@ -435,22 +555,22 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
         if not comp or len(comp) != 3:
             continue
         subs = tmeta["subcategories"]
-        parts = [f"{esc(subs[i])}: <strong>{int(round(comp[i] * 100))}%</strong>" for i in range(3)]
+        parts = [f"<span>{esc(subs[i])}: <strong>{int(round(comp[i] * 100))}%</strong></span>" for i in range(3)]
         triads_html.append(f"""
         <div class="axis-row">
-          <div style="font-weight:600;margin-bottom:0.25rem">{esc(tmeta['label'])}</div>
-          <div style="color:var(--muted);font-size:0.9rem">{' · '.join(parts)}</div>
+          <div class="triad-title">{esc(tmeta['label'])}</div>
+          <div class="triad-parts">{''.join(parts)}</div>
         </div>
         """)
 
     ideas_html = "".join(f"<li>{esc(idea)}</li>" for idea in item["ideas"])
     sources_html = "".join(
-        f'<li><a href="{esc(u)}" rel="noopener noreferrer" target="_blank" style="color:var(--accent)">{esc(t)}</a></li>'
+        f'<li><a class="source-link" href="{html.escape(u, quote=True)}" rel="noopener noreferrer" target="_blank">{esc(t)}</a></li>'
         for u, t in item["sources"][:8]
     )
     related_html = "".join(
-        f'<a class="link-chip" href="/p/{r["slug"]}.html">{esc(r["name"])}<small>{esc(KIND_LABELS[r["kind"]][0])} · {esc(SPECTRA_META.get(r["spectrumId"], ("",))[0])}</small></a>'
-        for r in related[:12]
+        f'<a class="link-chip" href="/p/{r["slug"]}.html">{esc(r["name"])}<small>{esc(KIND_LABELS[r["kind"]][0])}: {esc(SPECTRA_META.get(r["spectrumId"], ("",))[0])}</small></a>'
+        for r in related[:6]
     )
 
     faq_a1 = f"No modelo multidimensional do Espectro, {item['name']} situa-se no espectro {spec_name}. {item['summary']}"
@@ -465,19 +585,19 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
         "@graph": [
             {
                 "@type": "Article",
-                "headline": f"{item['name']} no Espectro Político — 12 Eixos e 6 Tríades",
-                "name": item["name"],
-                "description": item["summary"],
+                "headline": f"{clean_text(item['name'])} no Espectro Político: 12 Eixos e 6 Tríades",
+                "name": clean_text(item["name"]),
+                "description": clean_text(item["summary"]),
                 "inLanguage": "pt-BR",
                 "mainEntityOfPage": url,
                 "about": {
                     "@type": schema_entity_type,
-                    "name": item["name"],
-                    "description": item["subtitle"],
+                    "name": clean_text(item["name"]),
+                    "description": clean_text(item["subtitle"]),
                 },
                 "dateModified": TODAY,
-                "author": {"@type": "Organization", "name": "Espectro — Observatório Político", "url": BASE_URL},
-                "publisher": {"@type": "Organization", "name": "Espectro — Observatório Político", "url": BASE_URL},
+                "author": {"@type": "Organization", "name": "Espectro: Observatório Político", "url": BASE_URL},
+                "publisher": {"@type": "Organization", "name": "Espectro: Observatório Político", "url": BASE_URL},
             },
             {
                 "@type": "BreadcrumbList",
@@ -485,7 +605,7 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
                     {"@type": "ListItem", "position": 1, "name": "Espectro", "item": f"{BASE_URL}/"},
                     {"@type": "ListItem", "position": 2, "name": "Catálogo", "item": f"{BASE_URL}/catalogo.html"},
                     {"@type": "ListItem", "position": 3, "name": spec_name, "item": f"{BASE_URL}/p/spectrum-{item['spectrumId']}.html"},
-                    {"@type": "ListItem", "position": 4, "name": item["name"], "item": url},
+                    {"@type": "ListItem", "position": 4, "name": clean_text(item["name"]), "item": url},
                 ],
             },
             {
@@ -493,13 +613,13 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
                 "mainEntity": [
                     {
                         "@type": "Question",
-                        "name": f"Qual é a posição política e ideológica de {item['name']}?",
-                        "acceptedAnswer": {"@type": "Answer", "text": faq_a1},
+                        "name": f"Qual é a posição política e ideológica de {clean_text(item['name'])}?",
+                        "acceptedAnswer": {"@type": "Answer", "text": clean_text(faq_a1)},
                     },
                     {
                         "@type": "Question",
-                        "name": f"Quais são as coordenadas de {item['name']} nos 12 eixos políticos?",
-                        "acceptedAnswer": {"@type": "Answer", "text": faq_a2},
+                        "name": f"Quais são as coordenadas de {clean_text(item['name'])} nos 12 eixos políticos?",
+                        "acceptedAnswer": {"@type": "Answer", "text": clean_text(faq_a2)},
                     },
                 ],
             },
@@ -515,12 +635,12 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
   <meta name="description" content="{esc(desc)}">
   <meta name="keywords" content="{esc(keywords)}">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-  <link rel="canonical" href="{esc(url)}">
+  <link rel="canonical" href="{html.escape(url, quote=True)}">
 {GA4_SNIPPET}
   <meta property="og:type" content="article">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:site_name" content="Espectro — Observatório Político">
-  <meta property="og:url" content="{esc(url)}">
+  <meta property="og:site_name" content="Espectro: Observatório Político">
+  <meta property="og:url" content="{html.escape(url, quote=True)}">
   <meta property="og:title" content="{esc(title)}">
   <meta property="og:description" content="{esc(desc)}">
   <meta property="og:image" content="{BASE_URL}/icons/Icon-512.png">
@@ -534,61 +654,69 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="/">ESPECTRO · ATLAS POLÍTICO</a>
-      <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+      <a class="brand" href="/"><span>Espectro</span><span class="brand-tag">Atlas Político</span></a>
+      <div class="nav-actions">
         <a class="cta-btn secondary" href="/catalogo.html">Índice Completo</a>
-        <a class="cta-btn" href="{esc(app_deep_link)}">Abrir Perfil Interativo →</a>
+        <a class="cta-btn" href="{html.escape(app_deep_link, quote=True)}">Abrir Perfil Interativo</a>
       </div>
     </div>
   </header>
   <main class="container">
-    <nav aria-label="Breadcrumb" style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem">
-      <a href="/" style="color:var(--accent)">Espectro</a> ›
-      <a href="/catalogo.html" style="color:var(--accent)">{esc(kind_plural)}</a> ›
-      <a href="/p/spectrum-{esc(item['spectrumId'])}.html" style="color:var(--accent)">{esc(spec_name)}</a> ›
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Espectro</a>
+      <span aria-hidden="true">/</span>
+      <a href="/catalogo.html">{esc(kind_plural)}</a>
+      <span aria-hidden="true">/</span>
+      <a href="/p/spectrum-{esc(item['spectrumId'])}.html">{esc(spec_name)}</a>
+      <span aria-hidden="true">/</span>
       <span>{esc(item['name'])}</span>
     </nav>
 
-    <div class="eyebrow">{esc(kind_singular)} · Espectro {esc(spec_name)}</div>
     <h1>{esc(item['name'])}</h1>
+    <p class="kicker">{esc(kind_singular)}, Espectro {esc(spec_name)}</p>
     <div class="subtitle">{esc(item['subtitle'])}</div>
 
     <div class="card">
-      <h2 style="margin-top:0;font-size:1.2rem">Síntese Política e Ideológica</h2>
-      <p style="margin-bottom:1.2rem">{esc(item['summary'])}</p>
-      <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
-        <a class="cta-btn" href="/#/quiz">Descubra sua afinidade com {esc(item['name'])} no Teste do Espectro →</a>
-        <a class="cta-btn secondary" href="{esc(app_deep_link)}">Comparar {esc(item['name'])} no App Interativo</a>
-        <a class="cta-btn secondary" href="{esc(teia_deep_link)}">Ver na Teia de Ideias 2D</a>
+      <h2>Síntese Política e Ideológica</h2>
+      <p class="card-summary">{esc(item['summary'])}</p>
+      <div class="btn-row">
+        <a class="cta-btn" href="/#/quiz">Calcular afinidade no Teste</a>
+        <a class="cta-btn secondary" href="{html.escape(app_deep_link, quote=True)}">Comparar no App</a>
+        <a class="cta-btn secondary" href="{html.escape(teia_deep_link, quote=True)}">Ver na Teia 2D</a>
       </div>
     </div>
 
     {render_ad_slot(ADSENSE_SLOT_TOP)}
 
-    {"<div class='card'><h2 style='margin-top:0;font-size:1.2rem'>Princípios, Teses e Destaques</h2><ul>" + ideas_html + "</ul></div>" if ideas_html else ""}
+    {"<div class='card'><h2>Princípios, Teses e Destaques</h2><ul>" + ideas_html + "</ul></div>" if ideas_html else ""}
 
     <div class="card">
-      <h2 style="margin-top:0;font-size:1.2rem">Posição nos 12 Eixos Políticos Bipolares</h2>
-      <p style="color:var(--muted);font-size:0.9rem;margin-top:0">Coordenadas comparativas nas 12 dimensões estruturais do Espectro (−100% a +100%).</p>
+      <h2>Posição nos 12 Eixos Políticos Bipolares</h2>
+      <p class="muted-note">Coordenadas comparativas nas 12 dimensões estruturais do Espectro (−100% a +100%).</p>
       {''.join(axes_html)}
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0;font-size:1.2rem">Composição nas 6 Tríades de Valores</h2>
+      <h2>Composição nas 6 Tríades de Valores</h2>
       {''.join(triads_html)}
     </div>
 
-    {"<div class='card'><h2 style='margin-top:0;font-size:1.2rem'>Fontes Primárias e Referências Documentais</h2><ul>" + sources_html + "</ul></div>" if sources_html else ""}
+    {"<div class='card'><h2>Fontes Primárias e Referências Documentais</h2><ul>" + sources_html + "</ul></div>" if sources_html else ""}
 
     {render_ad_slot(ADSENSE_SLOT_BOTTOM)}
 
     <div class="card">
-      <h2 style="margin-top:0;font-size:1.2rem">Verbetes Relacionados no Espectro {esc(spec_name)}</h2>
+      <h2>Verbetes Relacionados em {esc(spec_name)}</h2>
       <div class="grid">{related_html}</div>
     </div>
   </main>
   <footer>
-    <p><a href="/">Espectro — Observatório Político</a> · <a href="/catalogo.html">Catálogo Completo</a> · <a href="/llms.txt">llms.txt (AI Index)</a> · <a href="/privacidade.html">Privacidade &amp; LGPD</a></p>
+    <nav class="footer-links" aria-label="Rodapé">
+      <a href="/">Espectro: Observatório Político</a>
+      <a href="/catalogo.html">Catálogo Completo</a>
+      <a href="/llms.txt">llms.txt (AI Index)</a>
+      <a href="/privacidade.html">Privacidade e LGPD</a>
+    </nav>
   </footer>
 </body>
 </html>
@@ -597,9 +725,9 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
 
 def render_spectrum_page(spec_id: str, spec_name: str, spec_desc: str, spec_items: list[dict]) -> str:
     url = f"{BASE_URL}/p/spectrum-{spec_id}.html"
-    title = f"Espectro {spec_name} — Correntes Ideológicas, Pensadores, Livros e Partidos | Espectro"
+    title = f"Espectro {spec_name}: Correntes Ideológicas, Pensadores, Livros e Partidos | Espectro"
     links_html = "".join(
-        f'<a class="link-chip" href="/p/{it["slug"]}.html">{esc(it["name"])}<small>{esc(KIND_LABELS[it["kind"]][0])} · {esc(it["subtitle"][:60])}</small></a>'
+        f'<a class="link-chip" href="/p/{it["slug"]}.html">{esc(it["name"])}<small>{esc(KIND_LABELS[it["kind"]][0])}: {esc(it["subtitle"][:60])}</small></a>'
         for it in spec_items
     )
     return f"""<!DOCTYPE html>
@@ -609,7 +737,7 @@ def render_spectrum_page(spec_id: str, spec_name: str, spec_desc: str, spec_item
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(spec_desc)} Explore {len(spec_items)} correntes, pensadores, obras e partidos associados a {esc(spec_name)} no Espectro.">
-  <link rel="canonical" href="{esc(url)}">
+  <link rel="canonical" href="{html.escape(url, quote=True)}">
 {GA4_SNIPPET}
 {ADSENSE_HEAD_LOADER}
   <style>{CSS_STYLE}</style>
@@ -617,20 +745,24 @@ def render_spectrum_page(spec_id: str, spec_name: str, spec_desc: str, spec_item
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="/">ESPECTRO · ATLAS POLÍTICO</a>
-      <a class="cta-btn" href="/#/atlas?v=1&spectrum={quote(spec_name)}">Filtrar {esc(spec_name)} no App →</a>
+      <a class="brand" href="/"><span>Espectro</span><span class="brand-tag">Atlas Político</span></a>
+      <a class="cta-btn" href="/#/atlas?v=1&spectrum={quote(spec_name)}">Filtrar no App</a>
     </div>
   </header>
   <main class="container">
-    <div class="eyebrow">Família de Espectro Político</div>
     <h1>{esc(spec_name)} ({len(spec_items)} verbetes)</h1>
+    <p class="kicker">Família de Espectro Político</p>
     <p class="subtitle">{esc(spec_desc)}</p>
     {render_ad_slot(ADSENSE_SLOT_TOP)}
     <div class="grid">{links_html}</div>
     {render_ad_slot(ADSENSE_SLOT_BOTTOM)}
   </main>
   <footer>
-    <p><a href="/">Espectro</a> · <a href="/catalogo.html">Catálogo Completo</a> · <a href="/privacidade.html">Privacidade</a></p>
+    <nav class="footer-links" aria-label="Rodapé">
+      <a href="/">Espectro</a>
+      <a href="/catalogo.html">Catálogo Completo</a>
+      <a href="/privacidade.html">Privacidade</a>
+    </nav>
   </footer>
 </body>
 </html>
@@ -671,9 +803,8 @@ def main():
     sections_html = []
     curated_trails_html = """
     <div class="card">
-      <div class="eyebrow">Portas de Descoberta</div>
-      <h2 style="margin-top:0.25rem">Percursos Curados de Descoberta (7 min)</h2>
-      <p style="color:var(--muted);margin-top:0">Compare tradições, rupturas e convergências improváveis lado a lado antes de mergulhar nos 1.502 verbetes.</p>
+      <h2>Percursos Curados de Descoberta (7 min)</h2>
+      <p class="muted-note">Compare tradições, rupturas e convergências improváveis lado a lado antes de mergulhar nos 1.502 verbetes.</p>
       <div class="grid">
         <a class="link-chip" href="/#/compare?v=1&items=personality:friedrich_hayek,personality:john_maynard_keynes,personality:celso_furtado">Escolas de economia em conflito<small>Hayek × Keynes × Celso Furtado no Raio-X</small></a>
         <a class="link-chip" href="/#/compare?v=1&items=personality:hannah_arendt,personality:john_locke,personality:murray_rothbard">O que significa Liberdade?<small>Arendt × John Locke × Murray Rothbard</small></a>
@@ -702,7 +833,7 @@ def main():
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo Completo de Ideologias, Pensadores, Livros e Países — Espectro</title>
+  <title>Catálogo Completo de Ideologias, Pensadores, Livros e Países | Espectro</title>
   <meta name="description" content="Índice completo do Espectro com {len(items)} perfis políticos: 289 correntes ideológicas, pensadores, economistas, estadistas, livros clássicos, países, partidos e eras históricas nos 12 eixos.">
   <link rel="canonical" href="{BASE_URL}/catalogo.html">
 {GA4_SNIPPET}
@@ -712,20 +843,24 @@ def main():
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="/">ESPECTRO · OBSERVATÓRIO POLÍTICO</a>
-      <a class="cta-btn" href="/#/atlas">Abrir Atlas Interativo →</a>
+      <a class="brand" href="/"><span>Espectro</span><span class="brand-tag">Observatório Político</span></a>
+      <a class="cta-btn" href="/#/atlas">Abrir Atlas Interativo</a>
     </div>
   </header>
   <main class="container">
-    <div class="eyebrow">Índice Enciclopédico Completo</div>
     <h1>Catálogo Político Multidimensional ({len(items)} verbetes)</h1>
+    <p class="kicker">Índice Enciclopédico Completo</p>
     <p class="subtitle">Todas as fichas abaixo possuem análise completa em 12 eixos bipolares e 6 tríades de valores.</p>
     {render_ad_slot(ADSENSE_SLOT_TOP)}
     {''.join(sections_html)}
     {render_ad_slot(ADSENSE_SLOT_BOTTOM)}
   </main>
   <footer>
-    <p><a href="/">Espectro</a> · <a href="/llms.txt">llms.txt</a> · <a href="/privacidade.html">Privacidade</a></p>
+    <nav class="footer-links" aria-label="Rodapé">
+      <a href="/">Espectro</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/privacidade.html">Privacidade</a>
+    </nav>
   </footer>
 </body>
 </html>

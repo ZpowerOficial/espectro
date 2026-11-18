@@ -900,31 +900,15 @@ class _ObservatoryCoverHero extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 7,
-              height: 7,
-              decoration: const BoxDecoration(
-                color: Color(0xFFE5A64B),
-                shape: BoxShape.circle,
-              ),
-            ),
-            const SizedBox(width: 8),
-            const Flexible(
-              child: Text(
-                'OBSERVATÓRIO POLÍTICO · 18 DIMENSÕES',
-                style: TextStyle(
-                  fontFamily: 'IBMPlexMono',
-                  fontSize: 10.5,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 1.2,
-                  color: Color(0xFFEBC07A),
-                ),
-              ),
-            ),
-          ],
+        const Text(
+          'OBSERVATÓRIO POLÍTICO · 18 DIMENSÕES',
+          style: TextStyle(
+            fontFamily: 'IBMPlexMono',
+            fontSize: 10.5,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 1.2,
+            color: Color(0xFFEBC07A),
+          ),
         ),
         SizedBox(height: split ? 14 : 10),
         Text(
@@ -1036,69 +1020,53 @@ class _ObservatoryCoverHero extends StatelessWidget {
           tint: const Color(0xFF4E3FA5),
         ),
       ),
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-            top: -120,
-            right: -75,
-            child: Container(
-              width: 300,
-              height: 300,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: <Color>[
-                    const Color(0xFF7B6CE0).withValues(alpha: 0.18),
-                    const Color(0xFF4E3FA5).withValues(alpha: 0.06),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: -90,
-            left: -50,
-            child: Container(
-              width: 220,
-              height: 220,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: <Color>[
-                    const Color(0xFFE5A64B).withValues(alpha: 0.12),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SpectrumGradientRule(height: 3.5, radius: 0),
-              Padding(
-                padding: EdgeInsets.all(split ? 24 : 18),
-                child: split
-                    ? Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(flex: 6, child: pitchColumn),
-                          const SizedBox(width: 24),
-                          Expanded(flex: 5, child: interactiveDilemma),
-                        ],
-                      )
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          pitchColumn,
-                          const SizedBox(height: 18),
-                          interactiveDilemma,
-                        ],
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const SpectrumGradientRule(height: 3.5, radius: 0),
+          Padding(
+            padding: EdgeInsets.all(split ? 24 : 18),
+            child: split
+                ? Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(flex: 6, child: pitchColumn),
+                      const SizedBox(width: 24),
+                      Expanded(
+                        flex: 5,
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 24),
+                          decoration: BoxDecoration(
+                            border: Border(
+                              left: BorderSide(
+                                color: Colors.white.withValues(alpha: 0.14),
+                              ),
+                            ),
+                          ),
+                          child: interactiveDilemma,
+                        ),
                       ),
-              ),
-            ],
+                    ],
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      pitchColumn,
+                      const SizedBox(height: 18),
+                      Container(
+                        padding: const EdgeInsets.only(top: 18),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            top: BorderSide(
+                              color: Colors.white.withValues(alpha: 0.14),
+                            ),
+                          ),
+                        ),
+                        child: interactiveDilemma,
+                      ),
+                    ],
+                  ),
           ),
         ],
       ),
@@ -1260,11 +1228,10 @@ class _HeroInstantDilemmaGameState extends State<_HeroInstantDilemmaGame>
     }
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.045),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.14)),
+        color: Colors.white.withValues(alpha: 0.035),
+        borderRadius: BorderRadius.circular(14),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1387,12 +1354,14 @@ class _HeroInstantDilemmaGameState extends State<_HeroInstantDilemmaGame>
                 : Padding(
                     padding: const EdgeInsets.only(top: 14),
                     child: Container(
-                      padding: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF9E8FFF).withValues(alpha: 0.14),
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: const Color(0xFF9E8FFF).withValues(alpha: 0.38),
+                        color: const Color(0xFF9E8FFF).withValues(alpha: 0.11),
+                        border: const Border(
+                          left: BorderSide(
+                            color: Color(0xFF9E8FFF),
+                            width: 2.5,
+                          ),
                         ),
                       ),
                       child: Column(
@@ -1619,14 +1588,7 @@ class _IdeologicalRiddleGameCardState
     final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
     final Widget titleBlock = Row(
       children: [
-        Container(
-          padding: const EdgeInsets.all(7),
-          decoration: BoxDecoration(
-            color: p.accentSoft,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Icon(Icons.psychology_alt_rounded, size: 18, color: p.accent),
-        ),
+        Icon(Icons.psychology_alt_rounded, size: 22, color: p.accent),
         const SizedBox(width: 10),
         Expanded(
           child: Column(
@@ -1733,9 +1695,8 @@ class _IdeologicalRiddleGameCardState
           Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.65 : 0.72),
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: p.line.withValues(alpha: 0.7)),
+              color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.55 : 0.68),
+              borderRadius: BorderRadius.circular(12),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1864,15 +1825,15 @@ class _IdeologicalRiddleGameCardState
           if (answered) ...[
             const SizedBox(height: 14),
             Container(
-              padding: const EdgeInsets.all(14),
+              padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
               decoration: BoxDecoration(
                 color: (isCorrect ? p.success : p.accent).withValues(
-                  alpha: p.isDark ? 0.13 : 0.08,
+                  alpha: p.isDark ? 0.10 : 0.06,
                 ),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: (isCorrect ? p.success : p.accent).withValues(
-                    alpha: 0.35,
+                border: Border(
+                  left: BorderSide(
+                    color: isCorrect ? p.success : p.warning,
+                    width: 3,
                   ),
                 ),
               ),

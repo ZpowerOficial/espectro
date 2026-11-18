@@ -1690,24 +1690,25 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
       required Color kickerColor,
       required Color avatarBorder,
     }) {
-      return Material(
-        color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.65 : 0.78),
-        borderRadius: BorderRadius.circular(16),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(16),
-          onTap: () => EntityComparisonScreen.showAtlasEntry(
-            context,
-            record: _record,
-            entry: result.entry,
-            appViewModel: widget.appViewModel,
-          ),
-          child: Container(
-            padding: EdgeInsets.all(isDesktop ? 16 : 14),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: borderTint.withValues(alpha: 0.28)),
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Material(
+          color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.60 : 0.74),
+          child: InkWell(
+            onTap: () => EntityComparisonScreen.showAtlasEntry(
+              context,
+              record: _record,
+              entry: result.entry,
+              appViewModel: widget.appViewModel,
             ),
-            child: Row(
+            child: Container(
+              padding: EdgeInsets.all(isDesktop ? 16 : 14),
+              decoration: BoxDecoration(
+                border: Border(
+                  left: BorderSide(color: borderTint, width: 3),
+                ),
+              ),
+              child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 _buildAvatarImage(
@@ -1776,11 +1777,12 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(width: 6),
+                const SizedBox(height: 6),
                 Icon(Icons.chevron_right_rounded, size: 20, color: p.muted),
               ],
             ),
           ),
+        ),
         ),
       );
     }
@@ -1930,9 +1932,6 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                         alpha: p.isDark ? 0.65 : 0.72,
                       ),
                       borderRadius: BorderRadius.circular(11),
-                      border: Border.all(
-                        color: p.accent.withValues(alpha: 0.28),
-                      ),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -1963,70 +1962,70 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                 // Ato 2 (Cartografia Viva): Surpresa Fundamentada / Convergência Improvável
                 if (surprising != null) ...<Widget>[
                   const SizedBox(height: 12),
-                  Material(
-                    color: p.poleLeft.withValues(
-                      alpha: p.isDark ? 0.14 : 0.08,
-                    ),
-                    borderRadius: BorderRadius.circular(14),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(14),
-                      onTap: () => EntityComparisonScreen.showAtlasEntry(
-                        context,
-                        record: _record,
-                        entry: surprising.match.entry,
-                        appViewModel: widget.appViewModel,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Material(
+                      color: p.poleLeft.withValues(
+                        alpha: p.isDark ? 0.14 : 0.08,
                       ),
-                      child: Container(
-                        padding: const EdgeInsets.all(13),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(14),
-                          border: Border.all(
-                            color: p.poleLeft.withValues(alpha: 0.34),
-                          ),
+                      child: InkWell(
+                        onTap: () => EntityComparisonScreen.showAtlasEntry(
+                          context,
+                          record: _record,
+                          entry: surprising.match.entry,
+                          appViewModel: widget.appViewModel,
                         ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Icon(
-                              Icons.explore_outlined,
-                              size: 18,
-                              color: p.poleLeft,
+                        child: Container(
+                          padding: const EdgeInsets.all(13),
+                          decoration: BoxDecoration(
+                            border: Border(
+                              left: BorderSide(color: p.poleLeft, width: 3),
                             ),
-                            const SizedBox(width: 10),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    'SURPRESA FUNDAMENTADA · CONVERGÊNCIA IMPROVÁVEL',
-                                    style: TextStyle(
-                                      fontFamily: 'IBMPlexMono',
-                                      fontSize: 9.5,
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: 0.7,
-                                      color: p.poleLeft,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    'Embora você tenha apenas ${_formatScore(surprising.match.compatibilityPercent)}% de afinidade global com ${surprising.match.entry.name}, vocês convergem em ${surprising.agreedAxis.label} (${surprising.agreedAxis.dominantPole}) — mas divergem frontalmente em ${surprising.divergedAxis.label}.',
-                                    style: TextStyle(
-                                      fontFamily: 'IBMPlexSans',
-                                      fontSize: 12.5,
-                                      height: 1.4,
-                                      color: p.ink,
-                                    ),
-                                  ),
-                                ],
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Icon(
+                                Icons.explore_outlined,
+                                size: 18,
+                                color: p.poleLeft,
                               ),
-                            ),
-                            const SizedBox(width: 6),
-                            Icon(
-                              Icons.arrow_forward_rounded,
-                              size: 16,
-                              color: p.poleLeft,
-                            ),
-                          ],
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      'SURPRESA FUNDAMENTADA · CONVERGÊNCIA IMPROVÁVEL',
+                                      style: TextStyle(
+                                        fontFamily: 'IBMPlexMono',
+                                        fontSize: 9.5,
+                                        fontWeight: FontWeight.w700,
+                                        letterSpacing: 0.7,
+                                        color: p.poleLeft,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      'Embora você tenha apenas ${_formatScore(surprising.match.compatibilityPercent)}% de afinidade global com ${surprising.match.entry.name}, vocês convergem em ${surprising.agreedAxis.label} (${surprising.agreedAxis.dominantPole}) — mas divergem frontalmente em ${surprising.divergedAxis.label}.',
+                                      style: TextStyle(
+                                        fontFamily: 'IBMPlexSans',
+                                        fontSize: 12.5,
+                                        height: 1.4,
+                                        color: p.ink,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(width: 6),
+                              Icon(
+                                Icons.arrow_forward_rounded,
+                                size: 16,
+                                color: p.poleLeft,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

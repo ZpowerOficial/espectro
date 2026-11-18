@@ -8,26 +8,26 @@
   <meta name="theme-color" content="#0C1C27">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
 
-  <title>Espectro — Observatório Político, Teste de 12 Eixos &amp; Atlas de 289 Correntes</title>
+  <title>Espectro: Observatório Político, Teste de 12 Eixos &amp; Atlas de 289 Correntes</title>
   <meta name="description" content="Espectro (espectro-politico.web.app) é uma plataforma brasileira de cartografia e análise política multidimensional em 12 eixos bipolares e 6 tríades de valores, com 289 correntes ideológicas, 760+ pensadores, economistas e estadistas e 165 obras clássicas.">
   <meta name="keywords" content="teste político, espectro político, 12 eixos, 6 tríades, bússola política, filosofia política, 289 correntes ideológicas, Karl Marx no espectro, liberalismo, conservadorismo, social-democracia, libertarianismo, ciência política, atlas político">
-  <meta name="author" content="Espectro — Observatório Político">
+  <meta name="author" content="Espectro: Observatório Político">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <link rel="canonical" href="https://espectro-politico.web.app/">
 
   <!-- Open Graph / WhatsApp / LinkedIn / Discord -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:site_name" content="Espectro — Observatório Político">
+  <meta property="og:site_name" content="Espectro: Observatório Político">
   <meta property="og:url" content="https://espectro-politico.web.app/">
-  <meta property="og:title" content="Espectro — Observatório Político &amp; Teste de 12 Eixos (289 Correntes)">
+  <meta property="og:title" content="Espectro: Observatório Político &amp; Teste de 12 Eixos (289 Correntes)">
   <meta property="og:description" content="Avaliação política multidimensional em 12 eixos e 6 tríades, com atlas enciclopédico de 289 correntes ideológicas, 760+ pensadores, livros clássicos e teia interativa.">
   <meta property="og:image" content="https://espectro-politico.web.app/icons/Icon-512.png">
-  <meta property="og:image:alt" content="Logo do Espectro — Observatório Político">
+  <meta property="og:image:alt" content="Logo do Espectro: Observatório Político">
 
   <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Espectro — Observatório Político &amp; Atlas de 289 Correntes">
+  <meta name="twitter:title" content="Espectro: Observatório Político &amp; Atlas de 289 Correntes">
   <meta name="twitter:description" content="Mapeie suas ideias políticas em 18 dimensões e compare com pensadores como Karl Marx, John Locke, Keynes, Hayek, Celso Furtado e 289 correntes.">
   <meta name="twitter:image" content="https://espectro-politico.web.app/icons/Icon-512.png">
 
@@ -156,10 +156,14 @@
   }
   </script>
   <style>
+    /* Hallmark · genre: editorial · shape: long document · posture: dark · nav: inline · footer: rule */
     :root {
       --bg: #0B0E14;
       --surface: #141924;
       --surface-high: #1B2230;
+      --topbar-bg: rgba(11, 14, 20, 0.94);
+      --splash-shadow: rgba(0, 0, 0, 0.4);
+      --splash-track: rgba(255, 255, 255, 0.1);
       --line: #303949;
       --ink: #F0F3F7;
       --muted: #AAB5C5;
@@ -167,27 +171,89 @@
       --iris: #A48BFA;
       --teal: #71C7C5;
       --amber: #E9BF75;
+      --amber-ink: #140D03;
+      --font-body: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Segoe UI", Roboto, sans-serif;
     }
     * { box-sizing: border-box; }
-    body {
+    html, body {
       margin: 0;
+      overflow-x: clip;
       background: var(--bg);
       color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Segoe UI", Roboto, sans-serif;
+      font-family: var(--font-body);
+    }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--iris);
+      outline-offset: 2px;
+    }
+    a:active,
+    button:active {
+      opacity: 0.85;
+    }
+    h1, h2, h3 {
+      overflow-wrap: break-word;
+      min-width: 0;
+      text-wrap: balance;
+    }
+    /* Splash de carregamento controlado por tokens */
+    #loading-splash {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.35s ease;
+    }
+    .splash-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 32px var(--splash-shadow);
+    }
+    .splash-brand {
+      font-family: var(--font-body);
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .splash-status {
+      font-family: var(--font-body);
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+    .splash-track {
+      width: 140px;
+      height: 3px;
+      background: var(--splash-track);
+      border-radius: 2px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    .splash-bar {
+      width: 50%;
+      height: 100%;
+      background: var(--iris);
+      border-radius: 2px;
+      animation: espectro-splash-pulse 1.2s infinite ease-in-out;
     }
     /* Portal editorial Cartografia Viva acessível antes do canvas Flutter ou em navegadores sem WebGL */
     #seo-semantic-shell {
       min-height: 100vh;
-      background:
-        radial-gradient(circle at 82% 10%, rgba(164, 139, 250, 0.16), transparent 42%),
-        radial-gradient(circle at 14% 85%, rgba(113, 199, 197, 0.12), transparent 40%),
-        var(--bg);
+      background: var(--bg);
       color: var(--ink);
       line-height: 1.62;
     }
     #seo-semantic-shell .shell-topbar {
       border-bottom: 1px solid var(--line);
-      background: rgba(11, 14, 20, 0.92);
+      background: var(--topbar-bg);
       padding: 0.9rem 1.25rem;
     }
     #seo-semantic-shell .shell-topbar-inner,
@@ -207,24 +273,37 @@
       align-items: center;
       gap: 0.65rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.01em;
       color: var(--ink);
       text-decoration: none;
+    }
+    #seo-semantic-shell .brand-mark-icon {
+      border-radius: 7px;
+      flex-shrink: 0;
+    }
+    #seo-semantic-shell .brand-tag {
+      font-weight: 500;
+      font-size: 0.92rem;
+      color: var(--muted);
     }
     #seo-semantic-shell .shell-nav {
       display: flex;
       gap: 0.65rem;
       flex-wrap: wrap;
     }
+    #seo-semantic-shell .shell-nav-hero {
+      margin-bottom: 2rem;
+    }
     #seo-semantic-shell .shell-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.58rem 1.1rem;
+      padding: 0.62rem 1.1rem;
       border-radius: 10px;
       font-weight: 700;
       font-size: 0.9rem;
       line-height: 1.3;
+      white-space: nowrap;
       text-decoration: none;
       border: 1px solid var(--line);
       background: var(--surface-high);
@@ -233,29 +312,27 @@
     #seo-semantic-shell .shell-btn.primary {
       background: var(--amber);
       border-color: var(--amber);
-      color: #140D03;
+      color: var(--amber-ink);
     }
     #seo-semantic-shell .shell-main {
       padding: 2.2rem 1.25rem 3.5rem;
     }
-    #seo-semantic-shell .shell-eyebrow {
-      color: var(--iris);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
     #seo-semantic-shell h1 {
       font-size: clamp(1.9rem, 4vw, 2.85rem);
       line-height: 1.15;
-      margin: 0 0 0.85rem;
+      margin: 0 0 0.65rem;
       letter-spacing: -0.02em;
+    }
+    #seo-semantic-shell .shell-meta {
+      color: var(--iris);
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin: 0 0 0.85rem;
     }
     #seo-semantic-shell .shell-lead {
       color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 720px;
+      font-size: 1.06rem;
+      max-width: 65ch;
       margin: 0 0 1.4rem;
     }
     #seo-semantic-shell .shell-grid {
@@ -264,8 +341,12 @@
       gap: 1rem;
       margin: 1.6rem 0;
     }
+    #seo-semantic-shell .shell-grid-tight {
+      margin: 0.8rem 0 0;
+    }
     #seo-semantic-shell .shell-card {
       background: var(--surface);
+      color: var(--ink);
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 1.25rem;
@@ -278,27 +359,55 @@
     }
     #seo-semantic-shell .shell-card p {
       margin: 0 0 0.85rem;
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       color: var(--muted);
+    }
+    #seo-semantic-shell .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.9rem;
     }
     #seo-semantic-shell a.inline-link {
       color: var(--teal);
       font-weight: 600;
       text-decoration: none;
     }
+    .noscript-shell {
+      max-width: 760px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      font-family: var(--font-body);
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .noscript-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+    }
+    .noscript-links a {
+      color: var(--teal);
+    }
     @keyframes espectro-splash-pulse {
       0% { transform: translateX(-100%); }
       100% { transform: translateX(250%); }
     }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
-  <div id="loading-splash" aria-hidden="true" style="position:fixed;inset:0;background:#0B0E14;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity .35s ease;">
-    <img src="icons/Icon-192.png?v=2" alt="Espectro" width="72" height="72" style="width:72px;height:72px;border-radius:18px;margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
-    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#F0F3F7;font-size:16px;font-weight:600;letter-spacing:1.2px;">ESPECTRO</div>
-    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#AAB5C5;font-size:12px;margin-top:6px;">Carregando observatório político…</div>
-    <div style="width:140px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;margin-top:20px;overflow:hidden;">
-      <div style="width:50%;height:100%;background:#A48BFA;border-radius:2px;animation:espectro-splash-pulse 1.2s infinite ease-in-out;"></div>
+  <div id="loading-splash" aria-hidden="true">
+    <img class="splash-icon" src="icons/Icon-192.png?v=2" alt="Espectro" width="72" height="72">
+    <div class="splash-brand">ESPECTRO</div>
+    <div class="splash-status">Carregando observatório político…</div>
+    <div class="splash-track">
+      <div class="splash-bar"></div>
     </div>
   </div>
   <script>
@@ -333,22 +442,23 @@
     <header class="shell-topbar">
       <div class="shell-topbar-inner">
         <a class="shell-brand" href="/">
-          <img src="icons/Icon-192.png?v=2" alt="" width="28" height="28" style="border-radius:7px;">
-          <span>ESPECTRO · OBSERVATÓRIO POLÍTICO</span>
+          <img class="brand-mark-icon" src="icons/Icon-192.png?v=2" alt="" width="28" height="28">
+          <span>Espectro</span>
+          <span class="brand-tag">Observatório Político</span>
         </a>
         <nav class="shell-nav" aria-label="Navegação principal">
-          <a class="shell-btn primary" href="/#/quiz">Descobrir meu espectro →</a>
-          <a class="shell-btn" href="/catalogo.html">Explorar Atlas (1.502 verbetes)</a>
+          <a class="shell-btn primary" href="/#/quiz">Descobrir meu espectro</a>
+          <a class="shell-btn" href="/catalogo.html">Explorar Atlas</a>
           <a class="shell-btn" href="/#/compare?v=1&items=personality:karl_marx,personality:friedrich_hayek">Comparador Raio-X</a>
         </nav>
       </div>
     </header>
     <div class="shell-main">
-      <div class="shell-eyebrow">Cartografia Viva · 18 Dimensões · 100% Local e Sem Cadastro</div>
       <h1>Política não cabe numa linha.</h1>
-      <p class="shell-lead">Descubra onde suas ideias se encontram — e onde se contradizem. O Espectro mapeia 12 eixos bipolares e 6 tríades de valores sobre 289 correntes ideológicas, 757 pensadores, economistas e estadistas e 165 obras clássicas.</p>
-      <div class="shell-nav" style="margin-bottom:2rem">
-        <a class="shell-btn primary" href="/#/quiz">Fazer Avaliação Expresso (24 perguntas · 3 min) →</a>
+      <p class="shell-meta">Cartografia Viva em 18 dimensões, 100% local e sem cadastro.</p>
+      <p class="shell-lead">Descubra onde suas ideias se encontram, e onde se contradizem. O Espectro mapeia 12 eixos bipolares e 6 tríades de valores sobre 289 correntes ideológicas, 757 pensadores, economistas e estadistas e 165 obras clássicas.</p>
+      <div class="shell-nav shell-nav-hero">
+        <a class="shell-btn primary" href="/#/quiz">Avaliação Expresso (3 min)</a>
         <a class="shell-btn" href="/catalogo.html">Catálogo Completo</a>
         <a class="shell-btn" href="/privacidade.html">Método &amp; Privacidade</a>
       </div>
@@ -356,46 +466,68 @@
       <section class="shell-grid" aria-label="Instrumentos de investigação">
         <article class="shell-card">
           <h2>12 Eixos Bipolares</h2>
-          <p>Estrutura, Representação, Poder, Imigração, Diplomacia, Intervenção, Economia, Controle, Comércio, Religião, Moral e Tecnologia — com margem de incerteza explícita.</p>
-          <a class="inline-link" href="/#/quiz?suite=bipolarAxes">Investigar 12 Eixos →</a>
+          <p>Estrutura, Representação, Poder, Imigração, Diplomacia, Intervenção, Economia, Controle, Comércio, Religião, Moral e Tecnologia, com margem de incerteza explícita.</p>
+          <a class="inline-link" href="/#/quiz?suite=bipolarAxes">Investigar 12 Eixos</a>
         </article>
         <article class="shell-card">
           <h2>6 Tríades Baricêntricas</h2>
           <p>Triângulos conceituais sem soma zero artificial em Economia, Liberdade Individual, Cultura, Política Externa, Governo e Igualdade.</p>
-          <a class="inline-link" href="/#/quiz?suite=triads">Investigar 6 Tríades →</a>
+          <a class="inline-link" href="/#/quiz?suite=triads">Investigar 6 Tríades</a>
         </article>
         <article class="shell-card">
           <h2>Batalhas de Ideias &amp; Raio-X</h2>
           <p>Coloque dois ou três perfis na mesma régua e visualize convergências improváveis antes das rupturas conceituais.</p>
-          <a class="inline-link" href="/#/compare?v=1&items=personality:friedrich_hayek,personality:john_maynard_keynes">Hayek × Keynes no Raio-X →</a>
+          <a class="inline-link" href="/#/compare?v=1&items=personality:friedrich_hayek,personality:john_maynard_keynes">Comparar Hayek × Keynes</a>
         </article>
       </section>
 
       <section class="shell-card">
         <h2>Portas de Descoberta no Atlas</h2>
         <p>Comece por um pensador, escola econômica ou família do espectro para explorar fontes primárias e coordenadas nas 18 dimensões:</p>
-        <div class="shell-grid" style="margin:0.8rem 0 0">
+        <div class="shell-grid shell-grid-tight">
           <div>
             <h3>Pensadores em Destaque</h3>
-            <p><a class="inline-link" href="/p/personality-hannah_arendt.html">Hannah Arendt</a> · <a class="inline-link" href="/p/personality-karl_marx.html">Karl Marx</a> · <a class="inline-link" href="/p/personality-friedrich_hayek.html">Friedrich Hayek</a> · <a class="inline-link" href="/p/personality-john_maynard_keynes.html">Keynes</a> · <a class="inline-link" href="/p/personality-celso_furtado.html">Celso Furtado</a> · <a class="inline-link" href="/p/personality-murray_rothbard.html">Rothbard</a></p>
+            <div class="link-row">
+              <a class="inline-link" href="/p/personality-hannah_arendt.html">Hannah Arendt</a>
+              <a class="inline-link" href="/p/personality-karl_marx.html">Karl Marx</a>
+              <a class="inline-link" href="/p/personality-friedrich_hayek.html">Friedrich Hayek</a>
+              <a class="inline-link" href="/p/personality-john_maynard_keynes.html">Keynes</a>
+              <a class="inline-link" href="/p/personality-celso_furtado.html">Celso Furtado</a>
+              <a class="inline-link" href="/p/personality-murray_rothbard.html">Rothbard</a>
+            </div>
           </div>
           <div>
             <h3>Famílias do Espectro</h3>
-            <p><a class="inline-link" href="/p/spectrum-left.html">Esquerda</a> · <a class="inline-link" href="/p/spectrum-center.html">Centro</a> · <a class="inline-link" href="/p/spectrum-right.html">Direita</a> · <a class="inline-link" href="/p/spectrum-libertarian.html">Libertários</a> · <a class="inline-link" href="/p/spectrum-anarchist.html">Anarquistas</a> · <a class="inline-link" href="/p/spectrum-radical_left.html">Esquerda Radical</a></p>
+            <div class="link-row">
+              <a class="inline-link" href="/p/spectrum-left.html">Esquerda</a>
+              <a class="inline-link" href="/p/spectrum-center.html">Centro</a>
+              <a class="inline-link" href="/p/spectrum-right.html">Direita</a>
+              <a class="inline-link" href="/p/spectrum-libertarian.html">Libertários</a>
+              <a class="inline-link" href="/p/spectrum-anarchist.html">Anarquistas</a>
+              <a class="inline-link" href="/p/spectrum-radical_left.html">Esquerda Radical</a>
+            </div>
           </div>
           <div>
             <h3>Índice &amp; Documentação</h3>
-            <p><a class="inline-link" href="/catalogo.html">Ver todos os 1.502 verbetes</a> · <a class="inline-link" href="/llms.txt">Índice Semântico (llms.txt)</a> · <a class="inline-link" href="/privacidade.html">Privacidade e LGPD</a></p>
+            <div class="link-row">
+              <a class="inline-link" href="/catalogo.html">Catálogo com 1.502 verbetes</a>
+              <a class="inline-link" href="/llms.txt">Índice Semântico (llms.txt)</a>
+              <a class="inline-link" href="/privacidade.html">Privacidade e LGPD</a>
+            </div>
           </div>
         </div>
       </section>
     </div>
   </main>
   <noscript>
-    <article style="max-width:760px;margin:2rem auto;padding:1.5rem;font-family:sans-serif;line-height:1.6">
-      <h1>Espectro — Cartografia Política</h1>
+    <article class="noscript-shell">
+      <h1>Espectro: Cartografia Política</h1>
       <p>Para utilizar o aplicativo interativo do Espectro (Questionários de 12 Eixos, 6 Tríades, Teia de Ideias e Atlas Político com 289 correntes ideológicas), ative o JavaScript no seu navegador ou navegue pelo <a href="/catalogo.html">Catálogo Estático Completo</a>.</p>
-      <p><a href="/catalogo.html">Catálogo Completo</a> · <a href="/llms.txt">llms.txt</a> · <a href="/privacidade.html">Política de Privacidade e Segurança da Informação</a></p>
+      <div class="noscript-links">
+        <a href="/catalogo.html">Catálogo Completo</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/privacidade.html">Política de Privacidade e Segurança da Informação</a>
+      </div>
     </article>
   </noscript>
   <script>

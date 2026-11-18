@@ -144,11 +144,18 @@ void main() {
   testWidgets(
     'avatar sem retrato apresenta iniciais e nome acessível sem imagem fictícia',
     (tester) async {
-      final StudySubject subject = catalog.subjects.firstWhere(
-        (StudySubject s) =>
-            s.kind == 'personality' &&
-            s.photoUrl == null &&
-            data.portraits[s.key] == null,
+      final StudySubject base = catalog.subjects.firstWhere(
+        (StudySubject s) => s.kind == 'personality',
+      );
+      final StudySubject subject = StudySubject(
+        key: base.key,
+        kind: base.kind,
+        kindLabel: base.kindLabel,
+        name: base.name,
+        subtitle: base.subtitle,
+        family: base.family,
+        summary: base.summary,
+        spectrumId: base.spectrumId,
       );
       await tester.pumpWidget(
         MaterialApp(
