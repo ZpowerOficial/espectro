@@ -173,13 +173,15 @@ def load_all_items(root: Path):
 
 CSS_STYLE = """
 :root {
-  --bg: #0C1018;
-  --surface: #131A26;
-  --surface-muted: #1A2333;
-  --line: #243044;
-  --ink: #F3F5F8;
-  --muted: #9BA6B8;
-  --accent: #E0A82E;
+  --bg: #0B0E14;
+  --surface: #141924;
+  --surface-muted: #1B2230;
+  --line: #303949;
+  --ink: #F0F3F7;
+  --muted: #AAB5C5;
+  --accent: #A48BFA;
+  --amber: #E9BF75;
+  --teal: #71C7C5;
 }
 * { box-sizing: border-box; }
 body {
@@ -191,7 +193,7 @@ body {
 }
 header.topbar {
   border-bottom: 1px solid var(--line);
-  background: rgba(19, 26, 38, 0.94);
+  background: rgba(11, 14, 20, 0.94);
   padding: 0.9rem 1.25rem;
   position: sticky;
   top: 0;
@@ -216,14 +218,20 @@ header.topbar {
   gap: 0.6rem;
 }
 .cta-btn {
-  display: inline-block;
-  background: var(--accent);
-  color: #0B0F17;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: var(--amber);
+  color: #140D03;
   font-weight: 700;
   text-decoration: none;
-  padding: 0.55rem 1.1rem;
+  padding: 0.62rem 1.15rem;
   border-radius: 10px;
   font-size: 0.92rem;
+  line-height: 1.35;
+  text-align: center;
+  max-width: 100%;
 }
 .cta-btn.secondary {
   background: var(--surface-muted);
@@ -236,7 +244,7 @@ main.container {
   padding: 2rem 1.25rem 4rem;
 }
 .eyebrow {
-  color: var(--accent);
+  color: var(--amber);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -261,7 +269,7 @@ h1 {
 }
 .axis-row {
   padding: 0.65rem 0;
-  border-bottom: 1px solid rgba(36, 48, 68, 0.6);
+  border-bottom: 1px solid rgba(48, 57, 73, 0.55);
 }
 .axis-row:last-child { border-bottom: none; }
 .axis-poles {
@@ -305,13 +313,16 @@ h1 {
   font-size: 0.8rem;
 }
 .ad-box {
-  background: rgba(19, 26, 38, 0.7);
+  display: none;
+  background: rgba(20, 25, 36, 0.78);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 0.5rem;
   margin: 1.25rem 0;
   text-align: center;
-  min-height: 68px;
+}
+.ad-box:has(ins[data-ad-status="filled"]) {
+  display: block;
 }
 .ad-label {
   font-size: 0.68rem;
@@ -327,8 +338,27 @@ footer {
   color: var(--muted);
   font-size: 0.88rem;
 }
-footer a { color: var(--accent); text-decoration: none; }
+footer a { color: var(--teal); text-decoration: none; }
 """
+
+ADSENSE_HEAD_LOADER = f"""  <meta name="google-adsense-account" content="{ADSENSE_CLIENT}">
+  <script>
+    window.__espectroHasWebGL = (function () {{
+      try {{
+        var c = document.createElement('canvas');
+        return Boolean(c && (c.getContext('webgl2') || c.getContext('webgl')));
+      }} catch (_) {{
+        return false;
+      }}
+    }})();
+    if (window.__espectroHasWebGL) {{
+      var s = document.createElement('script');
+      s.async = true;
+      s.crossOrigin = 'anonymous';
+      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}';
+      document.head.appendChild(s);
+    }}
+  </script>"""
 
 
 def render_ad_slot(slot_id: str) -> str:
@@ -341,7 +371,13 @@ def render_ad_slot(slot_id: str) -> str:
            data-ad-slot="{slot_id}"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+      <script>
+        if (window.__espectroHasWebGL) {{
+          try {{
+            (window.adsbygoogle = window.adsbygoogle || []).push({{}});
+          }} catch (_) {{}}
+        }}
+      </script>
     </aside>
     """
 
@@ -491,9 +527,7 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{esc(title)}">
   <meta name="twitter:description" content="{esc(desc)}">
-  <meta name="google-adsense-account" content="{ADSENSE_CLIENT}">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}"
-     crossorigin="anonymous"></script>
+{ADSENSE_HEAD_LOADER}
   <script type="application/ld+json">{json.dumps(schema_obj, ensure_ascii=False)}</script>
   <style>{CSS_STYLE}</style>
 </head>
@@ -577,9 +611,7 @@ def render_spectrum_page(spec_id: str, spec_name: str, spec_desc: str, spec_item
   <meta name="description" content="{esc(spec_desc)} Explore {len(spec_items)} correntes, pensadores, obras e partidos associados a {esc(spec_name)} no Espectro.">
   <link rel="canonical" href="{esc(url)}">
 {GA4_SNIPPET}
-  <meta name="google-adsense-account" content="{ADSENSE_CLIENT}">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}"
-     crossorigin="anonymous"></script>
+{ADSENSE_HEAD_LOADER}
   <style>{CSS_STYLE}</style>
 </head>
 <body>
@@ -637,6 +669,20 @@ def main():
 
     # 3. Generate /catalogo.html (Master Index Hub)
     sections_html = []
+    curated_trails_html = """
+    <div class="card">
+      <div class="eyebrow">Portas de Descoberta</div>
+      <h2 style="margin-top:0.25rem">Percursos Curados de Descoberta (7 min)</h2>
+      <p style="color:var(--muted);margin-top:0">Compare tradições, rupturas e convergências improváveis lado a lado antes de mergulhar nos 1.502 verbetes.</p>
+      <div class="grid">
+        <a class="link-chip" href="/#/compare?v=1&items=personality:friedrich_hayek,personality:john_maynard_keynes,personality:celso_furtado">Escolas de economia em conflito<small>Hayek × Keynes × Celso Furtado no Raio-X</small></a>
+        <a class="link-chip" href="/#/compare?v=1&items=personality:hannah_arendt,personality:john_locke,personality:murray_rothbard">O que significa Liberdade?<small>Arendt × John Locke × Murray Rothbard</small></a>
+        <a class="link-chip" href="/#/compare?v=1&items=current:social_democracia,current:socialismo_democratico,personality:rosa_luxemburgo">Próximos, mas discordantes na esquerda<small>Social-Democracia × Socialismo Democrático × Luxemburgo</small></a>
+        <a class="link-chip" href="/#/compare?v=1&items=personality:thomas_hobbes,personality:montesquieu,personality:edmund_burke">Ordem, Estado e Constituição<small>Hobbes × Montesquieu × Edmund Burke</small></a>
+      </div>
+    </div>
+    """
+    sections_html.append(curated_trails_html)
     spec_chips = "".join(
         f'<a class="link-chip" href="/p/spectrum-{sid}.html">{esc(sname)}<small>{len(by_spectrum.get(sid, []))} verbetes</small></a>'
         for sid, (sname, _) in SPECTRA_META.items()
@@ -660,9 +706,7 @@ def main():
   <meta name="description" content="Índice completo do Espectro com {len(items)} perfis políticos: 289 correntes ideológicas, pensadores, economistas, estadistas, livros clássicos, países, partidos e eras históricas nos 12 eixos.">
   <link rel="canonical" href="{BASE_URL}/catalogo.html">
 {GA4_SNIPPET}
-  <meta name="google-adsense-account" content="{ADSENSE_CLIENT}">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}"
-     crossorigin="anonymous"></script>
+{ADSENSE_HEAD_LOADER}
   <style>{CSS_STYLE}</style>
 </head>
 <body>

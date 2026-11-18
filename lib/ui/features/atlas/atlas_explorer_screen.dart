@@ -504,6 +504,20 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
                                 );
                               },
                             ),
+                            const SizedBox(height: 18),
+                            _DiscoveryTrailsSection(
+                              catalog: catalog,
+                              onOpenSubject: _open,
+                              onCompareTrail: (List<String> keys) =>
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute<void>(
+                                      builder: (_) => StudyComparisonScreen(
+                                        appViewModel: vm,
+                                        initialKeys: keys,
+                                      ),
+                                    ),
+                                  ),
+                            ),
                             const SizedBox(height: 14),
                           ],
                           if (_spectrum != null)
@@ -1415,6 +1429,173 @@ class _SpectrumCardState extends State<_SpectrumCard> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _AtlasDiscoveryTrail {
+  const _AtlasDiscoveryTrail({
+    required this.title,
+    required this.subtitle,
+    required this.keys,
+  });
+
+  final String title;
+  final String subtitle;
+  final List<String> keys;
+}
+
+class _DiscoveryTrailsSection extends StatelessWidget {
+  const _DiscoveryTrailsSection({
+    required this.catalog,
+    required this.onOpenSubject,
+    required this.onCompareTrail,
+  });
+
+  final StudyCatalog catalog;
+  final ValueChanged<StudySubject> onOpenSubject;
+  final ValueChanged<List<String>> onCompareTrail;
+
+  static const List<_AtlasDiscoveryTrail> _trails = <_AtlasDiscoveryTrail>[
+    _AtlasDiscoveryTrail(
+      title: 'Escolas de economia em conflito',
+      subtitle: 'Ordem espontânea, demanda efetiva e desenvolvimentismo.',
+      keys: <String>[
+        'personality:friedrich_hayek',
+        'personality:john_maynard_keynes',
+        'personality:celso_furtado',
+      ],
+    ),
+    _AtlasDiscoveryTrail(
+      title: 'O que significa Liberdade?',
+      subtitle: 'República cívica, contrato constitucional e autopropriedade.',
+      keys: <String>[
+        'personality:hannah_arendt',
+        'personality:john_locke',
+        'personality:murray_rothbard',
+      ],
+    ),
+    _AtlasDiscoveryTrail(
+      title: 'Próximos, mas discordantes na esquerda',
+      subtitle: 'Reforma gradual, socialismo democrático e ruptura operária.',
+      keys: <String>[
+        'current:social_democracia',
+        'current:socialismo_democratico',
+        'personality:rosa_luxemburgo',
+      ],
+    ),
+    _AtlasDiscoveryTrail(
+      title: 'Ordem, Estado e Constituição',
+      subtitle: 'Soberania, separação de poderes e prudência institucional.',
+      keys: <String>[
+        'personality:thomas_hobbes',
+        'personality:montesquieu',
+        'personality:edmund_burke',
+      ],
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
+    final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Eyebrow('PORTAS DE DESCOBERTA', color: p.accent),
+        const SizedBox(height: 4),
+        Text(
+          'Percursos de Descoberta (Batalhas de Ideias)',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        const SizedBox(height: 4),
+        Text(
+          'O que une ideias que parecem rivais? Explore rotas curadas e compare no Raio-X multidimensional.',
+          style: TextStyle(color: p.muted),
+        ),
+        const SizedBox(height: 12),
+        LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            final bool twoCols = constraints.maxWidth >= 720 && scale <= 1.35;
+            final double width = twoCols
+                ? (constraints.maxWidth - 12) / 2
+                : constraints.maxWidth;
+
+            return Wrap(
+              spacing: 12,
+              runSpacing: 12,
+              children: <Widget>[
+                for (final _AtlasDiscoveryTrail trail in _trails)
+                  SizedBox(
+                    width: width,
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: EspectroElevation.cardDecoration(
+                        p,
+                        radius: 16,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            trail.title,
+                            style: TextStyle(
+                              fontFamily: 'IBMPlexSans',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w800,
+                              color: p.ink,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            trail.subtitle,
+                            style: TextStyle(
+                              fontSize: 12.5,
+                              height: 1.38,
+                              color: p.inkSoft,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Wrap(
+                            spacing: 6,
+                            runSpacing: 6,
+                            children: <Widget>[
+                              for (final StudySubject sub in <StudySubject>[
+                                for (final String k in trail.keys)
+                                  ?catalog.find(k),
+                              ])
+                                ActionChip(
+                                  label: Text(sub.name),
+                                  onPressed: () => onOpenSubject(sub),
+                                ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          TextButton.icon(
+                            onPressed: () => onCompareTrail(trail.keys),
+                            style: TextButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 6,
+                              ),
+                              minimumSize: const Size(0, 36),
+                            ),
+                            icon: const Icon(
+                              Icons.compare_arrows_rounded,
+                              size: 16,
+                            ),
+                            label: const Text('Comparar trilha no Raio-X →'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+              ],
+            );
+          },
+        ),
+      ],
     );
   }
 }

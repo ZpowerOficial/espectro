@@ -940,7 +940,7 @@ class _ObservatoryCoverHero extends StatelessWidget {
         ),
         SizedBox(height: split ? 12 : 8),
         Text(
-          'Responda ao dilema ao lado em 1 toque ou faça a avaliação completa em 12 eixos e 6 tríades — 100% offline.',
+          'Política não cabe numa linha. Descubra onde suas ideias se encontram — e onde se contradizem — em 12 eixos e 6 tríades.',
           style: TextStyle(
             fontSize: split ? 15 : 13.5,
             height: 1.48,

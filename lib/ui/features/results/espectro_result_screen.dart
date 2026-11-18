@@ -1431,7 +1431,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
           const SizedBox(height: 20),
         ],
 
-        // Beat 1: Troféu Visual (Arquétipo + Frase Síntese + Gêmeo vs. Antagonista)
+        // Beat 1: Troféu Visual (Arquétipo + Frase Síntese + Surpresa Fundamentada + Gêmeo vs. Antagonista)
         if (primaryMatch != null) ...<Widget>[
           _buildHeroIdeologyCard(
             context,
@@ -1439,6 +1439,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
             effectiveCompat,
             topPers,
             persMatches.length > 1 ? persMatches.last : null,
+            _findSurprisingConvergence(persMatches),
             mostUncommon,
             uncommonPercentLower,
             spectrumColor,
@@ -1616,12 +1617,54 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     );
   }
 
+  _SurprisingConvergence? _findSurprisingConvergence(
+    List<AtlasMatchResult> persMatches,
+  ) {
+    final List<BipolarDimensionScore> validAxes = _activeAxes
+        .where((BipolarDimensionScore a) => !a.isIndeterminate)
+        .toList();
+    if (validAxes.length < 2) return null;
+
+    for (final AtlasMatchResult m in persMatches) {
+      if (m.compatibilityPercent >= 62.0) continue;
+      BipolarDimensionScore? bestAgree;
+      double smallestDiff = double.infinity;
+      BipolarDimensionScore? bestDiverge;
+      double largestDiff = 0.0;
+
+      for (final BipolarDimensionScore ax in validAxes) {
+        final double? t = m.entry.axes[ax.axisId];
+        if (t == null) continue;
+        final double diff = (ax.score - t).abs();
+        if (diff <= 0.25 && ax.score.abs() >= 0.30 && diff < smallestDiff) {
+          smallestDiff = diff;
+          bestAgree = ax;
+        }
+        if (diff >= 0.55 && diff > largestDiff) {
+          largestDiff = diff;
+          bestDiverge = ax;
+        }
+      }
+      if (bestAgree != null &&
+          bestDiverge != null &&
+          bestAgree.axisId != bestDiverge.axisId) {
+        return _SurprisingConvergence(
+          match: m,
+          agreedAxis: bestAgree,
+          divergedAxis: bestDiverge,
+        );
+      }
+    }
+    return null;
+  }
+
   Widget _buildHeroIdeologyCard(
     BuildContext context,
     CurrentCompatibility primaryMatch,
     CompatibilityReport compat,
     AtlasMatchResult? topPers,
     AtlasMatchResult? nemesisPers,
+    _SurprisingConvergence? surprising,
     BipolarDimensionScore? mostUncommon,
     int uncommonPercentLower,
     Color spectrumColor,
@@ -1863,10 +1906,20 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                     ),
                   ),
                 ),
+                const SizedBox(height: 10),
+                Text(
+                  'Seu mapa é um ponto de partida — não uma sentença.',
+                  style: TextStyle(
+                    fontFamily: 'IBMPlexMono',
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: p.muted,
+                  ),
+                ),
 
                 // Chip de Raridade Psicológica
                 if (mostUncommon != null) ...<Widget>[
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 14),
                   Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 12,
@@ -1903,6 +1956,79 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                ],
+
+                // Ato 2 (Cartografia Viva): Surpresa Fundamentada / Convergência Improvável
+                if (surprising != null) ...<Widget>[
+                  const SizedBox(height: 12),
+                  Material(
+                    color: p.poleLeft.withValues(
+                      alpha: p.isDark ? 0.14 : 0.08,
+                    ),
+                    borderRadius: BorderRadius.circular(14),
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(14),
+                      onTap: () => EntityComparisonScreen.showAtlasEntry(
+                        context,
+                        record: _record,
+                        entry: surprising.match.entry,
+                        appViewModel: widget.appViewModel,
+                      ),
+                      child: Container(
+                        padding: const EdgeInsets.all(13),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(
+                            color: p.poleLeft.withValues(alpha: 0.34),
+                          ),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Icon(
+                              Icons.explore_outlined,
+                              size: 18,
+                              color: p.poleLeft,
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    'SURPRESA FUNDAMENTADA · CONVERGÊNCIA IMPROVÁVEL',
+                                    style: TextStyle(
+                                      fontFamily: 'IBMPlexMono',
+                                      fontSize: 9.5,
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: 0.7,
+                                      color: p.poleLeft,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    'Embora você tenha apenas ${_formatScore(surprising.match.compatibilityPercent)}% de afinidade global com ${surprising.match.entry.name}, vocês convergem em ${surprising.agreedAxis.label} (${surprising.agreedAxis.dominantPole}) — mas divergem frontalmente em ${surprising.divergedAxis.label}.',
+                                    style: TextStyle(
+                                      fontFamily: 'IBMPlexSans',
+                                      fontSize: 12.5,
+                                      height: 1.4,
+                                      color: p.ink,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 6),
+                            Icon(
+                              Icons.arrow_forward_rounded,
+                              size: 16,
+                              color: p.poleLeft,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -5586,4 +5712,16 @@ class _MiniDimensionalCard extends StatelessWidget {
       ),
     );
   }
+}
+
+class _SurprisingConvergence {
+  const _SurprisingConvergence({
+    required this.match,
+    required this.agreedAxis,
+    required this.divergedAxis,
+  });
+
+  final AtlasMatchResult match;
+  final BipolarDimensionScore agreedAxis;
+  final BipolarDimensionScore divergedAxis;
 }
