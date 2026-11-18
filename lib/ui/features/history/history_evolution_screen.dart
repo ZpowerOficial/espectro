@@ -75,6 +75,7 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
   Widget build(BuildContext context) {
     final EspectroPalette p = context.palette;
     final TextTheme text = Theme.of(context).textTheme;
+    final bool isDesktop = MediaQuery.sizeOf(context).width >= 1100;
 
     return ListenableBuilder(
       listenable: widget.appViewModel,
@@ -88,16 +89,19 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
             selectedIndex: 3,
             isSectionRoot: true,
             appBar: AppBar(
-              leading: Padding(
-                padding: const EdgeInsets.only(left: 12),
-                child: Center(
-                  child: CircleIconButton(
-                    icon: Icons.arrow_back_rounded,
-                    onPressed: () => Navigator.of(context).pop(),
-                    tooltip: 'Voltar',
-                  ),
-                ),
-              ),
+              automaticallyImplyLeading: false,
+              leading: isDesktop
+                  ? null
+                  : Padding(
+                      padding: const EdgeInsets.only(left: 12),
+                      child: Center(
+                        child: CircleIconButton(
+                          icon: Icons.arrow_back_rounded,
+                          onPressed: () => Navigator.of(context).pop(),
+                          tooltip: 'Voltar',
+                        ),
+                      ),
+                    ),
               title: const Text('Histórico'),
               actions: <Widget>[
                 if (records.length >= 2)

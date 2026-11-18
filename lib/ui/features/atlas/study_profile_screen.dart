@@ -14,8 +14,6 @@ import '../../../theme.dart';
 import '../../../widgets/common.dart';
 import '../../../widgets/editorial.dart';
 import '../../../widgets/espectro_scaffold.dart';
-import '../../ads/espectro_ad_units.dart';
-import '../../ads/espectro_banner_ad.dart';
 import '../../view_models/app_view_model.dart';
 import '../../charts/study_ternary_chart.dart';
 import '../compare/study_comparison_screen.dart';
@@ -1054,10 +1052,6 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
         padding: EdgeInsets.fromLTRB(hPad, 26, hPad, 36),
         children: [
           ...children,
-          EspectroBannerAdWidget(
-            adUnitId: EspectroAdUnits.detailBannerId,
-            padding: const EdgeInsets.only(top: 18),
-          ),
         ],
       );
     },

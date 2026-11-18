@@ -55,10 +55,11 @@ class _EspectroSuitesScreenState extends State<EspectroSuitesScreen> {
       appViewModel: widget.appViewModel,
       selectedIndex: 1,
       isSectionRoot: true,
-      appBar: AppBar(),
-      body: ResponsiveContentFrame(
-        maxWidth: 960,
-        child: LayoutBuilder(
+      body: SafeArea(
+        bottom: false,
+        child: ResponsiveContentFrame(
+          maxWidth: 960,
+          child: LayoutBuilder(
           builder: (context, constraints) {
             final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
             final bool sideBySide = constraints.maxWidth >= 820 && scale <= 1.35;
@@ -293,7 +294,7 @@ class _EspectroSuitesScreenState extends State<EspectroSuitesScreen> {
                             fontSize: 10.5,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 1.0,
-                            color: Color(0xFF8CD9C3),
+                            color: Color(0xFFEBC07A),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -360,7 +361,7 @@ class _EspectroSuitesScreenState extends State<EspectroSuitesScreen> {
                               Icon(
                                 Icons.verified_user_outlined,
                                 size: 18,
-                                color: Color(0xFF8CD9C3),
+                                color: Color(0xFFB5A8FF),
                               ),
                               SizedBox(width: 10),
                               Expanded(
@@ -384,7 +385,7 @@ class _EspectroSuitesScreenState extends State<EspectroSuitesScreen> {
             );
 
             return ListView(
-              padding: const EdgeInsets.fromLTRB(20, 14, 20, 32),
+              padding: EdgeInsets.fromLTRB(20, sideBySide ? 28 : 20, 20, 32),
               children: [
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 2),
@@ -411,6 +412,7 @@ class _EspectroSuitesScreenState extends State<EspectroSuitesScreen> {
             );
           },
         ),
+      ),
       ),
     );
   }

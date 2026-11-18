@@ -67,7 +67,7 @@ class EditorialHero extends StatelessWidget {
     final EspectroPalette p = context.palette;
     final Color heroStart = p.heroBackground;
     final Color heroEnd = Color.alphaBlend(
-      const Color(0xFF0F3D30).withValues(alpha: p.isDark ? 0.28 : 0.24),
+      const Color(0xFF4E3FA5).withValues(alpha: p.isDark ? 0.24 : 0.20),
       p.heroBackground,
     );
 
@@ -82,12 +82,12 @@ class EditorialHero extends StatelessWidget {
               height: 7,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color(0xFF38B293),
+                color: Color(0xFFE5A64B),
               ),
             ),
             const SizedBox(width: 8),
             Flexible(
-              child: Eyebrow(eyebrow, color: const Color(0xFF8CD9C3)),
+              child: Eyebrow(eyebrow, color: const Color(0xFFEBC07A)),
             ),
           ],
         ),
@@ -159,11 +159,11 @@ class EditorialHero extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(22),
         border: Border.all(
-          color: const Color(0xFF38B293).withValues(alpha: 0.24),
+          color: const Color(0xFF7B6CE0).withValues(alpha: 0.26),
         ),
         boxShadow: EspectroElevation.cardShadows(
           p,
-          tint: const Color(0xFF0F3D30),
+          tint: const Color(0xFF4E3FA5),
         ),
       ),
       child: Stack(
@@ -178,8 +178,8 @@ class EditorialHero extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: <Color>[
-                    const Color(0xFF38B293).withValues(alpha: 0.16),
-                    const Color(0xFF0F3D30).withValues(alpha: 0.08),
+                    const Color(0xFF7B6CE0).withValues(alpha: 0.18),
+                    const Color(0xFF4E3FA5).withValues(alpha: 0.08),
                     Colors.transparent,
                   ],
                 ),
@@ -196,7 +196,7 @@ class EditorialHero extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: <Color>[
-                    const Color(0xFFDF7A1E).withValues(alpha: 0.14),
+                    const Color(0xFFE5A64B).withValues(alpha: 0.14),
                     Colors.transparent,
                   ],
                 ),

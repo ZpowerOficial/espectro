@@ -16,8 +16,6 @@ import '../../../widgets/common.dart';
 import '../../../widgets/espectro_brand_mark.dart';
 import '../../../widgets/espectro_scaffold.dart';
 import '../quiz/espectro_suites_screen.dart';
-import '../../ads/espectro_ad_units.dart';
-import '../../ads/espectro_banner_ad.dart';
 import '../../view_models/app_view_model.dart';
 import '../../view_models/quiz_view_model.dart';
 import '../atlas/atlas_explorer_screen.dart';
@@ -544,10 +542,6 @@ class EspectroHomeScreen extends StatelessWidget {
                           style: TextStyle(color: p.warning),
                         ),
                       ),
-                    EspectroBannerAdWidget(
-                      adUnitId: EspectroAdUnits.atlasBannerId,
-                      padding: const EdgeInsets.only(top: 24),
-                    ),
                   ],
                 );
               },

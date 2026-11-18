@@ -95,6 +95,8 @@ class MethodologyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final EspectroPalette p = context.palette;
     final TextTheme text = Theme.of(context).textTheme;
+    final bool showBack =
+        appViewModel == null || MediaQuery.sizeOf(context).width < 1100;
 
     Widget frame({required PreferredSizeWidget appBar, required Widget body}) =>
         appViewModel == null
@@ -113,16 +115,19 @@ class MethodologyScreen extends StatelessWidget {
       length: 2,
       child: frame(
         appBar: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 12),
-            child: Center(
-              child: CircleIconButton(
-                icon: Icons.arrow_back_rounded,
-                onPressed: () => Navigator.of(context).pop(),
-                tooltip: 'Voltar',
-              ),
-            ),
-          ),
+          automaticallyImplyLeading: false,
+          leading: !showBack
+              ? null
+              : Padding(
+                  padding: const EdgeInsets.only(left: 12),
+                  child: Center(
+                    child: CircleIconButton(
+                      icon: Icons.arrow_back_rounded,
+                      onPressed: () => Navigator.of(context).pop(),
+                      tooltip: 'Voltar',
+                    ),
+                  ),
+                ),
           title: const Text('Metodologia'),
           bottom: TabBar(
             labelColor: p.accent,

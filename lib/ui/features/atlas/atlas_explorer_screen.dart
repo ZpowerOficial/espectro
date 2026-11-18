@@ -7,8 +7,6 @@ import '../../../widgets/editorial.dart';
 import '../../../widgets/common.dart';
 import '../../../widgets/espectro_scaffold.dart';
 import 'study_map_screen.dart';
-import '../../ads/espectro_ad_units.dart';
-import '../../ads/espectro_banner_ad.dart';
 import '../../view_models/app_view_model.dart';
 import '../compare/study_comparison_screen.dart';
 import 'study_profile_screen.dart';
@@ -190,6 +188,7 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
         selectedIndex: 2,
         isSectionRoot: true,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text('Atlas político'),
           actions: [
             IconButton(
@@ -625,10 +624,6 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
                                 ],
                               ),
                             ),
-                          EspectroBannerAdWidget(
-                            adUnitId: EspectroAdUnits.atlasBannerId,
-                            padding: const EdgeInsets.only(bottom: 12),
-                          ),
                         ],
                       ),
                     ),

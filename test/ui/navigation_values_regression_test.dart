@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:politico/app.dart';
 import 'package:politico/data/app_data.dart';
 import 'package:politico/domain/models/study_models.dart';
+import 'package:politico/ui/ads/espectro_banner_ad.dart';
 import 'package:politico/ui/charts/study_constellation.dart';
 import 'package:politico/ui/features/atlas/atlas_explorer_screen.dart';
 import 'package:politico/ui/features/atlas/study_profile_screen.dart';
+import 'package:politico/ui/features/home/espectro_home_screen.dart';
 import 'package:politico/data/evaluation_repository.dart';
 import 'package:politico/data/local_storage_service.dart';
 import 'package:politico/domain/engine/atlas_and_nolan_engine.dart';
@@ -504,6 +507,88 @@ void main() {
       expect(find.byType(AtlasExplorerScreen), findsOneWidget);
       expect(find.byType(StudyProfileScreen), findsNothing);
       expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    'desktop 1100/1440 exibe todos os itens do rail sem cortes nem banners duplicados',
+    (tester) async {
+      for (final double width in <double>[1100, 1440]) {
+        tester.view.physicalSize = Size(width, 1000);
+        tester.view.devicePixelRatio = 1;
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+        final AppViewModel vm = await model();
+        addTearDown(vm.dispose);
+
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: buildAppTheme(brightness: Brightness.light),
+            home: EspectroScaffold(
+              appViewModel: vm,
+              isSectionRoot: true,
+              body: const Text('Conteúdo'),
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        for (final String label in const <String>[
+          'Visão geral',
+          'Meus testes',
+          'Atlas político',
+          'Comparar',
+          'Histórico',
+          'Método aberto',
+        ]) {
+          final Finder finder = find.text(label);
+          expect(finder, findsOneWidget);
+          final Rect rect = tester.getRect(finder);
+          expect(rect.left, greaterThanOrEqualTo(0));
+          expect(rect.right, lessThanOrEqualTo(236));
+          expect(rect.bottom, lessThanOrEqualTo(1000));
+          final RenderParagraph paragraph = tester.renderObject<RenderParagraph>(
+            finder,
+          );
+          expect(paragraph.didExceedMaxLines, isFalse);
+        }
+
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: buildAppTheme(brightness: Brightness.light),
+            home: AtlasExplorerScreen(appViewModel: vm),
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(find.byType(EspectroFloatingAdBar), findsOneWidget);
+        expect(find.byType(EspectroBannerAdWidget), findsNothing);
+        expect(find.byType(BackButton), findsNothing);
+        expect(find.byIcon(Icons.arrow_back_rounded), findsNothing);
+
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: buildAppTheme(brightness: Brightness.light),
+            home: EspectroHomeScreen(appViewModel: vm),
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(find.byType(EspectroFloatingAdBar), findsOneWidget);
+        expect(find.byType(EspectroBannerAdWidget), findsNothing);
+
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: buildAppTheme(brightness: Brightness.light),
+            home: StudyProfileScreen(
+              appViewModel: vm,
+              subjectKey: 'personality:karl_marx',
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(find.byType(EspectroFloatingAdBar), findsOneWidget);
+        expect(find.byType(EspectroBannerAdWidget), findsNothing);
+        expect(tester.takeException(), isNull);
+      }
     },
   );
 }

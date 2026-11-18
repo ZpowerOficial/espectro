@@ -420,7 +420,7 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
                             fontSize: 10.5,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 1.0,
-                            color: Color(0xFF8CD9C3),
+                            color: Color(0xFFEBC07A),
                           ),
                         ),
                         const SizedBox(height: 10),

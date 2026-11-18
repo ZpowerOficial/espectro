@@ -11,8 +11,9 @@ import '../ui/features/quiz/espectro_suites_screen.dart';
 import '../ui/features/methodology/methodology_screen.dart';
 import '../ui/features/compare/study_comparison_screen.dart';
 
-/// Estrutura editorial do Espectro: barra superior horizontal limpa no desktop
-/// e barra inferior tátil no mobile, com transições rápidas sem recriar raízes.
+/// Shell adaptativo multiplataforma do Espectro (Web, Android, Linux e Windows):
+/// rail lateral de observatório no desktop e barra inferior tátil no mobile,
+/// mantendo uma única barra contextual alinhada ao conteúdo sem cabeçalhos duplos.
 class EspectroScaffold extends StatelessWidget {
   const EspectroScaffold({
     required this.appViewModel,
@@ -78,13 +79,22 @@ class EspectroScaffold extends StatelessWidget {
         _rootsFor(navigator)[selectedIndex] = route;
       }
     }
-    final p = context.palette;
+    final EspectroPalette p = context.palette;
     return LayoutBuilder(
       builder: (context, constraints) {
-        final bool isDesktop = navigationVisible && constraints.maxWidth >= 1100;
+        final bool isDesktop =
+            navigationVisible && constraints.maxWidth >= 1100;
+        final PreferredSizeWidget? alignedAppBar = appBar == null
+            ? null
+            : _WorkspaceConstrainedAppBar(
+                appBar: appBar!,
+                canvasColor: p.canvas,
+                borderColor: p.line.withValues(alpha: p.isDark ? 0.55 : 0.65),
+              );
+
         final Widget content = Scaffold(
           backgroundColor: p.canvas,
-          appBar: appBar,
+          appBar: alignedAppBar,
           body: DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -92,12 +102,12 @@ class EspectroScaffold extends StatelessWidget {
                 end: Alignment.bottomCenter,
                 colors: <Color>[
                   Color.alphaBlend(
-                    p.accent.withValues(alpha: p.isDark ? 0.055 : 0.025),
+                    p.accent.withValues(alpha: p.isDark ? 0.05 : 0.03),
                     p.canvas,
                   ),
                   p.canvas,
                 ],
-                stops: const <double>[0.0, 0.35],
+                stops: const <double>[0.0, 0.36],
               ),
             ),
             child: Column(
@@ -115,7 +125,9 @@ class EspectroScaffold extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: p.surface,
                         border: Border(
-                          top: BorderSide(color: p.line.withValues(alpha: 0.85)),
+                          top: BorderSide(
+                            color: p.line.withValues(alpha: 0.85),
+                          ),
                         ),
                       ),
                       child: SafeArea(
@@ -166,18 +178,52 @@ class EspectroScaffold extends StatelessWidget {
 
         return Material(
           color: p.canvas,
-          child: Column(
+          child: Row(
             children: [
-              _EditorialDesktopHeader(
+              _EspectroDesktopRail(
                 appViewModel: appViewModel,
                 selectedIndex: selectedIndex,
-                onSelect: (idx) => _open(context, idx),
+                onSelect: (int idx) => _open(context, idx),
               ),
               Expanded(child: content),
             ],
           ),
         );
       },
+    );
+  }
+}
+
+/// Mantém a `AppBar` alinhada à mesma coluna máxima do conteúdo em monitores
+/// largos (Linux, Windows e Web), evitando títulos e ações isolados nas bordas.
+class _WorkspaceConstrainedAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  const _WorkspaceConstrainedAppBar({
+    required this.appBar,
+    required this.canvasColor,
+    required this.borderColor,
+  });
+
+  final PreferredSizeWidget appBar;
+  final Color canvasColor;
+  final Color borderColor;
+
+  @override
+  Size get preferredSize => appBar.preferredSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: canvasColor,
+        border: Border(bottom: BorderSide(color: borderColor, width: 1)),
+      ),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1100),
+          child: appBar,
+        ),
+      ),
     );
   }
 }
@@ -259,8 +305,10 @@ class _MobileNavItem extends StatelessWidget {
   }
 }
 
-class _EditorialDesktopHeader extends StatelessWidget {
-  const _EditorialDesktopHeader({
+/// Rail lateral nativo para Desktop (Linux, Windows e Web): croma escuro de
+/// observatório harmonizado com o mascote do Espectro, sem cortes horizontais.
+class _EspectroDesktopRail extends StatelessWidget {
+  const _EspectroDesktopRail({
     required this.appViewModel,
     required this.selectedIndex,
     required this.onSelect,
@@ -272,125 +320,238 @@ class _EditorialDesktopHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final p = context.palette;
+    final EspectroPalette p = context.palette;
+    final Color railBg = p.isDark
+        ? const Color(0xFF080C14)
+        : const Color(0xFF0E1622);
+    final Color railBorder = p.isDark
+        ? const Color(0xFF1C273A)
+        : const Color(0xFF1E2B3E);
+    const Color railInk = Color(0xFFF3F6FC);
+    const Color railMuted = Color(0xFF93A3BE);
+    final int catalogCurrents = appViewModel.data.catalog.currents.length;
 
     return Container(
+      width: 236,
       decoration: BoxDecoration(
-        color: p.surface.withValues(alpha: p.isDark ? 0.94 : 0.96),
-        border: Border(
-          bottom: BorderSide(color: p.line.withValues(alpha: 0.85)),
-        ),
+        color: railBg,
+        border: Border(right: BorderSide(color: railBorder)),
       ),
       child: SafeArea(
-        bottom: false,
-        child: SizedBox(
-          height: 64,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1140),
-                child: Row(
-                  children: [
-                    InkWell(
-                      onTap: () => onSelect(0),
-                      borderRadius: BorderRadius.circular(10),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 6,
-                          vertical: 6,
+        child: LayoutBuilder(
+          builder: (context, railConstraints) => SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: railConstraints.maxHeight),
+              child: IntrinsicHeight(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 20, 14, 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InkWell(
+                        onTap: () => onSelect(0),
+                        borderRadius: BorderRadius.circular(12),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 6,
+                          ),
+                          child: Row(
+                            children: [
+                              const EspectroBrandMark(size: 30),
+                              const SizedBox(width: 10),
+                              const Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'ESPECTRO',
+                                      style: TextStyle(
+                                        color: railInk,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w800,
+                                        letterSpacing: 1.1,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Observatório político',
+                                      style: TextStyle(
+                                        color: railMuted,
+                                        fontSize: 11,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
+                      ),
+                      const SizedBox(height: 14),
+                      Divider(height: 1, color: railBorder),
+                      const SizedBox(height: 16),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text(
+                          'OBSERVATÓRIO',
+                          style: TextStyle(
+                            fontFamily: 'IBMPlexMono',
+                            color: railMuted,
+                            fontSize: 9.5,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 1.1,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      for (final int i in const <int>[0, 1, 2, 4, 3])
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 4),
+                          child: _RailNavItem(
+                            icon: const <IconData>[
+                              Icons.space_dashboard_outlined,
+                              Icons.fact_check_outlined,
+                              Icons.hub_outlined,
+                              Icons.history_rounded,
+                              Icons.compare_arrows_rounded,
+                              Icons.menu_book_outlined,
+                            ][i],
+                            selectedIcon: const <IconData>[
+                              Icons.space_dashboard_rounded,
+                              Icons.fact_check_rounded,
+                              Icons.hub_rounded,
+                              Icons.history_rounded,
+                              Icons.compare_arrows_rounded,
+                              Icons.menu_book_rounded,
+                            ][i],
+                            label: const <String>[
+                              'Visão geral',
+                              'Meus testes',
+                              'Atlas político',
+                              'Histórico',
+                              'Comparar',
+                              'Método aberto',
+                            ][i],
+                            selected: selectedIndex == i,
+                            onTap: () => onSelect(i),
+                          ),
+                        ),
+                      const SizedBox(height: 12),
+                      Divider(
+                        height: 1,
+                        color: railBorder.withValues(alpha: 0.75),
+                      ),
+                      const SizedBox(height: 12),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text(
+                          'REFERÊNCIA',
+                          style: TextStyle(
+                            fontFamily: 'IBMPlexMono',
+                            color: railMuted,
+                            fontSize: 9.5,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 1.1,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      _RailNavItem(
+                        icon: Icons.menu_book_outlined,
+                        selectedIcon: Icons.menu_book_rounded,
+                        label: 'Método aberto',
+                        selected: selectedIndex == 5,
+                        onTap: () => onSelect(5),
+                      ),
+                      const Spacer(),
+                      const SizedBox(height: 16),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.035),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: railBorder),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const EspectroBrandMark(size: 26),
-                            const SizedBox(width: 10),
+                            const Row(
+                              children: [
+                                Icon(
+                                  Icons.lock_outline_rounded,
+                                  size: 13,
+                                  color: Color(0xFF4CC4BE),
+                                ),
+                                SizedBox(width: 6),
+                                Expanded(
+                                  child: Text(
+                                    'Privacidade local',
+                                    style: TextStyle(
+                                      fontSize: 11.5,
+                                      fontWeight: FontWeight.w700,
+                                      color: railInk,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
                             Text(
-                              'ESPECTRO',
-                              style: TextStyle(
-                                fontFamily: 'IBMPlexSans',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w800,
-                                letterSpacing: 1.2,
-                                color: p.ink,
+                              '$catalogCurrents correntes offline · Zero rastreio',
+                              style: const TextStyle(
+                                fontFamily: 'IBMPlexMono',
+                                fontSize: 9.5,
+                                color: railMuted,
+                                height: 1.35,
                               ),
                             ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 10),
-                              width: 1,
-                              height: 14,
-                              color: p.line,
-                            ),
-                            Text(
-                              'Observatório Político',
-                              style: TextStyle(
-                                fontSize: 12.5,
-                                fontWeight: FontWeight.w500,
-                                color: p.muted,
+                            const SizedBox(height: 10),
+                            InkWell(
+                              borderRadius: BorderRadius.circular(8),
+                              onTap: () => appViewModel.setThemeMode(
+                                p.isDark ? ThemeMode.light : ThemeMode.dark,
+                              ),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 8,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withValues(alpha: 0.05),
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: railBorder),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      p.isDark
+                                          ? Icons.light_mode_rounded
+                                          : Icons.dark_mode_rounded,
+                                      size: 14,
+                                      color: const Color(0xFFE5A64B),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Expanded(
+                                      child: Text(
+                                        p.isDark
+                                            ? 'Tema claro fumê'
+                                            : 'Tema escuro noturno',
+                                        style: const TextStyle(
+                                          fontSize: 11.5,
+                                          fontWeight: FontWeight.w600,
+                                          color: railInk,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                    ),
-                    const Spacer(),
-                    Flexible(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            _HeaderNavLink(
-                              label: 'Início',
-                              selected: selectedIndex == 0,
-                              onTap: () => onSelect(0),
-                            ),
-                            _HeaderNavLink(
-                              label: 'Meus testes',
-                              selected: selectedIndex == 1,
-                              onTap: () => onSelect(1),
-                            ),
-                            _HeaderNavLink(
-                              label: 'Atlas político',
-                              selected: selectedIndex == 2,
-                              onTap: () => onSelect(2),
-                            ),
-                            _HeaderNavLink(
-                              label: 'Comparar',
-                              selected: selectedIndex == 4,
-                              onTap: () => onSelect(4),
-                            ),
-                            _HeaderNavLink(
-                              label: 'Histórico',
-                              selected: selectedIndex == 3,
-                              onTap: () => onSelect(3),
-                            ),
-                            _HeaderNavLink(
-                              label: 'Método',
-                              selected: selectedIndex == 5,
-                              onTap: () => onSelect(5),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 14),
-                    Container(width: 1, height: 18, color: p.line),
-                    const SizedBox(width: 8),
-                    IconButton(
-                      tooltip: p.isDark ? 'Modo claro' : 'Modo escuro',
-                      icon: Icon(
-                        p.isDark
-                            ? Icons.light_mode_outlined
-                            : Icons.dark_mode_outlined,
-                        size: 19,
-                        color: p.inkSoft,
-                      ),
-                      onPressed: () => appViewModel.setThemeMode(
-                        p.isDark ? ThemeMode.light : ThemeMode.dark,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -401,57 +562,104 @@ class _EditorialDesktopHeader extends StatelessWidget {
   }
 }
 
-class _HeaderNavLink extends StatefulWidget {
-  const _HeaderNavLink({
+class _RailNavItem extends StatefulWidget {
+  const _RailNavItem({
+    required this.icon,
+    required this.selectedIcon,
     required this.label,
     required this.selected,
     required this.onTap,
   });
 
+  final IconData icon;
+  final IconData selectedIcon;
   final String label;
   final bool selected;
   final VoidCallback onTap;
 
   @override
-  State<_HeaderNavLink> createState() => _HeaderNavLinkState();
+  State<_RailNavItem> createState() => _RailNavItemState();
 }
 
-class _HeaderNavLinkState extends State<_HeaderNavLink> {
+class _RailNavItemState extends State<_RailNavItem> {
   bool _hovered = false;
 
   @override
   Widget build(BuildContext context) {
-    final p = context.palette;
-    return MouseRegion(
-      onEnter: (_) => setState(() => _hovered = true),
-      onExit: (_) => setState(() => _hovered = false),
-      cursor: SystemMouseCursors.click,
-      child: InkWell(
-        onTap: widget.onTap,
-        borderRadius: BorderRadius.circular(9),
-        hoverColor: Colors.transparent,
-        child: AnimatedContainer(
-          duration: EspectroMotion.fast,
-          curve: EspectroMotion.easeOut,
-          margin: const EdgeInsets.symmetric(horizontal: 2),
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-          decoration: BoxDecoration(
-            color: widget.selected
-                ? p.accentSoft
-                : (_hovered
-                      ? p.ink.withValues(alpha: p.isDark ? 0.06 : 0.04)
-                      : Colors.transparent),
-            borderRadius: BorderRadius.circular(9),
-          ),
-          child: Text(
-            widget.label,
-            style: TextStyle(
-              fontFamily: 'IBMPlexSans',
-              fontSize: 13.5,
-              fontWeight: widget.selected ? FontWeight.w700 : FontWeight.w500,
-              color: widget.selected
-                  ? p.accent
-                  : (_hovered ? p.ink : p.inkSoft),
+    const Color activeBg = Color(0xFF232044);
+    const Color activeBorder = Color(0xFF6E5DC6);
+    const Color activeAccent = Color(0xFFB5A8FF);
+    const Color activeText = Color(0xFFF6F5FF);
+    const Color idleText = Color(0xFFB7C3D8);
+
+    return Semantics(
+      button: true,
+      selected: widget.selected,
+      child: MouseRegion(
+        onEnter: (_) => setState(() => _hovered = true),
+        onExit: (_) => setState(() => _hovered = false),
+        cursor: SystemMouseCursors.click,
+        child: TactilePress(
+          scale: 0.98,
+          child: InkWell(
+            onTap: widget.onTap,
+            borderRadius: BorderRadius.circular(10),
+            hoverColor: Colors.transparent,
+            child: AnimatedContainer(
+              duration: EspectroMotion.fast,
+              curve: EspectroMotion.easeOut,
+              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 9),
+              decoration: BoxDecoration(
+                color: widget.selected
+                    ? activeBg
+                    : (_hovered
+                          ? Colors.white.withValues(alpha: 0.05)
+                          : Colors.transparent),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: widget.selected
+                      ? activeBorder.withValues(alpha: 0.55)
+                      : Colors.transparent,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    widget.selected ? widget.selectedIcon : widget.icon,
+                    size: 18,
+                    color: widget.selected
+                        ? activeAccent
+                        : (_hovered ? Colors.white : idleText),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget.label,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontFamily: 'IBMPlexSans',
+                        fontSize: 13.5,
+                        fontWeight: widget.selected
+                            ? FontWeight.w700
+                            : FontWeight.w500,
+                        color: widget.selected
+                            ? activeText
+                            : (_hovered ? Colors.white : idleText),
+                      ),
+                    ),
+                  ),
+                  if (widget.selected)
+                    Container(
+                      width: 5,
+                      height: 5,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFE5A64B),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
         ),

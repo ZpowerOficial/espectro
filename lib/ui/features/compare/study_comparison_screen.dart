@@ -104,6 +104,7 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
         selectedIndex: 4,
         isSectionRoot: true,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text('Comparação livre'),
           actions: [
             if (selected.length >= 2 && selected.every((s) => s.record == null))
