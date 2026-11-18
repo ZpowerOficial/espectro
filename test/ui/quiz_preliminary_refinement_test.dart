@@ -158,4 +158,77 @@ void main() {
       expect(find.byType(EspectroQuizScreen), findsOneWidget);
     },
   );
+
+  testWidgets(
+    'modo Expresso exibe CTA para completar com as Tríades (+18 perguntas) e destrava aba Tríades ao concluir',
+    (WidgetTester tester) async {
+      tester.view.physicalSize = const Size(1280, 2000);
+      tester.view.devicePixelRatio = 2.0;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await appVm.setAutoAdvance(false);
+
+      final QuizViewModel expressVm = QuizViewModel.startNew(
+        data: data,
+        repository: repository,
+        suite: TestSuite.espectroIntegrated,
+        depth: TestDepth.express,
+        seed: 77,
+      );
+      for (var i = 0; i < expressVm.totalCount; i++) {
+        expressVm.jumpTo(i);
+        expressVm.selectAnswer(
+          i.isEven ? LikertAnswer.agree : LikertAnswer.disagree,
+        );
+      }
+      final EvaluationRecord expressRecord = expressVm.buildCompletedRecord();
+      await appVm.recordCompletedEvaluation(expressRecord);
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: EspectroResultScreen(
+            appViewModel: appVm,
+            record: expressRecord,
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      const String ctaLabel =
+          'Completar o perfil com as Tríades (+18 perguntas)';
+      expect(find.text(ctaLabel), findsOneWidget);
+      expect(find.text('Tríades (6)'), findsNothing);
+
+      await tester.ensureVisible(find.text(ctaLabel));
+      await tester.tap(find.text(ctaLabel));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(EspectroQuizScreen), findsOneWidget);
+      final EspectroQuizScreen supplementQuiz = tester.widget(
+        find.byType(EspectroQuizScreen),
+      );
+      expect(supplementQuiz.quizViewModel.totalCount, 18);
+
+      // Responde as 18 afirmações das tríades
+      for (var i = 0; i < 18; i++) {
+        await tester.tap(
+          find.text(i.isEven ? 'Concordo' : 'Discordo'),
+        );
+        await tester.pumpAndSettle();
+        if (i < 17) {
+          await tester.tap(find.text('Próxima'));
+          await tester.pumpAndSettle();
+        }
+      }
+      await tester.tap(find.text('Concluir'));
+      await tester.pumpAndSettle();
+
+      // Volta para a tela de resultado atualizada com 12 Eixos + 6 Tríades
+      expect(find.byType(EspectroResultScreen), findsOneWidget);
+      expect(find.text(ctaLabel), findsNothing);
+      expect(find.text('Tríades (6)'), findsOneWidget);
+      expect(appVm.history.first.triads, hasLength(6));
+      expect(appVm.history.first.suite, TestSuite.espectroIntegrated);
+    },
+  );
 }

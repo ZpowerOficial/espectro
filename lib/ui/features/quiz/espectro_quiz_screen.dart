@@ -33,11 +33,13 @@ class EspectroQuizScreen extends StatefulWidget {
   const EspectroQuizScreen({
     required this.appViewModel,
     required this.quizViewModel,
+    this.returnCompletedRecord = false,
     super.key,
   });
 
   final AppViewModel appViewModel;
   final QuizViewModel quizViewModel;
+  final bool returnCompletedRecord;
 
   @override
   State<EspectroQuizScreen> createState() => _EspectroQuizScreenState();
@@ -179,6 +181,10 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
     final EvaluationRecord record = _vm.buildCompletedRecord();
     await widget.appViewModel.recordCompletedEvaluation(record);
     if (!mounted) return;
+    if (widget.returnCompletedRecord) {
+      Navigator.of(context).pop(record);
+      return;
+    }
     await Navigator.of(context).pushReplacement(
       MaterialPageRoute<void>(
         builder: (BuildContext context) => EspectroResultScreen(

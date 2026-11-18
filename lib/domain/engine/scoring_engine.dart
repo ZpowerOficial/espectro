@@ -34,11 +34,23 @@ abstract final class EspectroScoringEngine {
     required List<UnifiedQuestion> questions,
     required Map<String, int?> rawAnswersByUid,
   }) {
-    final List<BipolarDimensionScore> axes = suite.includesAxes
+    final bool hasAxisItems = questions.any(
+      (q) =>
+          q.kind == UnifiedQuestionKind.bipolar ||
+          (q.kind == UnifiedQuestionKind.integrated && q.axisQuestion != null),
+    );
+    final bool hasTriadItems = questions.any(
+      (q) =>
+          q.kind == UnifiedQuestionKind.triad ||
+          (q.kind == UnifiedQuestionKind.integrated && q.sixQuestion != null),
+    );
+    final List<BipolarDimensionScore> axes =
+        (suite.includesAxes && (hasAxisItems || suite == TestSuite.bipolarAxes))
         ? _scoreAxes(axesData, questions, rawAnswersByUid)
         : const <BipolarDimensionScore>[];
 
-    final List<TriadDimensionScore> triads = suite.includesTriads
+    final List<TriadDimensionScore> triads =
+        (suite.includesTriads && (hasTriadItems || suite == TestSuite.triads))
         ? _scoreTriads(trianglesData, questions, rawAnswersByUid)
         : const <TriadDimensionScore>[];
 

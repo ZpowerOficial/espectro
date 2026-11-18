@@ -159,7 +159,7 @@ class EspectroApp extends StatelessWidget {
                                           data: appViewModel.data,
                                           repository: appViewModel.repository,
                                           suite: TestSuite.espectroIntegrated,
-                                          depth: TestDepth.standard,
+                                          depth: TestDepth.express,
                                         ),
                                       ),
                                     ),
@@ -229,7 +229,7 @@ class EspectroApp extends StatelessWidget {
         );
         final depth = TestDepth.values.firstWhere(
           (d) => d.name == depthStr,
-          orElse: () => TestDepth.standard,
+          orElse: () => TestDepth.express,
         );
         screen = EspectroQuizScreen(
           appViewModel: appViewModel,

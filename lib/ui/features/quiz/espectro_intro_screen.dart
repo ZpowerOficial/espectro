@@ -15,18 +15,20 @@ class EspectroIntroScreen extends StatefulWidget {
   const EspectroIntroScreen({
     required this.appViewModel,
     required this.suite,
+    this.initialDepth = TestDepth.express,
     super.key,
   });
 
   final AppViewModel appViewModel;
   final TestSuite suite;
+  final TestDepth initialDepth;
 
   @override
   State<EspectroIntroScreen> createState() => _EspectroIntroScreenState();
 }
 
 class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
-  TestDepth _depth = TestDepth.quick;
+  late TestDepth _depth = widget.initialDepth;
 
   void _start() {
     final QuizViewModel quizVm = QuizViewModel.startNew(
@@ -173,7 +175,12 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
                     );
                     final selected = _depth == depth;
                     final int level = idx + 1;
+                    final int totalLevels = TestDepth.values.length;
                     final String? badgeText = switch (depth) {
+                      TestDepth.express =>
+                        widget.suite == TestSuite.espectroIntegrated
+                            ? 'Só eixos'
+                            : 'Mais rápido',
                       TestDepth.standard => 'Equilibrada',
                       TestDepth.exhaustive => 'Completa',
                       _ => null,
@@ -209,7 +216,7 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 16,
-                                      vertical: 16,
+                                      vertical: 13,
                                     ),
                                     child: Row(
                                       crossAxisAlignment:
@@ -278,6 +285,15 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
                                               const SizedBox(height: 3),
                                               Text(
                                                 switch (depth) {
+                                                  TestDepth.express =>
+                                                    switch (widget.suite) {
+                                                      TestSuite.espectroIntegrated =>
+                                                        '12 eixos agora · Tríades (+18) depois',
+                                                      TestSuite.bipolarAxes =>
+                                                        '1 item por polo em cada eixo',
+                                                      TestSuite.triads =>
+                                                        '1 item por vértice em cada tríade',
+                                                    },
                                                   TestDepth.quick =>
                                                     'Panorama inicial',
                                                   TestDepth.standard =>
@@ -294,12 +310,18 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
                                               const SizedBox(height: 8),
                                               Row(
                                                 children: [
-                                                  for (var b = 1; b <= 4; b++)
+                                                  for (
+                                                    var b = 1;
+                                                    b <= totalLevels;
+                                                    b++
+                                                  )
                                                     Expanded(
                                                       child: Container(
                                                         height: 3.5,
                                                         margin: EdgeInsets.only(
-                                                          right: b < 4 ? 4 : 0,
+                                                          right: b < totalLevels
+                                                              ? 4
+                                                              : 0,
                                                         ),
                                                         decoration:
                                                             BoxDecoration(
@@ -358,7 +380,7 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
                       ),
                     );
                   }(),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 10),
                 ],
                 const SizedBox(height: 6),
                 Text(
@@ -429,9 +451,12 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
                               color: Colors.white.withValues(alpha: 0.14),
                             ),
                           ),
-                          child: const Text(
-                            'Progresso adaptativo em blocos: você pode consultar o resultado preliminar após o marco inicial ou pausar a qualquer momento sem perder respostas.',
-                            style: TextStyle(
+                          child: Text(
+                            widget.suite == TestSuite.espectroIntegrated &&
+                                    _depth == TestDepth.express
+                                ? 'Modo Expresso: avalia os 12 eixos com ambos os polos (24 itens) para um resultado rápido e confiável. Na tela de resultado, você poderá completar as 6 Tríades (+18 perguntas) quando quiser.'
+                                : 'Progresso adaptativo em blocos: você pode consultar o resultado preliminar após o marco inicial ou pausar a qualquer momento sem perder respostas.',
+                            style: const TextStyle(
                               fontSize: 12.5,
                               color: Color(0xFFCBD5E1),
                               height: 1.45,

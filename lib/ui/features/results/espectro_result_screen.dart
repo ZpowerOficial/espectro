@@ -81,6 +81,12 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
 
   bool get _isPreliminary => widget.isPreliminary || _record.isPreliminary;
 
+  bool get _canCompleteWithTriads =>
+      !widget.readOnly &&
+      !_isPreliminary &&
+      _record.axes.isNotEmpty &&
+      _record.triads.isEmpty;
+
   /// Padrões que não diferenciam alternativas não devem ser apresentados como
   /// uma identidade ideológica firme, mesmo quando a geometria produz um
   /// "melhor match" numérico.
@@ -270,6 +276,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
         data: widget.appViewModel.data,
         repository: widget.appViewModel.repository,
         draft: draft,
+        history: widget.appViewModel.history,
       );
       await Navigator.of(context).push(
         MaterialPageRoute<void>(
@@ -280,6 +287,29 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
         ),
       );
       if (mounted) setState(() {});
+    }
+  }
+
+  Future<void> _completeWithTriads() async {
+    final QuizViewModel quizVm = QuizViewModel.startTriadSupplement(
+      data: widget.appViewModel.data,
+      repository: widget.appViewModel.repository,
+      baseRecord: _record,
+    );
+    final EvaluationRecord? updated = await Navigator.of(context)
+        .push<EvaluationRecord>(
+          MaterialPageRoute<EvaluationRecord>(
+            builder: (BuildContext context) => EspectroQuizScreen(
+              appViewModel: widget.appViewModel,
+              quizViewModel: quizVm,
+              returnCompletedRecord: true,
+            ),
+          ),
+        );
+    if (mounted && updated != null) {
+      setState(() {
+        _record = updated;
+      });
     }
   }
 
@@ -970,6 +1000,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     ];
 
     return DefaultTabController(
+      key: ValueKey<int>(tabs.length),
       length: tabs.length,
       initialIndex: widget.initialTabIndex ?? 0,
       child: EspectroScaffold(
@@ -1375,10 +1406,16 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
       children: <Widget>[
         if (_isPreliminary) ...<Widget>[
           _PreliminaryBanner(
-            answeredCount: _record.quality.totalAnswered,
+            answeredCount:
+                widget.quizViewModel?.answeredCount ??
+                (widget.appViewModel.activeDraft?.answers
+                        .where((a) => a != null)
+                        .length ??
+                    _record.quality.totalAnswered),
             totalCount:
                 widget.quizViewModel?.totalCount ??
-                _record.quality.totalPresented,
+                (widget.appViewModel.activeDraft?.questionUids.length ??
+                    _record.quality.totalPresented),
             onContinue: _resumeQuiz,
           ),
           const SizedBox(height: 18),
@@ -1403,6 +1440,13 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
             p,
             text,
           ),
+          if (_canCompleteWithTriads) ...<Widget>[
+            const SizedBox(height: 18),
+            _CompleteTriadsBanner(
+              isExpress: _record.depth == TestDepth.express,
+              onComplete: _completeWithTriads,
+            ),
+          ],
           const SizedBox(height: 18),
           RaioXDiagnosticCard(
             diagnostic: RaioXEngine.fromCurrentCompatibility(
@@ -5827,6 +5871,101 @@ class _PreliminaryBanner extends StatelessWidget {
               icon: Icons.play_arrow_rounded,
               kind: AppButtonKind.filled,
               onPressed: onContinue,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CompleteTriadsBanner extends StatelessWidget {
+  const _CompleteTriadsBanner({
+    required this.isExpress,
+    required this.onComplete,
+  });
+
+  final bool isExpress;
+  final VoidCallback onComplete;
+
+  @override
+  Widget build(BuildContext context) {
+    final EspectroPalette p = context.palette;
+    final TextTheme text = Theme.of(context).textTheme;
+
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Color.alphaBlend(
+          p.accent.withValues(alpha: p.isDark ? 0.12 : 0.06),
+          p.surface,
+        ),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: p.accent.withValues(alpha: p.isDark ? 0.35 : 0.25),
+          width: 1.2,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: p.accent.withValues(alpha: 0.06),
+            blurRadius: 10,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+                decoration: BoxDecoration(
+                  color: p.accent,
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Text(
+                  isExpress
+                      ? 'MODO EXPRESSO · 12 EIXOS CONCLUÍDOS'
+                      : 'PERFIL DE EIXOS · TRÍADES DISPONÍVEIS',
+                  style: TextStyle(
+                    fontFamily: 'IBMPlexMono',
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                    color: p.isDark ? const Color(0xFF061318) : Colors.white,
+                    letterSpacing: 0.6,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  '~3 min adicionais',
+                  textAlign: TextAlign.right,
+                  style: text.labelSmall?.copyWith(
+                    fontFamily: 'IBMPlexMono',
+                    fontWeight: FontWeight.w600,
+                    color: p.accent,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Text(
+            'Seu posicionamento nos 12 eixos bipolares já está calibrado. '
+            'Se quiser aprofundar agora ou mais tarde, adicione as 6 tríades políticas '
+            '(1 afirmação por vértice) para destravar os triângulos de valores e refinar as afinidades.',
+            style: text.bodyMedium?.copyWith(height: 1.35, color: p.ink),
+          ),
+          const SizedBox(height: 12),
+          SizedBox(
+            width: double.infinity,
+            child: AppButton(
+              label: 'Completar o perfil com as Tríades (+18 perguntas)',
+              icon: Icons.change_history_rounded,
+              kind: AppButtonKind.filled,
+              onPressed: onComplete,
             ),
           ),
         ],

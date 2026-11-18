@@ -48,6 +48,7 @@ class EspectroHomeScreen extends StatelessWidget {
       data: appViewModel.data,
       repository: appViewModel.repository,
       draft: draft,
+      history: appViewModel.history,
     );
     Navigator.of(context).push(
       MaterialPageRoute<void>(
@@ -64,6 +65,7 @@ class EspectroHomeScreen extends StatelessWidget {
       data: appViewModel.data,
       repository: appViewModel.repository,
       draft: draft,
+      history: appViewModel.history,
     );
     final EvaluationRecord record = quizVm.buildPreliminaryRecord();
     Navigator.of(context).push(
@@ -1686,7 +1688,9 @@ class _DraftResumeCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '${draft.suite.title} · ${draft.depth.label}',
+            draft.completingRecordId != null
+                ? 'Complemento das 6 Tríades · +18 perguntas'
+                : '${draft.suite.title} · ${draft.depth.label}',
             style: text.titleLarge,
           ),
           const SizedBox(height: 10),

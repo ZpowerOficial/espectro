@@ -25,6 +25,7 @@ class QuizViewModel extends ChangeNotifier {
     required this._answers,
     required this._skippedUids,
     required this._currentIndex,
+    this.completingRecord,
   }) : _random = Random(seed ^ 0x5A17) {
     _usedUids.addAll(_questions.map((q) => q.uid));
   }
@@ -58,14 +59,56 @@ class QuizViewModel extends ChangeNotifier {
     );
   }
 
+  /// Inicia o complemento rápido das 6 Tríades (+18 perguntas, 1 por vértice)
+  /// sobre um [EvaluationRecord] que já possui os 12 eixos avaliados.
+  factory QuizViewModel.startTriadSupplement({
+    required AppData data,
+    required EvaluationRepository repository,
+    required EvaluationRecord baseRecord,
+    int? seed,
+  }) {
+    final int resolvedSeed =
+        seed ??
+        ((baseRecord.seed ^ DateTime.now().microsecondsSinceEpoch) &
+            0x7FFFFFFF);
+    final List<UnifiedQuestion> selected = selectUnifiedQuestions(
+      axesData: data.twelveAxes,
+      trianglesData: data.sixTriangles,
+      suite: TestSuite.triads,
+      depth: TestDepth.express,
+      seed: resolvedSeed,
+    );
+    return QuizViewModel._(
+      data: data,
+      repository: repository,
+      suite: TestSuite.triads,
+      depth: TestDepth.express,
+      seed: resolvedSeed,
+      questions: selected,
+      answers: List<int?>.filled(selected.length, null),
+      skippedUids: <String>{},
+      currentIndex: 0,
+      completingRecord: baseRecord,
+    );
+  }
+
   factory QuizViewModel.fromDraft({
     required AppData data,
     required EvaluationRepository repository,
     required ActiveQuizDraft draft,
+    List<EvaluationRecord> history = const <EvaluationRecord>[],
+    EvaluationRecord? completingRecord,
   }) {
     final List<UnifiedQuestion> restored = <UnifiedQuestion>[
       for (final String uid in draft.questionUids) data.questionByUid[uid]!,
     ];
+    final EvaluationRecord? resolvedCompleting =
+        completingRecord ??
+        (draft.completingRecordId == null
+            ? null
+            : history
+                  .where((r) => r.id == draft.completingRecordId)
+                  .firstOrNull);
     return QuizViewModel._(
       data: data,
       repository: repository,
@@ -76,6 +119,7 @@ class QuizViewModel extends ChangeNotifier {
       answers: List<int?>.from(draft.answers),
       skippedUids: Set<String>.from(draft.skippedSet),
       currentIndex: draft.currentIndex,
+      completingRecord: resolvedCompleting,
     );
   }
 
@@ -84,6 +128,7 @@ class QuizViewModel extends ChangeNotifier {
   final TestSuite suite;
   final TestDepth depth;
   final int seed;
+  final EvaluationRecord? completingRecord;
 
   final List<UnifiedQuestion> _questions;
   final List<int?> _answers;
@@ -316,6 +361,26 @@ class QuizViewModel extends ChangeNotifier {
   }
 
   String get milestoneStatusMessage {
+    if (completingRecord != null) {
+      if (answeredCount >= totalCount) {
+        return 'Tríades concluídas! Seu perfil agora combina os 12 eixos e as 6 tríades.';
+      }
+      return 'Responda as $totalCount afirmações das 6 tríades para completar seu perfil.';
+    }
+    if (!depth.includesTriadsFor(suite)) {
+      if (answeredCount >= totalCount) {
+        return 'Calibração dos 12 eixos concluída! No resultado você poderá incluir as 6 tríades (+18 perguntas) quando quiser.';
+      } else if (answeredCount >= 24) {
+        return 'Calibração básica dos 12 eixos alcançada! Continue para aumentar a precisão.';
+      }
+      return 'Responda as afirmações para calibrar ambos os polos dos 12 eixos.';
+    }
+    if (!depth.includesAxesFor(suite)) {
+      if (answeredCount >= totalCount) {
+        return 'Calibração das 6 tríades concluída!';
+      }
+      return 'Responda as afirmações para calibrar os 3 vértices de cada uma das 6 tríades.';
+    }
     if (answeredCount >= 96) {
       return 'Mapeamento de alta resolução atingido! Seu perfil já possui consistência estatística sólida.';
     } else if (answeredCount >= 48) {
@@ -345,6 +410,45 @@ class QuizViewModel extends ChangeNotifier {
     for (var i = 0; i < _questions.length; i++) {
       rawMap[_questions[i].uid] = _answers[i];
     }
+
+    final EvaluationRecord? base = completingRecord;
+    if (base != null) {
+      final List<UnifiedQuestion> baseQuestions = <UnifiedQuestion>[
+        for (final String uid in base.rawAnswers.keys)
+          if (data.questionByUid.containsKey(uid)) data.questionByUid[uid]!,
+      ];
+      final List<UnifiedQuestion> mergedQuestions = <UnifiedQuestion>[
+        ...baseQuestions,
+        ..._questions,
+      ];
+      final Map<String, int?> mergedRaw = <String, int?>{
+        ...base.rawAnswers,
+        ...rawMap,
+      };
+      final ScoredEvaluation scored = EspectroScoringEngine.evaluate(
+        axesData: data.twelveAxes,
+        trianglesData: data.sixTriangles,
+        suite: TestSuite.espectroIntegrated,
+        questions: mergedQuestions,
+        rawAnswersByUid: mergedRaw,
+      );
+      return EvaluationRecord(
+        id: base.id,
+        createdAt: timestamp,
+        suite: TestSuite.espectroIntegrated,
+        depth: base.depth,
+        seed: base.seed,
+        engineVersion: kEspectroEngineVersion,
+        bankVersion: kEspectroBankVersion,
+        title: base.title,
+        rawAnswers: mergedRaw,
+        axes: baseQuestions.isNotEmpty ? scored.axes : base.axes,
+        triads: scored.triads,
+        quality: scored.quality,
+        isPreliminary: isPreliminary,
+      );
+    }
+
     final ScoredEvaluation scored = EspectroScoringEngine.evaluate(
       axesData: data.twelveAxes,
       trianglesData: data.sixTriangles,
@@ -352,12 +456,16 @@ class QuizViewModel extends ChangeNotifier {
       questions: _questions,
       rawAnswersByUid: rawMap,
     );
+    final TestSuite effectiveSuite =
+        scored.axes.isNotEmpty && scored.triads.isNotEmpty
+        ? TestSuite.espectroIntegrated
+        : (scored.triads.isNotEmpty ? TestSuite.triads : TestSuite.bipolarAxes);
     final String id =
         'esp_${timestamp.millisecondsSinceEpoch}_${seed.toRadixString(16)}';
     return EvaluationRecord(
       id: id,
       createdAt: timestamp,
-      suite: suite,
+      suite: effectiveSuite,
       depth: depth,
       seed: seed,
       engineVersion: kEspectroEngineVersion,
@@ -382,6 +490,7 @@ class QuizViewModel extends ChangeNotifier {
         skippedSet: Set<String>.from(_skippedUids),
         currentIndex: _currentIndex,
         updatedAt: DateTime.now(),
+        completingRecordId: completingRecord?.id,
       );
 
   Future<void> saveDraftAsync() async {

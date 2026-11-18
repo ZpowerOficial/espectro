@@ -253,6 +253,8 @@ void main() {
       150,
       scrollable: find.byType(Scrollable).first,
     );
+    await tester.ensureVisible(find.textContaining('Iniciar avaliação'));
+    await tester.pumpAndSettle();
     await tester.tap(find.textContaining('Iniciar avaliação'));
     await tester.pumpAndSettle();
     expect(

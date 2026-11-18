@@ -51,6 +51,7 @@ enum TestSuite {
 
 /// Extensão / profundidade da bateria de perguntas.
 enum TestDepth {
+  express,
   quick,
   standard,
   deep,
@@ -59,19 +60,34 @@ enum TestDepth {
   String get id => name;
 
   String get label => switch (this) {
+    TestDepth.express => 'Expresso',
     TestDepth.quick => 'Rápida',
     TestDepth.standard => 'Padrão',
     TestDepth.deep => 'Profunda',
     TestDepth.exhaustive => 'Integral',
   };
 
+  /// Se esta combinação de modalidade e profundidade avalia os 12 eixos bipolares.
+  bool includesAxesFor(TestSuite suite) => suite.includesAxes;
+
+  /// Se esta combinação avalia as 6 tríades inicialmente.
+  /// No modo [TestDepth.express] do [TestSuite.espectroIntegrated], avaliamos
+  /// apenas os 12 eixos (24 perguntas, 1 por polo) para manter velocidade e
+  /// confiabilidade psicométrica, permitindo completar as 6 tríades (+18) depois.
+  bool includesTriadsFor(TestSuite suite) => switch ((suite, this)) {
+    (TestSuite.espectroIntegrated, TestDepth.express) => false,
+    _ => suite.includesTriads,
+  };
+
   /// Quantidade por eixo bipolar quando a modalidade inclui eixos (`0` = todos).
   int axesPerDimension(TestSuite suite) => switch ((suite, this)) {
     (TestSuite.triads, _) => 0,
+    (TestSuite.espectroIntegrated, TestDepth.express) => 2,
     (TestSuite.espectroIntegrated, TestDepth.quick) => 2,
     (TestSuite.espectroIntegrated, TestDepth.standard) => 4,
     (TestSuite.espectroIntegrated, TestDepth.deep) => 8,
     (TestSuite.espectroIntegrated, TestDepth.exhaustive) => 20,
+    (TestSuite.bipolarAxes, TestDepth.express) => 2,
     (TestSuite.bipolarAxes, TestDepth.quick) => 3,
     (TestSuite.bipolarAxes, TestDepth.standard) => 6,
     (TestSuite.bipolarAxes, TestDepth.deep) => 20,
@@ -81,10 +97,12 @@ enum TestDepth {
   /// Quantidade por vértice triangular quando a modalidade inclui tríades (`0` = todos).
   int triadPerVertex(TestSuite suite) => switch ((suite, this)) {
     (TestSuite.bipolarAxes, _) => 0,
+    (TestSuite.espectroIntegrated, TestDepth.express) => 0,
     (TestSuite.espectroIntegrated, TestDepth.quick) => 2,
     (TestSuite.espectroIntegrated, TestDepth.standard) => 4,
     (TestSuite.espectroIntegrated, TestDepth.deep) => 8,
     (TestSuite.espectroIntegrated, TestDepth.exhaustive) => 16,
+    (TestSuite.triads, TestDepth.express) => 1,
     (TestSuite.triads, TestDepth.quick) => 3,
     (TestSuite.triads, TestDepth.standard) => 6,
     (TestSuite.triads, TestDepth.deep) => 12,
@@ -98,10 +116,10 @@ enum TestDepth {
   }) {
     final int perAxis = axesPerDimension(suite);
     final int perVert = triadPerVertex(suite);
-    final int axesPart = !suite.includesAxes
+    final int axesPart = !includesAxesFor(suite)
         ? 0
         : (perAxis == 0 ? totalAxesPool : 12 * perAxis);
-    final int triadsPart = !suite.includesTriads
+    final int triadsPart = !includesTriadsFor(suite)
         ? 0
         : (perVert == 0 ? totalTriadsPool : 18 * perVert);
     return axesPart + triadsPart;
@@ -115,6 +133,10 @@ enum TestDepth {
   }
 
   String descriptionFor(TestSuite suite) => switch (this) {
+    TestDepth.express =>
+      suite == TestSuite.espectroIntegrated
+          ? 'Foco nos 12 eixos (24 perguntas); você pode completar as 6 tríades (+18) depois.'
+          : 'Cobertura mínima confiável por dimensão para diagnóstico rápido.',
     TestDepth.quick =>
       'Panorama ágil com itens balanceados; margem de incerteza maior.',
     TestDepth.standard =>
@@ -1229,6 +1251,7 @@ class ActiveQuizDraft {
     required this.skippedSet,
     required this.currentIndex,
     required this.updatedAt,
+    this.completingRecordId,
   });
 
   final TestSuite suite;
@@ -1243,6 +1266,10 @@ class ActiveQuizDraft {
   final Set<String> skippedSet;
   final int currentIndex;
   final DateTime updatedAt;
+
+  /// Quando preenchido, indica que esta sessão de +18 perguntas complementa
+  /// as 6 tríades de um [EvaluationRecord] já concluído apenas nos 12 eixos.
+  final String? completingRecordId;
 
   int get answeredOrSkippedCount {
     var count = 0;
@@ -1264,6 +1291,7 @@ class ActiveQuizDraft {
     'skippedUids': skippedSet.toList(),
     'currentIndex': currentIndex,
     'updatedAt': updatedAt.toIso8601String(),
+    if (completingRecordId != null) 'completingRecordId': completingRecordId,
   };
 
   factory ActiveQuizDraft.fromJson(
@@ -1311,6 +1339,10 @@ class ActiveQuizDraft {
         '$path.currentIndex',
       ).clamp(0, rawUids.length - 1),
       updatedAt: updated,
+      completingRecordId: readStringOrNull(
+        json['completingRecordId'],
+        '$path.completingRecordId',
+      ),
     );
   }
 }

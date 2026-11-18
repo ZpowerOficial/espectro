@@ -21,7 +21,7 @@ List<UnifiedQuestion> selectUnifiedQuestions({
   final List<UnifiedQuestion> positivePool = <UnifiedQuestion>[];
   final List<UnifiedQuestion> negativePool = <UnifiedQuestion>[];
 
-  if (suite.includesAxes) {
+  if (depth.includesAxesFor(suite)) {
     final int perAxis = depth.axesPerDimension(suite);
     for (var axisIndex = 0; axisIndex < axesData.axes.length; axisIndex++) {
       final Axis axis = axesData.axes[axisIndex];
@@ -62,7 +62,7 @@ List<UnifiedQuestion> selectUnifiedQuestions({
     }
   }
 
-  if (suite.includesTriads) {
+  if (depth.includesTriadsFor(suite)) {
     final int perVertex = depth.triadPerVertex(suite);
     final Map<int, List<SixQuestion>> byVertexPos = <int, List<SixQuestion>>{};
     final Map<int, List<SixQuestion>> byVertexNeg = <int, List<SixQuestion>>{};
