@@ -81,345 +81,472 @@ class HomeShareCardSpecimen extends StatelessWidget {
       axes: subject.axes,
       triangles: subject.triangles,
     );
-    final List<
-      ({String axisId, String label, String pole, int pct, double mag, Color color, Color ink})
-    >
-    topTraits = _topDominantTraits(
-      sourceAxes,
-      axesMeta,
-      fallbackAccent: traditionColor,
-      limit: (compact && storyFormat) ? 1 : 2,
-    );
 
     const Color bgObsidian = Color(0xFF0B101A);
     const Color inkLight = Color(0xFFF7F4EC);
     const Color ruleBorder = Color(0xFF232D3F);
     const Color brassAccent = Color(0xFFE5A64B);
 
-    final double padH = compact ? 12 : 20;
-    final double padV = compact ? 10 : 18;
-    final double avatarSize = compact ? 34 : 52;
-    final double radarSize = storyFormat
-        ? (compact ? 104 : 184)
-        : (compact ? 92 : 158);
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints outerBox) {
+        final double cardW = outerBox.maxWidth.isFinite
+            ? outerBox.maxWidth
+            : (storyFormat ? 300.0 : 400.0);
+        // Preserva proporção real 1:1 e 9:16 em visualização padrão; em escalas
+        // de acessibilidade muito altas em cartões estreitos prioriza legibilidade.
+        final bool enforceAspectRatio =
+            scale <= 1.35 && !(scale > 1.15 && !storyFormat && cardW < 290);
+        final bool tight =
+            compact ||
+            (storyFormat ? cardW < 280 : cardW < 330) ||
+            scale > 1.12;
 
-    final Widget identityEmblem = _SpecimenEmblem(
-      subject: visualSubject,
-      portrait: portrait,
-      accent: traditionColor,
-      size: avatarSize,
-    );
+        final double padH = tight ? 12.0 : (storyFormat ? 16.0 : 18.0);
+        final double padV = tight ? 11.0 : 16.0;
+        final double avatarSize = tight ? 34.0 : 44.0;
+        final double nameFontSize = tight ? 15.0 : 18.5;
 
-    final Widget headerBand = Row(
-      children: <Widget>[
-        const SizedBox(
-          width: 17,
-          height: 17,
-          child: FittedBox(child: EspectroBrandMark()),
-        ),
-        const SizedBox(width: 6),
-        Expanded(
-          child: Text(
-            storyFormat ? 'ESPECTRO · STORY 9:16' : 'ESPECTRO · POST 1:1',
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontFamily: 'IBMPlexSans',
-              fontSize: 9.5,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 0.65,
-              color: inkLight,
+        final Widget identityEmblem = _SpecimenEmblem(
+          subject: visualSubject,
+          portrait: portrait,
+          accent: traditionColor,
+          size: avatarSize,
+        );
+
+        final Widget headerBand = Row(
+          children: <Widget>[
+            const SizedBox(
+              width: 17,
+              height: 17,
+              child: FittedBox(child: EspectroBrandMark()),
             ),
-          ),
-        ),
-        const SizedBox(width: 6),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            border: Border.all(
-              color: traditionColor.withValues(alpha: 0.50),
+            const SizedBox(width: 6),
+            Expanded(
+              child: Text(
+                storyFormat ? 'ESPECTRO · STORY 9:16' : 'ESPECTRO · POST 1:1',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 9.5,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.65,
+                  color: inkLight,
+                ),
+              ),
             ),
-          ),
-          child: Text(
-            badgeLabel,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontFamily: 'IBMPlexSans',
-              fontSize: 8.5,
-              fontWeight: FontWeight.w700,
-              color: traditionInk,
-            ),
-          ),
-        ),
-      ],
-    );
-
-    final String specEyebrow =
-        subtitleMetric ??
-        (spectrum?.name ??
-            (subject.family.isNotEmpty ? subject.family : subject.kindLabel));
-
-    final Widget identityBand = Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        identityEmblem,
-        const SizedBox(width: 10),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(
-                specEyebrow,
+            const SizedBox(width: 6),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(
+                  color: traditionColor.withValues(alpha: 0.50),
+                ),
+              ),
+              child: Text(
+                badgeLabel,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontFamily: 'IBMPlexSans',
-                  fontSize: compact ? 9.5 : 11.5,
+                  fontSize: 8.5,
                   fontWeight: FontWeight.w700,
                   color: traditionInk,
                 ),
               ),
-              const SizedBox(height: 2),
-              Text(
-                subject.name,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontFamily: 'IBMPlexSans',
-                  fontSize: compact ? 14.5 : 20,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: -0.45,
-                  height: 1.08,
-                  color: inkLight,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-
-    final Widget radarVisual = SizedBox(
-      width: radarSize,
-      height: radarSize,
-      child: CustomPaint(
-        painter: _SpecimenRadarPainter(
-          values: radarValues,
-          labels: <String>[
-            for (final ({String id, String label}) ax in _canonicalRadarAxes)
-              ax.label,
-          ],
-          accent: traditionColor,
-          showLabels: scale <= 1.35 && !compact,
-        ),
-      ),
-    );
-
-    final Widget nolanAndTraitsColumn = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        if (nolan != null)
-          Row(
-            children: <Widget>[
-              SizedBox(
-                width: 24,
-                height: 24,
-                child: CustomPaint(
-                  painter: _SpecimenNolanPainter(
-                    econPct: nolan.economicFreedom / 100.0,
-                    civilPct: nolan.personalFreedom / 100.0,
-                    accent: traditionColor,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 7),
-              Expanded(
-                child: Text(
-                  'Econ. ${nolan.economicFreedom.round()}% · Civil ${nolan.personalFreedom.round()}%',
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontFamily: 'IBMPlexMono',
-                    fontSize: 9.5,
-                    fontWeight: FontWeight.w600,
-                    color: inkLight,
-                    height: 1.2,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        if (topTraits.isNotEmpty) ...<Widget>[
-          SizedBox(height: nolan != null ? 8 : 0),
-          for (int i = 0; i < topTraits.length; i++) ...<Widget>[
-            if (i > 0) const SizedBox(height: 6),
-            _SpecimenTraitRow(
-              axisId: topTraits[i].axisId,
-              label: '${topTraits[i].label} · ${topTraits[i].pole}',
-              percent: topTraits[i].pct,
-              accent: topTraits[i].color,
-              accentInk: topTraits[i].ink,
             ),
           ],
-        ],
-      ],
-    );
+        );
 
-    final Widget footerBand = Row(
-      children: <Widget>[
-        Expanded(
-          child: Column(
+        final String specEyebrow =
+            subtitleMetric ??
+            (spectrum?.name ??
+                (subject.family.isNotEmpty
+                    ? subject.family
+                    : subject.kindLabel));
+
+        final Widget identityBand = Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            identityEmblem,
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text(
+                    specEyebrow,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: tight ? 9.5 : 11.0,
+                      fontWeight: FontWeight.w700,
+                      color: traditionInk,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    subject.name,
+                    maxLines: tight ? 1 : 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: nameFontSize,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -0.45,
+                      height: 1.08,
+                      color: inkLight,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+
+        Widget buildMiddleEvidence(double availW, double? availH) {
+          final int traitLimit;
+          if (storyFormat) {
+            if (availH != null && availH < 210) {
+              traitLimit = 1;
+            } else if ((availH == null || availH >= 310) &&
+                !tight &&
+                scale <= 1.15) {
+              traitLimit = 3;
+            } else {
+              traitLimit = 2;
+            }
+          } else {
+            traitLimit = (availH != null && availH < 94) ? 1 : 2;
+          }
+
+          final List<
+            ({
+              String axisId,
+              String label,
+              String pole,
+              int pct,
+              double mag,
+              Color color,
+              Color ink,
+            })
+          >
+          topTraits = _topDominantTraits(
+            sourceAxes,
+            axesMeta,
+            fallbackAccent: traditionColor,
+            limit: traitLimit,
+          );
+
+          final double nolanBoxSize = tight ? 20.0 : 24.0;
+          final Widget nolanAndTraitsColumn = Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Text(
-                'Qual é o seu mapa?',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontFamily: 'IBMPlexSans',
-                  fontSize: 9.5,
-                  fontWeight: FontWeight.w700,
-                  color: inkLight,
+              if (nolan != null)
+                Row(
+                  children: <Widget>[
+                    SizedBox(
+                      width: nolanBoxSize,
+                      height: nolanBoxSize,
+                      child: CustomPaint(
+                        painter: _SpecimenNolanPainter(
+                          econPct: nolan.economicFreedom / 100.0,
+                          civilPct: nolan.personalFreedom / 100.0,
+                          accent: traditionColor,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 7),
+                    Expanded(
+                      child: Text(
+                        'Econ. ${nolan.economicFreedom.round()}% · Civil ${nolan.personalFreedom.round()}%',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontFamily: 'IBMPlexMono',
+                          fontSize: tight ? 9.0 : 9.5,
+                          fontWeight: FontWeight.w600,
+                          color: inkLight,
+                          height: 1.2,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Text(
-                'espectro-politico.web.app',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontFamily: 'IBMPlexMono',
-                  fontSize: compact ? 8.0 : 8.5,
-                  fontWeight: FontWeight.w700,
-                  color: brassAccent,
-                ),
-              ),
+              if (topTraits.isNotEmpty) ...<Widget>[
+                SizedBox(height: nolan != null ? (tight ? 5 : 8) : 0),
+                for (int i = 0; i < topTraits.length; i++) ...<Widget>[
+                  if (i > 0) SizedBox(height: tight ? 5 : 7),
+                  _SpecimenTraitRow(
+                    axisId: topTraits[i].axisId,
+                    label: '${topTraits[i].label} · ${topTraits[i].pole}',
+                    percent: topTraits[i].pct,
+                    accent: topTraits[i].color,
+                    accentInk: topTraits[i].ink,
+                  ),
+                ],
+              ],
             ],
-          ),
-        ),
-        const SizedBox(width: 6),
-        if (onPrimaryAction != null)
-          FilledButton(
-            onPressed: onPrimaryAction,
-            style: FilledButton.styleFrom(
-              backgroundColor: brassAccent,
-              foregroundColor: const Color(0xFF140D03),
-              elevation: 0,
-              minimumSize: const Size(0, 30),
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              padding: EdgeInsets.symmetric(
-                horizontal: compact ? 8 : 10,
-                vertical: 5,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(7),
-              ),
-              textStyle: TextStyle(
-                fontFamily: 'IBMPlexSans',
-                fontSize: compact ? 10 : 11,
-                fontWeight: FontWeight.w800,
+          );
+
+          if (!storyFormat && scale <= 1.35) {
+            final double maxByHeight = availH != null ? (availH * 0.90) : 160.0;
+            final double radarSize = math
+                .min(availW * 0.43, maxByHeight)
+                .clamp(68.0, 162.0);
+            final bool showRadarLabels =
+                radarSize >= 126.0 && scale <= 1.25 && !compact;
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  width: radarSize,
+                  height: radarSize,
+                  child: CustomPaint(
+                    painter: _SpecimenRadarPainter(
+                      values: radarValues,
+                      labels: <String>[
+                        for (final ({String id, String label}) ax
+                            in _canonicalRadarAxes)
+                          ax.label,
+                      ],
+                      accent: traditionColor,
+                      showLabels: showRadarLabels,
+                    ),
+                  ),
+                ),
+                SizedBox(width: tight ? 8 : 14),
+                Expanded(child: nolanAndTraitsColumn),
+              ],
+            );
+          }
+
+          if (!storyFormat) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Center(
+                  child: SizedBox(
+                    width: 120,
+                    height: 120,
+                    child: CustomPaint(
+                      painter: _SpecimenRadarPainter(
+                        values: radarValues,
+                        labels: <String>[
+                          for (final ({String id, String label}) ax
+                              in _canonicalRadarAxes)
+                            ax.label,
+                        ],
+                        accent: traditionColor,
+                        showLabels: false,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                nolanAndTraitsColumn,
+              ],
+            );
+          }
+
+          final double maxByHeight = availH != null
+              ? (availH * (traitLimit >= 3 ? 0.52 : 0.56))
+              : 188.0;
+          final double radarSize = math
+              .min(availW * 0.72, maxByHeight)
+              .clamp(88.0, 196.0);
+          final bool showRadarLabels =
+              radarSize >= 126.0 && scale <= 1.25 && !compact;
+
+          final Widget radarVisual = SizedBox(
+            width: radarSize,
+            height: radarSize,
+            child: CustomPaint(
+              painter: _SpecimenRadarPainter(
+                values: radarValues,
+                labels: <String>[
+                  for (final ({String id, String label}) ax
+                      in _canonicalRadarAxes)
+                    ax.label,
+                ],
+                accent: traditionColor,
+                showLabels: showRadarLabels,
               ),
             ),
-            child: Text('$footerCtaLabel →'),
-          ),
-      ],
-    );
+          );
 
-    return Container(
-      decoration: BoxDecoration(
-        color: bgObsidian,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-          color: traditionColor.withValues(alpha: p.isDark ? 0.48 : 0.42),
-          width: 1.1,
-        ),
-        boxShadow: p.isDark
-            ? const <BoxShadow>[]
-            : <BoxShadow>[
-                BoxShadow(
-                  color: const Color(0xFF141819).withValues(alpha: 0.10),
-                  blurRadius: 12,
-                  spreadRadius: -3,
-                  offset: const Offset(0, 6),
-                ),
-              ],
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTapCard,
-          hoverColor: traditionColor.withValues(alpha: 0.05),
-          child: Stack(
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: enforceAspectRatio
+                ? MainAxisAlignment.spaceEvenly
+                : MainAxisAlignment.center,
+            mainAxisSize:
+                enforceAspectRatio ? MainAxisSize.max : MainAxisSize.min,
             children: <Widget>[
-              Positioned.fill(
-                child: CustomPaint(
-                  painter: _SpecimenPlatePainter(accent: traditionColor),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(padH, padV, padH, padV),
-                child: DefaultTextStyle(
-                  style: const TextStyle(
-                    fontFamily: 'IBMPlexSans',
-                    fontSize: 11.5,
-                    color: inkLight,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      headerBand,
-                      SizedBox(height: compact ? 9 : 11),
-                      identityBand,
-                      SizedBox(height: compact ? 8 : 10),
-                      Container(height: 1, color: ruleBorder),
-                      SizedBox(height: compact ? 8 : 10),
-                      if (!storyFormat && scale <= 1.35)
-                        LayoutBuilder(
-                          builder: (context, innerBox) {
-                            if (innerBox.maxWidth >= 295) {
-                              return Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  radarVisual,
-                                  SizedBox(width: compact ? 10 : 16),
-                                  Expanded(child: nolanAndTraitsColumn),
-                                ],
-                              );
-                            }
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Center(child: radarVisual),
-                                const SizedBox(height: 10),
-                                nolanAndTraitsColumn,
-                              ],
-                            );
-                          },
-                        )
-                      else ...<Widget>[
-                        Center(child: radarVisual),
-                        SizedBox(height: compact ? 6 : 12),
-                        nolanAndTraitsColumn,
-                      ],
-                      SizedBox(height: compact ? 9 : 11),
-                      Container(height: 1, color: ruleBorder),
-                      SizedBox(height: compact ? 8 : 9),
-                      footerBand,
-                    ],
-                  ),
-                ),
-              ),
+              Center(child: radarVisual),
+              if (!enforceAspectRatio) SizedBox(height: tight ? 8 : 12),
+              nolanAndTraitsColumn,
             ],
+          );
+        }
+
+        final Widget footerBand = Row(
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const Text(
+                    'Qual é o seu mapa?',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 9.5,
+                      fontWeight: FontWeight.w700,
+                      color: inkLight,
+                    ),
+                  ),
+                  Text(
+                    'espectro-politico.web.app',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexMono',
+                      fontSize: tight ? 8.0 : 8.5,
+                      fontWeight: FontWeight.w700,
+                      color: brassAccent,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 6),
+            if (onPrimaryAction != null)
+              FilledButton(
+                onPressed: onPrimaryAction,
+                style: FilledButton.styleFrom(
+                  backgroundColor: brassAccent,
+                  foregroundColor: const Color(0xFF140D03),
+                  elevation: 0,
+                  minimumSize: const Size(0, 30),
+                  maximumSize: const Size(double.infinity, 34),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: tight ? 8 : 10,
+                    vertical: 5,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+                  textStyle: TextStyle(
+                    fontFamily: 'IBMPlexSans',
+                    fontSize: tight ? 10 : 11,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                child: Text('$footerCtaLabel →'),
+              ),
+          ],
+        );
+
+        final Widget cardContainer = Container(
+          decoration: BoxDecoration(
+            color: bgObsidian,
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: traditionColor.withValues(alpha: p.isDark ? 0.48 : 0.42),
+              width: 1.1,
+            ),
+            boxShadow: p.isDark
+                ? const <BoxShadow>[]
+                : <BoxShadow>[
+                    BoxShadow(
+                      color: const Color(0xFF141819).withValues(alpha: 0.10),
+                      blurRadius: 12,
+                      spreadRadius: -3,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
           ),
-        ),
-      ),
+          clipBehavior: Clip.antiAlias,
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: onTapCard,
+              hoverColor: traditionColor.withValues(alpha: 0.05),
+              child: Stack(
+                children: <Widget>[
+                  Positioned.fill(
+                    child: CustomPaint(
+                      painter: _SpecimenPlatePainter(accent: traditionColor),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(padH, padV, padH, padV),
+                    child: DefaultTextStyle(
+                      style: const TextStyle(
+                        fontFamily: 'IBMPlexSans',
+                        fontSize: 11.5,
+                        color: inkLight,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisSize: enforceAspectRatio
+                            ? MainAxisSize.max
+                            : MainAxisSize.min,
+                        children: <Widget>[
+                          headerBand,
+                          SizedBox(height: tight ? 7 : 10),
+                          identityBand,
+                          SizedBox(height: tight ? 7 : 10),
+                          Container(height: 1, color: ruleBorder),
+                          SizedBox(height: tight ? 6 : 10),
+                          if (enforceAspectRatio)
+                            Expanded(
+                              child: LayoutBuilder(
+                                builder: (context, midBox) => Align(
+                                  alignment: Alignment.center,
+                                  child: buildMiddleEvidence(
+                                    midBox.maxWidth,
+                                    midBox.maxHeight,
+                                  ),
+                                ),
+                              ),
+                            )
+                          else
+                            LayoutBuilder(
+                              builder: (context, midBox) =>
+                                  buildMiddleEvidence(midBox.maxWidth, null),
+                            ),
+                          SizedBox(height: tight ? 6 : 10),
+                          Container(height: 1, color: ruleBorder),
+                          SizedBox(height: tight ? 6 : 9),
+                          footerBand,
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+
+        if (enforceAspectRatio) {
+          return AspectRatio(
+            aspectRatio: storyFormat ? (9 / 16) : 1.0,
+            child: cardContainer,
+          );
+        }
+        return cardContainer;
+      },
     );
   }
 

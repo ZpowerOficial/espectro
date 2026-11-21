@@ -30,6 +30,7 @@ import 'package:politico/ui/features/quiz/espectro_intro_screen.dart';
 import 'package:politico/ui/features/quiz/espectro_quiz_screen.dart';
 import 'package:politico/ui/features/quiz/espectro_suites_screen.dart';
 import 'package:politico/ui/features/results/espectro_result_screen.dart';
+import 'package:politico/ui/features/share/home_share_card_specimen.dart';
 import 'package:politico/ui/features/share/share_card_content.dart';
 import 'package:politico/ui/features/share/share_card_export.dart';
 import 'package:politico/ui/features/share/shareable_card_sheet.dart';
@@ -1309,6 +1310,147 @@ void main() {
         lessThan(844.0),
       );
       expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    'Home polish: proporções exatas 1:1 e 9:16, equilíbrio do Hero e botões uniformes do Comparador',
+    (tester) async {
+      final sansLoader = FontLoader('IBMPlexSans')
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexSans-Regular.ttf'))
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexSans-Medium.ttf'))
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexSans-SemiBold.ttf'))
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexSans-Bold.ttf'));
+      final monoLoader = FontLoader('IBMPlexMono')
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexMono-Regular.ttf'))
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexMono-Bold.ttf'));
+      await Future.wait(<Future<void>>[sansLoader.load(), monoLoader.load()]);
+
+      final state = await createInitializedState(withRecord: false);
+
+      // 1440x900 desktop
+      await setViewport(tester, const Size(1440, 900));
+      await tester.pumpWidget(
+        wrapScreen(
+          isDark: false,
+          child: EspectroHomeScreen(appViewModel: state.vm),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      // Hero título ampliado e botões na mesma linha com altura igual
+      final Text heroTitle = tester.widget<Text>(
+        find.text('Onde você realmente se situa além dos rótulos?'),
+      );
+      expect(heroTitle.style?.fontSize ?? 0, greaterThanOrEqualTo(48.0));
+
+      final Finder expressBtnFinder = find.ancestor(
+        of: find.text('Fazer Avaliação Expressa (3 min)'),
+        matching: find.byType(FilledButton),
+      );
+      final Finder atlasBtnFinder = find.ancestor(
+        of: find.text('Explorar o Atlas'),
+        matching: find.byType(OutlinedButton),
+      );
+      final Rect expressRect = tester.getRect(expressBtnFinder);
+      final Rect atlasRect = tester.getRect(atlasBtnFinder);
+      expect((expressRect.center.dy - atlasRect.center.dy).abs(), lessThanOrEqualTo(2.0));
+      expect((expressRect.height - atlasRect.height).abs(), lessThanOrEqualTo(0.5));
+
+      // Post 1:1 (padrão inicial do showcase: _previewStory == false)
+      final Finder specimenFinder = find.byType(HomeShareCardSpecimen);
+      expect(specimenFinder, findsOneWidget);
+      final Size postSizeDesktop = tester.getSize(specimenFinder);
+      expect(postSizeDesktop.width / postSizeDesktop.height, closeTo(1.0, 0.02));
+
+      // Alternar para Story 9:16
+      final Finder storyToggle = find.text('Story 9:16');
+      await tester.ensureVisible(storyToggle);
+      await tester.tap(storyToggle);
+      await tester.pumpAndSettle();
+      final Size storySizeDesktop = tester.getSize(specimenFinder);
+      expect(storySizeDesktop.width / storySizeDesktop.height, closeTo(9 / 16, 0.02));
+
+      // Card Comparador de Perfis e Histórico: rolar até Beat 5 e validar botões de 44 px
+      final Finder toolsActions = find.byKey(const ValueKey<String>('home-tools-actions'));
+      await tester.scrollUntilVisible(
+        toolsActions,
+        400.0,
+        scrollable: find
+            .descendant(
+              of: find.byType(ListView),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
+      await tester.pumpAndSettle();
+      expect(toolsActions, findsOneWidget);
+      final Finder compBtn = find.descendant(
+        of: toolsActions,
+        matching: find.ancestor(
+          of: find.text('Comparador'),
+          matching: find.byType(FilledButton),
+        ),
+      );
+      final Finder teiaBtn = find.descendant(
+        of: toolsActions,
+        matching: find.ancestor(
+          of: find.text('Teia Política'),
+          matching: find.byType(OutlinedButton),
+        ),
+      );
+      final Finder histBtn = find.descendant(
+        of: toolsActions,
+        matching: find.ancestor(
+          of: find.text('Histórico'),
+          matching: find.byType(OutlinedButton),
+        ),
+      );
+      final double compH = tester.getSize(compBtn).height;
+      final double teiaH = tester.getSize(teiaBtn).height;
+      final double histH = tester.getSize(histBtn).height;
+      expect(compH, closeTo(44.0, 0.5));
+      expect(teiaH, closeTo(44.0, 0.5));
+      expect(histH, closeTo(44.0, 0.5));
+      expect(tester.takeException(), isNull);
+
+      // Viewports compactos: 390x844 e 320x568 em Post 1:1 e Story 9:16 sem overflow
+      for (final Size mobileSize in const <Size>[Size(390, 844), Size(320, 568)]) {
+        await setViewport(tester, mobileSize);
+        await tester.pumpWidget(
+          wrapScreen(
+            isDark: false,
+            child: EspectroHomeScreen(
+              key: ValueKey<Size>(mobileSize),
+              appViewModel: state.vm,
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        await tester.scrollUntilVisible(
+          find.text('Story 9:16'),
+          300.0,
+          scrollable: find
+              .descendant(
+                of: find.byType(ListView),
+                matching: find.byType(Scrollable),
+              )
+              .first,
+        );
+        await tester.ensureVisible(find.text('Story 9:16'));
+        await tester.pumpAndSettle();
+
+        final Size mobilePostSize = tester.getSize(specimenFinder);
+        expect(mobilePostSize.width / mobilePostSize.height, closeTo(1.0, 0.02));
+
+        await tester.tap(find.text('Story 9:16'));
+        await tester.pumpAndSettle();
+
+        final Size mobileStorySize = tester.getSize(specimenFinder);
+        expect(mobileStorySize.width / mobileStorySize.height, closeTo(9 / 16, 0.02));
+        expect(tester.takeException(), isNull);
+      }
     },
   );
 }

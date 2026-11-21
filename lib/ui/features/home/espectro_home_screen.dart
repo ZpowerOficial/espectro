@@ -866,133 +866,176 @@ class _ObservatoryCoverHeroState extends State<_ObservatoryCoverHero> {
     final Color primaryBtnFg =
         p.isDark ? const Color(0xFF140D03) : const Color(0xFFFAF9F6);
 
-    final Widget pitchColumn = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: split ? 470 : double.infinity,
-          ),
-          child: Text(
-            'Onde você realmente se situa além dos rótulos?',
-            style: TextStyle(
-              fontFamily: 'IBMPlexSans',
-              fontSize: split ? 40 : 26,
-              fontWeight: FontWeight.w800,
-              letterSpacing: split ? -1.15 : -0.85,
-              height: 1.06,
-              color: p.ink,
-            ),
-          ),
-        ),
-        SizedBox(height: split ? 14 : 10),
-        ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: split ? 450 : double.infinity,
-          ),
-          child: Text(
-            'Política não cabe numa linha. Inspecione $currentsCount correntes na Teia e mapeie onde suas ideias convergem em 12 eixos e 6 tríades.',
-            style: TextStyle(
-              fontSize: split ? 15.5 : 14.5,
-              height: 1.48,
-              color: p.inkSoft,
-            ),
-          ),
-        ),
-        SizedBox(height: split ? 22 : 16),
-        Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          crossAxisAlignment: WrapCrossAlignment.center,
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints box) {
+        final bool wideSplit = split && box.maxWidth >= 960;
+        final double titleFontSize = wideSplit ? 55 : (split ? 42 : 28);
+        final double titleTracking = wideSplit ? -1.55 : (split ? -1.2 : -0.85);
+        final double teiaHeight = wideSplit ? 396 : (split ? 384 : 284);
+        final double minPitchHeight = wideSplit ? 412 : 396;
+        final double ctaHeight = split ? 48 : 44;
+
+        final Widget topEditorial = Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            FilledButton.icon(
-              onPressed: widget.onStartQuiz,
-              style: FilledButton.styleFrom(
-                backgroundColor: primaryBtnBg,
-                foregroundColor: primaryBtnFg,
-                elevation: 0,
-                minimumSize: const Size(0, 44),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 18,
-                  vertical: 11,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: split ? 480 : double.infinity,
               ),
-              icon: const Icon(Icons.arrow_forward_rounded, size: 17),
-              label: const Text('Fazer Avaliação Expressa (3 min)'),
-            ),
-            OutlinedButton(
-              onPressed: widget.onOpenAtlas,
-              style: OutlinedButton.styleFrom(
-                minimumSize: const Size(0, 44),
-                foregroundColor: p.ink,
-                side: BorderSide(color: p.line),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 11,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                textStyle: const TextStyle(
+              child: Text(
+                'Onde você realmente se situa além dos rótulos?',
+                style: TextStyle(
                   fontFamily: 'IBMPlexSans',
-                  fontSize: 13.5,
-                  fontWeight: FontWeight.w600,
+                  fontSize: titleFontSize,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: titleTracking,
+                  height: 1.04,
+                  color: p.ink,
                 ),
               ),
-              child: const Text('Explorar o Atlas'),
+            ),
+            SizedBox(height: split ? 20 : 10),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: split ? 456 : double.infinity,
+              ),
+              child: Text(
+                'Política não cabe numa linha. Inspecione $currentsCount correntes na Teia e mapeie onde suas ideias convergem em 12 eixos e 6 tríades.',
+                style: TextStyle(
+                  fontSize: wideSplit ? 16.5 : 14.5,
+                  height: 1.54,
+                  color: p.inkSoft,
+                ),
+              ),
             ),
           ],
-        ),
-        const SizedBox(height: 14),
-        Text(
-          '24 afirmações · 100% offline · Cartão 9:16 e 1:1',
-          style: TextStyle(
-            fontFamily: 'IBMPlexSans',
-            fontSize: 12,
-            color: p.muted,
-          ),
-        ),
-      ],
-    );
+        );
 
-    final Widget teiaStage = TeiaInteractivePreviewPanel(
-      subjects: _currents,
-      selected: _focusedCurrent,
-      borderColor: p.line,
-      height: split ? 456 : 284,
-      showFooter: true,
-      headerHint: 'Toque num nó para inspecionar',
-      onSelect: (StudySubject s) => setState(() => _focusedCurrent = s),
-      onOpenSubject: widget.onOpenSubject,
-      onOpenTeia: widget.onOpenTeia,
-    );
-
-    if (split) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 28),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        final Widget bottomActions = Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Expanded(flex: 11, child: pitchColumn),
-            const SizedBox(width: 28),
-            Expanded(flex: 13, child: teiaStage),
+            SizedBox(height: split ? 20 : 16),
+            Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                FilledButton.icon(
+                  onPressed: widget.onStartQuiz,
+                  style: FilledButton.styleFrom(
+                    backgroundColor: primaryBtnBg,
+                    foregroundColor: primaryBtnFg,
+                    elevation: 0,
+                    minimumSize: Size(0, ctaHeight),
+                    maximumSize: Size(double.infinity, ctaHeight),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 18,
+                      vertical: 0,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    textStyle: const TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 14.5,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: -0.15,
+                    ),
+                  ),
+                  icon: const Icon(Icons.arrow_forward_rounded, size: 17),
+                  label: const Text('Fazer Avaliação Expressa (3 min)'),
+                ),
+                OutlinedButton(
+                  onPressed: widget.onOpenAtlas,
+                  style: OutlinedButton.styleFrom(
+                    minimumSize: Size(0, ctaHeight),
+                    maximumSize: Size(double.infinity, ctaHeight),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    foregroundColor: p.ink,
+                    side: BorderSide(color: p.line),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 0,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    textStyle: const TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 13.5,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  child: const Text('Explorar o Atlas'),
+                ),
+              ],
+            ),
+            const SizedBox(height: 14),
+            Text(
+              '24 afirmações · 100% offline · Cartão 9:16 e 1:1',
+              style: TextStyle(
+                fontFamily: 'IBMPlexSans',
+                fontSize: 12,
+                color: p.muted,
+              ),
+            ),
           ],
-        ),
-      );
-    }
+        );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        pitchColumn,
-        const SizedBox(height: 20),
-        teiaStage,
-      ],
+        final Widget pitchColumn = split
+            ? ConstrainedBox(
+                constraints: BoxConstraints(minHeight: minPitchHeight),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [topEditorial, bottomActions],
+                ),
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [topEditorial, bottomActions],
+              );
+
+        final Widget teiaStage = TeiaInteractivePreviewPanel(
+          subjects: _currents,
+          selected: _focusedCurrent,
+          borderColor: p.line,
+          height: teiaHeight,
+          showFooter: true,
+          headerHint: 'Toque num nó para inspecionar',
+          onSelect: (StudySubject s) => setState(() => _focusedCurrent = s),
+          onOpenSubject: widget.onOpenSubject,
+          onOpenTeia: widget.onOpenTeia,
+        );
+
+        if (split) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(flex: 11, child: pitchColumn),
+                const SizedBox(width: 28),
+                Expanded(flex: 13, child: teiaStage),
+              ],
+            ),
+          );
+        }
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            pitchColumn,
+            const SizedBox(height: 20),
+            teiaStage,
+          ],
+        );
+      },
     );
   }
 }
@@ -2340,11 +2383,36 @@ class _ObservatoryToolsCard extends StatelessWidget {
           ),
           const SizedBox(height: 18),
           Wrap(
+            key: const ValueKey<String>('home-tools-actions'),
             spacing: 10,
-            runSpacing: 8,
+            runSpacing: 10,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              FilledButton.tonal(
+              FilledButton(
                 onPressed: onOpenCompare,
+                style: FilledButton.styleFrom(
+                  backgroundColor:
+                      p.isDark ? const Color(0xFFE5A448) : p.accent,
+                  foregroundColor: p.isDark
+                      ? const Color(0xFF140D03)
+                      : const Color(0xFFFAF9F6),
+                  elevation: 0,
+                  minimumSize: const Size(0, 44),
+                  maximumSize: const Size(double.infinity, 44),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 0,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  textStyle: const TextStyle(
+                    fontFamily: 'IBMPlexSans',
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
                 child: const _SafeButtonContent(
                   icon: Icons.compare_arrows_rounded,
                   iconSize: 17,
@@ -2353,14 +2421,52 @@ class _ObservatoryToolsCard extends StatelessWidget {
               ),
               OutlinedButton(
                 onPressed: onOpenTeia,
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: p.ink,
+                  side: BorderSide(color: p.line),
+                  minimumSize: const Size(0, 44),
+                  maximumSize: const Size(double.infinity, 44),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 0,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  textStyle: const TextStyle(
+                    fontFamily: 'IBMPlexSans',
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 child: const _SafeButtonContent(
                   icon: Icons.hub_outlined,
                   iconSize: 17,
                   label: 'Teia Política',
                 ),
               ),
-              TextButton(
+              OutlinedButton(
                 onPressed: onOpenHistory,
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: p.inkSoft,
+                  side: BorderSide(color: p.line),
+                  minimumSize: const Size(0, 44),
+                  maximumSize: const Size(double.infinity, 44),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 0,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  textStyle: const TextStyle(
+                    fontFamily: 'IBMPlexSans',
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 child: const _SafeButtonContent(
                   icon: Icons.history_rounded,
                   iconSize: 17,
@@ -3549,7 +3655,12 @@ class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
       },
       child: KeyedSubtree(
         key: ValueKey<String>(cardKey),
-        child: specimenCard,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: _previewStory ? 300 : 400,
+          ),
+          child: specimenCard,
+        ),
       ),
     );
 
@@ -3680,15 +3791,10 @@ class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
               SizedBox(height: compactLayout ? 18 : 26),
               LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints stageBox) {
-                  final double cardMaxW = _previewStory ? 400 : 520;
+                  final double cardMaxW = _previewStory ? 300 : 400;
                   final bool sideNav =
                       stageBox.maxWidth >= cardMaxW + 128 && scale <= 1.35;
-                  final Widget cardFrame = Center(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: cardMaxW),
-                      child: animatedSpecimen,
-                    ),
-                  );
+                  final Widget cardFrame = Center(child: animatedSpecimen);
                   if (!sideNav) {
                     return Column(
                       mainAxisSize: MainAxisSize.min,
