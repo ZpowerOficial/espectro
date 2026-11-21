@@ -13,6 +13,7 @@ import '../../charts/nolan_diagram_chart.dart';
 import '../../charts/study_ternary_chart.dart';
 import '../../charts/study_comparative_radar_chart.dart';
 import '../../view_models/app_view_model.dart';
+import '../../shared/metric_presentation.dart';
 import '../atlas/study_identity.dart';
 import '../atlas/study_profile_screen.dart';
 import '../atlas/study_taxonomy.dart';
@@ -109,9 +110,9 @@ class EntityComparisonScreen extends StatelessWidget {
       selectedIndex: 2,
       appBar: AppBar(title: Text('Você e ${comparison.targetName}')),
       body: ResponsiveContentFrame(
-        maxWidth: 900,
+        maxWidth: EspectroLayout.workspaceMaxWidth,
         child: ListView(
-          padding: const EdgeInsets.all(22),
+          padding: EspectroLayout.pagePadding,
           children: [
             const EditorialHeading(
               eyebrow: 'PERFIL / COMPARAÇÃO',
@@ -135,63 +136,154 @@ class EntityComparisonScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (subject != null) ...[
-                                StudyIdentityAvatar(
-                                  subject: subject,
-                                  size: 56,
-                                  rectangular:
-                                      subject.kind == 'personality' ||
-                                      subject.kind == 'book',
-                                ),
-                                const SizedBox(width: 16),
-                              ],
-                              Expanded(
-                                child: Column(
+                          LayoutBuilder(
+                            builder: (context, headerBox) {
+                              final bool stackMetric =
+                                  headerBox.maxWidth < 460 ||
+                                  MediaQuery.textScalerOf(context).scale(1) >
+                                      1.35;
+                              final Widget identityRow = Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  if (subject != null) ...[
+                                    StudyIdentityAvatar(
+                                      subject: subject,
+                                      size: 56,
+                                      rectangular:
+                                          subject.kind == 'personality' ||
+                                          subject.kind == 'book',
+                                    ),
+                                    const SizedBox(width: 16),
+                                  ],
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Eyebrow(comparison.targetKindLabel),
+                                        const SizedBox(height: 6),
+                                        Text(
+                                          comparison.targetName,
+                                          style: text.headlineMedium,
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          comparison.targetSubtitle,
+                                          style: text.bodySmall,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              );
+
+                              final Widget? scoreBadge =
+                                  comparison.compatibilityPercent == null
+                                  ? null
+                                  : Builder(
+                                      builder: (context) {
+                                        final bool isCurrent = comparison
+                                            .targetKindLabel
+                                            .toLowerCase()
+                                            .contains('corrente');
+                                        final String referentLabel = isCurrent
+                                            ? 'convergência com a corrente'
+                                            : 'prox. · ${comparison.targetKindLabel.toLowerCase()}';
+                                        final String tooltip = isCurrent
+                                            ? MetricPresentation
+                                                  .currentConvergenceTooltip
+                                            : MetricPresentation
+                                                  .atlasProximityTooltip;
+                                        return Container(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 14,
+                                            vertical: 8,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: p.accentSoft,
+                                            borderRadius: BorderRadius.circular(
+                                              12,
+                                            ),
+                                            border: Border.all(
+                                              color: p.accent.withValues(
+                                                alpha: 0.35,
+                                              ),
+                                            ),
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment: stackMetric
+                                                ? CrossAxisAlignment.start
+                                                : CrossAxisAlignment.end,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Text(
+                                                MetricPresentation.formatPercent(
+                                                  comparison
+                                                      .compatibilityPercent,
+                                                ),
+                                                style: TextStyle(
+                                                  fontFamily: 'IBMPlexMono',
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w800,
+                                                  fontFeatures: const [
+                                                    FontFeature.tabularFigures(),
+                                                  ],
+                                                  color: p.accent,
+                                                ),
+                                              ),
+                                              const SizedBox(height: 2),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Flexible(
+                                                    child: Text(
+                                                      referentLabel,
+                                                      style: TextStyle(
+                                                        fontFamily:
+                                                            'IBMPlexMono',
+                                                        fontSize: 10,
+                                                        color: p.inkSoft,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(width: 2),
+                                                  MetricInfoBadge(
+                                                    tooltip: tooltip,
+                                                    semanticLabel:
+                                                        'Explicação sobre a métrica de comparação',
+                                                    size: 13,
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+
+                              if (stackMetric) {
+                                return Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Eyebrow(comparison.targetKindLabel),
-                                    const SizedBox(height: 6),
-                                    Text(
-                                      comparison.targetName,
-                                      style: text.headlineMedium,
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      comparison.targetSubtitle,
-                                      style: text.bodySmall,
-                                    ),
+                                    identityRow,
+                                    if (scoreBadge != null) ...[
+                                      const SizedBox(height: 12),
+                                      scoreBadge,
+                                    ],
                                   ],
-                                ),
-                              ),
-                              if (comparison.compatibilityPercent != null) ...[
-                                const SizedBox(width: 12),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 14,
-                                    vertical: 8,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: p.accentSoft,
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(
-                                      color: p.accent.withValues(alpha: 0.35),
-                                    ),
-                                  ),
-                                  child: Text(
-                                    '${comparison.compatibilityPercent!.toStringAsFixed(2)}%',
-                                    style: TextStyle(
-                                      fontFamily: 'IBMPlexMono',
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w800,
-                                      color: p.accent,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ],
+                                );
+                              }
+                              return Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(child: identityRow),
+                                  if (scoreBadge != null) ...[
+                                    const SizedBox(width: 12),
+                                    scoreBadge,
+                                  ],
+                                ],
+                              );
+                            },
                           ),
                           const SizedBox(height: 16),
                           if (comparison.compatibilityPercent == null)
@@ -226,6 +318,7 @@ class EntityComparisonScreen extends StatelessWidget {
                       right: 0,
                       height: 4,
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Expanded(child: ColoredBox(color: p.accent)),
                           Expanded(child: ColoredBox(color: targetColor)),
@@ -260,7 +353,7 @@ class EntityComparisonScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Eyebrow('PROJEÇÃO DE NOLAN'),
+                  const Eyebrow('Projeção de Nolan'),
                   const SizedBox(height: 12),
                   if (canProject) ...[
                     SizedBox(
@@ -298,7 +391,7 @@ class EntityComparisonScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Eyebrow('VISÃO EM TEIA: 12 EIXOS SOBREPOSTOS'),
+                    const Eyebrow('Visão em teia: 12 eixos sobrepostos'),
                     const SizedBox(height: 8),
                     Text(
                       'Sobreposição radial direta entre seu perfil e ${comparison.targetName}. As áreas destacadas mostram a convergência geométrica.',
@@ -320,7 +413,7 @@ class EntityComparisonScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Eyebrow('CONTRASTE POR EIXO'),
+                    const Eyebrow('Contraste por eixo'),
                     const SizedBox(height: 10),
                     const Text(
                       'Sobreposição direta da sua posição e da entidade na mesma régua dual (−100% a +100%). O indicador Δ marca a distância em pontos percentuais.',
@@ -338,6 +431,7 @@ class EntityComparisonScreen extends StatelessWidget {
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 16),
                             child: StudyAxisRow(
+                              axisId: axisDef.id,
                               label: axisDef.label,
                               left: axisDef.leftPole,
                               right: axisDef.rightPole,
@@ -365,7 +459,7 @@ class EntityComparisonScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Eyebrow('CONTRASTE POR TRÍADE'),
+                    const Eyebrow('Contraste por tríade'),
                     const SizedBox(height: 10),
                     const Text(
                       'Sobreposição triangular das composições relativas. Os chips exibem a proporção em cada polo e a diferença Δ correspondente.',
@@ -420,7 +514,7 @@ class EntityComparisonScreen extends StatelessWidget {
             ],
             const SizedBox(height: 18),
             const Text(
-              'O índice de afinidade é uma estimativa do modelo editorial. Ele não estabelece identidade política, filiação histórica ou probabilidade de concordância.',
+              'A proximidade exibida na comparação é calculada apenas sobre dimensões observadas no modelo editorial. Ela não estabelece identidade política, filiação histórica ou probabilidade de concordância.',
             ),
           ],
         ),

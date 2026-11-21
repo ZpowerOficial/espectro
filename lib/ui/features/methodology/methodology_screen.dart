@@ -7,6 +7,7 @@ import '../../../theme.dart';
 import '../../../widgets/common.dart';
 import '../../../widgets/editorial.dart';
 import '../../../widgets/espectro_scaffold.dart';
+import '../../ads/espectro_banner_ad.dart';
 import '../../view_models/app_view_model.dart';
 import '../atlas/study_taxonomy.dart';
 
@@ -77,7 +78,10 @@ class MethodologyScreen extends StatelessWidget {
                           'μ=${current.axes[axis.id]!.mu.toStringAsFixed(2)} · '
                           'σ=${current.axes[axis.id]!.sigma.toStringAsFixed(2)} · '
                           'peso=${current.axes[axis.id]!.relevance.toStringAsFixed(1)}',
-                          style: text.bodySmall?.copyWith(fontSize: 11),
+                          style: text.bodySmall?.copyWith(
+                            fontSize: 11,
+                            fontFeatures: const [FontFeature.tabularFigures()],
+                          ),
                         ),
                       ],
                     ),
@@ -102,20 +106,27 @@ class MethodologyScreen extends StatelessWidget {
         appViewModel == null
         ? Scaffold(
             appBar: appBar,
-            body: ResponsiveContentFrame(child: body),
+            body: ResponsiveContentFrame(
+              maxWidth: EspectroLayout.workspaceMaxWidth,
+              child: body,
+            ),
           )
         : EspectroScaffold(
             appViewModel: appViewModel!,
             selectedIndex: 5,
             isSectionRoot: true,
             appBar: appBar,
-            body: ResponsiveContentFrame(child: body),
+            body: ResponsiveContentFrame(
+              maxWidth: EspectroLayout.workspaceMaxWidth,
+              child: body,
+            ),
           );
     return DefaultTabController(
       length: 2,
       child: frame(
         appBar: AppBar(
           automaticallyImplyLeading: false,
+          titleSpacing: showBack ? 8 : EspectroLayout.pageHorizontalPadding,
           leading: !showBack
               ? null
               : Padding(
@@ -130,6 +141,9 @@ class MethodologyScreen extends StatelessWidget {
                 ),
           title: const Text('Metodologia'),
           bottom: TabBar(
+            padding: const EdgeInsets.symmetric(
+              horizontal: EspectroLayout.pageHorizontalPadding,
+            ),
             labelColor: p.accent,
             unselectedLabelColor: p.muted,
             indicatorColor: p.accent,
@@ -143,35 +157,79 @@ class MethodologyScreen extends StatelessWidget {
         body: TabBarView(
           children: <Widget>[
             ListView(
-              padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
+              padding: EspectroLayout.pagePadding,
               children: <Widget>[
-                const EditorialHeading(
-                  eyebrow: 'Método / Privacidade',
-                  title: 'Confiança se\nconstrói com clareza.',
-                ),
-                const SizedBox(height: 26),
-                const EditorialHero(
-                  eyebrow: 'Como calculamos',
-                  title: 'Sem caixa-preta.\nSem certezas artificiais.',
-                ),
-                const SizedBox(height: 22),
-                SectionCard(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Eyebrow('LIMITES DO CATÁLOGO'),
-                      const SizedBox(height: 10),
-                      Text(
-                        'As posições de correntes e personalidades são interpretações editoriais contextualizadas. Os parâmetros não foram validados como uma medição empírica dessas pessoas ou tradições.',
-                        style: text.bodyMedium,
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Proximidade numérica não determina filiação histórica. Relações intelectuais documentadas e leituras primárias são apresentadas separadamente nos perfis. Quando uma fonte não sustenta uma posição, o campo é omitido ou recebe relevância zero e fica fora da comparação.',
-                        style: text.bodySmall,
-                      ),
-                    ],
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: EspectroLayout.proseMaxWidth,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        const EditorialHeading(
+                          eyebrow: 'Método / Privacidade',
+                          title: 'Confiança se\nconstrói com clareza.',
+                          description:
+                              'Sem caixa-preta e sem certezas artificiais. Todas as fórmulas abaixo rodam localmente neste dispositivo.',
+                        ),
+                        const SizedBox(height: 24),
+                Container(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    color: p.surfaceMuted,
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(color: p.line),
                   ),
+                  child: IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Container(width: 3.5, color: p.warning),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 14, 16, 16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.info_outline_rounded,
+                                      size: 15,
+                                      color: p.warning,
+                                    ),
+                                    const SizedBox(width: 6),
+                                    Flexible(
+                                      child: Eyebrow(
+                                        'Limites do catálogo',
+                                        color: p.ink,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  'As posições de correntes e personalidades são interpretações editoriais contextualizadas. Os parâmetros não foram validados como uma medição empírica dessas pessoas ou tradições.',
+                                  style: text.bodyMedium,
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  'Proximidade numérica não determina filiação histórica. Relações intelectuais documentadas e leituras primárias são apresentadas separadamente nos perfis. Quando uma fonte não sustenta uma posição, o campo é omitido ou recebe relevância zero e fica fora da comparação.',
+                                  style: text.bodySmall,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const EspectroInlineAdSlot(
+                  placementId: 'methodology_inline',
+                  verticalMargin: 24,
                 ),
                 const SizedBox(height: 26),
                 SectionCard(
@@ -214,14 +272,19 @@ class MethodologyScreen extends StatelessWidget {
                         ),
                         child: Text(
                           'c_i = sinal_i · x_i\n'
-                          'S   = Σ(w_i · c_i) / Σ(w_i)   em [−1, +1]\n'
+                          'S   = ∑(w_i · c_i) / ∑(w_i)   em [−1, +1]\n'
                           '%PoloDireito  = 50 · (1 + S)\n'
                           '%PoloEsquerdo = 50 · (1 − S)\n'
                           'Faixa indicativa = S ± 1,96 · SE',
                           style: text.bodySmall?.copyWith(
                             fontFamily: 'IBMPlexMono',
+                            fontFamilyFallback: const <String>[
+                              'IBMPlexSans',
+                              'sans-serif',
+                            ],
                             color: p.ink,
                             height: 1.55,
+                            fontFeatures: const [FontFeature.tabularFigures()],
                           ),
                         ),
                       ),
@@ -258,14 +321,19 @@ class MethodologyScreen extends StatelessWidget {
                           border: Border.all(color: p.line),
                         ),
                         child: Text(
-                          'v_k = Σ(w · c) / Σw       em [−1, +1] (por vértice)\n'
+                          'v_k = ∑(w · c) / ∑w       em [−1, +1] (por vértice)\n'
                           'u_k = (v_k + 1) / 2       em [0, 1]   (apoio absoluto)\n'
                           'p_k = u_k / (u_1+u_2+u_3) em [0, 1]   (posição no triângulo)\n'
                           'I   = (u_1 + u_2 + u_3)/3 em [0, 1]   (engajamento médio)',
                           style: text.bodySmall?.copyWith(
                             fontFamily: 'IBMPlexMono',
+                            fontFamilyFallback: const <String>[
+                              'IBMPlexSans',
+                              'sans-serif',
+                            ],
                             color: p.ink,
                             height: 1.55,
+                            fontFeatures: const [FontFeature.tabularFigures()],
                           ),
                         ),
                       ),
@@ -301,8 +369,13 @@ class MethodologyScreen extends StatelessWidget {
                           'dist   = √(d_comp² + 0,16 · g²)           em [0, 1,077]',
                           style: text.bodySmall?.copyWith(
                             fontFamily: 'IBMPlexMono',
+                            fontFamilyFallback: const <String>[
+                              'IBMPlexSans',
+                              'sans-serif',
+                            ],
                             color: p.ink,
                             height: 1.55,
+                            fontFeatures: const [FontFeature.tabularFigures()],
                           ),
                         ),
                       ),
@@ -348,15 +421,20 @@ class MethodologyScreen extends StatelessWidget {
                         ),
                         child: Text(
                           'z_d    = dist(x_d, μ_d) / √(σ_d² + SE_d²)\n'
-                          'D²     = Σ(rel_d · z_d²) / Σ(rel_d)\n'
+                          'D²     = ∑(rel_d · z_d²) / ∑(rel_d)\n'
                           'compat = 100 · exp(−D² / 2)\n'
                           '\n'
                           'eixos:  dist = |S − μ|\n'
                           'tríades: dist = √(d_comp² + 0,16 · g²)',
                           style: text.bodySmall?.copyWith(
                             fontFamily: 'IBMPlexMono',
+                            fontFamilyFallback: const <String>[
+                              'IBMPlexSans',
+                              'sans-serif',
+                            ],
                             color: p.ink,
                             height: 1.55,
+                            fontFeatures: const [FontFeature.tabularFigures()],
                           ),
                         ),
                       ),
@@ -438,10 +516,14 @@ class MethodologyScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
             ListView.separated(
-              padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
+              padding: EspectroLayout.pagePadding,
               itemCount: data.catalog.currents.length,
               separatorBuilder: (_, _) => const SizedBox(height: 10),
               itemBuilder: (BuildContext context, int index) {

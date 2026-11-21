@@ -7,6 +7,7 @@ import '../../../domain/models/study_models.dart';
 import '../../../theme.dart';
 import '../../../widgets/common.dart';
 import '../../../widgets/espectro_scaffold.dart';
+import '../../charts/axis_colors.dart';
 import '../../charts/study_constellation.dart';
 import '../../charts/study_ternary_chart.dart';
 import '../../view_models/app_view_model.dart';
@@ -16,6 +17,8 @@ import 'study_taxonomy.dart';
 
 /// An uninterrupted viewport for exploration. Search and detail panels open on
 /// demand; neither the map nor pointer gestures live inside a page scroll view.
+enum _MobileInspectorDetent { peek, half, full }
+
 class StudyMapScreen extends StatefulWidget {
   const StudyMapScreen({
     required this.appViewModel,
@@ -47,11 +50,12 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
   bool? _legendExpanded;
   int _inspectorTab = 0;
   int _mobileActiveIndex = 0;
-  bool _inspectorExpanded = false;
+  _MobileInspectorDetent _mobileDetent = _MobileInspectorDetent.peek;
   late final PageController _mobilePageController = PageController();
 
   bool _isLegendExpanded(BuildContext context) =>
-      _legendExpanded ?? (MediaQuery.sizeOf(context).width >= 600);
+      _legendExpanded ??
+      (_projections.length == 1 && MediaQuery.sizeOf(context).width >= 600);
 
   @override
   void initState() {
@@ -118,7 +122,31 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
 
   void _select(StudySubject s) => setState(() {
     _selected = s;
-    _inspectorExpanded = false;
+    _mobileDetent = _MobileInspectorDetent.peek;
+  });
+
+  void _cycleMobileDetent() => setState(() {
+    _mobileDetent = switch (_mobileDetent) {
+      _MobileInspectorDetent.peek => _MobileInspectorDetent.half,
+      _MobileInspectorDetent.half => _MobileInspectorDetent.full,
+      _MobileInspectorDetent.full => _MobileInspectorDetent.peek,
+    };
+  });
+
+  void _stepMobileDetentUp() => setState(() {
+    _mobileDetent = switch (_mobileDetent) {
+      _MobileInspectorDetent.peek => _MobileInspectorDetent.half,
+      _MobileInspectorDetent.half => _MobileInspectorDetent.full,
+      _MobileInspectorDetent.full => _MobileInspectorDetent.full,
+    };
+  });
+
+  void _stepMobileDetentDown() => setState(() {
+    _mobileDetent = switch (_mobileDetent) {
+      _MobileInspectorDetent.peek => _MobileInspectorDetent.peek,
+      _MobileInspectorDetent.half => _MobileInspectorDetent.peek,
+      _MobileInspectorDetent.full => _MobileInspectorDetent.half,
+    };
   });
   void _open(StudySubject s) {
     Navigator.of(context).push(
@@ -527,48 +555,187 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
     final specColor = spec?.color ?? p.accent;
     final axes = widget.appViewModel.data.twelveAxes.axes;
 
+    final bool isPeekMobile =
+        !isDesktop && _mobileDetent == _MobileInspectorDetent.peek;
+
     return Container(
+      key: isDesktop ? null : const ValueKey('teia-mobile-inspector'),
       decoration: BoxDecoration(
-        color: p.surface.withValues(alpha: 0.97),
-        borderRadius: BorderRadius.circular(16),
+        color: p.surface.withValues(alpha: 0.98),
+        borderRadius: BorderRadius.circular(14),
         border: Border.all(color: p.line),
-        boxShadow: EspectroElevation.cardShadows(p),
       ),
       child: Material(
         type: MaterialType.transparency,
         borderRadius: BorderRadius.circular(16),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+          padding: EdgeInsets.fromLTRB(
+            isDesktop ? 20 : 14,
+            isDesktop ? 16 : 8,
+            isDesktop ? 20 : 14,
+            isDesktop ? 16 : 10,
+          ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             if (!isDesktop) ...[
-              GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () => setState(() => _inspectorExpanded = !_inspectorExpanded),
-                child: Center(
-                  child: Container(
-                    width: 40,
-                    height: 4.5,
-                    margin: const EdgeInsets.only(bottom: 10),
-                    decoration: BoxDecoration(
-                      color: p.inkSoft.withValues(alpha: 0.35),
-                      borderRadius: BorderRadius.circular(2.5),
+              Semantics(
+                button: true,
+                label: 'Alternar altura do painel de detalhes',
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: _cycleMobileDetent,
+                  onVerticalDragEnd: (details) {
+                    final double vy = details.primaryVelocity ?? 0;
+                    if (vy < -150) {
+                      _stepMobileDetentUp();
+                    } else if (vy > 150) {
+                      _stepMobileDetentDown();
+                    }
+                  },
+                  child: Center(
+                    child: Container(
+                      width: 40,
+                      height: 4.5,
+                      margin: EdgeInsets.only(bottom: isPeekMobile ? 6 : 10),
+                      decoration: BoxDecoration(
+                        color: p.inkSoft.withValues(alpha: 0.35),
+                        borderRadius: BorderRadius.circular(2.5),
+                      ),
                     ),
                   ),
                 ),
               ),
             ],
+            if (isPeekMobile) ...[
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      StudySubjectTile(
+                        subject: subject,
+                        portrait: widget.appViewModel.data.portraits[subject.key],
+                        compact: true,
+                        onTap: () => _open(subject),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              tooltip: 'Expandir detalhes',
+                              constraints: const BoxConstraints(
+                                minWidth: 44,
+                                minHeight: 44,
+                              ),
+                              icon: const Icon(
+                                Icons.keyboard_arrow_up_rounded,
+                                size: 22,
+                              ),
+                              onPressed: _cycleMobileDetent,
+                            ),
+                            IconButton(
+                              tooltip: 'Fechar detalhes',
+                              constraints: const BoxConstraints(
+                                minWidth: 44,
+                                minHeight: 44,
+                              ),
+                              icon: const Icon(Icons.close_rounded, size: 20),
+                              onPressed: () => setState(() => _selected = null),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            TextButton.icon(
+                              onPressed: () => _open(subject),
+                              style: TextButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                ),
+                                minimumSize: const Size(0, 36),
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              ),
+                              icon: const Icon(
+                                Icons.open_in_new_rounded,
+                                size: 15,
+                              ),
+                              label: const Text(
+                                'Abrir ficha',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ),
+                            const SizedBox(width: 6),
+                            OutlinedButton.icon(
+                              onPressed: _stepMobileDetentUp,
+                              style: OutlinedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                ),
+                                minimumSize: const Size(0, 34),
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              ),
+                              icon: const Icon(
+                                Icons.unfold_more_rounded,
+                                size: 15,
+                              ),
+                              label: const Text(
+                                '12 eixos e 6 tríades',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ] else ...[
             StudySubjectTile(
               subject: subject,
               portrait: widget.appViewModel.data.portraits[subject.key],
               onTap: () => _open(subject),
-              trailing: IconButton(
-                tooltip: 'Fechar detalhes',
-                icon: const Icon(Icons.close_rounded, size: 20),
-                onPressed: () => setState(() => _selected = null),
-              ),
+              trailing: isDesktop
+                  ? IconButton(
+                      tooltip: 'Fechar detalhes',
+                      icon: const Icon(Icons.close_rounded, size: 20),
+                      onPressed: () => setState(() => _selected = null),
+                    )
+                  : Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          tooltip: _mobileDetent == _MobileInspectorDetent.full
+                              ? 'Recolher detalhes'
+                              : 'Expandir detalhes',
+                          constraints: const BoxConstraints(
+                            minWidth: 44,
+                            minHeight: 44,
+                          ),
+                          icon: Icon(
+                            _mobileDetent == _MobileInspectorDetent.full
+                                ? Icons.keyboard_arrow_down_rounded
+                                : Icons.keyboard_arrow_up_rounded,
+                            size: 22,
+                          ),
+                          onPressed: _cycleMobileDetent,
+                        ),
+                        IconButton(
+                          tooltip: 'Fechar detalhes',
+                          constraints: const BoxConstraints(
+                            minWidth: 44,
+                            minHeight: 44,
+                          ),
+                          icon: const Icon(Icons.close_rounded, size: 20),
+                          onPressed: () => setState(() => _selected = null),
+                        ),
+                      ],
+                    ),
             ),
             const SizedBox(height: 14),
             Divider(height: 1, color: p.line),
@@ -599,16 +766,8 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
                                 ? p.surface
                                 : Colors.transparent,
                             borderRadius: BorderRadius.circular(8),
-                            boxShadow: _inspectorTab == 0
-                                ? [
-                                    BoxShadow(
-                                      color: Colors.black.withValues(
-                                        alpha: 0.08,
-                                      ),
-                                      blurRadius: 3,
-                                      offset: const Offset(0, 1),
-                                    ),
-                                  ]
+                            border: _inspectorTab == 0
+                                ? Border.all(color: p.line)
                                 : null,
                           ),
                           child: Text(
@@ -641,16 +800,8 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
                                 ? p.surface
                                 : Colors.transparent,
                             borderRadius: BorderRadius.circular(8),
-                            boxShadow: _inspectorTab == 1
-                                ? [
-                                    BoxShadow(
-                                      color: Colors.black.withValues(
-                                        alpha: 0.08,
-                                      ),
-                                      blurRadius: 3,
-                                      offset: const Offset(0, 1),
-                                    ),
-                                  ]
+                            border: _inspectorTab == 1
+                                ? Border.all(color: p.line)
                                 : null,
                           ),
                           child: Text(
@@ -729,6 +880,7 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
                 ),
               ),
             ),
+            ],
           ],
         ),
         ),
@@ -808,21 +960,36 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
                   ),
                   const Spacer(),
                   if (_spectrum != null)
-                    GestureDetector(
-                      onTap: () => setState(() => _spectrum = null),
-                      child: Text(
-                        'Limpar',
-                        style: TextStyle(
-                          fontSize: 10.5,
-                          fontWeight: FontWeight.bold,
-                          color: p.accent,
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () => setState(() => _spectrum = null),
+                        child: Text(
+                          'Limpar',
+                          style: TextStyle(
+                            fontSize: 10.5,
+                            fontWeight: FontWeight.bold,
+                            color: p.accent,
+                          ),
                         ),
                       ),
                     ),
                   const SizedBox(width: 4),
-                  GestureDetector(
-                    onTap: () => setState(() => _legendExpanded = false),
-                    child: Icon(Icons.expand_more, size: 16, color: p.inkSoft),
+                  Semantics(
+                    button: true,
+                    label: 'Recolher legenda dos espectros',
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(6),
+                      onTap: () => setState(() => _legendExpanded = false),
+                      child: Padding(
+                        padding: const EdgeInsets.all(2),
+                        child: Icon(
+                          Icons.expand_more,
+                          size: 16,
+                          color: p.inkSoft,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -891,15 +1058,219 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
             : '${projection.xLabel} × ${projection.yLabel}';
     final plotted = _getPlottedCount(matches, projection);
 
-    return Container(
-      decoration: BoxDecoration(
-        border: _projections.length > 1
-            ? Border.all(color: p.line.withValues(alpha: 0.65))
-            : null,
+    final bool multiPane = _projections.length > 1;
+    final Widget projMenuButton = PopupMenuButton<StudyMapProjection>(
+      tooltip: 'Trocar eixos desta teia',
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
       ),
-      child: Stack(
+      onSelected: (newProj) {
+        setState(() {
+          _projections[index] = newProj;
+          if (index == 0) _projection = newProj;
+        });
+      },
+      itemBuilder: (context) => [
+        for (final (title, preset) in presets)
+          PopupMenuItem(
+            value: preset,
+            child: Row(
+              children: [
+                if ((preset.isNolan && projection.isNolan) ||
+                    (!preset.isNolan &&
+                        !projection.isNolan &&
+                        preset.xAxisId == projection.xAxisId &&
+                        preset.yAxisId == projection.yAxisId))
+                  Icon(
+                    Icons.check_rounded,
+                    size: 16,
+                    color: p.accent,
+                  )
+                else
+                  const SizedBox(width: 16),
+                const SizedBox(width: 8),
+                Text(title),
+              ],
+            ),
+          ),
+        const PopupMenuDivider(),
+        PopupMenuItem(
+          onTap: () {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              _axes(index: index);
+            });
+          },
+          child: const Row(
+            children: [
+              Icon(Icons.tune_rounded, size: 16),
+              SizedBox(width: 8),
+              Text('Personalizar eixos…'),
+            ],
+          ),
+        ),
+      ],
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Positioned.fill(
+          if (multiPane) ...[
+            Text(
+              'Teia ${index + 1}: ',
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 11,
+                color: p.accent,
+              ),
+            ),
+          ],
+          Flexible(
+            child: Text(
+              projName,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 11,
+              ),
+            ),
+          ),
+          const SizedBox(width: 2),
+          Icon(
+            Icons.arrow_drop_down,
+            size: 16,
+            color: p.inkSoft,
+          ),
+        ],
+      ),
+    );
+
+    final Widget headerControls = Row(
+      mainAxisSize: multiPane ? MainAxisSize.max : MainAxisSize.min,
+      children: [
+        if (multiPane)
+          Flexible(child: projMenuButton)
+        else
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 230),
+            child: projMenuButton,
+          ),
+        const SizedBox(width: 6),
+        Text(
+          '($plotted)',
+          style: TextStyle(
+            fontFamily: 'IBMPlexMono',
+            fontSize: 10.5,
+            fontWeight: FontWeight.w600,
+            fontFeatures: const [FontFeature.tabularFigures()],
+            color: p.inkSoft,
+          ),
+        ),
+        if (multiPane) const Spacer(),
+        if (index == 0 && (_query.text.isNotEmpty || _spectrum != null)) ...[
+          const SizedBox(width: 6),
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 6,
+              vertical: 2,
+            ),
+            decoration: BoxDecoration(
+              color: p.accent.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Text(
+              [
+                if (_spectrum != null) _spectrum,
+                if (_query.text.isNotEmpty) '“${_query.text}”',
+              ].join(' · '),
+              style: TextStyle(
+                fontSize: 10.5,
+                fontWeight: FontWeight.w600,
+                color: p.accent,
+              ),
+            ),
+          ),
+        ],
+        if (multiPane) ...[
+          const SizedBox(width: 4),
+          Semantics(
+            button: true,
+            label: 'Remover esta teia',
+            child: Tooltip(
+              message: 'Remover esta teia',
+              child: InkWell(
+                borderRadius: BorderRadius.circular(6),
+                onTap: () => _removeProjection(index),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Icon(
+                    Icons.close_rounded,
+                    size: 15,
+                    color: p.inkSoft,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+
+    if (multiPane) {
+      return Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: p.line.withValues(alpha: 0.75)),
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 30,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                color: p.surface.withValues(alpha: 0.92),
+                border: Border(bottom: BorderSide(color: p.line.withValues(alpha: 0.75))),
+              ),
+              child: headerControls,
+            ),
+            Expanded(
+              child: StudyConstellation(
+                key: ValueKey(
+                  'teia-constellation-$index-${projection.xAxisId}-${projection.yAxisId}',
+                ),
+                subjects: matches,
+                selected: selected,
+                onSelected: _select,
+                onOpen: _open,
+                expanded: true,
+                compact: true,
+                projection: projection,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    final bool compactHeaderBar =
+        !multiPane && MediaQuery.sizeOf(context).width < 600;
+    if (compactHeaderBar) {
+      return Column(
+        children: [
+          Container(
+            height: 36,
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              color: p.surface.withValues(alpha: 0.94),
+              border: Border(
+                bottom: BorderSide(color: p.line.withValues(alpha: 0.85)),
+              ),
+            ),
+            alignment: Alignment.centerLeft,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: headerControls,
+            ),
+          ),
+          Expanded(
             child: StudyConstellation(
               key: ValueKey(
                 'teia-constellation-$index-${projection.xAxisId}-${projection.yAxisId}',
@@ -912,168 +1283,45 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
               projection: projection,
             ),
           ),
-          Positioned(
-            top: 10,
-            left: 10,
-            child: Container(
-              decoration: BoxDecoration(
-                color: p.surface.withValues(alpha: 0.96),
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: p.line),
-                boxShadow: EspectroElevation.cardShadows(p),
-              ),
-              child: Material(
-                type: MaterialType.transparency,
-                borderRadius: BorderRadius.circular(10),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    PopupMenuButton<StudyMapProjection>(
-                      tooltip: 'Trocar eixos desta teia',
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      onSelected: (newProj) {
-                        setState(() {
-                          _projections[index] = newProj;
-                          if (index == 0) _projection = newProj;
-                        });
-                      },
-                      itemBuilder: (context) => [
-                        for (final (title, preset) in presets)
-                          PopupMenuItem(
-                            value: preset,
-                            child: Row(
-                              children: [
-                                if ((preset.isNolan && projection.isNolan) ||
-                                    (!preset.isNolan &&
-                                        !projection.isNolan &&
-                                        preset.xAxisId == projection.xAxisId &&
-                                        preset.yAxisId == projection.yAxisId))
-                                  Icon(
-                                    Icons.check_rounded,
-                                    size: 16,
-                                    color: p.accent,
-                                  )
-                                else
-                                  const SizedBox(width: 16),
-                                const SizedBox(width: 8),
-                                Text(title),
-                              ],
-                            ),
-                          ),
-                        const PopupMenuDivider(),
-                        PopupMenuItem(
-                          onTap: () {
-                            WidgetsBinding.instance.addPostFrameCallback((_) {
-                              _axes(index: index);
-                            });
-                          },
-                          child: const Row(
-                            children: [
-                              Icon(Icons.tune_rounded, size: 16),
-                              SizedBox(width: 8),
-                              Text('Personalizar eixos...'),
-                            ],
-                          ),
-                        ),
-                      ],
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (_projections.length > 1) ...[
-                            Text(
-                              'Teia ${index + 1}: ',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 11,
-                                color: p.accent,
-                              ),
-                            ),
-                          ],
-                          ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 160),
-                            child: Text(
-                              projName,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 11,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 2),
-                          Icon(
-                            Icons.arrow_drop_down,
-                            size: 16,
-                            color: p.inkSoft,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-                    Text(
-                      '($plotted)',
-                      style: TextStyle(
-                        fontSize: 10.5,
-                        fontWeight: FontWeight.w600,
-                        color: p.inkSoft,
-                      ),
-                    ),
-                    if (index == 0 &&
-                        (_query.text.isNotEmpty || _spectrum != null)) ...[
-                      const SizedBox(width: 6),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 6,
-                          vertical: 2,
-                        ),
-                        decoration: BoxDecoration(
-                          color: p.accent.withValues(alpha: 0.12),
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Text(
-                          [
-                            if (_spectrum != null) _spectrum,
-                            if (_query.text.isNotEmpty) '“${_query.text}”',
-                          ].join(' · '),
-                          style: TextStyle(
-                            fontSize: 10.5,
-                            fontWeight: FontWeight.w600,
-                            color: p.accent,
-                          ),
-                        ),
-                      ),
-                    ],
-                    if (_projections.length > 1) ...[
-                      const SizedBox(width: 4),
-                      Tooltip(
-                        message: 'Remover esta teia',
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(10),
-                          onTap: () => _removeProjection(index),
-                          child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: Icon(
-                              Icons.close_rounded,
-                              size: 16,
-                              color: p.inkSoft,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
-                ),
+        ],
+      );
+    }
+
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: StudyConstellation(
+            key: ValueKey(
+              'teia-constellation-$index-${projection.xAxisId}-${projection.yAxisId}',
+            ),
+            subjects: matches,
+            selected: selected,
+            onSelected: _select,
+            onOpen: _open,
+            expanded: true,
+            projection: projection,
+          ),
+        ),
+        Positioned(
+          top: 10,
+          left: 10,
+          child: Container(
+            decoration: BoxDecoration(
+              color: p.surface.withValues(alpha: 0.94),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: p.line),
+            ),
+            child: Material(
+              type: MaterialType.transparency,
+              borderRadius: BorderRadius.circular(8),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: headerControls,
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -1237,11 +1485,17 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
                                   onTap: () {
                                     setState(() => _mobileActiveIndex = i);
                                     if (_mobilePageController.hasClients) {
-                                      _mobilePageController.animateToPage(
-                                        i,
-                                        duration: EspectroMotion.medium,
-                                        curve: EspectroMotion.easeOut,
-                                      );
+                                      if (MediaQuery.disableAnimationsOf(
+                                        context,
+                                      )) {
+                                        _mobilePageController.jumpToPage(i);
+                                      } else {
+                                        _mobilePageController.animateToPage(
+                                          i,
+                                          duration: EspectroMotion.medium,
+                                          curve: EspectroMotion.easeOut,
+                                        );
+                                      }
                                     }
                                   },
                                   child: Container(
@@ -1366,6 +1620,22 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
     final isDesktop = size.width >= 800;
     final matches = _matches;
     final selected = _selected;
+    final double mobileInspectorHeight = switch (_mobileDetent) {
+      _MobileInspectorDetent.peek => math.min(size.height * 0.24, 156.0),
+      _MobileInspectorDetent.half => math.min(size.height * 0.50, 400.0),
+      _MobileInspectorDetent.full => math.min(size.height * 0.78, 600.0),
+    };
+    final bool showLegendOnScreen =
+        (_projections.length == 1 || (_legendExpanded ?? false)) &&
+        (isDesktop ||
+            selected == null ||
+            _mobileDetent == _MobileInspectorDetent.peek);
+    final double legendBottom = (!isDesktop && selected != null)
+        ? mobileInspectorHeight + 18
+        : 12;
+    final Duration detentDuration = MediaQuery.disableAnimationsOf(context)
+        ? Duration.zero
+        : const Duration(milliseconds: 180);
 
     return EspectroScaffold(
       appViewModel: widget.appViewModel,
@@ -1392,7 +1662,7 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
                       controller: _query,
                       onChanged: (_) => setState(() {}),
                       decoration: InputDecoration(
-                        hintText: 'Buscar ideologia...',
+                        hintText: 'Buscar ideologia…',
                         hintStyle: TextStyle(fontSize: 13, color: p.inkSoft),
                         prefixIcon: const Icon(Icons.search, size: 18),
                         suffixIcon: _query.text.isNotEmpty
@@ -1490,12 +1760,14 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
               ),
             ),
 
-            // Bottom-left floating legend card (12axes inspired)
-            Positioned(
-              left: 12,
-              bottom: 12,
-              child: _buildFloatingLegend(context),
-            ),
+            // Em 2..4 projeções simultâneas, recolhe a pílula flutuante para não
+            // sobrepor o quadrante inferior esquerdo (mantém acesso pelo botão do topo).
+            if (showLegendOnScreen)
+              Positioned(
+                left: 12,
+                bottom: legendBottom,
+                child: _buildFloatingLegend(context),
+              ),
 
             // Side Inspector Drawer on Desktop (12axes layout)
             if (isDesktop && selected != null)
@@ -1511,15 +1783,15 @@ class _StudyMapScreenState extends State<StudyMapScreen> {
                 ),
               ),
 
-            // Bottom Inspector Drawer on Mobile
+            // Bottom Inspector Drawer on Mobile (3 detents: peek/half/full)
             if (!isDesktop && selected != null)
-              Positioned(
+              AnimatedPositioned(
+                duration: detentDuration,
+                curve: Curves.easeOutCubic,
                 left: 10,
                 right: 10,
                 bottom: 10,
-                height: _inspectorExpanded
-                    ? math.min(size.height * 0.80, 620)
-                    : math.min(size.height * 0.58, 460),
+                height: mobileInspectorHeight,
                 child: _buildInspectorCard(
                   context: context,
                   subject: selected,
@@ -1551,6 +1823,11 @@ class TeiaAxisSlider extends StatelessWidget {
     final leansLeft = normalized <= 0.5;
     final dominantPole = leansLeft ? axis.leftPole : axis.rightPole;
     final dominantColor = leansLeft ? axis.leftColor : axis.rightColor;
+    final Color dominantInk = AxisColors.readableInk(
+      dominantColor,
+      isDark: p.isDark,
+    );
+    final IconData axisIcon = AxisColors.iconFor(axis.id);
     final percentage = (leansLeft ? (1.0 - normalized) : normalized) * 100;
 
     return Padding(
@@ -1562,15 +1839,23 @@ class TeiaAxisSlider extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Text(
-                  axis.label,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: p.ink,
-                  ),
+                child: Row(
+                  children: [
+                    Icon(axisIcon, size: 14, color: dominantInk),
+                    const SizedBox(width: 6),
+                    Expanded(
+                      child: Text(
+                        axis.label,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: p.ink,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(width: 8),
@@ -1579,7 +1864,7 @@ class TeiaAxisSlider extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12.5,
                   fontWeight: FontWeight.bold,
-                  color: dominantColor,
+                  color: dominantInk,
                 ),
               ),
             ],
@@ -1693,13 +1978,14 @@ class _PolePill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = context.palette;
+    final textInk = AxisColors.readableInk(color, isDark: p.isDark);
     if (isActive) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2.5),
         decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.14),
+          color: color.withValues(alpha: p.isDark ? 0.16 : 0.12),
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: color.withValues(alpha: 0.35)),
+          border: Border.all(color: color.withValues(alpha: 0.45)),
         ),
         child: Text(
           label,
@@ -1708,7 +1994,7 @@ class _PolePill extends StatelessWidget {
           style: TextStyle(
             fontSize: 10.5,
             fontWeight: FontWeight.bold,
-            color: color,
+            color: textInk,
           ),
         ),
       );

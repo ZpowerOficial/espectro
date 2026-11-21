@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../../theme.dart';
+import '../shared/resilient_image.dart';
 
 /// A composition from an editorial profile, not a set of questionnaire answers.
 class StudyTernarySeries {
@@ -518,31 +519,18 @@ class _StudyTernaryChartState extends State<StudyTernaryChart> {
   }) {
     if (photoUrl != null && photoUrl.isNotEmpty) {
       return ClipOval(
-        child: photoUrl.startsWith('http://') || photoUrl.startsWith('https://')
-            ? Image.network(
-                photoUrl,
-                width: size,
-                height: size,
-                fit: BoxFit.cover,
-                errorBuilder: (_, _, _) => _buildFallbackInitial(
-                  idx,
-                  col,
-                  size,
-                  label: label,
-                ),
-              )
-            : Image.asset(
-                photoUrl,
-                width: size,
-                height: size,
-                fit: BoxFit.cover,
-                errorBuilder: (_, _, _) => _buildFallbackInitial(
-                  idx,
-                  col,
-                  size,
-                  label: label,
-                ),
-              ),
+        child: buildResilientMediaImage(
+          photoUrl,
+          width: size,
+          height: size,
+          fit: BoxFit.cover,
+          fallback: _buildFallbackInitial(
+            idx,
+            col,
+            size,
+            label: label,
+          ),
+        ),
       );
     }
     return _buildFallbackInitial(idx, col, size, label: label);
@@ -743,11 +731,14 @@ class _StudyTernaryPainter extends CustomPainter {
       final point = StudyTernaryGeometry.project(s.values, size);
       if (point == null) continue;
 
-      // Glow halo
+      // Anel externo fino e disco sólido sem halo difuso
       canvas.drawCircle(
         point,
-        13,
-        Paint()..color = s.color.withValues(alpha: .28),
+        12.5,
+        Paint()
+          ..color = s.color.withValues(alpha: 0.42)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.2,
       );
       // Outer colored disk
       canvas.drawCircle(

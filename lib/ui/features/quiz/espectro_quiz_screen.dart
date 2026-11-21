@@ -7,7 +7,7 @@ import '../../../data/models.dart';
 import '../../../domain/models/political_models.dart';
 import '../../../theme.dart';
 import '../../../widgets/common.dart';
-import '../../ads/espectro_banner_ad.dart';
+import '../../charts/axis_colors.dart';
 import '../../view_models/app_view_model.dart';
 import '../../view_models/quiz_view_model.dart';
 import '../results/espectro_result_screen.dart';
@@ -31,6 +31,8 @@ class EspectroQuizScreen extends StatefulWidget {
 
 class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
   Timer? _advanceTimer;
+  int _navDirection = 1;
+  bool _instantTransition = false;
 
   QuizViewModel get _vm => widget.quizViewModel;
 
@@ -38,6 +40,33 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
   void dispose() {
     _advanceTimer?.cancel();
     super.dispose();
+  }
+
+  void _goNext({bool fromKeyboard = false}) {
+    _advanceTimer?.cancel();
+    setState(() {
+      _navDirection = 1;
+      _instantTransition = fromKeyboard;
+    });
+    _vm.next();
+  }
+
+  void _goPrevious({bool fromKeyboard = false}) {
+    _advanceTimer?.cancel();
+    setState(() {
+      _navDirection = -1;
+      _instantTransition = fromKeyboard;
+    });
+    _vm.previous();
+  }
+
+  void _jumpToQuestion(int index) {
+    _advanceTimer?.cancel();
+    setState(() {
+      _navDirection = index < _vm.currentIndex ? -1 : 1;
+      _instantTransition = false;
+    });
+    _vm.jumpTo(index);
   }
 
   Future<void> _exitSavingDraft() async {
@@ -48,10 +77,13 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
     Navigator.of(context).pop();
   }
 
-  void _onSelectAnswer(LikertAnswer option) {
+  void _onSelectAnswer(LikertAnswer option, {bool fromKeyboard = false}) {
     _advanceTimer?.cancel();
     HapticFeedback.selectionClick();
     final bool wasAlreadyAnswered = _vm.currentAnswer != null;
+    setState(() {
+      _instantTransition = fromKeyboard;
+    });
     _vm.selectAnswer(option);
     // Revisar uma resposta existente não deve expulsar a pessoa da pergunta:
     // ela precisa ver o efeito da troca antes de decidir avançar.
@@ -59,13 +91,17 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
     if (!widget.appViewModel.autoAdvance || _vm.isLast) return;
     _advanceTimer = Timer(const Duration(milliseconds: 210), () {
       if (!mounted) return;
-      _vm.next();
+      _goNext(fromKeyboard: fromKeyboard);
     });
   }
 
   void _onSkip() {
     _advanceTimer?.cancel();
     HapticFeedback.lightImpact();
+    setState(() {
+      _navDirection = 1;
+      _instantTransition = false;
+    });
     final bool wasLast = _vm.isLast;
     _vm.skipCurrent();
     if (wasLast) {
@@ -145,7 +181,7 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
               TextButton(
                 onPressed: () {
                   Navigator.of(ctx).pop(false);
-                  _vm.jumpTo(firstUntouched);
+                  _jumpToQuestion(firstUntouched);
                 },
                 child: const Text('Revisar pendentes'),
               ),
@@ -261,7 +297,7 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pop();
-                    _vm.jumpTo(i);
+                    _jumpToQuestion(i);
                   },
                   child: Container(
                     width: 36,
@@ -568,6 +604,18 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
             return dimensionContext;
           }();
 
+          final Color dimColor = _vm.currentAxis != null
+              ? AxisColors.pairFor(_vm.currentAxis!.id, p).$1
+              : (_vm.currentTriadCategory != null
+                    ? p.triadColor(_vm.currentTriadCategory!.id)
+                    : p.accent);
+          final Color dimInk = AxisColors.readableInk(dimColor, isDark: p.isDark);
+          final IconData dimIcon = _vm.currentAxis != null
+              ? AxisColors.iconFor(_vm.currentAxis!.id)
+              : (_vm.currentTriadCategory != null
+                    ? AxisColors.triadIconFor(_vm.currentTriadCategory!.id)
+                    : Icons.tune_rounded);
+
           final String itemNumber = (_vm.currentIndex + 1).toString().padLeft(
             2,
             '0',
@@ -576,33 +624,33 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
           return CallbackShortcuts(
             bindings: <ShortcutActivator, VoidCallback>{
               const SingleActivator(LogicalKeyboardKey.digit1): () =>
-                  _onSelectAnswer(LikertAnswer.values[0]),
+                  _onSelectAnswer(LikertAnswer.values[0], fromKeyboard: true),
               const SingleActivator(LogicalKeyboardKey.numpad1): () =>
-                  _onSelectAnswer(LikertAnswer.values[0]),
+                  _onSelectAnswer(LikertAnswer.values[0], fromKeyboard: true),
               const SingleActivator(LogicalKeyboardKey.digit2): () =>
-                  _onSelectAnswer(LikertAnswer.values[1]),
+                  _onSelectAnswer(LikertAnswer.values[1], fromKeyboard: true),
               const SingleActivator(LogicalKeyboardKey.numpad2): () =>
-                  _onSelectAnswer(LikertAnswer.values[1]),
+                  _onSelectAnswer(LikertAnswer.values[1], fromKeyboard: true),
               const SingleActivator(LogicalKeyboardKey.digit3): () =>
-                  _onSelectAnswer(LikertAnswer.values[2]),
+                  _onSelectAnswer(LikertAnswer.values[2], fromKeyboard: true),
               const SingleActivator(LogicalKeyboardKey.numpad3): () =>
-                  _onSelectAnswer(LikertAnswer.values[2]),
+                  _onSelectAnswer(LikertAnswer.values[2], fromKeyboard: true),
               const SingleActivator(LogicalKeyboardKey.digit4): () =>
-                  _onSelectAnswer(LikertAnswer.values[3]),
+                  _onSelectAnswer(LikertAnswer.values[3], fromKeyboard: true),
               const SingleActivator(LogicalKeyboardKey.numpad4): () =>
-                  _onSelectAnswer(LikertAnswer.values[3]),
+                  _onSelectAnswer(LikertAnswer.values[3], fromKeyboard: true),
               const SingleActivator(LogicalKeyboardKey.digit5): () =>
-                  _onSelectAnswer(LikertAnswer.values[4]),
+                  _onSelectAnswer(LikertAnswer.values[4], fromKeyboard: true),
               const SingleActivator(LogicalKeyboardKey.numpad5): () =>
-                  _onSelectAnswer(LikertAnswer.values[4]),
+                  _onSelectAnswer(LikertAnswer.values[4], fromKeyboard: true),
               const SingleActivator(LogicalKeyboardKey.arrowLeft): () {
-                if (!_vm.isFirst) _vm.previous();
+                if (!_vm.isFirst) _goPrevious(fromKeyboard: true);
               },
               const SingleActivator(LogicalKeyboardKey.arrowRight): () {
                 if (_vm.isLast) {
                   _tryFinish();
                 } else if (selected != null || _vm.isCurrentSkipped) {
-                  _vm.next();
+                  _goNext(fromKeyboard: true);
                 }
               },
               const SingleActivator(LogicalKeyboardKey.escape):
@@ -851,30 +899,49 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
 
                         // Card Central Zen + Rodapé Simplificado
                         Expanded(
-                          child: AnimatedSwitcher(
-                            duration: EspectroMotion.fast,
-                            transitionBuilder: (child, animation) {
-                              final inAnimation =
-                                  Tween<Offset>(
-                                    begin: const Offset(0.02, 0.0),
-                                    end: Offset.zero,
-                                  ).animate(
-                                    CurvedAnimation(
-                                      parent: animation,
-                                      curve: EspectroMotion.easeOut,
+                          child: Builder(
+                            builder: (context) {
+                              final bool reduceMotion =
+                                  MediaQuery.disableAnimationsOf(context);
+                              final bool skipAnim =
+                                  reduceMotion || _instantTransition;
+                              final int direction = _navDirection;
+                              final Key enteringKey = ValueKey<String>(q.uid);
+                              return AnimatedSwitcher(
+                                duration: skipAnim
+                                    ? Duration.zero
+                                    : EspectroMotion.fast,
+                                reverseDuration: skipAnim
+                                    ? Duration.zero
+                                    : const Duration(milliseconds: 135),
+                                transitionBuilder: (child, animation) {
+                                  if (skipAnim) return child;
+                                  final bool isEntering =
+                                      child.key == enteringKey;
+                                  final double beginDx = isEntering
+                                      ? (direction * 0.028)
+                                      : (-direction * 0.018);
+                                  final inAnimation =
+                                      Tween<Offset>(
+                                        begin: Offset(beginDx, 0.0),
+                                        end: Offset.zero,
+                                      ).animate(
+                                        CurvedAnimation(
+                                          parent: animation,
+                                          curve: EspectroMotion.easeOut,
+                                        ),
+                                      );
+                                  return FadeTransition(
+                                    opacity: animation,
+                                    child: SlideTransition(
+                                      position: inAnimation,
+                                      child: child,
                                     ),
                                   );
-                              return FadeTransition(
-                                opacity: animation,
-                                child: SlideTransition(
-                                  position: inAnimation,
-                                  child: child,
-                                ),
-                              );
-                            },
-                            child: SingleChildScrollView(
-                              key: ValueKey(q.uid),
-                              padding: const EdgeInsets.fromLTRB(20, 4, 20, 28),
+                                },
+                                child: SingleChildScrollView(
+                              key: enteringKey,
+                              padding: const EdgeInsets.fromLTRB(20, 4, 20, 44),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
@@ -897,17 +964,32 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                                         Row(
                                           children: [
                                             Expanded(
-                                              child: Text(
-                                                categoryOverline.toUpperCase(),
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                  fontFamily: 'IBMPlexSans',
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w700,
-                                                  letterSpacing: 1.1,
-                                                  color: p.accent,
-                                                ),
+                                              child: Row(
+                                                children: [
+                                                  Icon(
+                                                    dimIcon,
+                                                    size: 14,
+                                                    color: dimInk,
+                                                  ),
+                                                  const SizedBox(width: 6),
+                                                  Flexible(
+                                                    child: Text(
+                                                      categoryOverline,
+                                                      maxLines: 1,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: TextStyle(
+                                                        fontFamily:
+                                                            'IBMPlexSans',
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        letterSpacing: 0,
+                                                        color: dimInk,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                             IconButton(
@@ -916,8 +998,8 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                                               visualDensity:
                                                   VisualDensity.compact,
                                               constraints: const BoxConstraints(
-                                                minWidth: 32,
-                                                minHeight: 32,
+                                                minWidth: 44,
+                                                minHeight: 44,
                                               ),
                                               padding: EdgeInsets.zero,
                                               icon: Icon(
@@ -1026,13 +1108,16 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                                           ),
                                         ),
                                       ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.min,
+                                      Wrap(
+                                        spacing: 10,
+                                        runSpacing: 8,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.center,
                                         children: [
                                           OutlinedButton(
                                             onPressed: _vm.isFirst
                                                 ? null
-                                                : _vm.previous,
+                                                : () => _goPrevious(),
                                             style: OutlinedButton.styleFrom(
                                               minimumSize: const Size(0, 44),
                                               padding:
@@ -1059,7 +1144,7 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                                                 ? _tryFinish
                                                 : ((selected != null ||
                                                           _vm.isCurrentSkipped)
-                                                      ? _vm.next
+                                                      ? () => _goNext()
                                                       : null),
                                             style: FilledButton.styleFrom(
                                               minimumSize: const Size(0, 44),
@@ -1106,9 +1191,10 @@ class _EspectroQuizScreenState extends State<EspectroQuizScreen> {
                                 ],
                               ),
                             ),
+                              );
+                            },
                           ),
                         ),
-                        const EspectroFloatingAdBar(),
                       ],
                     ),
                   ),

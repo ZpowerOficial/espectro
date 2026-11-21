@@ -10,6 +10,32 @@ abstract final class EspectroMotion {
   static const Curve easeOut = Cubic(0.23, 1, 0.32, 1);
 }
 
+/// Métricas espaciais compartilhadas por todas as telas principais para alinhar
+/// `AppBar`, `TabBar`, cabeçalhos e cartões sobre a mesma coluna e cadência vertical.
+abstract final class EspectroLayout {
+  static const double workspaceMaxWidth = 1100.0;
+  static const double workspaceInnerWidth = 1060.0;
+  static const double proseMaxWidth = 860.0;
+  static const double quizMaxWidth = 680.0;
+
+  static const double pageHorizontalPadding = 20.0;
+  static const double pageTopPadding = 24.0;
+  static const double pageBottomPadding = 72.0;
+
+  static const double sectionGap = 28.0;
+  static const double blockGap = 20.0;
+  static const double controlGap = 14.0;
+  static const double headerToContentGap = 14.0;
+  static const double cardGap = 14.0;
+
+  static const EdgeInsets pagePadding = EdgeInsets.fromLTRB(
+    pageHorizontalPadding,
+    pageTopPadding,
+    pageHorizontalPadding,
+    pageBottomPadding,
+  );
+}
+
 /// Elevação com camada dupla sutil (anel hairline + sombra ambiente colorida pela
 /// tinta do tema, evitando sombras cinzentas lavadas ou pretos absolutos).
 abstract final class EspectroElevation {
@@ -18,36 +44,20 @@ abstract final class EspectroElevation {
     Color? tint,
     bool elevated = true,
   }) {
-    if (!elevated) return const <BoxShadow>[];
-    final Color darkShadow = tint != null
-        ? Color.alphaBlend(
-            tint.withValues(alpha: 0.18),
-            const Color(0xFF030509),
-          )
-        : const Color(0xFF030509);
-    if (p.isDark) {
-      return <BoxShadow>[
-        BoxShadow(
-          color: darkShadow.withValues(alpha: 0.44),
-          blurRadius: 14,
-          spreadRadius: -2,
-          offset: const Offset(0, 6),
-        ),
-      ];
-    }
-    final Color baseTint = tint ?? const Color(0xFF14192B);
+    if (!elevated || p.isDark) return const <BoxShadow>[];
     return <BoxShadow>[
       BoxShadow(
-        color: baseTint.withValues(alpha: 0.06),
-        blurRadius: 14,
+        color: const Color(0xFF141819).withValues(alpha: 0.045),
+        blurRadius: 10,
         spreadRadius: -2,
-        offset: const Offset(0, 5),
+        offset: const Offset(0, 3),
       ),
     ];
   }
 
   /// Decoração padrão de cartões: preserva [BoxDecoration.color] e aplica
-  /// superfície de pérola fumê (light) ou ardósia obsidiana (dark).
+  /// superfície de papel velino mineral (light) ou ardósia noturna (dark),
+  /// sem halos coloridos nem reflexos artificiais.
   static BoxDecoration cardDecoration(
     EspectroPalette p, {
     Color? color,
@@ -59,10 +69,7 @@ abstract final class EspectroElevation {
     Gradient? customGradient,
   }) {
     final Color resolvedBorder =
-        borderColor ??
-        (p.isDark
-            ? Colors.white.withValues(alpha: 0.08)
-            : p.line.withValues(alpha: 0.85));
+        borderColor ?? p.line.withValues(alpha: 0.88);
     final Gradient? surfaceGradient =
         customGradient ??
         (color != null
@@ -71,19 +78,19 @@ abstract final class EspectroElevation {
                   ? const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: <Color>[Color(0xFF151E2C), Color(0xFF101722)],
+                      colors: <Color>[Color(0xFF151C28), Color(0xFF101620)],
                     )
                   : const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: <Color>[Color(0xFFF6F8FC), Color(0xFFF0F3F9)],
+                      colors: <Color>[Color(0xFFFAF9F6), Color(0xFFF4F2ED)],
                     )));
     return BoxDecoration(
       color: color ?? p.surface,
       gradient: surfaceGradient,
       borderRadius: BorderRadius.circular(radius),
       border: Border.all(color: resolvedBorder, width: borderWidth),
-      boxShadow: cardShadows(p, tint: tint, elevated: elevated),
+      boxShadow: cardShadows(p, elevated: elevated),
     );
   }
 
@@ -94,12 +101,12 @@ abstract final class EspectroElevation {
     double radius = 20,
   }) {
     final Color topTint = Color.alphaBlend(
-      accentColor.withValues(alpha: p.isDark ? 0.10 : 0.055),
-      p.isDark ? const Color(0xFF151F2E) : const Color(0xFFF7F8FC),
+      accentColor.withValues(alpha: p.isDark ? 0.07 : 0.035),
+      p.isDark ? const Color(0xFF151C28) : const Color(0xFFFAF9F6),
     );
     final Color bottomBase = p.isDark
-        ? const Color(0xFF101723)
-        : const Color(0xFFEDF0F7);
+        ? const Color(0xFF101620)
+        : const Color(0xFFF2F0EB);
     return BoxDecoration(
       color: p.surface,
       gradient: LinearGradient(
@@ -113,7 +120,7 @@ abstract final class EspectroElevation {
         color: accentColor.withValues(alpha: p.isDark ? 0.32 : 0.26),
         width: 1.1,
       ),
-      boxShadow: cardShadows(p, tint: accentColor, elevated: true),
+      boxShadow: cardShadows(p, elevated: true),
     );
   }
 }
@@ -169,70 +176,70 @@ class EspectroPalette extends ThemeExtension<EspectroPalette> {
     Color(0xFFD6373E),
     Color(0xFFDF7A1E),
     Color(0xFFD9A518),
-    Color(0xFF0F9D6B),
-    Color(0xFF2563EB),
-    Color(0xFF7C4DFF),
+    Color(0xFF0E8E72),
+    Color(0xFF155F70),
+    Color(0xFF2B79B7),
   ];
 
   static const EspectroPalette light = EspectroPalette(
     isDark: false,
-    // Pedra fumê arquitetônica (nem branco ofuscante nem bege do 12axes)
-    canvas: Color(0xFFE9ECF2),
-    surface: Color(0xFFF4F6FA),
-    surfaceMuted: Color(0xFFDDE2EC),
-    ink: Color(0xFF121622),
-    inkSoft: Color(0xFF374054),
-    // AA inclusive sobre surfaceMuted (#DDE2EC).
-    muted: Color(0xFF4F576D),
-    line: Color(0xFFCBD1DF),
-    // Íris de observatório (ancorado no arco violeta do mascote Espectro)
-    accent: Color(0xFF4E3FA5),
-    accentSoft: Color(0xFFE3E0F7),
-    poleLeft: Color(0xFF176B78),
-    poleRight: Color(0xFFC2622A),
-    warning: Color(0xFFA8540A),
-    success: Color(0xFF127564),
-    heroBackground: Color(0xFF0E1722),
-    heroForeground: Color(0xFFF4F6FB),
-    heroMuted: Color(0xFFB5C1D6),
+    // Papel velino editorial + Íris cartográfico sólido (#44378F)
+    canvas: Color(0xFFF2F0EB),
+    surface: Color(0xFFFAF9F6),
+    surfaceMuted: Color(0xFFE6E3DC),
+    ink: Color(0xFF151822),
+    inkSoft: Color(0xFF3A4052),
+    // AA inclusive sobre surfaceMuted (#E6E3DC).
+    muted: Color(0xFF545A6E),
+    line: Color(0xFFD4D1C9),
+    // Íris cartográfico editorial (contraste >= 9.11:1 sobre surface)
+    accent: Color(0xFF44378F),
+    accentSoft: Color(0xFFEAE7F6),
+    poleLeft: Color(0xFF155F70),
+    poleRight: Color(0xFF9B4614),
+    warning: Color(0xFF8F4305),
+    success: Color(0xFF0E614E),
+    heroBackground: Color(0xFF0F1320),
+    heroForeground: Color(0xFFF5F6FA),
+    heroMuted: Color(0xFFB3BBD0),
     triadPalette: <Color>[
-      Color(0xFF4E3FA5),
-      Color(0xFFC2622A),
-      Color(0xFF176B78),
-      Color(0xFF8B3E6B),
-      Color(0xFF2E6299),
-      Color(0xFF9C6B19),
+      Color(0xFF0E5A4F),
+      Color(0xFF9B4614),
+      Color(0xFF1E5A8A),
+      Color(0xFF8F3352),
+      Color(0xFF5A6B1C),
+      Color(0xFF7A5410),
     ],
   );
 
   static const EspectroPalette dark = EspectroPalette(
     isDark: true,
-    // Noite de observatório alinhada ao mascote (#0E1722)
-    canvas: Color(0xFF0A0F17),
-    surface: Color(0xFF121A26),
-    surfaceMuted: Color(0xFF1A2434),
-    ink: Color(0xFFF2F5FA),
-    inkSoft: Color(0xFFBCC6D8),
-    // AA sobre superfícies elevadas no tema escuro.
-    muted: Color(0xFF8B97AE),
-    line: Color(0xFF243146),
-    // Íris luminosa de observatório
-    accent: Color(0xFF9E8FFF),
-    accentSoft: Color(0xFF211E3E),
-    poleLeft: Color(0xFF4CC4BE),
-    poleRight: Color(0xFFE5A64B),
-    warning: Color(0xFFF59E0B),
-    success: Color(0xFF38C9A8),
-    heroBackground: Color(0xFF0D1520),
+    // Ardósia noturna de observatório cartográfico + Íris luminoso + Latão nos CTAs
+    canvas: Color(0xFF0B0F16),
+    surface: Color(0xFF121822),
+    surfaceMuted: Color(0xFF192130),
+    ink: Color(0xFFF2F4F8),
+    inkSoft: Color(0xFFBCC5D6),
+    // AA sobre superfícies elevadas no tema escuro (>= 5.50:1).
+    muted: Color(0xFF8C97AE),
+    line: Color(0xFF232D3F),
+    // Íris cartográfico escuro (#9A92F0, contraste >= 6.57:1 sobre surface)
+    accent: Color(0xFF9A92F0),
+    accentSoft: Color(0xFF1F1D3A),
+    poleLeft: Color(0xFF4AC2BE),
+    poleRight: Color(0xFFE5A448),
+    warning: Color(0xFFF0A42E),
+    success: Color(0xFF38CC9F),
+    heroBackground: Color(0xFF0D111C),
     heroForeground: Color(0xFFFFFFFF),
-    heroMuted: Color(0xFFA3B1C8),
+    heroMuted: Color(0xFFA6B0C8),
     triadPalette: <Color>[
-      Color(0xFF9E8FFF),
-      Color(0xFFE5A64B),
-      Color(0xFF4CC4BE),
-      Color(0xFFE6779E),
-      Color(0xFF6DA6E4),
-      Color(0xFFD9B45B),
+      Color(0xFF34C3A6),
+      Color(0xFFE5A448),
+      Color(0xFF5FA3DF),
+      Color(0xFFDF6E8F),
+      Color(0xFF9CBF4E),
+      Color(0xFFD4B055),
     ],
   );
 
@@ -347,9 +354,9 @@ ThemeData buildAppTheme({Brightness brightness = Brightness.light}) {
         brightness: brightness,
       ).copyWith(
         primary: p.accent,
-        onPrimary: isDark ? const Color(0xFF120D2B) : const Color(0xFFF7F6FD),
+        onPrimary: isDark ? const Color(0xFF0B0E1E) : const Color(0xFFFAF9F6),
         secondary: p.poleRight,
-        onSecondary: isDark ? const Color(0xFF1A1002) : Colors.white,
+        onSecondary: isDark ? const Color(0xFF140D03) : const Color(0xFFFAF9F6),
         surface: p.surface,
         onSurface: p.ink,
         outline: p.line,
@@ -372,11 +379,12 @@ ThemeData buildAppTheme({Brightness brightness = Brightness.light}) {
     ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
-        backgroundColor: p.accent,
+        backgroundColor: isDark ? const Color(0xFFE5A448) : p.accent,
         foregroundColor: isDark
-            ? const Color(0xFF120D2B)
-            : const Color(0xFFF7F6FD),
+            ? const Color(0xFF140D03)
+            : const Color(0xFFFAF9F6),
         elevation: 0,
+        minimumSize: const Size(44, 44),
         padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
         textStyle: const TextStyle(
@@ -385,6 +393,16 @@ ThemeData buildAppTheme({Brightness brightness = Brightness.light}) {
           fontWeight: FontWeight.w700,
           letterSpacing: -0.15,
         ),
+      ).copyWith(
+        side: WidgetStateProperty.resolveWith<BorderSide?>((states) {
+          if (states.contains(WidgetState.focused)) {
+            return BorderSide(
+              color: isDark ? p.heroForeground : p.ink,
+              width: 2.0,
+            );
+          }
+          return null;
+        }),
       ),
     ),
     appBarTheme: AppBarTheme(
@@ -493,6 +511,69 @@ ThemeData buildAppTheme({Brightness brightness = Brightness.light}) {
         minimumSize: const Size(48, 52),
         side: BorderSide(color: p.line),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
+      ).copyWith(
+        side: WidgetStateProperty.resolveWith<BorderSide?>((states) {
+          if (states.contains(WidgetState.focused)) {
+            return BorderSide(color: p.accent, width: 2.0);
+          }
+          return BorderSide(color: p.line);
+        }),
+      ),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: p.accent,
+        minimumSize: const Size(44, 44),
+        tapTargetSize: MaterialTapTargetSize.padded,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
+      ).copyWith(
+        side: WidgetStateProperty.resolveWith<BorderSide?>((states) {
+          if (states.contains(WidgetState.focused)) {
+            return BorderSide(color: p.accent, width: 2.0);
+          }
+          return null;
+        }),
+      ),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        minimumSize: const Size(44, 44),
+        tapTargetSize: MaterialTapTargetSize.padded,
+      ).copyWith(
+        side: WidgetStateProperty.resolveWith<BorderSide?>((states) {
+          if (states.contains(WidgetState.focused)) {
+            return BorderSide(color: p.accent, width: 2.0);
+          }
+          return null;
+        }),
+      ),
+    ),
+    chipTheme: ChipThemeData(
+      backgroundColor: p.surface,
+      selectedColor: p.accentSoft,
+      secondarySelectedColor: p.accentSoft,
+      checkmarkColor: p.accent,
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      side: WidgetStateBorderSide.resolveWith((states) {
+        if (states.contains(WidgetState.focused)) {
+          return BorderSide(color: p.accent, width: 2.0);
+        }
+        if (states.contains(WidgetState.selected)) {
+          return BorderSide(color: p.accent, width: 1.5);
+        }
+        return BorderSide(color: p.line);
+      }),
+      labelStyle: TextStyle(
+        fontFamily: 'IBMPlexSans',
+        fontSize: 13,
+        color: p.ink,
+      ),
+      secondaryLabelStyle: TextStyle(
+        fontFamily: 'IBMPlexSans',
+        fontSize: 13,
+        fontWeight: FontWeight.w700,
+        color: p.accent,
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -608,7 +689,7 @@ class _EspectroSmoothPageTransitionsBuilder extends PageTransitionsBuilder {
     final CurvedAnimation curved = CurvedAnimation(
       parent: animation,
       curve: EspectroMotion.easeOut,
-      reverseCurve: Curves.easeInQuad,
+      reverseCurve: EspectroMotion.easeOut,
     );
     return FadeTransition(
       opacity: curved,

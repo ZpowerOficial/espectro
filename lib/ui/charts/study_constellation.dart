@@ -8,6 +8,7 @@ import '../../domain/models/study_models.dart';
 import '../../data/models.dart' as data;
 import '../../theme.dart';
 import '../features/atlas/study_taxonomy.dart';
+import 'teia_cartographic_layer.dart';
 
 /// Stable analytical positions. Animation affects only a faint decorative halo;
 /// the plotted point, connections, labels and hit targets never move.
@@ -214,6 +215,7 @@ class StudyConstellation extends StatefulWidget {
     required this.onSelected,
     this.onOpen,
     this.expanded = false,
+    this.compact = false,
     this.projection = const StudyMapProjection(),
     super.key,
   });
@@ -223,6 +225,7 @@ class StudyConstellation extends StatefulWidget {
   final ValueChanged<StudySubject> onSelected;
   final ValueChanged<StudySubject>? onOpen;
   final bool expanded;
+  final bool compact;
   final StudyMapProjection projection;
 
   @override
@@ -328,7 +331,7 @@ class _StudyConstellationState extends State<StudyConstellation>
 
   late List<(StudySubject, Offset)> _points;
   late List<(Offset, Offset)> _staticEdges;
-  late List<_NebulaClusterData> _nebulaClusters;
+  late List<SpectrumTerritory> _territories;
   bool _geometryInitialized = false;
   bool? _lastGeometryDark;
 
@@ -340,7 +343,10 @@ class _StudyConstellationState extends State<StudyConstellation>
     final placed = _points.where((p) => p.$2.dx <= 800).toList();
     _staticEdges = _ConstellationPainter.computeStaticEdges(placed);
     final dark = isDark ?? (mounted ? context.palette.isDark : false);
-    _nebulaClusters = _ConstellationPainter.computeNebulaClusters(placed, dark);
+    _territories = TeiaCartographicLayer.computeTerritories(
+      placed,
+      isDark: dark,
+    );
     _geometryInitialized = true;
     _lastGeometryDark = dark;
   }
@@ -359,7 +365,10 @@ class _StudyConstellationState extends State<StudyConstellation>
       _updateGeometry(dark);
     } else if (_lastGeometryDark != dark) {
       final placed = _points.where((p) => p.$2.dx <= 800).toList();
-      _nebulaClusters = _ConstellationPainter.computeNebulaClusters(placed, dark);
+      _territories = TeiaCartographicLayer.computeTerritories(
+        placed,
+        isDark: dark,
+      );
       _lastGeometryDark = dark;
     }
     final scroll = Scrollable.maybeOf(context)?.position;
@@ -601,35 +610,31 @@ class _StudyConstellationState extends State<StudyConstellation>
   );
 
   Widget _buildCardinalBadge(String label, Alignment alignment) {
+    final p = context.palette;
     return Align(
       alignment: alignment,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(widget.compact ? 4.0 : 8.0),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          padding: EdgeInsets.symmetric(
+            horizontal: widget.compact ? 6 : 8,
+            vertical: widget.compact ? 2 : 3,
+          ),
           decoration: BoxDecoration(
-            color: context.palette.surface.withValues(alpha: 0.88),
-            borderRadius: BorderRadius.circular(12),
+            color: p.surface.withValues(alpha: 0.90),
+            borderRadius: BorderRadius.circular(5),
             border: Border.all(
-              color: context.palette.line.withValues(alpha: 0.85),
+              color: p.line.withValues(alpha: 0.90),
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(
-                  alpha: context.palette.isDark ? 0.35 : 0.06,
-                ),
-                blurRadius: 4,
-                offset: const Offset(0, 1),
-              ),
-            ],
           ),
           child: Text(
             label,
             style: TextStyle(
-              fontSize: 10.5,
+              fontFamily: 'IBMPlexSans',
+              fontSize: widget.compact ? 9.5 : 10.5,
               fontWeight: FontWeight.w700,
-              letterSpacing: 0.8,
-              color: context.palette.inkSoft,
+              letterSpacing: 0.3,
+              color: p.inkSoft,
             ),
           ),
         ),
@@ -662,7 +667,7 @@ class _StudyConstellationState extends State<StudyConstellation>
             painter: _ConstellationPainter(
               points: _points,
               staticEdges: _staticEdges,
-              nebulaClusters: _nebulaClusters,
+              territories: _territories,
               selectedKey: widget.selected?.key,
               hoveredKey: _hovered?.key,
               palette: context.palette,
@@ -670,6 +675,7 @@ class _StudyConstellationState extends State<StudyConstellation>
               camera: _camera,
               projection: widget.projection,
               viewportSize: viewport,
+              compact: widget.compact,
             ),
           ),
         ),
@@ -795,6 +801,80 @@ class _StudyConstellationState extends State<StudyConstellation>
         .toList();
     final hasOther = points.any((p) => spectrumOf(p.$1) == null);
     if (widget.expanded) {
+      if (widget.compact) {
+        return Column(
+          key: const ValueKey('study-map-full-canvas'),
+          children: [
+            Expanded(child: _canvas()),
+            Container(
+              height: 30,
+              padding: const EdgeInsets.symmetric(horizontal: 6),
+              decoration: BoxDecoration(
+                color: palette.surface.withValues(alpha: 0.94),
+                border: Border(
+                  top: BorderSide(color: palette.line.withValues(alpha: 0.65)),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    tooltip: 'Aumentar zoom',
+                    constraints: const BoxConstraints(
+                      minWidth: 28,
+                      minHeight: 28,
+                    ),
+                    padding: const EdgeInsets.all(4),
+                    iconSize: 15,
+                    onPressed: () => _zoom(1.4),
+                    icon: const Icon(Icons.add),
+                  ),
+                  IconButton(
+                    tooltip: 'Diminuir zoom',
+                    constraints: const BoxConstraints(
+                      minWidth: 28,
+                      minHeight: 28,
+                    ),
+                    padding: const EdgeInsets.all(4),
+                    iconSize: 15,
+                    onPressed: () => _zoom(1 / 1.4),
+                    icon: const Icon(Icons.remove),
+                  ),
+                  IconButton(
+                    tooltip: 'Reenquadrar teia',
+                    constraints: const BoxConstraints(
+                      minWidth: 28,
+                      minHeight: 28,
+                    ),
+                    padding: const EdgeInsets.all(4),
+                    iconSize: 15,
+                    onPressed: () {
+                      if (_viewport case final Size v) _fit(v);
+                    },
+                    icon: const Icon(Icons.center_focus_strong),
+                  ),
+                  IconButton(
+                    tooltip: _motionPaused
+                        ? 'Ativar movimento sutil'
+                        : 'Pausar movimento',
+                    constraints: const BoxConstraints(
+                      minWidth: 28,
+                      minHeight: 28,
+                    ),
+                    padding: const EdgeInsets.all(4),
+                    iconSize: 15,
+                    onPressed: () {
+                      setState(() => _motionPaused = !_motionPaused);
+                      _syncMotion();
+                    },
+                    icon: Icon(_motionPaused ? Icons.play_arrow : Icons.pause),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      }
       return Stack(
         key: const ValueKey('study-map-full-canvas'),
         children: [
@@ -804,40 +884,39 @@ class _StudyConstellationState extends State<StudyConstellation>
             top: 10,
             child: Container(
               decoration: BoxDecoration(
-                color: palette.surface.withValues(alpha: 0.96),
-                borderRadius: BorderRadius.circular(12),
+                color: palette.surface.withValues(alpha: 0.94),
+                borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: palette.line),
-                boxShadow: EspectroElevation.cardShadows(palette),
               ),
               child: Material(
                 type: MaterialType.transparency,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(8),
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    IconButton(
-                      tooltip: 'Aumentar zoom',
-                      onPressed: () => _zoom(1.4),
-                      icon: const Icon(Icons.add),
-                    ),
-                    IconButton(
-                      tooltip: 'Diminuir zoom',
-                      onPressed: () => _zoom(1 / 1.4),
-                      icon: const Icon(Icons.remove),
-                    ),
-                    IconButton(
-                      tooltip: 'Reenquadrar teia',
-                      onPressed: () {
-                        if (_viewport case final Size v) _fit(v);
-                      },
-                      icon: const Icon(Icons.center_focus_strong),
-                    ),
-                    IconButton(
-                      tooltip: _motionPaused
-                          ? 'Ativar movimento sutil'
-                          : 'Pausar movimento',
-                      onPressed: () {
-                        setState(() => _motionPaused = !_motionPaused);
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            tooltip: 'Aumentar zoom',
+                            onPressed: () => _zoom(1.4),
+                            icon: const Icon(Icons.add),
+                          ),
+                          IconButton(
+                            tooltip: 'Diminuir zoom',
+                            onPressed: () => _zoom(1 / 1.4),
+                            icon: const Icon(Icons.remove),
+                          ),
+                          IconButton(
+                            tooltip: 'Reenquadrar teia',
+                            onPressed: () {
+                              if (_viewport case final Size v) _fit(v);
+                            },
+                            icon: const Icon(Icons.center_focus_strong),
+                          ),
+                          IconButton(
+                            tooltip: _motionPaused
+                                ? 'Ativar movimento sutil'
+                                : 'Pausar movimento',
+                            onPressed: () {
+                              setState(() => _motionPaused = !_motionPaused);
                         _syncMotion();
                       },
                       icon: Icon(_motionPaused ? Icons.play_arrow : Icons.pause),
@@ -867,10 +946,15 @@ class _StudyConstellationState extends State<StudyConstellation>
                 child: Row(
                   children: [
                     Expanded(
-                      child: Text(
-                        'TEIA DE IDEIAS',
-                        style: Theme.of(context).textTheme.labelSmall
-                            ?.copyWith(color: palette.inkSoft),
+                      child: ExcludeSemantics(
+                        child: Text(
+                          'Projeção em coordenadas',
+                          style: Theme.of(context).textTheme.titleSmall
+                              ?.copyWith(
+                                color: palette.inkSoft,
+                                fontWeight: FontWeight.w700,
+                              ),
+                        ),
                       ),
                     ),
                     IconButton(
@@ -1080,22 +1164,6 @@ class _StudyConstellationState extends State<StudyConstellation>
   }
 }
 
-class _NebulaClusterData {
-  const _NebulaClusterData({
-    required this.centroid,
-    required this.radius,
-    required this.specColor,
-    required this.textColor,
-    required this.name,
-  });
-
-  final Offset centroid;
-  final double radius;
-  final Color specColor;
-  final Color textColor;
-  final String name;
-}
-
 class _ConstellationPainter extends CustomPainter {
   _ConstellationPainter({
     required this.points,
@@ -1106,20 +1174,21 @@ class _ConstellationPainter extends CustomPainter {
     required this.camera,
     required this.projection,
     this.viewportSize,
+    this.compact = false,
     List<(Offset, Offset)>? staticEdges,
-    List<_NebulaClusterData>? nebulaClusters,
+    List<SpectrumTerritory>? territories,
   })  : staticEdges = staticEdges ??
             computeStaticEdges(points.where((p) => p.$2.dx <= 800).toList()),
-        nebulaClusters = nebulaClusters ??
-            computeNebulaClusters(
+        territories = territories ??
+            TeiaCartographicLayer.computeTerritories(
               points.where((p) => p.$2.dx <= 800).toList(),
-              palette.isDark,
+              isDark: palette.isDark,
             ),
         super(repaint: Listenable.merge([animation, camera]));
 
   final List<(StudySubject, Offset)> points;
   final List<(Offset, Offset)> staticEdges;
-  final List<_NebulaClusterData> nebulaClusters;
+  final List<SpectrumTerritory> territories;
   final String? selectedKey;
   final String? hoveredKey;
   final EspectroPalette palette;
@@ -1127,6 +1196,7 @@ class _ConstellationPainter extends CustomPainter {
   final TransformationController camera;
   final StudyMapProjection projection;
   final Size? viewportSize;
+  final bool compact;
 
   double get _screenScale => camera.value.getMaxScaleOnAxis().clamp(.01, 4.0);
 
@@ -1145,62 +1215,34 @@ class _ConstellationPainter extends CustomPainter {
   }
 
   static const _tier1Anchors = {
+    'current:social_democracia',
+    'current:socialismo_democratico',
+    'current:trabalhismo_desenvolvimentista',
+    'current:ecologismo_politico',
+    'current:marxismo_leninismo',
+    'current:trotskismo',
+    'current:comunismo_de_conselhos',
+    'current:maoismo',
+    'current:anarquismo_social',
+    'current:anarcossindicalismo',
+    'current:mutualismo_proudhoniano',
+    'current:liberalismo_social',
+    'current:centrismo_pragmatico',
+    'current:democracia_crista',
+    'current:distributismo_comunitarismo',
+    'current:liberalismo_classico',
+    'current:conservadorismo_liberal',
+    'current:conservadorismo_tradicionalista',
+    'current:nacionalismo_civico',
     'current:anarcocapitalismo',
-    'current:liberalismo-classico',
-    'current:social-democracia',
-    'current:marxismo-leninismo',
-    'current:fascismo',
-    'current:conservadorismo-tradicional',
-    'current:anarquismo-classico',
-    'current:democracia-crista',
-    'current:ecologismo-politico',
-    'current:socialismo-democratico',
-    'current:monarquismo-constitucional',
-    'current:neoliberalismo',
-    'current:nacional-bolchevismo',
-    'current:distributismo',
-    'current:minarquismo',
-    'current:comunismo-de-conselhos',
-    'current:nacional-conservadorismo',
-    'current:criptoanarquismo',
-    'current:transhumanismo-democratico',
-    'current:mutualismo',
-    'current:ordoliberalismo',
-    'current:socialismo-libertario',
+    'current:libertarianismo_minarquista',
+    'current:agorismo',
+    'current:peronismo_justicialismo',
+    'current:fascismo_historico',
+    'current:falangismo_nacional_sindicalismo',
+    'current:fundamentalismo_teocratico',
+    'current:etnonacionalismo',
   };
-
-  static List<_NebulaClusterData> computeNebulaClusters(
-    List<(StudySubject, Offset)> placedPoints,
-    bool isDark,
-  ) {
-    final clusters = <_NebulaClusterData>[];
-    for (final spec in studySpectra) {
-      final cluster = placedPoints
-          .where((p) => spectrumOf(p.$1)?.id == spec.id)
-          .map((p) => p.$2)
-          .toList();
-      if (cluster.isEmpty) continue;
-      final avgX =
-          cluster.map((p) => p.dx).reduce((a, b) => a + b) / cluster.length;
-      final avgY =
-          cluster.map((p) => p.dy).reduce((a, b) => a + b) / cluster.length;
-      final centroid = Offset(avgX, avgY);
-      final radius = math.max(
-        110.0,
-        math.min(210.0, 45.0 + cluster.length * 3.8),
-      );
-      clusters.add(
-        _NebulaClusterData(
-          centroid: centroid,
-          radius: radius,
-          specColor: spec.color,
-          textColor: spec.ink(isDark),
-          name: spec.name,
-        ),
-      );
-    }
-    return clusters;
-  }
 
   static List<(Offset, Offset)> computeStaticEdges(
     List<(StudySubject, Offset)> placedPoints,
@@ -1259,97 +1301,30 @@ class _ConstellationPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // 1. Canvas background: transparent so the constellation blends seamlessly
     final placedPoints = points.where((p) => p.$2.dx <= 800).toList();
+    final activeKeyNow = selectedKey ?? hoveredKey;
 
-    // 2. Atmospheric Nebula Clouds per ideological spectrum (precomputed)
-    for (final nebula in nebulaClusters) {
-      final nebulaPaint = Paint()
-        ..shader = RadialGradient(
-          colors: [
-            nebula.specColor.withValues(alpha: palette.isDark ? 0.20 : 0.12),
-            nebula.specColor.withValues(alpha: palette.isDark ? 0.06 : 0.03),
-            Colors.transparent,
-          ],
-          stops: const [0.0, 0.55, 1.0],
-        ).createShader(
-          Rect.fromCircle(center: nebula.centroid, radius: nebula.radius),
-        );
-      canvas.drawCircle(nebula.centroid, nebula.radius, nebulaPaint);
+    // 1. Retículo cartográfico calibrado (grade ortogonal ou simplex ternário)
+    TeiaCartographicLayer.paintGraticule(
+      canvas,
+      palette,
+      scale: _screenScale,
+      showScaleTicks: !projection.isTriad,
+      isTriad: projection.isTriad,
+    );
 
-      // Subtle uppercase cluster name
-      _text(
-        canvas,
-        nebula.name.toUpperCase(),
-        nebula.centroid,
-        nebula.textColor.withValues(alpha: 0.45),
-        11.5,
-      );
-    }
-
-    // 3. Subtle guidelines (Crosshairs for Cartesian projections; Triangle outline for Tríades)
-    if (projection.isTriad) {
-      const v0 = Offset(140, 710);
-      const v1 = Offset(740, 710);
-      const v2 = Offset(440, 150);
-      final triPath = Path()
-        ..moveTo(v0.dx, v0.dy)
-        ..lineTo(v1.dx, v1.dy)
-        ..lineTo(v2.dx, v2.dy)
-        ..close();
-      canvas.drawPath(
-        triPath,
-        Paint()
-          ..color = (palette.isDark
-                  ? const Color(0xFF334155)
-                  : const Color(0xFFCBD5E1))
-              .withValues(alpha: 0.38)
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 1.5 / _screenScale,
-      );
-      final triGrid = Paint()
-        ..color = (palette.isDark
-                ? const Color(0xFF334155)
-                : const Color(0xFFCBD5E1))
-            .withValues(alpha: 0.14)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1.0 / _screenScale;
-      for (var i = 1; i < 4; i++) {
-        final t = i / 4.0;
-        canvas.drawLine(
-          Offset.lerp(v0, v1, t)!,
-          Offset.lerp(v0, v2, t)!,
-          triGrid,
-        );
-        canvas.drawLine(
-          Offset.lerp(v1, v0, t)!,
-          Offset.lerp(v1, v2, t)!,
-          triGrid,
-        );
-        canvas.drawLine(
-          Offset.lerp(v2, v0, t)!,
-          Offset.lerp(v2, v1, t)!,
-          triGrid,
-        );
-      }
-    } else {
-      final crossPaint = Paint()
-        ..color = (palette.isDark
-                ? const Color(0xFF334155)
-                : const Color(0xFFCBD5E1))
-            .withValues(alpha: 0.28)
-        ..strokeWidth = 1.0 / _screenScale;
-      canvas.drawLine(
-        const Offset(40, 440),
-        const Offset(840, 440),
-        crossPaint,
-      );
-      canvas.drawLine(
-        const Offset(440, 40),
-        const Offset(440, 840),
-        crossPaint,
-      );
-    }
+    // 2. Envoltórias territoriais nítidas por espectro (preserva contexto mesmo sob seleção)
+    TeiaCartographicLayer.paintTerritories(
+      canvas,
+      territories,
+      palette,
+      opacityMultiplier: activeKeyNow == null
+          ? (compact ? 0.72 : 1.0)
+          : (compact ? 0.58 : 0.80),
+      showLabels: !compact && _screenScale <= 2.1,
+      zoomScale: _screenScale,
+      labelOpacity: activeKeyNow == null ? 1.0 : 0.42,
+    );
 
     // Unplaced / Sem posição tray
     if (points.any((p) => p.$2.dx > 800)) {
@@ -1388,47 +1363,41 @@ class _ConstellationPainter extends CustomPainter {
       canvas.drawLine(edge.$1, edge.$2, bgEdgePaint);
     }
 
-    // 5. Active dynamic connections for selected/hovered node
+    // 5. Active dynamic connections for selected/hovered node (linhas nítidas sem glow difuso)
     if (activeSubject != null) {
       final activeColor =
           spectrumOf(activeSubject.$1)?.color ?? palette.accent;
       final pulsePhase = animation.value;
 
-      final glowPaint = Paint()
-        ..color = activeColor.withValues(alpha: 0.26)
-        ..strokeWidth =
-            (5.0 + 1.8 * math.sin(pulsePhase * math.pi * 2)) / _screenScale
-        ..strokeCap = StrokeCap.round;
-
-      final sharpPaint = Paint()
-        ..color = activeColor.withValues(alpha: 0.92)
-        ..strokeWidth = 2.0 / _screenScale
+      final edgePaint = Paint()
+        ..color = activeColor.withValues(alpha: 0.88)
+        ..strokeWidth = 1.9 / _screenScale
         ..strokeCap = StrokeCap.round;
 
       final pulseDotPaint = Paint()
-        ..color = Colors.white.withValues(alpha: 0.92);
+        ..color = palette.ink.withValues(alpha: 0.90);
 
       for (final neighbour in activeNeighbours) {
-        canvas.drawLine(activeSubject.$2, neighbour.$2, glowPaint);
-        canvas.drawLine(activeSubject.$2, neighbour.$2, sharpPaint);
+        canvas.drawLine(activeSubject.$2, neighbour.$2, edgePaint);
 
-        // Responsive traveling energy pulse dot along active connection
-        final t = (pulsePhase * 2.8) % 1.0;
+        // Indicador discreto de ligação ao longo da aresta ativa
+        final t = (pulsePhase * 2.2) % 1.0;
         final pulsePos = Offset.lerp(activeSubject.$2, neighbour.$2, t)!;
         canvas.drawCircle(
           pulsePos,
-          2.8 / _screenScale,
+          2.2 / _screenScale,
           pulseDotPaint,
         );
       }
 
-      // Breathing halo on active star
-      final haloRadius =
-          (20.0 + 3.5 * math.sin(pulsePhase * math.pi * 2)) / _screenScale;
+      // Anel concêntrico limpo no nó ativo (sem halo borrado)
       canvas.drawCircle(
         activeSubject.$2,
-        haloRadius,
-        Paint()..color = activeColor.withValues(alpha: 0.18),
+        12.0 / _screenScale,
+        Paint()
+          ..color = activeColor.withValues(alpha: 0.72)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.6 / _screenScale,
       );
     }
 
@@ -1460,42 +1429,97 @@ class _ConstellationPainter extends CustomPainter {
 
       if (activeKey != null) {
         if (isActive) {
-          // Double concentric ring
+          // Marcação cartográfica dupla nítida
           nodeStrokePaint
             ..color = color
             ..strokeWidth = 2.2 / _screenScale;
-          canvas.drawCircle(point, 13 / _screenScale, nodeStrokePaint);
+          canvas.drawCircle(point, 12.5 / _screenScale, nodeStrokePaint);
           nodeFillPaint.color = color;
-          canvas.drawCircle(point, 6.5 / _screenScale, nodeFillPaint);
+          canvas.drawCircle(point, 6.2 / _screenScale, nodeFillPaint);
+          nodeStrokePaint
+            ..color = palette.surface
+            ..strokeWidth = 1.4 / _screenScale;
+          canvas.drawCircle(point, 6.2 / _screenScale, nodeStrokePaint);
         } else if (isNeighbour) {
-          // Highlighted neighbour
-          nodeFillPaint.color = color.withValues(alpha: 0.24);
-          canvas.drawCircle(point, 9.0 / _screenScale, nodeFillPaint);
+          // Vizinho imediato com anel de contraste (sem halo borrado)
           nodeFillPaint.color = color;
           canvas.drawCircle(point, 5.2 / _screenScale, nodeFillPaint);
+          nodeStrokePaint
+            ..color = palette.canvas
+            ..strokeWidth = 1.2 / _screenScale;
+          canvas.drawCircle(point, 5.2 / _screenScale, nodeStrokePaint);
         } else {
-          // Dimmed background node
-          nodeFillPaint.color = color.withValues(alpha: 0.22);
-          canvas.drawCircle(point, 3.0 / _screenScale, nodeFillPaint);
+          // Preserva riqueza cromática e contexto sem apagamento excessivo
+          nodeFillPaint.color = color.withValues(
+            alpha: palette.isDark ? 0.44 : 0.40,
+          );
+          canvas.drawCircle(point, 3.6 / _screenScale, nodeFillPaint);
         }
       } else {
-        // Idle constellation state
+        // Estado de constelação aberta com contornos nítidos
         if (isAnchor) {
-          nodeFillPaint.color = color.withValues(alpha: 0.20);
-          canvas.drawCircle(point, 8.0 / _screenScale, nodeFillPaint);
-          nodeFillPaint.color = color.withValues(alpha: 0.95);
-          canvas.drawCircle(point, 5.0 / _screenScale, nodeFillPaint);
+          nodeFillPaint.color = color.withValues(alpha: 0.96);
+          canvas.drawCircle(point, 5.2 / _screenScale, nodeFillPaint);
+          nodeStrokePaint
+            ..color = palette.canvas
+            ..strokeWidth = 1.1 / _screenScale;
+          canvas.drawCircle(point, 5.2 / _screenScale, nodeStrokePaint);
         } else {
-          nodeFillPaint.color = color.withValues(alpha: 0.15);
-          canvas.drawCircle(point, 6.5 / _screenScale, nodeFillPaint);
-          nodeFillPaint.color = color.withValues(alpha: 0.88);
-          canvas.drawCircle(point, 3.8 / _screenScale, nodeFillPaint);
+          nodeFillPaint.color = color.withValues(
+            alpha: palette.isDark ? 0.90 : 0.86,
+          );
+          canvas.drawCircle(point, 3.9 / _screenScale, nodeFillPaint);
         }
       }
     }
 
-    // 7. Anti-collision label allocation with visual hierarchy
+    // 7. Anti-collision label allocation with HUD exclusion & spatial balance
     final allocatedBoxes = <Rect>[];
+    final hudZones = <Rect>[];
+    final nodeObstacles = <Rect>[];
+
+    Rect screenToSceneRect(Rect screenRect) => Rect.fromPoints(
+          camera.toScene(screenRect.topLeft),
+          camera.toScene(screenRect.bottomRight),
+        );
+
+    // Reserve Cardinal badges & floating Legend HUD boxes so secondary labels avoid them
+    if (!compact && vp.width >= 600) {
+      hudZones.add(screenToSceneRect(Rect.fromLTWH(8, vp.height - 236, 206, 232)));
+      hudZones.add(screenToSceneRect(Rect.fromLTWH(8, 8, 170, 48)));
+    } else {
+      hudZones.add(screenToSceneRect(Rect.fromLTWH(8, vp.height - 56, 150, 52)));
+    }
+    hudZones.add(screenToSceneRect(Rect.fromLTWH(vp.width / 2 - 96, 4, 192, 34)));
+    hudZones.add(
+      screenToSceneRect(Rect.fromLTWH(vp.width / 2 - 96, vp.height - 36, 192, 32)),
+    );
+    hudZones.add(
+      screenToSceneRect(Rect.fromLTWH(2, vp.height / 2 - 20, 104, 40)),
+    );
+    hudZones.add(
+      screenToSceneRect(
+        Rect.fromLTWH(vp.width - 108, vp.height / 2 - 20, 106, 40),
+      ),
+    );
+
+    if (activeKey != null) {
+      for (final (subject, pt) in [?activeSubject, ...activeNeighbours]) {
+        final double r = (subject.key == activeKey ? 13.0 : 8.5) / _screenScale;
+        nodeObstacles.add(Rect.fromCircle(center: pt, radius: r));
+      }
+    }
+
+    final Rect safeScreenSceneBounds = screenToSceneRect(
+      Rect.fromLTRB(
+        10,
+        12,
+        math.max(120.0, vp.width - (compact ? 10.0 : 66.0)),
+        math.max(120.0, vp.height - 12.0),
+      ),
+    );
+
+    final int labelBudget = _screenScale >= 1.8 ? 36 : 28;
 
     void tryDrawLabel({
       required (StudySubject, Offset) entry,
@@ -1503,11 +1527,13 @@ class _ConstellationPainter extends CustomPainter {
       required Color bgColor,
       required double fontSize,
       required bool isPriority,
+      bool avoidHud = true,
     }) {
       final (subject, point) = entry;
       // Skip if offscreen or if quota reached (unless priority)
       if (!isPriority &&
-          (!visibleBounds.contains(point) || allocatedBoxes.length >= 32)) {
+          (!visibleBounds.contains(point) ||
+              allocatedBoxes.length >= labelBudget)) {
         return;
       }
 
@@ -1524,71 +1550,115 @@ class _ConstellationPainter extends CustomPainter {
         textDirection: TextDirection.ltr,
         maxLines: 1,
         ellipsis: '…',
-      )..layout(maxWidth: math.min(260 / _screenScale, 864));
+      )..layout(maxWidth: math.min(250 / _screenScale, 864));
 
       final w = painter.width;
       final h = painter.height;
+      final double gap = 12.0 / _screenScale;
+      final double diag = 10.5 / _screenScale;
+      final double padX = 8.0 / _screenScale;
+      final double padY = 4.0 / _screenScale;
 
-      // 4 candidate placement offsets relative to node center
-      final candidates = [
-        Offset(-w / 2, 12 / _screenScale), // below
-        Offset(-w / 2, -(h + 12 / _screenScale)), // above
-        Offset(12 / _screenScale, -h / 2), // right
-        Offset(-(w + 12 / _screenScale), -h / 2), // left
+      // 8 candidate placement offsets around node center (below, above, right, left, 4 diagonals)
+      final candidates = <Offset>[
+        Offset(-w / 2, gap),
+        Offset(-w / 2, -(h + gap)),
+        Offset(gap, -h / 2),
+        Offset(-(w + gap), -h / 2),
+        Offset(diag, diag),
+        Offset(diag, -(h + diag)),
+        Offset(-(w + diag), diag),
+        Offset(-(w + diag), -(h + diag)),
       ];
 
       Rect? chosenBox;
       Offset? chosenOffset;
+      int chosenIndex = -1;
 
-      for (final cand in candidates) {
-        final candTopLeft = point + cand;
+      for (int idx = 0; idx < candidates.length; idx++) {
+        final candTopLeft = point + candidates[idx];
         final candOffset = Offset(
-          candTopLeft.dx.clamp(8.0, 872.0 - w),
-          candTopLeft.dy.clamp(8.0, 872.0 - h),
+          candTopLeft.dx.clamp(12.0, 788.0 - w),
+          candTopLeft.dy.clamp(12.0, 788.0 - h),
         );
-        final box = candOffset & Size(w, h);
-        final collides = allocatedBoxes.any(
-          (existing) => existing.inflate(3.0 / _screenScale).overlaps(box),
+        final pillBox = (candOffset - Offset(padX / 2, padY / 2)) &
+            Size(w + padX, h + padY);
+        final double clearance = 3.5 / _screenScale;
+        final bool overlapsLabel = allocatedBoxes.any(
+          (existing) => existing.inflate(clearance).overlaps(pillBox),
         );
-        if (!collides) {
-          chosenBox = box;
+        final bool overlapsHud =
+            avoidHud && hudZones.any((hz) => hz.overlaps(pillBox));
+        final bool overlapsOtherNode = nodeObstacles.any(
+          (obs) =>
+              !obs.contains(point) && obs.overlaps(pillBox),
+        );
+        final bool outOfSafeViewport =
+            !isPriority &&
+            (pillBox.left < safeScreenSceneBounds.left ||
+                pillBox.right > safeScreenSceneBounds.right ||
+                pillBox.top < safeScreenSceneBounds.top ||
+                pillBox.bottom > safeScreenSceneBounds.bottom);
+        if (!overlapsLabel &&
+            !overlapsHud &&
+            !overlapsOtherNode &&
+            !outOfSafeViewport) {
+          chosenBox = pillBox;
           chosenOffset = candOffset;
+          chosenIndex = idx;
           break;
         }
       }
 
       if (chosenBox == null && isPriority) {
-        // Force placement for priority (selected/hovered)
+        // Force placement for priority (selected/hovered) recording full padded footprint
         final candOffset = Offset(
-          (point.dx - w / 2).clamp(8.0, 872.0 - w),
-          (point.dy + 14 / _screenScale).clamp(8.0, 872.0 - h),
+          (point.dx - w / 2).clamp(12.0, 788.0 - w),
+          (point.dy + gap).clamp(12.0, 788.0 - h),
         );
-        chosenBox = candOffset & Size(w, h);
+        chosenBox = (candOffset - Offset(padX / 2, padY / 2)) &
+            Size(w + padX, h + padY);
         chosenOffset = candOffset;
+        chosenIndex = 0;
       }
 
       if (chosenBox != null && chosenOffset != null) {
         allocatedBoxes.add(chosenBox);
 
-        // Frosted background pill
+        // Draw short leader tick for diagonal / priority displaced placements
+        final Offset pillCenter = chosenBox.center;
+        final double dist = (pillCenter - point).distance;
+        if (isPriority && (chosenIndex >= 4 || dist > 20 / _screenScale)) {
+          final Offset dir = (pillCenter - point) / math.max(1.0, dist);
+          final Offset start = point + dir * (6.8 / _screenScale);
+          final Offset end = chosenBox.contains(point)
+              ? start
+              : point + dir * (dist - math.min(w, h) * 0.35);
+          if ((end - start).distance > 2 / _screenScale) {
+            canvas.drawLine(
+              start,
+              end,
+              Paint()
+                ..color = textColor.withValues(alpha: 0.42)
+                ..strokeWidth = 0.9 / _screenScale,
+            );
+          }
+        }
+
+        // Crisp pill background
         canvas.drawRRect(
-          RRect.fromRectAndRadius(
-            (chosenOffset - Offset(4 / _screenScale, 2 / _screenScale)) &
-                Size(w + 8 / _screenScale, h + 4 / _screenScale),
-            Radius.circular(4 / _screenScale),
-          ),
+          RRect.fromRectAndRadius(chosenBox, Radius.circular(4 / _screenScale)),
           Paint()..color = bgColor,
         );
 
         if (isPriority) {
           canvas.drawRRect(
             RRect.fromRectAndRadius(
-              (chosenOffset - Offset(4 / _screenScale, 2 / _screenScale)) &
-                  Size(w + 8 / _screenScale, h + 4 / _screenScale),
+              chosenBox,
               Radius.circular(4 / _screenScale),
             ),
             Paint()
-              ..color = textColor.withValues(alpha: 0.35)
+              ..color = textColor.withValues(alpha: 0.38)
               ..style = PaintingStyle.stroke
               ..strokeWidth = 1.0 / _screenScale,
           );
@@ -1598,7 +1668,7 @@ class _ConstellationPainter extends CustomPainter {
       }
     }
 
-    // Draw in priority order:
+    // Draw in strict hierarchy:
     // Priority 1: Selected and Hovered nodes
     if (selectedKey != null) {
       final selectedEntry = placedPoints
@@ -1611,6 +1681,7 @@ class _ConstellationPainter extends CustomPainter {
           bgColor: palette.surface,
           fontSize: 13.5,
           isPriority: true,
+          avoidHud: false,
         );
       }
     }
@@ -1622,9 +1693,10 @@ class _ConstellationPainter extends CustomPainter {
         tryDrawLabel(
           entry: hoveredEntry,
           textColor: palette.ink,
-          bgColor: palette.surface.withValues(alpha: 0.95),
+          bgColor: palette.surface.withValues(alpha: 0.96),
           fontSize: 12.5,
           isPriority: true,
+          avoidHud: false,
         );
       }
     }
@@ -1637,32 +1709,38 @@ class _ConstellationPainter extends CustomPainter {
       tryDrawLabel(
         entry: neighbour,
         textColor: palette.ink,
-        bgColor: palette.surface.withValues(alpha: 0.90),
+        bgColor: palette.surface.withValues(alpha: 0.92),
         fontSize: 11.5,
         isPriority: false,
       );
     }
 
-    // Priority 3: Historical Tier-1 Anchors
-    for (final p in placedPoints) {
-      if (_tier1Anchors.contains(p.$1.key)) {
-        if (p.$1.key == selectedKey ||
-            p.$1.key == hoveredKey ||
-            activeNeighbours.any((n) => n.$1.key == p.$1.key)) {
-          continue;
-        }
-        tryDrawLabel(
-          entry: p,
-          textColor: palette.ink,
-          bgColor: palette.surface.withValues(alpha: 0.85),
-          fontSize: 11.0,
-          isPriority: false,
-        );
-      }
+    // Priority 3: Verified Historical Tier-1 Anchors across all 8 spectra
+    final List<(StudySubject, Offset)> visibleAnchors = [
+      for (final p in placedPoints)
+        if (_tier1Anchors.contains(p.$1.key) &&
+            p.$1.key != selectedKey &&
+            p.$1.key != hoveredKey &&
+            !activeNeighbours.any((n) => n.$1.key == p.$1.key))
+          p,
+    ]..sort(
+        (a, b) => (a.$2 - visibleBounds.center).distanceSquared.compareTo(
+              (b.$2 - visibleBounds.center).distanceSquared,
+            ),
+      );
+    for (final anchor in visibleAnchors) {
+      tryDrawLabel(
+        entry: anchor,
+        textColor: palette.ink,
+        bgColor: palette.surface.withValues(alpha: 0.88),
+        fontSize: 11.0,
+        isPriority: false,
+      );
     }
 
-    // Priority 4: Secondary currents (when zoom is >= 1.2 or list is small)
+    // Priority 4: Balanced round-robin per-spectrum distribution when zoomed or small set
     if (placedPoints.length < 35 || _screenScale >= 1.2) {
+      final Map<String, List<(StudySubject, Offset)>> bySpectrum = {};
       for (final p in placedPoints) {
         if (_tier1Anchors.contains(p.$1.key) ||
             p.$1.key == selectedKey ||
@@ -1670,13 +1748,37 @@ class _ConstellationPainter extends CustomPainter {
             activeNeighbours.any((n) => n.$1.key == p.$1.key)) {
           continue;
         }
-        tryDrawLabel(
-          entry: p,
-          textColor: palette.inkSoft,
-          bgColor: palette.surface.withValues(alpha: 0.80),
-          fontSize: 10.0,
-          isPriority: false,
+        if (!visibleBounds.contains(p.$2)) continue;
+        final String spec = spectrumOf(p.$1)?.id ?? 'other';
+        (bySpectrum[spec] ??= []).add(p);
+      }
+      final Offset vbCenter = visibleBounds.center;
+      for (final list in bySpectrum.values) {
+        list.sort(
+          (a, b) => (a.$2 - vbCenter).distanceSquared.compareTo(
+                (b.$2 - vbCenter).distanceSquared,
+              ),
         );
+      }
+      final int maxPerSpectrum = _screenScale >= 1.8 ? 6 : 3;
+      final List<String> specKeys = bySpectrum.keys.toList();
+      for (int round = 0; round < maxPerSpectrum; round++) {
+        bool anyDrawn = false;
+        for (final specKey in specKeys) {
+          if (allocatedBoxes.length >= labelBudget) break;
+          final list = bySpectrum[specKey]!;
+          if (round < list.length) {
+            anyDrawn = true;
+            tryDrawLabel(
+              entry: list[round],
+              textColor: palette.inkSoft,
+              bgColor: palette.surface.withValues(alpha: 0.84),
+              fontSize: 10.0,
+              isPriority: false,
+            );
+          }
+        }
+        if (!anyDrawn || allocatedBoxes.length >= labelBudget) break;
       }
     }
   }

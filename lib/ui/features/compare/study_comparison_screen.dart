@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 
 import '../../../domain/models/study_models.dart';
@@ -8,8 +6,10 @@ import '../../../widgets/common.dart';
 import '../../../widgets/editorial.dart';
 import '../../../widgets/espectro_scaffold.dart';
 import '../../view_models/app_view_model.dart';
+import '../../charts/axis_colors.dart';
 import '../../charts/study_ternary_chart.dart';
 import '../../charts/study_comparative_radar_chart.dart';
+import '../../shared/metric_presentation.dart';
 import '../atlas/study_taxonomy.dart';
 import '../atlas/study_profile_screen.dart';
 import '../atlas/study_identity.dart';
@@ -36,9 +36,9 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
   List<Color> _resolveSubjectColors(List<StudySubject> list, EspectroPalette p) {
     final paletteFallbacks = [
       p.accent,
-      const Color(0xFF10B981),
-      const Color(0xFFF59E0B),
-      const Color(0xFFEC4899),
+      p.poleLeft,
+      p.isDark ? const Color(0xFFE5A64B) : const Color(0xFFB46B1E),
+      const Color(0xFF4284D1),
     ];
     final colors = <Color>[];
     final used = <Color>{};
@@ -105,6 +105,7 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
         isSectionRoot: true,
         appBar: AppBar(
           automaticallyImplyLeading: false,
+          titleSpacing: EspectroLayout.pageHorizontalPadding,
           title: const Text('Comparação livre'),
           actions: [
             if (selected.length >= 2 && selected.every((s) => s.record == null))
@@ -126,18 +127,17 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
           ],
         ),
         body: SafeArea(
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              final hPad = math.max(22.0, (constraints.maxWidth - 1000.0) / 2);
-              return ListView(
-                padding: EdgeInsets.fromLTRB(hPad, 22, hPad, 22),
-                children: [
+          child: ResponsiveContentFrame(
+            maxWidth: EspectroLayout.workspaceMaxWidth,
+            child: ListView(
+              padding: EspectroLayout.pagePadding,
+              children: [
                   const EditorialHeading(
-                    eyebrow: 'LADO A LADO',
+                    eyebrow: 'Comparação lado a lado',
                     title: 'Compare ideias.\nEncontre as diferenças.',
                     description: 'Escolha de dois a três perfis. Correntes, pessoas, países, obras e suas avaliações podem ocupar a mesma escala.',
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 16),
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
@@ -174,7 +174,7 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
                         'Alguns perfis deste link não estão no catálogo instalado. Registros pessoais exigem o dispositivo original.',
                       ),
                     ),
-                  const SizedBox(height: 18),
+                  const SizedBox(height: EspectroLayout.controlGap),
                   if (_keys.length < 3) ...[
                     TextField(
                       controller: _query,
@@ -233,35 +233,72 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
                           ),
                         ),
                     ] else if (results.isNotEmpty) ...[
-                      const SizedBox(height: 10),
-                      Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: [
-                          Text(
-                            'Adicionar 3º perfil:',
-                            style: TextStyle(
-                              fontFamily: 'IBMPlexMono',
-                              fontSize: 10.5,
-                              color: p.muted,
-                              fontWeight: FontWeight.w600,
-                            ),
+                      const SizedBox(height: 12),
+                      if (MediaQuery.sizeOf(context).width < 680) ...[
+                        Text(
+                          'Adicionar 3º perfil:',
+                          style: TextStyle(
+                            fontFamily: 'IBMPlexMono',
+                            fontSize: 10.5,
+                            color: p.muted,
+                            fontWeight: FontWeight.w600,
                           ),
-                          for (final candidate in results.take(4))
-                            ActionChip(
-                              avatar: const Icon(Icons.add_rounded, size: 15),
-                              label: Text(
-                                candidate.name,
-                                style: const TextStyle(fontSize: 12),
+                        ),
+                        const SizedBox(height: 6),
+                        SingleChildScrollView(
+                          key: const Key('comparacao-mobile-suggestions-rail'),
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              for (var i = 0; i < results.take(4).length; i++) ...[
+                                if (i > 0) const SizedBox(width: 8),
+                                ActionChip(
+                                  avatar: const Icon(
+                                    Icons.add_rounded,
+                                    size: 15,
+                                  ),
+                                  label: Text(
+                                    results[i].name,
+                                    style: const TextStyle(fontSize: 12),
+                                  ),
+                                  onPressed: () {
+                                    _toggle(results[i].key);
+                                    _query.clear();
+                                  },
+                                ),
+                              ],
+                            ],
+                          ),
+                        ),
+                      ] else
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Text(
+                              'Adicionar 3º perfil:',
+                              style: TextStyle(
+                                fontFamily: 'IBMPlexMono',
+                                fontSize: 10.5,
+                                color: p.muted,
+                                fontWeight: FontWeight.w600,
                               ),
-                              onPressed: () {
-                                _toggle(candidate.key);
-                                _query.clear();
-                              },
                             ),
-                        ],
-                      ),
+                            for (final candidate in results.take(4))
+                              ActionChip(
+                                avatar: const Icon(Icons.add_rounded, size: 15),
+                                label: Text(
+                                  candidate.name,
+                                  style: const TextStyle(fontSize: 12),
+                                ),
+                                onPressed: () {
+                                  _toggle(candidate.key);
+                                  _query.clear();
+                                },
+                              ),
+                          ],
+                        ),
                     ],
                   ] else
                     Align(
@@ -285,71 +322,53 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
                       ),
                     ),
                   if (selected.length >= 2) ...[
-                    const SizedBox(height: 24),
+                    const SizedBox(height: EspectroLayout.sectionGap),
                     Text(
                       'Proximidade por par',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    const SizedBox(height: 12),
-                    for (var i = 0; i < selected.length; i++)
-                      for (var j = i + 1; j < selected.length; j++)
-                        _pair(context, catalog, selected[i], selected[j]),
-                    const SizedBox(height: 24),
-                    SectionCard(
+                    const SizedBox(height: EspectroLayout.headerToContentGap),
+                    for (final (int pIdx, (StudySubject, StudySubject) pair)
+                        in <(StudySubject, StudySubject)>[
+                      for (var i = 0; i < selected.length; i++)
+                        for (var j = i + 1; j < selected.length; j++)
+                          (selected[i], selected[j]),
+                    ].indexed) ...[
+                      if (pIdx > 0)
+                        const SizedBox(height: EspectroLayout.cardGap),
+                      _pair(context, catalog, pair.$1, pair.$2),
+                    ],
+                    const SizedBox(height: EspectroLayout.sectionGap),
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: p.surface,
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(color: p.line),
+                      ),
                       child: LayoutBuilder(
                         builder: (context, radarBox) {
-                          final bool sideBySide = radarBox.maxWidth >= 680;
+                          final bool sideBySide = radarBox.maxWidth >= 700;
                           final Widget chart = Center(
                             child: StudyComparativeRadarChart(
                               axes: vm.data.twelveAxes.axes,
                               subjects: selected,
                               colors: subjectColors,
+                              size: sideBySide ? 350 : 280,
                             ),
                           );
                           final Widget legend = Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Eyebrow('SOBREPOSIÇÃO EM 12 EIXOS', color: p.accent),
-                              const SizedBox(height: 6),
                               Text(
                                 'Visão em teia: 12 eixos sobrepostos',
                                 style: Theme.of(context).textTheme.titleLarge,
                               ),
                               const SizedBox(height: 6),
                               Text(
-                                'Sobreposição simultânea dos 12 eixos na teia radial, revelando áreas de convergência e polos divergentes.',
+                                'Sobreposição simultânea dos 12 eixos na teia radial, revelando áreas de convergência e polos divergentes. As legendas clicáveis abaixo da teia identificam cada perfil.',
                                 style: Theme.of(context).textTheme.bodyMedium,
-                              ),
-                              const SizedBox(height: 12),
-                              Wrap(
-                                spacing: 10,
-                                runSpacing: 8,
-                                children: [
-                                  for (var i = 0; i < selected.length; i++)
-                                    Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Container(
-                                          width: 10,
-                                          height: 10,
-                                          decoration: BoxDecoration(
-                                            color: subjectColors[i],
-                                            shape: BoxShape.circle,
-                                          ),
-                                        ),
-                                        const SizedBox(width: 6),
-                                        Text(
-                                          selected[i].name,
-                                          style: TextStyle(
-                                            fontSize: 12.5,
-                                            fontWeight: FontWeight.w600,
-                                            color: p.ink,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                ],
                               ),
                             ],
                           );
@@ -374,12 +393,12 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: EspectroLayout.sectionGap),
                     Text(
                       'Mesmos eixos, mesma régua',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 6),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -409,12 +428,27 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 18),
-                    for (final axis in vm.data.twelveAxes.axes)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: SectionCard(
+                    const SizedBox(height: EspectroLayout.headerToContentGap),
+                    for (var aIdx = 0;
+                        aIdx < vm.data.twelveAxes.axes.length;
+                        aIdx++)
+                      () {
+                        final axis = vm.data.twelveAxes.axes[aIdx];
+                        final bool isLast =
+                            aIdx == vm.data.twelveAxes.axes.length - 1;
+                        return Container(
+                          margin: EdgeInsets.only(
+                            bottom: isLast ? 0 : EspectroLayout.cardGap,
+                          ),
+                          padding: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: p.surface,
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(color: p.line),
+                            boxShadow: EspectroElevation.cardShadows(p),
+                          ),
                           child: StudyAxisRow(
+                            axisId: axis.id,
                             label: axis.label,
                             left: axis.leftPole,
                             right: axis.rightPole,
@@ -422,16 +456,18 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
                             rightColor: axis.rightColor,
                             isOverlaid: _overlayAxes,
                             seriesColors: subjectColors,
-                            seriesPhotos: [for (final s in selected) s.photoUrl],
+                            seriesPhotos: [
+                              for (final s in selected) s.photoUrl,
+                            ],
                             values: [
                               for (final s in selected)
                                 (s.name, s.displayAxes[axis.id]),
                             ],
                           ),
-                        ),
-                      ),
+                        );
+                      }(),
 
-                    const SizedBox(height: 16),
+                    const SizedBox(height: EspectroLayout.sectionGap),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -471,52 +507,66 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
-                    for (final triad in vm.data.sixTriangles.categories)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: SectionCard(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                triad.label,
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                triad.subcategories.join(' / '),
-                                style: TextStyle(color: p.muted, fontSize: 12),
-                              ),
-                              const SizedBox(height: 14),
-                              StudyTernaryChart(
-                                vertices: triad.subcategories,
-                                isOverlaid: _overlayTriads,
-                                series: [
-                                  for (var sIdx = 0;
-                                      sIdx < selected.length;
-                                      sIdx++)
-                                    StudyTernarySeries(
-                                      selected[sIdx].name,
-                                      selected[sIdx].displayTriangles[triad.id],
-                                      sIdx < subjectColors.length
-                                          ? subjectColors[sIdx]
-                                          : p.accent,
-                                      photoUrl: selected[sIdx].photoUrl,
-                                    ),
-                                ],
-                              ),
-                              const SizedBox(height: 12),
-                            ],
+                    const SizedBox(height: EspectroLayout.headerToContentGap),
+                    for (var tIdx = 0;
+                        tIdx < vm.data.sixTriangles.categories.length;
+                        tIdx++)
+                      () {
+                        final triad = vm.data.sixTriangles.categories[tIdx];
+                        final bool isLast =
+                            tIdx == vm.data.sixTriangles.categories.length - 1;
+                        return Padding(
+                          padding: EdgeInsets.only(
+                            bottom: isLast ? 0 : EspectroLayout.cardGap,
                           ),
-                        ),
-                      ),
-                    const SizedBox(height: 18),
+                          child: SectionCard(
+                            radius: 14,
+                            padding: const EdgeInsets.all(20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  triad.label,
+                                  style: Theme.of(context).textTheme.titleMedium,
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  triad.subcategories.join(' / '),
+                                  style: TextStyle(color: p.muted, fontSize: 12),
+                                ),
+                                const SizedBox(height: 14),
+                                StudyTernaryChart(
+                                  vertices: triad.subcategories,
+                                  isOverlaid: _overlayTriads,
+                                  series: [
+                                    for (var sIdx = 0;
+                                        sIdx < selected.length;
+                                        sIdx++)
+                                      StudyTernarySeries(
+                                        selected[sIdx].name,
+                                        selected[sIdx]
+                                            .displayTriangles[triad.id],
+                                        sIdx < subjectColors.length
+                                            ? subjectColors[sIdx]
+                                            : p.accent,
+                                        photoUrl: selected[sIdx].photoUrl,
+                                      ),
+                                  ],
+                                ),
+                                const SizedBox(height: 12),
+                              ],
+                            ),
+                          ),
+                        );
+                      }(),
+                    const SizedBox(height: EspectroLayout.sectionGap),
                     SectionCard(
+                      radius: 14,
+                      padding: const EdgeInsets.all(20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Eyebrow('COMO LER A COMPARAÇÃO'),
+                          const Eyebrow('Como ler a comparação'),
                           const SizedBox(height: 12),
                           Text(StudyCatalog.methodDescription),
                           const SizedBox(height: 12),
@@ -533,8 +583,7 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
                       style: TextStyle(color: p.warning),
                     ),
                 ],
-              );
-            },
+            ),
           ),
         ),
       );
@@ -551,258 +600,344 @@ class _StudyComparisonScreenState extends State<StudyComparisonScreen> {
     final match = catalog.compare(a, b);
     final Color colorA = spectrumOf(a)?.color ?? p.accent;
     final Color colorB = spectrumOf(b)?.color ?? p.poleRight;
-    final int? simPct = match?.similarity.round();
+    final String? simPctLabel = match == null
+        ? null
+        : MetricPresentation.formatPercent(match.similarity);
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 14),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(18),
-          boxShadow: EspectroElevation.cardShadows(p),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(18),
-          child: Stack(
-            children: [
-              Container(
-                color: p.surface,
-                padding: const EdgeInsets.fromLTRB(20, 24, 20, 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Wrap(
-                        spacing: 12,
-                        runSpacing: 10,
-                        alignment: WrapAlignment.spaceBetween,
+    Widget buildDimensionRows({
+      required List<StudyComparisonDimension> details,
+      required List<String> fallbackTexts,
+      required String descriptor,
+      required Color tagColor,
+    }) {
+      if (details.isNotEmpty) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            for (final item in details)
+              () {
+                final Color dimColor = item.isTriad
+                    ? p.triadColor(item.triadCategoryId ?? 0)
+                    : (item.axisId != null
+                          ? AxisColors.pairFor(item.axisId!, p).$1
+                          : tagColor);
+                final Color dimInk = AxisColors.readableInk(
+                  dimColor,
+                  isDark: p.isDark,
+                );
+                return Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  decoration: BoxDecoration(
+                    border: Border(top: BorderSide(color: p.line)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 4,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 6,
+                              vertical: 2,
+                            ),
+                            decoration: BoxDecoration(
+                              color: dimColor.withValues(
+                                alpha: p.isDark ? 0.16 : 0.10,
+                              ),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  item.isTriad
+                                      ? AxisColors.triadIconFor(
+                                          item.triadCategoryId ?? 0,
+                                        )
+                                      : AxisColors.iconFor(item.axisId ?? ''),
+                                  size: 11,
+                                  color: dimInk,
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  item.componentLabel.toUpperCase(),
+                                  style: TextStyle(
+                                    fontFamily: 'IBMPlexMono',
+                                    fontSize: 9.5,
+                                    fontWeight: FontWeight.w700,
+                                    letterSpacing: 0.4,
+                                    color: dimInk,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                           Text(
-                            '${a.name} × ${b.name}',
-                            style: text.titleLarge?.copyWith(
+                            item.qualifiedLabel,
+                            style: text.bodySmall?.copyWith(
+                              color: p.ink,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          if (simPct != null)
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color: p.accentSoft,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: p.accent.withValues(alpha: 0.35),
-                                ),
-                              ),
-                              child: Text(
-                                '$simPct%',
-                                style: TextStyle(
-                                  fontFamily: 'IBMPlexMono',
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w800,
-                                  color: p.accent,
-                                ),
-                              ),
-                            ),
                         ],
                       ),
-                      const SizedBox(height: 12),
-                      if (match == null)
-                        const Text(
-                          'Não há dimensões em comum suficientes para calcular proximidade.',
-                        )
-                      else ...[
-                        ProgressRail(
-                          value: (match.similarity / 100.0).clamp(0.0, 1.0),
-                          color: p.accent,
+                      const SizedBox(height: 3),
+                      Text(
+                        '$descriptor (${item.distancePercent}% da distância máxima).',
+                        style: text.bodySmall?.copyWith(
+                          color: p.inkSoft,
+                          fontSize: 12,
                         ),
-                        const SizedBox(height: 8),
-                        Text(
-                          '${match.sharedAxes} eixos · ${match.sharedTriads} tríades · ${(match.coverage * 100).round()}% de sobreposição disponível',
-                          style: text.bodySmall?.copyWith(
-                            fontFamily: 'IBMPlexMono',
-                            fontSize: 11,
-                          ),
+                      ),
+                    ],
+                  ),
+                );
+              }(),
+          ],
+        );
+      }
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (final item in fallbackTexts)
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              decoration: BoxDecoration(
+                border: Border(top: BorderSide(color: p.line)),
+              ),
+              child: Text(
+                item,
+                style: text.bodySmall?.copyWith(color: p.ink),
+              ),
+            ),
+        ],
+      );
+    }
+
+    return Material(
+      color: p.surface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(14),
+        side: BorderSide(color: p.line),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SizedBox(
+            height: 3,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(child: ColoredBox(color: colorA)),
+                const SizedBox(width: 2),
+                Expanded(child: ColoredBox(color: colorB)),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  LayoutBuilder(
+                    builder: (context, headerBox) {
+                      final bool stackScore =
+                          MediaQuery.textScalerOf(context).scale(1) > 1.35 ||
+                          headerBox.maxWidth < 300;
+                      final Widget titleWidget = Text(
+                        '${a.name} × ${b.name}',
+                        style: text.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w800,
                         ),
-                        const SizedBox(height: 16),
-                        LayoutBuilder(
-                          builder: (context, colBox) {
-                            final bool split = colBox.maxWidth >= 600;
-                            final Widget convPanel = Container(
-                              padding: const EdgeInsets.all(14),
-                              decoration: BoxDecoration(
-                                color: p.success.withValues(
-                                  alpha: p.isDark ? 0.12 : 0.06,
-                                ),
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: p.success.withValues(alpha: 0.3),
-                                ),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.check_circle_outline_rounded,
-                                        size: 16,
-                                        color: p.success,
-                                      ),
-                                      const SizedBox(width: 6),
-                                      Expanded(
-                                        child: Text(
-                                          'Convergências',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            color: p.success,
-                                            fontSize: 13,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 8),
-                                  if (match.similarities.isEmpty)
-                                    Text(
-                                      'Sem convergências fortes observadas.',
-                                      style: text.bodySmall,
-                                    )
-                                  else
-                                    for (final item in match.similarities)
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 4),
-                                        child: Text(
-                                          item,
-                                          style: text.bodySmall?.copyWith(
-                                            color: p.ink,
-                                          ),
-                                        ),
-                                      ),
-                                ],
-                              ),
-                            );
-                            final Widget diffPanel = Container(
-                              padding: const EdgeInsets.all(14),
-                              decoration: BoxDecoration(
-                                color: p.warning.withValues(
-                                  alpha: p.isDark ? 0.12 : 0.07,
-                                ),
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: p.warning.withValues(alpha: 0.32),
-                                ),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.compare_arrows_rounded,
-                                        size: 16,
-                                        color: p.warning,
-                                      ),
-                                      const SizedBox(width: 6),
-                                      Expanded(
-                                        child: Text(
-                                          'Contrastes',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            color: p.warning,
-                                            fontSize: 13,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 8),
-                                  if (match.differences.isEmpty)
-                                    Text(
-                                      'Nenhuma divergência acima do limiar exploratório de 25% da distância máxima.',
-                                      style: text.bodySmall?.copyWith(
-                                        color: p.ink,
-                                      ),
-                                    )
-                                  else
-                                    for (final item in match.differences)
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 4),
-                                        child: Text(
-                                          item,
-                                          style: text.bodySmall?.copyWith(
-                                            color: p.ink,
-                                          ),
-                                        ),
-                                      ),
-                                ],
-                              ),
-                            );
-                            if (split) {
-                              return Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(child: convPanel),
-                                  const SizedBox(width: 12),
-                                  Expanded(child: diffPanel),
-                                ],
-                              );
-                            }
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                      );
+                      final Widget? scoreWidget = simPctLabel == null
+                          ? null
+                          : Column(
+                              crossAxisAlignment: stackScore
+                                  ? CrossAxisAlignment.start
+                                  : CrossAxisAlignment.end,
                               children: [
-                                convPanel,
-                                const SizedBox(height: 10),
-                                diffPanel,
+                                Text(
+                                  simPctLabel,
+                                  style: TextStyle(
+                                    fontFamily: 'IBMPlexMono',
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w800,
+                                    fontFeatures: const [
+                                      FontFeature.tabularFigures(),
+                                    ],
+                                    color: p.accent,
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Flexible(
+                                      child: Text(
+                                        'prox. exploratória',
+                                        style: TextStyle(
+                                          fontFamily: 'IBMPlexMono',
+                                          fontSize: 10,
+                                          color: p.muted,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 2),
+                                    const MetricInfoBadge(
+                                      tooltip: MetricPresentation
+                                          .exploratorySimilarityTooltip,
+                                      semanticLabel:
+                                          'Explicação sobre proximidade exploratória',
+                                      size: 13,
+                                    ),
+                                  ],
+                                ),
                               ],
                             );
-                          },
-                        ),
-                      ],
-                  ],
-                ),
-              ),
-              Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                height: 4,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      child: ColoredBox(
-                        color: colorA,
-                        child: const SizedBox.expand(),
-                      ),
-                    ),
-                    const SizedBox(width: 2),
-                    Expanded(
-                      child: ColoredBox(
-                        color: colorB,
-                        child: const SizedBox.expand(),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Positioned.fill(
-                child: IgnorePointer(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: p.line),
-                    ),
+                      if (stackScore) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            titleWidget,
+                            if (scoreWidget != null) ...[
+                              const SizedBox(height: 8),
+                              scoreWidget,
+                            ],
+                          ],
+                        );
+                      }
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: titleWidget),
+                          if (scoreWidget != null) ...[
+                            const SizedBox(width: 14),
+                            scoreWidget,
+                          ],
+                        ],
+                      );
+                    },
                   ),
-                ),
+                  const SizedBox(height: 6),
+                  if (match == null)
+                    const Text(
+                      'Não há dimensões em comum suficientes para calcular proximidade.',
+                    )
+                  else ...[
+                    Text(
+                      '${match.sharedAxes} eixos e ${match.sharedTriads} tríades (${MetricPresentation.formatPercent(match.coverage * 100)} de sobreposição disponível) · proximidade geométrica 100 × (1 − RMSD).',
+                      style: text.bodySmall?.copyWith(color: p.inkSoft),
+                    ),
+                    const SizedBox(height: 16),
+                    LayoutBuilder(
+                      builder: (context, colBox) {
+                        final bool split = colBox.maxWidth >= 600;
+                        final Widget convList = Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Convergências',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: p.poleLeft,
+                                fontSize: 13.5,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            if (match.similarities.isEmpty &&
+                                match.similarityDetails.isEmpty)
+                              Container(
+                                padding: const EdgeInsets.symmetric(vertical: 8),
+                                decoration: BoxDecoration(
+                                  border: Border(top: BorderSide(color: p.line)),
+                                ),
+                                child: Text(
+                                  'Sem convergências fortes observadas.',
+                                  style: text.bodySmall,
+                                ),
+                              )
+                            else
+                              buildDimensionRows(
+                                details: match.similarityDetails,
+                                fallbackTexts: match.similarities,
+                                descriptor: 'Posições próximas',
+                                tagColor: p.poleLeft,
+                              ),
+                          ],
+                        );
+                        final Widget diffList = Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Contrastes',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: p.poleRight,
+                                fontSize: 13.5,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            if (match.differences.isEmpty &&
+                                match.differenceDetails.isEmpty)
+                              Container(
+                                padding: const EdgeInsets.symmetric(vertical: 8),
+                                decoration: BoxDecoration(
+                                  border: Border(top: BorderSide(color: p.line)),
+                                ),
+                                child: Text(
+                                  'Nenhuma divergência acima do limiar exploratório de 25% da distância máxima.',
+                                  style: text.bodySmall?.copyWith(color: p.ink),
+                                ),
+                              )
+                            else
+                              buildDimensionRows(
+                                details: match.differenceDetails,
+                                fallbackTexts: match.differences,
+                                descriptor: 'Posições distintas',
+                                tagColor: p.poleRight,
+                              ),
+                          ],
+                        );
+                        if (split) {
+                          return IntrinsicHeight(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Expanded(child: convList),
+                                Container(
+                                  width: 1,
+                                  margin: const EdgeInsets.symmetric(
+                                    horizontal: 20,
+                                  ),
+                                  color: p.line,
+                                ),
+                                Expanded(child: diffList),
+                              ],
+                            ),
+                          );
+                        }
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            convList,
+                            const SizedBox(height: 16),
+                            diffList,
+                          ],
+                        );
+                      },
+                    ),
+                  ],
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
     );
   }
 }

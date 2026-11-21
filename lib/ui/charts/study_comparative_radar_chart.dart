@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../data/models.dart' as app_models;
 import '../../domain/models/study_models.dart';
 import '../../theme.dart';
+import '../shared/resilient_image.dart';
 
 /// Mapa radial comparativo de 12 eixos que sobrepõe múltiplos perfis de estudo
 /// (correntes, personalidades, países ou avaliações) na mesma escala de teia.
@@ -55,21 +56,13 @@ class StudyComparativeRadarChart extends StatelessWidget {
             clipBehavior: Clip.antiAlias,
             alignment: Alignment.center,
             child: hasPhoto
-                ? (s.photoUrl!.startsWith('http://') || s.photoUrl!.startsWith('https://')
-                    ? Image.network(
-                        s.photoUrl!,
-                        width: 18,
-                        height: 18,
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, _, _) => _buildFallbackInitial(index, name: s.name),
-                      )
-                    : Image.asset(
-                        s.photoUrl!,
-                        width: 18,
-                        height: 18,
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, _, _) => _buildFallbackInitial(index, name: s.name),
-                      ))
+                ? buildResilientMediaImage(
+                    s.photoUrl!,
+                    width: 18,
+                    height: 18,
+                    fit: BoxFit.cover,
+                    fallback: _buildFallbackInitial(index, name: s.name),
+                  )
                 : _buildFallbackInitial(index, name: s.name),
           ),
           const SizedBox(width: 6),
@@ -128,7 +121,7 @@ class StudyComparativeRadarChart extends StatelessWidget {
                 ? const Color(0xFF10B981)
                 : (i == 2
                     ? const Color(0xFFF59E0B)
-                    : const Color(0xFF8B5CF6))),
+                    : const Color(0xFF2D86C8))),
     ];
 
     return Semantics(
@@ -185,11 +178,11 @@ class _ComparativeRadarPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (axes.isEmpty) return;
     final Offset center = Offset(size.width / 2, size.height / 2);
-    final double maxR = size.shortestSide / 2 - 28;
+    final double maxR = size.shortestSide / 2 - 42;
     if (maxR <= 10) return;
 
     final Paint ringPaint = Paint()
-      ..color = palette.line.withValues(alpha: 0.45)
+      ..color = palette.line.withValues(alpha: 0.48)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0;
 
@@ -198,15 +191,17 @@ class _ComparativeRadarPainter extends CustomPainter {
       canvas.drawCircle(center, maxR * f, ringPaint);
     }
 
-    // 50% neutral center ring (dashed style indicator)
-    canvas.drawCircle(
-      center,
-      maxR * 0.5,
-      Paint()
-        ..color = palette.muted.withValues(alpha: 0.50)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1.4,
-    );
+    // 50% neutral center ring (dashed hairline matching observatory grammar)
+    final Paint dashPaint = Paint()
+      ..color = palette.muted.withValues(alpha: 0.58)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.25;
+    final Rect ring50 = Rect.fromCircle(center: center, radius: maxR * 0.5);
+    const int dashes = 32;
+    const double step = (2 * math.pi) / dashes;
+    for (var d = 0; d < dashes; d++) {
+      canvas.drawArc(ring50, d * step, step * 0.52, false, dashPaint);
+    }
 
     final int n = axes.length;
     for (var i = 0; i < n; i++) {
@@ -214,26 +209,26 @@ class _ComparativeRadarPainter extends CustomPainter {
       final Offset dir = Offset(math.cos(angle), math.sin(angle));
       canvas.drawLine(center, center + dir * maxR, ringPaint);
 
-      // Short label around circumference
+      // Legible non-truncated labels (fallback abbreviation only for > 13 chars)
       final String rawLabel = axes[i].label;
-      final String shortLabel = rawLabel.length > 7
-          ? '${rawLabel.substring(0, 6)}.'
+      final String displayLabel = rawLabel.length > 13
+          ? '${rawLabel.substring(0, 12)}.'
           : rawLabel;
 
       final TextPainter tp = TextPainter(
         text: TextSpan(
-          text: shortLabel,
+          text: displayLabel,
           style: TextStyle(
-            fontFamily: 'IBMPlexMono',
-            fontSize: 9.5,
-            fontWeight: FontWeight.w700,
-            color: palette.muted,
+            fontFamily: 'IBMPlexSans',
+            fontSize: size.shortestSide >= 280 ? 10.5 : 9.5,
+            fontWeight: FontWeight.w600,
+            color: palette.inkSoft,
           ),
         ),
         textDirection: TextDirection.ltr,
       )..layout();
 
-      final Offset labelCenter = center + dir * (maxR + 14);
+      final Offset labelCenter = center + dir * (maxR + 18);
       tp.paint(
         canvas,
         Offset(labelCenter.dx - tp.width / 2, labelCenter.dy - tp.height / 2),

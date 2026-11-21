@@ -65,38 +65,33 @@ class EditorialHero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final EspectroPalette p = context.palette;
-    final Color heroStart = p.heroBackground;
-    final Color heroEnd = Color.alphaBlend(
-      const Color(0xFF4E3FA5).withValues(alpha: p.isDark ? 0.24 : 0.20),
-      p.heroBackground,
-    );
 
     Widget buildMainColumn(BuildContext context) => Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Eyebrow(eyebrow, color: const Color(0xFFEBC07A)),
-        const SizedBox(height: 16),
+        Eyebrow(eyebrow, color: p.accent),
+        const SizedBox(height: 12),
         Text(
           title,
           style: Theme.of(context).textTheme.displayMedium?.copyWith(
-            color: p.heroForeground,
+            color: p.ink,
             fontSize: 34,
-            height: 1.14,
+            height: 1.12,
             letterSpacing: -0.8,
           ),
         ),
         if (description != null) ...[
-          const SizedBox(height: 12),
+          const SizedBox(height: 10),
           Text(
             description!,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: p.heroMuted,
+              color: p.inkSoft,
               height: 1.46,
             ),
           ),
         ],
         if (badges.isNotEmpty) ...[
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
           Wrap(
             spacing: 8,
             runSpacing: 6,
@@ -108,47 +103,34 @@ class EditorialHero extends StatelessWidget {
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: p.heroForeground.withValues(alpha: 0.08),
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: p.heroForeground.withValues(alpha: 0.15),
-                    ),
+                    color: p.surfaceMuted,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: p.line),
                   ),
                   child: Text(
                     b,
                     style: TextStyle(
-                      fontFamily: 'IBMPlexMono',
-                      fontSize: 10,
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 11.5,
                       fontWeight: FontWeight.w600,
-                      color: p.heroForeground.withValues(alpha: 0.90),
-                      letterSpacing: 0.9,
+                      color: p.inkSoft,
                     ),
                   ),
                 ),
             ],
           ),
         ],
-        if (footer != null) ...[const SizedBox(height: 22), footer!],
+        if (footer != null) ...[const SizedBox(height: 20), footer!],
       ],
     );
 
     return Container(
       clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: <Color>[heroStart, heroEnd],
-          stops: const <double>[0.0, 1.0],
-        ),
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(
-          color: const Color(0xFF7B6CE0).withValues(alpha: 0.26),
-        ),
-        boxShadow: EspectroElevation.cardShadows(
-          p,
-          tint: const Color(0xFF4E3FA5),
-        ),
+      decoration: EspectroElevation.cardDecoration(
+        p,
+        color: p.surface,
+        radius: 14,
+        elevated: false,
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {

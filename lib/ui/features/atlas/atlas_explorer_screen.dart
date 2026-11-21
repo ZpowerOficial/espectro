@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import '../../../domain/models/atlas_models.dart';
@@ -6,8 +8,11 @@ import '../../../theme.dart';
 import '../../../widgets/editorial.dart';
 import '../../../widgets/common.dart';
 import '../../../widgets/espectro_scaffold.dart';
+import '../../ads/espectro_banner_ad.dart';
+import '../../charts/axis_colors.dart';
 import 'study_map_screen.dart';
 import '../../view_models/app_view_model.dart';
+import '../../shared/metric_presentation.dart';
 import '../compare/study_comparison_screen.dart';
 import 'study_profile_screen.dart';
 import 'study_taxonomy.dart';
@@ -40,10 +45,19 @@ class AtlasExplorerScreen extends StatefulWidget {
 }
 
 class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
-  static const String _parliamentaryKindLabel = 'Bancada / Congresso';
+  static const String _parliamentaryKindLabel = 'Parlamentares · Voto Nominal';
+
+  static bool _isRecentParliamentarian(StudySubject s) {
+    final String era = s.entry?.era ?? '';
+    final String scope = s.entry?.editorialBasis?.scope ?? '';
+    return era.contains('2023') ||
+        era.contains('2024') ||
+        era.contains('2025') ||
+        scope.contains('2024–2025');
+  }
 
   late final TextEditingController _search;
-  String? _kind, _spectrum, _tier, _vocation;
+  String? _kind, _spectrum, _tier, _vocation, _parlPeriod;
   bool _map = false, _favorites = false;
   @override
   void initState() {
@@ -51,7 +65,10 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
     _search = TextEditingController(text: widget.initialQuery);
     _spectrum = normalizeSpectrumFilter(widget.initialSpectrum);
     _map = widget.initialMap;
-    _kind = widget.initialType ?? widget.initialKind?.singularLabel;
+    final String? initialKind = widget.initialType == 'Bancada / Congresso'
+        ? _parliamentaryKindLabel
+        : widget.initialType;
+    _kind = initialKind ?? widget.initialKind?.singularLabel;
     if (_kind == null &&
         widget.initialTabIndex > 0 &&
         widget.initialTabIndex <= 5) {
@@ -98,6 +115,14 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
       final kinds = kindCounts.keys.toList();
       final canonicalPersCount = vm.data.atlas.canonicalPersonalities.length;
       final parliamentariansCount = vm.data.atlas.parliamentarians.length;
+      final recentParlCount = catalog.subjects
+          .where(
+            (s) =>
+                s.vocation == PersonalityVocation.parliamentarian &&
+                _isRecentParliamentarian(s),
+          )
+          .length;
+      final legacyParlCount = parliamentariansCount - recentParlCount;
 
       // Legacy entry points select the same dataset rather than maintaining separate tabs.
       if (_kind != null &&
@@ -126,7 +151,10 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
 
       bool matchesKindAndVocation(StudySubject s) {
         if (_kind == _parliamentaryKindLabel) {
-          return s.vocation == PersonalityVocation.parliamentarian;
+          if (s.vocation != PersonalityVocation.parliamentarian) return false;
+          if (_parlPeriod == 'recent') return _isRecentParliamentarian(s);
+          if (_parlPeriod == 'legacy') return !_isRecentParliamentarian(s);
+          return true;
         }
         if (_kind == AtlasKind.personality.singularLabel) {
           if (s.kindLabel != AtlasKind.personality.singularLabel) return false;
@@ -176,6 +204,7 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
         categorySectionCounts[cid] = (categorySectionCounts[cid] ?? 0) + 1;
       }
       final p = context.palette;
+      final bool compact = MediaQuery.sizeOf(context).width < 720;
       final active =
           _search.text.isNotEmpty ||
           _kind != null ||
@@ -189,6 +218,7 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
         isSectionRoot: true,
         appBar: AppBar(
           automaticallyImplyLeading: false,
+          titleSpacing: EspectroLayout.pageHorizontalPadding,
           title: const Text('Atlas político'),
           actions: [
             IconButton(
@@ -231,61 +261,113 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
             ),
             slivers: [
               SliverPadding(
-                padding: const EdgeInsets.fromLTRB(20, 18, 20, 0),
+                padding: const EdgeInsets.fromLTRB(
+                  EspectroLayout.pageHorizontalPadding,
+                  EspectroLayout.pageTopPadding,
+                  EspectroLayout.pageHorizontalPadding,
+                  0,
+                ),
                 sliver: SliverToBoxAdapter(
                   child: Center(
                     child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 1060),
+                      constraints: const BoxConstraints(
+                        maxWidth: EspectroLayout.workspaceInnerWidth,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           EditorialHeading(
-                            eyebrow: 'CATÁLOGO & PERSONALIDADES',
+                            eyebrow: 'Catálogo e personalidades',
                             title: 'Siga uma ideia.\nDescubra as conexões.',
                             description:
-                                '$canonicalPersCount pensadores, economistas e estadistas · ${vm.data.catalog.currents.length} correntes · ${vm.data.atlas.books.length} obras clássicas · $parliamentariansCount parlamentares nos 12 eixos e 6 tríades.',
+                                '$canonicalPersCount pensadores, economistas e estadistas, ${vm.data.catalog.currents.length} correntes, ${vm.data.atlas.books.length} obras clássicas e $parliamentariansCount indivíduos históricos com votações nominais no Congresso (2003–2024) nos 12 eixos e 6 tríades.',
                           ),
                           if (_search.text.isEmpty) ...[
-                            const SizedBox(height: 10),
-                            Wrap(
-                              spacing: 8,
-                              runSpacing: 6,
-                              children: [
-                                _buildStatBadge(
-                                  context,
-                                  '$canonicalPersCount',
-                                  'pensadores e estadistas',
-                                  p,
-                                ),
-                                _buildStatBadge(
-                                  context,
-                                  '${vm.data.catalog.currents.length}',
-                                  'correntes',
-                                  p,
-                                ),
-                                _buildStatBadge(
-                                  context,
-                                  '$parliamentariansCount',
-                                  'bancada parlamentar',
-                                  p,
-                                ),
-                                _buildStatBadge(
-                                  context,
-                                  '18/18',
-                                  'dimensões por ficha',
-                                  p,
-                                ),
-                              ],
-                            ),
+                            const SizedBox(height: 12),
+                            if (compact)
+                              Wrap(
+                                spacing: 10,
+                                runSpacing: 4,
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: [
+                                  _buildCompactStatItem(
+                                    '$canonicalPersCount',
+                                    'pensadores',
+                                    p,
+                                  ),
+                                  _buildCompactStatItem(
+                                    '${vm.data.catalog.currents.length}',
+                                    'correntes',
+                                    p,
+                                  ),
+                                  _buildCompactStatItem(
+                                    '$parliamentariansCount',
+                                    'parlamentares',
+                                    p,
+                                    infoBadge: const MetricInfoBadge(
+                                      tooltip:
+                                          'Indivíduos distintos com votos nominais registrados no Congresso entre 2003 e 2024 em múltiplas legislaturas — não equivale às cadeiras atualmente em exercício.',
+                                      semanticLabel:
+                                          'Explicação sobre a contagem histórica de parlamentares',
+                                      size: 13,
+                                    ),
+                                  ),
+                                  _buildCompactStatItem('18/18', 'dim.', p),
+                                ],
+                              )
+                            else
+                              Wrap(
+                                spacing: 8,
+                                runSpacing: 6,
+                                children: [
+                                  _buildStatBadge(
+                                    context,
+                                    '$canonicalPersCount',
+                                    'pensadores e estadistas',
+                                    p,
+                                  ),
+                                  _buildStatBadge(
+                                    context,
+                                    '${vm.data.catalog.currents.length}',
+                                    'correntes',
+                                    p,
+                                  ),
+                                  _buildStatBadge(
+                                    context,
+                                    '$parliamentariansCount',
+                                    'parlamentares (2003–2024)',
+                                    p,
+                                    infoBadge: const MetricInfoBadge(
+                                      tooltip:
+                                          'Indivíduos distintos com votos nominais registrados no Congresso entre 2003 e 2024 em múltiplas legislaturas — não equivale às cadeiras atualmente em exercício.',
+                                      semanticLabel:
+                                          'Explicação sobre a contagem histórica de parlamentares',
+                                      size: 13,
+                                    ),
+                                  ),
+                                  _buildStatBadge(
+                                    context,
+                                    '18/18',
+                                    'dimensões por ficha',
+                                    p,
+                                  ),
+                                ],
+                              ),
                           ],
-                          const SizedBox(height: 16),
+                          SizedBox(
+                            height: compact
+                                ? 12
+                                : EspectroLayout.controlGap,
+                          ),
                           TextField(
                             controller: _search,
                             onChanged: (_) => setState(() {}),
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Buscar em todo o Atlas',
-                              hintText: 'Ideia, pessoa, país, partido ou obra',
-                              prefixIcon: const Icon(Icons.search),
+                              hintText:
+                                  'Ex.: Marx, liberalismo, Brasil, O Príncipe…',
+                              prefixIcon: Icon(Icons.search),
+                            ).copyWith(
                               suffixIcon: _search.text.isEmpty
                                   ? null
                                   : IconButton(
@@ -295,63 +377,161 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
                                     ),
                             ),
                           ),
-                          const SizedBox(height: 16),
-                          Wrap(
-                            spacing: 8,
-                            runSpacing: 8,
-                            children: [
-                              ChoiceChip(
-                                label: const Text('Tudo'),
-                                selected: _kind == null,
-                                onSelected: (_) => setState(() {
-                                  _kind = null;
-                                  _vocation = null;
-                                  _tier = null;
-                                }),
-                              ),
-                              for (final kind in kinds)
+                          SizedBox(
+                            height: compact
+                                ? 12
+                                : EspectroLayout.controlGap,
+                          ),
+                          Builder(
+                            builder: (_) {
+                              final List<Widget> filterChips = [
                                 ChoiceChip(
-                                  label: Text(
-                                    kind == AtlasKind.personality.singularLabel
-                                        ? '$kind ($canonicalPersCount)'
-                                        : '$kind (${kindCounts[kind] ?? 0})',
-                                  ),
-                                  selected: _kind == kind,
+                                  label: const Text('Tudo'),
+                                  selected: _kind == null,
                                   onSelected: (_) => setState(() {
-                                    _kind = _kind == kind ? null : kind;
+                                    _kind = null;
                                     _vocation = null;
                                     _tier = null;
+                                    _parlPeriod = null;
                                   }),
                                 ),
-                              ChoiceChip(
-                                avatar: const Icon(
-                                  Icons.how_to_vote_outlined,
-                                  size: 16,
+                                FilterChip(
+                                  label: const Text('Salvos'),
+                                  avatar: const Icon(
+                                    Icons.bookmark_outline,
+                                    size: 16,
+                                  ),
+                                  selected: _favorites,
+                                  onSelected: (v) =>
+                                      setState(() => _favorites = v),
                                 ),
-                                label: Text(
-                                  '$_parliamentaryKindLabel ($parliamentariansCount)',
+                                for (final kind in kinds)
+                                  ChoiceChip(
+                                    label: Text(
+                                      kind ==
+                                              AtlasKind
+                                                  .personality
+                                                  .singularLabel
+                                          ? '$kind ($canonicalPersCount)'
+                                          : '$kind (${kindCounts[kind] ?? 0})',
+                                    ),
+                                    selected: _kind == kind,
+                                    onSelected: (_) => setState(() {
+                                      _kind = _kind == kind ? null : kind;
+                                      _vocation = null;
+                                      _tier = null;
+                                      _parlPeriod = null;
+                                    }),
+                                  ),
+                                ChoiceChip(
+                                  avatar: const Icon(
+                                    Icons.how_to_vote_outlined,
+                                    size: 16,
+                                  ),
+                                  label: Text(
+                                    '$_parliamentaryKindLabel ($parliamentariansCount)',
+                                  ),
+                                  selected: _kind == _parliamentaryKindLabel,
+                                  onSelected: (_) => setState(() {
+                                    _kind = _kind == _parliamentaryKindLabel
+                                        ? null
+                                        : _parliamentaryKindLabel;
+                                    _vocation = null;
+                                    _tier = null;
+                                    _parlPeriod = null;
+                                  }),
                                 ),
-                                selected: _kind == _parliamentaryKindLabel,
-                                onSelected: (_) => setState(() {
-                                  _kind = _kind == _parliamentaryKindLabel
-                                      ? null
-                                      : _parliamentaryKindLabel;
-                                  _vocation = null;
-                                  _tier = null;
-                                }),
-                              ),
-                              FilterChip(
-                                label: const Text('Salvos'),
-                                avatar: const Icon(
-                                  Icons.bookmark_outline,
-                                  size: 16,
-                                ),
-                                selected: _favorites,
-                                onSelected: (v) =>
-                                    setState(() => _favorites = v),
-                              ),
-                            ],
+                              ];
+                              if (!compact) {
+                                return Wrap(
+                                  spacing: 8,
+                                  runSpacing: 8,
+                                  children: filterChips,
+                                );
+                              }
+                              return Stack(
+                                children: [
+                                  SingleChildScrollView(
+                                    key: const Key('atlas-mobile-filter-rail'),
+                                    scrollDirection: Axis.horizontal,
+                                    padding: const EdgeInsets.only(right: 24),
+                                    child: Row(
+                                      children: [
+                                        for (
+                                          int i = 0;
+                                          i < filterChips.length;
+                                          i++
+                                        )
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                              right: i == filterChips.length - 1
+                                                  ? 0
+                                                  : 8,
+                                            ),
+                                            child: filterChips[i],
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                  Positioned(
+                                    right: 0,
+                                    top: 0,
+                                    bottom: 0,
+                                    width: 24,
+                                    child: IgnorePointer(
+                                      child: DecoratedBox(
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            colors: [
+                                              p.canvas.withValues(alpha: 0),
+                                              p.canvas,
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
                           ),
+                          if (_kind == _parliamentaryKindLabel) ...[
+                            const SizedBox(height: 12),
+                            Text(
+                              'Recorte histórico de $parliamentariansCount indivíduos distintos com votações nominais catalogadas entre 2003 e 2024 em múltiplas legislaturas (não corresponde apenas às cadeiras atualmente em exercício).',
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: p.inkSoft,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                for (final (periodId, label) in [
+                                  (
+                                    null,
+                                    'Todos (2003–2024 · $parliamentariansCount)',
+                                  ),
+                                  (
+                                    'recent',
+                                    'Atuação recente (2023–2024 · $recentParlCount)',
+                                  ),
+                                  (
+                                    'legacy',
+                                    'Legislaturas anteriores (2003–2022 · $legacyParlCount)',
+                                  ),
+                                ])
+                                  ChoiceChip(
+                                    label: Text(label),
+                                    selected: _parlPeriod == periodId,
+                                    onSelected: (_) => setState(() {
+                                      _parlPeriod = periodId;
+                                    }),
+                                  ),
+                              ],
+                            ),
+                          ],
                           if (_kind == AtlasKind.personality.singularLabel) ...[
                             const SizedBox(height: 12),
                             Wrap(
@@ -424,8 +604,8 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
                               ],
                             ),
                           ],
-                          const SizedBox(height: 24),
                           if (!active) ...[
+                            const SizedBox(height: EspectroLayout.sectionGap),
                             Text(
                               'Tradições e espectros',
                               style: Theme.of(context).textTheme.titleLarge,
@@ -435,7 +615,9 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
                               'Agrupamentos editoriais. Correntes têm divergências internas e podem atravessar mais de uma tradição.',
                               style: TextStyle(color: p.muted),
                             ),
-                            const SizedBox(height: 14),
+                            const SizedBox(
+                              height: EspectroLayout.headerToContentGap,
+                            ),
                             LayoutBuilder(
                               builder: (context, constraints) {
                                 if (constraints.maxWidth < 680) {
@@ -504,7 +686,7 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
                                 );
                               },
                             ),
-                            const SizedBox(height: 18),
+                            const SizedBox(height: EspectroLayout.sectionGap),
                             _DiscoveryTrailsSection(
                               catalog: catalog,
                               onOpenSubject: _open,
@@ -518,9 +700,13 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
                                     ),
                                   ),
                             ),
-                            const SizedBox(height: 14),
+                            const EspectroInlineAdSlot(
+                              placementId: 'atlas_browse_inline',
+                              verticalMargin: 24,
+                            ),
                           ],
-                          if (_spectrum != null)
+                          if (_spectrum != null) ...[
+                            const SizedBox(height: EspectroLayout.blockGap),
                             SectionCard(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -564,7 +750,13 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
                                 ],
                               ),
                             ),
-                          const SizedBox(height: 12),
+                            const SizedBox(height: EspectroLayout.blockGap),
+                          ] else
+                            SizedBox(
+                              height: active
+                                  ? EspectroLayout.blockGap
+                                  : EspectroLayout.sectionGap,
+                            ),
                           Row(
                             children: [
                               Expanded(
@@ -614,7 +806,9 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
                                 label: const Text('Limpar filtros'),
                               ),
                             ),
-                          const SizedBox(height: 16),
+                          const SizedBox(
+                            height: EspectroLayout.headerToContentGap,
+                          ),
                           if (vm.studyStorageError != null)
                             Text(
                               vm.studyStorageError!,
@@ -645,7 +839,12 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
                 ),
               ),
               SliverPadding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+                padding: const EdgeInsets.fromLTRB(
+                  EspectroLayout.pageHorizontalPadding,
+                  0,
+                  EspectroLayout.pageHorizontalPadding,
+                  EspectroLayout.pageBottomPadding,
+                ),
                 sliver: SliverList.builder(
                   itemCount: matches.length,
                   itemBuilder: (context, index) {
@@ -669,15 +868,17 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
                         : (spectrum?.color ?? p.line);
                     return Center(
                       child: ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 1060),
+                        constraints: const BoxConstraints(
+                          maxWidth: EspectroLayout.workspaceInnerWidth,
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             if (group)
                               Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 18,
-                                  bottom: 10,
+                                padding: EdgeInsets.only(
+                                  top: index == 0 ? 0 : 24,
+                                  bottom: 12,
                                 ),
                                 child: Row(
                                   children: [
@@ -736,12 +937,53 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
     },
   );
 
+  Widget _buildCompactStatItem(
+    String value,
+    String label,
+    EspectroPalette p, {
+    Widget? infoBadge,
+  }) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: value,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12,
+                  fontFamily: 'IBMPlexMono',
+                  color: p.ink,
+                  fontFeatures: const [FontFeature.tabularFigures()],
+                ),
+              ),
+              TextSpan(
+                text: ' $label',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: p.inkSoft,
+                ),
+              ),
+            ],
+          ),
+        ),
+        if (infoBadge != null) ...[
+          const SizedBox(width: 4),
+          infoBadge,
+        ],
+      ],
+    );
+  }
+
   Widget _buildStatBadge(
     BuildContext context,
     String value,
     String label,
-    EspectroPalette p,
-  ) {
+    EspectroPalette p, {
+    Widget? infoBadge,
+  }) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
@@ -758,10 +1000,20 @@ class _AtlasExplorerScreenState extends State<AtlasExplorerScreen> {
               fontWeight: FontWeight.w700,
               fontSize: 13,
               fontFamily: 'IBMPlexMono',
+              fontFeatures: [FontFeature.tabularFigures()],
             ),
           ),
           const SizedBox(width: 6),
-          Text(label, style: TextStyle(color: p.inkSoft, fontSize: 12)),
+          Flexible(
+            child: Text(
+              label,
+              style: TextStyle(color: p.inkSoft, fontSize: 12),
+            ),
+          ),
+          if (infoBadge != null) ...[
+            const SizedBox(width: 4),
+            infoBadge,
+          ],
         ],
       ),
     );
@@ -772,105 +1024,20 @@ class TwelveAxisDnaStrip extends StatelessWidget {
   const TwelveAxisDnaStrip({required this.axes, super.key});
   final Map<String, double> axes;
 
-  static const List<(String, String, String, String, Color, Color)> _axisMeta =
-      [
-        (
-          'estrutura',
-          'Estrutura',
-          'Federal',
-          'Unitário',
-          Color(0xFF6366F1),
-          Color(0xFF8B5CF6),
-        ),
-        (
-          'representacao',
-          'Representação',
-          'Democracia',
-          'Autocracia',
-          Color(0xFF3B82F6),
-          Color(0xFFDC2626),
-        ),
-        (
-          'poder',
-          'Poder',
-          'Segurança',
-          'Liberdade',
-          Color(0xFFD97706),
-          Color(0xFF10B981),
-        ),
-        (
-          'imigracao',
-          'Imigração',
-          'Assimilação',
-          'Multicultura',
-          Color(0xFFE11D48),
-          Color(0xFF06B6D4),
-        ),
-        (
-          'diplomacia',
-          'Diplomacia',
-          'Militarista',
-          'Pacifista',
-          Color(0xFFB91C1C),
-          Color(0xFF059669),
-        ),
-        (
-          'intervencao',
-          'Intervenção',
-          'Não interv.',
-          'Nacionalista',
-          Color(0xFF0284C7),
-          Color(0xFFD97706),
-        ),
-        (
-          'economia',
-          'Economia',
-          'Público',
-          'Privado',
-          Color(0xFFDC2626),
-          Color(0xFF2563EB),
-        ),
-        (
-          'controle',
-          'Controle',
-          'Planejamento',
-          'Livre mercado',
-          Color(0xFFBE123C),
-          Color(0xFF0D9488),
-        ),
-        (
-          'comercio',
-          'Comércio',
-          'Protecionismo',
-          'Globalismo',
-          Color(0xFFEA580C),
-          Color(0xFF4F46E5),
-        ),
-        (
-          'religiao',
-          'Religião',
-          'Irreligioso',
-          'Religioso',
-          Color(0xFF64748B),
-          Color(0xFF9333EA),
-        ),
-        (
-          'moral',
-          'Moral',
-          'Progressista',
-          'Tradicionalista',
-          Color(0xFFEC4899),
-          Color(0xFF78350F),
-        ),
-        (
-          'tecnologia',
-          'Tecnologia',
-          'Tecnologia',
-          'Biologia',
-          Color(0xFF0284C7),
-          Color(0xFF16A34A),
-        ),
-      ];
+  static const List<(String, String, String, String)> _axisDefs = [
+    ('estrutura', 'Estrutura', 'Federal', 'Unitário'),
+    ('representacao', 'Representação', 'Democracia', 'Autocracia'),
+    ('poder', 'Poder', 'Segurança', 'Liberdade'),
+    ('imigracao', 'Imigração', 'Assimilação', 'Multicultura'),
+    ('diplomacia', 'Diplomacia', 'Militarista', 'Pacifista'),
+    ('intervencao', 'Intervenção', 'Não interv.', 'Nacionalista'),
+    ('economia', 'Economia', 'Público', 'Privado'),
+    ('controle', 'Controle', 'Planejamento', 'Livre mercado'),
+    ('comercio', 'Comércio', 'Protecionismo', 'Globalismo'),
+    ('religiao', 'Religião', 'Irreligioso', 'Religioso'),
+    ('moral', 'Moral', 'Progressista', 'Tradicionalista'),
+    ('tecnologia', 'Tecnologia', 'Tecnologia', 'Biologia'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -881,18 +1048,23 @@ class TwelveAxisDnaStrip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          for (final (id, label, leftPole, rightPole, leftColor, rightColor)
-              in _axisMeta) ...[
-            _buildPill(
-              context,
-              id,
-              label,
-              leftPole,
-              rightPole,
-              leftColor,
-              rightColor,
-              p,
-            ),
+          for (final (id, label, leftPole, rightPole) in _axisDefs) ...[
+            () {
+              final (Color leftColor, Color rightColor) = AxisColors.pairFor(
+                id,
+                p,
+              );
+              return _buildPill(
+                context,
+                id,
+                label,
+                leftPole,
+                rightPole,
+                leftColor,
+                rightColor,
+                p,
+              );
+            }(),
             if (id != 'tecnologia') const SizedBox(width: 3),
           ],
         ],
@@ -948,12 +1120,14 @@ class StudySubjectTile extends StatefulWidget {
     required this.onTap,
     this.trailing,
     this.portrait,
+    this.compact = false,
     super.key,
   });
   final StudySubject subject;
   final VoidCallback onTap;
   final Widget? trailing;
   final StudyPortrait? portrait;
+  final bool compact;
 
   @override
   State<StudySubjectTile> createState() => _StudySubjectTileState();
@@ -973,7 +1147,7 @@ class _StudySubjectTileState extends State<StudySubjectTile> {
     final accentColor = spectrum?.color ?? p.accent;
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: EdgeInsets.only(bottom: widget.compact ? 2 : 12),
       child: MouseRegion(
         onEnter: (_) => setState(() => _isHovered = true),
         onExit: (_) => setState(() => _isHovered = false),
@@ -993,18 +1167,10 @@ class _StudySubjectTileState extends State<StudySubjectTile> {
                 : p.surface,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: _isHovered ? accentColor.withValues(alpha: 0.65) : p.line,
+              color: _isHovered ? accentColor.withValues(alpha: 0.72) : p.line,
               width: _isHovered ? 1.4 : 1.0,
             ),
-            boxShadow: _isHovered
-                ? [
-                    BoxShadow(
-                      color: accentColor.withValues(alpha: p.isDark ? 0.22 : 0.12),
-                      blurRadius: 18,
-                      offset: const Offset(0, 6),
-                    ),
-                  ]
-                : EspectroElevation.cardShadows(p),
+            boxShadow: EspectroElevation.cardShadows(p, elevated: !widget.compact),
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15.5),
@@ -1028,12 +1194,14 @@ class _StudySubjectTileState extends State<StudySubjectTile> {
                     borderRadius: BorderRadius.circular(16),
                     hoverColor: Colors.transparent,
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        isCurrent ? 16 : 19,
-                        16,
-                        16,
-                        16,
-                      ),
+                      padding: widget.compact
+                          ? EdgeInsets.fromLTRB(isCurrent ? 10 : 12, 6, 8, 6)
+                          : EdgeInsets.fromLTRB(
+                              isCurrent ? 16 : 19,
+                              16,
+                              16,
+                              16,
+                            ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -1043,9 +1211,14 @@ class _StudySubjectTileState extends State<StudySubjectTile> {
                         StudyIdentityAvatar(
                           subject: subject,
                           portrait: widget.portrait,
-                          size: isPersonality ? 64 : 52,
-                          rectangular: isPersonality || subject.kind == 'book',
-                          heroTag: 'avatar_${subject.key}',
+                          size: widget.compact
+                              ? 40
+                              : (isPersonality ? 64 : 52),
+                          rectangular: !widget.compact &&
+                              (isPersonality || subject.kind == 'book'),
+                          heroTag: widget.compact
+                              ? null
+                              : 'avatar_${subject.key}',
                         ),
                         const SizedBox(width: 14),
                         Expanded(
@@ -1071,17 +1244,19 @@ class _StudySubjectTileState extends State<StudySubjectTile> {
                                   ?widget.trailing,
                                 ],
                               ),
-                              const SizedBox(height: 3),
-                              Text(
-                                subject.subtitle,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  color: p.inkSoft,
-                                  fontSize: 12,
+                              if (!widget.compact) ...[
+                                const SizedBox(height: 3),
+                                Text(
+                                  subject.subtitle,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: p.inkSoft,
+                                    fontSize: 12,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 6),
+                              ],
+                              SizedBox(height: widget.compact ? 4 : 6),
                               Wrap(
                                 spacing: 6,
                                 runSpacing: 4,
@@ -1105,11 +1280,11 @@ class _StudySubjectTileState extends State<StudySubjectTile> {
                                         ),
                                       ),
                                       child: Text(
-                                        spectrum.name.toUpperCase(),
+                                        spectrum.name,
                                         style: TextStyle(
-                                          fontFamily: 'IBMPlexMono',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w700,
+                                          fontFamily: 'IBMPlexSans',
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w600,
                                           color: spectrum.ink(p.isDark),
                                         ),
                                       ),
@@ -1131,37 +1306,51 @@ class _StudySubjectTileState extends State<StudySubjectTile> {
                                       '${subject.coveredDimensions}/18 dim.',
                                       style: TextStyle(
                                         fontFamily: 'IBMPlexMono',
-                                        fontSize: 9.5,
+                                        fontSize: 10.5,
+                                        fontFeatures: const <FontFeature>[
+                                          FontFeature.tabularFigures(),
+                                        ],
                                         color: p.inkSoft,
                                       ),
                                     ),
                                   ),
-                                  if (subject.vocation case final voc?)
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 6,
-                                        vertical: 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: p.accent.withValues(alpha: 0.10),
-                                        borderRadius: BorderRadius.circular(6),
-                                        border: Border.all(
-                                          color: p.accent.withValues(alpha: 0.30),
-                                          width: 0.8,
+                                  if (!widget.compact &&
+                                      subject.vocation != null)
+                                    () {
+                                      final voc = subject.vocation!;
+                                      return Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 6,
+                                          vertical: 2,
                                         ),
-                                      ),
-                                      child: Text(
-                                        voc.shortLabel,
-                                        style: TextStyle(
-                                          fontFamily: 'IBMPlexMono',
-                                          fontSize: 9.5,
-                                          fontWeight: FontWeight.w600,
-                                          color: p.accent,
+                                        decoration: BoxDecoration(
+                                          color: p.accent.withValues(
+                                            alpha: 0.10,
+                                          ),
+                                          borderRadius: BorderRadius.circular(
+                                            6,
+                                          ),
+                                          border: Border.all(
+                                            color: p.accent.withValues(
+                                              alpha: 0.30,
+                                            ),
+                                            width: 0.8,
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  if (subject.entry?.era case final era?
-                                      when era.isNotEmpty)
+                                        child: Text(
+                                          voc.shortLabel,
+                                          style: TextStyle(
+                                            fontFamily: 'IBMPlexSans',
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w600,
+                                            color: p.accent,
+                                          ),
+                                        ),
+                                      );
+                                    }(),
+                                  if (!widget.compact &&
+                                      subject.entry?.era != null &&
+                                      subject.entry!.era.isNotEmpty)
                                     Container(
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 6,
@@ -1172,45 +1361,56 @@ class _StudySubjectTileState extends State<StudySubjectTile> {
                                         borderRadius: BorderRadius.circular(6),
                                       ),
                                       child: Text(
-                                        era,
+                                        subject.entry!.era,
                                         style: TextStyle(
-                                          fontFamily: 'IBMPlexMono',
-                                          fontSize: 10,
+                                          fontFamily: 'IBMPlexSans',
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w600,
                                           color: p.inkSoft,
                                         ),
                                       ),
                                     ),
-                                  if (subject
-                                          .entry
-                                          ?.editorialBasis
-                                          ?.evidenceTier
-                                      case final tier?)
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 6,
-                                        vertical: 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: p.surfaceMuted,
-                                        borderRadius: BorderRadius.circular(6),
-                                        border: Border.all(
-                                          color: p.line,
-                                          width: 0.8,
+                                  if (!widget.compact &&
+                                      subject
+                                              .entry
+                                              ?.editorialBasis
+                                              ?.evidenceTier !=
+                                          null)
+                                    () {
+                                      final tier = subject
+                                          .entry!
+                                          .editorialBasis!
+                                          .evidenceTier;
+                                      return Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 6,
+                                          vertical: 2,
                                         ),
-                                      ),
-                                      child: Text(
-                                        tier == 'tier1_editorial_reconstruction'
-                                            ? 'N1 · Reconstruído'
-                                            : (tier == 'tier2_institutional_record'
-                                                  ? 'N2 · Votos'
-                                                  : 'N3 · Preliminar'),
-                                        style: TextStyle(
-                                          fontFamily: 'IBMPlexMono',
-                                          fontSize: 9.5,
-                                          color: p.inkSoft,
+                                        decoration: BoxDecoration(
+                                          color: p.surfaceMuted,
+                                          borderRadius: BorderRadius.circular(
+                                            6,
+                                          ),
+                                          border: Border.all(
+                                            color: p.line,
+                                            width: 0.8,
+                                          ),
                                         ),
-                                      ),
-                                    ),
+                                        child: Text(
+                                          tier == 'tier1_editorial_reconstruction'
+                                              ? 'N1 · Reconstruído'
+                                              : (tier ==
+                                                        'tier2_institutional_record'
+                                                    ? 'N2 · Votos'
+                                                    : 'N3 · Preliminar'),
+                                          style: TextStyle(
+                                            fontFamily: 'IBMPlexMono',
+                                            fontSize: 9.5,
+                                            color: p.inkSoft,
+                                          ),
+                                        ),
+                                      );
+                                    }(),
                                 ],
                               ),
                             ],
@@ -1218,41 +1418,42 @@ class _StudySubjectTileState extends State<StudySubjectTile> {
                         ),
                       ],
                     ),
-                    if (subject.summary.isNotEmpty) ...[
-                      const SizedBox(height: 10),
-                      Text(
-                        subject.summary,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 13,
-                          height: 1.42,
-                          color: p.inkSoft,
-                        ),
-                      ),
-                    ],
-                    const SizedBox(height: 12),
-                    Wrap(
-                      alignment: WrapAlignment.spaceBetween,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      spacing: 12,
-                      runSpacing: 8,
-                      children: [
-                        if (subject.axes.isNotEmpty)
-                          TwelveAxisDnaStrip(axes: subject.axes)
-                        else
-                          Text(
-                            subject.kindLabel,
-                            style: TextStyle(fontSize: 11, color: p.muted),
+                    if (!widget.compact) ...[
+                      if (subject.summary.isNotEmpty) ...[
+                        const SizedBox(height: 10),
+                        Text(
+                          subject.summary,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 13,
+                            height: 1.42,
+                            color: p.inkSoft,
                           ),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
+                        ),
+                      ],
+                      const SizedBox(height: 12),
+                      Wrap(
+                        alignment: WrapAlignment.spaceBetween,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        spacing: 12,
+                        runSpacing: 8,
+                        children: [
+                          if (subject.axes.isNotEmpty)
+                            TwelveAxisDnaStrip(axes: subject.axes)
+                          else
                             Text(
-                              'Ver perfil',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
+                              subject.kindLabel,
+                              style: TextStyle(fontSize: 11, color: p.muted),
+                            ),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Ver perfil',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
                                 color: accentColor,
                               ),
                             ),
@@ -1272,6 +1473,7 @@ class _StudySubjectTileState extends State<StudySubjectTile> {
                         ),
                       ],
                     ),
+                    ],
                   ],
                 ),
               ),
@@ -1311,6 +1513,9 @@ class _SpectrumCardState extends State<_SpectrumCard> {
     final p = context.palette;
     final bool active = widget.selected;
     final Color color = widget.spectrum.color;
+    final bool reduceMotion = MediaQuery.disableAnimationsOf(context);
+    final double scaleFactor = MediaQuery.textScalerOf(context).scale(16) / 16.0;
+    final double desktopHeight = math.max(154.0, 96.0 + scaleFactor * 58.0);
 
     final Color inkAccent = widget.spectrum.ink(p.isDark);
     return MouseRegion(
@@ -1320,8 +1525,12 @@ class _SpectrumCardState extends State<_SpectrumCard> {
       child: TactilePress(
         scale: 0.98,
         child: AnimatedContainer(
-          duration: EspectroMotion.fast,
+          duration: reduceMotion ? Duration.zero : EspectroMotion.fast,
           curve: EspectroMotion.easeOut,
+          height: desktopHeight,
+          transform: (!reduceMotion && _hovered)
+              ? Matrix4.translationValues(0, -2, 0)
+              : Matrix4.identity(),
           clipBehavior: Clip.antiAlias,
           decoration: EspectroElevation.cardDecoration(
             p,
@@ -1337,93 +1546,97 @@ class _SpectrumCardState extends State<_SpectrumCard> {
                 ? color
                 : (_hovered ? color.withValues(alpha: 0.65) : p.line),
             tint: (_hovered || active) ? color : p.ink,
-            radius: 15,
-            borderWidth: active ? 1.8 : (_hovered ? 1.3 : 1.0),
+            radius: 12,
+            elevated: false,
+            borderWidth: active ? 1.6 : (_hovered ? 1.2 : 1.0),
           ),
           child: Material(
             color: Colors.transparent,
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(12),
             child: InkWell(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(12),
               onTap: widget.onTap,
               hoverColor: Colors.transparent,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(height: 3.5, color: color),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 13, 15, 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(15, 14, 15, 14),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: 10,
-                              height: 10,
-                              decoration: BoxDecoration(
-                                color: color,
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 7,
-                                vertical: 2,
-                              ),
-                              decoration: BoxDecoration(
-                                color: color.withValues(
-                                  alpha: p.isDark ? 0.18 : 0.10,
-                                ),
-                                borderRadius: BorderRadius.circular(999),
-                              ),
-                              child: Text(
-                                '${widget.count}',
-                                style: TextStyle(
-                                  fontFamily: 'IBMPlexMono',
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w700,
-                                  color: inkAccent,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          widget.spectrum.name,
-                          style: TextStyle(
-                            fontFamily: 'IBMPlexSans',
-                            fontWeight: FontWeight.w700,
-                            fontSize: 15,
-                            color: active ? inkAccent : p.ink,
+                        Container(
+                          width: 3,
+                          height: 16,
+                          decoration: BoxDecoration(
+                            color: color,
+                            borderRadius: BorderRadius.circular(2),
                           ),
                         ),
-                        const SizedBox(height: 4),
-                        Text(
-                          widget.spectrum.description,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: p.inkSoft,
-                            fontSize: 11.5,
-                            height: 1.32,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          '${widget.count} correntes →',
-                          style: TextStyle(
-                            color: active || _hovered ? inkAccent : p.muted,
-                            fontSize: 11.5,
-                            fontWeight: FontWeight.w600,
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            widget.spectrum.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontFamily: 'IBMPlexSans',
+                              fontWeight: FontWeight.w700,
+                              fontSize: 15,
+                              color: active ? inkAccent : p.ink,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 6),
+                    Text(
+                      widget.spectrum.description,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: p.inkSoft,
+                        fontSize: 12,
+                        height: 1.35,
+                      ),
+                    ),
+                    const Spacer(),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            '${widget.count} correntes',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontFamily: 'IBMPlexSans',
+                              color: active || _hovered ? inkAccent : p.muted,
+                              fontSize: 11.5,
+                              fontWeight: FontWeight.w600,
+                              fontFeatures: const <FontFeature>[
+                                FontFeature.tabularFigures(),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        AnimatedSlide(
+                          offset: (!reduceMotion && _hovered)
+                              ? const Offset(0.18, 0)
+                              : Offset.zero,
+                          duration: reduceMotion
+                              ? Duration.zero
+                              : EspectroMotion.fast,
+                          curve: EspectroMotion.easeOut,
+                          child: Icon(
+                            Icons.arrow_forward_rounded,
+                            size: 14,
+                            color: active || _hovered ? inkAccent : p.muted,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -1503,18 +1716,18 @@ class _DiscoveryTrailsSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Eyebrow('PORTAS DE DESCOBERTA', color: p.accent),
+        Eyebrow('Portas de descoberta', color: p.accent),
         const SizedBox(height: 4),
         Text(
           'Percursos de Descoberta (Batalhas de Ideias)',
           style: Theme.of(context).textTheme.titleLarge,
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 6),
         Text(
           'O que une ideias que parecem rivais? Explore rotas curadas e compare no Raio-X multidimensional.',
           style: TextStyle(color: p.muted),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: EspectroLayout.headerToContentGap),
         LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             final bool twoCols = constraints.maxWidth >= 720 && scale <= 1.35;

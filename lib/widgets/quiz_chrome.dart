@@ -37,8 +37,16 @@ class QuizTopBar extends StatelessWidget {
               ProgressRail(value: progress, color: accent ?? p.accent),
               const SizedBox(height: 8),
               Text(
-                counter.toUpperCase(),
-                style: Theme.of(context).textTheme.labelSmall,
+                counter,
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  fontFamily: 'IBMPlexMono',
+                  fontSize: 11.5,
+                  letterSpacing: 0,
+                  fontFeatures: const <FontFeature>[
+                    FontFeature.tabularFigures(),
+                  ],
+                  color: p.inkSoft,
+                ),
               ),
             ],
           ),
@@ -77,8 +85,14 @@ class AxisChip extends StatelessWidget {
           ),
           const SizedBox(width: 7),
           Text(
-            axis.label.toUpperCase(),
-            style: text.labelSmall?.copyWith(color: p.ink, letterSpacing: 1.3),
+            axis.label,
+            style: text.labelSmall?.copyWith(
+              fontFamily: 'IBMPlexSans',
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: p.ink,
+              letterSpacing: 0,
+            ),
           ),
           const Spacer(),
           Text(
@@ -140,10 +154,14 @@ class CategoryChip extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Text(
-            category.label.toUpperCase(),
-            style: Theme.of(
-              context,
-            ).textTheme.labelSmall?.copyWith(color: p.ink, letterSpacing: 1.3),
+            category.label,
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+              fontFamily: 'IBMPlexSans',
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: p.ink,
+              letterSpacing: 0,
+            ),
           ),
           const Spacer(),
           Flexible(

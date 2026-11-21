@@ -13,6 +13,7 @@ import '../../../theme.dart';
 import '../../../widgets/common.dart';
 import '../../../widgets/editorial.dart';
 import '../../../widgets/espectro_scaffold.dart';
+import '../../charts/axis_colors.dart';
 import '../../charts/diverging_axis_bar.dart';
 import '../../charts/interactive_triad_chart.dart';
 import '../../charts/multidimensional_radar_chart.dart';
@@ -21,6 +22,8 @@ import '../../../data/pdf_export_service.dart';
 import '../../../data/portable_export_helper.dart';
 import '../../view_models/app_view_model.dart';
 import '../atlas/atlas_explorer_screen.dart';
+import '../../shared/metric_presentation.dart';
+import '../../shared/resilient_image.dart';
 import '../atlas/study_identity.dart';
 import '../atlas/study_taxonomy.dart';
 import '../atlas/study_profile_screen.dart';
@@ -34,15 +37,11 @@ import '../quiz/espectro_quiz_screen.dart';
 import '../share/shareable_card_sheet.dart';
 import '../../view_models/quiz_view_model.dart';
 
-String _formatPercent(num? val, {int decimals = 2}) {
-  if (val == null) return '0.00%';
-  return '${val.toStringAsFixed(decimals)}%';
-}
+String _formatPercent(num? val, {int decimals = 1}) =>
+    MetricPresentation.formatPercent(val, decimals: decimals);
 
-String _formatScore(num? val, {int decimals = 2}) {
-  if (val == null) return '0.00';
-  return val.toStringAsFixed(decimals);
-}
+String _formatScore(num? val, {int decimals = 1}) =>
+    MetricPresentation.formatScore(val, decimals: decimals);
 
 /// Tela unificada de resultados do Espectro:
 /// - Diagrama de Nolan (1969) e Bússola 2D com halo de incerteza e pinos de referência;
@@ -441,7 +440,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     }
 
     if (topParties.isNotEmpty) {
-      buf.writeln('\nPartidos e Movimentos com afinidade:');
+      buf.writeln('\nPartidos e Movimentos com maior proximidade:');
       for (final AtlasMatchResult m in topParties.take(2)) {
         buf.writeln(
           '- ${m.entry.name} (${m.entry.origin}): ${_formatPercent(m.compatibilityPercent)}',
@@ -503,7 +502,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
           controller: ctrl,
           autofocus: true,
           decoration: const InputDecoration(
-            hintText: 'Ex.: Antes do debate, Leitura completa...',
+            hintText: 'Ex.: Antes do debate, Leitura completa…',
           ),
         ),
         actions: <Widget>[
@@ -542,7 +541,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
             children: <Widget>[
               Tag(label: 'S = ${axis.score.toStringAsFixed(2)}'),
               Tag(label: 'SE = ±${axis.standardError.toStringAsFixed(2)}'),
-              Tag(label: 'Cobertura ${_formatPercent(axis.coverage * 100)}'),
+              Tag(label: 'COBERTURA ${_formatPercent(axis.coverage * 100)}'),
               Tag(label: 'Confiança ${axis.confidenceLabel.toLowerCase()}'),
               if (axis.poleBreakdownAvailable)
                 Tag(
@@ -679,7 +678,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
             children: <Widget>[
               Tag(
                 label:
-                    '${_formatPercent(match.compatibilityPercent)} compatível',
+                    '${_formatPercent(match.compatibilityPercent)} convergência com a corrente',
                 background: p.accentSoft,
                 foreground: p.accent,
               ),
@@ -881,7 +880,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
               if (match != null)
                 Tag(
                   label:
-                      '${_formatPercent(match.compatibilityPercent)} afinidade com você',
+                      '${_formatPercent(match.compatibilityPercent)} ${MetricPresentation.atlasReferent(match.entry.kind)}',
                   background: p.success.withValues(alpha: 0.16),
                   foreground: p.success,
                 ),
@@ -1122,6 +1121,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
           ],
           bottom: FadeEdgeTabBar(
             tabBar: TabBar(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
               isScrollable: true,
               tabAlignment: TabAlignment.start,
               labelColor: p.accent,
@@ -1421,6 +1421,8 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                 widget.quizViewModel?.totalCount ??
                 (widget.appViewModel.activeDraft?.questionUids.length ??
                     _record.quality.totalPresented),
+            hasObservedAxes: _record.axes.any((a) => !a.isIndeterminate),
+            hasObservedTriads: _record.triads.any((t) => !t.isIndeterminate),
             onContinue: _resumeQuiz,
           ),
           const SizedBox(height: 20),
@@ -1604,13 +1606,12 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
 
     return SingleChildScrollView(
       controller: _scrollController,
-      padding: EdgeInsets.symmetric(
-        horizontal: isDesktop ? 32 : 18,
-        vertical: isDesktop ? 28 : 20,
-      ),
+      padding: EspectroLayout.pagePadding,
       child: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 920),
+          constraints: const BoxConstraints(
+            maxWidth: EspectroLayout.workspaceInnerWidth,
+          ),
           child: mainNarrative,
         ),
       ),
@@ -1729,9 +1730,9 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontFamily: 'IBMPlexSans',
-                          fontSize: 10,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 0.9,
+                          fontSize: 11.5,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0,
                           color: kickerColor,
                         ),
                       ),
@@ -1749,18 +1750,31 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                         ),
                       ),
                       const SizedBox(height: 2),
-                      Text(
-                        '${result.entry.origin} · ${_formatScore(result.compatibilityPercent)}% afim',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: p.inkSoft,
-                        ),
+                      Row(
+                        children: [
+                          Flexible(
+                            child: Text(
+                              '${result.entry.origin} · ${_formatPercent(result.compatibilityPercent)} ${MetricPresentation.atlasShortReferent(result.entry.kind)}',
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: p.inkSoft,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          const MetricInfoBadge(
+                            tooltip: MetricPresentation.atlasProximityTooltip,
+                            semanticLabel:
+                                'Explicação sobre proximidade no Atlas',
+                            size: 12,
+                          ),
+                        ],
                       ),
                       if (result.entry.quote != null &&
                           result.entry.quote!.trim().isNotEmpty &&
-                          kicker.startsWith('PENSADOR')) ...[
+                          kicker.toLowerCase().startsWith('pensador')) ...[
                         const SizedBox(height: 5),
                         Text(
                           '“${result.entry.quote}”',
@@ -1797,23 +1811,13 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
       child: Stack(
         children: <Widget>[
           Positioned(
-            top: -58,
-            right: -58,
-            child: ObservatoryOrbWatermark(color: spectrumColor, size: 270),
-          ),
-          Positioned(
             top: 0,
             left: 0,
             right: 0,
             height: 2.5,
             child: DecoratedBox(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: <Color>[
-                    spectrumColor.withValues(alpha: p.isDark ? 0.75 : 0.65),
-                    spectrumColor.withValues(alpha: 0.08),
-                  ],
-                ),
+                color: spectrumColor.withValues(alpha: p.isDark ? 0.78 : 0.72),
               ),
             ),
           ),
@@ -1831,13 +1835,13 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                   children: <Widget>[
                     Text(
                       lowInformation
-                          ? 'LEITURA CAUTELOSA'
-                          : 'SEU ARQUÉTIPO · ${(spectrum?.name ?? primaryMatch.current.family).toUpperCase()}',
+                          ? 'Leitura cautelosa'
+                          : 'Arquétipo principal — ${spectrum?.name ?? primaryMatch.current.family}',
                       style: TextStyle(
                         fontFamily: 'IBMPlexSans',
-                        fontSize: 12,
+                        fontSize: 12.5,
                         fontWeight: FontWeight.w700,
-                        letterSpacing: 1.1,
+                        letterSpacing: 0,
                         color: lowInformation ? p.warning : spectrumInk,
                       ),
                     ),
@@ -1852,16 +1856,32 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                         ),
                         borderRadius: BorderRadius.circular(999),
                       ),
-                      child: Text(
-                        lowInformation
-                            ? '$pct% de proximidade geométrica'
-                            : '$pct% de convergência',
-                        style: TextStyle(
-                          fontFamily: 'IBMPlexSans',
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: spectrumInk,
-                        ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              lowInformation
+                                  ? '$pct% de proximidade geométrica'
+                                  : '$pct% de convergência com a corrente',
+                              style: TextStyle(
+                                fontFamily: 'IBMPlexSans',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                color: spectrumInk,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          MetricInfoBadge(
+                            tooltip:
+                                MetricPresentation.currentConvergenceTooltip,
+                            semanticLabel:
+                                'Explicação sobre convergência com a corrente',
+                            color: spectrumInk,
+                            size: 13,
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -1912,51 +1932,68 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                 Text(
                   'Seu mapa é um ponto de partida — não uma sentença.',
                   style: TextStyle(
-                    fontFamily: 'IBMPlexMono',
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
+                    fontFamily: 'IBMPlexSans',
+                    fontSize: 12.5,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w500,
                     color: p.muted,
                   ),
                 ),
 
-                // Chip de Raridade Psicológica
+                // Chip de Raridade Psicológica com cor semântica e ícone do eixo
                 if (mostUncommon != null) ...<Widget>[
                   const SizedBox(height: 14),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
-                    decoration: BoxDecoration(
-                      color: p.accentSoft.withValues(
-                        alpha: p.isDark ? 0.65 : 0.72,
+                  () {
+                    final Color traitColor = AxisColors.dominantColor(
+                      mostUncommon.axisId,
+                      leansLeft: mostUncommon.leansLeft,
+                      palette: p,
+                    );
+                    final Color traitInk = AxisColors.readableInk(
+                      traitColor,
+                      isDark: p.isDark,
+                    );
+                    return Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 8,
                       ),
-                      borderRadius: BorderRadius.circular(11),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(
-                          Icons.diamond_outlined,
-                          size: 16,
-                          color: p.accent,
+                      decoration: BoxDecoration(
+                        color: traitColor.withValues(
+                          alpha: p.isDark ? 0.14 : 0.08,
                         ),
-                        const SizedBox(width: 8),
-                        Flexible(
-                          child: Text(
-                            'Traço raro: seu posicionamento em ${mostUncommon.label} (${mostUncommon.dominantPole}) é mais intenso que $uncommonPercentLower% das $catalogTotal correntes.',
-                            style: TextStyle(
-                              fontFamily: 'IBMPlexSans',
-                              fontSize: 12.5,
-                              fontWeight: FontWeight.w600,
-                              height: 1.35,
-                              color: p.ink,
-                            ),
+                        borderRadius: BorderRadius.circular(11),
+                        border: Border.all(
+                          color: traitColor.withValues(
+                            alpha: p.isDark ? 0.38 : 0.28,
                           ),
                         ),
-                      ],
-                    ),
-                  ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(
+                            AxisColors.iconFor(mostUncommon.axisId),
+                            size: 16,
+                            color: traitInk,
+                          ),
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: Text(
+                              'Traço raro: seu posicionamento em ${mostUncommon.label} (${mostUncommon.dominantPole}) é mais intenso que $uncommonPercentLower% das $catalogTotal correntes.',
+                              style: TextStyle(
+                                fontFamily: 'IBMPlexSans',
+                                fontSize: 12.5,
+                                fontWeight: FontWeight.w600,
+                                height: 1.35,
+                                color: p.ink,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }(),
                 ],
 
                 // Ato 2 (Cartografia Viva): Surpresa Fundamentada / Convergência Improvável
@@ -1996,18 +2033,18 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(
-                                      'SURPRESA FUNDAMENTADA · CONVERGÊNCIA IMPROVÁVEL',
+                                      'Convergência improvável',
                                       style: TextStyle(
-                                        fontFamily: 'IBMPlexMono',
-                                        fontSize: 9.5,
+                                        fontFamily: 'IBMPlexSans',
+                                        fontSize: 11.5,
                                         fontWeight: FontWeight.w700,
-                                        letterSpacing: 0.7,
+                                        letterSpacing: 0,
                                         color: p.poleLeft,
                                       ),
                                     ),
                                     const SizedBox(height: 4),
                                     Text(
-                                      'Embora você tenha apenas ${_formatScore(surprising.match.compatibilityPercent)}% de afinidade global com ${surprising.match.entry.name}, vocês convergem em ${surprising.agreedAxis.label} (${surprising.agreedAxis.dominantPole}) — mas divergem frontalmente em ${surprising.divergedAxis.label}.',
+                                      'Embora você tenha apenas ${_formatPercent(surprising.match.compatibilityPercent)} de ${MetricPresentation.atlasReferent(surprising.match.entry.kind)} (${surprising.match.entry.name}, escala do Atlas), vocês convergem em ${surprising.agreedAxis.label} (${surprising.agreedAxis.dominantPole}) — mas divergem frontalmente em ${surprising.divergedAxis.label}.',
                                       style: TextStyle(
                                         fontFamily: 'IBMPlexSans',
                                         fontSize: 12.5,
@@ -2046,7 +2083,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
 
                       final Widget alliedCard = buildThinkerSpotlightCard(
                         result: topPers,
-                        kicker: 'PENSADOR MAIS PRÓXIMO',
+                        kicker: 'Pensador mais próximo',
                         borderTint: spectrumColor,
                         kickerColor: p.accent,
                         avatarBorder: spectrumColor,
@@ -2056,7 +2093,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
 
                       final Widget nemesisCard = buildThinkerSpotlightCard(
                         result: nemesisPers,
-                        kicker: 'SEU ANTAGONISTA HISTÓRICO',
+                        kicker: 'Antagonista histórico',
                         borderTint: p.poleRight,
                         kickerColor: p.poleRight,
                         avatarBorder: p.poleRight,
@@ -2110,11 +2147,13 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                       icon: const Icon(Icons.share_rounded, size: 17),
                       label: const Text('Compartilhar resultado'),
                     ),
-                    FilledButton.tonalIcon(
+                    OutlinedButton.icon(
                       onPressed: () =>
                           _copyChallengeInvite(primaryMatch, topPers),
-                      style: FilledButton.styleFrom(
+                      style: OutlinedButton.styleFrom(
                         minimumSize: const Size(0, 48),
+                        foregroundColor: p.accent,
+                        side: BorderSide(color: p.accent.withValues(alpha: 0.55)),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 16,
                           vertical: 12,
@@ -2141,7 +2180,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                       ),
                       child: const Text('Sobre este arquétipo'),
                     ),
-                    TextButton(
+                    TextButton.icon(
                       onPressed: () => EntityComparisonScreen.showCurrent(
                         context,
                         record: _record,
@@ -2152,7 +2191,8 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                         minimumSize: const Size(0, 44),
                         foregroundColor: p.inkSoft,
                       ),
-                      child: const Text('Comparar lado a lado →'),
+                      icon: const Icon(Icons.compare_arrows_rounded, size: 17),
+                      label: const Text('Comparar lado a lado'),
                     ),
                   ],
                 ),
@@ -2194,19 +2234,21 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text(
-                'GEOMETRIA DOS 12 EIXOS',
+                'Geometria dos 12 eixos',
                 style: TextStyle(
                   fontFamily: 'IBMPlexSans',
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: FontWeight.w700,
-                  letterSpacing: 1.0,
-                  color: p.muted,
+                  letterSpacing: 0,
+                  color: p.inkSoft,
                 ),
               ),
               const SizedBox(height: 12),
               MultidimensionalRadarChart(
                 axes: _activeAxes,
-                size: sideBySide ? 186 : 168,
+                size: sideBySide
+                    ? 292.0
+                    : math.min(272.0, constraints.maxWidth - 16),
               ),
             ],
           );
@@ -2216,13 +2258,13 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text(
-                'OUTRAS CORRENTES PRÓXIMAS',
+                'Outras correntes próximas',
                 style: TextStyle(
                   fontFamily: 'IBMPlexSans',
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: FontWeight.w700,
-                  letterSpacing: 1.0,
-                  color: p.muted,
+                  letterSpacing: 0,
+                  color: p.inkSoft,
                 ),
               ),
               const SizedBox(height: 12),
@@ -2324,17 +2366,11 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
       ),
       clipBehavior: Clip.antiAlias,
       child: photoUrl != null && photoUrl.isNotEmpty
-          ? (photoUrl.startsWith('http://') || photoUrl.startsWith('https://')
-                ? Image.network(
-                    photoUrl,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, _, _) => _fallbackAvatar(name, color),
-                  )
-                : Image.asset(
-                    photoUrl,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, _, _) => _fallbackAvatar(name, color),
-                  ))
+          ? buildResilientMediaImage(
+              photoUrl,
+              fit: BoxFit.cover,
+              fallback: _fallbackAvatar(name, color),
+            )
           : _fallbackAvatar(name, color),
     );
   }
@@ -2366,143 +2402,151 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     EspectroPalette p,
     TextTheme text,
   ) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        const _TwelveAxesSectionHeading(
-          number: '01',
-          eyebrow: '12 EIXOS',
-          title: 'Seus 12 eixos',
-          description: 'Posição detalhada em cada um dos doze eixos bipolares com a personalidade histórica mais alinhada a você em cada dimensão. Toque em qualquer eixo para ver afirmações e margem de erro, ou toque na personalidade para comparar.',
-        ),
-        const SizedBox(height: 18),
-        LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            final bool twoCols = constraints.maxWidth >= 720;
-            final double itemWidth = twoCols
-                ? (constraints.maxWidth - 16) / 2
-                : constraints.maxWidth;
-            return Wrap(
-              spacing: 16,
-              runSpacing: 14,
-              children: <Widget>[
-                for (final BipolarDimensionScore axis in _record.axes)
-                  () {
-                    final bestPers = bestPersByAxis[axis.axisId];
-                    return SizedBox(
-                      width: itemWidth,
-                      child: Container(
-                        padding: const EdgeInsets.all(14),
-                        decoration: BoxDecoration(
-                          color: p.surface,
-                          borderRadius: BorderRadius.circular(14),
-                          border: Border.all(color: p.line),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            DivergingAxisBar(
-                              dimension: axis,
-                              onTap: () => _showAxisBreakdown(axis),
+    return AxisColorStrategyScope(
+      strategy: AxisColorStrategy.primaryAnchor,
+      child: Builder(
+        builder: (BuildContext scopedContext) => Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            const _TwelveAxesSectionHeading(
+              number: '01',
+              eyebrow: '12 EIXOS',
+              title: 'Seus 12 eixos',
+              description:
+                  'Posição detalhada em cada um dos doze eixos bipolares com a personalidade histórica mais alinhada a você em cada dimensão. Toque em qualquer eixo para ver afirmações e margem de erro, ou toque na personalidade para comparar.',
+            ),
+            const SizedBox(height: 18),
+            LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+                final bool twoCols = constraints.maxWidth >= 720;
+                final double itemWidth = twoCols
+                    ? (constraints.maxWidth - 18) / 2
+                    : constraints.maxWidth;
+                return Wrap(
+                  spacing: 18,
+                  runSpacing: 16,
+                  children: <Widget>[
+                    for (final BipolarDimensionScore axis in _record.axes)
+                      () {
+                        final bestPers = bestPersByAxis[axis.axisId];
+                        final Color domCol = AxisColors.dominantColor(
+                          axis.axisId,
+                          leansLeft: axis.leansLeft,
+                          palette: p,
+                          strategy: AxisColorStrategy.primaryAnchor,
+                        );
+                        final Color domInk = axis.isIndeterminate
+                            ? p.muted
+                            : AxisColors.readableInk(domCol, isDark: p.isDark);
+                        return SizedBox(
+                          width: itemWidth,
+                          child: Container(
+                            padding: const EdgeInsets.all(18),
+                            decoration: BoxDecoration(
+                              color: p.surface,
+                              borderRadius: BorderRadius.circular(14),
+                              border: Border.all(color: p.line),
                             ),
-                            if (bestPers != null) ...[
-                              const SizedBox(height: 12),
-                              InkWell(
-                                onTap: () =>
-                                    EntityComparisonScreen.showAtlasEntry(
-                                      context,
-                                      record: _record,
-                                      entry: bestPers.entry,
-                                      appViewModel: widget.appViewModel,
-                                    ),
-                                borderRadius: BorderRadius.circular(8),
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 6,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                DivergingAxisBar(
+                                  dimension: axis,
+                                  onTap: () => _showAxisBreakdown(axis),
+                                ),
+                                if (bestPers != null) ...[
+                                  const SizedBox(height: 12),
+                                  Divider(
+                                    height: 1,
+                                    color: p.line.withValues(alpha: 0.7),
                                   ),
-                                  decoration: BoxDecoration(
-                                    color: p.surfaceMuted,
+                                  const SizedBox(height: 8),
+                                  InkWell(
+                                    onTap: () =>
+                                        EntityComparisonScreen.showAtlasEntry(
+                                          scopedContext,
+                                          record: _record,
+                                          entry: bestPers.entry,
+                                          appViewModel: widget.appViewModel,
+                                        ),
                                     borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: p.line.withValues(alpha: 0.5),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      _buildAvatarImage(
-                                        photoUrl: bestPers.entry.photoUrl,
-                                        name: bestPers.entry.name,
-                                        color:
-                                            spectrumOf(
-                                              StudySubject.fromEntry(
-                                                bestPers.entry,
-                                              ),
-                                            )?.color ??
-                                            p.accent,
-                                        size: 24,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 2,
+                                        vertical: 4,
                                       ),
-                                      const SizedBox(width: 8),
-                                      Expanded(
-                                        child: Text.rich(
-                                          TextSpan(
-                                            text: 'Mais afim: ',
-                                            style: TextStyle(
-                                              fontSize: 11,
-                                              color: p.inkSoft,
-                                            ),
-                                            children: [
+                                      child: Row(
+                                        children: [
+                                          _buildAvatarImage(
+                                            photoUrl: bestPers.entry.photoUrl,
+                                            name: bestPers.entry.name,
+                                            color:
+                                                spectrumOf(
+                                                  StudySubject.fromEntry(
+                                                    bestPers.entry,
+                                                  ),
+                                                )?.color ??
+                                                domCol,
+                                            size: 24,
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Expanded(
+                                            child: Text.rich(
                                               TextSpan(
-                                                text: bestPers.entry.name,
+                                                text: 'Mais próxima: ',
                                                 style: TextStyle(
                                                   fontSize: 11.5,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: p.ink,
+                                                  color: p.inkSoft,
                                                 ),
+                                                children: [
+                                                  TextSpan(
+                                                    text: bestPers.entry.name,
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: p.ink,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
                                           ),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
+                                          const SizedBox(width: 6),
+                                          Text(
+                                            '${_formatScore(bestPers.compatibilityPercent)}%',
+                                            style: TextStyle(
+                                              fontSize: 11.5,
+                                              fontWeight: FontWeight.w700,
+                                              fontFamily: 'IBMPlexMono',
+                                              color: domInk,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 2),
+                                          Icon(
+                                            Icons.chevron_right_rounded,
+                                            size: 16,
+                                            color: p.muted,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(width: 6),
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 5,
-                                          vertical: 2,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: p.accentSoft,
-                                          borderRadius: BorderRadius.circular(
-                                            6,
-                                          ),
-                                        ),
-                                        child: Text(
-                                          '${_formatScore(bestPers.compatibilityPercent)}%',
-                                          style: TextStyle(
-                                            fontSize: 10.5,
-                                            fontWeight: FontWeight.w700,
-                                            fontFamily: 'IBMPlexMono',
-                                            color: p.accent,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
-                            ],
-                          ],
-                        ),
-                      ),
-                    );
-                  }(),
-              ],
-            );
-          },
+                                ],
+                              ],
+                            ),
+                          ),
+                        );
+                      }(),
+                  ],
+                );
+              },
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 
@@ -2540,7 +2584,14 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                     width: cardWidth,
                     child: _DistinctionCard(
                       eyebrow: 'SUA POSIÇÃO MAIS INCOMUM',
-                      eyebrowColor: p.accent,
+                      eyebrowColor: AxisColors.readableInk(
+                        AxisColors.dominantColor(
+                          mostUncommon.axisId,
+                          leansLeft: mostUncommon.leansLeft,
+                          palette: p,
+                        ),
+                        isDark: p.isDark,
+                      ),
                       axisName: mostUncommon.label,
                       dominantPercent: mostUncommon.dominantPercent,
                       dominantPole: mostUncommon.dominantPole,
@@ -3219,14 +3270,19 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     TextTheme text,
   ) {
     final TriadDimensionScore? primaryTriad = _record.triads.firstOrNull;
+    final bool hasObservedTriads = _record.triads.any((t) => !t.isIndeterminate);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const _TwelveAxesSectionHeading(
+        _TwelveAxesSectionHeading(
           number: '07',
           eyebrow: 'MAPEAMENTO GEOMÉTRICO',
-          title: 'Bússola política & Tríades composicionais',
-          description: 'Projeção 2D de Nolan e as 6 tríades do simplex de Aitchison com decomposição de composição e apoio absoluto.',
+          title: hasObservedTriads
+              ? 'Bússola política & Tríades composicionais'
+              : 'Bússola política (Projeção de Nolan)',
+          description: hasObservedTriads
+              ? 'Projeção 2D de Nolan e as 6 tríades do simplex de Aitchison com decomposição de composição e apoio absoluto.'
+              : 'Projeção 2D de Nolan derivada dos eixos bipolares medidos. As 6 tríades composicionais não foram avaliadas nesta etapa.',
         ),
         const SizedBox(height: 18),
         if (nolan != null) ...<Widget>[
@@ -3384,11 +3440,14 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                 _ReportSectionHeader(
                   title: Text(primaryTriad.label, style: text.titleLarge),
                   trailing: Tag(
-                    label: primaryTriad.classification,
+                    label: '△ ${primaryTriad.classification.toUpperCase()}',
                     background: p
                         .triadColor(primaryTriad.categoryId)
-                        .withValues(alpha: 0.16),
-                    foreground: p.triadColor(primaryTriad.categoryId),
+                        .withValues(alpha: p.isDark ? 0.18 : 0.11),
+                    foreground: AxisColors.readableInk(
+                      p.triadColor(primaryTriad.categoryId),
+                      isDark: p.isDark,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -3412,7 +3471,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                   children: <Widget>[
                     Tag(
                       label:
-                          'Cobertura ${_formatPercent(primaryTriad.coverage * 100)}',
+                          'COBERTURA ${_formatPercent(primaryTriad.coverage * 100)}',
                     ),
                     Tag(
                       label:
@@ -3513,7 +3572,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Figura histórica mais afim nesta tríade:',
+                                    'Figura histórica mais próxima nesta tríade:',
                                     style: TextStyle(
                                       fontSize: 10.5,
                                       color: p.inkSoft,
@@ -3545,7 +3604,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                                 child: FittedBox(
                                   fit: BoxFit.scaleDown,
                                   child: Text(
-                                    '${_formatPercent(bestPers.compatibilityPercent)} afim',
+                                    '${_formatPercent(bestPers.compatibilityPercent)} prox. personalidade',
                                     style: TextStyle(
                                       fontSize: 11,
                                       fontWeight: FontWeight.w700,
@@ -3756,7 +3815,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Eyebrow('COMPARTILHAMENTO & DOSSIÊ', color: p.accent),
+          Eyebrow('Compartilhamento e dossiê', color: p.accent),
           const SizedBox(height: 8),
           Text(
             'Guarde, exporte ou aprofunde suas análises',
@@ -3774,7 +3833,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                 onPressed: _openShareCard,
               ),
               AppButton(
-                label: _isExportingPdf ? 'Gerando...' : 'Dossiê PDF (6 pág.)',
+                label: _isExportingPdf ? 'Gerando…' : 'Dossiê PDF (6 pág.)',
                 icon: Icons.picture_as_pdf_rounded,
                 kind: AppButtonKind.filled,
                 onPressed: _isExportingPdf ? () {} : _exportPdf,
@@ -3861,8 +3920,9 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     final AtlasMatchResult? antipode = ranked.isNotEmpty ? ranked.last : null;
 
     return ResponsiveContentFrame(
+      maxWidth: EspectroLayout.workspaceMaxWidth,
       child: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
+        padding: EspectroLayout.pagePadding,
         children: <Widget>[
           SectionCard(
             padding: const EdgeInsets.all(16),
@@ -4048,8 +4108,9 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     );
 
     return ResponsiveContentFrame(
+      maxWidth: EspectroLayout.workspaceMaxWidth,
       child: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
+        padding: EspectroLayout.pagePadding,
         children: <Widget>[
           SectionCard(
             color: p.heroBackground,
@@ -4176,31 +4237,73 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
       }
     }
 
-    return ResponsiveContentFrame(
-      child: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
-        children: <Widget>[
-          const EditorialHeading(
-            eyebrow: 'Resultado / Eixos',
-            title: 'Suas dimensões\npolíticas',
-            description:
-                'Visualize o que foi medido — e o que permanece indeterminado.',
-          ),
-          const SizedBox(height: 28),
-          SectionCard(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                const Eyebrow('Radar Multidimensional dos 12 Eixos'),
-                const SizedBox(height: 6),
-                Text(
-                  'Os 12 eixos contínuos normalizados em [-1,0, +1,0]. A linha '
-                  'tracejada interna representa o centro neutro; a área hachurada '
-                  'expressa a dispersão estimada pelo modelo (SE), sem validação psicométrica.',
-                  style: text.bodySmall,
+    return AxisColorStrategyScope(
+      strategy: AxisColorStrategy.primaryAnchor,
+      child: Builder(
+        builder: (BuildContext scopedContext) => ResponsiveContentFrame(
+          maxWidth: EspectroLayout.workspaceMaxWidth,
+          child: ListView(
+            padding: EspectroLayout.pagePadding,
+            children: <Widget>[
+              const EditorialHeading(
+                eyebrow: 'Resultado / Eixos',
+                title: 'Suas dimensões\npolíticas',
+                description:
+                    'Visualize o que foi medido — e o que permanece indeterminado.',
+              ),
+              const SizedBox(height: 28),
+              SectionCard(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    const Eyebrow('Radar Multidimensional dos 12 Eixos'),
+                    const SizedBox(height: 6),
+                    Text(
+                      'Os 12 eixos contínuos normalizados em [-1,0, +1,0]. A linha '
+                      'tracejada interna representa o centro neutro (0); a faixa sombreada '
+                      'expressa a dispersão estimada pelo modelo (±1 SE).',
+                      style: text.bodySmall,
+                    ),
+                    const SizedBox(height: 18),
+                    LayoutBuilder(
+                      builder: (BuildContext context, BoxConstraints box) {
+                        final double scale =
+                            MediaQuery.textScalerOf(context).scale(16) / 16.0;
+                        final bool wide = box.maxWidth >= 700 && scale <= 1.35;
+                        final double radarSize = wide
+                            ? math.min(372.0, box.maxWidth * 0.52)
+                            : math.min(324.0, math.max(200.0, box.maxWidth - 8));
+                        final Widget radarWidget = Center(
+                          child: MultidimensionalRadarChart(
+                            axes: _record.axes,
+                            size: radarSize,
+                          ),
+                        );
+                        final Widget rail = _buildAxesRadarReadingRail(
+                          scopedContext,
+                          p,
+                          text,
+                        );
+                    if (wide) {
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Expanded(flex: 6, child: radarWidget),
+                          const SizedBox(width: 28),
+                          Expanded(flex: 5, child: rail),
+                        ],
+                      );
+                    }
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        radarWidget,
+                        const SizedBox(height: 18),
+                        rail,
+                      ],
+                    );
+                  },
                 ),
-                const SizedBox(height: 16),
-                Center(child: MultidimensionalRadarChart(axes: _record.axes)),
               ],
             ),
           ),
@@ -4272,7 +4375,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                                   Expanded(
                                     child: Text.rich(
                                       TextSpan(
-                                        text: 'Mais afim: ',
+                                        text: 'Mais próxima: ',
                                         style: TextStyle(
                                           fontSize: 11,
                                           color: p.inkSoft,
@@ -4331,6 +4434,203 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
           ),
         ],
       ),
+    ),
+  ),
+  );
+  }
+
+  Widget _buildAxesRadarReadingRail(
+    BuildContext context,
+    EspectroPalette p,
+    TextTheme text,
+  ) {
+    final AxisColorStrategy strategy = AxisColorStrategyScope.of(context);
+    final List<BipolarDimensionScore> measured = _record.axes
+        .where((BipolarDimensionScore a) => !a.isIndeterminate)
+        .toList();
+    final List<BipolarDimensionScore> strongest = measured
+        .where((BipolarDimensionScore a) => a.score.abs() >= 0.15)
+        .toList()
+      ..sort((a, b) => b.score.abs().compareTo(a.score.abs()));
+    final BipolarDimensionScore? highestSe = measured.isEmpty
+        ? null
+        : (List<BipolarDimensionScore>.from(measured)
+                ..sort((a, b) => b.standardError.compareTo(a.standardError)))
+              .first;
+    final int indeterminateCount = _record.axes.length - measured.length;
+
+    Widget legendChip(Widget marker, String label) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          marker,
+          const SizedBox(width: 6),
+          Text(
+            label,
+            style: text.labelSmall?.copyWith(
+              fontFamily: 'IBMPlexSans',
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: p.inkSoft,
+            ),
+          ),
+        ],
+      );
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.55 : 0.65),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: p.line),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            'LEITURA DO RADAR',
+            style: text.labelSmall?.copyWith(
+              letterSpacing: 0.7,
+              color: p.muted,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Wrap(
+            spacing: 12,
+            runSpacing: 8,
+            children: <Widget>[
+              legendChip(
+                Container(
+                  width: 14,
+                  height: 3,
+                  decoration: BoxDecoration(
+                    color: p.accent,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                'Perfil medido',
+              ),
+              legendChip(
+                Container(
+                  width: 14,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    color: p.accent.withValues(alpha: p.isDark ? 0.28 : 0.20),
+                    border: Border.all(
+                      color: p.accent.withValues(alpha: 0.55),
+                      width: 0.8,
+                    ),
+                    borderRadius: BorderRadius.circular(3),
+                  ),
+                ),
+                'Dispersão (±1 SE)',
+              ),
+              legendChip(
+                Container(width: 14, height: 1.5, color: p.muted),
+                'Centro neutro (0)',
+              ),
+              if (indeterminateCount > 0)
+                legendChip(
+                  Container(
+                    width: 9,
+                    height: 9,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: p.surface,
+                      border: Border.all(color: p.muted, width: 1.5),
+                    ),
+                  ),
+                  'Indeterminado ($indeterminateCount)',
+                ),
+            ],
+          ),
+          if (strongest.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 14),
+            Divider(height: 1, color: p.line),
+            const SizedBox(height: 12),
+            Text(
+              'POLOS MAIS INTENSOS',
+              style: text.labelSmall?.copyWith(
+                letterSpacing: 0.6,
+                color: p.muted,
+              ),
+            ),
+            const SizedBox(height: 8),
+            for (final BipolarDimensionScore a in strongest.take(3)) ...<Widget>[
+              () {
+                final Color domColor = AxisColors.dominantColor(
+                  a.axisId,
+                  leansLeft: a.leansLeft,
+                  palette: p,
+                  strategy: strategy,
+                );
+                final Color domInk = AxisColors.readableInk(
+                  domColor,
+                  isDark: p.isDark,
+                  background: p.surfaceMuted,
+                );
+                final int sePp = (a.standardError * 50.0).round();
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        AxisColors.iconFor(a.axisId),
+                        size: 14,
+                        color: domInk,
+                      ),
+                      const SizedBox(width: 7),
+                      Expanded(
+                        child: Text(
+                          '${a.label} · ${a.dominantPole}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: text.bodySmall?.copyWith(
+                            color: p.ink,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        '${a.dominantPercent.round()}% ±$sePp pp',
+                        style: TextStyle(
+                          fontFamily: 'IBMPlexMono',
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                          color: domInk,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }(),
+            ],
+          ],
+          if (highestSe != null) ...<Widget>[
+            const SizedBox(height: 4),
+            Divider(height: 1, color: p.line),
+            const SizedBox(height: 10),
+            Row(
+              children: <Widget>[
+                Icon(Icons.blur_on_rounded, size: 14, color: p.muted),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    'Maior dispersão: ${highestSe.label} (±${(highestSe.standardError * 50.0).round()} pp · SE ${highestSe.standardError.toStringAsFixed(2)})',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: text.bodySmall?.copyWith(color: p.inkSoft),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ],
+      ),
     );
   }
 
@@ -4361,8 +4661,9 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
     }
 
     return ResponsiveContentFrame(
+      maxWidth: EspectroLayout.workspaceMaxWidth,
       child: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
+        padding: EspectroLayout.pagePadding,
         children: <Widget>[
           const EditorialHeading(
             eyebrow: 'Visualização / Simplex',
@@ -4421,11 +4722,14 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                   _ReportSectionHeader(
                     title: Text(t.label, style: text.titleLarge),
                     trailing: Tag(
-                      label: t.classification,
+                      label: '△ ${t.classification.toUpperCase()}',
                       background: p
                           .triadColor(t.categoryId)
-                          .withValues(alpha: 0.16),
-                      foreground: p.triadColor(t.categoryId),
+                          .withValues(alpha: p.isDark ? 0.18 : 0.11),
+                      foreground: AxisColors.readableInk(
+                        p.triadColor(t.categoryId),
+                        isDark: p.isDark,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -4450,7 +4754,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                     runSpacing: 8,
                     children: <Widget>[
                       Tag(
-                        label: 'Cobertura ${_formatPercent(t.coverage * 100)}',
+                        label: 'COBERTURA ${_formatPercent(t.coverage * 100)}',
                       ),
                       Tag(
                         label: 'Confiança ${t.confidenceLabel.toLowerCase()}',
@@ -4547,7 +4851,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Figura histórica mais afim nesta tríade:',
+                                      'Figura histórica mais próxima nesta tríade:',
                                       style: TextStyle(
                                         fontSize: 10.5,
                                         color: p.inkSoft,
@@ -4579,7 +4883,7 @@ class _EspectroResultScreenState extends State<EspectroResultScreen> {
                                   child: FittedBox(
                                     fit: BoxFit.scaleDown,
                                     child: Text(
-                                      '${_formatPercent(match.compatibilityPercent)} afim',
+                                      '${_formatPercent(match.compatibilityPercent)} prox. personalidade',
                                       style: TextStyle(
                                         fontSize: 11,
                                         fontWeight: FontWeight.w700,
@@ -4803,7 +5107,7 @@ class _BookRecommendationCard extends StatelessWidget {
                     trailing: Tag(
                       label: isCounterpoint
                           ? 'Divergência ${_formatPercent(100 - match.compatibilityPercent)}'
-                          : 'Afinidade ${_formatPercent(match.compatibilityPercent)}',
+                          : 'Prox. obra ${_formatPercent(match.compatibilityPercent)}',
                       background: isCounterpoint
                           ? p.warning.withValues(alpha: 0.14)
                           : p.accentSoft,
@@ -5030,11 +5334,15 @@ class _PreliminaryBanner extends StatelessWidget {
   const _PreliminaryBanner({
     required this.answeredCount,
     required this.totalCount,
+    required this.hasObservedAxes,
+    required this.hasObservedTriads,
     required this.onContinue,
   });
 
   final int answeredCount;
   final int totalCount;
+  final bool hasObservedAxes;
+  final bool hasObservedTriads;
   final VoidCallback onContinue;
 
   @override
@@ -5042,12 +5350,23 @@ class _PreliminaryBanner extends StatelessWidget {
     final EspectroPalette p = context.palette;
     final TextTheme text = Theme.of(context).textTheme;
     final int remaining = math.max(0, totalCount - answeredCount);
+    final String scopeCopy = (hasObservedAxes && hasObservedTriads)
+        ? 'Suas coordenadas nos 12 eixos e 6 tríades foram estimadas a partir das respostas dadas até aqui. '
+              'Você pode voltar ao teste a qualquer momento para continuar respondendo e refinar a precisão.'
+        : hasObservedAxes
+        ? 'Suas coordenadas nos 12 eixos bipolares foram estimadas a partir das respostas dadas até aqui '
+              '(as 6 tríades não foram medidas nesta etapa). Você pode voltar ao teste a qualquer momento para continuar respondendo e refinar a precisão.'
+        : hasObservedTriads
+        ? 'Suas coordenadas nas 6 tríades foram estimadas a partir das respostas dadas até aqui '
+              '(os 12 eixos bipolares não foram medidos nesta etapa). Você pode voltar ao teste a qualquer momento para continuar respondendo e refinar a precisão.'
+        : 'As respostas registradas até aqui ainda não atingiram o mínimo para estimar coordenadas. '
+              'Continue respondendo para calibrar as dimensões desta modalidade.';
 
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Color.alphaBlend(
-          p.accent.withValues(alpha: p.isDark ? 0.14 : 0.08),
+          p.accent.withValues(alpha: p.isDark ? 0.12 : 0.06),
           p.surface,
         ),
         borderRadius: BorderRadius.circular(16),
@@ -5055,13 +5374,6 @@ class _PreliminaryBanner extends StatelessWidget {
           color: p.accent.withValues(alpha: p.isDark ? 0.35 : 0.25),
           width: 1.2,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: p.accent.withValues(alpha: 0.06),
-            blurRadius: 10,
-            offset: const Offset(0, 3),
-          ),
-        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -5100,8 +5412,7 @@ class _PreliminaryBanner extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            'Suas coordenadas nos 12 eixos e 6 tríades foram estimadas a partir das respostas dadas até aqui. '
-            'Você pode voltar ao teste a qualquer momento para continuar respondendo e refinar a precisão.',
+            scopeCopy,
             style: text.bodyMedium?.copyWith(height: 1.35, color: p.ink),
           ),
           const SizedBox(height: 12),
@@ -5140,7 +5451,7 @@ class _CompleteTriadsBanner extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Color.alphaBlend(
-          p.accent.withValues(alpha: p.isDark ? 0.12 : 0.06),
+          p.accent.withValues(alpha: p.isDark ? 0.10 : 0.05),
           p.surface,
         ),
         borderRadius: BorderRadius.circular(16),
@@ -5148,18 +5459,15 @@ class _CompleteTriadsBanner extends StatelessWidget {
           color: p.accent.withValues(alpha: p.isDark ? 0.35 : 0.25),
           width: 1.2,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: p.accent.withValues(alpha: 0.06),
-            blurRadius: 10,
-            offset: const Offset(0, 3),
-          ),
-        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          Wrap(
+            spacing: 8,
+            runSpacing: 6,
+            alignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
@@ -5169,7 +5477,7 @@ class _CompleteTriadsBanner extends StatelessWidget {
                 ),
                 child: Text(
                   isExpress
-                      ? 'MODO EXPRESSO · 12 EIXOS CONCLUÍDOS'
+                      ? 'AVALIAÇÃO EXPRESSA · 12 EIXOS CONCLUÍDOS'
                       : 'PERFIL DE EIXOS · TRÍADES DISPONÍVEIS',
                   style: TextStyle(
                     fontFamily: 'IBMPlexMono',
@@ -5180,16 +5488,12 @@ class _CompleteTriadsBanner extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  '~3 min adicionais',
-                  textAlign: TextAlign.right,
-                  style: text.labelSmall?.copyWith(
-                    fontFamily: 'IBMPlexMono',
-                    fontWeight: FontWeight.w600,
-                    color: p.accent,
-                  ),
+              Text(
+                '~3 min adicionais',
+                style: text.labelSmall?.copyWith(
+                  fontFamily: 'IBMPlexMono',
+                  fontWeight: FontWeight.w600,
+                  color: p.accent,
                 ),
               ),
             ],
@@ -5198,7 +5502,7 @@ class _CompleteTriadsBanner extends StatelessWidget {
           Text(
             'Seu posicionamento nos 12 eixos bipolares já está calibrado. '
             'Se quiser aprofundar agora ou mais tarde, adicione as 6 tríades políticas '
-            '(1 afirmação por vértice) para destravar os triângulos de valores e refinar as afinidades.',
+            '(1 afirmação por vértice) para destravar os triângulos de valores e refinar as convergências.',
             style: text.bodyMedium?.copyWith(height: 1.35, color: p.ink),
           ),
           const SizedBox(height: 12),
@@ -5565,6 +5869,14 @@ class _DistinctionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final EspectroPalette p = context.palette;
     final TextTheme text = Theme.of(context).textTheme;
+    final Color axisColor = AxisColors.dominantColor(
+      dimension.axisId,
+      leansLeft: dimension.leansLeft,
+      palette: p,
+    );
+    final Color axisInk = AxisColors.readableInk(axisColor, isDark: p.isDark);
+    final Color barColor = isCommon ? p.inkSoft : axisColor;
+    final Color valueInk = isCommon ? p.inkSoft : axisInk;
 
     return InkWell(
       onTap: onTap,
@@ -5579,15 +5891,29 @@ class _DistinctionCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              eyebrow,
-              style: TextStyle(
-                fontFamily: 'IBMPlexMono',
-                fontSize: 10.5,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.8,
-                color: eyebrowColor,
-              ),
+            Row(
+              children: <Widget>[
+                Icon(
+                  AxisColors.iconFor(dimension.axisId),
+                  size: 14,
+                  color: isCommon ? eyebrowColor : axisInk,
+                ),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    eyebrow,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexMono',
+                      fontSize: 10.5,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.8,
+                      color: eyebrowColor,
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 8),
             Row(
@@ -5606,12 +5932,12 @@ class _DistinctionCard extends StatelessWidget {
                 Text(
                   isCommon
                       ? 'Mediana'
-                      : '${dominantPercent.toStringAsFixed(2)}%',
+                      : _formatPercent(dominantPercent),
                   style: TextStyle(
                     fontFamily: 'IBMPlexMono',
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
-                    color: isCommon ? p.inkSoft : p.accent,
+                    color: valueInk,
                   ),
                 ),
               ],
@@ -5621,7 +5947,7 @@ class _DistinctionCard extends StatelessWidget {
               dominantPole,
               style: text.bodySmall?.copyWith(
                 fontWeight: FontWeight.w600,
-                color: p.accent,
+                color: valueInk,
               ),
             ),
             const SizedBox(height: 10),
@@ -5634,7 +5960,7 @@ class _DistinctionCard extends StatelessWidget {
                 child: LinearProgressIndicator(
                   value: (dimension.score + 1.0) / 2.0,
                   backgroundColor: p.line,
-                  color: isCommon ? p.inkSoft : p.accent,
+                  color: barColor,
                 ),
               ),
             ),
@@ -5698,7 +6024,7 @@ class _MiniDimensionalCard extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              '${_formatPercent(percent)} compatível',
+              '${_formatPercent(percent)} convergência',
               style: TextStyle(
                 fontFamily: 'IBMPlexMono',
                 fontSize: 11.5,

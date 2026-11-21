@@ -169,6 +169,19 @@ void main() {
               ),
             );
             await tester.pumpAndSettle();
+            if (entry.key == 'perfil') {
+              await tester.runAsync(
+                () => precacheImage(
+                  ResizeImage.resizeIfNeeded(
+                    96,
+                    null,
+                    const AssetImage('assets/currents/liberalismo_classico.png'),
+                  ),
+                  tester.element(find.byType(StudyProfileScreen)),
+                ),
+              );
+              await tester.pumpAndSettle();
+            }
             if (entry.key == 'marx' || entry.key == 'rothbard') {
               final key = entry.key == 'marx'
                   ? 'personality:karl_marx'
@@ -235,18 +248,18 @@ void main() {
     await vm.setAutoAdvance(false);
     await tester.pumpWidget(EspectroApp(appViewModel: vm));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Fazer Avaliação Rápida (3 min)'));
+    await tester.tap(find.text('Fazer Avaliação Expressa (3 min)'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('6 tríades políticas'));
     await tester.pumpAndSettle();
     await tester.scrollUntilVisible(
-      find.text('Continuar'),
+      find.text('Escolher profundidade'),
       150,
       scrollable: find.byType(Scrollable).first,
     );
-    await tester.ensureVisible(find.text('Continuar'));
+    await tester.ensureVisible(find.text('Escolher profundidade'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Continuar'));
+    await tester.tap(find.text('Escolher profundidade'));
     await tester.pumpAndSettle();
     await tester.scrollUntilVisible(
       find.textContaining('Iniciar avaliação'),

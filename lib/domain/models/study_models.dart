@@ -167,6 +167,41 @@ class StudySubject {
   );
 }
 
+/// Dimensão comparada entre dois perfis no [StudyCatalog.compare],
+/// preservando a origem metodológica (eixo bipolar vs. tríade baricêntrica)
+/// para evitar ambiguidade quando nomes coincidem (ex.: Economia).
+class StudyComparisonDimension {
+  const StudyComparisonDimension({
+    required this.label,
+    required this.isTriad,
+    required this.distance,
+    this.disambiguate = false,
+    this.axisId,
+    this.triadCategoryId,
+  });
+
+  final String label;
+  final bool isTriad;
+  final double distance;
+  final bool disambiguate;
+  final String? axisId;
+  final int? triadCategoryId;
+
+  String get componentLabel => isTriad ? 'Tríade' : 'Eixo bipolar';
+
+  String get qualifiedLabel {
+    if (!disambiguate) return label;
+    if (isTriad) {
+      return label == 'Economia'
+          ? 'Economia — Tríade econômica'
+          : '$label — Tríade';
+    }
+    return '$label — Eixo bipolar';
+  }
+
+  int get distancePercent => (distance * 100).round();
+}
+
 /// Similarity is exploratory geometric proximity, not historical influence,
 /// proof of agreement, or a psychometrically calibrated probability.
 class StudyMatch {
@@ -182,7 +217,7 @@ class StudyMatch {
   })  : _eagerSimilarities = similarities,
         _eagerDifferences = differences,
         _eagerTwelveAxes = twelveAxesAffinity,
-        _rawDistances = null,
+        _rawDimensions = null,
         _sourceAxes = null;
 
   StudyMatch._lazy({
@@ -191,9 +226,9 @@ class StudyMatch {
     required this.sharedAxes,
     required this.sharedTriads,
     required this.coverage,
-    required List<(String, double)> rawDistances,
+    required List<StudyComparisonDimension> rawDimensions,
     required Map<String, double> sourceAxes,
-  })  : _rawDistances = List.unmodifiable(rawDistances),
+  })  : _rawDimensions = List.unmodifiable(rawDimensions),
         _sourceAxes = Map.unmodifiable(sourceAxes),
         _eagerSimilarities = null,
         _eagerDifferences = null,
@@ -204,17 +239,21 @@ class StudyMatch {
   final int sharedAxes;
   final int sharedTriads;
 
-  final List<(String, double)>? _rawDistances;
+  final List<StudyComparisonDimension>? _rawDimensions;
   final Map<String, double>? _sourceAxes;
   final List<String>? _eagerSimilarities;
   final List<String>? _eagerDifferences;
   final TwelveAxesAffinity? _eagerTwelveAxes;
 
-  late final List<(String, double)> _sortedDistances = () {
-    final list = List<(String, double)>.of(_rawDistances ?? const []);
+  late final List<StudyComparisonDimension> _sortedDimensions = () {
+    final list = List<StudyComparisonDimension>.of(
+      _rawDimensions ?? const <StudyComparisonDimension>[],
+    );
     list.sort((a, b) {
-      final byDistance = a.$2.compareTo(b.$2);
-      return byDistance == 0 ? a.$1.compareTo(b.$1) : byDistance;
+      final byDistance = a.distance.compareTo(b.distance);
+      return byDistance == 0
+          ? a.qualifiedLabel.compareTo(b.qualifiedLabel)
+          : byDistance;
     });
     return list;
   }();
@@ -231,26 +270,28 @@ class StudyMatch {
   /// A high score on a few shared topics is not a broad-profile suggestion.
   bool get supportsRanking => sharedAxes + sharedTriads >= 8 && coverage >= .6;
 
+  late final List<StudyComparisonDimension> similarityDetails = List.unmodifiable(
+    _sortedDimensions.where((e) => e.distance <= 0.25).take(3),
+  );
+
+  late final List<StudyComparisonDimension> differenceDetails = List.unmodifiable(
+    _sortedDimensions.reversed.where((e) => e.distance > 0.25).take(3),
+  );
+
   late final List<String> similarities = _eagerSimilarities ??
       List.unmodifiable(
-        _sortedDistances
-            .where((e) => e.$2 <= 0.25)
-            .take(3)
-            .map(
-              (e) =>
-                  '${e.$1}: posições próximas (${(e.$2 * 100).round()}% da distância máxima).',
-            ),
+        similarityDetails.map(
+          (e) =>
+              '${e.qualifiedLabel}: posições próximas (${e.distancePercent}% da distância máxima).',
+        ),
       );
 
   late final List<String> differences = _eagerDifferences ??
       List.unmodifiable(
-        _sortedDistances.reversed
-            .where((e) => e.$2 > 0.25)
-            .take(3)
-            .map(
-              (e) =>
-                  '${e.$1}: posições distintas (${(e.$2 * 100).round()}% da distância máxima).',
-            ),
+        differenceDetails.map(
+          (e) =>
+              '${e.qualifiedLabel}: posições distintas (${e.distancePercent}% da distância máxima).',
+        ),
       );
 }
 
@@ -396,7 +437,15 @@ class StudyCatalog {
   /// Symmetric, bounded metric over the intersection of supplied dimensions.
   /// Returns null when there is no common dimension, rather than 50%.
   StudyMatch? compare(StudySubject a, StudySubject b) {
-    final distances = <(String, double)>[];
+    final rawEntries =
+        <(
+          String label,
+          bool isTriad,
+          double distance,
+          String? axisId,
+          int? triadCategoryId,
+        )>[];
+    final labelCounts = <String, int>{};
     var sharedAxes = 0;
     var sharedTriads = 0;
     var unionAxes = 0;
@@ -412,7 +461,8 @@ class StudyCatalog {
       sharedAxes++;
       final d = ((av! - bv!).abs() / 2).clamp(0.0, 1.0);
       sumSquared += d * d;
-      distances.add((axis.label, d));
+      rawEntries.add((axis.label, false, d, axis.id, null));
+      labelCounts[axis.label] = (labelCounts[axis.label] ?? 0) + 1;
     }
     for (final triad in data.sixTriangles.categories) {
       final av = a.triangles[triad.id];
@@ -428,17 +478,29 @@ class StudyCatalog {
       final squared = d0 * d0 + d1 * d1 + d2 * d2;
       final d = math.sqrt(squared / 2).clamp(0.0, 1.0);
       sumSquared += d * d;
-      distances.add((triad.label, d));
+      rawEntries.add((triad.label, true, d, null, triad.id));
+      labelCounts[triad.label] = (labelCounts[triad.label] ?? 0) + 1;
     }
-    if (distances.isEmpty) return null;
-    final meanSquared = sumSquared / distances.length;
+    if (rawEntries.isEmpty) return null;
+    final dimensions = <StudyComparisonDimension>[
+      for (final (label, isTriad, dist, axisId, triadId) in rawEntries)
+        StudyComparisonDimension(
+          label: label,
+          isTriad: isTriad,
+          distance: dist,
+          disambiguate: (labelCounts[label] ?? 0) > 1,
+          axisId: axisId,
+          triadCategoryId: triadId,
+        ),
+    ];
+    final meanSquared = sumSquared / rawEntries.length;
     return StudyMatch._lazy(
       subject: b,
       similarity: ((1 - math.sqrt(meanSquared)) * 100).clamp(0, 100),
       sharedAxes: sharedAxes,
       sharedTriads: sharedTriads,
-      coverage: distances.length / (unionAxes + unionTriads),
-      rawDistances: distances,
+      coverage: rawEntries.length / (unionAxes + unionTriads),
+      rawDimensions: dimensions,
       sourceAxes: a.axes,
     );
   }

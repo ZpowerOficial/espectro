@@ -13,6 +13,7 @@ import '../../charts/interactive_triad_chart.dart';
 import '../../charts/multidimensional_radar_chart.dart';
 import '../../charts/nolan_diagram_chart.dart';
 import '../../view_models/app_view_model.dart';
+import '../../shared/metric_presentation.dart';
 
 /// Tela de comparação entre duas avaliações quaisquer do histórico —
 /// inclusive entre modalidades diferentes (ex.: 12 Eixos vs. Espectro Integrado,
@@ -108,9 +109,9 @@ class _CompareEvaluationsScreenState extends State<CompareEvaluationsScreen> {
         ],
       ),
       body: ResponsiveContentFrame(
-        maxWidth: 960,
+        maxWidth: EspectroLayout.workspaceMaxWidth,
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(20, 14, 20, 32),
+          padding: EspectroLayout.pagePadding,
           children: <Widget>[
             const EditorialHeading(
               eyebrow: 'Histórico / Comparação',
@@ -397,7 +398,7 @@ class _CompareEvaluationsScreenState extends State<CompareEvaluationsScreen> {
                 const SizedBox(height: 6),
                 Text(
                   report.hasDirectDimensionOverlap
-                      ? 'Variação na afinidade com as correntes mais próximas de B.'
+                      ? 'Variação na convergência com as correntes mais próximas de B.'
                       : 'Mesmo entre testes de modalidades distintas (${_baseline.suite.title} vs. '
                             '${_target.suite.title}), o catálogo comum permite comparar a leitura ideológica.',
                   style: text.bodySmall,
@@ -416,8 +417,8 @@ class _CompareEvaluationsScreenState extends State<CompareEvaluationsScreen> {
                           ),
                         ),
                         Text(
-                          '${s.baselineCompatibility.toStringAsFixed(1)}% → '
-                          '${s.targetCompatibility.toStringAsFixed(1)}%',
+                          '${MetricPresentation.formatPercent(s.baselineCompatibility)} → '
+                          '${MetricPresentation.formatPercent(s.targetCompatibility)}',
                           style: text.bodySmall?.copyWith(
                             fontWeight: FontWeight.w700,
                             color: p.inkSoft,
@@ -427,7 +428,7 @@ class _CompareEvaluationsScreenState extends State<CompareEvaluationsScreen> {
                         SizedBox(
                           width: 58,
                           child: Text(
-                            '${s.delta >= 0 ? "+" : ""}${s.delta.toStringAsFixed(1)}',
+                            '${s.delta >= 0 ? "+" : ""}${MetricPresentation.formatScore(s.delta)}',
                             textAlign: TextAlign.right,
                             style: text.labelLarge?.copyWith(
                               fontSize: 12.5,

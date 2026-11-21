@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../theme.dart';
-import '../ui/ads/espectro_banner_ad.dart';
 import 'common.dart';
 import 'espectro_brand_mark.dart';
 import '../ui/view_models/app_view_model.dart';
@@ -80,6 +79,7 @@ class EspectroScaffold extends StatelessWidget {
       }
     }
     final EspectroPalette p = context.palette;
+    final bool keyboardOpen = MediaQuery.viewInsetsOf(context).bottom > 100;
     return LayoutBuilder(
       builder: (context, constraints) {
         final bool isDesktop =
@@ -110,16 +110,11 @@ class EspectroScaffold extends StatelessWidget {
                 stops: const <double>[0.0, 0.36],
               ),
             ),
-            child: Column(
-              children: [
-                Expanded(child: SizedBox.expand(child: body)),
-                const EspectroFloatingAdBar(),
-              ],
-            ),
+            child: SizedBox.expand(child: body),
           ),
           bottomNavigationBar:
               bottomNavigationBar ??
-              (isDesktop || !navigationVisible
+              (isDesktop || !navigationVisible || keyboardOpen
                   ? null
                   : DecoratedBox(
                       decoration: BoxDecoration(
@@ -220,7 +215,9 @@ class _WorkspaceConstrainedAppBar extends StatelessWidget
       ),
       child: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1100),
+          constraints: const BoxConstraints(
+            maxWidth: EspectroLayout.workspaceMaxWidth,
+          ),
           child: appBar,
         ),
       ),
@@ -256,6 +253,7 @@ class _MobileNavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final EspectroPalette p = context.palette;
+    final bool ultraCompact = MediaQuery.sizeOf(context).width < 350;
     return Semantics(
       button: true,
       selected: selected,
@@ -264,39 +262,47 @@ class _MobileNavItem extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(14),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                AnimatedContainer(
-                  duration: EspectroMotion.fast,
-                  curve: EspectroMotion.easeOut,
-                  width: 46,
-                  height: 29,
-                  decoration: BoxDecoration(
-                    color: selected ? p.accentSoft : Colors.transparent,
-                    borderRadius: BorderRadius.circular(10),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: 48),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: ultraCompact ? 2 : 6,
+                vertical: 2,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  AnimatedContainer(
+                    duration: EspectroMotion.fast,
+                    curve: EspectroMotion.easeOut,
+                    width: ultraCompact ? 38 : 46,
+                    height: 29,
+                    decoration: BoxDecoration(
+                      color: selected ? p.accentSoft : Colors.transparent,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    alignment: Alignment.center,
+                    child: Icon(
+                      selected ? selectedIcon : icon,
+                      size: 20,
+                      color: selected ? p.accent : p.inkSoft,
+                    ),
                   ),
-                  alignment: Alignment.center,
-                  child: Icon(
-                    selected ? selectedIcon : icon,
-                    size: 20,
-                    color: selected ? p.accent : p.inkSoft,
+                  const SizedBox(height: 5),
+                  Text(
+                    label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: ultraCompact ? 10 : 11,
+                      fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+                      color: selected ? p.accent : p.inkSoft,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  label,
-                  style: TextStyle(
-                    fontFamily: 'IBMPlexSans',
-                    fontSize: 11,
-                    fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
-                    color: selected ? p.accent : p.inkSoft,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -322,13 +328,17 @@ class _EspectroDesktopRail extends StatelessWidget {
   Widget build(BuildContext context) {
     final EspectroPalette p = context.palette;
     final Color railBg = p.isDark
-        ? const Color(0xFF080C14)
-        : const Color(0xFF0E1622);
-    final Color railBorder = p.isDark
-        ? const Color(0xFF1C273A)
-        : const Color(0xFF1E2B3E);
-    const Color railInk = Color(0xFFF3F6FC);
-    const Color railMuted = Color(0xFF93A3BE);
+        ? const Color(0xFF080C10)
+        : const Color(0xFFE7E3D9);
+    final Color railBorder = p.isDark ? const Color(0xFF1D2833) : p.line;
+    final Color railInk = p.isDark ? p.ink : p.ink;
+    final Color railMuted = p.isDark ? p.muted : p.inkSoft;
+    final Color cardBg = p.isDark
+        ? p.surface
+        : p.surface.withValues(alpha: 0.78);
+    final Color toggleBg = p.isDark
+        ? p.surfaceMuted
+        : p.surface;
     final int catalogCurrents = appViewModel.data.catalog.currents.length;
 
     return Container(
@@ -360,7 +370,7 @@ class _EspectroDesktopRail extends StatelessWidget {
                             children: [
                               const EspectroBrandMark(size: 30),
                               const SizedBox(width: 10),
-                              const Expanded(
+                              Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -370,14 +380,14 @@ class _EspectroDesktopRail extends StatelessWidget {
                                         color: railInk,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w800,
-                                        letterSpacing: 1.1,
+                                        letterSpacing: 0.8,
                                       ),
                                     ),
                                     Text(
                                       'Observatório político',
                                       style: TextStyle(
                                         color: railMuted,
-                                        fontSize: 11,
+                                        fontSize: 11.5,
                                       ),
                                     ),
                                   ],
@@ -390,16 +400,16 @@ class _EspectroDesktopRail extends StatelessWidget {
                       const SizedBox(height: 14),
                       Divider(height: 1, color: railBorder),
                       const SizedBox(height: 16),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
                         child: Text(
-                          'OBSERVATÓRIO',
+                          'Observatório',
                           style: TextStyle(
-                            fontFamily: 'IBMPlexMono',
+                            fontFamily: 'IBMPlexSans',
                             color: railMuted,
-                            fontSize: 9.5,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 1.1,
+                            fontSize: 11.5,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0,
                           ),
                         ),
                       ),
@@ -442,16 +452,16 @@ class _EspectroDesktopRail extends StatelessWidget {
                         color: railBorder.withValues(alpha: 0.75),
                       ),
                       const SizedBox(height: 12),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
                         child: Text(
-                          'REFERÊNCIA',
+                          'Referência',
                           style: TextStyle(
-                            fontFamily: 'IBMPlexMono',
+                            fontFamily: 'IBMPlexSans',
                             color: railMuted,
-                            fontSize: 9.5,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 1.1,
+                            fontSize: 11.5,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0,
                           ),
                         ),
                       ),
@@ -468,26 +478,26 @@ class _EspectroDesktopRail extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.035),
+                          color: cardBg,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color: railBorder),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Row(
+                            Row(
                               children: [
                                 Icon(
                                   Icons.lock_outline_rounded,
                                   size: 13,
-                                  color: Color(0xFF4CC4BE),
+                                  color: p.poleLeft,
                                 ),
-                                SizedBox(width: 6),
+                                const SizedBox(width: 6),
                                 Expanded(
                                   child: Text(
                                     'Privacidade local',
                                     style: TextStyle(
-                                      fontSize: 11.5,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w700,
                                       color: railInk,
                                     ),
@@ -497,10 +507,10 @@ class _EspectroDesktopRail extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              '$catalogCurrents correntes offline · Zero rastreio',
-                              style: const TextStyle(
-                                fontFamily: 'IBMPlexMono',
-                                fontSize: 9.5,
+                              '$catalogCurrents correntes offline, sem rastreio',
+                              style: TextStyle(
+                                fontFamily: 'IBMPlexSans',
+                                fontSize: 11.5,
                                 color: railMuted,
                                 height: 1.35,
                               ),
@@ -517,7 +527,7 @@ class _EspectroDesktopRail extends StatelessWidget {
                                   vertical: 8,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withValues(alpha: 0.05),
+                                  color: toggleBg,
                                   borderRadius: BorderRadius.circular(8),
                                   border: Border.all(color: railBorder),
                                 ),
@@ -528,16 +538,16 @@ class _EspectroDesktopRail extends StatelessWidget {
                                           ? Icons.light_mode_rounded
                                           : Icons.dark_mode_rounded,
                                       size: 14,
-                                      color: const Color(0xFFE5A64B),
+                                      color: p.poleRight,
                                     ),
                                     const SizedBox(width: 8),
                                     Expanded(
                                       child: Text(
                                         p.isDark
-                                            ? 'Tema claro fumê'
-                                            : 'Tema escuro noturno',
-                                        style: const TextStyle(
-                                          fontSize: 11.5,
+                                            ? 'Tema claro'
+                                            : 'Tema escuro',
+                                        style: TextStyle(
+                                          fontSize: 12,
                                           fontWeight: FontWeight.w600,
                                           color: railInk,
                                         ),
@@ -586,11 +596,15 @@ class _RailNavItemState extends State<_RailNavItem> {
 
   @override
   Widget build(BuildContext context) {
-    const Color activeBg = Color(0xFF232044);
-    const Color activeBorder = Color(0xFF6E5DC6);
-    const Color activeAccent = Color(0xFFB5A8FF);
-    const Color activeText = Color(0xFFF6F5FF);
-    const Color idleText = Color(0xFFB7C3D8);
+    final EspectroPalette p = context.palette;
+    final Color activeBg = p.isDark ? p.surfaceMuted : p.surface;
+    final Color activeBorder = p.line;
+    final Color activeAccent = p.accent;
+    final Color activeText = p.ink;
+    final Color idleText = p.isDark ? p.inkSoft : p.inkSoft;
+    final Color hoverBg = p.isDark
+        ? Colors.white.withValues(alpha: 0.04)
+        : p.surface.withValues(alpha: 0.65);
 
     return Semantics(
       button: true,
@@ -606,30 +620,39 @@ class _RailNavItemState extends State<_RailNavItem> {
             borderRadius: BorderRadius.circular(10),
             hoverColor: Colors.transparent,
             child: AnimatedContainer(
-              duration: EspectroMotion.fast,
+              duration: MediaQuery.disableAnimationsOf(context)
+                  ? Duration.zero
+                  : EspectroMotion.fast,
               curve: EspectroMotion.easeOut,
               padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 9),
               decoration: BoxDecoration(
                 color: widget.selected
                     ? activeBg
-                    : (_hovered
-                          ? Colors.white.withValues(alpha: 0.05)
-                          : Colors.transparent),
+                    : (_hovered ? hoverBg : Colors.transparent),
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  color: widget.selected
-                      ? activeBorder.withValues(alpha: 0.55)
-                      : Colors.transparent,
+                  color: widget.selected ? activeBorder : Colors.transparent,
                 ),
               ),
               child: Row(
                 children: [
+                  if (widget.selected) ...[
+                    Container(
+                      width: 2.5,
+                      height: 16,
+                      decoration: BoxDecoration(
+                        color: activeAccent,
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                  ],
                   Icon(
                     widget.selected ? widget.selectedIcon : widget.icon,
                     size: 18,
                     color: widget.selected
                         ? activeAccent
-                        : (_hovered ? Colors.white : idleText),
+                        : (_hovered ? activeText : idleText),
                   ),
                   const SizedBox(width: 10),
                   Expanded(
@@ -645,19 +668,10 @@ class _RailNavItemState extends State<_RailNavItem> {
                             : FontWeight.w500,
                         color: widget.selected
                             ? activeText
-                            : (_hovered ? Colors.white : idleText),
+                            : (_hovered ? activeText : idleText),
                       ),
                     ),
                   ),
-                  if (widget.selected)
-                    Container(
-                      width: 5,
-                      height: 5,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFFE5A64B),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
                 ],
               ),
             ),

@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../theme.dart';
+import '../ui/charts/axis_colors.dart';
 
 /// Feedback tátil discreto ao pressionar botões e cartões (`scale(0.98)`),
 /// seguindo curva de desaceleração rápida e respeitando preferência de
@@ -64,10 +65,11 @@ class Eyebrow extends StatelessWidget {
     final EspectroPalette p = context.palette;
     final Color resolved = color ?? p.muted;
     return Text(
-      text.toUpperCase(),
+      text,
       style: Theme.of(context).textTheme.labelSmall?.copyWith(
+        fontFamily: 'IBMPlexSans',
         color: resolved,
-        fontSize: 11,
+        fontSize: 12,
         letterSpacing: 0,
         fontWeight: FontWeight.w600,
       ),
@@ -209,10 +211,14 @@ class AppButton extends StatelessWidget {
           }
         : switch (kind) {
             AppButtonKind.filled => (
-              onDark ? Colors.white : p.accent,
+              onDark
+                  ? Colors.white
+                  : (p.isDark ? const Color(0xFFE5A448) : p.accent),
               onDark
                   ? const Color(0xFF0C1018)
-                  : (p.isDark ? const Color(0xFF071020) : Colors.white),
+                  : (p.isDark
+                        ? const Color(0xFF140D03)
+                        : const Color(0xFFFAF9F6)),
               BorderSide.none,
             ),
             AppButtonKind.outline => (
@@ -255,7 +261,7 @@ class AppButton extends StatelessWidget {
       child: ExcludeSemantics(
         child: TactilePress(
           enabled: enabled,
-          scale: 0.98,
+          scale: kind == AppButtonKind.ghost ? 0.98 : 0.97,
           child: DecoratedBox(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(13),
@@ -869,15 +875,20 @@ class PolePill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = context.palette;
+    final Color textInk = isActive
+        ? AxisColors.readableInk(color, isDark: p.isDark)
+        : p.inkSoft;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3.5),
       decoration: BoxDecoration(
-        color: isActive ? color.withValues(alpha: 0.14) : Colors.transparent,
+        color: isActive
+            ? color.withValues(alpha: p.isDark ? 0.16 : 0.11)
+            : Colors.transparent,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: isActive
-              ? color.withValues(alpha: 0.6)
-              : p.line.withValues(alpha: 0.5),
+              ? color.withValues(alpha: p.isDark ? 0.65 : 0.55)
+              : p.line.withValues(alpha: 0.65),
         ),
       ),
       child: Row(
@@ -888,33 +899,38 @@ class PolePill extends StatelessWidget {
             height: 5,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: isActive ? color : p.inkSoft.withValues(alpha: 0.4),
+              color: isActive ? textInk : p.inkSoft.withValues(alpha: 0.45),
             ),
           ),
           const SizedBox(width: 5),
           Flexible(
-            child: Text(
-              label,
+            child: Text.rich(
+              TextSpan(
+                text: label,
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: isActive ? FontWeight.w700 : FontWeight.w500,
+                  color: textInk,
+                ),
+                children: <InlineSpan>[
+                  if (badge != null)
+                    TextSpan(
+                      text: ' $badge',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                        color: textInk,
+                        fontFeatures: const <FontFeature>[
+                          FontFeature.tabularFigures(),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: isActive ? FontWeight.w700 : FontWeight.w500,
-                color: isActive ? color : p.inkSoft,
-              ),
             ),
           ),
-          if (badge != null) ...[
-            const SizedBox(width: 4),
-            Text(
-              badge!,
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.bold,
-                color: isActive ? color : p.inkSoft,
-              ),
-            ),
-          ],
         ],
       ),
     );
@@ -954,17 +970,8 @@ class ProgressRail extends StatelessWidget {
                 child: Container(
                   height: 7,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [bar.withValues(alpha: 0.85), bar],
-                    ),
+                    color: bar,
                     borderRadius: BorderRadius.circular(99),
-                    boxShadow: [
-                      BoxShadow(
-                        color: bar.withValues(alpha: 0.45),
-                        blurRadius: 6,
-                        offset: const Offset(0, 1),
-                      ),
-                    ],
                   ),
                 ),
               );
@@ -1060,9 +1067,11 @@ class Tag extends StatelessWidget {
       child: Text(
         label.toUpperCase(),
         style: Theme.of(context).textTheme.labelSmall?.copyWith(
+          fontFamily: 'IBMPlexSans',
           color: foreground ?? p.inkSoft,
-          fontSize: 9.5,
-          letterSpacing: 1.1,
+          fontSize: 10.5,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0,
         ),
       ),
     );

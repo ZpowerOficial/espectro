@@ -60,7 +60,7 @@ enum TestDepth {
   String get id => name;
 
   String get label => switch (this) {
-    TestDepth.express => 'Expresso',
+    TestDepth.express => 'Expressa',
     TestDepth.quick => 'Rápida',
     TestDepth.standard => 'Padrão',
     TestDepth.deep => 'Profunda',

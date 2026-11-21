@@ -44,7 +44,7 @@ void main() {
 
       expect(find.text('ESPECTRO'), findsOneWidget);
       expect(
-        find.text('Fazer Avaliação Rápida (3 min)'),
+        find.text('Fazer Avaliação Expressa (3 min)'),
         findsOneWidget,
       );
 
@@ -297,6 +297,19 @@ void main() {
         await tester.pumpWidget(EspectroApp(appViewModel: appVm));
         await tester.pumpAndSettle();
 
+        final Finder homeScrollable = find
+            .descendant(
+              of: find.byType(ListView),
+              matching: find.byType(Scrollable),
+            )
+            .first;
+
+        await tester.scrollUntilVisible(
+          find.text('DILEMA RELÂMPAGO · 1/24'),
+          220,
+          scrollable: homeScrollable,
+        );
+        await tester.pumpAndSettle();
         expect(find.text('DILEMA RELÂMPAGO · 1/24'), findsOneWidget);
         await tester.ensureVisible(find.text('Outro dilema'));
         await tester.tap(find.text('Outro dilema'));
@@ -310,13 +323,6 @@ void main() {
           find.text('4% concluído (1/24) · Seu Arquétipo começou a emergir'),
           findsOneWidget,
         );
-
-        final Finder homeScrollable = find
-            .descendant(
-              of: find.byType(ListView),
-              matching: find.byType(Scrollable),
-            )
-            .first;
 
         await tester.scrollUntilVisible(
           find.text('Quem pensa assim?'),

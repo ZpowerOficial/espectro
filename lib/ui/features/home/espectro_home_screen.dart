@@ -1,11 +1,10 @@
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
 import '../../../data/models.dart' as data;
-import '../../../domain/engine/atlas_and_nolan_engine.dart';
 import '../../../domain/engine/compatibility_engine.dart';
-import '../../../domain/models/atlas_models.dart';
 import '../../../domain/models/political_models.dart';
 import '../../../domain/models/study_models.dart';
 import '../../../domain/models/study_media.dart';
@@ -13,10 +12,17 @@ import '../atlas/study_profile_screen.dart';
 import '../atlas/study_taxonomy.dart';
 import '../compare/study_comparison_screen.dart';
 import '../results/espectro_result_screen.dart';
+import '../share/home_share_card_specimen.dart';
+import '../share/shareable_card_sheet.dart';
 import '../../../theme.dart';
 import '../../../widgets/common.dart';
 import '../../../widgets/espectro_brand_mark.dart';
+import '../../shared/metric_presentation.dart';
+import '../../shared/resilient_image.dart';
 import '../../../widgets/espectro_scaffold.dart';
+import '../../ads/espectro_banner_ad.dart';
+import '../../charts/axis_colors.dart';
+import '../../charts/teia_preview_panel.dart';
 import '../quiz/espectro_suites_screen.dart';
 import '../../view_models/app_view_model.dart';
 import '../../view_models/quiz_view_model.dart';
@@ -312,7 +318,7 @@ class EspectroHomeScreen extends StatelessWidget {
         isSectionRoot: true,
         body: SafeArea(
           child: ResponsiveContentFrame(
-            maxWidth: wide ? 1040 : 760,
+            maxWidth: wide ? EspectroLayout.workspaceMaxWidth : 760,
             child: LayoutBuilder(
               builder: (context, constraints) {
                 final bool twoColBento = constraints.maxWidth >= 820;
@@ -394,7 +400,14 @@ class EspectroHomeScreen extends StatelessWidget {
                     : null;
 
                 return ListView(
-                  padding: EdgeInsets.fromLTRB(20, wide ? 12 : 20, 20, 40),
+                  // ignore: deprecated_member_use
+                  cacheExtent: 1200,
+                  padding: EdgeInsets.fromLTRB(
+                    EspectroLayout.pageHorizontalPadding,
+                    wide ? EspectroLayout.pageTopPadding : 16,
+                    EspectroLayout.pageHorizontalPadding,
+                    EspectroLayout.pageBottomPadding,
+                  ),
                   children: [
                     if (!wide) ...[
                       Padding(
@@ -453,18 +466,19 @@ class EspectroHomeScreen extends StatelessWidget {
                             ? () => _openDraftPreview(context, draft)
                             : null,
                       ),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 28),
                     ],
-                    // Beat 1: Palco Interativo do Observatório + Dilema Relâmpago
+                    // Beat 1: Cartografia Viva — Palco Aberto + Teia das 289 Correntes
                     _ObservatoryCoverHero(
                       twoColumn: twoColBento,
+                      catalog: catalog,
                       onStartQuiz: () => _openSuites(context),
-                      onStartWithAnswer: (LikertAnswer ans) =>
-                          _startExpressQuiz(context, firstAnswer: ans),
                       onOpenAtlas: () => _openAtlas(context),
+                      onOpenTeia: () => _openAtlas(context, initialMap: true),
+                      onOpenSubject: (String key) => _openSubject(context, key),
                     ),
                     if (latestRecord != null) ...[
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 40),
                       _LatestEvaluationBentoCard(
                         appViewModel: appViewModel,
                         record: latestRecord,
@@ -480,35 +494,12 @@ class EspectroHomeScreen extends StatelessWidget {
                         onOpenHistory: () => _openHistory(context),
                       ),
                     ],
-                    // Beat 2: Radar Interativo "Gêmeo ou Antagonista?"
-                    const SizedBox(height: 24),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 2),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Como o Espectro mapeia o pensamento',
-                            style: Theme.of(context).textTheme.titleLarge
-                                ?.copyWith(
-                                  fontWeight: FontWeight.w800,
-                                  letterSpacing: -0.3,
-                                  color: p.ink,
-                                ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            'Alterne entre pensadores clássicos, compare vetores nos 12 eixos e descubra com quem você converge.',
-                            style: TextStyle(
-                              fontSize: 13.5,
-                              height: 1.45,
-                              color: p.inkSoft,
-                            ),
-                          ),
-                        ],
-                      ),
+                    // Beat 2: Carrossel Gigante de Cartão Compartilhável (4 Exemplares)
+                    SizedBox(
+                      height: latestRecord != null
+                          ? 48
+                          : (twoColBento ? 72 : 52),
                     ),
-                    const SizedBox(height: 12),
                     _HeroLiveSpectrumShowcase(
                       catalog: catalog,
                       portraits: appViewModel.data.portraits,
@@ -517,32 +508,39 @@ class EspectroHomeScreen extends StatelessWidget {
                       latestRecord: latestRecord,
                       onStartQuiz: () => _openSuites(context),
                       onOpenSubject: (String key) => _openSubject(context, key),
-                      onCompareWithRecord: latestRecord == null
+                      onOpenShareSheet: latestRecord == null
                           ? null
-                          : (String key) => _openComparison(
+                          : () => ShareableCardSheet.show(
                               context,
-                              initialKeys: <String>[
-                                'evaluation:${latestRecord.id}',
-                                key,
-                              ],
+                              record: latestRecord,
+                              appViewModel: appViewModel,
                             ),
                     ),
-                    // Beat 3: Jogo de Intuição Política ("Quem Pensa Assim?")
-                    const SizedBox(height: 24),
+                    // Beat 3: Dilema Relâmpago (amostra imediata)
+                    const SizedBox(height: 44),
+                    SectionCard(
+                      padding: const EdgeInsets.all(24),
+                      child: _HeroInstantDilemmaGame(
+                        onStartWithAnswer: (LikertAnswer ans) =>
+                            _startExpressQuiz(context, firstAnswer: ans),
+                      ),
+                    ),
+                    // Beat 4: Jogo de Intuição Política ("Quem Pensa Assim?")
+                    const SizedBox(height: 44),
                     _IdeologicalRiddleGameCard(
                       catalog: catalog,
                       onOpenSubject: (String key) => _openSubject(context, key),
                       onStartExpress: () => _startExpressQuiz(context),
                     ),
-                    // Beat 4: Bento Grid com hierarquia clara
-                    const SizedBox(height: 28),
+                    // Beat 5: Bento Grid com hierarquia clara
+                    const SizedBox(height: 44),
                     if (twoColBento)
                       IntrinsicHeight(
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Expanded(flex: 5, child: exploreBentoCard),
-                            const SizedBox(width: 20),
+                            const SizedBox(width: 24),
                             Expanded(flex: 6, child: toolsBentoCard),
                           ],
                         ),
@@ -552,8 +550,12 @@ class EspectroHomeScreen extends StatelessWidget {
                       const SizedBox(height: 24),
                       toolsBentoCard,
                     ],
-                    // Beat 5: Passaporte do Cartógrafo (Progresso Dotado)
-                    const SizedBox(height: 28),
+                    const EspectroInlineAdSlot(
+                      placementId: 'home_mid_feed',
+                      verticalMargin: 28,
+                    ),
+                    // Beat 6: Passaporte do Cartógrafo (Progresso Dotado)
+                    const SizedBox(height: 44),
                     _ObservatoryPassportCard(
                       appViewModel: appViewModel,
                       onStartExpress: () => _startExpressQuiz(context),
@@ -562,13 +564,13 @@ class EspectroHomeScreen extends StatelessWidget {
                       onOpenAtlas: () => _openAtlas(context),
                       onOpenCompare: () => _openComparison(context),
                     ),
-                    const SizedBox(height: 28),
+                    const SizedBox(height: 44),
                     _HomeFeaturedSpotlight(
                       appViewModel: appViewModel,
                       catalog: catalog,
                       axesMeta: appViewModel.data.twelveAxes.axes,
                     ),
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 48),
                     _HomeTwelveAxesShowcase(
                       axesMeta: appViewModel.data.twelveAxes.axes,
                       onTapAxis: () =>
@@ -576,7 +578,7 @@ class EspectroHomeScreen extends StatelessWidget {
                     ),
                     if (recent.isNotEmpty || saved.isNotEmpty) ...[
                       const SizedBox(height: 32),
-                      Eyebrow('SUA BIBLIOTECA', color: p.accent),
+                      Eyebrow('Sua biblioteca', color: p.accent),
                       const SizedBox(height: 12),
                       for (final subject in {
                         ...recent.take(3),
@@ -645,26 +647,26 @@ const List<_AxisMetaInfo> _fallbackAxisInfos = [
   _AxisMetaInfo(
     id: 'poder',
     label: 'Poder',
-    leftPole: 'Liberdade',
-    rightPole: 'Segurança',
-    leftColor: Color(0xFFAD7A06),
-    rightColor: Color(0xFF3C5A80),
+    leftPole: 'Segurança',
+    rightPole: 'Liberdade',
+    leftColor: Color(0xFF3C5A80),
+    rightColor: Color(0xFFAD7A06),
   ),
   _AxisMetaInfo(
     id: 'imigracao',
     label: 'Imigração',
-    leftPole: 'Aberta',
-    rightPole: 'Restrita',
-    leftColor: Color(0xFF6A45C0),
-    rightColor: Color(0xFFCC3456),
+    leftPole: 'Assimilação',
+    rightPole: 'Multicultura',
+    leftColor: Color(0xFFCC3456),
+    rightColor: Color(0xFF6A45C0),
   ),
   _AxisMetaInfo(
     id: 'diplomacia',
     label: 'Diplomacia',
-    leftPole: 'Pacifista',
-    rightPole: 'Militarista',
-    leftColor: Color(0xFF2D86C8),
-    rightColor: Color(0xFF6A8425),
+    leftPole: 'Militarista',
+    rightPole: 'Pacifista',
+    leftColor: Color(0xFF6A8425),
+    rightColor: Color(0xFF2D86C8),
   ),
   _AxisMetaInfo(
     id: 'intervencao',
@@ -686,7 +688,7 @@ const List<_AxisMetaInfo> _fallbackAxisInfos = [
     id: 'controle',
     label: 'Controle',
     leftPole: 'Planejamento',
-    rightPole: 'Mercado',
+    rightPole: 'Livre mercado',
     leftColor: Color(0xFF8A3AA0),
     rightColor: Color(0xFF1A8A56),
   ),
@@ -694,15 +696,15 @@ const List<_AxisMetaInfo> _fallbackAxisInfos = [
     id: 'comercio',
     label: 'Comércio',
     leftPole: 'Protecionismo',
-    rightPole: 'Livre-comércio',
+    rightPole: 'Globalismo',
     leftColor: Color(0xFF9C5E2A),
     rightColor: Color(0xFF0E86B0),
   ),
   _AxisMetaInfo(
     id: 'religiao',
     label: 'Religião',
-    leftPole: 'Laicismo',
-    rightPole: 'Confessional',
+    leftPole: 'Irreligioso',
+    rightPole: 'Religioso',
     leftColor: Color(0xFFC65E0E),
     rightColor: Color(0xFF3B50B5),
   ),
@@ -710,15 +712,15 @@ const List<_AxisMetaInfo> _fallbackAxisInfos = [
     id: 'moral',
     label: 'Moral',
     leftPole: 'Progressista',
-    rightPole: 'Tradicional',
+    rightPole: 'Tradicionalista',
     leftColor: Color(0xFFD23E84),
     rightColor: Color(0xFF74502C),
   ),
   _AxisMetaInfo(
     id: 'tecnologia',
     label: 'Tecnologia',
-    leftPole: 'Aceleração',
-    rightPole: 'Precaução',
+    leftPole: 'Tecnologia',
+    rightPole: 'Biologia',
     leftColor: Color(0xFF5376B0),
     rightColor: Color(0xFF4E9020),
   ),
@@ -794,65 +796,6 @@ String? _resolvePortraitAsset(StudySubject subject, StudyPortrait? portrait) {
   return null;
 }
 
-class _SubjectAvatarMini extends StatelessWidget {
-  const _SubjectAvatarMini({
-    required this.subject,
-    required this.accent,
-    this.portrait,
-    this.size = 20,
-  });
-
-  final StudySubject subject;
-  final StudyPortrait? portrait;
-  final Color accent;
-  final double size;
-
-  @override
-  Widget build(BuildContext context) {
-    final p = context.palette;
-    final String? assetPath = _resolvePortraitAsset(subject, portrait);
-    final String initials = subject.name
-        .split(' ')
-        .where((s) => s.isNotEmpty)
-        .take(2)
-        .map((s) => s.characters.first.toUpperCase())
-        .join();
-    final Widget fallback = Container(
-      width: size,
-      height: size,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: accent.withValues(alpha: p.isDark ? 0.28 : 0.16),
-        shape: BoxShape.circle,
-      ),
-      child: Text(
-        initials,
-        style: TextStyle(
-          fontFamily: 'IBMPlexMono',
-          fontSize: size * 0.42,
-          fontWeight: FontWeight.w700,
-          color: p.ink,
-        ),
-      ),
-    );
-    return ClipOval(
-      child: SizedBox(
-        width: size,
-        height: size,
-        child: assetPath != null
-            ? Image.asset(
-                assetPath,
-                fit: BoxFit.cover,
-                alignment: const Alignment(0, -0.45),
-                excludeFromSemantics: true,
-                errorBuilder: (_, _, _) => fallback,
-              )
-            : fallback,
-      ),
-    );
-  }
-}
-
 class _SafeButtonContent extends StatelessWidget {
   const _SafeButtonContent({
     required this.icon,
@@ -877,205 +820,186 @@ class _SafeButtonContent extends StatelessWidget {
   }
 }
 
-class _ObservatoryCoverHero extends StatelessWidget {
+class _ObservatoryCoverHero extends StatefulWidget {
   const _ObservatoryCoverHero({
     required this.twoColumn,
+    required this.catalog,
     required this.onStartQuiz,
-    required this.onStartWithAnswer,
     required this.onOpenAtlas,
+    required this.onOpenTeia,
+    required this.onOpenSubject,
   });
 
   final bool twoColumn;
+  final StudyCatalog catalog;
   final VoidCallback onStartQuiz;
-  final ValueChanged<LikertAnswer> onStartWithAnswer;
   final VoidCallback onOpenAtlas;
+  final VoidCallback onOpenTeia;
+  final ValueChanged<String> onOpenSubject;
+
+  @override
+  State<_ObservatoryCoverHero> createState() => _ObservatoryCoverHeroState();
+}
+
+class _ObservatoryCoverHeroState extends State<_ObservatoryCoverHero> {
+  StudySubject? _focusedCurrent;
+
+  late final List<StudySubject> _currents = widget.catalog.subjects
+      .where((StudySubject s) => s.kind == 'current')
+      .toList(growable: false);
+
+  @override
+  void initState() {
+    super.initState();
+    _focusedCurrent = widget.catalog.find('current:liberalismo_classico') ??
+        (_currents.isNotEmpty ? _currents.first : null);
+  }
 
   @override
   Widget build(BuildContext context) {
     final p = context.palette;
     final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
-    final bool split = twoColumn && scale <= 1.35;
+    final bool split = widget.twoColumn && scale <= 1.35;
+    final int currentsCount = widget.catalog.data.catalog.currents.length;
+    final Color primaryBtnBg =
+        p.isDark ? const Color(0xFFE5A448) : p.accent;
+    final Color primaryBtnFg =
+        p.isDark ? const Color(0xFF140D03) : const Color(0xFFFAF9F6);
 
     final Widget pitchColumn = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Text(
-          'OBSERVATÓRIO POLÍTICO · 18 DIMENSÕES',
-          style: TextStyle(
-            fontFamily: 'IBMPlexMono',
-            fontSize: 10.5,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 1.2,
-            color: Color(0xFFEBC07A),
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: split ? 470 : double.infinity,
+          ),
+          child: Text(
+            'Onde você realmente se situa além dos rótulos?',
+            style: TextStyle(
+              fontFamily: 'IBMPlexSans',
+              fontSize: split ? 40 : 26,
+              fontWeight: FontWeight.w800,
+              letterSpacing: split ? -1.15 : -0.85,
+              height: 1.06,
+              color: p.ink,
+            ),
           ),
         ),
         SizedBox(height: split ? 14 : 10),
-        Text(
-          'Onde você realmente se situa além dos rótulos?',
-          style: TextStyle(
-            fontFamily: 'IBMPlexSans',
-            fontSize: split ? 36 : 26,
-            fontWeight: FontWeight.w800,
-            letterSpacing: -0.9,
-            height: 1.13,
-            color: p.heroForeground,
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: split ? 450 : double.infinity,
           ),
-        ),
-        SizedBox(height: split ? 12 : 8),
-        Text(
-          'Política não cabe numa linha. Descubra onde suas ideias se encontram — e onde se contradizem — em 12 eixos e 6 tríades.',
-          style: TextStyle(
-            fontSize: split ? 15 : 13.5,
-            height: 1.48,
-            color: p.heroMuted,
+          child: Text(
+            'Política não cabe numa linha. Inspecione $currentsCount correntes na Teia e mapeie onde suas ideias convergem em 12 eixos e 6 tríades.',
+            style: TextStyle(
+              fontSize: split ? 15.5 : 14.5,
+              height: 1.48,
+              color: p.inkSoft,
+            ),
           ),
         ),
         SizedBox(height: split ? 22 : 16),
         Wrap(
-          spacing: 12,
+          spacing: 10,
           runSpacing: 10,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color: const Color(0xFFE5A64B).withValues(alpha: 0.24),
-                    blurRadius: 18,
-                    offset: const Offset(0, 6),
-                  ),
-                ],
-              ),
-              child: FilledButton.icon(
-                onPressed: onStartQuiz,
-                style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFFE5A64B),
-                  foregroundColor: const Color(0xFF140D03),
-                  minimumSize: const Size(0, 48),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 12,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(13),
-                  ),
-                ),
-                icon: const Icon(Icons.arrow_forward_rounded, size: 17),
-                label: const Text('Fazer Avaliação Rápida (3 min)'),
-              ),
-            ),
-            TextButton(
-              onPressed: onOpenAtlas,
-              style: TextButton.styleFrom(
+            FilledButton.icon(
+              onPressed: widget.onStartQuiz,
+              style: FilledButton.styleFrom(
+                backgroundColor: primaryBtnBg,
+                foregroundColor: primaryBtnFg,
+                elevation: 0,
                 minimumSize: const Size(0, 44),
-                foregroundColor: p.heroForeground.withValues(alpha: 0.90),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 18,
+                  vertical: 11,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              icon: const Icon(Icons.arrow_forward_rounded, size: 17),
+              label: const Text('Fazer Avaliação Expressa (3 min)'),
+            ),
+            OutlinedButton(
+              onPressed: widget.onOpenAtlas,
+              style: OutlinedButton.styleFrom(
+                minimumSize: const Size(0, 44),
+                foregroundColor: p.ink,
+                side: BorderSide(color: p.line),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 11,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 textStyle: const TextStyle(
                   fontFamily: 'IBMPlexSans',
                   fontSize: 13.5,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              child: const Text('Ou explore o Atlas de Correntes →'),
+              child: const Text('Explorar o Atlas'),
             ),
           ],
         ),
         const SizedBox(height: 14),
         Text(
-          '24 afirmações no Expresso · 289 correntes · 757 pensadores',
+          '24 afirmações · 100% offline · Cartão 9:16 e 1:1',
           style: TextStyle(
-            fontFamily: 'IBMPlexMono',
-            fontSize: 10.5,
-            color: p.heroMuted.withValues(alpha: 0.82),
+            fontFamily: 'IBMPlexSans',
+            fontSize: 12,
+            color: p.muted,
           ),
         ),
       ],
     );
 
-    final Widget interactiveDilemma = _HeroInstantDilemmaGame(
-      onStartWithAnswer: onStartWithAnswer,
+    final Widget teiaStage = TeiaInteractivePreviewPanel(
+      subjects: _currents,
+      selected: _focusedCurrent,
+      borderColor: p.line,
+      height: split ? 456 : 284,
+      showFooter: true,
+      headerHint: 'Toque num nó para inspecionar',
+      onSelect: (StudySubject s) => setState(() => _focusedCurrent = s),
+      onOpenSubject: widget.onOpenSubject,
+      onOpenTeia: widget.onOpenTeia,
     );
 
-    return Container(
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: <Color>[
-            p.heroBackground,
-            Color.alphaBlend(
-              const Color(0xFF4E3FA5).withValues(alpha: 0.22),
-              p.heroBackground,
-            ),
+    if (split) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 28),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(flex: 11, child: pitchColumn),
+            const SizedBox(width: 28),
+            Expanded(flex: 13, child: teiaStage),
           ],
         ),
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(
-          color: const Color(0xFF7B6CE0).withValues(alpha: 0.28),
-        ),
-        boxShadow: EspectroElevation.cardShadows(
-          p,
-          tint: const Color(0xFF4E3FA5),
-        ),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SpectrumGradientRule(height: 3.5, radius: 0),
-          Padding(
-            padding: EdgeInsets.all(split ? 24 : 18),
-            child: split
-                ? Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(flex: 6, child: pitchColumn),
-                      const SizedBox(width: 24),
-                      Expanded(
-                        flex: 5,
-                        child: Container(
-                          padding: const EdgeInsets.only(left: 24),
-                          decoration: BoxDecoration(
-                            border: Border(
-                              left: BorderSide(
-                                color: Colors.white.withValues(alpha: 0.14),
-                              ),
-                            ),
-                          ),
-                          child: interactiveDilemma,
-                        ),
-                      ),
-                    ],
-                  )
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      pitchColumn,
-                      const SizedBox(height: 18),
-                      Container(
-                        padding: const EdgeInsets.only(top: 18),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            top: BorderSide(
-                              color: Colors.white.withValues(alpha: 0.14),
-                            ),
-                          ),
-                        ),
-                        child: interactiveDilemma,
-                      ),
-                    ],
-                  ),
-          ),
-        ],
-      ),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        pitchColumn,
+        const SizedBox(height: 20),
+        teiaStage,
+      ],
     );
   }
 }
 
 class _InstantDilemmaSpec {
   const _InstantDilemmaSpec({
+    required this.axisId,
     required this.axisTag,
     required this.statement,
     required this.agreeInsight,
@@ -1083,6 +1007,7 @@ class _InstantDilemmaSpec {
     required this.disagreeInsight,
   });
 
+  final String axisId;
   final String axisTag;
   final String statement;
   final String agreeInsight;
@@ -1107,6 +1032,7 @@ class _HeroInstantDilemmaGameState extends State<_HeroInstantDilemmaGame>
 
   static const List<_InstantDilemmaSpec> _dilemmas = <_InstantDilemmaSpec>[
     _InstantDilemmaSpec(
+      axisId: 'poder',
       axisTag: 'PODER · LIBERDADE VS. SEGURANÇA',
       statement:
           'Em crises graves, o Estado deve monitorar comunicações privadas para conter ameaças?',
@@ -1118,6 +1044,7 @@ class _HeroInstantDilemmaGameState extends State<_HeroInstantDilemmaGame>
           'Converge com Hannah Arendt e o Libertarianismo Civil, colidindo com Hobbes.',
     ),
     _InstantDilemmaSpec(
+      axisId: 'economia',
       axisTag: 'ECONOMIA · PÚBLICO VS. PRIVADO',
       statement:
           'Energia, água e ferrovias devem ser estatais mesmo que o setor privado opere com menor custo?',
@@ -1129,6 +1056,7 @@ class _HeroInstantDilemmaGameState extends State<_HeroInstantDilemmaGame>
           'Alinha-se a Friedrich Hayek e ao Liberalismo Clássico; polo oposto ao de Karl Marx.',
     ),
     _InstantDilemmaSpec(
+      axisId: 'comercio',
       axisTag: 'COMÉRCIO · PROTECIONISMO VS. GLOBALISMO',
       statement:
           'Vale sobretaxar importados para proteger a indústria nacional, mesmo encarecendo bens?',
@@ -1140,6 +1068,7 @@ class _HeroInstantDilemmaGameState extends State<_HeroInstantDilemmaGame>
           'Converge com Adam Smith e o Livre-Cambismo Cosmopolita.',
     ),
     _InstantDilemmaSpec(
+      axisId: 'moral',
       axisTag: 'CULTURA · TRADIÇÃO VS. PROGRESSO',
       statement:
           'Instituições testadas por gerações devem pesar mais que experimentos sociais acelerados?',
@@ -1171,13 +1100,18 @@ class _HeroInstantDilemmaGameState extends State<_HeroInstantDilemmaGame>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    final p = context.palette;
     final _InstantDilemmaSpec spec = _dilemmas[_index];
+    final Color rawAxisColor = AxisColors.pairFor(spec.axisId, p).$1;
+    final Color axisInk = AxisColors.readableInk(rawAxisColor, isDark: p.isDark);
     final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
+    final Color amberInk =
+        p.isDark ? const Color(0xFFE5A64B) : const Color(0xFF9D5B12);
 
     final List<(LikertAnswer answer, String label, Color accent)> choices = [
-      (LikertAnswer.agree, 'Concordo', const Color(0xFF4CC4BE)),
-      (LikertAnswer.neutral, 'Depende', const Color(0xFFE5A64B)),
-      (LikertAnswer.disagree, 'Discordo', const Color(0xFF9E8FFF)),
+      (LikertAnswer.agree, 'Concordo', p.poleLeft),
+      (LikertAnswer.neutral, 'Depende', amberInk),
+      (LikertAnswer.disagree, 'Discordo', p.accent),
     ];
 
     Widget buildChoiceChip(
@@ -1191,20 +1125,18 @@ class _HeroInstantDilemmaGameState extends State<_HeroInstantDilemmaGame>
         scale: 0.96,
         child: Material(
           color: isSelected
-              ? accent.withValues(alpha: 0.22)
-              : Colors.white.withValues(alpha: 0.05),
-          borderRadius: BorderRadius.circular(10),
+              ? accent.withValues(alpha: p.isDark ? 0.22 : 0.12)
+              : p.surface,
+          borderRadius: BorderRadius.circular(8),
           child: InkWell(
             onTap: () => setState(() => _picked = answer),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(8),
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: isSelected
-                      ? accent
-                      : Colors.white.withValues(alpha: 0.16),
+                  color: isSelected ? accent : p.line,
                   width: isSelected ? 1.4 : 1.0,
                 ),
               ),
@@ -1217,7 +1149,7 @@ class _HeroInstantDilemmaGameState extends State<_HeroInstantDilemmaGame>
                   fontFamily: 'IBMPlexSans',
                   fontSize: 12.5,
                   fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
-                  color: isSelected ? Colors.white : const Color(0xFFD2DCEB),
+                  color: isSelected ? accent : p.ink,
                 ),
               ),
             ),
@@ -1227,213 +1159,215 @@ class _HeroInstantDilemmaGameState extends State<_HeroInstantDilemmaGame>
       return expand ? Expanded(child: button) : button;
     }
 
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.035),
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Wrap(
-            alignment: WrapAlignment.spaceBetween,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            spacing: 8,
-            runSpacing: 6,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.bolt_rounded,
-                    size: 14,
-                    color: Color(0xFFE5A64B),
-                  ),
-                  const SizedBox(width: 5),
-                  const Flexible(
-                    child: Text(
-                      'DILEMA RELÂMPAGO · 1/24',
-                      style: TextStyle(
-                        fontFamily: 'IBMPlexMono',
-                        fontSize: 10,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.6,
-                        color: Color(0xFFEBC07A),
-                      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Wrap(
+          alignment: WrapAlignment.spaceBetween,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: 8,
+          runSpacing: 6,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.bolt_rounded,
+                  size: 14,
+                  color: amberInk,
+                ),
+                const SizedBox(width: 5),
+                Flexible(
+                  child: Text(
+                    'DILEMA RELÂMPAGO · 1/24',
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: amberInk,
                     ),
-                  ),
-                ],
-              ),
-              InkWell(
-                onTap: _rotateDilemma,
-                borderRadius: BorderRadius.circular(8),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 6, vertical: 3),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.refresh_rounded,
-                        size: 13,
-                        color: Color(0xFFA3B1C8),
-                      ),
-                      SizedBox(width: 4),
-                      Flexible(
-                        child: Text(
-                          'Outro dilema',
-                          style: TextStyle(
-                            fontFamily: 'IBMPlexMono',
-                            fontSize: 10,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFFA3B1C8),
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          Text(
-            spec.axisTag,
-            style: const TextStyle(
-              fontFamily: 'IBMPlexMono',
-              fontSize: 9.5,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.8,
-              color: Color(0xFFB5A8FF),
+              ],
             ),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            spec.statement,
-            style: const TextStyle(
-              fontFamily: 'IBMPlexSans',
-              fontSize: 14.5,
-              fontWeight: FontWeight.w600,
-              height: 1.4,
-              color: Colors.white,
-            ),
-          ),
-          const SizedBox(height: 14),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth < 300 || scale > 1.35) {
-                return Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
+            InkWell(
+              onTap: _rotateDilemma,
+              borderRadius: BorderRadius.circular(6),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    for (final c in choices) buildChoiceChip(c.$1, c.$2, c.$3),
-                  ],
-                );
-              }
-              return Row(
-                children: [
-                  for (var i = 0; i < choices.length; i++) ...[
-                    if (i > 0) const SizedBox(width: 8),
-                    buildChoiceChip(
-                      choices[i].$1,
-                      choices[i].$2,
-                      choices[i].$3,
-                      expand: true,
+                    Icon(
+                      Icons.refresh_rounded,
+                      size: 13,
+                      color: p.inkSoft,
                     ),
-                  ],
-                ],
-              );
-            },
-          ),
-          AnimatedSize(
-            duration: EspectroMotion.medium,
-            curve: EspectroMotion.easeOut,
-            child: _picked == null
-                ? const SizedBox.shrink()
-                : Padding(
-                    padding: const EdgeInsets.only(top: 14),
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF9E8FFF).withValues(alpha: 0.11),
-                        border: const Border(
-                          left: BorderSide(
-                            color: Color(0xFF9E8FFF),
-                            width: 2.5,
-                          ),
+                    const SizedBox(width: 4),
+                    Flexible(
+                      child: Text(
+                        'Outro dilema',
+                        style: TextStyle(
+                          fontFamily: 'IBMPlexSans',
+                          fontSize: 11.5,
+                          fontWeight: FontWeight.w600,
+                          color: p.inkSoft,
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                            _insightFor(spec, _picked!),
-                            style: const TextStyle(
-                              fontSize: 12.5,
-                              height: 1.4,
-                              color: Color(0xFFF2F5FA),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            '4% concluído (1/24) · Seu Arquétipo começou a emergir',
-                            style: TextStyle(
-                              fontFamily: 'IBMPlexMono',
-                              fontSize: 9.5,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xFFEBC07A),
-                            ),
-                          ),
-                          const SizedBox(height: 6),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(999),
-                            child: Container(
-                              height: 4,
-                              color: Colors.white.withValues(alpha: 0.14),
-                              alignment: Alignment.centerLeft,
-                              child: FractionallySizedBox(
-                                widthFactor: 0.08,
-                                child: Container(
-                                  color: const Color(0xFFE5A64B),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          FilledButton.icon(
-                            onPressed: () =>
-                                widget.onStartWithAnswer(_picked!),
-                            style: FilledButton.styleFrom(
-                              backgroundColor: const Color(0xFF9E8FFF),
-                              foregroundColor: const Color(0xFF0E0A24),
-                              minimumSize: const Size(0, 40),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 14,
-                                vertical: 9,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              textStyle: const TextStyle(
-                                fontFamily: 'IBMPlexSans',
-                                fontSize: 12.5,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            icon: const Icon(
-                              Icons.play_arrow_rounded,
-                              size: 16,
-                            ),
-                            label: const Text('Continuar da pergunta 2/24 →'),
-                          ),
-                        ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            Icon(
+              AxisColors.iconFor(spec.axisId),
+              size: 13,
+              color: axisInk,
+            ),
+            const SizedBox(width: 5),
+            Flexible(
+              child: Text(
+                spec.axisTag,
+                style: TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  color: axisInk,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Text(
+          spec.statement,
+          style: TextStyle(
+            fontFamily: 'IBMPlexSans',
+            fontSize: 15,
+            fontWeight: FontWeight.w700,
+            height: 1.38,
+            color: p.ink,
+          ),
+        ),
+        const SizedBox(height: 12),
+        LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth < 300 || scale > 1.35) {
+              return Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  for (final c in choices) buildChoiceChip(c.$1, c.$2, c.$3),
+                ],
+              );
+            }
+            return Row(
+              children: [
+                for (var i = 0; i < choices.length; i++) ...[
+                  if (i > 0) const SizedBox(width: 8),
+                  buildChoiceChip(
+                    choices[i].$1,
+                    choices[i].$2,
+                    choices[i].$3,
+                    expand: true,
+                  ),
+                ],
+              ],
+            );
+          },
+        ),
+        AnimatedSize(
+          duration: MediaQuery.disableAnimationsOf(context)
+              ? Duration.zero
+              : EspectroMotion.medium,
+          curve: EspectroMotion.easeOut,
+          child: _picked == null
+              ? const SizedBox.shrink()
+              : Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+                    decoration: BoxDecoration(
+                      color: rawAxisColor.withValues(
+                        alpha: p.isDark ? 0.12 : 0.06,
+                      ),
+                      border: Border(
+                        left: BorderSide(color: axisInk, width: 2.5),
                       ),
                     ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          _insightFor(spec, _picked!),
+                          style: TextStyle(
+                            fontSize: 12.5,
+                            height: 1.4,
+                            color: p.ink,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          '4% concluído (1/24) · Seu Arquétipo começou a emergir',
+                          style: TextStyle(
+                            fontFamily: 'IBMPlexSans',
+                            fontSize: 11,
+                            fontWeight: FontWeight.w700,
+                            color: amberInk,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(999),
+                          child: Container(
+                            height: 4,
+                            color: p.line,
+                            alignment: Alignment.centerLeft,
+                            child: FractionallySizedBox(
+                              widthFactor: 0.08,
+                              child: Container(color: amberInk),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        FilledButton.icon(
+                          onPressed: () => widget.onStartWithAnswer(_picked!),
+                          style: FilledButton.styleFrom(
+                            backgroundColor: p.isDark
+                                ? const Color(0xFFE5A448)
+                                : p.accent,
+                            foregroundColor: p.isDark
+                                ? const Color(0xFF140D03)
+                                : const Color(0xFFFAF9F6),
+                            minimumSize: const Size(0, 42),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 14,
+                              vertical: 10,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            textStyle: const TextStyle(
+                              fontFamily: 'IBMPlexSans',
+                              fontSize: 12.5,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          icon: const Icon(Icons.play_arrow_rounded, size: 16),
+                          label: const Text('Continuar da pergunta 2/24 →'),
+                        ),
+                      ],
+                    ),
                   ),
-          ),
-        ],
-      ),
+                ),
+        ),
+      ],
     );
   }
 }
@@ -1594,7 +1528,7 @@ class _IdeologicalRiddleGameCardState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Eyebrow('DESAFIO DO OBSERVATÓRIO', color: p.accent),
+              Eyebrow('Desafio do observatório', color: p.accent),
               const SizedBox(height: 2),
               Text(
                 'Quem pensa assim?',
@@ -1693,10 +1627,9 @@ class _IdeologicalRiddleGameCardState
           ),
           const SizedBox(height: 14),
           Container(
-            padding: const EdgeInsets.all(14),
+            padding: const EdgeInsets.fromLTRB(14, 4, 4, 4),
             decoration: BoxDecoration(
-              color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.55 : 0.68),
-              borderRadius: BorderRadius.circular(12),
+              border: Border(left: BorderSide(color: p.accent, width: 2.5)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1704,9 +1637,12 @@ class _IdeologicalRiddleGameCardState
                 Text(
                   'Enigma ${_riddleIndex + 1} de ${_riddles.length}',
                   style: TextStyle(
-                    fontFamily: 'IBMPlexMono',
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
+                    fontFamily: 'IBMPlexSans',
+                    fontSize: 11.5,
+                    fontWeight: FontWeight.w600,
+                    fontFeatures: const <FontFeature>[
+                      FontFeature.tabularFigures(),
+                    ],
                     color: p.muted,
                   ),
                 ),
@@ -1724,12 +1660,12 @@ class _IdeologicalRiddleGameCardState
                 if (subject != null && subject.axes.isNotEmpty) ...[
                   const SizedBox(height: 12),
                   Text(
-                    'ASSINATURA REAL NOS 12 EIXOS',
+                    'Assinatura real nos 12 eixos',
                     style: TextStyle(
-                      fontFamily: 'IBMPlexMono',
-                      fontSize: 9,
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 11,
                       fontWeight: FontWeight.w700,
-                      color: p.muted,
+                      color: p.inkSoft,
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -1877,7 +1813,7 @@ class _IdeologicalRiddleGameCardState
                       ),
                       TextButton(
                         onPressed: widget.onStartExpress,
-                        child: const Text('Qual é a sua assinatura? →'),
+                        child: const Text('Descobrir sua assinatura'),
                       ),
                     ],
                   ),
@@ -1921,7 +1857,7 @@ class _ObservatoryPassportCard extends StatelessWidget {
     final bool hasCompare = appViewModel.studyComparison.length >= 2;
 
     final List<(String label, bool done, VoidCallback onTap)> missions = [
-      ('Mapear 12 Eixos / Expresso', hasAnyTest, onStartExpress),
+      ('Mapear 12 Eixos / Expressa', hasAnyTest, onStartExpress),
       ('Dominar as 6 Tríades', hasTriads, onStartTriads),
       ('Investigar o Atlas (3+ fichas)', hasAtlasExploration, onOpenAtlas),
       ('Duelo no Comparador', hasCompare, onOpenCompare),
@@ -1929,10 +1865,10 @@ class _ObservatoryPassportCard extends StatelessWidget {
 
     final int completedCount = missions.where((m) => m.$2).length;
     final String levelTitle = switch (completedCount) {
-      0 => 'Nível 1 · Visitante Curioso',
-      1 => 'Nível 2 · Analista de Campo',
-      2 || 3 => 'Nível 3 · Cartógrafo Político',
-      _ => 'Nível 4 · Mestre do Observatório',
+      0 => 'Etapa 1 — Exploração inicial',
+      1 => 'Etapa 2 — Leitura em eixos',
+      2 || 3 => 'Etapa 3 — Cartografia comparada',
+      _ => 'Etapa 4 — Acervo completo',
     };
     // Efeito Progresso Dotado: começa visualmente em 15% para convidar à próxima conquista.
     final double progress = ((completedCount + 0.6) / 4.6).clamp(0.13, 1.0);
@@ -1952,7 +1888,7 @@ class _ObservatoryPassportCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Eyebrow('PASSAPORTE DO CARTÓGRAFO', color: p.accent),
+                  Eyebrow('Caderno de campo', color: p.accent),
                   const SizedBox(height: 3),
                   Text(
                     levelTitle,
@@ -2090,209 +2026,239 @@ class _LatestEvaluationBentoCard extends StatelessWidget {
     );
     final int coveragePct = (record.quality.coverage * 100).round();
 
-    return SectionCard(
-      padding: EdgeInsets.zero,
-      borderColor: accentColor.withValues(alpha: p.isDark ? 0.36 : 0.28),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(17),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+    void openShare() => ShareableCardSheet.show(
+      context,
+      record: record,
+      appViewModel: appViewModel,
+    );
+
+    final Widget detailsColumn = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Wrap(
+          alignment: WrapAlignment.spaceBetween,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: 10,
+          runSpacing: 6,
           children: [
-            Container(height: 3.5, color: accentColor),
-            Padding(
-              padding: const EdgeInsets.all(18),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Wrap(
-                    alignment: WrapAlignment.spaceBetween,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    spacing: 10,
-                    runSpacing: 6,
-                    children: [
-                      Eyebrow('SEU ÚLTIMO RETRATO', color: accentInk),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 9,
-                          vertical: 4,
-                        ),
-                        decoration: BoxDecoration(
-                          color: p.surfaceMuted,
-                          borderRadius: BorderRadius.circular(999),
-                          border: Border.all(color: p.line),
-                        ),
-                        child: Text(
-                          '${record.suite.title} · ${record.depth.label}',
-                          style: TextStyle(
-                            fontFamily: 'IBMPlexMono',
-                            fontSize: 10,
-                            fontWeight: FontWeight.w600,
-                            color: p.inkSoft,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              topMatch != null
-                                  ? topMatch.current.name
-                                  : record.displayTitle,
-                              style: Theme.of(context).textTheme.titleLarge
-                                  ?.copyWith(
-                                    fontWeight: FontWeight.w800,
-                                    color: p.ink,
-                                  ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              topMatch != null
-                                  ? topMatch.current.summary
-                                  : '${record.quality.totalAnswered} respostas registradas ($coveragePct% cobertura).',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 13,
-                                height: 1.4,
-                                color: p.inkSoft,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      if (topMatch != null) ...[
-                        const SizedBox(width: 14),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: accentColor.withValues(
-                              alpha: p.isDark ? 0.18 : 0.10,
-                            ),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: accentColor.withValues(alpha: 0.45),
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                '${topMatch.compatibilityPercent.round()}%',
-                                style: TextStyle(
-                                  fontFamily: 'IBMPlexMono',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w800,
-                                  color: accentInk,
-                                ),
-                              ),
-                              Text(
-                                'afinidade',
-                                style: TextStyle(
-                                  fontFamily: 'IBMPlexMono',
-                                  fontSize: 9.5,
-                                  fontWeight: FontWeight.w600,
-                                  color: p.muted,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ],
-                  ),
-                  if (topTraits.isNotEmpty) ...[
-                    const SizedBox(height: 12),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 6,
-                      children: [
-                        for (final _DominantAxisReading t in topTraits)
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 9,
-                              vertical: 5,
-                            ),
-                            decoration: BoxDecoration(
-                              color: t.dominantColor.withValues(
-                                alpha: p.isDark ? 0.14 : 0.08,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: t.dominantColor.withValues(alpha: 0.35),
-                              ),
-                            ),
-                            child: Text(
-                              '${t.axisLabel}: ${t.dominantPole} ${t.percent}%',
-                              style: TextStyle(
-                                fontFamily: 'IBMPlexMono',
-                                fontSize: 10.5,
-                                fontWeight: FontWeight.w600,
-                                color: p.ink,
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                  ],
-                  const SizedBox(height: 14),
-                  Wrap(
-                    spacing: 10,
-                    runSpacing: 8,
-                    children: [
-                      FilledButton(
-                        onPressed: onOpenResult,
-                        child: const _SafeButtonContent(
-                          icon: Icons.insights_rounded,
-                          iconSize: 17,
-                          label: 'Abrir diagnóstico',
-                        ),
-                      ),
-                      if (topMatch != null)
-                        OutlinedButton(
-                          onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute<void>(
-                              builder: (_) => StudyComparisonScreen(
-                                appViewModel: appViewModel,
-                                initialKeys: [
-                                  'evaluation:${record.id}',
-                                  'current:${topMatch.current.id}',
-                                ],
-                              ),
-                            ),
-                          ),
-                          child: const _SafeButtonContent(
-                            icon: Icons.compare_arrows_rounded,
-                            iconSize: 17,
-                            label: 'Comparar perfil',
-                          ),
-                        ),
-                      TextButton(
-                        onPressed: onOpenHistory,
-                        child: _SafeButtonContent(
-                          icon: Icons.history_rounded,
-                          iconSize: 17,
-                          label:
-                              'Ver histórico (${appViewModel.history.length})',
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+            Eyebrow('Seu último retrato', color: accentInk),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+              decoration: BoxDecoration(
+                color: p.surfaceMuted,
+                borderRadius: BorderRadius.circular(999),
+                border: Border.all(color: p.line),
+              ),
+              child: Text(
+                '${record.suite.title} · ${record.depth.label}',
+                style: TextStyle(
+                  fontFamily: 'IBMPlexMono',
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                  color: p.inkSoft,
+                ),
               ),
             ),
           ],
         ),
-      ),
+        const SizedBox(height: 12),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    topMatch != null
+                        ? topMatch.current.name
+                        : record.displayTitle,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w800,
+                      color: p.ink,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    topMatch != null
+                        ? topMatch.current.summary
+                        : '${record.quality.totalAnswered} respostas registradas ($coveragePct% cobertura).',
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 13,
+                      height: 1.4,
+                      color: p.inkSoft,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (topMatch != null) ...[
+              const SizedBox(width: 14),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: accentColor.withValues(alpha: p.isDark ? 0.18 : 0.10),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: accentColor.withValues(alpha: 0.45)),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          MetricPresentation.formatPercent(
+                            topMatch.compatibilityPercent,
+                          ),
+                          style: TextStyle(
+                            fontFamily: 'IBMPlexMono',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w800,
+                            fontFeatures: const [FontFeature.tabularFigures()],
+                            color: accentInk,
+                          ),
+                        ),
+                        const SizedBox(width: 2),
+                        const MetricInfoBadge(
+                          tooltip: MetricPresentation.currentConvergenceTooltip,
+                          semanticLabel:
+                              'Explicação sobre convergência com a corrente',
+                          size: 13,
+                        ),
+                      ],
+                    ),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 112),
+                      child: Text(
+                        'convergência com a corrente',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'IBMPlexMono',
+                          fontSize: 9.5,
+                          fontWeight: FontWeight.w600,
+                          color: p.muted,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ],
+        ),
+        if (topTraits.isNotEmpty) ...[
+          const SizedBox(height: 12),
+          Wrap(
+            spacing: 8,
+            runSpacing: 6,
+            children: [
+              for (final _DominantAxisReading t in topTraits)
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 9,
+                    vertical: 5,
+                  ),
+                  decoration: BoxDecoration(
+                    color: t.dominantColor.withValues(
+                      alpha: p.isDark ? 0.14 : 0.08,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: t.dominantColor.withValues(alpha: 0.35),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        AxisColors.iconFor(t.axisId),
+                        size: 12,
+                        color: AxisColors.readableInk(
+                          t.dominantColor,
+                          isDark: p.isDark,
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Flexible(
+                        child: Text(
+                          '${t.axisLabel}: ${t.dominantPole} ${t.percent}%',
+                          style: TextStyle(
+                            fontFamily: 'IBMPlexMono',
+                            fontSize: 10.5,
+                            fontWeight: FontWeight.w600,
+                            color: p.ink,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        ],
+        const SizedBox(height: 16),
+        Wrap(
+          spacing: 10,
+          runSpacing: 8,
+          children: [
+            FilledButton(
+              onPressed: onOpenResult,
+              child: const _SafeButtonContent(
+                icon: Icons.insights_rounded,
+                iconSize: 17,
+                label: 'Abrir diagnóstico',
+              ),
+            ),
+            OutlinedButton(
+              onPressed: openShare,
+              child: const _SafeButtonContent(
+                icon: Icons.share_rounded,
+                iconSize: 17,
+                label: 'Compartilhar cartão',
+              ),
+            ),
+            if (topMatch != null)
+              OutlinedButton(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => StudyComparisonScreen(
+                      appViewModel: appViewModel,
+                      initialKeys: [
+                        'evaluation:${record.id}',
+                        'current:${topMatch.current.id}',
+                      ],
+                    ),
+                  ),
+                ),
+                child: const _SafeButtonContent(
+                  icon: Icons.compare_arrows_rounded,
+                  iconSize: 17,
+                  label: 'Comparar perfil',
+                ),
+              ),
+            TextButton(
+              onPressed: onOpenHistory,
+              child: _SafeButtonContent(
+                icon: Icons.history_rounded,
+                iconSize: 17,
+                label: 'Ver histórico (${appViewModel.history.length})',
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+
+    return SectionCard(
+      padding: const EdgeInsets.all(22),
+      borderColor: accentColor.withValues(alpha: p.isDark ? 0.36 : 0.28),
+      child: detailsColumn,
     );
   }
 }
@@ -2486,7 +2452,7 @@ class _DraftResumeCard extends StatelessWidget {
                 color: p.accent,
               ),
               const SizedBox(width: 8),
-              Expanded(child: Eyebrow('Sessão em andamento', color: p.accent)),
+              Expanded(child: Eyebrow('SESSÃO EM ANDAMENTO', color: p.accent)),
               Text(
                 '$done / $total',
                 style: text.labelSmall?.copyWith(color: p.accent),
@@ -2599,19 +2565,10 @@ class _FigmaShortcutRowState extends State<_FigmaShortcutRow> {
               ),
               child: Row(
                 children: <Widget>[
-                  Container(
-                    width: 38,
-                    height: 38,
-                    decoration: BoxDecoration(
-                      color: widget.iconBg,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Icon(
-                      widget.icon,
-                      size: 19,
-                      color: widget.iconColor,
-                    ),
+                  Icon(
+                    widget.icon,
+                    size: 19,
+                    color: _isHovered ? p.accent : p.inkSoft,
                   ),
                   const SizedBox(width: 14),
                   Expanded(
@@ -2699,7 +2656,7 @@ class _HomeFeaturedSpotlight extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Eyebrow('DESTAQUES DO OBSERVATÓRIO', color: p.accent),
+                Eyebrow('Destaques do observatório', color: p.accent),
                 const SizedBox(height: 4),
                 Text(
                   'Personalidades em Evidência',
@@ -2787,9 +2744,10 @@ class _SpotlightCardState extends State<_SpotlightCard> {
     final accentColor = spectrum?.color ?? p.accent;
     final Color accentInk = spectrum?.ink(p.isDark) ?? accentColor;
     final double scaleFactor = MediaQuery.textScalerOf(context).scale(16) / 16.0;
+    final bool reduceMotion = MediaQuery.disableAnimationsOf(context);
     final double cardHeight = math.max(
-      274.0,
-      182.0 + scaleFactor * 92.0,
+      288.0,
+      186.0 + scaleFactor * 102.0,
     );
     final String? assetPath = _resolvePortraitAsset(subject, widget.portrait);
     final List<_DominantAxisReading> traits = _extractDominantTraits(
@@ -2835,9 +2793,12 @@ class _SpotlightCardState extends State<_SpotlightCard> {
       child: TactilePress(
         scale: 0.975,
         child: AnimatedContainer(
-          duration: EspectroMotion.fast,
+          duration: reduceMotion ? Duration.zero : EspectroMotion.fast,
           curve: EspectroMotion.easeOut,
-          width: 216,
+          transform: (!reduceMotion && _isHovered)
+              ? Matrix4.translationValues(0, -2, 0)
+              : Matrix4.identity(),
+          width: 224,
           height: cardHeight,
           clipBehavior: Clip.antiAlias,
           decoration: EspectroElevation.cardDecoration(
@@ -2870,16 +2831,23 @@ class _SpotlightCardState extends State<_SpotlightCard> {
                     child: Stack(
                       fit: StackFit.expand,
                       children: [
-                        if (assetPath != null)
-                          Image.asset(
-                            assetPath,
-                            fit: BoxFit.cover,
-                            alignment: const Alignment(0, -0.45),
-                            excludeFromSemantics: true,
-                            errorBuilder: (_, _, _) => portraitFallback,
-                          )
-                        else
-                          portraitFallback,
+                        ClipRect(
+                          child: AnimatedScale(
+                            scale: (!reduceMotion && _isHovered) ? 1.03 : 1.0,
+                            duration: reduceMotion
+                                ? Duration.zero
+                                : EspectroMotion.fast,
+                            curve: EspectroMotion.easeOut,
+                            child: assetPath != null
+                                ? buildResilientAssetImage(
+                                    assetPath,
+                                    fit: BoxFit.cover,
+                                    alignment: const Alignment(0, -0.45),
+                                    fallback: portraitFallback,
+                                  )
+                                : portraitFallback,
+                          ),
+                        ),
                         DecoratedBox(
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
@@ -2918,13 +2886,12 @@ class _SpotlightCardState extends State<_SpotlightCard> {
                                 ),
                               ),
                               child: Text(
-                                spectrum.name.toUpperCase(),
+                                spectrum.name,
                                 style: const TextStyle(
-                                  fontFamily: 'IBMPlexMono',
-                                  fontSize: 8.5,
+                                  fontFamily: 'IBMPlexSans',
+                                  fontSize: 10.5,
                                   fontWeight: FontWeight.w700,
                                   color: Colors.white,
-                                  letterSpacing: 0.5,
                                 ),
                               ),
                             ),
@@ -2953,7 +2920,7 @@ class _SpotlightCardState extends State<_SpotlightCard> {
                           const SizedBox(height: 3),
                           Text(
                             subject.subtitle,
-                            maxLines: 2,
+                            maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: 11.5,
@@ -2973,38 +2940,62 @@ class _SpotlightCardState extends State<_SpotlightCard> {
                                   alpha: p.isDark ? 0.16 : 0.08,
                                 ),
                                 borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Text(
-                                '${topTrait.axisLabel}: ${topTrait.dominantPole} ${topTrait.percent}%',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontFamily: 'IBMPlexMono',
-                                  fontSize: 9.5,
-                                  fontWeight: FontWeight.w700,
-                                  color: p.ink,
+                                border: Border.all(
+                                  color: topTrait.dominantColor.withValues(
+                                    alpha: p.isDark ? 0.36 : 0.25,
+                                  ),
                                 ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    AxisColors.iconFor(topTrait.axisId),
+                                    size: 11,
+                                    color: AxisColors.readableInk(
+                                      topTrait.dominantColor,
+                                      isDark: p.isDark,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Flexible(
+                                    child: Text(
+                                      '${topTrait.dominantPole} · ${topTrait.percent}%',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontFamily: 'IBMPlexSans',
+                                        fontSize: 10.5,
+                                        fontWeight: FontWeight.w700,
+                                        color: p.ink,
+                                        fontFeatures: const <FontFeature>[
+                                          FontFeature.tabularFigures(),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
-                          const Spacer(),
-                          if (subject.axes.isNotEmpty) ...[
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Flexible(
-                                  child: Text(
-                                    'DNA 12 EIXOS',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontFamily: 'IBMPlexMono',
-                                      fontSize: 8.5,
-                                      fontWeight: FontWeight.w700,
-                                      color: p.muted,
+                            const Spacer(),
+                            if (subject.axes.isNotEmpty) ...[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      'DNA 12 eixos',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontFamily: 'IBMPlexSans',
+                                        fontSize: 10.5,
+                                        fontWeight: FontWeight.w600,
+                                        color: p.muted,
+                                      ),
                                     ),
                                   ),
-                                ),
                                 Icon(
                                   Icons.arrow_forward_rounded,
                                   size: 13,
@@ -3044,7 +3035,8 @@ class _HomeTwelveAxesShowcase extends StatelessWidget {
     final List<_AxisMetaInfo> axisInfos = _resolveAxisInfos(axesMeta);
     final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
 
-    return SectionCard(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -3057,8 +3049,16 @@ class _HomeTwelveAxesShowcase extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Eyebrow('FRAMEWORK DE ANÁLISE', color: p.accent),
-                  const SizedBox(height: 6),
+                  Text(
+                    'Framework de análise',
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: p.accent,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
                   Text(
                     'Os 12 Eixos do Espectro',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -3085,7 +3085,7 @@ class _HomeTwelveAxesShowcase extends StatelessWidget {
           const SizedBox(height: 16),
           LayoutBuilder(
             builder: (context, constraints) {
-              const double gap = 10;
+              const double gap = 12;
               final int cols = scale > 1.35 || constraints.maxWidth < 460
                   ? 1
                   : (constraints.maxWidth >= 780 ? 3 : 2);
@@ -3140,6 +3140,20 @@ class _AxisInstrumentTileState extends State<_AxisInstrumentTile> {
     final p = context.palette;
     final info = widget.info;
     final String idxText = widget.index.toString().padLeft(2, '0');
+    final AxisColorStrategy colorStrategy = AxisColorStrategyScope.of(context);
+    final bool primaryMode = colorStrategy == AxisColorStrategy.primaryAnchor;
+    final Color anchorColor = AxisColors.primaryFor(info.id, p);
+    final Color leftDisplayColor = primaryMode ? anchorColor : info.leftColor;
+    final Color rightDisplayColor = primaryMode
+        ? p.muted.withValues(alpha: p.isDark ? 0.50 : 0.42)
+        : info.rightColor;
+    final Color leftInk = AxisColors.readableInk(
+      leftDisplayColor,
+      isDark: p.isDark,
+    );
+    final Color rightInk = primaryMode
+        ? p.inkSoft
+        : AxisColors.readableInk(info.rightColor, isDark: p.isDark);
 
     return MouseRegion(
       onEnter: (_) => setState(() => _hovered = true),
@@ -3155,15 +3169,17 @@ class _AxisInstrumentTileState extends State<_AxisInstrumentTile> {
             decoration: BoxDecoration(
               color: _hovered
                   ? Color.alphaBlend(
-                      p.accent.withValues(alpha: p.isDark ? 0.10 : 0.05),
+                      leftDisplayColor.withValues(alpha: p.isDark ? 0.14 : 0.08),
                       p.surface,
                     )
-                  : p.surfaceMuted.withValues(alpha: p.isDark ? 0.55 : 0.65),
+                  : p.surfaceMuted.withValues(alpha: p.isDark ? 0.58 : 0.68),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: _hovered
-                    ? p.accent.withValues(alpha: 0.45)
-                    : p.line.withValues(alpha: 0.55),
+                    ? leftInk.withValues(alpha: 0.65)
+                    : leftDisplayColor.withValues(
+                        alpha: p.isDark ? 0.28 : 0.22,
+                      ),
                 width: 1.0,
               ),
             ),
@@ -3175,8 +3191,8 @@ class _AxisInstrumentTileState extends State<_AxisInstrumentTile> {
                 borderRadius: BorderRadius.circular(12),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 10,
+                    horizontal: 13,
+                    vertical: 11,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -3184,6 +3200,12 @@ class _AxisInstrumentTileState extends State<_AxisInstrumentTile> {
                     children: [
                       Row(
                         children: [
+                          Icon(
+                            AxisColors.iconFor(info.id),
+                            size: 13,
+                            color: leftInk,
+                          ),
+                          const SizedBox(width: 5),
                           Text(
                             idxText,
                             style: TextStyle(
@@ -3210,11 +3232,11 @@ class _AxisInstrumentTileState extends State<_AxisInstrumentTile> {
                           Icon(
                             Icons.arrow_outward_rounded,
                             size: 13,
-                            color: _hovered ? p.accent : p.muted,
+                            color: _hovered ? leftInk : p.muted,
                           ),
                         ],
                       ),
-                      const SizedBox(height: 7),
+                      const SizedBox(height: 8),
                       Row(
                         children: [
                           Expanded(
@@ -3224,9 +3246,9 @@ class _AxisInstrumentTileState extends State<_AxisInstrumentTile> {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontFamily: 'IBMPlexMono',
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600,
-                                color: p.inkSoft,
+                                fontSize: 10.5,
+                                fontWeight: FontWeight.w700,
+                                color: leftInk,
                               ),
                             ),
                           ),
@@ -3239,36 +3261,39 @@ class _AxisInstrumentTileState extends State<_AxisInstrumentTile> {
                               textAlign: TextAlign.end,
                               style: TextStyle(
                                 fontFamily: 'IBMPlexMono',
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600,
-                                color: p.inkSoft,
+                                fontSize: 10.5,
+                                fontWeight: FontWeight.w700,
+                                color: rightInk,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 5),
+                      const SizedBox(height: 6),
                       SizedBox(
-                        height: 3,
+                        height: 5,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(999),
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Expanded(
                                 child: ColoredBox(
-                                  color: p.accent.withValues(
-                                    alpha: p.isDark ? 0.45 : 0.35,
+                                  color: leftDisplayColor.withValues(
+                                    alpha: p.isDark ? 0.90 : 0.85,
                                   ),
                                 ),
                               ),
                               Container(
-                                width: 2,
+                                width: 2.5,
                                 color: p.surface,
                               ),
                               Expanded(
                                 child: ColoredBox(
-                                  color: p.muted.withValues(
-                                    alpha: p.isDark ? 0.35 : 0.25,
+                                  color: rightDisplayColor.withValues(
+                                    alpha: primaryMode
+                                        ? 1.0
+                                        : (p.isDark ? 0.90 : 0.85),
                                   ),
                                 ),
                               ),
@@ -3288,8 +3313,8 @@ class _AxisInstrumentTileState extends State<_AxisInstrumentTile> {
   }
 }
 
-/// Prévia interativa dentro do Hero mostrando como o motor mapeia perfis reais
-/// em 12 eixos, dando ao visitante uma amostra tangível antes de iniciar o teste.
+/// Carrossel editorial na Home destacando 1 cartão compartilhável grande por
+/// vez entre 4 pensadores clássicos, com alternância Post 1:1 / Story 9:16.
 class _HeroLiveSpectrumShowcase extends StatefulWidget {
   const _HeroLiveSpectrumShowcase({
     required this.catalog,
@@ -3299,7 +3324,7 @@ class _HeroLiveSpectrumShowcase extends StatefulWidget {
     required this.onStartQuiz,
     required this.onOpenSubject,
     this.latestRecord,
-    this.onCompareWithRecord,
+    this.onOpenShareSheet,
   });
 
   final StudyCatalog catalog;
@@ -3309,7 +3334,7 @@ class _HeroLiveSpectrumShowcase extends StatefulWidget {
   final VoidCallback onStartQuiz;
   final void Function(String key) onOpenSubject;
   final EvaluationRecord? latestRecord;
-  final ValueChanged<String>? onCompareWithRecord;
+  final VoidCallback? onOpenShareSheet;
 
   @override
   State<_HeroLiveSpectrumShowcase> createState() =>
@@ -3317,119 +3342,247 @@ class _HeroLiveSpectrumShowcase extends StatefulWidget {
 }
 
 class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
-  static const List<(String key, String shortName)> _presets = [
-    ('personality:hannah_arendt', 'Arendt'),
-    ('personality:karl_marx', 'Marx'),
-    ('personality:murray_rothbard', 'Rothbard'),
-    ('personality:john_maynard_keynes', 'Keynes'),
-    ('personality:friedrich_hayek', 'Hayek'),
-  ];
-
-  static const List<(String id, String label)> _radarAxes = [
-    ('estrutura', 'EST'),
-    ('representacao', 'REP'),
-    ('poder', 'POD'),
-    ('imigracao', 'IMI'),
-    ('diplomacia', 'DIP'),
-    ('intervencao', 'INT'),
-    ('economia', 'ECO'),
-    ('controle', 'CON'),
-    ('comercio', 'COM'),
-    ('religiao', 'REL'),
-    ('moral', 'MOR'),
-    ('tecnologia', 'TEC'),
+  static const List<(String key, String label)> _presets = [
+    ('personality:hannah_arendt', 'Hannah Arendt'),
+    ('personality:karl_marx', 'Karl Marx'),
+    ('personality:murray_rothbard', 'Murray Rothbard'),
+    ('personality:john_maynard_keynes', 'John Maynard Keynes'),
   ];
 
   int _selected = 0;
+  int _direction = 1;
+  bool _previewStory = false;
+  bool _hovered = false;
+  bool _focused = false;
+  bool _userPaused = false;
+  bool _timerStarted = false;
+  Timer? _autoTimer;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_timerStarted) {
+      _timerStarted = true;
+      _scheduleAutoAdvance();
+    }
+  }
+
+  @override
+  void dispose() {
+    _autoTimer?.cancel();
+    _autoTimer = null;
+    super.dispose();
+  }
+
+  void _scheduleAutoAdvance() {
+    _autoTimer?.cancel();
+    _autoTimer = null;
+    if (!mounted || _userPaused || _hovered || _focused) return;
+    if (MediaQuery.disableAnimationsOf(context)) return;
+    _autoTimer = Timer(const Duration(seconds: 5), () {
+      if (!mounted || _userPaused || _hovered || _focused) return;
+      setState(() {
+        _direction = 1;
+        _selected = (_selected + 1) % _presets.length;
+      });
+      _scheduleAutoAdvance();
+    });
+  }
+
+  void _step(int delta, int count) {
+    if (count <= 1) return;
+    setState(() {
+      _direction = delta >= 0 ? 1 : -1;
+      _selected = (_selected + delta + count) % count;
+    });
+    _scheduleAutoAdvance();
+  }
+
+  void _jumpTo(int index) {
+    if (index == _selected) return;
+    setState(() {
+      _direction = index > _selected ? 1 : -1;
+      _selected = index;
+    });
+    _scheduleAutoAdvance();
+  }
+
+  void _togglePause() {
+    setState(() => _userPaused = !_userPaused);
+    if (_userPaused) {
+      _autoTimer?.cancel();
+      _autoTimer = null;
+    } else {
+      _scheduleAutoAdvance();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final p = context.palette;
-    final List<StudySubject> subjects = [
-      for (final (key, _) in _presets) ?widget.catalog.find(key),
+    final List<(StudySubject subject, String label)> exemplars = [
+      for (final (String key, String label) in _presets)
+        if (widget.catalog.find(key) case final StudySubject s) (s, label),
     ];
-    if (subjects.isEmpty) return const SizedBox.shrink();
-    final int safeIndex = _selected.clamp(0, subjects.length - 1);
-    final StudySubject subject = subjects[safeIndex];
-    final StudySpectrum? spectrum = spectrumOf(subject);
-    final Color accent = spectrum?.color ?? p.accent;
-    final Color accentInk = spectrum?.ink(p.isDark) ?? accent;
-    final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
-    final bool compactView = widget.compact || scale > 1.35;
+    if (exemplars.isEmpty) return const SizedBox.shrink();
 
-    final List<_AxisMetaInfo> axisInfos = _resolveAxisInfos(widget.axesMeta);
-    final List<_DominantAxisReading> topTraits = _extractDominantTraits(
-      subject.axes,
-      axisInfos,
-      limit: 2,
+    final int count = exemplars.length;
+    final int safeIndex = _selected.clamp(0, count - 1);
+    final StudySubject subject = exemplars[safeIndex].$1;
+    final String activeLabel = exemplars[safeIndex].$2;
+    final StudySpectrum? spectrum = spectrumOf(subject);
+    final Color activeInk = spectrum?.ink(p.isDark) ?? p.accent;
+    final Color activeDot = spectrum?.color ?? p.accent;
+    final bool reduceMotion = MediaQuery.disableAnimationsOf(context);
+    final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
+    final bool compactLayout = widget.compact || scale > 1.35;
+    final String cardKey = '${subject.key}:$_previewStory';
+
+    Widget formatPill(bool isStory, String label) {
+      final bool active = _previewStory == isStory;
+      final Color toggleAccent =
+          p.isDark ? const Color(0xFFE5A64B) : p.accent;
+      return InkWell(
+        onTap: () => setState(() => _previewStory = isStory),
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(
+            color: active
+                ? toggleAccent.withValues(alpha: p.isDark ? 0.18 : 0.10)
+                : p.surfaceMuted.withValues(alpha: 0.7),
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: active ? toggleAccent : p.line,
+              width: active ? 1.25 : 1.0,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                label,
+                style: TextStyle(
+                  fontFamily: 'IBMPlexSans',
+                  fontSize: 12,
+                  fontWeight: active ? FontWeight.w700 : FontWeight.w600,
+                  color: active ? p.ink : p.inkSoft,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget navCircleButton({
+      required IconData icon,
+      required String tooltip,
+      required VoidCallback onPressed,
+    }) {
+      return Tooltip(
+        message: tooltip,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(999),
+          child: Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(
+              color: p.surfaceMuted.withValues(alpha: p.isDark ? 0.72 : 0.85),
+              shape: BoxShape.circle,
+              border: Border.all(color: p.line),
+            ),
+            child: Icon(icon, size: 22, color: p.ink),
+          ),
+        ),
+      );
+    }
+
+    final Widget specimenCard = HomeShareCardSpecimen(
+      subject: subject,
+      portrait: widget.portraits[subject.key],
+      axesMeta: widget.axesMeta,
+      storyFormat: _previewStory,
+      compact: false,
+      badgeLabel: _previewStory ? 'Story 9:16' : 'Post 1:1',
+      footerCtaLabel:
+          widget.latestRecord != null ? 'Abrir meu cartão' : 'Gerar meu cartão',
+      onTapCard: () => widget.onOpenSubject(subject.key),
+      onPrimaryAction:
+          widget.latestRecord != null && widget.onOpenShareSheet != null
+          ? widget.onOpenShareSheet
+          : widget.onStartQuiz,
     );
 
-    final List<double> values = [
-      for (final (id, _) in _radarAxes)
-        ((subject.axes[id] ?? 0.0).clamp(-1.0, 1.0) + 1.0) / 2.0,
-    ];
+    final Widget animatedSpecimen = AnimatedSwitcher(
+      duration: reduceMotion
+          ? Duration.zero
+          : const Duration(milliseconds: 260),
+      switchInCurve: EspectroMotion.easeOut,
+      switchOutCurve: EspectroMotion.easeOut,
+      layoutBuilder: (Widget? currentChild, List<Widget> previousChildren) {
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            ...previousChildren,
+            ?currentChild,
+          ],
+        );
+      },
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        if (reduceMotion) return child;
+        final bool isIncoming = child.key == ValueKey<String>(cardKey);
+        final Offset begin = isIncoming
+            ? Offset(0.06 * _direction, 0)
+            : Offset(-0.04 * _direction, 0);
+        final Animation<Offset> slide = Tween<Offset>(
+          begin: begin,
+          end: Offset.zero,
+        ).animate(
+          CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
+        );
+        return FadeTransition(
+          opacity: CurvedAnimation(parent: animation, curve: Curves.easeOut),
+          child: SlideTransition(position: slide, child: child),
+        );
+      },
+      child: KeyedSubtree(
+        key: ValueKey<String>(cardKey),
+        child: specimenCard,
+      ),
+    );
 
-    final Color panelBorder = p.isDark
-        ? Colors.white.withValues(alpha: 0.10)
-        : p.line.withValues(alpha: 0.65);
-
-    final Widget switcherPills = Wrap(
-      spacing: 6,
-      runSpacing: 6,
+    final Widget dotsRow = Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        for (int i = 0; i < subjects.length; i++)
+        for (int i = 0; i < count; i++)
           () {
             final bool isActive = i == safeIndex;
             final Color itemColor =
-                spectrumOf(subjects[i])?.color ?? p.accent;
-            final Color itemInk =
-                spectrumOf(subjects[i])?.ink(p.isDark) ?? itemColor;
-            return Material(
-              color: Colors.transparent,
+                spectrumOf(exemplars[i].$1)?.color ?? activeDot;
+            return Tooltip(
+              message: exemplars[i].$2,
               child: InkWell(
-                onTap: () => setState(() => _selected = i),
+                onTap: () => _jumpTo(i),
                 borderRadius: BorderRadius.circular(999),
-                child: AnimatedContainer(
-                  duration: EspectroMotion.fast,
-                  curve: EspectroMotion.easeOut,
-                  padding: const EdgeInsets.fromLTRB(5, 4, 10, 4),
-                  decoration: BoxDecoration(
-                    color: isActive
-                        ? itemColor.withValues(alpha: p.isDark ? 0.24 : 0.13)
-                        : p.surface.withValues(alpha: p.isDark ? 0.08 : 0.85),
-                    borderRadius: BorderRadius.circular(999),
-                    border: Border.all(
-                      color: isActive
-                          ? itemColor.withValues(alpha: 0.85)
-                          : panelBorder,
-                      width: isActive ? 1.3 : 1.0,
+                child: SizedBox(
+                  width: isActive ? 34 : 28,
+                  height: 44,
+                  child: Center(
+                    child: AnimatedContainer(
+                      duration: reduceMotion
+                          ? Duration.zero
+                          : EspectroMotion.fast,
+                      width: isActive ? 22 : 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        color: isActive
+                            ? itemColor
+                            : p.line.withValues(alpha: p.isDark ? 0.85 : 0.9),
+                        borderRadius: BorderRadius.circular(999),
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      _SubjectAvatarMini(
-                        subject: subjects[i],
-                        portrait: widget.portraits[subjects[i].key],
-                        accent: itemColor,
-                        size: 20,
-                      ),
-                      const SizedBox(width: 6),
-                      Flexible(
-                        child: Text(
-                          _presets[i].$2,
-                          style: TextStyle(
-                            fontFamily: 'IBMPlexSans',
-                            fontSize: 11.5,
-                            fontWeight:
-                                isActive ? FontWeight.w700 : FontWeight.w600,
-                            color: isActive
-                                ? (p.isDark ? Colors.white : itemInk)
-                                : p.inkSoft,
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ),
@@ -3438,409 +3591,176 @@ class _HeroLiveSpectrumShowcaseState extends State<_HeroLiveSpectrumShowcase> {
       ],
     );
 
-    final double radarSize = compactView ? 140 : 176;
-    final Widget radarWidget = SizedBox(
-      width: radarSize,
-      height: radarSize,
-      child: CustomPaint(
-        painter: _HeroMiniRadarPainter(
-          values: values,
-          accent: accent,
-          showLabels: scale <= 1.35,
-          labels: [for (final (_, lbl) in _radarAxes) lbl],
-          gridColor: p.isDark
-              ? Colors.white.withValues(alpha: 0.14)
-              : p.ink.withValues(alpha: 0.12),
-          labelColor: p.muted,
-          centerDotColor: p.isDark ? Colors.white : p.surface,
-        ),
-      ),
-    );
-
-    final double? realAffinityPct;
-    if (widget.latestRecord != null && subject.entry != null) {
-      final List<AtlasMatchResult> ranked = EspectroAtlasEngine.rankEntries(
-        entries: <AtlasEntry>[subject.entry!],
-        axes: widget.latestRecord!.axes,
-        triads: widget.latestRecord!.triads,
-      );
-      realAffinityPct = ranked.firstOrNull?.compatibilityPercent;
-    } else {
-      realAffinityPct = null;
-    }
-
-    final Widget curiosityTrigger = InkWell(
-      onTap: realAffinityPct != null && widget.onCompareWithRecord != null
-          ? () => widget.onCompareWithRecord!(subject.key)
-          : widget.onStartQuiz,
-      borderRadius: BorderRadius.circular(10),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 8),
-        decoration: BoxDecoration(
-          color: realAffinityPct != null
-              ? p.accentSoft
-              : p.surfaceMuted.withValues(alpha: p.isDark ? 0.75 : 0.85),
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: realAffinityPct != null
-                ? p.accent.withValues(alpha: 0.45)
-                : p.line,
+    return MouseRegion(
+      onEnter: (_) {
+        _hovered = true;
+        _autoTimer?.cancel();
+        _autoTimer = null;
+      },
+      onExit: (_) {
+        _hovered = false;
+        _scheduleAutoAdvance();
+      },
+      child: Focus(
+        onFocusChange: (bool hasFocus) {
+          _focused = hasFocus;
+          if (hasFocus) {
+            _autoTimer?.cancel();
+            _autoTimer = null;
+          } else {
+            _scheduleAutoAdvance();
+          }
+        },
+        child: Container(
+          padding: EdgeInsets.fromLTRB(
+            compactLayout ? 16 : 28,
+            compactLayout ? 18 : 24,
+            compactLayout ? 16 : 28,
+            compactLayout ? 16 : 22,
           ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              realAffinityPct != null
-                  ? Icons.compare_arrows_rounded
-                  : Icons.lock_outline_rounded,
-              size: 14,
-              color: realAffinityPct != null ? p.accent : p.poleRight,
-            ),
-            const SizedBox(width: 7),
-            Flexible(
-              child: Text(
-                realAffinityPct != null
-                    ? 'Sua afinidade real: ${realAffinityPct.round()}% · Comparar Raio-X →'
-                    : 'Sua afinidade com ${_presets[safeIndex].$2}: ??% · Revelar em 3 min →',
-                style: TextStyle(
-                  fontFamily: 'IBMPlexSans',
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                  color: realAffinityPct != null ? p.accent : p.ink,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-
-    final Widget subjectDetails = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        InkWell(
-          onTap: () => widget.onOpenSubject(subject.key),
-          borderRadius: BorderRadius.circular(6),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2),
-            child: Text(
-              subject.name,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontFamily: 'IBMPlexSans',
-                fontSize: 16,
-                fontWeight: FontWeight.w800,
-                color: p.ink,
-                letterSpacing: -0.2,
-              ),
-            ),
+          decoration: BoxDecoration(
+            color: p.surface,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: p.line),
           ),
-        ),
-        const SizedBox(height: 2),
-        Text(
-          subject.subtitle,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            fontSize: 12,
-            height: 1.32,
-            color: p.inkSoft,
-          ),
-        ),
-        if (topTraits.isNotEmpty) ...[
-          const SizedBox(height: 10),
-          for (var j = 0; j < topTraits.length; j++) ...[
-            if (j > 0) const SizedBox(height: 7),
-            _ShowcaseTraitBar(trait: topTraits[j]),
-          ],
-        ],
-        const SizedBox(height: 12),
-        curiosityTrigger,
-        const SizedBox(height: 10),
-        Wrap(
-          spacing: 12,
-          runSpacing: 6,
-          children: [
-            InkWell(
-              onTap: () => widget.onOpenSubject(subject.key),
-              borderRadius: BorderRadius.circular(6),
-              child: Text(
-                'Ver ficha completa',
-                style: TextStyle(
-                  fontFamily: 'IBMPlexMono',
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700,
-                  color: p.inkSoft,
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: widget.onStartQuiz,
-              borderRadius: BorderRadius.circular(6),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 12,
+                runSpacing: 10,
                 children: [
-                  Flexible(
-                    child: Text(
-                      'Veja o seu mapa',
-                      style: TextStyle(
-                        fontFamily: 'IBMPlexMono',
-                        fontSize: 11,
-                        fontWeight: FontWeight.w700,
-                        color: p.accent,
-                      ),
+                  Text(
+                    'Veja como fica o seu cartão',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -0.35,
+                      color: p.ink,
                     ),
                   ),
-                  const SizedBox(width: 4),
-                  Icon(
-                    Icons.arrow_forward_rounded,
-                    size: 13,
-                    color: p.accent,
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      formatPill(false, 'Post 1:1'),
+                      formatPill(true, 'Story 9:16'),
+                      Tooltip(
+                        message: _userPaused
+                            ? 'Retomar carrossel'
+                            : 'Pausar carrossel',
+                        child: InkWell(
+                          onTap: _togglePause,
+                          borderRadius: BorderRadius.circular(8),
+                          child: Container(
+                            width: 44,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              color: p.surfaceMuted.withValues(alpha: 0.7),
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: p.line),
+                            ),
+                            child: Icon(
+                              _userPaused
+                                  ? Icons.play_arrow_rounded
+                                  : Icons.pause_rounded,
+                              size: 18,
+                              color: p.inkSoft,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
-      ],
-    );
-
-    return Container(
-      padding: EdgeInsets.all(compactView ? 18 : 24),
-      decoration: EspectroElevation.cardDecoration(
-        p,
-        radius: 16,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Wrap(
-            alignment: WrapAlignment.spaceBetween,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            spacing: 8,
-            runSpacing: 6,
-            children: [
-              Text(
-                'PRÉVIA EM 12 EIXOS',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontFamily: 'IBMPlexMono',
-                  fontSize: 10,
-                  fontWeight: FontWeight.w700,
-                  color: p.accent,
-                  letterSpacing: 0.7,
-                ),
+              SizedBox(height: compactLayout ? 18 : 26),
+              LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints stageBox) {
+                  final double cardMaxW = _previewStory ? 400 : 520;
+                  final bool sideNav =
+                      stageBox.maxWidth >= cardMaxW + 128 && scale <= 1.35;
+                  final Widget cardFrame = Center(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: cardMaxW),
+                      child: animatedSpecimen,
+                    ),
+                  );
+                  if (!sideNav) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        cardFrame,
+                        const SizedBox(height: 12),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            navCircleButton(
+                              icon: Icons.chevron_left_rounded,
+                              tooltip: 'Exemplar anterior',
+                              onPressed: () => _step(-1, count),
+                            ),
+                            const SizedBox(width: 8),
+                            dotsRow,
+                            const SizedBox(width: 8),
+                            navCircleButton(
+                              icon: Icons.chevron_right_rounded,
+                              tooltip: 'Próximo exemplar',
+                              onPressed: () => _step(1, count),
+                            ),
+                          ],
+                        ),
+                      ],
+                    );
+                  }
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          navCircleButton(
+                            icon: Icons.chevron_left_rounded,
+                            tooltip: 'Exemplar anterior',
+                            onPressed: () => _step(-1, count),
+                          ),
+                          const SizedBox(width: 24),
+                          Flexible(child: cardFrame),
+                          const SizedBox(width: 24),
+                          navCircleButton(
+                            icon: Icons.chevron_right_rounded,
+                            tooltip: 'Próximo exemplar',
+                            onPressed: () => _step(1, count),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 14),
+                      dotsRow,
+                    ],
+                  );
+                },
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                decoration: BoxDecoration(
-                  color: accent.withValues(alpha: p.isDark ? 0.22 : 0.12),
-                  borderRadius: BorderRadius.circular(6),
-                  border: Border.all(color: accent.withValues(alpha: 0.55)),
-                ),
+              const SizedBox(height: 4),
+              Center(
                 child: Text(
-                  spectrum?.name.toUpperCase() ?? 'PERFIL',
+                  '$activeLabel · ${safeIndex + 1}/$count',
                   style: TextStyle(
                     fontFamily: 'IBMPlexMono',
-                    fontSize: 9,
+                    fontSize: 11.5,
                     fontWeight: FontWeight.w700,
-                    color: accentInk,
+                    fontFeatures: const [FontFeature.tabularFigures()],
+                    color: activeInk,
                   ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 10),
-          switcherPills,
-          const SizedBox(height: 14),
-          if (compactView)
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(child: radarWidget),
-                const SizedBox(height: 12),
-                subjectDetails,
-              ],
-            )
-          else
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                radarWidget,
-                const SizedBox(width: 16),
-                Expanded(child: subjectDetails),
-              ],
-            ),
-        ],
+        ),
       ),
     );
   }
-}
-
-class _ShowcaseTraitBar extends StatelessWidget {
-  const _ShowcaseTraitBar({required this.trait});
-
-  final _DominantAxisReading trait;
-
-  @override
-  Widget build(BuildContext context) {
-    final p = context.palette;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: Text(
-                '${trait.axisLabel} · ${trait.dominantPole}',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontFamily: 'IBMPlexSans',
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700,
-                  color: p.ink,
-                ),
-              ),
-            ),
-            const SizedBox(width: 6),
-            Text(
-              '${trait.percent}%',
-              style: TextStyle(
-                fontFamily: 'IBMPlexMono',
-                fontSize: 10.5,
-                fontWeight: FontWeight.w700,
-                color: p.inkSoft,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 4),
-        SizedBox(
-          height: 4,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(999),
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                ColoredBox(
-                  color: p.line.withValues(alpha: p.isDark ? 0.55 : 0.75),
-                ),
-                FractionallySizedBox(
-                  alignment: Alignment.centerLeft,
-                  widthFactor: (trait.percent / 100.0).clamp(0.5, 1.0),
-                  child: ColoredBox(color: trait.dominantColor),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _HeroMiniRadarPainter extends CustomPainter {
-  const _HeroMiniRadarPainter({
-    required this.values,
-    required this.accent,
-    required this.showLabels,
-    required this.labels,
-    required this.gridColor,
-    required this.labelColor,
-    required this.centerDotColor,
-  });
-
-  final List<double> values;
-  final Color accent;
-  final bool showLabels;
-  final List<String> labels;
-  final Color gridColor;
-  final Color labelColor;
-  final Color centerDotColor;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    if (values.isEmpty) return;
-    final Offset center = Offset(size.width / 2, size.height / 2);
-    final double maxR = size.shortestSide / 2 - (showLabels ? 18 : 6);
-    if (maxR <= 6) return;
-
-    final Paint ringPaint = Paint()
-      ..color = gridColor
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 0.9;
-
-    for (final double f in const [0.35, 0.65, 1.0]) {
-      canvas.drawCircle(center, maxR * f, ringPaint);
-    }
-
-    final int n = values.length;
-    final Path poly = Path();
-    final List<Offset> pts = <Offset>[];
-    for (var i = 0; i < n; i++) {
-      final double angle = -math.pi / 2 + i * 2 * math.pi / n;
-      final Offset dir = Offset(math.cos(angle), math.sin(angle));
-      canvas.drawLine(center, center + dir * maxR, ringPaint);
-      final double norm = values[i].clamp(0.12, 0.98);
-      final Offset pt = center + dir * (maxR * norm);
-      pts.add(pt);
-      if (i == 0) {
-        poly.moveTo(pt.dx, pt.dy);
-      } else {
-        poly.lineTo(pt.dx, pt.dy);
-      }
-
-      if (showLabels && i < labels.length && i.isEven) {
-        final TextPainter tp = TextPainter(
-          text: TextSpan(
-            text: labels[i],
-            style: TextStyle(
-              fontFamily: 'IBMPlexMono',
-              fontSize: 8,
-              fontWeight: FontWeight.w700,
-              color: labelColor,
-            ),
-          ),
-          textDirection: TextDirection.ltr,
-        )..layout();
-        final Offset lblCenter = center + dir * (maxR + 11);
-        tp.paint(
-          canvas,
-          Offset(lblCenter.dx - tp.width / 2, lblCenter.dy - tp.height / 2),
-        );
-      }
-    }
-    poly.close();
-
-    canvas.drawPath(poly, Paint()..color = accent.withValues(alpha: 0.24));
-    canvas.drawPath(
-      poly,
-      Paint()
-        ..color = accent
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 2.0,
-    );
-    final Paint dotCore = Paint()..color = centerDotColor;
-    final Paint dotRing = Paint()..color = accent;
-    for (final Offset pt in pts) {
-      canvas.drawCircle(pt, 2.5, dotRing);
-      canvas.drawCircle(pt, 1.15, dotCore);
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant _HeroMiniRadarPainter oldDelegate) =>
-      oldDelegate.accent != accent ||
-      oldDelegate.values != values ||
-      oldDelegate.showLabels != showLabels ||
-      oldDelegate.gridColor != gridColor ||
-      oldDelegate.labelColor != labelColor ||
-      oldDelegate.centerDotColor != centerDotColor;
 }

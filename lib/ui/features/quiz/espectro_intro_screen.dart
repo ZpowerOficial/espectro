@@ -156,7 +156,7 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
         ],
       ),
       body: ResponsiveContentFrame(
-        maxWidth: 960,
+        maxWidth: EspectroLayout.workspaceMaxWidth,
         child: LayoutBuilder(
           builder: (context, constraints) {
             final double scale = MediaQuery.textScalerOf(context).scale(16) / 16.0;
@@ -188,7 +188,9 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
                     return Semantics(
                       selected: selected,
                       button: true,
-                      child: DecoratedBox(
+                      child: TactilePress(
+                        scale: 0.988,
+                        child: DecoratedBox(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: selected
@@ -378,6 +380,7 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
                           ),
                         ),
                       ),
+                    ),
                     );
                   }(),
                   const SizedBox(height: 10),
@@ -389,7 +392,7 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
                 ),
                 const SizedBox(height: 12),
                 AppButton(
-                  label: 'Iniciar avaliação · $count perguntas',
+                  label: 'Iniciar avaliação ($count perguntas)',
                   icon: Icons.arrow_forward_rounded,
                   onPressed: _start,
                 ),
@@ -399,100 +402,81 @@ class _EspectroIntroScreenState extends State<EspectroIntroScreen> {
             final Widget telemetryCard = Container(
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
-                color: p.heroBackground,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: EspectroElevation.cardShadows(p),
+                color: p.surface,
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(color: p.line),
               ),
+              padding: const EdgeInsets.all(22),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SpectrumGradientRule(height: 3.5, radius: 0),
-                  Padding(
-                    padding: const EdgeInsets.all(22),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.suite.title.toUpperCase(),
-                          style: const TextStyle(
-                            fontFamily: 'IBMPlexMono',
-                            fontSize: 10.5,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 1.0,
-                            color: Color(0xFFEBC07A),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          '$count afirmações',
-                          style: const TextStyle(
-                            fontFamily: 'IBMPlexMono',
-                            fontSize: 28,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        Text(
-                          '${_depth.label} · ${_depth.estimatedDuration(count)} estimados',
-                          style: const TextStyle(
-                            fontSize: 13.5,
-                            color: Color(0xFFD2DBE8),
-                          ),
-                        ),
-                        const SizedBox(height: 18),
-                        Container(
-                          padding: const EdgeInsets.all(14),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withValues(alpha: 0.06),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: Colors.white.withValues(alpha: 0.14),
-                            ),
-                          ),
-                          child: Text(
-                            widget.suite == TestSuite.espectroIntegrated &&
-                                    _depth == TestDepth.express
-                                ? 'Modo Expresso: avalia os 12 eixos com ambos os polos (24 itens) para um resultado rápido e confiável. Na tela de resultado, você poderá completar as 6 Tríades (+18 perguntas) quando quiser.'
-                                : 'Progresso adaptativo em blocos: você pode consultar o resultado preliminar após o marco inicial ou pausar a qualquer momento sem perder respostas.',
-                            style: const TextStyle(
-                              fontSize: 12.5,
-                              color: Color(0xFFCBD5E1),
-                              height: 1.45,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 14),
-                        OutlinedButton.icon(
-                          style: OutlinedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            side: BorderSide(
-                              color: Colors.white.withValues(alpha: 0.25),
-                            ),
-                          ),
-                          onPressed: _showDimensionsSheet,
-                          icon: const Icon(Icons.list_alt_rounded, size: 17),
-                          label: const Text('Inspecionar dimensões'),
-                        ),
-                      ],
+                  Text(
+                    widget.suite.title,
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexSans',
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: p.accent,
                     ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    '$count afirmações',
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexMono',
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                      fontFeatures: const <FontFeature>[
+                        FontFeature.tabularFigures(),
+                      ],
+                      color: p.ink,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    '${_depth.label} — ${_depth.estimatedDuration(count)} estimados',
+                    style: TextStyle(
+                      fontSize: 13.5,
+                      color: p.inkSoft,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Container(
+                    padding: const EdgeInsets.only(top: 14),
+                    decoration: BoxDecoration(
+                      border: Border(top: BorderSide(color: p.line)),
+                    ),
+                    child: Text(
+                      widget.suite == TestSuite.espectroIntegrated &&
+                              _depth == TestDepth.express
+                          ? 'Avaliação Expressa: avalia os 12 eixos com ambos os polos (24 itens) para um resultado rápido e confiável. Na tela de resultado, você poderá completar as 6 Tríades (+18 perguntas) quando quiser.'
+                          : 'Progresso adaptativo em blocos: você pode consultar o resultado preliminar após o marco inicial ou pausar a qualquer momento sem perder respostas.',
+                      style: TextStyle(
+                        fontSize: 12.5,
+                        color: p.inkSoft,
+                        height: 1.48,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  OutlinedButton.icon(
+                    onPressed: _showDimensionsSheet,
+                    icon: const Icon(Icons.list_alt_rounded, size: 17),
+                    label: const Text('Inspecionar dimensões'),
                   ),
                 ],
               ),
             );
 
             return ListView(
-              padding: const EdgeInsets.fromLTRB(20, 14, 20, 32),
+              padding: EspectroLayout.pagePadding,
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 2),
-                  child: EditorialHeading(
-                    eyebrow: 'Etapa 02 / 02',
-                    title: 'Quanto quer\naprofundar?',
-                    description:
-                        'Escolha o número de perguntas. Quanto maior a cobertura, mais nuances são observadas.',
-                  ),
+                const EditorialHeading(
+                  eyebrow: 'Etapa 02 / 02',
+                  title: 'Quanto quer\naprofundar?',
+                  description:
+                      'Escolha o número de perguntas. Quanto maior a cobertura, mais nuances são observadas.',
                 ),
                 const SizedBox(height: 28),
                 if (sideBySide)

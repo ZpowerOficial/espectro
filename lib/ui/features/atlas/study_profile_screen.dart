@@ -15,6 +15,10 @@ import '../../../widgets/common.dart';
 import '../../../widgets/editorial.dart';
 import '../../../widgets/espectro_scaffold.dart';
 import '../../view_models/app_view_model.dart';
+import '../../ads/espectro_ad_units.dart';
+import '../../ads/espectro_banner_ad.dart';
+import '../../shared/resilient_image.dart';
+import '../../charts/axis_colors.dart';
 import '../../charts/study_ternary_chart.dart';
 import '../compare/study_comparison_screen.dart';
 import '../results/espectro_result_screen.dart';
@@ -175,6 +179,7 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
                 )
                 .toList()
           : const <StudySubject>[];
+      final compactTabs = MediaQuery.sizeOf(context).width < 430;
       return DefaultTabController(
         length: 4,
         initialIndex: widget.initialTab.clamp(0, 3),
@@ -211,11 +216,32 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
               const SizedBox(width: 6),
             ],
             bottom: FadeEdgeTabBar(
+              edgeWidth: compactTabs ? 12 : 26,
               tabBar: TabBar(
+                padding: EdgeInsets.symmetric(
+                  horizontal: compactTabs ? 10 : 4,
+                ),
                 labelColor: identityInk,
                 indicatorColor: identityAccent,
                 isScrollable: true,
                 tabAlignment: TabAlignment.start,
+                labelPadding: EdgeInsets.symmetric(
+                  horizontal: compactTabs ? 10 : 16,
+                ),
+                labelStyle: compactTabs
+                    ? const TextStyle(
+                        fontFamily: 'IBMPlexMono',
+                        fontSize: 11.5,
+                        fontWeight: FontWeight.w600,
+                      )
+                    : null,
+                unselectedLabelStyle: compactTabs
+                    ? const TextStyle(
+                        fontFamily: 'IBMPlexMono',
+                        fontSize: 11.5,
+                        fontWeight: FontWeight.w500,
+                      )
+                    : null,
                 tabs: const [
                   Tab(text: 'Visão geral'),
                   Tab(text: 'Dimensões'),
@@ -287,105 +313,147 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
                   spacing: 10,
                   runSpacing: 10,
                   children: [
-                    FilledButton.icon(
-                      style: FilledButton.styleFrom(
-                        backgroundColor: identityAccent,
-                        foregroundColor:
-                            ThemeData.estimateBrightnessForColor(
-                                  identityAccent,
-                                ) ==
-                                Brightness.dark
-                            ? Colors.white
-                            : const Color(0xFF151A20),
-                      ),
-                      onPressed: () async {
-                        if (!vm.studyComparison.contains(s.key)) {
-                          if (vm.studyComparison.length >= 3) {
-                            final replace = await showDialog<String>(
-                              context: context,
-                              builder: (dialogContext) => SimpleDialog(
-                                title: const Text('Substituir um perfil'),
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 24,
-                                      vertical: 8,
-                                    ),
-                                    child: Text(
-                                      'A comparação comporta até três perfis. Escolha qual substituir.',
-                                    ),
-                                  ),
-                                  for (final key in vm.studyComparison)
-                                    SimpleDialogOption(
-                                      onPressed: () =>
-                                          Navigator.of(dialogContext).pop(key),
+                    TactilePress(
+                      scale: 0.97,
+                      child: FilledButton.icon(
+                        style: FilledButton.styleFrom(
+                          backgroundColor: identityAccent,
+                          foregroundColor:
+                              ThemeData.estimateBrightnessForColor(
+                                    identityAccent,
+                                  ) ==
+                                  Brightness.dark
+                              ? Colors.white
+                              : const Color(0xFF151A20),
+                        ),
+                        onPressed: () async {
+                          if (!vm.studyComparison.contains(s.key)) {
+                            if (vm.studyComparison.length >= 3) {
+                              final replace = await showDialog<String>(
+                                context: context,
+                                builder: (dialogContext) => SimpleDialog(
+                                  title: const Text('Substituir um perfil'),
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 24,
+                                        vertical: 8,
+                                      ),
                                       child: Text(
-                                        catalog.find(key)?.name ?? key,
+                                        'A comparação comporta até três perfis. Escolha qual substituir.',
                                       ),
                                     ),
-                                ],
+                                    for (final key in vm.studyComparison)
+                                      SimpleDialogOption(
+                                        onPressed: () =>
+                                            Navigator.of(dialogContext).pop(key),
+                                        child: Text(
+                                          catalog.find(key)?.name ?? key,
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              );
+                              if (replace == null || !context.mounted) return;
+                              await vm.toggleStudyComparison(replace);
+                            }
+                            await vm.toggleStudyComparison(s.key);
+                          }
+                          if (context.mounted) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute<void>(
+                                builder: (_) =>
+                                    StudyComparisonScreen(appViewModel: vm),
                               ),
                             );
-                            if (replace == null || !context.mounted) return;
-                            await vm.toggleStudyComparison(replace);
                           }
-                          await vm.toggleStudyComparison(s.key);
-                        }
-                        if (context.mounted) {
-                          Navigator.of(context).push(
-                            MaterialPageRoute<void>(
-                              builder: (_) =>
-                                  StudyComparisonScreen(appViewModel: vm),
-                            ),
-                          );
-                        }
-                      },
-                      icon: const Icon(Icons.compare_arrows),
-                      label: const Text('Comparar perfil'),
+                        },
+                        icon: const Icon(Icons.compare_arrows),
+                        label: const Text('Comparar perfil'),
+                      ),
                     ),
                     if (s.record case final record?)
-                      OutlinedButton(
-                        onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute<void>(
-                            builder: (_) => EspectroResultScreen(
-                              appViewModel: vm,
-                              record: record,
+                      TactilePress(
+                        scale: 0.97,
+                        child: OutlinedButton(
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute<void>(
+                              builder: (_) => EspectroResultScreen(
+                                appViewModel: vm,
+                                record: record,
+                              ),
                             ),
                           ),
+                          child: const Text('Abrir relatório completo'),
                         ),
-                        child: const Text('Abrir relatório completo'),
                       ),
                     if (spectrum != null)
-                      OutlinedButton(
-                        onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute<void>(
-                            builder: (_) => AtlasExplorerScreen(
-                              appViewModel: vm,
-                              initialSpectrum: spectrum.name,
+                      TactilePress(
+                        scale: 0.97,
+                        child: OutlinedButton.icon(
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute<void>(
+                              builder: (_) => AtlasExplorerScreen(
+                                appViewModel: vm,
+                                initialSpectrum: spectrum.name,
+                              ),
                             ),
                           ),
-                        ),
-                        child: Text(spectrum.name),
-                      ),
-                    Chip(
-                      visualDensity: VisualDensity.compact,
-                      avatar: const Icon(Icons.grid_view_rounded, size: 16),
-                      label: Text(
-                        s.coverageLabel,
-                        style: const TextStyle(fontSize: 12),
-                      ),
-                    ),
-                    if (s.kind == 'personality' &&
-                        basis != null &&
-                        basis.evidenceTier != 'tier1_editorial_reconstruction')
-                      Chip(
-                        visualDensity: VisualDensity.compact,
-                        label: Text(
-                          basis.evidenceTierBadge,
-                          style: const TextStyle(fontSize: 12),
+                          icon: const Icon(Icons.explore_outlined, size: 16),
+                          label: Text(spectrum.name),
                         ),
                       ),
                   ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: Wrap(
+                    spacing: 14,
+                    runSpacing: 6,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.grid_view_rounded,
+                            size: 14,
+                            color: p.muted,
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            s.coverageLabel,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: p.muted,
+                              fontFeatures: const [
+                                FontFeature.tabularFigures(),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      if (s.kind == 'personality' &&
+                          basis != null &&
+                          basis.evidenceTier !=
+                              'tier1_editorial_reconstruction')
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.verified_outlined,
+                              size: 14,
+                              color: p.muted,
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              basis.evidenceTierBadge,
+                              style: TextStyle(fontSize: 12, color: p.muted),
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
                 ),
                 if (basis?.classificationNote case final classification?)
                   ExpansionTile(
@@ -410,7 +478,7 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Eyebrow('COMO UM ADEPTO PODERIA RESUMIR'),
+                        const Eyebrow('Como um adepto resumiria'),
                         const SizedBox(height: 12),
                         Text(
                           '“Queremos uma sociedade orientada por ${s.ideas.first.replaceFirst(RegExp(r'[.!]$'), '').toLowerCase()}.”',
@@ -464,7 +532,7 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Eyebrow('SÍNTESE DO CATÁLOGO'),
+                        const Eyebrow('Síntese do catálogo'),
                         const SizedBox(height: 10),
                         Text(quote),
                         const SizedBox(height: 10),
@@ -476,6 +544,11 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
                     ),
                   ),
                 ],
+                EspectroInlineAdSlot(
+                  placementId: 'profile_content_inline',
+                  adUnitId: EspectroAdUnits.detailBannerId,
+                  verticalMargin: 24,
+                ),
                 const SizedBox(height: 26),
                 _heading(context, 'Uma pergunta para continuar'),
                 Text(
@@ -540,6 +613,7 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           StudyAxisRow(
+                            axisId: axis.id,
                             label: axis.label,
                             left: axis.leftPole,
                             right: axis.rightPole,
@@ -573,14 +647,58 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
                 const SizedBox(height: 16),
                 for (final triad in vm.data.sixTriangles.categories)
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
+                    padding: const EdgeInsets.only(bottom: 14),
                     child: SectionCard(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            triad.label,
-                            style: Theme.of(context).textTheme.titleMedium,
+                          Row(
+                            children: [
+                              Icon(
+                                AxisColors.triadIconFor(triad.id),
+                                size: 17,
+                                color: AxisColors.readableInk(
+                                  p.triadColor(triad.id),
+                                  isDark: p.isDark,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  triad.label,
+                                  style: Theme.of(context).textTheme.titleMedium,
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 7,
+                                  vertical: 2,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: p
+                                      .triadColor(triad.id)
+                                      .withValues(alpha: p.isDark ? 0.16 : 0.10),
+                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(
+                                    color: p
+                                        .triadColor(triad.id)
+                                        .withValues(alpha: 0.38),
+                                  ),
+                                ),
+                                child: Text(
+                                  '△ Tríade',
+                                  style: TextStyle(
+                                    fontFamily: 'IBMPlexSans',
+                                    fontSize: 10.5,
+                                    fontWeight: FontWeight.w700,
+                                    color: AxisColors.readableInk(
+                                      p.triadColor(triad.id),
+                                      isDark: p.isDark,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           const SizedBox(height: 12),
                           StudyTernaryChart(
@@ -821,7 +939,7 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Eyebrow('ESTADO DA EVIDÊNCIA'),
+                      const Eyebrow('Estado da evidência'),
                       const SizedBox(height: 12),
                       Text(
                         s.record != null
@@ -1000,10 +1118,10 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              relation.kind.label.toUpperCase(),
+              relation.kind.label,
               style: TextStyle(
-                fontFamily: 'IBMPlexMono',
-                fontSize: 10,
+                fontFamily: 'IBMPlexSans',
+                fontSize: 11.5,
                 color: ink,
                 fontWeight: FontWeight.w600,
               ),
@@ -1045,16 +1163,12 @@ class _StudyProfileScreenState extends State<StudyProfileScreen> {
     }
   }
 
-  Widget _page(List<Widget> children) => LayoutBuilder(
-    builder: (context, constraints) {
-      final hPad = math.max(22.0, (constraints.maxWidth - 900.0) / 2);
-      return ListView(
-        padding: EdgeInsets.fromLTRB(hPad, 26, hPad, 36),
-        children: [
-          ...children,
-        ],
-      );
-    },
+  Widget _page(List<Widget> children) => ResponsiveContentFrame(
+    maxWidth: EspectroLayout.workspaceMaxWidth,
+    child: ListView(
+      padding: EspectroLayout.pagePadding,
+      children: children,
+    ),
   );
   Widget _heading(BuildContext context, String text) => Padding(
     padding: const EdgeInsets.only(bottom: 14),
@@ -1071,6 +1185,7 @@ class StudyAxisRow extends StatelessWidget {
     required this.leftColor,
     required this.rightColor,
     required this.values,
+    this.axisId,
     this.note,
     this.isOverlaid = false,
     this.seriesColors,
@@ -1081,16 +1196,42 @@ class StudyAxisRow extends StatelessWidget {
   final String label, left, right;
   final Color leftColor, rightColor;
   final List<(String, double?)> values;
+  final String? axisId;
   final String? note;
   final bool isOverlaid;
   final List<Color>? seriesColors;
   final List<String?>? seriesPhotos;
+
+  static String? _inferAxisId(String label) {
+    final lower = label.toLowerCase();
+    if (lower.startsWith('estrutur')) return 'estrutura';
+    if (lower.startsWith('representa')) return 'representacao';
+    if (lower.startsWith('poder')) return 'poder';
+    if (lower.startsWith('imigra')) return 'imigracao';
+    if (lower.startsWith('diplom')) return 'diplomacia';
+    if (lower.startsWith('interven')) return 'intervencao';
+    if (lower.startsWith('econom')) return 'economia';
+    if (lower.startsWith('control')) return 'controle';
+    if (lower.startsWith('com')) return 'comercio';
+    if (lower.startsWith('religi')) return 'religiao';
+    if (lower.startsWith('moral')) return 'moral';
+    if (lower.startsWith('tecnol')) return 'tecnologia';
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
     final p = context.palette;
     final primaryValue = values.firstOrNull?.$2;
     final hasSingleValue = values.length == 1;
+    final String? resolvedId = axisId ?? _inferAxisId(label);
+    final AxisColorStrategy strategy = AxisColorStrategyScope.of(context);
+    final bool primaryMode =
+        strategy == AxisColorStrategy.primaryAnchor && resolvedId != null;
+    final Color anchorColor =
+        resolvedId != null ? AxisColors.primaryFor(resolvedId, p) : leftColor;
+    final IconData? axisIcon =
+        resolvedId != null ? AxisColors.icons[resolvedId] : null;
 
     // For single value: dominant pole & percentage
     final primaryNormalized = primaryValue != null
@@ -1098,7 +1239,21 @@ class StudyAxisRow extends StatelessWidget {
         : null;
     final primaryLeansLeft = (primaryNormalized ?? 0.5) <= 0.5;
     final primaryDominantPole = primaryLeansLeft ? left : right;
-    final primaryDominantColor = primaryLeansLeft ? leftColor : rightColor;
+    final Color effectiveLeftColor = primaryMode
+        ? (hasSingleValue && primaryLeansLeft ? anchorColor : anchorColor)
+        : leftColor;
+    final Color effectiveRightColor = primaryMode ? p.line : rightColor;
+    final primaryDominantColor = primaryMode
+        ? anchorColor
+        : (primaryLeansLeft ? leftColor : rightColor);
+    final primaryDominantInk = AxisColors.readableInk(
+      primaryDominantColor,
+      isDark: p.isDark,
+    );
+    final headerInk = AxisColors.readableInk(
+      hasSingleValue ? primaryDominantColor : effectiveLeftColor,
+      isDark: p.isDark,
+    );
     final primaryPercentage = primaryNormalized != null
         ? (primaryLeansLeft ? (1.0 - primaryNormalized) : primaryNormalized) *
               100
@@ -1107,24 +1262,29 @@ class StudyAxisRow extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Header Row: Dot + Label + Dominant percentage (if single) + Info button
+        // Header Row: Icon/Dot + Label + Dominant percentage (if single) + Info button
         Row(
           children: [
-            Container(
-              width: 7,
-              height: 7,
-              decoration: BoxDecoration(
-                color: primaryDominantColor,
-                shape: BoxShape.circle,
+            if (axisIcon != null) ...[
+              Icon(axisIcon, size: 15, color: headerInk),
+              const SizedBox(width: 7),
+            ] else ...[
+              Container(
+                width: 7,
+                height: 7,
+                decoration: BoxDecoration(
+                  color: primaryDominantColor,
+                  shape: BoxShape.circle,
+                ),
               ),
-            ),
-            const SizedBox(width: 8),
+              const SizedBox(width: 8),
+            ],
             Expanded(
               child: Text(
                 label,
                 style: const TextStyle(
                   fontSize: 13.5,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
@@ -1137,7 +1297,7 @@ class StudyAxisRow extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: primaryDominantColor,
+                    color: primaryDominantInk,
                   ),
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.right,
@@ -1164,10 +1324,26 @@ class StudyAxisRow extends StatelessWidget {
 
         // Value rows & Dual-track bars (Overlaid or Individual)
         if (isOverlaid && values.length > 1)
-          _buildOverlaidTrack(context, p)
+          _buildOverlaidTrack(
+            context,
+            p,
+            trackLeftColor: effectiveLeftColor,
+            trackRightColor: effectiveRightColor,
+          )
         else
           for (final entry in values)
-            _buildEntityTrack(context, entry, p, hasSingleValue),
+            _buildEntityTrack(
+              context,
+              entry,
+              p,
+              hasSingleValue,
+              trackLeftColor: primaryMode
+                  ? (primaryLeansLeft ? anchorColor : p.line)
+                  : leftColor,
+              trackRightColor: primaryMode
+                  ? (!primaryLeansLeft ? anchorColor : p.line)
+                  : rightColor,
+            ),
 
         const SizedBox(height: 6),
         // Bottom Row: Two pole pills
@@ -1177,7 +1353,7 @@ class StudyAxisRow extends StatelessWidget {
             Flexible(
               child: PolePill(
                 label: left,
-                color: leftColor,
+                color: primaryMode && !primaryLeansLeft ? p.muted : effectiveLeftColor,
                 isActive: primaryLeansLeft,
               ),
             ),
@@ -1185,7 +1361,7 @@ class StudyAxisRow extends StatelessWidget {
             Flexible(
               child: PolePill(
                 label: right,
-                color: rightColor,
+                color: primaryMode && primaryLeansLeft ? p.muted : (primaryMode ? anchorColor : rightColor),
                 isActive: !primaryLeansLeft,
               ),
             ),
@@ -1200,13 +1376,18 @@ class StudyAxisRow extends StatelessWidget {
     );
   }
 
-  Widget _buildOverlaidTrack(BuildContext context, EspectroPalette p) {
+  Widget _buildOverlaidTrack(
+    BuildContext context,
+    EspectroPalette p, {
+    required Color trackLeftColor,
+    required Color trackRightColor,
+  }) {
     final validEntries = [
       for (var i = 0; i < values.length; i++)
         if (values[i].$2 != null) (i, values[i].$1, values[i].$2!),
     ];
 
-    final defaultColors = [p.accent, p.warning, const Color(0xFF8B5CF6)];
+    final defaultColors = [p.accent, p.poleRight, p.poleLeft];
     Color colorFor(int idx) =>
         (seriesColors != null && idx < seriesColors!.length)
         ? seriesColors![idx]
@@ -1225,23 +1406,13 @@ class StudyAxisRow extends StatelessWidget {
       final photo = photoFor(idx);
       if (photo != null && photo.isNotEmpty) {
         return ClipOval(
-          child: photo.startsWith('http://') || photo.startsWith('https://')
-              ? Image.network(
-                  photo,
-                  width: size,
-                  height: size,
-                  fit: BoxFit.cover,
-                  errorBuilder: (_, _, _) =>
-                      _buildFallbackInitial(idx, col, size, name: name),
-                )
-              : Image.asset(
-                  photo,
-                  width: size,
-                  height: size,
-                  fit: BoxFit.cover,
-                  errorBuilder: (_, _, _) =>
-                      _buildFallbackInitial(idx, col, size, name: name),
-                ),
+          child: buildResilientMediaImage(
+            photo,
+            width: size,
+            height: size,
+            fit: BoxFit.cover,
+            fallback: _buildFallbackInitial(idx, col, size, name: name),
+          ),
         );
       }
       return _buildFallbackInitial(idx, col, size, name: name);
@@ -1301,21 +1472,33 @@ class StudyAxisRow extends StatelessWidget {
                         child: buildBadgeAvatar(idx, col, size: 18, name: name),
                       ),
                       const SizedBox(width: 6),
-                      Text(
-                        name,
-                        style: TextStyle(
-                          fontSize: 11.5,
-                          fontWeight: FontWeight.w600,
-                          color: p.ink,
+                      Flexible(
+                        child: Text(
+                          name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 11.5,
+                            fontWeight: FontWeight.w600,
+                            color: p.ink,
+                          ),
                         ),
                       ),
                       const SizedBox(width: 4),
-                      Text(
-                        '${pct.round()}% $domPole',
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          color: col,
+                      Flexible(
+                        child: Text(
+                          '${pct.round()}% $domPole',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w700,
+                            color: Color.lerp(
+                              col,
+                              p.ink,
+                              p.isDark ? 0.36 : 0.16,
+                            )!,
+                          ),
                         ),
                       ),
                     ],
@@ -1403,12 +1586,16 @@ class StudyAxisRow extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Container(
-                            color: leftColor.withValues(alpha: 0.28),
+                            color: trackLeftColor.withValues(
+                              alpha: p.isDark ? 0.38 : 0.32,
+                            ),
                           ),
                         ),
                         Expanded(
                           child: Container(
-                            color: rightColor.withValues(alpha: 0.28),
+                            color: trackRightColor.withValues(
+                              alpha: p.isDark ? 0.38 : 0.32,
+                            ),
                           ),
                         ),
                       ],
@@ -1524,15 +1711,21 @@ class StudyAxisRow extends StatelessWidget {
     BuildContext context,
     (String, double?) entry,
     EspectroPalette p,
-    bool hasSingleValue,
-  ) {
+    bool hasSingleValue, {
+    required Color trackLeftColor,
+    required Color trackRightColor,
+  }) {
     final val = entry.$2;
     final normalized = val != null
         ? ((val.clamp(-1.0, 1.0) + 1.0) / 2.0).clamp(0.0, 1.0)
         : null;
     final leansLeft = (normalized ?? 0.5) <= 0.5;
     final dominantPole = leansLeft ? left : right;
-    final dominantColor = leansLeft ? leftColor : rightColor;
+    final dominantColor = leansLeft ? trackLeftColor : trackRightColor;
+    final dominantInk = AxisColors.readableInk(
+      dominantColor,
+      isDark: p.isDark,
+    );
     final pct = normalized != null
         ? (leansLeft ? (1.0 - normalized) : normalized) * 100
         : null;
@@ -1562,7 +1755,7 @@ class StudyAxisRow extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11.5,
                     fontWeight: FontWeight.bold,
-                    color: pct != null ? dominantColor : p.inkSoft,
+                    color: pct != null ? dominantInk : p.inkSoft,
                   ),
                 ),
               ],
@@ -1604,14 +1797,14 @@ class StudyAxisRow extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Container(
-                                  color: leftColor.withValues(
+                                  color: trackLeftColor.withValues(
                                     alpha: leansLeft ? 0.85 : 0.22,
                                   ),
                                 ),
                               ),
                               Expanded(
                                 child: Container(
-                                  color: rightColor.withValues(
+                                  color: trackRightColor.withValues(
                                     alpha: !leansLeft ? 0.85 : 0.22,
                                   ),
                                 ),

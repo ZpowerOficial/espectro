@@ -52,7 +52,7 @@ enum PersonalityVocation {
   ),
   parliamentarian(
     'parliamentarian',
-    'Bancada / Congresso',
+    'Parlamentares (2003–2024)',
     'Parlamentar (Voto Nominal)',
   );
 

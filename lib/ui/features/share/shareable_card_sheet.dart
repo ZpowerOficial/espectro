@@ -201,7 +201,12 @@ class _ShareableCardSheetState extends State<ShareableCardSheet> {
       child: SafeArea(
         top: false,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 28),
+          padding: EdgeInsets.fromLTRB(
+            20,
+            20,
+            20,
+            28 + MediaQuery.viewInsetsOf(context).bottom,
+          ),
           child: Center(
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 660),
@@ -328,7 +333,7 @@ class _ShareableCardSheetState extends State<ShareableCardSheet> {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    'Link curto (~34 caracteres) com suas coordenadas resumidas para comparar afinidade com amigos no WhatsApp ou redes, sem expor suas respostas.',
+                    'Link curto (~34 caracteres) com suas coordenadas resumidas para comparar proximidade com amigos no WhatsApp ou redes, sem expor suas respostas.',
                     style: TextStyle(color: p.inkSoft, fontSize: 13),
                   ),
                   const SizedBox(height: 10),

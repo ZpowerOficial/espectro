@@ -17,6 +17,7 @@ import 'package:politico/domain/models/political_models.dart';
 import 'package:politico/domain/models/atlas_models.dart';
 import 'package:politico/theme.dart';
 import 'package:politico/ui/features/quiz/espectro_intro_screen.dart';
+import 'package:politico/ui/features/quiz/espectro_quiz_screen.dart';
 import 'package:politico/ui/features/quiz/espectro_suites_screen.dart';
 import 'package:politico/ui/features/results/espectro_result_screen.dart';
 import 'package:politico/ui/view_models/app_view_model.dart';
@@ -78,8 +79,8 @@ void main() {
           };
           await tester.ensureVisible(find.text(choice));
           await tester.tap(find.text(choice));
-          await tester.ensureVisible(find.text('Continuar'));
-          await tester.tap(find.text('Continuar'));
+          await tester.ensureVisible(find.text('Escolher profundidade'));
+          await tester.tap(find.text('Escolher profundidade'));
           await tester.pumpAndSettle();
           expect(find.byType(EspectroIntroScreen), findsOneWidget);
           expect(
@@ -354,8 +355,8 @@ void main() {
         );
         await tester.ensureVisible(find.text('12 eixos bipolares'));
         await tester.tap(find.text('12 eixos bipolares'));
-        await tester.ensureVisible(find.text('Continuar'));
-        await tester.tap(find.text('Continuar'));
+        await tester.ensureVisible(find.text('Escolher profundidade'));
+        await tester.tap(find.text('Escolher profundidade'));
         await tester.pumpAndSettle();
         expect(find.byType(EspectroIntroScreen), findsOneWidget);
         final int pushesAtIntro = observer.pushes;
@@ -367,8 +368,8 @@ void main() {
           isTrue,
         );
         expect(observer.pushes, pushesAtIntro);
-        await tester.ensureVisible(find.text('Continuar'));
-        await tester.tap(find.text('Continuar'));
+        await tester.ensureVisible(find.text('Escolher profundidade'));
+        await tester.tap(find.text('Escolher profundidade'));
         await tester.pumpAndSettle();
         expect(
           tester
@@ -560,8 +561,7 @@ void main() {
           ),
         );
         await tester.pumpAndSettle();
-        expect(find.byType(EspectroFloatingAdBar), findsOneWidget);
-        expect(find.byType(EspectroBannerAdWidget), findsNothing);
+        expect(find.byType(EspectroInlineAdSlot), findsWidgets);
         expect(find.byType(BackButton), findsNothing);
         expect(find.byIcon(Icons.arrow_back_rounded), findsNothing);
 
@@ -572,8 +572,14 @@ void main() {
           ),
         );
         await tester.pumpAndSettle();
-        expect(find.byType(EspectroFloatingAdBar), findsOneWidget);
-        expect(find.byType(EspectroBannerAdWidget), findsNothing);
+        expect(find.text('Publicidade'), findsNothing);
+        await tester.drag(find.byType(ListView).first, const Offset(0, -1600));
+        await tester.pumpAndSettle();
+        expect(find.byType(EspectroInlineAdSlot), findsWidgets);
+        expect(
+          tester.getSize(find.byType(EspectroInlineAdSlot).first).height,
+          0.0,
+        );
 
         await tester.pumpWidget(
           MaterialApp(
@@ -585,8 +591,35 @@ void main() {
           ),
         );
         await tester.pumpAndSettle();
-        expect(find.byType(EspectroFloatingAdBar), findsOneWidget);
-        expect(find.byType(EspectroBannerAdWidget), findsNothing);
+        for (
+          var s = 0;
+          s < 6 && find.byType(EspectroInlineAdSlot).evaluate().isEmpty;
+          s++
+        ) {
+          await tester.drag(find.byType(ListView).first, const Offset(0, -400));
+          await tester.pumpAndSettle();
+        }
+        expect(find.byType(EspectroInlineAdSlot), findsWidgets);
+        expect(
+          tester.getSize(find.byType(EspectroInlineAdSlot).first).height,
+          0.0,
+        );
+
+        final quiz = QuizViewModel.startNew(
+          data: data,
+          repository: vm.repository,
+          suite: TestSuite.espectroIntegrated,
+          depth: TestDepth.express,
+          seed: 7,
+        );
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: buildAppTheme(brightness: Brightness.light),
+            home: EspectroQuizScreen(appViewModel: vm, quizViewModel: quiz),
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(find.byType(EspectroInlineAdSlot), findsNothing);
         expect(tester.takeException(), isNull);
       }
     },

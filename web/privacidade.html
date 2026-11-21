@@ -39,15 +39,17 @@
   <style>
     /* Hallmark · genre: editorial · shape: long document · posture: dark · nav: none · footer: rule */
     :root {
-      --bg: #0B0E14;
-      --surface: #141924;
-      --line: #303949;
-      --ink: #F0F3F7;
-      --muted: #AAB5C5;
-      --iris: #A48BFA;
+      color-scheme: dark;
+      --bg: #0B0F16;
+      --surface: #121822;
+      --line: #232D3F;
+      --ink: #F2F4F8;
+      --muted: #8C97AE;
+      --iris: #9A92F0;
       --teal: #71C7C5;
-      --amber: #E9BF75;
-      --amber-soft: rgba(233, 191, 117, 0.14);
+      --amber: #E5A448;
+      --amber-ink: #140D03;
+      --amber-soft: rgba(229, 164, 72, 0.14);
       --font-body: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Segoe UI", Roboto, sans-serif;
     }
     * { box-sizing: border-box; }
@@ -62,6 +64,28 @@
     body {
       padding: 2rem 1.25rem;
     }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      background: var(--amber);
+      color: var(--amber-ink);
+      font-weight: 700;
+      padding: 0.55rem 0.95rem;
+      border-radius: 0 0 8px 0;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      left: 0.75rem;
+      top: 0.75rem;
+    }
+    a,
+    button {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 150ms cubic-bezier(0.23, 1, 0.32, 1), background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+    }
     a:focus-visible,
     button:focus-visible {
       outline: 2px solid var(--iris);
@@ -69,7 +93,17 @@
     }
     a:active,
     button:active {
-      opacity: 0.85;
+      transform: scale(0.97);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      a:hover {
+        color: var(--iris);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      button:hover {
+        filter: brightness(1.06);
+      }
     }
     main {
       max-width: 780px;
@@ -85,6 +119,9 @@
       overflow-wrap: break-word;
       min-width: 0;
       text-wrap: balance;
+    }
+    h2, h3, section[id] {
+      scroll-margin-top: 76px;
     }
     p {
       max-width: 65ch;
@@ -113,13 +150,16 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
 </head>
 <body>
-  <main>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+  <main id="main-content">
     <h1>Política de Privacidade e Segurança: Espectro</h1>
     <div class="doc-note">LGPD e Segurança da Informação · Atualizado em 15 de novembro de 2026</div>
 

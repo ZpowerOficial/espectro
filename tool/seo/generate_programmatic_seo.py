@@ -156,7 +156,7 @@ def load_all_items(root: Path):
                     "slug": f"personality-{e['id']}",
                     "key": f"personality:{e['id']}",
                     "name": e["name"],
-                    "subtitle": f"{e.get('subtitle', '')}, {e.get('era', '')} ({e.get('origin', '')})".strip(" ,()"),
+                    "subtitle": f"{e.get('subtitle', '')}, {e.get('era', '')} ({e.get('origin', '')})".strip(" ,").replace(" ()", ""),
                     "summary": e.get("summary") or "",
                     "spectrumId": e.get("spectrumId") or "center",
                     "ideas": e.get("highlights") or [],
@@ -195,17 +195,18 @@ def load_all_items(root: Path):
 
 CSS_STYLE = """/* Hallmark · genre: editorial · shape: long document · posture: dark · nav: inline · footer: rule */
 :root {
-  --bg: #0B0E14;
-  --surface: #141924;
-  --surface-muted: #1B2230;
-  --topbar-bg: rgba(11, 14, 20, 0.94);
-  --line: #303949;
-  --line-soft: rgba(48, 57, 73, 0.55);
-  --ad-bg: rgba(20, 25, 36, 0.78);
-  --ink: #F0F3F7;
-  --muted: #AAB5C5;
-  --accent: #A48BFA;
-  --amber: #E9BF75;
+  color-scheme: dark;
+  --bg: #0B0F16;
+  --surface: #121822;
+  --surface-muted: #192130;
+  --topbar-bg: rgba(11, 15, 22, 0.94);
+  --line: #232D3F;
+  --line-soft: rgba(35, 45, 63, 0.55);
+  --ad-bg: rgba(18, 24, 34, 0.78);
+  --ink: #F2F4F8;
+  --muted: #8C97AE;
+  --accent: #9A92F0;
+  --amber: #E5A448;
   --amber-ink: #140D03;
   --teal: #71C7C5;
   --font-body: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Segoe UI", Roboto, sans-serif;
@@ -219,6 +220,28 @@ html, body {
   color: var(--ink);
   line-height: 1.65;
 }
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10000;
+  background: var(--amber);
+  color: var(--amber-ink);
+  font-weight: 700;
+  padding: 0.55rem 0.95rem;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 0.75rem;
+  top: 0.75rem;
+}
+a,
+button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 150ms cubic-bezier(0.23, 1, 0.32, 1), background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--accent);
@@ -226,13 +249,44 @@ button:focus-visible {
 }
 a:active,
 button:active {
-  opacity: 0.85;
+  transform: scale(0.97);
+}
+@media (hover: hover) and (pointer: fine) {
+  .cta-btn:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+  .cta-btn.secondary:hover {
+    border-color: var(--accent);
+    filter: none;
+  }
+  .link-chip:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .source-link:hover,
+  .breadcrumb a:hover,
+  footer a:hover {
+    color: var(--amber);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 }
 h1, h2, h3 {
   overflow-wrap: break-word;
   min-width: 0;
   text-wrap: balance;
   color: var(--ink);
+}
+h2, h3, section[id] {
+  scroll-margin-top: 76px;
+}
+.axis-row,
+.triad-row,
+td,
+.badge,
+.stat {
+  font-variant-numeric: tabular-nums;
 }
 header.topbar {
   border-bottom: 1px solid var(--line);
@@ -422,22 +476,36 @@ h1 {
   font-size: 0.82rem;
 }
 .ad-box {
-  display: none;
-  background: var(--ad-bg);
+  display: block;
+  background: transparent;
   color: var(--ink);
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 12px;
-  padding: 0.5rem;
-  margin: 1.25rem 0;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
   text-align: center;
 }
+.ad-box:has(ins[data-ad-status="unfilled"]) {
+  display: none !important;
+}
 .ad-box:has(ins[data-ad-status="filled"]) {
-  display: block;
+  background: var(--ad-bg);
+  border: 1px solid var(--line);
+  padding: 0.65rem;
+  margin: 1.5rem 0;
+}
+.ad-box:has(ins[data-ad-status="unfill-optimized"]) {
+  margin: 1.5rem 0;
 }
 .ad-label {
+  display: none;
   font-size: 0.75rem;
   color: var(--muted);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
+}
+.ad-box:has(ins[data-ad-status="filled"]) .ad-label {
+  display: block;
 }
 footer {
   border-top: 1px solid var(--line);
@@ -456,7 +524,9 @@ footer a { color: var(--teal); text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 """
@@ -652,6 +722,7 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
   <style>{CSS_STYLE}</style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="/"><span>Espectro</span><span class="brand-tag">Atlas Político</span></a>
@@ -661,7 +732,7 @@ def render_item_page(item: dict, axes_meta: dict, triads_meta: dict, related: li
       </div>
     </div>
   </header>
-  <main class="container">
+  <main id="main-content" class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="/">Espectro</a>
       <span aria-hidden="true">/</span>
@@ -743,13 +814,14 @@ def render_spectrum_page(spec_id: str, spec_name: str, spec_desc: str, spec_item
   <style>{CSS_STYLE}</style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="/"><span>Espectro</span><span class="brand-tag">Atlas Político</span></a>
       <a class="cta-btn" href="/#/atlas?v=1&spectrum={quote(spec_name)}">Filtrar no App</a>
     </div>
   </header>
-  <main class="container">
+  <main id="main-content" class="container">
     <h1>{esc(spec_name)} ({len(spec_items)} verbetes)</h1>
     <p class="kicker">Família de Espectro Político</p>
     <p class="subtitle">{esc(spec_desc)}</p>
@@ -841,13 +913,14 @@ def main():
   <style>{CSS_STYLE}</style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="/"><span>Espectro</span><span class="brand-tag">Observatório Político</span></a>
       <a class="cta-btn" href="/#/atlas">Abrir Atlas Interativo</a>
     </div>
   </header>
-  <main class="container">
+  <main id="main-content" class="container">
     <h1>Catálogo Político Multidimensional ({len(items)} verbetes)</h1>
     <p class="kicker">Índice Enciclopédico Completo</p>
     <p class="subtitle">Todas as fichas abaixo possuem análise completa em 12 eixos bipolares e 6 tríades de valores.</p>

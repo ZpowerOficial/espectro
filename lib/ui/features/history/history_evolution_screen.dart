@@ -11,8 +11,10 @@ import '../../../widgets/editorial.dart';
 import '../../../widgets/espectro_scaffold.dart';
 import '../../charts/evolution_line_chart.dart';
 import '../../view_models/app_view_model.dart';
+import '../../shared/metric_presentation.dart';
 import '../atlas/study_taxonomy.dart';
 import '../compare/compare_evaluations_screen.dart';
+import '../quiz/espectro_suites_screen.dart';
 import '../results/espectro_result_screen.dart';
 
 /// Tela de histórico completo de avaliações e acompanhamento cronológico da
@@ -60,6 +62,10 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
             child: const Text('Cancelar'),
           ),
           FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: Theme.of(ctx).colorScheme.error,
+              foregroundColor: Theme.of(ctx).colorScheme.onError,
+            ),
             onPressed: () => Navigator.of(ctx).pop(true),
             child: const Text('Excluir'),
           ),
@@ -75,7 +81,6 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
   Widget build(BuildContext context) {
     final EspectroPalette p = context.palette;
     final TextTheme text = Theme.of(context).textTheme;
-    final bool isDesktop = MediaQuery.sizeOf(context).width >= 1100;
 
     return ListenableBuilder(
       listenable: widget.appViewModel,
@@ -90,18 +95,7 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
             isSectionRoot: true,
             appBar: AppBar(
               automaticallyImplyLeading: false,
-              leading: isDesktop
-                  ? null
-                  : Padding(
-                      padding: const EdgeInsets.only(left: 12),
-                      child: Center(
-                        child: CircleIconButton(
-                          icon: Icons.arrow_back_rounded,
-                          onPressed: () => Navigator.of(context).pop(),
-                          tooltip: 'Voltar',
-                        ),
-                      ),
-                    ),
+              titleSpacing: EspectroLayout.pageHorizontalPadding,
               title: const Text('Histórico'),
               actions: <Widget>[
                 if (records.length >= 2)
@@ -120,6 +114,9 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
                   ),
               ],
               bottom: TabBar(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: EspectroLayout.pageHorizontalPadding,
+                ),
                 labelColor: p.accent,
                 unselectedLabelColor: p.muted,
                 indicatorColor: p.accent,
@@ -131,7 +128,7 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
               ),
             ),
             body: ResponsiveContentFrame(
-              maxWidth: 920,
+              maxWidth: EspectroLayout.workspaceMaxWidth,
               child: TabBarView(
                 children: <Widget>[
                   _buildRecordsList(context, records, p, text),
@@ -160,10 +157,10 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
 
     if (records.isEmpty) {
       return ListView(
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 32),
+        padding: EspectroLayout.pagePadding,
         children: <Widget>[
           heading,
-          const SizedBox(height: 28),
+          const SizedBox(height: EspectroLayout.sectionGap),
           SectionCard(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
@@ -189,12 +186,68 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
     }
 
     return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 32),
-      itemCount: records.length + 1,
-      separatorBuilder: (_, int index) =>
-          SizedBox(height: index == 0 ? 20 : 12),
+      padding: EspectroLayout.pagePadding,
+      itemCount: records.length + (records.length == 1 ? 2 : 1),
+      separatorBuilder: (_, int index) => SizedBox(
+        height: index == 0
+            ? EspectroLayout.blockGap
+            : EspectroLayout.cardGap,
+      ),
       itemBuilder: (BuildContext context, int index) {
         if (index == 0) return heading;
+        if (records.length == 1 && index == 2) {
+          return Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              color: p.surfaceMuted,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: p.line),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.timeline_rounded, size: 17, color: p.accent),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        'Comparação temporal disponível a partir de 2 avaliações',
+                        style: text.titleSmall?.copyWith(
+                          color: p.ink,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Conclua outra avaliação ao longo do tempo para acompanhar '
+                  'a evolução por dimensão e comparar matrizes lado a lado.',
+                  style: text.bodySmall,
+                ),
+                const SizedBox(height: 14),
+                TactilePress(
+                  scale: 0.97,
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          builder: (_) => EspectroSuitesScreen(
+                            appViewModel: widget.appViewModel,
+                          ),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.add_chart_rounded, size: 17),
+                    label: const Text('Nova avaliação'),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
         final EvaluationRecord rec = records[index - 1];
         final CompatibilityReport compat = EspectroCompatibilityEngine.evaluate(
           catalog: widget.appViewModel.data.catalog,
@@ -276,7 +329,7 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
                                             topMatch != null)
                                           Tag(
                                             label:
-                                                '${topSpectrum.name} · ${topMatch.compatibilityPercent.round()}%',
+                                                '${topSpectrum.name} · ${MetricPresentation.formatPercent(topMatch.compatibilityPercent)} conv.',
                                             background: stripeColor.withValues(
                                               alpha: p.isDark ? 0.18 : 0.10,
                                             ),
@@ -304,6 +357,9 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
                                         style: text.bodySmall?.copyWith(
                                           fontFamily: 'IBMPlexMono',
                                           fontSize: 11,
+                                          fontFeatures: const <FontFeature>[
+                                            FontFeature.tabularFigures(),
+                                          ],
                                         ),
                                       ),
                                     ],
@@ -317,24 +373,57 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
                                     ),
                                   ),
                                   const SizedBox(height: 12),
-                                  Row(
-                                    children: <Widget>[
-                                      Expanded(
-                                        child: ProgressRail(
-                                          value: coveragePct,
-                                          color: stripeColor,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 12),
-                                      Text(
-                                        '${rec.quality.totalAnswered} respostas · '
-                                        'cobertura ${(coveragePct * 100).round()}%',
-                                        style: text.bodySmall?.copyWith(
-                                          fontFamily: 'IBMPlexMono',
-                                          fontSize: 11,
-                                        ),
-                                      ),
-                                    ],
+                                  LayoutBuilder(
+                                    builder: (context, railBox) {
+                                      final String label =
+                                          '${rec.quality.totalAnswered} respostas · cobertura ${(coveragePct * 100).round()}%';
+                                      if (railBox.maxWidth < 340) {
+                                        return Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            ProgressRail(
+                                              value: coveragePct,
+                                              color: stripeColor,
+                                            ),
+                                            const SizedBox(height: 6),
+                                            Text(
+                                              label,
+                                              style: text.bodySmall?.copyWith(
+                                                fontFamily: 'IBMPlexMono',
+                                                fontSize: 11,
+                                                fontFeatures:
+                                                    const <FontFeature>[
+                                                      FontFeature.tabularFigures(),
+                                                    ],
+                                              ),
+                                            ),
+                                          ],
+                                        );
+                                      }
+                                      return Row(
+                                        children: <Widget>[
+                                          Expanded(
+                                            child: ProgressRail(
+                                              value: coveragePct,
+                                              color: stripeColor,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 12),
+                                          Text(
+                                            label,
+                                            style: text.bodySmall?.copyWith(
+                                              fontFamily: 'IBMPlexMono',
+                                              fontSize: 11,
+                                              fontFeatures:
+                                                  const <FontFeature>[
+                                                    FontFeature.tabularFigures(),
+                                                  ],
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
                                   ),
                                 ],
                               ),
@@ -423,7 +512,7 @@ class _HistoryEvolutionScreenState extends State<HistoryEvolutionScreen> {
     }
 
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
+      padding: EspectroLayout.pagePadding,
       children: <Widget>[
         Row(
           children: <Widget>[

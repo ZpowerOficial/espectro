@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../domain/models/study_models.dart';
 import '../../../domain/models/study_media.dart';
 import '../../../theme.dart';
+import '../../shared/resilient_image.dart';
 import 'current_emblem.dart';
 import 'study_taxonomy.dart';
 
@@ -48,13 +49,11 @@ class StudyIdentityAvatar extends StatelessWidget {
             width: 1.3,
           ),
         ),
-        child: Image.asset(
+        child: buildResilientAssetImage(
           'assets/currents/$currentId.png',
           fit: BoxFit.contain,
           cacheWidth: targetPx,
-          excludeFromSemantics: true,
-          errorBuilder: (_, _, _) =>
-              CurrentHeraldicEmblem(subject: subject, size: size),
+          fallback: CurrentHeraldicEmblem(subject: subject, size: size),
         ),
       );
     }
@@ -155,29 +154,18 @@ class StudyIdentityAvatar extends StatelessWidget {
           border: Border.all(color: color.withValues(alpha: .5), width: 1.5),
         ),
         child: hasAsset
-            ? Image.asset(
+            ? buildResilientAssetImage(
                 assetPath!,
                 fit: BoxFit.cover,
                 alignment: const Alignment(0, -.5),
-                excludeFromSemantics: true,
-                errorBuilder: (_, _, _) => fallback,
+                fallback: fallback,
               )
             : (hasNetwork
-                ? Image.network(
+                ? buildResilientNetworkImage(
                     subject.photoUrl!,
                     fit: BoxFit.cover,
                     alignment: isBook ? Alignment.topCenter : const Alignment(0, -.4),
-                    excludeFromSemantics: true,
-                    frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-                      if (wasSynchronouslyLoaded) return child;
-                      return AnimatedOpacity(
-                        opacity: frame == null ? 0 : 1,
-                        duration: const Duration(milliseconds: 240),
-                        curve: Curves.easeOut,
-                        child: child,
-                      );
-                    },
-                    errorBuilder: (_, _, _) => fallback,
+                    fallback: fallback,
                   )
                 : fallback),
       ),
@@ -328,19 +316,27 @@ class StudyIdentityHero extends StatelessWidget {
                   ),
                 ),
               ),
-            Text(
-              subject.kindLabel,
-              style: TextStyle(color: p.inkSoft, fontSize: 12),
-            ),
-            if (subject.coveredDimensions > 0)
-              Text(
-                '· ${subject.coveredDimensions}/18 dim.',
-                style: TextStyle(
-                  fontFamily: 'IBMPlexMono',
-                  fontSize: 10.5,
-                  color: p.muted,
+            Wrap(
+              spacing: 5,
+              runSpacing: 2,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Text(
+                  subject.kindLabel,
+                  style: TextStyle(color: p.inkSoft, fontSize: 12),
                 ),
-              ),
+                if (subject.coveredDimensions > 0)
+                  Text(
+                    '· ${subject.coveredDimensions}/18 dim.',
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexMono',
+                      fontSize: 10.5,
+                      color: p.muted,
+                      fontFeatures: const [FontFeature.tabularFigures()],
+                    ),
+                  ),
+              ],
+            ),
           ],
         ),
         const SizedBox(height: 14),
@@ -379,11 +375,8 @@ class StudyIdentityHero extends StatelessWidget {
                       builder: (context, c) {
                         final largeText =
                             MediaQuery.textScalerOf(context).scale(1) > 1.4;
-                        final hasImage = portrait != null ||
-                            subject.kind == 'current' ||
-                            (subject.photoUrl != null &&
-                                subject.photoUrl!.isNotEmpty);
-                        if (subject.kind != 'personality' && !hasImage) {
+                        if (subject.kind == 'spectrum' ||
+                            subject.kind == 'evaluation') {
                           return identity;
                         }
                         if (largeText) {

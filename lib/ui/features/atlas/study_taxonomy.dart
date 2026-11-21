@@ -380,7 +380,7 @@ String? normalizeSpectrumFilter(String? value) {
 /// 5: Eras & Regimes Históricos
 /// 6: Partidos & Movimentos
 /// 7: Debate Público & Divulgadores
-/// 8: Bancada / Congresso (Parlamentares)
+/// 8: Parlamentares · Voto Nominal (2003–2024)
 int studyCategoryPriority(StudySubject s) {
   if (s.kind == 'personality') {
     return switch (s.vocation?.id) {
@@ -411,7 +411,7 @@ String studyCategorySectionTitle(StudySubject s) =>
       5 => 'Eras & Regimes Históricos',
       6 => 'Partidos & Movimentos',
       7 => 'Debate Público & Divulgadores',
-      8 => 'Bancada / Congresso',
+      8 => 'Parlamentares · Voto Nominal (2003–2024)',
       _ => 'Outros verbetes',
     };
 

@@ -25,8 +25,27 @@ class DivergingAxisBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final EspectroPalette p = context.palette;
     final TextTheme text = Theme.of(context).textTheme;
-    final colors =
+    final AxisColorStrategy strategy = AxisColorStrategyScope.of(context);
+    final (Color rawL, Color rawR) =
         AxisColors.pairs[dimension.axisId] ?? (p.poleLeft, p.poleRight);
+    final Color anchorColor = AxisColors.primaryFor(dimension.axisId, p);
+    final bool isIndeterminate = dimension.isIndeterminate;
+    final bool hasObservedLean =
+        !isIndeterminate && dimension.score.abs() >= 0.15;
+    final bool isObservedBalanced = !isIndeterminate && !hasObservedLean;
+
+    // Estados indeterminados nunca privilegiam polos em nenhuma estratégia.
+    // Em primaryAnchor, somente inclinações efetivamente observadas (|S| >= 0.15)
+    // recebem destaque unilateral; eixos equilibrados mantêm simetria neutra.
+    final (Color, Color) colors = isIndeterminate
+        ? (p.muted, p.muted)
+        : (strategy == AxisColorStrategy.primaryAnchor
+              ? (hasObservedLean
+                    ? (dimension.leansLeft
+                          ? (anchorColor, p.line)
+                          : (p.line, anchorColor))
+                    : (p.muted, p.muted))
+              : (rawL, rawR));
 
     final String dominantPole = dimension.leansLeft
         ? dimension.leftPole
@@ -34,7 +53,17 @@ class DivergingAxisBar extends StatelessWidget {
     final int dominantPercent = dimension.leansLeft
         ? dimension.leftPercent.round()
         : dimension.rightPercent.round();
-    final Color dominantColor = dimension.leansLeft ? colors.$1 : colors.$2;
+    final Color dominantColor = isIndeterminate
+        ? p.muted
+        : (strategy == AxisColorStrategy.primaryAnchor
+              ? anchorColor
+              : (hasObservedLean
+                    ? (dimension.leansLeft ? colors.$1 : colors.$2)
+                    : p.inkSoft));
+    final Color dominantInk = isIndeterminate
+        ? p.muted
+        : AxisColors.readableInk(dominantColor, isDark: p.isDark);
+    final IconData axisIcon = AxisColors.iconFor(dimension.axisId);
 
     final Widget content = Semantics(
       button: onTap != null,
@@ -52,11 +81,13 @@ class DivergingAxisBar extends StatelessWidget {
               Expanded(
                 child: Row(
                   children: <Widget>[
+                    Icon(axisIcon, size: 15, color: dominantInk),
+                    const SizedBox(width: 6),
                     Flexible(
                       child: Text(
                         dimension.label,
                         style: text.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w700,
                           fontSize: 14,
                         ),
                         overflow: TextOverflow.ellipsis,
@@ -78,12 +109,35 @@ class DivergingAxisBar extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              if (dimension.isIndeterminate)
+              if (isIndeterminate)
                 Text(
                   dimension.summary,
                   style: text.labelLarge?.copyWith(
                     fontSize: 12,
                     color: p.muted,
+                  ),
+                )
+              else if (isObservedBalanced)
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 3,
+                  ),
+                  decoration: BoxDecoration(
+                    color: p.surfaceMuted,
+                    borderRadius: BorderRadius.circular(6),
+                    border: Border.all(color: p.line, width: 1),
+                  ),
+                  child: Text(
+                    'Equilibrado',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'IBMPlexMono',
+                      fontWeight: FontWeight.w700,
+                      fontSize: 11.5,
+                      color: p.inkSoft,
+                    ),
                   ),
                 )
               else
@@ -100,7 +154,7 @@ class DivergingAxisBar extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                       border: Border.all(
                         color: dominantColor.withValues(
-                          alpha: p.isDark ? 0.35 : 0.25,
+                          alpha: p.isDark ? 0.40 : 0.28,
                         ),
                         width: 1,
                       ),
@@ -113,7 +167,7 @@ class DivergingAxisBar extends StatelessWidget {
                         fontFamily: 'IBMPlexMono',
                         fontWeight: FontWeight.w700,
                         fontSize: 11.5,
-                        color: dominantColor,
+                        color: dominantInk,
                       ),
                     ),
                   ),
@@ -130,15 +184,18 @@ class DivergingAxisBar extends StatelessWidget {
             width: double.infinity,
             child: TweenAnimationBuilder<double>(
               tween: Tween<double>(begin: 0.0, end: dimension.score),
-              duration: const Duration(milliseconds: 550),
-              curve: Curves.easeOutCubic,
+              duration: MediaQuery.disableAnimationsOf(context)
+                  ? Duration.zero
+                  : const Duration(milliseconds: 420),
+              curve: EspectroMotion.easeOut,
               builder: (context, animScore, _) {
                 return CustomPaint(
                   painter: _DivergingBarPainter(
                     score: animScore,
                     scoreLow: dimension.scoreLow,
                     scoreHigh: dimension.scoreHigh,
-                    isIndeterminate: dimension.isIndeterminate,
+                    isIndeterminate: isIndeterminate,
+                    hasObservedLean: hasObservedLean,
                     baselineScore: baselineScore,
                     palette: p,
                     colors: colors,
@@ -153,14 +210,16 @@ class DivergingAxisBar extends StatelessWidget {
               Flexible(
                 child: PolePill(
                   label: dimension.leftPole,
-                  color: colors.$1,
-                  isActive: dimension.leansLeft && !dimension.isIndeterminate,
-                  badge: '${dimension.leftPercent.round()}%',
+                  color: hasObservedLean ? colors.$1 : colors.$1,
+                  isActive: hasObservedLean && dimension.leansLeft,
+                  badge: isIndeterminate ? '—' : '${dimension.leftPercent.round()}%',
                 ),
               ),
               const SizedBox(width: 6),
               Text(
-                '±${(dimension.standardError * 98).round()} pp',
+                isIndeterminate
+                    ? 'sem base'
+                    : '±${(dimension.standardError * 98).round()} pp',
                 style: text.bodySmall?.copyWith(
                   fontSize: 10,
                   fontFamily: 'IBMPlexMono',
@@ -172,8 +231,8 @@ class DivergingAxisBar extends StatelessWidget {
                 child: PolePill(
                   label: dimension.rightPole,
                   color: colors.$2,
-                  isActive: !dimension.leansLeft && !dimension.isIndeterminate,
-                  badge: '${dimension.rightPercent.round()}%',
+                  isActive: hasObservedLean && !dimension.leansLeft,
+                  badge: isIndeterminate ? '—' : '${dimension.rightPercent.round()}%',
                 ),
               ),
             ],
@@ -200,6 +259,7 @@ class _DivergingBarPainter extends CustomPainter {
     required this.scoreLow,
     required this.scoreHigh,
     required this.isIndeterminate,
+    required this.hasObservedLean,
     required this.baselineScore,
     required this.palette,
     required this.colors,
@@ -209,6 +269,7 @@ class _DivergingBarPainter extends CustomPainter {
   final double scoreLow;
   final double scoreHigh;
   final bool isIndeterminate;
+  final bool hasObservedLean;
   final double? baselineScore;
   final EspectroPalette palette;
   final (Color, Color) colors;
@@ -220,7 +281,7 @@ class _DivergingBarPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (size.width <= 0 || size.height <= 0) return;
     final double midY = size.height / 2;
-    final double trackHeight = 7.0;
+    final double trackHeight = 8.0;
     final double centerX = size.width / 2;
     const double gap = 2.0;
 
@@ -229,6 +290,23 @@ class _DivergingBarPainter extends CustomPainter {
     final Color leftColor = colors.$1;
     final Color rightColor = colors.$2;
 
+    Color trackPaintColor(Color trackColor, {required bool activeHalf}) {
+      if (isIndeterminate) return palette.surfaceMuted;
+      if (!hasObservedLean) {
+        return trackColor == palette.muted
+            ? palette.muted.withValues(alpha: palette.isDark ? 0.30 : 0.24)
+            : trackColor.withValues(alpha: palette.isDark ? 0.42 : 0.34);
+      }
+      if (trackColor == palette.line) {
+        return palette.line.withValues(alpha: palette.isDark ? 0.85 : 0.72);
+      }
+      return trackColor.withValues(
+        alpha: activeHalf
+            ? (palette.isDark ? 0.85 : 0.80)
+            : (palette.isDark ? 0.24 : 0.16),
+      );
+    }
+
     // Trilho esquerdo.
     final RRect leftTrack = RRect.fromRectAndRadius(
       Rect.fromLTWH(0, midY - trackHeight / 2, halfW, trackHeight),
@@ -236,14 +314,7 @@ class _DivergingBarPainter extends CustomPainter {
     );
     canvas.drawRRect(
       leftTrack,
-      Paint()
-        ..color = isIndeterminate
-            ? palette.surfaceMuted
-            : leftColor.withValues(
-                alpha: score < 0
-                    ? (palette.isDark ? 0.85 : 0.80)
-                    : (palette.isDark ? 0.22 : 0.16),
-              ),
+      Paint()..color = trackPaintColor(leftColor, activeHalf: score < 0),
     );
 
     // Trilho direito.
@@ -253,21 +324,16 @@ class _DivergingBarPainter extends CustomPainter {
     );
     canvas.drawRRect(
       rightTrack,
-      Paint()
-        ..color = isIndeterminate
-            ? palette.surfaceMuted
-            : rightColor.withValues(
-                alpha: score > 0
-                    ? (palette.isDark ? 0.85 : 0.80)
-                    : (palette.isDark ? 0.22 : 0.16),
-              ),
+      Paint()..color = trackPaintColor(rightColor, activeHalf: score > 0),
     );
 
     if (!isIndeterminate) {
       // Faixa translúcida de incerteza [scoreLow..scoreHigh].
       final double lowX = _xOf(scoreLow, size.width);
       final double highX = _xOf(scoreHigh, size.width);
-      final Color activeColor = score <= 0 ? leftColor : rightColor;
+      final Color activeColor = !hasObservedLean
+          ? palette.inkSoft
+          : (score <= 0 ? leftColor : rightColor);
 
       canvas.drawRRect(
         RRect.fromRectAndRadius(
@@ -306,14 +372,15 @@ class _DivergingBarPainter extends CustomPainter {
         );
       }
 
-      // Knob indicador do escore atual com anel e sombra.
+      // Knob indicador do escore atual com borda externa nítida (sem glow blur).
       final double scoreX = _xOf(score, size.width);
       canvas.drawCircle(
-        Offset(scoreX, midY + 1),
-        6.5,
+        Offset(scoreX, midY),
+        7.0,
         Paint()
-          ..color = Colors.black.withValues(alpha: 0.18)
-          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2.5),
+          ..color = palette.line.withValues(alpha: palette.isDark ? 0.9 : 0.85)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.0,
       );
       canvas.drawCircle(
         Offset(scoreX, midY),
@@ -346,6 +413,7 @@ class _DivergingBarPainter extends CustomPainter {
         oldDelegate.scoreLow != scoreLow ||
         oldDelegate.scoreHigh != scoreHigh ||
         oldDelegate.isIndeterminate != isIndeterminate ||
+        oldDelegate.hasObservedLean != hasObservedLean ||
         oldDelegate.baselineScore != baselineScore ||
         oldDelegate.palette != palette ||
         oldDelegate.colors != colors;

@@ -257,16 +257,39 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('PRÉVIA EM 12 EIXOS'), findsOneWidget);
+    final Finder homeScroll = find
+        .descendant(
+          of: find.byType(ListView),
+          matching: find.byType(Scrollable),
+        )
+        .first;
+    await tester.scrollUntilVisible(
+      find.text('Veja como fica o seu cartão'),
+      220,
+      scrollable: homeScroll,
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Veja como fica o seu cartão'), findsOneWidget);
     expect(find.text('Hannah Arendt'), findsAtLeastNWidgets(1));
 
-    await tester.tap(find.text('Marx'));
+    await tester.ensureVisible(find.byTooltip('Próximo exemplar').first);
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Próximo exemplar').first);
     await tester.pumpAndSettle();
     expect(find.text('Karl Marx'), findsAtLeastNWidgets(1));
 
-    await tester.tap(find.text('Rothbard'));
+    await tester.ensureVisible(find.byTooltip('Murray Rothbard').first);
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Murray Rothbard').first);
     await tester.pumpAndSettle();
     expect(find.text('Murray N. Rothbard'), findsAtLeastNWidgets(1));
+
+    await tester.ensureVisible(find.text('Story 9:16'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Story 9:16'));
+    await tester.pumpAndSettle();
+    expect(find.text('ESPECTRO · STORY 9:16'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }
