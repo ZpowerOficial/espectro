@@ -532,23 +532,7 @@ footer a { color: var(--teal); text-decoration: none; }
 """
 
 ADSENSE_HEAD_LOADER = f"""  <meta name="google-adsense-account" content="{ADSENSE_CLIENT}">
-  <script>
-    window.__espectroHasWebGL = (function () {{
-      try {{
-        var c = document.createElement('canvas');
-        return Boolean(c && (c.getContext('webgl2') || c.getContext('webgl')));
-      }} catch (_) {{
-        return false;
-      }}
-    }})();
-    if (window.__espectroHasWebGL) {{
-      var s = document.createElement('script');
-      s.async = true;
-      s.crossOrigin = 'anonymous';
-      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}';
-      document.head.appendChild(s);
-    }}
-  </script>"""
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>"""
 
 
 def render_ad_slot(slot_id: str) -> str:
@@ -562,11 +546,9 @@ def render_ad_slot(slot_id: str) -> str:
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
       <script>
-        if (window.__espectroHasWebGL) {{
-          try {{
-            (window.adsbygoogle = window.adsbygoogle || []).push({{}});
-          }} catch (_) {{}}
-        }}
+        try {{
+          (window.adsbygoogle = window.adsbygoogle || []).push({{}});
+        }} catch (_) {{}}
       </script>
     </aside>
     """

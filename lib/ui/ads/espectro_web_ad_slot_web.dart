@@ -15,6 +15,9 @@ external _DomElement? _querySelector(String selector);
 @JS('window.navigator.onLine')
 external bool get _navigatorOnLine;
 
+@JS('window.innerHeight')
+external int get _windowInnerHeight;
+
 @JS('window.setTimeout')
 external int _setTimeout(JSFunction callback, int delayMs);
 
@@ -38,7 +41,23 @@ extension type _MutationObserver._(JSObject _) implements JSObject {
   external void disconnect();
 }
 
-extension type _DomRect(JSObject _) implements JSObject {
+@JS('IntersectionObserver')
+extension type _IntersectionObserver._(JSObject _) implements JSObject {
+  external factory _IntersectionObserver(
+    JSFunction callback, [
+    JSAny? options,
+  ]);
+  external void observe(_DomElement target);
+  external void disconnect();
+}
+
+extension type _IntersectionEntry._(JSObject _) implements JSObject {
+  external bool get isIntersecting;
+}
+
+extension type _DomRect._(JSObject _) implements JSObject {
+  external double get top;
+  external double get bottom;
   external double get height;
 }
 
@@ -104,9 +123,14 @@ class _WebAdSenseSlotState extends State<_WebAdSenseSlot> {
   late final String _viewType = 'espectro-adsense-$_cleanSlot-${widget.instanceKey}';
 
   _MutationObserver? _observer;
+  _IntersectionObserver? _intersectionObserver;
   int? _pushTimer;
   int? _timeoutTimer;
+  int? _resyncTimer1;
+  int? _resyncTimer2;
   bool _disposed = false;
+  bool _pushed = false;
+  bool _nearViewport = false;
   EspectroAdSlotStatus? _lastStatus;
   double _lastHeight = -1;
 
@@ -138,7 +162,20 @@ class _WebAdSenseSlotState extends State<_WebAdSenseSlot> {
         ins.setAttribute('data-full-width-responsive', 'true');
         wrapper.appendChild(ins);
 
-        void syncDomState() {
+        late void Function() syncDomState;
+
+        void scheduleFollowUpResync() {
+          _resyncTimer1 ??= _setTimeout((() {
+            _resyncTimer1 = null;
+            syncDomState();
+          }).toJS, 350);
+          _resyncTimer2 ??= _setTimeout((() {
+            _resyncTimer2 = null;
+            syncDomState();
+          }).toJS, 1100);
+        }
+
+        syncDomState = () {
           if (_disposed) return;
           final rawStatus = ins.getAttribute('data-ad-status');
           final parsed = parseWebAdStatus(rawStatus);
@@ -154,6 +191,7 @@ class _WebAdSenseSlotState extends State<_WebAdSenseSlot> {
             ins.style.display = 'none';
             wrapper.style.display = 'none';
             _cancelTimeout();
+            _cancelResyncTimers();
             _emit(EspectroAdSlotStatus.unfilled, 0.0);
             return;
           }
@@ -164,8 +202,10 @@ class _WebAdSenseSlotState extends State<_WebAdSenseSlot> {
             wrapper.style.display = 'block';
             ins.style.display = 'block';
             _cancelTimeout();
-            final double normalizedH = domH >= 20.0 ? domH.clamp(50.0, 320.0) : 0.0;
+            final double normalizedH =
+                domH >= 20.0 ? domH.clamp(50.0, 320.0) : 0.0;
             _emit(EspectroAdSlotStatus.unfillOptimized, normalizedH);
+            scheduleFollowUpResync();
             return;
           }
 
@@ -173,10 +213,12 @@ class _WebAdSenseSlotState extends State<_WebAdSenseSlot> {
             wrapper.style.display = 'block';
             ins.style.display = 'block';
             _cancelTimeout();
-            final double normalizedH = domH >= 20.0 ? domH.clamp(50.0, 320.0) : 100.0;
+            final double normalizedH =
+                domH >= 20.0 ? domH.clamp(50.0, 320.0) : 100.0;
             _emit(EspectroAdSlotStatus.filled, normalizedH);
+            scheduleFollowUpResync();
           }
-        }
+        };
 
         _observer?.disconnect();
         _observer = _MutationObserver(
@@ -190,18 +232,37 @@ class _WebAdSenseSlotState extends State<_WebAdSenseSlot> {
               'data-ad-status',
               'data-adsbygoogle-status',
               'style',
+              'height',
             ],
             'childList': true,
             'subtree': true,
           }.jsify()!,
         );
 
+        bool isWrapperNearViewport() {
+          if (wrapper.offsetWidth <= 0) return false;
+          final rect = wrapper.getBoundingClientRect();
+          return rect.bottom >= -250.0 &&
+              rect.top <= (_windowInnerHeight + 250.0);
+        }
+
         void tryPush([int attempt = 0]) {
-          if (_disposed) return;
+          if (_disposed || _pushed) return;
           if (parseWebAdStatus(ins.getAttribute('data-ad-status')) !=
               EspectroAdSlotStatus.loading) {
             syncDomState();
             return;
+          }
+          if (!_nearViewport) {
+            if (isWrapperNearViewport()) {
+              _nearViewport = true;
+              _intersectionObserver?.disconnect();
+              _intersectionObserver = null;
+            } else {
+              // Slots fora da viewport pré-montados pelo cacheExtent do ListView
+              // aguardam o scroll via IntersectionObserver sem erro prematuro.
+              return;
+            }
           }
           if (!_navigatorOnLine) {
             _emit(EspectroAdSlotStatus.unavailable, 0.0);
@@ -214,14 +275,15 @@ class _WebAdSenseSlotState extends State<_WebAdSenseSlot> {
             return;
           }
           try {
-            if (wrapper.offsetWidth <= 0 && attempt < 8) {
+            if (wrapper.offsetWidth < 200 && attempt < 12) {
               _pushTimer = _setTimeout((() => tryPush(attempt + 1)).toJS, 250);
               return;
             }
-            if (wrapper.offsetWidth <= 0) {
+            if (wrapper.offsetWidth < 200) {
               _emit(EspectroAdSlotStatus.unavailable, 0.0);
               return;
             }
+            _pushed = true;
             final _AdsByGoogleQueue queue =
                 _adsByGoogle ?? _AdsByGoogleQueue._(JSArray<JSObject>());
             _adsByGoogle = queue;
@@ -230,21 +292,67 @@ class _WebAdSenseSlotState extends State<_WebAdSenseSlot> {
 
             _timeoutTimer = _setTimeout((() {
               if (_disposed) return;
-              final statusNow = parseWebAdStatus(ins.getAttribute('data-ad-status'));
-              if (statusNow == EspectroAdSlotStatus.loading) {
+              final statusNow = parseWebAdStatus(
+                ins.getAttribute('data-ad-status'),
+              );
+              final bool agDone =
+                  ins.getAttribute('data-adsbygoogle-status') == 'done';
+              if (statusNow != EspectroAdSlotStatus.loading) {
+                syncDomState();
+              } else if (!agDone) {
                 ins.style.display = 'none';
                 wrapper.style.display = 'none';
                 _emit(EspectroAdSlotStatus.unavailable, 0.0);
-              } else {
-                syncDomState();
               }
-            }).toJS, 5000);
+            }).toJS, 15000);
           } on Object {
             _emit(EspectroAdSlotStatus.unavailable, 0.0);
           }
         }
 
-        _pushTimer = _setTimeout((() => tryPush(0)).toJS, 160);
+        void probeViewport([int waitLayoutAttempt = 0]) {
+          if (_disposed || _pushed) return;
+          if (_nearViewport || isWrapperNearViewport()) {
+            _nearViewport = true;
+            _intersectionObserver?.disconnect();
+            _intersectionObserver = null;
+            tryPush(0);
+            return;
+          }
+          if (wrapper.offsetWidth <= 0 && waitLayoutAttempt < 8) {
+            _pushTimer = _setTimeout(
+              (() => probeViewport(waitLayoutAttempt + 1)).toJS,
+              250,
+            );
+          }
+        }
+
+        _intersectionObserver?.disconnect();
+        try {
+          _intersectionObserver = _IntersectionObserver(
+            ((
+              JSArray<_IntersectionEntry> entries,
+              _IntersectionObserver obs,
+            ) {
+              if (_disposed || _pushed) return;
+              if (entries.toDart.any((e) => e.isIntersecting)) {
+                _nearViewport = true;
+                obs.disconnect();
+                _intersectionObserver = null;
+                tryPush(0);
+              }
+            }).toJS,
+            <String, Object?>{
+              'rootMargin': '250px 0px',
+              'threshold': 0.0,
+            }.jsify(),
+          );
+          _intersectionObserver!.observe(wrapper);
+        } on Object {
+          _nearViewport = true;
+        }
+
+        _pushTimer = _setTimeout((() => probeViewport(0)).toJS, 160);
         return wrapper;
       });
     }
@@ -266,6 +374,19 @@ class _WebAdSenseSlotState extends State<_WebAdSenseSlot> {
     }
   }
 
+  void _cancelResyncTimers() {
+    final t1 = _resyncTimer1;
+    if (t1 != null) {
+      _clearTimeout(t1);
+      _resyncTimer1 = null;
+    }
+    final t2 = _resyncTimer2;
+    if (t2 != null) {
+      _clearTimeout(t2);
+      _resyncTimer2 = null;
+    }
+  }
+
   @override
   void dispose() {
     _disposed = true;
@@ -275,8 +396,11 @@ class _WebAdSenseSlotState extends State<_WebAdSenseSlot> {
       _pushTimer = null;
     }
     _cancelTimeout();
+    _cancelResyncTimers();
     _observer?.disconnect();
     _observer = null;
+    _intersectionObserver?.disconnect();
+    _intersectionObserver = null;
     super.dispose();
   }
 

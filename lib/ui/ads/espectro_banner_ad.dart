@@ -275,15 +275,7 @@ class _EspectroInlineAdSlotState extends State<EspectroInlineAdSlot> {
               SizedBox(
                 width: double.infinity,
                 height: renderedHeight,
-                // Alpha > 0 garante que o RenderOpacity do Flutter Web componha
-                // a PlatformViewSurface durante a sonda inicial (`loading`).
-                child: Opacity(
-                  opacity: showVisibleFrame ? 1.0 : 0.01,
-                  child: IgnorePointer(
-                    ignoring: !showVisibleFrame,
-                    child: slotChild,
-                  ),
-                ),
+                child: slotChild,
               ),
             ],
           ),

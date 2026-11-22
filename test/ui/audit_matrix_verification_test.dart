@@ -912,6 +912,20 @@ void main() {
         ).height,
         100,
       );
+      expect(
+        find.descendant(
+          of: find.byType(EspectroInlineAdSlot),
+          matching: find.byType(Opacity),
+        ),
+        findsNothing,
+      );
+      expect(
+        find.descendant(
+          of: find.byType(EspectroInlineAdSlot),
+          matching: find.byType(IgnorePointer),
+        ),
+        findsNothing,
+      );
 
       // unfill-optimized com altura > 0 -> renderiza sem ocultar; altura 0 -> 0x0 sem forçar estilo
       await tester.pumpWidget(
@@ -935,6 +949,20 @@ void main() {
           find.byKey(const ValueKey<String>('ad-test-surface-test_opt_open')),
         ).height,
         120,
+      );
+      expect(
+        find.descendant(
+          of: find.byType(EspectroInlineAdSlot),
+          matching: find.byType(Opacity),
+        ),
+        findsNothing,
+      );
+      expect(
+        find.descendant(
+          of: find.byType(EspectroInlineAdSlot),
+          matching: find.byType(IgnorePointer),
+        ),
+        findsNothing,
       );
 
       await tester.pumpWidget(

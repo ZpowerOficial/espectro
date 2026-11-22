@@ -66,8 +66,9 @@
     };
   </script>
 
-  <!-- Google AdSense (carregamento condicional seguro para navegadores completos) -->
+  <!-- Google AdSense -->
   <meta name="google-adsense-account" content="ca-pub-1519935796466095">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1519935796466095" crossorigin="anonymous"></script>
   <script>
     window.__espectroHasWebGL = (function () {
       try {
@@ -77,13 +78,6 @@
         return false;
       }
     })();
-    if (window.__espectroHasWebGL) {
-      var ads = document.createElement('script');
-      ads.async = true;
-      ads.crossOrigin = 'anonymous';
-      ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1519935796466095';
-      document.head.appendChild(ads);
-    }
   </script>
 
   <!-- Schema.org Structured Data (WebApplication + Dataset + Organization + FAQPage) -->
@@ -118,6 +112,7 @@
         "url": "https://espectro-politico.web.app/catalogo.html",
         "description": "Conjunto de dados analítico com 289 correntes ideológicas, pensadores, livros clássicos, países, partidos e eras históricas mapeados em 12 eixos políticos bipolares e 6 tríades de valores.",
         "inLanguage": "pt-BR",
+        "license": "https://espectro-politico.web.app/privacidade.html",
         "creator": {
           "@type": "Organization",
           "name": "Espectro — Observatório Político"
