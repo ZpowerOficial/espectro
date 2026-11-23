@@ -64,13 +64,29 @@
         ]
       },
       {
-        "source": "/sitemap*.xml",
+        "source": "/sitemap.xml",
         "headers": [
           {
             "key": "Content-Type",
             "value": "application/xml; charset=utf-8"
           }
         ]
+      },
+      {
+        "source": "/sitemap_index.xml",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/xml; charset=utf-8"
+          }
+        ]
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/sitemaps.xml",
+        "destination": "/sitemap.xml",
+        "type": 301
       }
     ],
     "rewrites": [
