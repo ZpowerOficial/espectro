@@ -56,12 +56,12 @@ abstract final class StudyConstellationGeometry {
     if (projection.isTriad) {
       final comp = subject.triangles[projection.triadId!];
       if (comp == null || comp.length != 3) return null;
-      // Barycentric projection onto equilateral triangle
-      const v0 = Offset(140, 710);
-      const v1 = Offset(740, 710);
-      const v2 = Offset(440, 150);
+      // Projeção baricêntrica sobre triângulo equilátero calibrado
+      const v0 = TeiaCartographicLayer.triadV0;
+      const v1 = TeiaCartographicLayer.triadV1;
+      const v2 = TeiaCartographicLayer.triadV2;
       final sum = comp[0] + comp[1] + comp[2];
-      if (sum <= 1e-9) return const Offset(440, 520);
+      if (sum <= 1e-9) return TeiaCartographicLayer.triadCentroid;
       return (v0 * comp[0] + v1 * comp[1] + v2 * comp[2]) / sum;
     }
     if (!projection.isNolan) {
@@ -261,6 +261,13 @@ class _StudyConstellationState extends State<StudyConstellation>
   double _gestureScale = 1;
   Offset _gestureAnchor = Offset.zero;
 
+  double _fitScaleFor(Size viewport) {
+    final double span = (widget.compact || viewport.shortestSide < 420)
+        ? 880.0
+        : 810.0;
+    return math.min(viewport.width / span, viewport.height / span);
+  }
+
   double get _minimumScale => _viewport == null
       ? .2
       : math.min(_viewport!.width / 880, _viewport!.height / 880) * .7;
@@ -436,14 +443,25 @@ class _StudyConstellationState extends State<StudyConstellation>
           );
           if (point == null) return;
           final scale = _camera.value.getMaxScaleOnAxis();
+          final fitScale = _fitScaleFor(_viewport!);
+          final double targetTx = _viewport!.width / 2 - point.dx * scale;
+          final double targetTy = _viewport!.height / 2 - point.dy * scale;
+          final double tx;
+          final double ty;
+          if (scale <= fitScale * 1.15) {
+            // Quando toda a figura cabe na tela, desloca suavemente sem jogar o
+            // diagrama inteiro para um canto.
+            final double fitDx = (_viewport!.width - 880 * scale) / 2;
+            final double fitDy = (_viewport!.height - 880 * scale) / 2;
+            tx = fitDx + (targetTx - fitDx) * 0.22;
+            ty = fitDy + (targetTy - fitDy) * 0.22;
+          } else {
+            tx = targetTx;
+            ty = targetTy;
+          }
           _flyTo(
             Matrix4.identity()
-              ..translateByDouble(
-                _viewport!.width / 2 - point.dx * scale,
-                _viewport!.height / 2 - point.dy * scale,
-                0,
-                1,
-              )
+              ..translateByDouble(tx, ty, 0, 1)
               ..scaleByDouble(scale, scale, scale, 1),
           );
         });
@@ -464,7 +482,7 @@ class _StudyConstellationState extends State<StudyConstellation>
   void _fit(Size viewport) {
     _flight.stop();
     _cameraTween = null;
-    final scale = math.min(viewport.width / 880, viewport.height / 880);
+    final scale = _fitScaleFor(viewport);
     final dx = (viewport.width - 880 * scale) / 2;
     final dy = (viewport.height - 880 * scale) / 2;
     _camera.value = Matrix4.identity()
@@ -476,7 +494,7 @@ class _StudyConstellationState extends State<StudyConstellation>
     final viewport = _viewport;
     if (viewport == null) return;
     final oldScale = _camera.value.getMaxScaleOnAxis();
-    final fit = math.min(viewport.width / 880, viewport.height / 880);
+    final fit = _fitScaleFor(viewport);
     final scale = (oldScale * factor).clamp(fit * .7, 4.0);
     final anchor = _camera.toScene(
       Offset(viewport.width / 2, viewport.height / 2),
@@ -609,31 +627,44 @@ class _StudyConstellationState extends State<StudyConstellation>
     ],
   );
 
-  Widget _buildCardinalBadge(String label, Alignment alignment) {
+  Widget _buildSceneAnchoredBadge({
+    required String label,
+    required Offset sceneAnchor,
+    required Matrix4 matrix,
+    required double alignX,
+    required double alignY,
+  }) {
     final p = context.palette;
-    return Align(
-      alignment: alignment,
-      child: Padding(
-        padding: EdgeInsets.all(widget.compact ? 4.0 : 8.0),
+    final Offset screenAnchor = MatrixUtils.transformPoint(matrix, sceneAnchor);
+    return Positioned.fill(
+      child: CustomSingleChildLayout(
+        delegate: _SceneAnchoredBadgeDelegate(
+          anchor: screenAnchor,
+          alignX: alignX,
+          alignY: alignY,
+          compact: widget.compact,
+        ),
         child: Container(
           padding: EdgeInsets.symmetric(
-            horizontal: widget.compact ? 6 : 8,
-            vertical: widget.compact ? 2 : 3,
+            horizontal: widget.compact ? 6 : 9,
+            vertical: widget.compact ? 2.5 : 4,
           ),
           decoration: BoxDecoration(
-            color: p.surface.withValues(alpha: 0.90),
-            borderRadius: BorderRadius.circular(5),
+            color: p.surface.withValues(alpha: 0.94),
+            borderRadius: BorderRadius.circular(6),
             border: Border.all(
-              color: p.line.withValues(alpha: 0.90),
+              color: p.line.withValues(alpha: 0.92),
             ),
           ),
           child: Text(
             label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontFamily: 'IBMPlexSans',
               fontSize: widget.compact ? 9.5 : 10.5,
               fontWeight: FontWeight.w700,
-              letterSpacing: 0.3,
+              letterSpacing: 0.35,
               color: p.inkSoft,
             ),
           ),
@@ -732,49 +763,87 @@ class _StudyConstellationState extends State<StudyConstellation>
           Positioned.fill(child: gestures),
           Positioned.fill(
             child: IgnorePointer(
-              child: Stack(
-                children: [
+              child: ValueListenableBuilder<Matrix4>(
+                valueListenable: _camera,
+                builder: (BuildContext context, Matrix4 matrix, _) {
                   if (widget.projection.isTriad &&
-                      widget.projection.triadVertices.length == 3) ...[
-                    _buildCardinalBadge(
-                      '${widget.projection.triadVertices[2].toUpperCase()} ↑',
-                      Alignment.topCenter,
-                    ),
-                    _buildCardinalBadge(
-                      '← ${widget.projection.triadVertices[0].toUpperCase()}',
-                      Alignment.bottomLeft,
-                    ),
-                    _buildCardinalBadge(
-                      '${widget.projection.triadVertices[1].toUpperCase()} →',
-                      Alignment.bottomRight,
-                    ),
-                  ] else ...[
-                    _buildCardinalBadge(
-                      widget.projection.isNolan
-                          ? 'AUTORITARISMO ↑'
-                          : '${widget.projection.yHigh.toUpperCase()} ↑',
-                      Alignment.topCenter,
-                    ),
-                    _buildCardinalBadge(
-                      widget.projection.isNolan
-                          ? 'ANARQUISMO ↓'
-                          : '${widget.projection.yLow.toUpperCase()} ↓',
-                      Alignment.bottomCenter,
-                    ),
-                    _buildCardinalBadge(
-                      widget.projection.isNolan
-                          ? '← ESQUERDA'
-                          : '← ${widget.projection.xLow.toUpperCase()}',
-                      Alignment.centerLeft,
-                    ),
-                    _buildCardinalBadge(
-                      widget.projection.isNolan
-                          ? 'DIREITA →'
-                          : '${widget.projection.xHigh.toUpperCase()} →',
-                      Alignment.centerRight,
-                    ),
-                  ],
-                ],
+                      widget.projection.triadVertices.length == 3) {
+                    return Stack(
+                      children: [
+                        _buildSceneAnchoredBadge(
+                          label:
+                              '${widget.projection.triadVertices[2].toUpperCase()} ↑',
+                          sceneAnchor:
+                              TeiaCartographicLayer.triadV2 +
+                              const Offset(0, -14),
+                          matrix: matrix,
+                          alignX: -0.5,
+                          alignY: -1.0,
+                        ),
+                        _buildSceneAnchoredBadge(
+                          label:
+                              '← ${widget.projection.triadVertices[0].toUpperCase()}',
+                          sceneAnchor:
+                              TeiaCartographicLayer.triadV0 +
+                              const Offset(0, 14),
+                          matrix: matrix,
+                          alignX: -0.5,
+                          alignY: 0.0,
+                        ),
+                        _buildSceneAnchoredBadge(
+                          label:
+                              '${widget.projection.triadVertices[1].toUpperCase()} →',
+                          sceneAnchor:
+                              TeiaCartographicLayer.triadV1 +
+                              const Offset(0, 14),
+                          matrix: matrix,
+                          alignX: -0.5,
+                          alignY: 0.0,
+                        ),
+                      ],
+                    );
+                  }
+                  return Stack(
+                    children: [
+                      _buildSceneAnchoredBadge(
+                        label: widget.projection.isNolan
+                            ? 'AUTORITARISMO ↑'
+                            : '${widget.projection.yHigh.toUpperCase()} ↑',
+                        sceneAnchor: const Offset(440, 84),
+                        matrix: matrix,
+                        alignX: -0.5,
+                        alignY: -1.0,
+                      ),
+                      _buildSceneAnchoredBadge(
+                        label: widget.projection.isNolan
+                            ? 'ANARQUISMO ↓'
+                            : '${widget.projection.yLow.toUpperCase()} ↓',
+                        sceneAnchor: const Offset(440, 796),
+                        matrix: matrix,
+                        alignX: -0.5,
+                        alignY: 0.0,
+                      ),
+                      _buildSceneAnchoredBadge(
+                        label: widget.projection.isNolan
+                            ? '← ESQUERDA'
+                            : '← ${widget.projection.xLow.toUpperCase()}',
+                        sceneAnchor: const Offset(86, 440),
+                        matrix: matrix,
+                        alignX: -1.0,
+                        alignY: -0.5,
+                      ),
+                      _buildSceneAnchoredBadge(
+                        label: widget.projection.isNolan
+                            ? 'DIREITA →'
+                            : '${widget.projection.xHigh.toUpperCase()} →',
+                        sceneAnchor: const Offset(794, 440),
+                        matrix: matrix,
+                        alignX: 0.0,
+                        alignY: -0.5,
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
@@ -1299,18 +1368,35 @@ class _ConstellationPainter extends CustomPainter {
     return edges;
   }
 
+  static String _shortMapLabel(String raw) {
+    String out = raw.replaceAll(RegExp(r'\s*\([^)]*\)'), '');
+    final int slash = out.indexOf('/');
+    if (slash > 0) {
+      out = out.substring(0, slash);
+    }
+    out = out.trim();
+    return out.length >= 3 ? out : raw;
+  }
+
   @override
   void paint(Canvas canvas, Size size) {
     final placedPoints = points.where((p) => p.$2.dx <= 800).toList();
     final activeKeyNow = selectedKey ?? hoveredKey;
+    final String? focusSpectrumId = activeKeyNow != null
+        ? spectrumOf(
+            placedPoints.where((p) => p.$1.key == activeKeyNow).firstOrNull?.$1 ??
+                const StudySubject(key: '', name: '', kind: '', kindLabel: ''),
+          )?.id
+        : (territories.length == 1 ? territories.first.id : null);
 
     // 1. Retículo cartográfico calibrado (grade ortogonal ou simplex ternário)
     TeiaCartographicLayer.paintGraticule(
       canvas,
       palette,
       scale: _screenScale,
-      showScaleTicks: !projection.isTriad,
+      showScaleTicks: !compact,
       isTriad: projection.isTriad,
+      fillAnalyticalPlate: true,
     );
 
     // 2. Envoltórias territoriais nítidas por espectro (preserva contexto mesmo sob seleção)
@@ -1320,10 +1406,12 @@ class _ConstellationPainter extends CustomPainter {
       palette,
       opacityMultiplier: activeKeyNow == null
           ? (compact ? 0.72 : 1.0)
-          : (compact ? 0.58 : 0.80),
+          : (compact ? 0.58 : 0.85),
       showLabels: !compact && _screenScale <= 2.1,
       zoomScale: _screenScale,
-      labelOpacity: activeKeyNow == null ? 1.0 : 0.42,
+      labelOpacity: activeKeyNow == null ? 1.0 : 0.48,
+      isTriad: projection.isTriad,
+      focusSpectrumId: focusSpectrumId,
     );
 
     // Unplaced / Sem posição tray
@@ -1356,8 +1444,12 @@ class _ConstellationPainter extends CustomPainter {
       ..color = (palette.isDark
               ? const Color(0xFF334155)
               : const Color(0xFFCBD5E1))
-          .withValues(alpha: activeKey == null ? 0.32 : 0.12)
-      ..strokeWidth = 0.85 / _screenScale;
+          .withValues(
+            alpha: activeKey == null
+                ? (projection.isTriad ? 0.16 : 0.24)
+                : 0.10,
+          )
+      ..strokeWidth = 0.75 / _screenScale;
 
     for (final edge in staticEdges) {
       canvas.drawLine(edge.$1, edge.$2, bgEdgePaint);
@@ -1408,7 +1500,7 @@ class _ConstellationPainter extends CustomPainter {
       camera.toScene(Offset(vp.width, vp.height)),
     ).inflate(40.0);
 
-    // 6. Node stars / points (using reusable paints to eliminate GC thrashing)
+    // 6. Node stars / points (using reusable paints with crisp stroke separation)
     final nodeFillPaint = Paint()..style = PaintingStyle.fill;
     final nodeStrokePaint = Paint()..style = PaintingStyle.stroke;
     final activeNeighbourKeys = activeNeighbours.map((p) => p.$1.key).toSet();
@@ -1435,41 +1527,37 @@ class _ConstellationPainter extends CustomPainter {
             ..strokeWidth = 2.2 / _screenScale;
           canvas.drawCircle(point, 12.5 / _screenScale, nodeStrokePaint);
           nodeFillPaint.color = color;
-          canvas.drawCircle(point, 6.2 / _screenScale, nodeFillPaint);
+          canvas.drawCircle(point, 6.4 / _screenScale, nodeFillPaint);
           nodeStrokePaint
             ..color = palette.surface
-            ..strokeWidth = 1.4 / _screenScale;
-          canvas.drawCircle(point, 6.2 / _screenScale, nodeStrokePaint);
+            ..strokeWidth = 1.5 / _screenScale;
+          canvas.drawCircle(point, 6.4 / _screenScale, nodeStrokePaint);
         } else if (isNeighbour) {
           // Vizinho imediato com anel de contraste (sem halo borrado)
           nodeFillPaint.color = color;
           canvas.drawCircle(point, 5.2 / _screenScale, nodeFillPaint);
           nodeStrokePaint
-            ..color = palette.canvas
+            ..color = palette.surface
             ..strokeWidth = 1.2 / _screenScale;
           canvas.drawCircle(point, 5.2 / _screenScale, nodeStrokePaint);
         } else {
-          // Preserva riqueza cromática e contexto sem apagamento excessivo
+          // Preserva riqueza cromática e contexto com contorno discreto
           nodeFillPaint.color = color.withValues(
-            alpha: palette.isDark ? 0.44 : 0.40,
+            alpha: palette.isDark ? 0.38 : 0.34,
           );
-          canvas.drawCircle(point, 3.6 / _screenScale, nodeFillPaint);
+          canvas.drawCircle(point, 3.3 / _screenScale, nodeFillPaint);
         }
       } else {
-        // Estado de constelação aberta com contornos nítidos
-        if (isAnchor) {
-          nodeFillPaint.color = color.withValues(alpha: 0.96);
-          canvas.drawCircle(point, 5.2 / _screenScale, nodeFillPaint);
-          nodeStrokePaint
-            ..color = palette.canvas
-            ..strokeWidth = 1.1 / _screenScale;
-          canvas.drawCircle(point, 5.2 / _screenScale, nodeStrokePaint);
-        } else {
-          nodeFillPaint.color = color.withValues(
-            alpha: palette.isDark ? 0.90 : 0.86,
-          );
-          canvas.drawCircle(point, 3.9 / _screenScale, nodeFillPaint);
-        }
+        // Estado de constelação aberta com contornos de separação nítidos
+        final double radius = (isAnchor ? 4.9 : 3.5) / _screenScale;
+        nodeFillPaint.color = color.withValues(
+          alpha: isAnchor ? 0.96 : (palette.isDark ? 0.88 : 0.84),
+        );
+        canvas.drawCircle(point, radius, nodeFillPaint);
+        nodeStrokePaint
+          ..color = palette.surface.withValues(alpha: palette.isDark ? 0.90 : 0.95)
+          ..strokeWidth = (isAnchor ? 1.1 : 0.85) / _screenScale;
+        canvas.drawCircle(point, radius, nodeStrokePaint);
       }
     }
 
@@ -1483,29 +1571,34 @@ class _ConstellationPainter extends CustomPainter {
           camera.toScene(screenRect.bottomRight),
         );
 
-    // Reserve Cardinal badges & floating Legend HUD boxes so secondary labels avoid them
+    // Reserva áreas de HUD (espectros, seletor de projeção, controles de zoom) e vértices
     if (!compact && vp.width >= 600) {
-      hudZones.add(screenToSceneRect(Rect.fromLTWH(8, vp.height - 236, 206, 232)));
-      hudZones.add(screenToSceneRect(Rect.fromLTWH(8, 8, 170, 48)));
+      hudZones.add(screenToSceneRect(Rect.fromLTWH(8, vp.height - 242, 204, 236)));
+      hudZones.add(screenToSceneRect(const Rect.fromLTWH(8, 8, 224, 52)));
+      hudZones.add(screenToSceneRect(Rect.fromLTWH(vp.width - 66, 8, 58, 210)));
     } else {
       hudZones.add(screenToSceneRect(Rect.fromLTWH(8, vp.height - 56, 150, 52)));
     }
-    hudZones.add(screenToSceneRect(Rect.fromLTWH(vp.width / 2 - 96, 4, 192, 34)));
-    hudZones.add(
-      screenToSceneRect(Rect.fromLTWH(vp.width / 2 - 96, vp.height - 36, 192, 32)),
-    );
-    hudZones.add(
-      screenToSceneRect(Rect.fromLTWH(2, vp.height / 2 - 20, 104, 40)),
-    );
-    hudZones.add(
-      screenToSceneRect(
-        Rect.fromLTWH(vp.width - 108, vp.height / 2 - 20, 106, 40),
-      ),
-    );
+    if (projection.isTriad) {
+      hudZones.add(Rect.fromCenter(center: TeiaCartographicLayer.triadV2 - const Offset(0, 26), width: 140, height: 36));
+      hudZones.add(Rect.fromCenter(center: TeiaCartographicLayer.triadV0 + const Offset(0, 26), width: 150, height: 36));
+      hudZones.add(Rect.fromCenter(center: TeiaCartographicLayer.triadV1 + const Offset(0, 26), width: 150, height: 36));
+    } else {
+      hudZones.add(Rect.fromCenter(center: const Offset(440, 84), width: 165, height: 36));
+      hudZones.add(Rect.fromCenter(center: const Offset(440, 796), width: 150, height: 36));
+      hudZones.add(Rect.fromCenter(center: const Offset(86, 440), width: 130, height: 38));
+      hudZones.add(Rect.fromCenter(center: const Offset(794, 440), width: 120, height: 38));
+      if (vp.width < 520) {
+        hudZones.add(screenToSceneRect(Rect.fromLTWH(4, vp.height / 2 - 36, 118, 72)));
+        hudZones.add(screenToSceneRect(Rect.fromLTWH(vp.width - 118, vp.height / 2 - 36, 114, 72)));
+      }
+    }
 
-    if (activeKey != null) {
-      for (final (subject, pt) in [?activeSubject, ...activeNeighbours]) {
-        final double r = (subject.key == activeKey ? 13.0 : 8.5) / _screenScale;
+    for (final (subject, pt) in placedPoints) {
+      if (subject.key == activeKey ||
+          activeNeighbourKeys.contains(subject.key) ||
+          _tier1Anchors.contains(subject.key)) {
+        final double r = (subject.key == activeKey ? 13.0 : 7.0) / _screenScale;
         nodeObstacles.add(Rect.fromCircle(center: pt, radius: r));
       }
     }
@@ -1519,7 +1612,15 @@ class _ConstellationPainter extends CustomPainter {
       ),
     );
 
-    final int labelBudget = _screenScale >= 1.8 ? 36 : 28;
+    final int labelBudget = compact
+        ? (_screenScale >= 1.6 ? 12 : 6)
+        : (_screenScale >= 1.85 ? 28 : (_screenScale >= 1.25 ? 16 : 9));
+    final double passiveClearance =
+        (_screenScale >= 1.85 ? 6.0 : (_screenScale >= 1.25 ? 11.0 : 18.0)) /
+        _screenScale;
+    final Color haloStrokeColor =
+        (palette.isDark ? const Color(0xFF0E141E) : const Color(0xFFFAF9F5))
+            .withValues(alpha: 0.94);
 
     void tryDrawLabel({
       required (StudySubject, Offset) entry,
@@ -1527,71 +1628,79 @@ class _ConstellationPainter extends CustomPainter {
       required Color bgColor,
       required double fontSize,
       required bool isPriority,
+      required bool haloOnly,
       bool avoidHud = true,
+      bool forcePlacement = false,
     }) {
       final (subject, point) = entry;
-      // Skip if offscreen or if quota reached (unless priority)
       if (!isPriority &&
           (!visibleBounds.contains(point) ||
               allocatedBoxes.length >= labelBudget)) {
         return;
       }
 
+      final String displayText =
+          haloOnly ? _shortMapLabel(subject.name) : subject.name;
+      final double maxTextWidth = haloOnly
+          ? (136.0 / _screenScale)
+          : ((isPriority ? 230.0 : 175.0) / _screenScale);
+
+      final TextStyle textStyle = TextStyle(
+        color: textColor,
+        fontFamily: 'IBMPlexSans',
+        fontSize: fontSize / _screenScale,
+        fontWeight: isPriority ? FontWeight.w700 : FontWeight.w600,
+      );
+
       final painter = TextPainter(
-        text: TextSpan(
-          text: subject.name,
-          style: TextStyle(
-            color: textColor,
-            fontFamily: 'IBMPlexSans',
-            fontSize: fontSize / _screenScale,
-            fontWeight: isPriority ? FontWeight.w700 : FontWeight.w600,
-          ),
-        ),
+        text: TextSpan(text: displayText, style: textStyle),
         textDirection: TextDirection.ltr,
         maxLines: 1,
         ellipsis: '…',
-      )..layout(maxWidth: math.min(250 / _screenScale, 864));
+      )..layout(maxWidth: math.min(maxTextWidth, 864));
 
       final w = painter.width;
       final h = painter.height;
-      final double gap = 12.0 / _screenScale;
+      final double gap = (isPriority ? 14.0 : 10.0) / _screenScale;
       final double diag = 10.5 / _screenScale;
-      final double padX = 8.0 / _screenScale;
-      final double padY = 4.0 / _screenScale;
+      final double padX = (haloOnly ? 4.0 : 8.0) / _screenScale;
+      final double padY = (haloOnly ? 2.0 : 4.0) / _screenScale;
 
-      // 8 candidate placement offsets around node center (below, above, right, left, 4 diagonals)
       final candidates = <Offset>[
-        Offset(-w / 2, gap),
-        Offset(-w / 2, -(h + gap)),
         Offset(gap, -h / 2),
         Offset(-(w + gap), -h / 2),
+        Offset(-w / 2, gap),
+        Offset(-w / 2, -(h + gap)),
         Offset(diag, diag),
-        Offset(diag, -(h + diag)),
         Offset(-(w + diag), diag),
+        Offset(diag, -(h + diag)),
         Offset(-(w + diag), -(h + diag)),
       ];
 
       Rect? chosenBox;
       Offset? chosenOffset;
       int chosenIndex = -1;
+      final double boxClearance = isPriority
+          ? (3.5 / _screenScale)
+          : passiveClearance;
 
       for (int idx = 0; idx < candidates.length; idx++) {
         final candTopLeft = point + candidates[idx];
         final candOffset = Offset(
-          candTopLeft.dx.clamp(12.0, 788.0 - w),
-          candTopLeft.dy.clamp(12.0, 788.0 - h),
+          candTopLeft.dx.clamp(12.0, 868.0 - w),
+          candTopLeft.dy.clamp(12.0, 868.0 - h),
         );
         final pillBox = (candOffset - Offset(padX / 2, padY / 2)) &
             Size(w + padX, h + padY);
-        final double clearance = 3.5 / _screenScale;
         final bool overlapsLabel = allocatedBoxes.any(
-          (existing) => existing.inflate(clearance).overlaps(pillBox),
+          (existing) => existing.inflate(boxClearance).overlaps(pillBox),
         );
         final bool overlapsHud =
             avoidHud && hudZones.any((hz) => hz.overlaps(pillBox));
         final bool overlapsOtherNode = nodeObstacles.any(
           (obs) =>
-              !obs.contains(point) && obs.overlaps(pillBox),
+              (obs.center - point).distanceSquared > 1.0 &&
+              obs.overlaps(pillBox),
         );
         final bool outOfSafeViewport =
             !isPriority &&
@@ -1610,11 +1719,10 @@ class _ConstellationPainter extends CustomPainter {
         }
       }
 
-      if (chosenBox == null && isPriority) {
-        // Force placement for priority (selected/hovered) recording full padded footprint
+      if (chosenBox == null && forcePlacement) {
         final candOffset = Offset(
-          (point.dx - w / 2).clamp(12.0, 788.0 - w),
-          (point.dy + gap).clamp(12.0, 788.0 - h),
+          (point.dx - w / 2).clamp(12.0, 868.0 - w),
+          (point.dy + gap).clamp(12.0, 868.0 - h),
         );
         chosenBox = (candOffset - Offset(padX / 2, padY / 2)) &
             Size(w + padX, h + padY);
@@ -1625,51 +1733,73 @@ class _ConstellationPainter extends CustomPainter {
       if (chosenBox != null && chosenOffset != null) {
         allocatedBoxes.add(chosenBox);
 
-        // Draw short leader tick for diagonal / priority displaced placements
         final Offset pillCenter = chosenBox.center;
         final double dist = (pillCenter - point).distance;
-        if (isPriority && (chosenIndex >= 4 || dist > 20 / _screenScale)) {
+        if ((isPriority && (chosenIndex >= 4 || dist > 20 / _screenScale)) ||
+            (haloOnly && dist > 16 / _screenScale)) {
           final Offset dir = (pillCenter - point) / math.max(1.0, dist);
-          final Offset start = point + dir * (6.8 / _screenScale);
+          final Offset start = point + dir * ((isPriority ? 6.8 : 5.2) / _screenScale);
           final Offset end = chosenBox.contains(point)
               ? start
-              : point + dir * (dist - math.min(w, h) * 0.35);
+              : point + dir * (dist - math.min(w, h) * 0.40);
           if ((end - start).distance > 2 / _screenScale) {
             canvas.drawLine(
               start,
               end,
               Paint()
-                ..color = textColor.withValues(alpha: 0.42)
-                ..strokeWidth = 0.9 / _screenScale,
+                ..color = textColor.withValues(alpha: haloOnly ? 0.30 : 0.44)
+                ..strokeWidth = (haloOnly ? 0.75 : 0.95) / _screenScale,
             );
           }
         }
 
-        // Crisp pill background
-        canvas.drawRRect(
-          RRect.fromRectAndRadius(chosenBox, Radius.circular(4 / _screenScale)),
-          Paint()..color = bgColor,
-        );
-
-        if (isPriority) {
+        if (haloOnly) {
+          final TextPainter haloPainter = TextPainter(
+            text: TextSpan(
+              text: displayText,
+              style: TextStyle(
+                fontFamily: 'IBMPlexSans',
+                fontSize: fontSize / _screenScale,
+                fontWeight: FontWeight.w600,
+                foreground: Paint()
+                  ..style = PaintingStyle.stroke
+                  ..strokeWidth = 3.2 / _screenScale
+                  ..strokeJoin = StrokeJoin.round
+                  ..color = haloStrokeColor,
+              ),
+            ),
+            textDirection: TextDirection.ltr,
+            maxLines: 1,
+            ellipsis: '…',
+          )..layout(maxWidth: math.min(maxTextWidth, 864));
+          haloPainter.paint(canvas, chosenOffset);
+          painter.paint(canvas, chosenOffset);
+        } else {
           canvas.drawRRect(
             RRect.fromRectAndRadius(
               chosenBox,
-              Radius.circular(4 / _screenScale),
+              Radius.circular(5 / _screenScale),
             ),
-            Paint()
-              ..color = textColor.withValues(alpha: 0.38)
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = 1.0 / _screenScale,
+            Paint()..color = bgColor,
           );
+          if (isPriority) {
+            canvas.drawRRect(
+              RRect.fromRectAndRadius(
+                chosenBox,
+                Radius.circular(5 / _screenScale),
+              ),
+              Paint()
+                ..color = textColor.withValues(alpha: 0.38)
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 1.0 / _screenScale,
+            );
+          }
+          painter.paint(canvas, chosenOffset);
         }
-
-        painter.paint(canvas, chosenOffset);
       }
     }
 
-    // Draw in strict hierarchy:
-    // Priority 1: Selected and Hovered nodes
+    // Priority 1: Selected and Hovered nodes (full name, crisp pill)
     if (selectedKey != null) {
       final selectedEntry = placedPoints
           .where((p) => p.$1.key == selectedKey)
@@ -1679,9 +1809,11 @@ class _ConstellationPainter extends CustomPainter {
           entry: selectedEntry,
           textColor: palette.ink,
           bgColor: palette.surface,
-          fontSize: 13.5,
+          fontSize: 13.0,
           isPriority: true,
+          haloOnly: false,
           avoidHud: false,
+          forcePlacement: true,
         );
       }
     }
@@ -1694,14 +1826,16 @@ class _ConstellationPainter extends CustomPainter {
           entry: hoveredEntry,
           textColor: palette.ink,
           bgColor: palette.surface.withValues(alpha: 0.96),
-          fontSize: 12.5,
+          fontSize: 12.0,
           isPriority: true,
+          haloOnly: false,
           avoidHud: false,
+          forcePlacement: selectedKey == null,
         );
       }
     }
 
-    // Priority 2: Direct neighbours of active node
+    // Priority 2: Direct neighbours of active node (concise pill)
     for (final neighbour in activeNeighbours) {
       if (neighbour.$1.key == selectedKey || neighbour.$1.key == hoveredKey) {
         continue;
@@ -1710,42 +1844,64 @@ class _ConstellationPainter extends CustomPainter {
         entry: neighbour,
         textColor: palette.ink,
         bgColor: palette.surface.withValues(alpha: 0.92),
-        fontSize: 11.5,
-        isPriority: false,
-      );
-    }
-
-    // Priority 3: Verified Historical Tier-1 Anchors across all 8 spectra
-    final List<(StudySubject, Offset)> visibleAnchors = [
-      for (final p in placedPoints)
-        if (_tier1Anchors.contains(p.$1.key) &&
-            p.$1.key != selectedKey &&
-            p.$1.key != hoveredKey &&
-            !activeNeighbours.any((n) => n.$1.key == p.$1.key))
-          p,
-    ]..sort(
-        (a, b) => (a.$2 - visibleBounds.center).distanceSquared.compareTo(
-              (b.$2 - visibleBounds.center).distanceSquared,
-            ),
-      );
-    for (final anchor in visibleAnchors) {
-      tryDrawLabel(
-        entry: anchor,
-        textColor: palette.ink,
-        bgColor: palette.surface.withValues(alpha: 0.88),
         fontSize: 11.0,
         isPriority: false,
+        haloOnly: false,
       );
     }
 
-    // Priority 4: Balanced round-robin per-spectrum distribution when zoomed or small set
-    if (placedPoints.length < 35 || _screenScale >= 1.2) {
+    // Priority 3: Round-robin peripheral-first distribution of Tier-1 landmarks
+    // across all 8 spectra (prevents center overcrowding; renders clean halo text).
+    final Offset anchorOrigin = projection.isTriad
+        ? TeiaCartographicLayer.triadCentroid
+        : const Offset(440.0, 440.0);
+    final Map<String, List<(StudySubject, Offset)>> anchorsBySpectrum = {};
+    for (final p in placedPoints) {
+      if (_tier1Anchors.contains(p.$1.key) &&
+          p.$1.key != selectedKey &&
+          p.$1.key != hoveredKey &&
+          !activeNeighbourKeys.contains(p.$1.key)) {
+        final String spec = spectrumOf(p.$1)?.id ?? 'other';
+        (anchorsBySpectrum[spec] ??= []).add(p);
+      }
+    }
+    for (final list in anchorsBySpectrum.values) {
+      list.sort((a, b) {
+        final int distCmp = (b.$2 - anchorOrigin).distanceSquared.compareTo(
+              (a.$2 - anchorOrigin).distanceSquared,
+            );
+        return distCmp != 0 ? distCmp : a.$1.key.compareTo(b.$1.key);
+      });
+    }
+    final List<String> anchorSpecs = anchorsBySpectrum.keys.toList()..sort();
+    for (int round = 0; round < 6; round++) {
+      bool anyAdded = false;
+      for (final specKey in anchorSpecs) {
+        if (allocatedBoxes.length >= labelBudget) break;
+        final list = anchorsBySpectrum[specKey]!;
+        if (round < list.length) {
+          anyAdded = true;
+          tryDrawLabel(
+            entry: list[round],
+            textColor: palette.ink,
+            bgColor: palette.surface,
+            fontSize: 10.5,
+            isPriority: false,
+            haloOnly: true,
+          );
+        }
+      }
+      if (!anyAdded || allocatedBoxes.length >= labelBudget) break;
+    }
+
+    // Priority 4: Additional per-spectrum currents only when zoomed or compact filtered set
+    if (placedPoints.length < 35 || _screenScale >= 1.25) {
       final Map<String, List<(StudySubject, Offset)>> bySpectrum = {};
       for (final p in placedPoints) {
         if (_tier1Anchors.contains(p.$1.key) ||
             p.$1.key == selectedKey ||
             p.$1.key == hoveredKey ||
-            activeNeighbours.any((n) => n.$1.key == p.$1.key)) {
+            activeNeighbourKeys.contains(p.$1.key)) {
           continue;
         }
         if (!visibleBounds.contains(p.$2)) continue;
@@ -1760,8 +1916,8 @@ class _ConstellationPainter extends CustomPainter {
               ),
         );
       }
-      final int maxPerSpectrum = _screenScale >= 1.8 ? 6 : 3;
-      final List<String> specKeys = bySpectrum.keys.toList();
+      final int maxPerSpectrum = _screenScale >= 1.85 ? 5 : 2;
+      final List<String> specKeys = bySpectrum.keys.toList()..sort();
       for (int round = 0; round < maxPerSpectrum; round++) {
         bool anyDrawn = false;
         for (final specKey in specKeys) {
@@ -1772,9 +1928,10 @@ class _ConstellationPainter extends CustomPainter {
             tryDrawLabel(
               entry: list[round],
               textColor: palette.inkSoft,
-              bgColor: palette.surface.withValues(alpha: 0.84),
-              fontSize: 10.0,
+              bgColor: palette.surface,
+              fontSize: 9.8,
               isPriority: false,
+              haloOnly: true,
             );
           }
         }
@@ -1829,4 +1986,60 @@ class _ConstellationPainter extends CustomPainter {
       oldDelegate.hoveredKey != hoveredKey ||
       oldDelegate.palette != palette ||
       oldDelegate.projection != projection;
+}
+
+class _SceneAnchoredBadgeDelegate extends SingleChildLayoutDelegate {
+  const _SceneAnchoredBadgeDelegate({
+    required this.anchor,
+    required this.alignX,
+    required this.alignY,
+    required this.compact,
+  });
+
+  final Offset anchor;
+  final double alignX;
+  final double alignY;
+  final bool compact;
+
+  @override
+  BoxConstraints getConstraintsForChild(BoxConstraints constraints) =>
+      BoxConstraints(
+        maxWidth: math.max(80.0, constraints.maxWidth - 20.0),
+        maxHeight: math.max(24.0, constraints.maxHeight - 20.0),
+      );
+
+  @override
+  Offset getPositionForChild(Size size, Size childSize) {
+    double x = anchor.dx + alignX * childSize.width;
+    double y = anchor.dy + alignY * childSize.height;
+
+    double minX = 10.0;
+    double maxX = math.max(minX, size.width - childSize.width - 10.0);
+    final double minY = 10.0;
+    final double maxY = math.max(minY, size.height - childSize.height - 10.0);
+
+    y = y.clamp(minY, maxY);
+
+    if (!compact && size.width >= 600) {
+      if (y + childSize.height > size.height - 246.0) {
+        minX = math.max(minX, 208.0);
+      }
+      if (y < 214.0) {
+        maxX = math.min(maxX, math.max(minX, size.width - childSize.width - 68.0));
+      }
+      if (y < 58.0) {
+        minX = math.max(minX, 224.0);
+      }
+    }
+
+    x = x.clamp(minX, math.max(minX, maxX));
+    return Offset(x, y);
+  }
+
+  @override
+  bool shouldRelayout(covariant _SceneAnchoredBadgeDelegate oldDelegate) =>
+      oldDelegate.anchor != anchor ||
+      oldDelegate.alignX != alignX ||
+      oldDelegate.alignY != alignY ||
+      oldDelegate.compact != compact;
 }

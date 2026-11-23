@@ -16,9 +16,11 @@ import 'package:politico/ui/ads/espectro_banner_ad.dart';
 import 'package:politico/ui/charts/axis_colors.dart';
 import 'package:politico/ui/charts/diverging_axis_bar.dart';
 import 'package:politico/ui/charts/study_constellation.dart';
+import 'package:politico/ui/charts/teia_cartographic_layer.dart';
 import 'package:politico/ui/features/atlas/atlas_explorer_screen.dart';
 import 'package:politico/ui/features/atlas/current_emblem.dart';
 import 'package:politico/ui/features/atlas/study_identity.dart';
+import 'package:politico/ui/features/atlas/study_map_screen.dart';
 import 'package:politico/ui/features/atlas/study_profile_screen.dart';
 import 'package:politico/ui/features/atlas/study_taxonomy.dart';
 import 'package:politico/ui/features/compare/entity_comparison_screen.dart';
@@ -1479,6 +1481,86 @@ void main() {
         expect(mobileStorySize.width / mobileStorySize.height, closeTo(9 / 16, 0.02));
         expect(tester.takeException(), isNull);
       }
+    },
+  );
+
+  testWidgets(
+    'Teia cartográfica: triângulo equilátero em Tríades e selos ancorados sem colisão com ESPECTROS',
+    (tester) async {
+      // 1. Geometria equilátera exata dos 3 vértices do simplex ternário
+      final double edgeBase =
+          (TeiaCartographicLayer.triadV1 - TeiaCartographicLayer.triadV0).distance;
+      final double edgeLeft =
+          (TeiaCartographicLayer.triadV2 - TeiaCartographicLayer.triadV0).distance;
+      final double edgeRight =
+          (TeiaCartographicLayer.triadV2 - TeiaCartographicLayer.triadV1).distance;
+      expect((edgeBase - edgeLeft).abs(), lessThanOrEqualTo(1.0));
+      expect((edgeBase - edgeRight).abs(), lessThanOrEqualTo(1.0));
+      expect((edgeLeft - edgeRight).abs(), lessThanOrEqualTo(1.0));
+
+      final sansLoader = FontLoader('IBMPlexSans')
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexSans-Regular.ttf'))
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexSans-SemiBold.ttf'))
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexSans-Bold.ttf'));
+      await sansLoader.load();
+
+      await setViewport(tester, const Size(1440, 900));
+      final state = await createInitializedState(withRecord: false);
+      await tester.pumpWidget(
+        wrapScreen(
+          isDark: false,
+          child: StudyMapScreen(appViewModel: state.vm),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final Finder legendBox = find
+          .ancestor(
+            of: find.text('ESPECTROS'),
+            matching: find.byType(ConstrainedBox),
+          )
+          .first;
+      final Rect legendRect = tester.getRect(legendBox);
+      const Rect viewportRect = Rect.fromLTWH(0, 0, 1440, 900);
+
+      // Nolan clássico: 4 selos visíveis dentro da viewport e sem colidir com legenda
+      for (final String nolanLabel in const <String>[
+        'AUTORITARISMO ↑',
+        'ANARQUISMO ↓',
+        '← ESQUERDA',
+        'DIREITA →',
+      ]) {
+        final Finder f = find.text(nolanLabel);
+        expect(f, findsOneWidget);
+        final Rect r = tester.getRect(f);
+        expect(viewportRect.contains(r.center), isTrue);
+        expect(r.overlaps(legendRect), isFalse);
+      }
+
+      // Alternar para Tríade: Política Externa via seletor de projeção
+      await tester.tap(find.byTooltip('Trocar eixos desta teia'));
+      await tester.pumpAndSettle();
+      final Finder extItem = find.text('Tríade: Política Externa');
+      await tester.ensureVisible(extItem);
+      await tester.tap(extItem);
+      await tester.pumpAndSettle();
+
+      for (final String triadLabel in const <String>[
+        'GLOBALISMO ↑',
+        '← IMPERIALISMO',
+        'ISOLACIONISMO →',
+      ]) {
+        final Finder f = find.text(triadLabel);
+        expect(f, findsOneWidget);
+        final Rect r = tester.getRect(f);
+        expect(viewportRect.contains(r.center), isTrue);
+        expect(
+          r.overlaps(legendRect),
+          isFalse,
+          reason: '$triadLabel não deve colidir com o painel ESPECTROS ($r vs $legendRect)',
+        );
+      }
+      expect(tester.takeException(), isNull);
     },
   );
 }

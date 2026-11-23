@@ -33,6 +33,12 @@ abstract final class TeiaCartographicLayer {
   static const double gridSpan = gridMax - gridMin; // 680.0
   static const double centerCoord = 440.0;
 
+  // Vértices do simplex ternário equilátero (base = 680px, altura = 680*sqrt(3)/2 = 588.9px).
+  static const Offset triadV0 = Offset(100.0, 730.0);
+  static const Offset triadV1 = Offset(780.0, 730.0);
+  static const Offset triadV2 = Offset(440.0, 141.1);
+  static const Offset triadCentroid = Offset(440.0, 533.7);
+
   /// Envoltória convexa via Andrew's Monotone Chain (`O(n log n)`).
   /// Nunca altera as coordenadas analíticas originais; apenas calcula a fronteira
   /// territorial visual dos pontos plotados.
@@ -138,32 +144,58 @@ abstract final class TeiaCartographicLayer {
     bool showLabels = true,
     double zoomScale = 1.0,
     double labelOpacity = 1.0,
+    bool isTriad = false,
+    String? focusSpectrumId,
   }) {
     final bool dark = p.isDark;
+    final List<Rect> drawnTerritoryLabels = <Rect>[];
     for (final SpectrumTerritory t in territories) {
       if (t.hull.length < 3) continue;
       final Path path = _buildSmoothClosedPath(t.hull);
+      final bool isFocused = focusSpectrumId == null || t.id == focusSpectrumId;
+
+      final double fillAlpha;
+      final double strokeAlpha;
+      final double strokeWidth;
+      if (isTriad) {
+        if (focusSpectrumId != null) {
+          fillAlpha = (isFocused ? (dark ? 0.12 : 0.095) : 0.015) * opacityMultiplier;
+          strokeAlpha = (isFocused ? (dark ? 0.54 : 0.56) : 0.12) * opacityMultiplier;
+          strokeWidth = ((isFocused ? 1.45 : 0.85) / math.sqrt(zoomScale)).clamp(0.55, 1.8);
+        } else {
+          // Em projeções triangulares as envoltórias se concentram no mesmo miolo;
+          // mantemos preenchimento quase aéreo e traço fino para não embarrar pontos.
+          fillAlpha = (dark ? 0.036 : 0.028) * opacityMultiplier;
+          strokeAlpha = (dark ? 0.22 : 0.24) * opacityMultiplier;
+          strokeWidth = (0.95 / math.sqrt(zoomScale)).clamp(0.55, 1.3);
+        }
+      } else {
+        final double dim = isFocused ? 1.0 : 0.42;
+        fillAlpha = (dark ? 0.105 : 0.085) * opacityMultiplier * dim;
+        strokeAlpha = (dark ? 0.34 : 0.38) * opacityMultiplier * (isFocused ? 1.0 : 0.52);
+        strokeWidth = (1.25 / math.sqrt(zoomScale)).clamp(0.65, 1.5);
+      }
 
       canvas.drawPath(
         path,
         Paint()
-          ..color = t.color.withValues(
-            alpha: (dark ? 0.105 : 0.085) * opacityMultiplier,
-          )
+          ..color = t.color.withValues(alpha: fillAlpha)
           ..style = PaintingStyle.fill,
       );
 
       canvas.drawPath(
         path,
         Paint()
-          ..color = t.color.withValues(
-            alpha: (dark ? 0.34 : 0.38) * opacityMultiplier,
-          )
+          ..color = t.color.withValues(alpha: strokeAlpha)
           ..style = PaintingStyle.stroke
-          ..strokeWidth = (1.25 / math.sqrt(zoomScale)).clamp(0.65, 1.5),
+          ..strokeWidth = strokeWidth,
       );
 
-      if (showLabels && t.count >= 6 && zoomScale <= 2.2) {
+      final bool allowLabel = showLabels &&
+          t.count >= 6 &&
+          zoomScale <= 2.2 &&
+          (!isTriad || (focusSpectrumId != null && isFocused));
+      if (allowLabel) {
         final TextPainter tp = TextPainter(
           text: TextSpan(
             text: t.label,
@@ -186,10 +218,13 @@ abstract final class TeiaCartographicLayer {
           ),
           textDirection: TextDirection.ltr,
         )..layout();
-        tp.paint(
-          canvas,
-          t.centroid - Offset(tp.width / 2, tp.height / 2),
-        );
+        final Offset topLeft = t.centroid - Offset(tp.width / 2, tp.height / 2);
+        final Rect candidateRect = (topLeft - const Offset(6, 4)) &
+            Size(tp.width + 12, tp.height + 8);
+        if (!drawnTerritoryLabels.any((r) => r.overlaps(candidateRect))) {
+          drawnTerritoryLabels.add(candidateRect);
+          tp.paint(canvas, topLeft);
+        }
       }
     }
   }
@@ -213,49 +248,128 @@ abstract final class TeiaCartographicLayer {
     return path;
   }
 
-  /// Desenha o retículo cartográfico calibrado (`100..780 × 100..780`) com eixos
-  /// principais, graduações decimais e marcações tabulares discretas (`-100..+100`).
+  /// Desenha o retículo cartográfico calibrado (`100..780 × 100..780` ou simplex
+  /// ternário equilátero) com eixos principais e graduações discretas.
   static void paintGraticule(
     Canvas canvas,
     EspectroPalette p, {
     double scale = 1.0,
     bool showScaleTicks = true,
     bool isTriad = false,
+    bool fillAnalyticalPlate = false,
   }) {
     final double invSqrt = (1.0 / math.sqrt(scale)).clamp(0.45, 1.2);
 
     if (isTriad) {
-      const Offset v0 = Offset(140, 710);
-      const Offset v1 = Offset(740, 710);
-      const Offset v2 = Offset(440, 150);
-      final Paint triPaint = Paint()
-        ..color = p.line.withValues(alpha: p.isDark ? 0.65 : 0.78)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1.3 * invSqrt;
-      canvas.drawPath(
-        Path()
-          ..moveTo(v0.dx, v0.dy)
-          ..lineTo(v1.dx, v1.dy)
-          ..lineTo(v2.dx, v2.dy)
-          ..close(),
-        triPaint,
-      );
-      final Paint innerTri = Paint()
-        ..color = p.line.withValues(alpha: p.isDark ? 0.28 : 0.35)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 0.8 * invSqrt;
-      for (final double f in const <double>[0.33, 0.66]) {
-        final Offset c = const Offset(440, 523.3);
+      final Path triPath = Path()
+        ..moveTo(triadV0.dx, triadV0.dy)
+        ..lineTo(triadV1.dx, triadV1.dy)
+        ..lineTo(triadV2.dx, triadV2.dy)
+        ..close();
+
+      if (fillAnalyticalPlate) {
         canvas.drawPath(
-          Path()
-            ..moveTo(c.dx + (v0.dx - c.dx) * f, c.dy + (v0.dy - c.dy) * f)
-            ..lineTo(c.dx + (v1.dx - c.dx) * f, c.dy + (v1.dy - c.dy) * f)
-            ..lineTo(c.dx + (v2.dx - c.dx) * f, c.dy + (v2.dy - c.dy) * f)
-            ..close(),
-          innerTri,
+          triPath,
+          Paint()
+            ..color = p.surface.withValues(alpha: p.isDark ? 0.68 : 0.88)
+            ..style = PaintingStyle.fill,
         );
       }
+
+      final Paint subtleGrid = Paint()
+        ..color = p.line.withValues(alpha: p.isDark ? 0.22 : 0.30)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 0.72 * invSqrt;
+      final Paint midGrid = Paint()
+        ..color = p.line.withValues(alpha: p.isDark ? 0.40 : 0.48)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 0.95 * invSqrt;
+
+      // Grade baricêntrica paralela às 3 arestas (iso-proporções em 25%, 50%, 75%)
+      for (final double t in const <double>[0.25, 0.50, 0.75]) {
+        final Paint gridPaint = t == 0.50 ? midGrid : subtleGrid;
+        canvas.drawLine(
+          Offset.lerp(triadV0, triadV2, t)!,
+          Offset.lerp(triadV1, triadV2, t)!,
+          gridPaint,
+        );
+        canvas.drawLine(
+          Offset.lerp(triadV1, triadV0, t)!,
+          Offset.lerp(triadV2, triadV0, t)!,
+          gridPaint,
+        );
+        canvas.drawLine(
+          Offset.lerp(triadV2, triadV1, t)!,
+          Offset.lerp(triadV0, triadV1, t)!,
+          gridPaint,
+        );
+      }
+
+      // Cruz discreta no baricentro (33% · 33% · 33%)
+      final Paint centroidPaint = Paint()
+        ..color = p.inkSoft.withValues(alpha: p.isDark ? 0.42 : 0.38)
+        ..strokeWidth = 1.0 * invSqrt;
+      final double crossArm = 7.0 * invSqrt;
+      canvas.drawLine(
+        triadCentroid - Offset(crossArm, 0),
+        triadCentroid + Offset(crossArm, 0),
+        centroidPaint,
+      );
+      canvas.drawLine(
+        triadCentroid - Offset(0, crossArm),
+        triadCentroid + Offset(0, crossArm),
+        centroidPaint,
+      );
+
+      // Moldura equilátera externa + marcadores de vértice
+      canvas.drawPath(
+        triPath,
+        Paint()
+          ..color = p.line.withValues(alpha: p.isDark ? 0.78 : 0.92)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.45 * invSqrt,
+      );
+      final Paint vertexFill = Paint()..color = p.surface;
+      final Paint vertexStroke = Paint()
+        ..color = p.inkSoft.withValues(alpha: 0.72)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1.3 * invSqrt;
+      for (final Offset v in const <Offset>[triadV0, triadV1, triadV2]) {
+        canvas.drawCircle(v, 3.8 * invSqrt, vertexFill);
+        canvas.drawCircle(v, 3.8 * invSqrt, vertexStroke);
+      }
+
+      if (showScaleTicks) {
+        for (final (Offset midPt, Offset outward) in <(Offset, Offset)>[
+          (Offset.lerp(triadV0, triadV2, 0.5)!, Offset(-22.0 * invSqrt, -4.0 * invSqrt)),
+          (Offset.lerp(triadV1, triadV2, 0.5)!, Offset(22.0 * invSqrt, -4.0 * invSqrt)),
+        ]) {
+          final TextPainter tp = TextPainter(
+            text: TextSpan(
+              text: '50%',
+              style: TextStyle(
+                fontFamily: 'IBMPlexMono',
+                fontSize: 8.0 * invSqrt,
+                fontWeight: FontWeight.w600,
+                color: p.muted.withValues(alpha: 0.72),
+              ),
+            ),
+            textDirection: TextDirection.ltr,
+          )..layout();
+          final Offset c = midPt + outward;
+          tp.paint(canvas, Offset(c.dx - tp.width / 2, c.dy - tp.height / 2));
+        }
+      }
       return;
+    }
+
+    if (fillAnalyticalPlate) {
+      canvas.drawRect(
+        const Rect.fromLTWH(gridMin, gridMin, gridSpan, gridSpan),
+        Paint()
+          ..color = p.surface.withValues(alpha: p.isDark ? 0.68 : 0.88)
+          ..style = PaintingStyle.fill,
+      );
     }
 
     // Moldura externa calibrada do quadrante analítico
@@ -296,6 +410,17 @@ abstract final class TeiaCartographicLayer {
       const Offset(centerCoord, gridMax),
       mainAxis,
     );
+
+    if (fillAnalyticalPlate) {
+      canvas.drawCircle(
+        const Offset(centerCoord, centerCoord),
+        3.5 * invSqrt,
+        Paint()
+          ..color = p.inkSoft.withValues(alpha: p.isDark ? 0.42 : 0.36)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.0 * invSqrt,
+      );
+    }
 
     if (!showScaleTicks) return;
 
